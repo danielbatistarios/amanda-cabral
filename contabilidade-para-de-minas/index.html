@@ -1060,6 +1060,18 @@ footer {
   max-width: 220px;
   margin-bottom: 32px;
 }
+.foot-address {
+  font-style: normal;
+  font-size: 13px;
+  color: #4a5568;
+  line-height: 1.8;
+  margin-bottom: 20px;
+}
+.foot-address a {
+  color: #4a5568;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
 .foot-live {
   display: inline-flex;
   align-items: center;
@@ -1875,7 +1887,8 @@ p, .hero-sub { text-wrap: pretty; }
 
 <!-- 3. NAV (FIXED) -->
 <a href="#main-content" class="skip-link">Pular para conte&#250;do</a>
-<nav id="nav">
+<header>
+<nav id="nav" aria-label="Navega&#231;&#227;o principal">
   <a href="index.html" class="logo">AM Cabral</a>
   <ul class="nav-links">
     <li><a href="index.html" class="nav-btn">Home</a></li>
@@ -1890,6 +1903,7 @@ p, .hero-sub { text-wrap: pretty; }
     <button class="hamburger" id="hambBtn" aria-label="Abrir menu de navega&#231;&#227;o"><span></span><span></span><span></span></button>
   </div>
 </nav>
+</header>
 <div class="mob-overlay" id="mobOverlay"></div>
 <div class="mob-menu" id="mobMenu">
   <a href="index.html">Home</a>
@@ -1903,6 +1917,7 @@ p, .hero-sub { text-wrap: pretty; }
 </div>
 
 <!-- 4. HERO (--z2, noise, radial glows) -->
+<main>
 <section class="city-hero noise" id="main-content">
   <div class="container">
     <div class="hero-breadcrumb">
@@ -1951,7 +1966,7 @@ p, .hero-sub { text-wrap: pretty; }
     <span class="cred-item">Membro IBPT</span><span class="cred-dot">&#183;</span>
     <span class="cred-item">R$ 12M Recuperados</span><span class="cred-dot">&#183;</span>
     <span class="cred-item">120+ Ind&#250;strias</span><span class="cred-dot">&#183;</span>
-    <span class="cred-item">CNPJ 34.733.620/0001-51</span><span class="cred-dot">&#183;</span>
+    <span class="cred-item"><abbr title="Cadastro Nacional de Pessoa Jur&#237;dica">CNPJ</abbr> 34.733.620/0001-51</span><span class="cred-dot">&#183;</span>
     <span class="cred-item">Par&#225; de Minas, MG</span><span class="cred-dot">&#183;</span>
     <!-- duplicate for seamless loop -->
     <span class="cred-item">CRC/MG Ativo</span><span class="cred-dot">&#183;</span>
@@ -1961,7 +1976,7 @@ p, .hero-sub { text-wrap: pretty; }
     <span class="cred-item">Membro IBPT</span><span class="cred-dot">&#183;</span>
     <span class="cred-item">R$ 12M Recuperados</span><span class="cred-dot">&#183;</span>
     <span class="cred-item">120+ Ind&#250;strias</span><span class="cred-dot">&#183;</span>
-    <span class="cred-item">CNPJ 34.733.620/0001-51</span><span class="cred-dot">&#183;</span>
+    <span class="cred-item"><abbr title="Cadastro Nacional de Pessoa Jur&#237;dica">CNPJ</abbr> 34.733.620/0001-51</span><span class="cred-dot">&#183;</span>
     <span class="cred-item">Par&#225; de Minas, MG</span><span class="cred-dot">&#183;</span>
   </div>
 </div>
@@ -1973,9 +1988,9 @@ p, .hero-sub { text-wrap: pretty; }
       <div class="authority-text reveal-left">
         <div class="sec-label dk">A Empresa</div>
         <h2 class="sec-h dk" style="margin-bottom:32px;">Quem &#233; a AC Contabilidade</h2>
-        <p>A AC Contabilidade nasceu em Par&#225; de Minas em 1996. N&#227;o como mais um escrit&#243;rio cont&#225;bil. Nasceu com uma miss&#227;o: proteger o lucro de quem produz.</p>
-        <p>Nos primeiros anos, atendi ind&#250;strias do Distrito Industrial de Par&#225; de Minas que perdiam dinheiro sem saber. Cr&#233;ditos de ICMS-ST n&#227;o recuperados. Regimes tribut&#225;rios inadequados. Patrim&#244;nio do dono misturado com a empresa.</p>
-        <p>Hoje, 30 anos depois, a opera&#231;&#227;o cresceu. Atendo ind&#250;strias de todo o Brasil por acesso remoto. Mas a sede continua aqui. Na Rua Major Fid&#233;lis, 244, Centro. Onde tudo come&#231;ou.</p>
+        <p>A AC Contabilidade nasceu em Par&#225; de Minas em <time datetime="1996">1996</time>. N&#227;o como mais um escrit&#243;rio cont&#225;bil. Nasceu com uma miss&#227;o: <strong>proteger o lucro de quem produz</strong>.</p>
+        <p>Nos primeiros anos, atendi ind&#250;strias do Distrito Industrial de Par&#225; de Minas que perdiam dinheiro sem saber. Cr&#233;ditos de <abbr title="Imposto sobre Circula&#231;&#227;o de Mercadorias e Servi&#231;os por Substitui&#231;&#227;o Tribut&#225;ria">ICMS-ST</abbr> n&#227;o recuperados. Regimes tribut&#225;rios inadequados. Patrim&#244;nio do dono misturado com a empresa.</p>
+        <p>Hoje, <strong>30 anos depois</strong>, a opera&#231;&#227;o cresceu. Atendo ind&#250;strias de todo o Brasil por acesso remoto. Mas a sede continua aqui. Na Rua Major Fid&#233;lis, 244, Centro. Onde tudo come&#231;ou.</p>
       </div>
       <div class="stats-card reveal-right">
         <div class="stat-row">
@@ -2324,59 +2339,59 @@ p, .hero-sub { text-wrap: pretty; }
     <h2 class="sec-h lt reveal" style="text-align:center;">Perguntas frequentes sobre contabilidade em Par&#225; de Minas</h2>
     <div class="faq-list">
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
+        <h3 class="faq-q" role="button" tabindex="0" aria-expanded="false">
           Preciso ir pessoalmente ao escrit&#243;rio em Par&#225; de Minas?
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
-        </button>
+        </h3>
         <div class="faq-a"><p>N&#227;o necessariamente. Nosso atendimento &#233; 100% digital via videoconfer&#234;ncia e acesso remoto seguro. Mas se preferir, nosso escrit&#243;rio na Rua Major Fid&#233;lis, 244 est&#225; aberto de segunda a sexta, das 8h &#224;s 18h.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
+        <h3 class="faq-q" role="button" tabindex="0" aria-expanded="false">
           Voc&#234;s atendem ind&#250;strias fora de Par&#225; de Minas?
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
-        </button>
+        </h3>
         <div class="faq-a"><p>Sim. Atendemos ind&#250;strias em todo o Brasil. Temos clientes em Ita&#250;na, Divin&#243;polis, Sete Lagoas, Belo Horizonte, S&#227;o Paulo, Curitiba e mais 20 cidades. A opera&#231;&#227;o digital permite atendimento completo em qualquer localidade.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
+        <h3 class="faq-q" role="button" tabindex="0" aria-expanded="false">
           Quanto custa o diagn&#243;stico tribut&#225;rio?
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
-        </button>
+        </h3>
         <div class="faq-a"><p>O diagn&#243;stico &#233; gratuito. Em 30 minutos, mapeamos cr&#233;ditos perdidos, riscos fiscais e oportunidades para a sua ind&#250;stria. Sem custo e sem compromisso.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
+        <h3 class="faq-q" role="button" tabindex="0" aria-expanded="false">
           Minha ind&#250;stria est&#225; no Simples Nacional. Voc&#234;s atendem?
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
-        </button>
+        </h3>
         <div class="faq-a"><p>Sim. Atendemos desde ind&#250;strias no Simples Nacional at&#233; grandes opera&#231;&#245;es no Lucro Real. Muitas ind&#250;strias em Par&#225; de Minas pagam mais no Simples do que pagariam no Presumido ou Real. O diagn&#243;stico identifica o regime ideal.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
+        <h3 class="faq-q" role="button" tabindex="0" aria-expanded="false">
           Qual a especialidade da AC Contabilidade?
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
-        </button>
+        </h3>
         <div class="faq-a"><p>Contabilidade tribut&#225;ria para ind&#250;strias e constitui&#231;&#227;o de holding patrimonial e familiar. N&#227;o fazemos contabilidade gen&#233;rica para com&#233;rcio ou servi&#231;os. Nosso foco &#233; exclusivo em opera&#231;&#245;es industriais e prote&#231;&#227;o patrimonial.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
+        <h3 class="faq-q" role="button" tabindex="0" aria-expanded="false">
           Como funciona a recupera&#231;&#227;o de cr&#233;ditos tribut&#225;rios?
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
-        </button>
+        </h3>
         <div class="faq-a"><p>Fazemos uma auditoria retroativa dos &#250;ltimos 5 anos. Identificamos cr&#233;ditos de ICMS-ST, IPI, PIS e COFINS que n&#227;o foram aproveitados. A m&#233;dia de recupera&#231;&#227;o para ind&#250;strias de m&#233;dio porte em Minas Gerais &#233; de R$ 180 mil.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
+        <h3 class="faq-q" role="button" tabindex="0" aria-expanded="false">
           Voc&#234;s conhecem os incentivos fiscais de Minas Gerais?
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
-        </button>
+        </h3>
         <div class="faq-a"><p>Profundamente. Operamos em MG h&#225; 30 anos. Conhecemos cada TTD de ICMS, cada regime especial, cada cr&#233;dito presumido dispon&#237;vel para ind&#250;strias mineiras. O enquadramento correto pode reduzir a carga tribut&#225;ria em at&#233; 40%.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-q" aria-expanded="false">
+        <h3 class="faq-q" role="button" tabindex="0" aria-expanded="false">
           A reforma tribut&#225;ria vai afetar minha ind&#250;stria em Par&#225; de Minas?
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
-        </button>
+        </h3>
         <div class="faq-a"><p>Sim. O IBS e a CBS substituem ICMS, ISS, PIS e COFINS a partir de 2026. A transi&#231;&#227;o vai at&#233; 2033. Ind&#250;strias que n&#227;o se prepararem v&#227;o perder competitividade. Oferecemos consultoria especializada em reforma tribut&#225;ria para ind&#250;strias.</p></div>
       </div>
     </div>
@@ -2474,12 +2489,12 @@ p, .hero-sub { text-wrap: pretty; }
           <div class="form-step" data-step="2">
             <div class="form-step-title">Servi&#231;o de interesse</div>
             <div class="form-radios">
-              <label class="form-radio-item"><input type="radio" name="servico" value="Diagn&#243;stico Tribut&#225;rio Gratuito" checked><span>Diagn&#243;stico Tribut&#225;rio Gratuito</span></label>
-              <label class="form-radio-item"><input type="radio" name="servico" value="Recupera&#231;&#227;o de Cr&#233;ditos"><span>Recupera&#231;&#227;o de Cr&#233;ditos</span></label>
-              <label class="form-radio-item"><input type="radio" name="servico" value="Planejamento Tribut&#225;rio"><span>Planejamento Tribut&#225;rio</span></label>
-              <label class="form-radio-item"><input type="radio" name="servico" value="Constitui&#231;&#227;o de Holding"><span>Constitui&#231;&#227;o de Holding</span></label>
-              <label class="form-radio-item"><input type="radio" name="servico" value="Gest&#227;o Cont&#225;bil"><span>Gest&#227;o Cont&#225;bil</span></label>
-              <label class="form-radio-item"><input type="radio" name="servico" value="Consultoria Tribut&#225;ria"><span>Consultoria Tribut&#225;ria</span></label>
+              <label class="form-radio-item" for="servico-1"><input type="radio" id="servico-1" name="servico" value="Diagn&#243;stico Tribut&#225;rio Gratuito" checked><span>Diagn&#243;stico Tribut&#225;rio Gratuito</span></label>
+              <label class="form-radio-item" for="servico-2"><input type="radio" id="servico-2" name="servico" value="Recupera&#231;&#227;o de Cr&#233;ditos"><span>Recupera&#231;&#227;o de Cr&#233;ditos</span></label>
+              <label class="form-radio-item" for="servico-3"><input type="radio" id="servico-3" name="servico" value="Planejamento Tribut&#225;rio"><span>Planejamento Tribut&#225;rio</span></label>
+              <label class="form-radio-item" for="servico-4"><input type="radio" id="servico-4" name="servico" value="Constitui&#231;&#227;o de Holding"><span>Constitui&#231;&#227;o de Holding</span></label>
+              <label class="form-radio-item" for="servico-5"><input type="radio" id="servico-5" name="servico" value="Gest&#227;o Cont&#225;bil"><span>Gest&#227;o Cont&#225;bil</span></label>
+              <label class="form-radio-item" for="servico-6"><input type="radio" id="servico-6" name="servico" value="Consultoria Tribut&#225;ria"><span>Consultoria Tribut&#225;ria</span></label>
             </div>
             <div class="form-nav">
               <button type="button" class="form-btn-back" onclick="formBack(1)">&#8592; Voltar</button>
@@ -2524,6 +2539,12 @@ p, .hero-sub { text-wrap: pretty; }
       <div>
         <div class="foot-brand">AM Cabral</div>
         <p class="foot-tag">Intelig&#234;ncia tribut&#225;ria para ind&#250;strias que competem para vencer.</p>
+        <address class="foot-address">
+          Rua Major Fid&#233;lis, 244, Centro<br>
+          Par&#225; de Minas, MG &#8212; CEP 35660-109<br>
+          <a href="tel:+5537999967558">+55 37 99996-7558</a><br>
+          <a href="mailto:contato@amcabralblindagem.com.br">contato@amcabralblindagem.com.br</a>
+        </address>
         <div class="foot-live">Monitoramento ativo</div>
       </div>
       <div>
@@ -2580,6 +2601,7 @@ p, .hero-sub { text-wrap: pretty; }
     </div>
   </div>
 </footer>
+</main>
 
 <!-- 20. BOTTOM BAR -->
 <div class="bottom-bar" id="bottomBar">
