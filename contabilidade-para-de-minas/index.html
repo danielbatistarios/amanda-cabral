@@ -529,10 +529,37 @@ nav.scrolled {
   position: relative;
   z-index: 1;
 }
+.hero-layout {
+  display: grid;
+  grid-template-columns: 1fr 440px;
+  gap: 80px;
+  align-items: center;
+}
 .hero-content {
   display: flex;
   flex-direction: column;
-  max-width: 680px;
+  min-width: 0;
+}
+.hero-img-col {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+}
+.hero-img-col::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 50%, rgba(6,14,26,.7) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+.hero-img-col img {
+  width: 100%;
+  height: 520px;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  filter: brightness(.9) contrast(1.05);
 }
 
 .hero-breadcrumb {
@@ -1802,6 +1829,8 @@ p, .hero-sub { text-wrap: pretty; }
   }
 
   .city-hero { min-height: auto; padding: 120px 0 60px; }
+  .hero-layout { grid-template-columns: 1fr; gap: 40px; }
+  .hero-img-col { display: none; }
   .hero-content { max-width: 100%; }
   .authority-grid { grid-template-columns: 1fr; gap: 40px; }
   .process-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
@@ -2026,24 +2055,36 @@ p, .hero-sub { text-wrap: pretty; }
   <div class="city-hero-orb-1"></div>
   <div class="city-hero-orb-2"></div>
   <div class="container">
-    <div class="hero-content">
-      <div class="hero-breadcrumb">
-        <a href="index.html">Home</a>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
-        <a href="cidades-atendidas.html">Cidades Atendidas</a>
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
-        <span>Par&#225; de Minas</span>
+    <div class="hero-layout">
+      <div class="hero-content">
+        <div class="hero-breadcrumb">
+          <a href="index.html">Home</a>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+          <a href="cidades-atendidas.html">Cidades Atendidas</a>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+          <span>Par&#225; de Minas</span>
+        </div>
+
+        <div class="hero-tag">SEDE | PAR&#193; DE MINAS, MG</div>
+
+        <h1 class="hero-h1">Contador em Par&#225; de Minas para empresas que querem pagar menos imposto dentro da lei</h1>
+
+        <p class="hero-sub">30 anos na cidade. Escritório na Rua Major Fidélis, 244. Contabilidade para comércio, serviços e indústrias. 8 em cada 10 empresas que atendemos encontram créditos que o contador anterior ignorou.</p>
+
+        <div class="hero-cta-wrap">
+          <a href="diagnostico-gratuito.html" class="btn-p">Solicitar Diagn&#243;stico Gratuito <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          <span class="hero-small">Sem custo. Sem compromisso. Resposta em 24h.</span>
+        </div>
       </div>
 
-      <div class="hero-tag">SEDE | PAR&#193; DE MINAS, MG</div>
-
-      <h1 class="hero-h1">Contador em Par&#225; de Minas para empresas que querem pagar menos imposto dentro da lei</h1>
-
-      <p class="hero-sub">30 anos na cidade. Escritório na Rua Major Fidélis, 244. Contabilidade para comércio, serviços e indústrias. 8 em cada 10 empresas que atendemos encontram créditos que o contador anterior ignorou.</p>
-
-      <div class="hero-cta-wrap">
-        <a href="diagnostico-gratuito.html" class="btn-p">Solicitar Diagn&#243;stico Gratuito <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-        <span class="hero-small">Sem custo. Sem compromisso. Resposta em 24h.</span>
+      <div class="hero-img-col">
+        <img
+          src="assets/amanda-cabral-a-empresa-para-de-minas.jpg"
+          alt="Amanda Cabral, contadora especialista em tributa&#231;&#227;o em Par&#225; de Minas"
+          width="480"
+          loading="eager"
+          fetchpriority="high"
+        >
       </div>
     </div>
   </div>
