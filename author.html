@@ -142,46 +142,198 @@
       transform: rotate(180deg);
     }
 
-    .nav-dropdown {
-      position: absolute;
-      top: calc(100% + 12px);
-      left: 0;
-      background: var(--surface-dark);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 4px;
-      min-width: 240px;
-      padding: 8px 0;
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(-8px);
-      transition: opacity 0.25s, transform 0.25s var(--easing-spring);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+    /* MEGA-MENU STRUCTURE */
+    .nav-item-dropdown {
+      position: static;
     }
 
-    .nav-item.has-dropdown:hover .nav-dropdown,
-    .nav-item.has-dropdown:focus-within .nav-dropdown {
+    .nav-item-dropdown::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      height: 16px;
+      pointer-events: auto;
+    }
+
+    .nav-dropdown {
+      position: fixed;
+      top: 60px;
+      left: 0;
+      right: 0;
+      width: 100%;
+      background: rgba(15, 20, 25, 0.95);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-12px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      z-index: 1000;
+      max-height: calc(100vh - 70px);
+      overflow-y: auto;
+    }
+
+    .nav-item-dropdown.is-open .nav-dropdown {
       opacity: 1;
       pointer-events: auto;
       transform: translateY(0);
     }
 
-    .nav-dropdown a {
+    .nav-mega-inner {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 48px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 32px 24px;
+      align-items: start;
+    }
+
+    .nav-mega-img {
+      display: block;
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      aspect-ratio: 3/4;
+      background: linear-gradient(135deg, var(--blue-800) 0%, var(--blue-700) 100%);
+    }
+
+    .nav-mega-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .nav-mega-img:hover img {
+      transform: scale(1.05);
+    }
+
+    .nav-mega-img-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 24px;
+      color: var(--white);
+    }
+
+    .nav-mega-img-label {
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .nav-mega-img-subtitle {
+      font-size: 13px;
+      color: var(--silver-light);
+      margin-bottom: 12px;
+    }
+
+    .nav-mega-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      background: var(--accent-gold);
+      color: var(--dark-hero);
+      font-size: 12px;
+      font-weight: 600;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+      width: fit-content;
+    }
+
+    .nav-mega-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(196, 165, 116, 0.25);
+    }
+
+    .nav-mega-links {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px 48px;
+    }
+
+    .nav-mega-link {
+      display: block;
+      padding: 12px 0;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .nav-mega-link-title {
+      display: block;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 4px;
+      font-size: 14px;
+    }
+
+    .nav-mega-link-sub {
+      display: block;
+      font-size: 12px;
+      color: var(--silver);
+      font-weight: 400;
+    }
+
+    .nav-mega-link:hover .nav-mega-link-title {
+      color: var(--accent-gold);
+    }
+
+    .nav-mega-link:hover .nav-mega-link-sub {
+      color: var(--accent-light);
+    }
+
+    .nav-mega-all {
+      grid-column: 1 / -1;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 16px;
+      margin-top: 16px;
+    }
+
+    .nav-mega-all .nav-mega-link-title {
+      color: var(--accent-gold);
+    }
+
+    /* FALLBACK: Simple dropdown for items without mega-menu */
+    .nav-dropdown.simple {
+      position: absolute;
+      top: calc(100% + 12px);
+      left: 0;
+      width: auto;
+      right: auto;
+      background: var(--surface-dark);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 4px;
+      min-width: 240px;
+      padding: 8px 0;
+      max-height: none;
+      overflow-y: visible;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+    }
+
+    .nav-dropdown.simple a {
       display: block;
       padding: 10px 16px;
       font-size: 13px;
       color: var(--text-secondary);
       transition: color 0.2s;
+      border: none;
+      margin: 0;
+      padding: 10px 16px;
     }
 
-    .nav-dropdown a:hover {
+    .nav-dropdown.simple a:hover {
       color: var(--accent-gold);
-    }
-
-    .dropdown-all {
-      border-top: 1px solid rgba(255,255,255,0.04);
-      margin-top: 4px;
-      padding-top: 10px;
-      color: var(--accent-gold) !important;
     }
 
     .nav-cta {
@@ -645,18 +797,51 @@
     <a href="/" class="nav-logo">AM Cabral</a>
 
     <ul class="nav-links" id="navLinks">
-      <!-- Dropdown: Serviços -->
-      <li class="nav-item has-dropdown">
+      <!-- Mega-menu: Serviços -->
+      <li class="nav-item nav-item-dropdown">
         <button class="nav-trigger" aria-expanded="false" aria-haspopup="true">
           Serviços <span class="nav-arrow" aria-hidden="true">▼</span>
         </button>
         <div class="nav-dropdown" role="menu">
-          <a href="/gestao-contabil-para-industrias/" role="menuitem">Gestão Contábil Estratégica</a>
-          <a href="/recuperacao-de-creditos-tributarios/" role="menuitem">Recuperação de Créditos</a>
-          <a href="/holding-patrimonial-e-familiar/" role="menuitem">Holding Patrimonial e Familiar</a>
-          <a href="/planejamento-tributario/" role="menuitem">Planejamento Tributário</a>
-          <a href="/consultoria-tributaria/" role="menuitem">Consultoria Tributária</a>
-          <a href="/servicos/" class="dropdown-all" role="menuitem">Ver todos os serviços →</a>
+          <div class="nav-mega-inner">
+            <!-- Image section -->
+            <a href="/servicos/" class="nav-mega-img">
+              <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=280&h=380&fit=crop" alt="Gestão Contábil Estratégica" loading="lazy">
+              <div class="nav-mega-img-overlay">
+                <div class="nav-mega-img-label">Serviços Contábeis</div>
+                <div class="nav-mega-img-subtitle">Soluções integradas para sua empresa</div>
+                <a href="/servicos/" class="nav-mega-cta">Explorar →</a>
+              </div>
+            </a>
+
+            <!-- Links section -->
+            <div class="nav-mega-links">
+              <a href="/gestao-contabil-para-empresas/" class="nav-mega-link" role="menuitem">
+                <span class="nav-mega-link-title">Gestão Contábil Estratégica</span>
+                <span class="nav-mega-link-sub">Controle financeiro e fiscal</span>
+              </a>
+              <a href="/recuperacao-de-creditos-tributarios/" class="nav-mega-link" role="menuitem">
+                <span class="nav-mega-link-title">Recuperação de Créditos</span>
+                <span class="nav-mega-link-sub">Até R$ 12,3M em créditos invisíveis</span>
+              </a>
+              <a href="/holding-patrimonial-e-familiar/" class="nav-mega-link" role="menuitem">
+                <span class="nav-mega-link-title">Holding Patrimonial</span>
+                <span class="nav-mega-link-sub">Blindagem patrimonial familiar</span>
+              </a>
+              <a href="/planejamento-tributario/" class="nav-mega-link" role="menuitem">
+                <span class="nav-mega-link-title">Planejamento Tributário</span>
+                <span class="nav-mega-link-sub">Redução legal de impostos</span>
+              </a>
+              <a href="/consultoria-tributaria/" class="nav-mega-link" role="menuitem">
+                <span class="nav-mega-link-title">Consultoria Tributária</span>
+                <span class="nav-mega-link-sub">Decisões baseadas em inteligência</span>
+              </a>
+              <a href="/servicos/" class="nav-mega-link nav-mega-all" role="menuitem">
+                <span class="nav-mega-link-title">Ver todos os serviços</span>
+                <span class="nav-mega-link-sub">Portfólio completo →</span>
+              </a>
+            </div>
+          </div>
         </div>
       </li>
 
@@ -664,15 +849,43 @@
       <li class="nav-item"><a href="/reforma-tributaria/">Reforma Tributária</a></li>
       <li class="nav-item"><a href="/blog/">Blog</a></li>
 
-      <!-- Dropdown: Sobre -->
-      <li class="nav-item has-dropdown">
+      <!-- Mega-menu: Sobre -->
+      <li class="nav-item nav-item-dropdown">
         <button class="nav-trigger" aria-expanded="false" aria-haspopup="true">
           Sobre <span class="nav-arrow" aria-hidden="true">▼</span>
         </button>
         <div class="nav-dropdown" role="menu">
-          <a href="/sobre/" role="menuitem">Amanda Silva</a>
-          <a href="/casos-de-sucesso/" role="menuitem">Casos de Sucesso</a>
-          <a href="/depoimentos/" role="menuitem">Depoimentos</a>
+          <div class="nav-mega-inner">
+            <!-- Image section -->
+            <a href="/sobre/" class="nav-mega-img">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=280&h=380&fit=crop" alt="Amanda Cabral - Contadora" loading="lazy">
+              <div class="nav-mega-img-overlay">
+                <div class="nav-mega-img-label">Conhecer Amanda</div>
+                <div class="nav-mega-img-subtitle">20 anos de expertise em contabilidade</div>
+                <a href="/sobre/" class="nav-mega-cta">Saiba mais →</a>
+              </div>
+            </a>
+
+            <!-- Links section -->
+            <div class="nav-mega-links">
+              <a href="/sobre/" class="nav-mega-link" role="menuitem">
+                <span class="nav-mega-link-title">Amanda Silva</span>
+                <span class="nav-mega-link-sub">Trajetória e formação profissional</span>
+              </a>
+              <a href="/casos-de-sucesso/" class="nav-mega-link" role="menuitem">
+                <span class="nav-mega-link-title">Casos de Sucesso</span>
+                <span class="nav-mega-link-sub">Empresas que transformamos</span>
+              </a>
+              <a href="/depoimentos/" class="nav-mega-link" role="menuitem">
+                <span class="nav-mega-link-title">Depoimentos</span>
+                <span class="nav-mega-link-sub">Vozes de clientes satisfeitos</span>
+              </a>
+              <a href="/sobre/" class="nav-mega-link nav-mega-all" role="menuitem">
+                <span class="nav-mega-link-title">Ver tudo</span>
+                <span class="nav-mega-link-sub">História completa →</span>
+              </a>
+            </div>
+          </div>
         </div>
       </li>
 
@@ -930,27 +1143,72 @@
 <script>
 (function(){
   // Dropdown acessibilidade (aria-expanded)
-  document.querySelectorAll('.nav-trigger').forEach(btn => {
-    btn.addEventListener('click', function(){
-      const item = this.closest('.nav-item');
-      const expanded = item.classList.toggle('is-open');
-      this.setAttribute('aria-expanded', expanded);
-      // Fecha outros
-      document.querySelectorAll('.nav-item.has-dropdown').forEach(other => {
-        if(other !== item){
+  // ---- MEGA-MENU DROPDOWN WITH HOVER DELAY ----
+  let closeTimer = null;
+
+  document.querySelectorAll('.nav-item-dropdown').forEach(item => {
+    const trigger = item.querySelector('.nav-trigger');
+    const dropdown = item.querySelector('.nav-dropdown');
+
+    // Mouse enter trigger
+    trigger.addEventListener('mouseenter', () => {
+      clearTimeout(closeTimer);
+      // Close all other dropdowns
+      document.querySelectorAll('.nav-item-dropdown.is-open').forEach(other => {
+        if (other !== item) {
           other.classList.remove('is-open');
-          other.querySelector('.nav-trigger').setAttribute('aria-expanded','false');
+          other.querySelector('.nav-trigger').setAttribute('aria-expanded', 'false');
+        }
+      });
+      // Open this dropdown
+      item.classList.add('is-open');
+      trigger.setAttribute('aria-expanded', 'true');
+    });
+
+    // Mouse leave trigger with delay
+    trigger.addEventListener('mouseleave', () => {
+      closeTimer = setTimeout(() => {
+        item.classList.remove('is-open');
+        trigger.setAttribute('aria-expanded', 'false');
+      }, 150);
+    });
+
+    // Keep dropdown open on hover
+    dropdown.addEventListener('mouseenter', () => {
+      clearTimeout(closeTimer);
+      item.classList.add('is-open');
+      trigger.setAttribute('aria-expanded', 'true');
+    });
+
+    // Close dropdown when leaving
+    dropdown.addEventListener('mouseleave', () => {
+      closeTimer = setTimeout(() => {
+        item.classList.remove('is-open');
+        trigger.setAttribute('aria-expanded', 'false');
+      }, 150);
+    });
+
+    // Click to toggle (for accessibility)
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      const isOpen = item.classList.toggle('is-open');
+      trigger.setAttribute('aria-expanded', isOpen);
+      // Close others
+      document.querySelectorAll('.nav-item-dropdown').forEach(other => {
+        if (other !== item) {
+          other.classList.remove('is-open');
+          other.querySelector('.nav-trigger').setAttribute('aria-expanded', 'false');
         }
       });
     });
   });
 
-  // Fecha ao clicar fora
+  // Close dropdowns when clicking outside
   document.addEventListener('click', e => {
-    if(!e.target.closest('.has-dropdown')){
-      document.querySelectorAll('.nav-item.has-dropdown').forEach(item => {
+    if (!e.target.closest('.nav-item-dropdown')) {
+      document.querySelectorAll('.nav-item-dropdown.is-open').forEach(item => {
         item.classList.remove('is-open');
-        item.querySelector('.nav-trigger').setAttribute('aria-expanded','false');
+        item.querySelector('.nav-trigger').setAttribute('aria-expanded', 'false');
       });
     }
   });

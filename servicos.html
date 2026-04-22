@@ -143,38 +143,119 @@
     }
 
     .nav-dropdown {
-      position: absolute;
-      top: calc(100% + 12px);
+      position: fixed;
+      top: 60px;
       left: 0;
-      background: var(--surface-dark);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 4px;
-      min-width: 240px;
-      padding: 8px 0;
+      right: 0;
+      width: 100%;
+      background: rgba(15, 20, 25, 0.98);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
       opacity: 0;
       pointer-events: none;
       transform: translateY(-8px);
-      transition: opacity 0.25s, transform 0.25s var(--easing-spring);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      z-index: 99;
     }
 
-    .nav-item.has-dropdown:hover .nav-dropdown,
-    .nav-item.has-dropdown:focus-within .nav-dropdown {
+    .nav-item-dropdown.is-open .nav-dropdown {
       opacity: 1;
       pointer-events: auto;
       transform: translateY(0);
     }
 
-    .nav-dropdown a {
-      display: block;
-      padding: 10px 16px;
-      font-size: 13px;
-      color: var(--text-secondary);
-      transition: color 0.2s;
+    .nav-mega-inner {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      gap: 0;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0;
     }
 
-    .nav-dropdown a:hover {
+    .nav-mega-img {
+      position: relative;
+      height: 320px;
+      background: linear-gradient(135deg, rgba(196, 165, 116, 0.1), rgba(45, 90, 123, 0.1));
+      display: flex;
+      align-items: flex-end;
+      padding: 24px;
+      overflow: hidden;
+    }
+
+    .nav-mega-img::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, transparent 30%, rgba(15, 20, 25, 0.8));
+      pointer-events: none;
+    }
+
+    .nav-mega-img-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .nav-mega-img-label {
+      font-family: 'Instrument Serif', serif;
+      font-size: 1.25rem;
+      color: var(--text-light);
+      margin-bottom: 12px;
+      letter-spacing: -0.01em;
+    }
+
+    .nav-mega-img-cta {
+      display: inline-block;
+      padding: 8px 16px;
+      background: var(--accent-gold);
+      color: var(--dark-hero);
+      font-size: 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      border: none;
+      cursor: pointer;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-mega-img-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(196, 165, 116, 0.3);
+    }
+
+    .nav-mega-links {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      padding: 24px;
+      align-content: start;
+    }
+
+    .nav-mega-col {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .nav-mega-links a {
+      display: block;
+      padding: 8px 0;
+      font-size: 13px;
+      color: var(--text-secondary);
+      transition: color 0.2s ease;
+    }
+
+    .nav-mega-links a:hover {
       color: var(--accent-gold);
+    }
+
+    .nav-mega-links .nav-link-all {
+      margin-top: 12px;
+      padding-top: 12px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: var(--accent-gold);
+      font-weight: 600;
     }
 
     .dropdown-all {
@@ -645,18 +726,31 @@
     <a href="/" class="nav-logo">AM Cabral</a>
 
     <ul class="nav-links" id="navLinks">
-      <!-- Dropdown: Serviços -->
-      <li class="nav-item has-dropdown">
+      <!-- Dropdown: Serviços (Mega Menu) -->
+      <li class="nav-item nav-item-dropdown">
         <button class="nav-trigger" aria-expanded="false" aria-haspopup="true">
           Serviços <span class="nav-arrow" aria-hidden="true">▼</span>
         </button>
         <div class="nav-dropdown" role="menu">
-          <a href="/gestao-contabil-para-industrias/" role="menuitem">Gestão Contábil Estratégica</a>
-          <a href="/recuperacao-de-creditos-tributarios/" role="menuitem">Recuperação de Créditos</a>
-          <a href="/holding-patrimonial-e-familiar/" role="menuitem">Holding Patrimonial e Familiar</a>
-          <a href="/planejamento-tributario/" role="menuitem">Planejamento Tributário</a>
-          <a href="/consultoria-tributaria/" role="menuitem">Consultoria Tributária</a>
-          <a href="/servicos/" class="dropdown-all" role="menuitem">Ver todos os serviços →</a>
+          <div class="nav-mega-inner">
+            <div class="nav-mega-img">
+              <div class="nav-mega-img-content">
+                <div class="nav-mega-img-label">Serviços</div>
+                <button class="nav-mega-img-cta" onclick="location.href='/servicos/'">Conhecer Todos</button>
+              </div>
+            </div>
+            <div class="nav-mega-links">
+              <div class="nav-mega-col">
+                <a href="/gestao-contabil-para-industrias/" role="menuitem">Gestão Contábil Estratégica</a>
+                <a href="/recuperacao-de-creditos-tributarios/" role="menuitem">Recuperação de Créditos</a>
+                <a href="/holding-patrimonial-e-familiar/" role="menuitem">Holding Patrimonial e Familiar</a>
+              </div>
+              <div class="nav-mega-col">
+                <a href="/planejamento-tributario/" role="menuitem">Planejamento Tributário</a>
+                <a href="/consultoria-tributaria/" role="menuitem">Consultoria Tributária</a>
+              </div>
+            </div>
+          </div>
         </div>
       </li>
 
@@ -664,15 +758,27 @@
       <li class="nav-item"><a href="/reforma-tributaria/">Reforma Tributária</a></li>
       <li class="nav-item"><a href="/blog/">Blog</a></li>
 
-      <!-- Dropdown: Sobre -->
-      <li class="nav-item has-dropdown">
+      <!-- Dropdown: Sobre (Mega Menu) -->
+      <li class="nav-item nav-item-dropdown">
         <button class="nav-trigger" aria-expanded="false" aria-haspopup="true">
           Sobre <span class="nav-arrow" aria-hidden="true">▼</span>
         </button>
         <div class="nav-dropdown" role="menu">
-          <a href="/sobre/" role="menuitem">Amanda Silva</a>
-          <a href="/casos-de-sucesso/" role="menuitem">Casos de Sucesso</a>
-          <a href="/depoimentos/" role="menuitem">Depoimentos</a>
+          <div class="nav-mega-inner">
+            <div class="nav-mega-img">
+              <div class="nav-mega-img-content">
+                <div class="nav-mega-img-label">Amanda Cabral</div>
+                <button class="nav-mega-img-cta" onclick="location.href='/sobre/'">Conhecer</button>
+              </div>
+            </div>
+            <div class="nav-mega-links">
+              <div class="nav-mega-col">
+                <a href="/sobre/" role="menuitem">Amanda Silva</a>
+                <a href="/casos-de-sucesso/" role="menuitem">Casos de Sucesso</a>
+                <a href="/depoimentos/" role="menuitem">Depoimentos</a>
+              </div>
+            </div>
+          </div>
         </div>
       </li>
 
@@ -1359,25 +1465,57 @@ if (mobOverlay) mobOverlay.addEventListener('click', toggleMob);
 
 <script>
 (function(){
-  document.querySelectorAll('.nav-trigger').forEach(btn => {
-    btn.addEventListener('click', function(){
-      const item = this.closest('.nav-item');
-      const expanded = item.classList.toggle('is-open');
-      this.setAttribute('aria-expanded', expanded);
-      document.querySelectorAll('.nav-item.has-dropdown').forEach(other => {
-        if(other !== item){
+  let closeTimer = null;
+
+  document.querySelectorAll('.nav-item-dropdown').forEach(item => {
+    const trigger = item.querySelector('.nav-trigger');
+    const dropdown = item.querySelector('.nav-dropdown');
+
+    if (!trigger || !dropdown) return;
+
+    trigger.addEventListener('mouseenter', () => {
+      clearTimeout(closeTimer);
+      item.classList.add('is-open');
+      trigger.setAttribute('aria-expanded', 'true');
+      document.querySelectorAll('.nav-item-dropdown').forEach(other => {
+        if (other !== item) {
           other.classList.remove('is-open');
-          other.querySelector('.nav-trigger').setAttribute('aria-expanded','false');
+          other.querySelector('.nav-trigger').setAttribute('aria-expanded', 'false');
         }
       });
+    });
+
+    trigger.addEventListener('mouseleave', () => {
+      closeTimer = setTimeout(() => {
+        item.classList.remove('is-open');
+        trigger.setAttribute('aria-expanded', 'false');
+      }, 150);
+    });
+
+    dropdown.addEventListener('mouseenter', () => {
+      clearTimeout(closeTimer);
+      item.classList.add('is-open');
+    });
+
+    dropdown.addEventListener('mouseleave', () => {
+      closeTimer = setTimeout(() => {
+        item.classList.remove('is-open');
+        trigger.setAttribute('aria-expanded', 'false');
+      }, 150);
+    });
+
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      const expanded = item.classList.toggle('is-open');
+      trigger.setAttribute('aria-expanded', expanded);
     });
   });
 
   document.addEventListener('click', e => {
-    if(!e.target.closest('.has-dropdown')){
-      document.querySelectorAll('.nav-item.has-dropdown').forEach(item => {
+    if (!e.target.closest('.nav-item-dropdown')) {
+      document.querySelectorAll('.nav-item-dropdown').forEach(item => {
         item.classList.remove('is-open');
-        item.querySelector('.nav-trigger').setAttribute('aria-expanded','false');
+        item.querySelector('.nav-trigger').setAttribute('aria-expanded', 'false');
       });
     }
   });
@@ -1407,25 +1545,57 @@ if (mobOverlay) mobOverlay.addEventListener('click', toggleMob);
 
 <script>
 (function(){
-  document.querySelectorAll('.nav-trigger').forEach(btn => {
-    btn.addEventListener('click', function(){
-      const item = this.closest('.nav-item');
-      const expanded = item.classList.toggle('is-open');
-      this.setAttribute('aria-expanded', expanded);
-      document.querySelectorAll('.nav-item.has-dropdown').forEach(other => {
-        if(other !== item){
+  let closeTimer = null;
+
+  document.querySelectorAll('.nav-item-dropdown').forEach(item => {
+    const trigger = item.querySelector('.nav-trigger');
+    const dropdown = item.querySelector('.nav-dropdown');
+
+    if (!trigger || !dropdown) return;
+
+    trigger.addEventListener('mouseenter', () => {
+      clearTimeout(closeTimer);
+      item.classList.add('is-open');
+      trigger.setAttribute('aria-expanded', 'true');
+      document.querySelectorAll('.nav-item-dropdown').forEach(other => {
+        if (other !== item) {
           other.classList.remove('is-open');
-          other.querySelector('.nav-trigger').setAttribute('aria-expanded','false');
+          other.querySelector('.nav-trigger').setAttribute('aria-expanded', 'false');
         }
       });
+    });
+
+    trigger.addEventListener('mouseleave', () => {
+      closeTimer = setTimeout(() => {
+        item.classList.remove('is-open');
+        trigger.setAttribute('aria-expanded', 'false');
+      }, 150);
+    });
+
+    dropdown.addEventListener('mouseenter', () => {
+      clearTimeout(closeTimer);
+      item.classList.add('is-open');
+    });
+
+    dropdown.addEventListener('mouseleave', () => {
+      closeTimer = setTimeout(() => {
+        item.classList.remove('is-open');
+        trigger.setAttribute('aria-expanded', 'false');
+      }, 150);
+    });
+
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      const expanded = item.classList.toggle('is-open');
+      trigger.setAttribute('aria-expanded', expanded);
     });
   });
 
   document.addEventListener('click', e => {
-    if(!e.target.closest('.has-dropdown')){
-      document.querySelectorAll('.nav-item.has-dropdown').forEach(item => {
+    if (!e.target.closest('.nav-item-dropdown')) {
+      document.querySelectorAll('.nav-item-dropdown').forEach(item => {
         item.classList.remove('is-open');
-        item.querySelector('.nav-trigger').setAttribute('aria-expanded','false');
+        item.querySelector('.nav-trigger').setAttribute('aria-expanded', 'false');
       });
     }
   });
