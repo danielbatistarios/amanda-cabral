@@ -34,6 +34,58 @@
             padding: 0 20px;
         }
 
+        /* ===== PRELOAD ===== */
+        .preload {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            font-size: clamp(28px, 6vw, 52px);
+            font-weight: 700;
+            color: white;
+            text-align: center;
+            line-height: 1.4;
+            padding: 40px;
+            animation: fadeOut 3.5s ease-out forwards;
+            pointer-events: none;
+        }
+
+        @keyframes fadeOut {
+            0% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { opacity: 0; visibility: hidden; }
+        }
+
+        .preload span {
+            display: block;
+            animation: slideUp 0.8s ease-out forwards;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .preload span:nth-child(1) { animation-delay: 0.1s; }
+        .preload span:nth-child(2) { animation-delay: 0.2s; }
+        .preload span:nth-child(3) { animation-delay: 0.3s; }
+        .preload span:nth-child(4) { animation-delay: 0.4s; }
+        .preload span:nth-child(5) { animation-delay: 0.5s; }
+        .preload span:nth-child(6) { animation-delay: 0.6s; }
+        .preload span:nth-child(7) { animation-delay: 0.7s; }
+        .preload span:nth-child(8) { animation-delay: 0.8s; }
+        .preload span:nth-child(9) { animation-delay: 0.9s; }
+        .preload span:nth-child(10) { animation-delay: 1s; }
+
         /* ===== HERO ===== */
         .hero {
             background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
@@ -572,6 +624,21 @@
     </style>
 </head>
 <body>
+    <!-- ===== PRELOAD ===== -->
+    <div class="preload">
+        <div>
+            <span>Contabilidade</span>
+            <span>de</span>
+            <span>alta</span>
+            <span>performance</span>
+            <span>para</span>
+            <span>empresas</span>
+            <span>que</span>
+            <span>competem</span>
+            <span>para vencer.</span>
+        </div>
+    </div>
+
     <!-- ===== HERO ===== -->
     <section class="hero">
         <div class="container">
@@ -739,7 +806,7 @@
                     <div class="section-tag">Sobre</div>
                     <h2>Amanda Cabral. <em>Há mais de 30 anos dedicada a decifrar a tributação empresarial.</em></h2>
                     <p class="sobre-text">Nosso primeiro escritório foi dentro de uma metalúrgica em Contagem. Entre o barulho das prensas e o calor do forno, aprendemos o que nenhuma pós-graduação ensina: que ICMS industrial não se resolve com planilha genérica.</p>
-                    <p class="sobre-text">Duas décadas depois, atendemos exclusivamente indústrias. Nunca aceitamos comércio. Nunca aceitamos serviços. Essa escolha nos custou clientes e nos deu a profundidade que nenhum generalista tem.</p>
+                    <p class="sobre-text">Duas décadas depois, atendemos exclusivamente empresas. Nunca aceitamos comércio. Nunca aceitamos serviços. Essa escolha nos custou clientes e nos deu a profundidade que nenhum generalista tem.</p>
                     <div class="sobre-tags">
                         <span class="tag">CRC/MG Ativo</span>
                         <span class="tag">Pós em Direito Tributário</span>
@@ -758,15 +825,15 @@
             <div class="contato-layout">
                 <div>
                     <div class="section-tag" style="color: var(--accent);">Pronta para começar?</div>
-                    <h2>Diagnóstico tributário completo. <em>Gratuito para indústrias selecionadas.</em></h2>
-                    <p class="contato-desc">Em 30 minutos, mapeamos créditos perdidos, riscos fiscais e oportunidades. Encontramos oportunidades em 8 de cada 10 indústrias.</p>
+                    <h2>Diagnóstico tributário completo. <em>Gratuito para empresas selecionadas.</em></h2>
+                    <p class="contato-desc">Em 30 minutos, mapeamos créditos perdidos, riscos fiscais e oportunidades. Encontramos oportunidades em 8 de cada 10 empresas.</p>
                     <ul style="list-style: none; margin: 30px 0;">
                         <li style="margin-bottom: 15px;">✓ Diagnóstico gratuito de 30 minutos</li>
                         <li style="margin-bottom: 15px;">✓ Raio-X completo da situação fiscal</li>
                         <li style="margin-bottom: 15px;">✓ Sem compromisso e sem custo</li>
                         <li style="margin-bottom: 15px;">✓ Resposta em até 24h</li>
                     </ul>
-                    <p style="font-size: 14px; color: rgba(255, 255, 255, 0.6);">Máximo 50 indústrias, cada cliente tem acesso direto à Amanda.</p>
+                    <p style="font-size: 14px; color: rgba(255, 255, 255, 0.6);">Máximo 50 empresas, cada cliente tem acesso direto à Amanda.</p>
                 </div>
                 <form style="background: rgba(255, 255, 255, 0.05); padding: 40px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">
                     <div class="form-field">
@@ -800,7 +867,7 @@
             </div>
             <div class="faq-list">
                 <div class="faq-item">
-                    <button class="faq-question">Qual a vantagem de uma contadora especializada em indústrias?</button>
+                    <button class="faq-question">Qual a vantagem de uma contadora especializada em empresas?</button>
                     <div class="faq-answer">Especialista conhece ICMS, IPI, créditos presumidos e incentivos fiscais de MG. Economia real e compliance blindado para fiscalizações.</div>
                 </div>
                 <div class="faq-item">
@@ -824,7 +891,7 @@
                     <div class="faq-answer">Cuido de todo o processo, transferência de documentos, certificados digitais, migração sem interrupções. Zero preocupação.</div>
                 </div>
                 <div class="faq-item">
-                    <button class="faq-question">Quanto custa a contabilidade especializada para indústrias?</button>
+                    <button class="faq-question">Quanto custa a contabilidade especializada para empresas?</button>
                     <div class="faq-answer">O investimento depende do porte e complexidade da sua operação. Em 20 anos, cada cliente recuperou em créditos e economia muito mais do que investiu em honorários. Começamos pelo diagnóstico gratuito.</div>
                 </div>
             </div>
