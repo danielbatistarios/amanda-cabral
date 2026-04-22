@@ -562,19 +562,34 @@ nav.scrolled {
   filter: brightness(.9) contrast(1.05);
 }
 
-.hero-breadcrumb {
+/* === BREADCRUMB STRIP === */
+.lp-breadcrumb {
+  background: var(--z1);
+  border-bottom: 1px solid rgba(255,255,255,.06);
+  padding: 12px 0;
+}
+.lp-breadcrumb ol {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 13px;
+  gap: 6px;
+  list-style: none;
+  flex-wrap: wrap;
+  font-size: 12px;
   color: var(--dim);
-  margin-bottom: 24px;
-  opacity: 0;
-  animation: up .9s .1s var(--spring) forwards;
+  font-family: var(--sans);
 }
-.hero-breadcrumb a { color: var(--dim); transition: color .2s; }
-.hero-breadcrumb a:hover { color: var(--paper); }
-.hero-breadcrumb svg { width: 12px; height: 12px; opacity: .5; }
+.lp-breadcrumb ol li:not(:last-child)::after {
+  content: '/';
+  margin-left: 6px;
+  color: rgba(255,255,255,.2);
+}
+.lp-breadcrumb ol a {
+  color: var(--accent2);
+  text-decoration: none;
+  transition: color .2s;
+}
+.lp-breadcrumb ol a:hover { color: var(--paper); }
+.lp-breadcrumb ol li[aria-current] { color: rgba(255,255,255,.5); }
 
 .hero-tag {
   display: inline-block;
@@ -2057,14 +2072,6 @@ p, .hero-sub { text-wrap: pretty; }
   <div class="container">
     <div class="hero-layout">
       <div class="hero-content">
-        <div class="hero-breadcrumb">
-          <a href="index.html">Home</a>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
-          <a href="cidades-atendidas.html">Cidades Atendidas</a>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
-          <span>Par&#225; de Minas</span>
-        </div>
-
         <div class="hero-tag" style="color:#fff;border-color:rgba(255,255,255,.25);background:rgba(255,255,255,.08);">SEDE | PAR&#193; DE MINAS, MG</div>
 
         <h1 class="hero-h1">Contador em Par&#225; de Minas para empresas que querem pagar menos imposto dentro da lei</h1>
@@ -2089,6 +2096,17 @@ p, .hero-sub { text-wrap: pretty; }
     </div>
   </div>
 </section>
+
+<!-- BREADCRUMB STRIP -->
+<nav class="lp-breadcrumb" aria-label="Navegação estrutural">
+  <div class="container">
+    <ol>
+      <li><a href="/">Amanda Cabral Contadora</a></li>
+      <li><a href="/cidades-atendidas/">Cidades Atendidas</a></li>
+      <li aria-current="page">Par&#225; de Minas</li>
+    </ol>
+  </div>
+</nav>
 
 <!-- 5. CREDENTIALS MARQUEE (--z0, thin strip) -->
 <div class="cred-strip">
@@ -2134,24 +2152,6 @@ p, .hero-sub { text-wrap: pretty; }
           width="440"
           loading="lazy"
         >
-        <div class="stats-card-overlay">
-          <div class="stat-row">
-            <div class="stat-num">30</div>
-            <div class="stat-label">anos em Par&#225; de Minas</div>
-          </div>
-          <div class="stat-row">
-            <div class="stat-num">127+</div>
-            <div class="stat-label">empresas atendidas</div>
-          </div>
-          <div class="stat-row">
-            <div class="stat-num">R$ 12,3M</div>
-            <div class="stat-label">em cr&#233;ditos recuperados</div>
-          </div>
-          <div class="stat-row">
-            <div class="stat-num">98%</div>
-            <div class="stat-label">de reten&#231;&#227;o de clientes</div>
-          </div>
-        </div>
       </div>
     </div>
   </div>
