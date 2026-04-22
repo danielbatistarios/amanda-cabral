@@ -452,22 +452,24 @@ a { text-decoration: none; color: inherit; }
         }
 
         .mobile-nav {
-            position: fixed;
-            inset: 0;
-            background: #0F1419;
-            z-index: 99;
-            display: flex;
-            flex-direction: column;
-            padding: 80px 24px 24px;
-            overflow-y: auto;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s;
+      position: fixed;
+      inset: 0;
+      background: var(--dark-hero);
+      z-index: 99;
+      display: flex;
+      flex-direction: column;
+      padding: 80px 24px 24px;
+      overflow-y: auto;
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+      transition: opacity 0.3s ease, visibility 0.3s;
         }
 
         .mobile-nav.is-open {
-            opacity: 1;
-            pointer-events: auto;
+      opacity: 1;
+      visibility: visible;
+      pointer-events: auto;
         }
 
         .mobile-nav-close {
