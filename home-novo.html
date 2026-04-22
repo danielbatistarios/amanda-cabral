@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amanda Cabral - Contabilidade Estratégica e Blindagem Patrimonial</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1e3a8a;
+            --secondary: #3b82f6;
+            --accent: #10b981;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gray: #94a3b8;
+            --text: #1e293b;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--light);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--dark) 100%);
+            color: white;
+            padding: 120px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-tag {
+            display: inline-block;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero h1 {
+            font-size: clamp(32px, 5vw, 56px);
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero h1 em {
+            font-style: italic;
+            color: var(--secondary);
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 600px;
+            margin: 0 auto 40px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .btn-primary {
+            background: var(--accent);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #059669;
+            transform: translateY(-2px);
+        }
+
+        .btn-ghost {
+            background: transparent;
+            color: white;
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-ghost:hover {
+            border-color: white;
+        }
+
+        /* ===== DORES ===== */
+        .dores {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            font-size: 13px;
+            color: var(--accent);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .section-header h2 {
+            font-size: clamp(28px, 4vw, 44px);
+            font-weight: 700;
+            margin-bottom: 15px;
+            line-height: 1.3;
+        }
+
+        .section-header h2 em {
+            font-style: italic;
+            color: var(--secondary);
+        }
+
+        .section-header p {
+            font-size: 16px;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .pain-card {
+            background: #f1f5f9;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        .pain-card h3 {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--text);
+        }
+
+        .pain-card p {
+            font-size: 15px;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        /* ===== SERVIÇOS ===== */
+        .servicos {
+            background: var(--primary);
+            color: white;
+            padding: 80px 0;
+        }
+
+        .servicos .section-header {
+            color: white;
+        }
+
+        .servicos .section-header h2 em {
+            color: var(--secondary);
+        }
+
+        .servicos .section-header p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        .servicos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--secondary);
+        }
+
+        .service-num {
+            font-size: 36px;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+
+        .service-card h3 {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 15px;
+        }
+
+        .service-badge {
+            display: inline-block;
+            font-size: 12px;
+            background: var(--secondary);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        /* ===== DIAGNÓSTICO ===== */
+        .diagnostico {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .diagnostico-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+        }
+
+        .result-card {
+            background: #f8fafc;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .result-card:hover {
+            background: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        .result-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .result-card h3 {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .result-card p {
+            font-size: 14px;
+            color: var(--gray);
+        }
+
+        /* ===== DEPOIMENTOS ===== */
+        .depoimentos {
+            background: var(--primary);
+            color: white;
+            padding: 80px 0;
+        }
+
+        .depoimentos .section-header {
+            color: white;
+        }
+
+        .depoimentos .section-header h2 em {
+            color: var(--secondary);
+        }
+
+        .depoimentos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 12px;
+        }
+
+        .stars {
+            display: flex;
+            gap: 4px;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+
+        .testimonial-card blockquote {
+            font-size: 15px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            flex-shrink: 0;
+        }
+
+        .author-name {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .author-role {
+            font-size: 13px;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* ===== SOBRE ===== */
+        .sobre {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .sobre-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .sobre-photo {
+            width: 100%;
+            height: 400px;
+            background: #f1f5f9;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .sobre-photo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .sobre-content h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .sobre-content h2 em {
+            font-style: italic;
+            color: var(--secondary);
+        }
+
+        .sobre-text {
+            font-size: 15px;
+            color: var(--gray);
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .sobre-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin: 30px 0;
+        }
+
+        .tag {
+            background: #f1f5f9;
+            color: var(--text);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        /* ===== CONTATO ===== */
+        .contato {
+            background: var(--primary);
+            color: white;
+            padding: 80px 0;
+        }
+
+        .contato-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: flex-start;
+        }
+
+        .contato h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .contato h2 em {
+            font-style: italic;
+            color: var(--secondary);
+        }
+
+        .contato-desc {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 30px;
+            line-height: 1.8;
+        }
+
+        .form-field {
+            margin-bottom: 20px;
+        }
+
+        .form-field input,
+        .form-field textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            font-family: inherit;
+            font-size: 14px;
+        }
+
+        .form-field input::placeholder,
+        .form-field textarea::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .form-field textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        /* ===== FAQ ===== */
+        .faq {
+            background: white;
+            padding: 80px 0;
+        }
+
+        .faq-list {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #e2e8f0;
+            padding: 24px 0;
+        }
+
+        .faq-question {
+            background: none;
+            border: none;
+            width: 100%;
+            text-align: left;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text);
+            padding: 0;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 24px;
+            font-weight: 300;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            display: none;
+            padding-top: 20px;
+            color: var(--gray);
+            line-height: 1.8;
+            font-size: 15px;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 80px 0;
+            }
+
+            .hero h1 {
+                font-size: 28px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .sobre-layout,
+            .contato-layout {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .sobre-photo {
+                height: 300px;
+            }
+
+            .section-header h2 {
+                font-size: 28px;
+            }
+
+            .servicos-grid,
+            .diagnostico-grid,
+            .depoimentos-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-tag">Contabilidade Estratégica + Há 20 anos + BH</div>
+                <h1>Amanda Cabral. Contabilidade Estratégica e <em>Blindagem Patrimonial</em></h1>
+                <p>Especialistas em tributação industrial há 20 anos. Recuperamos R$ 12 milhões em créditos que estavam invisíveis para outros contadores.</p>
+                <div class="hero-buttons">
+                    <a href="#contato" class="btn btn-primary">Solicitar análise tributária →</a>
+                    <a href="#contato" class="btn btn-ghost">Ver o que recuperamos</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== DORES ===== -->
+    <section class="dores">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Sua indústria pode estar perdendo dinheiro</div>
+                <h2>Se encontramos R$ 50 mil em créditos perdidos, recuperamos. <em>Saiba cada dano à empresa</em></h2>
+            </div>
+            <div class="pain-card">
+                <h3>Você sente que paga imposto demais, mas ninguém mostra quanto.</h3>
+                <p>A carga tributária parece desproporcional ao lucro e seu contador nunca apresentou um plano concreto de redução. Enquanto isso, créditos de ICMS e IPI ficam na mesa, invisíveis.</p>
+            </div>
+            <div class="pain-card">
+                <h3>Você não sabe o que uma fiscalização encontraria hoje.</h3>
+                <p>SPED, EFD, Bloco K são obrigações que só a indústria tem. Um único erro pode gerar multas de até 150% do tributo. E a responsabilidade é sua, não do contador.</p>
+            </div>
+            <div class="pain-card">
+                <h3>Seu contador atende comércio e indústria com a mesma planilha.</h3>
+                <p>Ele não sabe a diferença entre ICMS próprio e ST, não entende NCM crítico e desconhece os incentivos fiscais de MG. Sua operação merece quem entenda sua complexidade.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SERVIÇOS ===== -->
+    <section class="servicos">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag" style="color: var(--accent);">Especialidades</div>
+                <h2>5 especialidades que protegem seu lucro e seu <em>patrimônio</em></h2>
+            </div>
+            <div class="servicos-grid">
+                <div class="service-card">
+                    <div class="service-num">01</div>
+                    <h3>Planejamento Tributário Industrial</h3>
+                    <p>Análise de precisão em ICMS, IPI, PIS/COFINS. Mapeamos o regime ideal e cada crédito que você está deixando na mesa.</p>
+                    <span class="service-badge">Economia real</span>
+                </div>
+                <div class="service-card">
+                    <div class="service-num">02</div>
+                    <h3>Recuperação de Créditos</h3>
+                    <p>Auditoria retroativa de 5 anos. Média de R$ 180 mil recuperados por cliente em ICMS-ST, IPI e PIS/COFINS.</p>
+                    <span class="service-badge">Dinheiro de volta</span>
+                </div>
+                <div class="service-card">
+                    <div class="service-num">03</div>
+                    <h3>Compliance Industrial</h3>
+                    <p>SPED Fiscal, EFD, Bloco K, REINF. Blindagem fiscal completa, sua indústria 100% protegida contra fiscalizações.</p>
+                    <span class="service-badge">Risco zero</span>
+                </div>
+                <div class="service-card">
+                    <div class="service-num">04</div>
+                    <h3>Gestão Contábil Estratégica</h3>
+                    <p>Balanços, DRE, fluxo de caixa, custos de produção. Relatórios que ajudam a decidir com segurança.</p>
+                    <span class="service-badge">Visão clara</span>
+                </div>
+                <div class="service-card">
+                    <div class="service-num">05</div>
+                    <h3>Incentivos Fiscais de MG</h3>
+                    <p>TTD, Regime Especial, créditos presumidos. Enquadramento e acompanhamento dos programas mineiros.</p>
+                    <span class="service-badge">Exclusivo MG</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== DIAGNÓSTICO ===== -->
+    <section class="diagnostico">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Como funciona</div>
+                <h2>Do diagnóstico ao <em>resultado</em></h2>
+            </div>
+            <div class="diagnostico-grid">
+                <div class="result-card">
+                    <div class="result-icon">📋</div>
+                    <h3>Diagnóstico Gratuito</h3>
+                    <p>30 minutos para analisar sua situação fiscal e identificar onde está perdendo dinheiro.</p>
+                </div>
+                <div class="result-card">
+                    <div class="result-icon">📊</div>
+                    <h3>Proposta Personalizada</h3>
+                    <p>Plano claro com estimativa de economia, escopo e investimento. Tudo transparente.</p>
+                </div>
+                <div class="result-card">
+                    <div class="result-icon">✅</div>
+                    <h3>Gestão Contínua</h3>
+                    <p>Contabilidade com foco em resultado. Relatórios mensais e acesso direto pelo WhatsApp.</p>
+                </div>
+                <div class="result-card">
+                    <div class="result-icon">🎯</div>
+                    <h3>Acompanhamento</h3>
+                    <p>Suporte dedicado para garantir que você veja os resultados planejados no prazo prometido.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== DEPOIMENTOS ===== -->
+    <section class="depoimentos">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag" style="color: var(--accent);">Depoimentos</div>
+                <h2>O que aconselha quem já contratou Amanda Cabral: <em>mitra em ação</em></h2>
+            </div>
+            <div class="depoimentos-grid">
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <blockquote>"A equipe da Amanda Cabral recuperou R$ 340 mil em créditos de ICMS que nosso antigo contador nunca mencionou. Em 20 anos de indústria, nunca tive um escritório que entendesse tão bem nosso setor."</blockquote>
+                    <div class="testimonial-author">
+                        <div class="author-avatar"></div>
+                        <div>
+                            <div class="author-name">Ricardo Moreira</div>
+                            <div class="author-role">Diretor – Metalúrgica Horizonte</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <blockquote>"Passamos pelo Regime Especial de MG graças à Amanda Cabral. Economia anual de quase R$ 500 mil. Não são contadores, são estrategistas tributários."</blockquote>
+                    <div class="testimonial-author">
+                        <div class="author-avatar"></div>
+                        <div>
+                            <div class="author-name">Patrícia Lima</div>
+                            <div class="author-role">CEO – PL Plásticos Ind.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <blockquote>"Antes da Amanda Cabral, eu perdia 2 dias por mês com problemas contábeis. Hoje não penso mais nisso. Cuidam de tudo e me avisam de oportunidades que eu nem sabia que existiam."</blockquote>
+                    <div class="testimonial-author">
+                        <div class="author-avatar"></div>
+                        <div>
+                            <div class="author-name">Carlos Ferreira</div>
+                            <div class="author-role">Sócio – Ferreira Alimentos</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SOBRE ===== -->
+    <section class="sobre">
+        <div class="container">
+            <div class="sobre-layout">
+                <div class="sobre-photo">
+                    <img src="amanda-cabral.jpg" alt="Amanda Cabral" style="background: #f1f5f9;">
+                </div>
+                <div class="sobre-content">
+                    <div class="section-tag">Sobre</div>
+                    <h2>Amanda Cabral. <em>Há mais de 30 anos dedicada a decifrar a tributação empresarial.</em></h2>
+                    <p class="sobre-text">Nosso primeiro escritório foi dentro de uma metalúrgica em Contagem. Entre o barulho das prensas e o calor do forno, aprendemos o que nenhuma pós-graduação ensina: que ICMS industrial não se resolve com planilha genérica.</p>
+                    <p class="sobre-text">Duas décadas depois, atendemos exclusivamente indústrias. Nunca aceitamos comércio. Nunca aceitamos serviços. Essa escolha nos custou clientes e nos deu a profundidade que nenhum generalista tem.</p>
+                    <div class="sobre-tags">
+                        <span class="tag">CRC/MG Ativo</span>
+                        <span class="tag">Pós em Direito Tributário</span>
+                        <span class="tag">Especialista ICMS/IPI</span>
+                        <span class="tag">Membro IBPT</span>
+                    </div>
+                    <a href="#contato" class="btn btn-primary">Solicitar diagnóstico</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTATO ===== -->
+    <section class="contato" id="contato">
+        <div class="container">
+            <div class="contato-layout">
+                <div>
+                    <div class="section-tag" style="color: var(--accent);">Pronta para começar?</div>
+                    <h2>Diagnóstico tributário completo. <em>Gratuito para indústrias selecionadas.</em></h2>
+                    <p class="contato-desc">Em 30 minutos, mapeamos créditos perdidos, riscos fiscais e oportunidades. Encontramos oportunidades em 8 de cada 10 indústrias.</p>
+                    <ul style="list-style: none; margin: 30px 0;">
+                        <li style="margin-bottom: 15px;">✓ Diagnóstico gratuito de 30 minutos</li>
+                        <li style="margin-bottom: 15px;">✓ Raio-X completo da situação fiscal</li>
+                        <li style="margin-bottom: 15px;">✓ Sem compromisso e sem custo</li>
+                        <li style="margin-bottom: 15px;">✓ Resposta em até 24h</li>
+                    </ul>
+                    <p style="font-size: 14px; color: rgba(255, 255, 255, 0.6);">Máximo 50 indústrias, cada cliente tem acesso direto à Amanda.</p>
+                </div>
+                <form style="background: rgba(255, 255, 255, 0.05); padding: 40px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.1);">
+                    <div class="form-field">
+                        <input type="text" placeholder="Seu nome" required>
+                    </div>
+                    <div class="form-field">
+                        <input type="text" placeholder="Nome da indústria" required>
+                    </div>
+                    <div class="form-field">
+                        <input type="tel" placeholder="WhatsApp (DDD + número)" required>
+                    </div>
+                    <div class="form-field">
+                        <input type="text" placeholder="Cidade" required>
+                    </div>
+                    <div class="form-field">
+                        <textarea placeholder="Observações ou detalhes sobre sua operação (opcional)"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%; justify-content: center;">Enviar pelo WhatsApp →</button>
+                    <p style="font-size: 12px; color: rgba(255, 255, 255, 0.5); margin-top: 15px; text-align: center;">Seus dados são usados exclusivamente para contato comercial.</p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FAQ ===== -->
+    <section class="faq">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-tag">Dúvidas</div>
+                <h2>Dúvidas que todo empresário tem <em>amigo de decidir</em></h2>
+            </div>
+            <div class="faq-list">
+                <div class="faq-item">
+                    <button class="faq-question">Qual a vantagem de uma contadora especializada em indústrias?</button>
+                    <div class="faq-answer">Especialista conhece ICMS, IPI, créditos presumidos e incentivos fiscais de MG. Economia real e compliance blindado para fiscalizações.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Qual porte de indústria você atende?</button>
+                    <div class="faq-answer">Pequeno, médio e grande porte em BH e região metropolitana. Faturamento a partir de R$ 500 mil/ano. Metalúrgicas, alimentícias, plásticos, autopeças.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Como funciona o diagnóstico gratuito?</button>
+                    <div class="faq-answer">Reunião de 30 minutos (presencial ou online). Analiso sua situação fiscal, identifico oportunidades e riscos. Sem custo, sem compromisso.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Quanto tempo para ver resultados?</button>
+                    <div class="faq-answer">Diagnóstico completo nos primeiros 90 dias. Recuperação de créditos gera retorno em 60-120 dias. Planejamento tributário impacta já no primeiro trimestre.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Atende fora de Belo Horizonte?</button>
+                    <div class="faq-answer">Sim. Região metropolitana (Contagem, Betim, Santa Luzia) e interior de MG, com reuniões presenciais e remotas.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Já tenho contador. Como é a transição?</button>
+                    <div class="faq-answer">Cuido de todo o processo, transferência de documentos, certificados digitais, migração sem interrupções. Zero preocupação.</div>
+                </div>
+                <div class="faq-item">
+                    <button class="faq-question">Quanto custa a contabilidade especializada para indústrias?</button>
+                    <div class="faq-answer">O investimento depende do porte e complexidade da sua operação. Em 20 anos, cada cliente recuperou em créditos e economia muito mais do que investiu em honorários. Começamos pelo diagnóstico gratuito.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // FAQ Toggle
+        document.querySelectorAll('.faq-question').forEach(button => {
+            button.addEventListener('click', () => {
+                const item = button.parentElement;
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
