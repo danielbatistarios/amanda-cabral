@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amanda Cabral | Contadora Especialista em Indústrias em BH</title>
-    <meta name="description" content="Contabilidade exclusiva para indústrias em BH. 20 anos, R$ 12,3M recuperados em créditos invisíveis. 8 em cada 10 indústrias pagam ICMS a mais. Diagnóstico gratuito.">
-    <meta property="og:title" content="Amanda Cabral | Contadora Especialista em Indústrias em BH">
-    <meta property="og:description" content="20 anos transformando a gestão tributária de indústrias em Belo Horizonte.">
-    <meta property="og:type" content="website">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
-    <style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#0F1419">
+  <title>AM Cabral — Contabilidade Estratégica e Blindagem Patrimonial | Pará de Minas, MG</title>
+  <meta name="description" content="Contabilidade estratégica e blindagem patrimonial para empresas em Minas Gerais. R$ 12M recuperados em créditos tributários. 120+ empresas. 30 anos de experiência. Diagnóstico gratuito.">
+  <link rel="canonical" href="https://amcabralblindagem.com.br/">
+  <meta property="og:title" content="AM Cabral — Contabilidade Estratégica e Blindagem Patrimonial">
+  <meta property="og:description" content="30 anos protegendo o lucro e o patrimônio de empresas em Minas Gerais. R$ 12M recuperados em créditos tributários. Diagnóstico gratuito.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,700&display=swap" rel="stylesheet">
+
+<style>
     /* === COLOR TOKENS === */
     :root {
       --dark-hero: #0F1419;
@@ -55,306 +58,78 @@
       height: auto;
     }
 
-    /* === HEADER === */
-    .site-header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: var(--dark-hero);
-      z-index: 100;
-      padding: 16px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      backdrop-filter: blur(8px);
-    }
-
-    .site-nav {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 48px;
-    }
-
-    .nav-logo {
-      font-family: 'Instrument Serif', serif;
-      font-size: 18px;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      color: var(--text-light);
-      white-space: nowrap;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 8px;
-      list-style: none;
-      flex: 1;
-      align-items: center;
-    }
-
-    .nav-item {
-      position: relative;
-    }
-
-    .nav-item > a {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--text-secondary);
-      padding: 8px 12px;
-      transition: color 0.3s ease;
-      display: block;
-    }
-
-    .nav-item > a:hover {
-      color: var(--accent-gold);
-    }
-
-    .nav-trigger {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--text-secondary);
-      background: none;
-      border: none;
-      padding: 8px 12px;
-      cursor: pointer;
-      transition: color 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .nav-trigger:hover {
-      color: var(--accent-gold);
-    }
-
-    .nav-arrow {
-      font-size: 10px;
-      transition: transform 0.3s var(--easing-spring);
-    }
-
-    .nav-item.is-open .nav-arrow {
-      transform: rotate(180deg);
-    }
-
-    .nav-dropdown {
-      position: absolute;
-      top: calc(100% + 12px);
-      left: 0;
-      background: var(--surface-dark);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 4px;
-      min-width: 240px;
-      padding: 8px 0;
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(-8px);
-      transition: opacity 0.25s, transform 0.25s var(--easing-spring);
-      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
-    }
-
-    .nav-item.has-dropdown:hover .nav-dropdown,
-    .nav-item.has-dropdown:focus-within .nav-dropdown {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateY(0);
-    }
-
-    .nav-dropdown a {
-      display: block;
-      padding: 10px 16px;
-      font-size: 13px;
-      color: var(--text-secondary);
-      transition: color 0.2s;
-    }
-
-    .nav-dropdown a:hover {
-      color: var(--accent-gold);
-    }
-
-    .dropdown-all {
-      border-top: 1px solid rgba(255,255,255,0.04);
-      margin-top: 4px;
-      padding-top: 10px;
-      color: var(--accent-gold) !important;
-    }
-
-    .nav-cta {
-      display: inline-block;
-      padding: 10px 24px;
-      background: var(--accent-gold);
-      color: var(--dark-hero);
-      font-weight: 600;
-      font-size: 12px;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      transition: all 0.3s var(--easing-spring);
-      border: none;
-      cursor: pointer;
-      border-radius: 4px;
-      white-space: nowrap;
-    }
-
-    .nav-cta:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 32px rgba(196, 165, 116, 0.2);
-    }
-
-    .nav-hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      padding: 8px;
-      cursor: pointer;
-    }
-
-    .nav-hamburger span {
-      width: 20px;
-      height: 2px;
-      background: var(--text-light);
-      border-radius: 2px;
-      transition: all 0.3s;
-    }
-
-    .mobile-nav {
-      position: fixed;
-      inset: 0;
-      background: var(--dark-hero);
-      z-index: 99;
-      display: flex;
-      flex-direction: column;
-      padding: 80px 24px 24px;
-      overflow-y: auto;
-      opacity: 0;
-      visibility: hidden;
-      pointer-events: none;
-      transition: opacity 0.3s ease, visibility 0.3s;
-    }
-
-    .mobile-nav.is-open {
-      opacity: 1;
-      visibility: visible;
-      pointer-events: auto;
-    }
-
-    .mobile-nav-close {
-      position: absolute;
-      top: 24px;
-      right: 24px;
-      background: none;
-      border: none;
-      color: var(--text-light);
-      font-size: 28px;
-      cursor: pointer;
-      padding: 4px;
-    }
-
-    .mobile-nav a {
-      padding: 12px 0;
-      font-size: 16px;
-      color: var(--text-secondary);
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-    }
-
-    .mobile-nav a:hover {
-      color: var(--accent-gold);
-    }
-
-    @media (max-width: 900px) {
-      .nav-links {
-        display: none;
-      }
-
-      .nav-cta {
-        display: none;
-      }
-
-      .nav-hamburger {
-        display: flex;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .site-nav {
-        padding: 0 16px;
-        gap: 24px;
-      }
-
-      .nav-logo {
-        font-size: 16px;
-      }
-    }
-
-    /* === HERO === */
+    /* === HERO SECTION === */
     .hero {
       position: relative;
-      width: 100%;
-      height: 100vh;
-      margin-top: 60px;
-      overflow: hidden;
+      height: 600px;
       display: flex;
       align-items: center;
       justify-content: center;
+      text-align: center;
+      overflow: hidden;
     }
 
-    .parallax {
+    .hero .parallax {
       position: absolute;
       width: 100%;
-      height: 120%;
+      height: 100%;
       object-fit: cover;
-      object-position: center;
+      z-index: 1;
     }
 
     .hero-overlay {
       position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to bottom, rgba(15, 20, 25, 0.6), rgba(15, 20, 25, 1));
+      inset: 0;
+      background: linear-gradient(135deg, rgba(15,20,25,0.7), rgba(45,90,123,0.5));
       z-index: 2;
     }
 
     .hero-content {
       position: relative;
       z-index: 3;
-      text-align: center;
-      max-width: 720px;
+      max-width: 800px;
       padding: 0 24px;
     }
 
     .hero h1 {
       font-family: 'Instrument Serif', serif;
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      line-height: 1.2;
+      font-size: clamp(2rem, 6vw, 3.5rem);
       font-weight: 700;
-      margin-bottom: 16px;
       letter-spacing: -0.02em;
+      margin-bottom: 16px;
+      line-height: 1.2;
     }
 
     .hero p {
-      font-size: clamp(1rem, 2.5vw, 1.25rem);
+      font-size: clamp(1rem, 2vw, 1.25rem);
       color: var(--text-secondary);
       font-weight: 400;
-      line-height: 1.4;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        height: 500px;
+      }
     }
 
     @media (max-width: 600px) {
       .hero {
-        margin-top: 50px;
+        height: 400px;
       }
 
-      .hero-content {
-        padding: 0 16px;
+      .hero h1 {
+        margin-bottom: 12px;
+      }
+
+      .hero p {
+        font-size: 0.95rem;
       }
     }
 
-    /* === SERVICES === */
+    /* === SERVICES SECTION === */
     .services {
+      background: var(--dark-hero);
       max-width: 1200px;
       margin: 0 auto;
       padding: 80px 24px;
@@ -362,37 +137,41 @@
 
     .services h2 {
       font-family: 'Instrument Serif', serif;
-      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      margin-bottom: 60px;
       text-align: center;
-      margin-bottom: 64px;
-      letter-spacing: -0.02em;
+      letter-spacing: -0.01em;
     }
 
     .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 32px;
     }
 
     .service-card {
-      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
       padding: 32px;
-      background: var(--surface-dark);
-      border: 1px solid rgba(255,255,255,0.08);
-      transition: all 0.4s var(--easing-spring);
+      background: rgba(26, 37, 53, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 2px;
+      transition: all 0.3s var(--easing-spring);
       cursor: pointer;
     }
 
     .service-card:hover {
-      transform: scale(1.05);
-      box-shadow: var(--shadow-soft);
+      background: rgba(26, 37, 53, 0.8);
+      border-color: rgba(196, 165, 116, 0.3);
+      transform: translateY(-4px);
     }
 
     .service-card h3 {
       font-family: 'Instrument Serif', serif;
-      font-size: 1.25rem;
-      margin-bottom: 12px;
-      color: var(--accent-gold);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--text-light);
       letter-spacing: -0.01em;
     }
 
@@ -490,1444 +269,77 @@
         font-size: 12px;
       }
     }
-
-    /* === FOOTER === */
-    .site-footer {
-      background: var(--dark-hero);
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding: 72px 0 32px;
-    }
-
-    .footer-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 48px;
-      margin-bottom: 56px;
-    }
-
-    .footer-col {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .footer-heading {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--accent-gold);
-      margin-bottom: 20px;
-    }
-
-    .footer-col ul {
-      list-style: none;
-    }
-
-    .footer-col a {
-      display: block;
-      font-size: 0.875rem;
-      color: var(--text-secondary);
-      margin-bottom: 10px;
-      transition: color 0.2s;
-    }
-
-    .footer-col a:hover {
-      color: var(--text-light);
-    }
-
-    .footer-brand {
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding: 32px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .footer-logo {
-      font-family: 'Instrument Serif', serif;
-      font-size: 1.25rem;
-      color: var(--text-light);
-    }
-
-    .footer-cta {
-      display: inline-block;
-      padding: 12px 28px;
-      background: var(--accent-gold);
-      color: var(--dark-hero);
-      font-weight: 600;
-      font-size: 0.8rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      cursor: pointer;
-      border: none;
-    }
-
-    .footer-cta:hover {
-      box-shadow: 0 8px 24px rgba(196, 165, 116, 0.2);
-    }
-
-    .footer-legal {
-      border-top: 1px solid rgba(255,255,255,0.05);
-      padding-top: 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .footer-legal p,
-    .footer-legal-links a {
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.2);
-    }
-
-    .footer-legal-links {
-      display: flex;
-      gap: 20px;
-    }
-
-    .footer-legal-links a:hover {
-      color: var(--accent-gold);
-    }
-
-    @media (max-width: 900px) {
-      .footer-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 32px;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .site-footer {
-        padding: 48px 0 24px;
-      }
-
-      .footer-inner {
-        padding: 0 16px;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-
-      .footer-brand {
-        flex-direction: column;
-        gap: 20px;
-        text-align: center;
-      }
-
-      .footer-legal {
-        flex-direction: column;
-        gap: 12px;
-        text-align: center;
-      }
-
-      .footer-legal-links {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-    }
 </style>
-
-    <!-- Schema.org -->
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "ProfessionalService",
-        "name": "Amanda Cabral Soluções Empresariais",
-        "description": "Contadora especializada em indústrias em Belo Horizonte com 20 anos de experiência.",
-        "telephone": "+5531999999999",
-        "address": { "@type": "PostalAddress", "addressLocality": "Belo Horizonte", "addressRegion": "MG", "addressCountry": "BR", "streetAddress": "Av. Afonso Pena, 1000 - Funcionários" },
-        "geo": { "@type": "GeoCoordinates", "latitude": "-19.9191", "longitude": "-43.9386" },
-        "areaServed": { "@type": "City", "name": "Belo Horizonte" },
-        "priceRange": "$$",
-        "openingHours": "Mo-Fr 08:00-18:00",
-        "knowsAbout": ["Contabilidade Industrial", "Planejamento Tributário", "ICMS", "Recuperação de Créditos Tributários"]
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            { "@type": "Question", "name": "Qual a vantagem de ter uma contadora especializada em indústrias?", "acceptedAnswer": { "@type": "Answer", "text": "Uma contadora especializada conhece ICMS, IPI, créditos presumidos e incentivos fiscais específicos. Economia real e compliance garantido." } },
-            { "@type": "Question", "name": "Qual porte de indústria atende?", "acceptedAnswer": { "@type": "Answer", "text": "Pequeno, médio e grande porte em BH e região metropolitana, faturamento a partir de R$ 500 mil/ano." } },
-            { "@type": "Question", "name": "Como funciona o diagnóstico gratuito?", "acceptedAnswer": { "@type": "Answer", "text": "Reunião de 30 minutos para analisar sua situação fiscal. Sem custo, sem compromisso." } },
-            { "@type": "Question", "name": "Atende fora de BH?", "acceptedAnswer": { "@type": "Answer", "text": "Sim. Região metropolitana e interior de MG, com reuniões presenciais e remotas." } }
-        ]
-    }
-    </script>
 </head>
 <body>
 
-    <!-- Noise -->
-    <div class="noise"></div>
-
-    <!-- Custom Cursor -->
-    <div class="cursor" id="cursor"></div>
-    <div class="cursor-dot" id="cursorDot"></div>
-
-    <!-- Loader -->
-    <div class="loader" id="loader">
-        <div class="loader-content">
-            <div class="loader-phrase">
-                <span class="loader-word" style="animation-delay:0s">Contabilidade</span>
-                <span class="loader-word" style="animation-delay:0.1s">de</span>
-                <span class="loader-word accent" style="animation-delay:0.2s">alta</span>
-                <span class="loader-word accent" style="animation-delay:0.3s">performance</span>
-                <span class="loader-word" style="animation-delay:0.5s">para</span>
-                <span class="loader-word" style="animation-delay:0.6s">ind&uacute;strias</span>
-                <span class="loader-word" style="animation-delay:0.7s">que</span>
-                <span class="loader-word" style="animation-delay:0.8s">competem</span>
-                <span class="loader-word" style="animation-delay:0.9s">para</span>
-                <span class="loader-word accent italic" style="animation-delay:1.0s">vencer.</span>
-            </div>
-            <div class="loader-name">
-                <span class="loader-word" style="animation-delay:1.3s">Amanda Cabral</span>
-            </div>
-            <div class="loader-line"></div>
-        </div>
-    </div>
-
-    <!-- Scroll Progress -->
-    <div class="scroll-progress" id="scrollProgress"></div>
-
-    <!-- TOC Sidebar -->
-    <nav class="toc" id="toc">
-        <div class="toc-dot" data-target="hero"><span class="toc-label">Início</span></div>
-        <div class="toc-dot" data-target="dores"><span class="toc-label">Dores</span></div>
-        <div class="toc-dot" data-target="servicos"><span class="toc-label">Serviços</span></div>
-        <div class="toc-dot" data-target="processo"><span class="toc-label">Processo</span></div>
-        <div class="toc-dot" data-target="clientes"><span class="toc-label">Clientes</span></div>
-        <div class="toc-dot" data-target="depoimentos"><span class="toc-label">Depoimentos</span></div>
-        <div class="toc-dot" data-target="sobre"><span class="toc-label">Sobre</span></div>
-        <div class="toc-dot" data-target="contato"><span class="toc-label">Contato</span></div>
-        <div class="toc-dot" data-target="blog"><span class="toc-label">Blog</span></div>
-        <div class="toc-dot" data-target="faq"><span class="toc-label">FAQ</span></div>
-        <div class="toc-dot" data-target="localizacao"><span class="toc-label">Localização</span></div>
-    </nav>
-
-    <!-- ===== HEADER ===== -->
-    <header class="header" id="header">
-        <div class="container">
-            <a href="#" class="logo">
-                <div class="logo-symbol">
-                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <ellipse cx="50" cy="42" rx="28" ry="18" stroke="white" stroke-width="3" opacity="0.8"/>
-                        <ellipse cx="50" cy="42" rx="14" ry="9" stroke="white" stroke-width="2" opacity="0.4"/>
-                        <line x1="50" y1="60" x2="50" y2="78" stroke="white" stroke-width="3" opacity="0.6"/>
-                        <line x1="38" y1="72" x2="62" y2="72" stroke="white" stroke-width="2.5" opacity="0.5"/>
-                    </svg>
-                </div>
-                <div class="logo-text">
-                    <span class="logo-name">Amanda Cabral</span>
-                    <span class="logo-tag">Solu&ccedil;&otilde;es Empresariais</span>
-                </div>
-            </a>
-            <nav class="nav" id="nav">
-                <button class="nav-close" id="navClose" aria-label="Fechar menu">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                </button>
-                <a href="#servicos">Servi&ccedil;os</a>
-                <a href="#contato">Diagn&oacute;stico</a>
-                <a href="#sobre">Sobre</a>
-                <a href="#blog">Blog</a>
-                <a href="#faq">FAQ</a>
-                <a href="#contato" class="nav-cta">Diagn&oacute;stico Gratuito</a>
-            </nav>
-            <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
-                <span></span><span></span><span></span>
-            </button>
-        </div>
-    </header>
-
-    <!-- ===== HERO ===== -->
-    <section class="hero" id="hero">
-        <div class="hero-grid-bg"></div>
-        <div class="hero-bg-image"></div>
-        <div class="hero-orb hero-orb-1"></div>
-        <div class="hero-orb hero-orb-2"></div>
-        <div class="container">
-            <div class="hero-layout">
-                <div class="hero-content">
-                    <div class="hero-tag">
-                        <span class="dot"></span>
-                        Exclusivamente ind&uacute;strias &middot; H&aacute; 20 anos &middot; BH
-                    </div>
-                    <h1>Sua ind&uacute;stria paga imposto demais. <em>E n&oacute;s sabemos exatamente quanto.</em></h1>
-                    <p class="hero-sub">Especialistas em tributa&ccedil;&atilde;o industrial h&aacute; 20 anos. R$ 12 milh&otilde;es recuperados em cr&eacute;ditos que estavam invis&iacute;veis para outros contadores.</p>
-                    <div class="hero-buttons">
-                        <a href="#contato" class="btn btn-primary">
-                            Solicitar an&aacute;lise tribut&aacute;ria
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                        </a>
-                        <a href="#contato" class="btn btn-ghost">Ver o que recuperamos</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="scroll-hint">
-            <span>Scroll</span>
-            <div class="scroll-line"></div>
-        </div>
-    </section>
-
-    <!-- ===== STATS BAR ===== -->
-    <section class="stats-bar" id="statsBar">
-        <div class="container">
-            <div class="stats-grid">
-                <div class="stat-item reveal">
-                    <div class="stat-number" data-target="120" data-suffix="+">0</div>
-                    <div class="stat-label">Ind&uacute;strias<br>atendidas</div>
-                </div>
-                <div class="stat-item reveal">
-                    <div class="stat-number" data-target="98" data-suffix="%">0</div>
-                    <div class="stat-label">Reten&ccedil;&atilde;o<br>de clientes</div>
-                </div>
-                <div class="stat-item reveal">
-                    <div class="stat-number" data-target="35" data-suffix="%">0</div>
-                    <div class="stat-label">Redu&ccedil;&atilde;o<br>tribut&aacute;ria</div>
-                </div>
-                <div class="stat-item reveal">
-                    <div class="stat-number" data-target="12" data-prefix="R$" data-suffix="M">0</div>
-                    <div class="stat-label">Cr&eacute;ditos<br>recuperados</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== MARQUEE ===== -->
-    <div class="marquee-section">
-        <div class="marquee-track">
-            <span class="marquee-item"><span class="sep"></span>CRC/MG Ativo</span>
-            <span class="marquee-item"><span class="sep"></span>20 Anos de Experi&ecirc;ncia</span>
-            <span class="marquee-item"><span class="sep"></span>Especialista ICMS/IPI</span>
-            <span class="marquee-item"><span class="sep"></span>P&oacute;s em Direito Tribut&aacute;rio</span>
-            <span class="marquee-item"><span class="sep"></span>Membro IBPT</span>
-            <span class="marquee-item"><span class="sep"></span>120+ Ind&uacute;strias Atendidas</span>
-            <span class="marquee-item"><span class="sep"></span>R$ 12M+ Recuperados</span>
-            <span class="marquee-item"><span class="sep"></span>Belo Horizonte &middot; MG</span>
-            <!-- duplicate for loop -->
-            <span class="marquee-item"><span class="sep"></span>CRC/MG Ativo</span>
-            <span class="marquee-item"><span class="sep"></span>20 Anos de Experi&ecirc;ncia</span>
-            <span class="marquee-item"><span class="sep"></span>Especialista ICMS/IPI</span>
-            <span class="marquee-item"><span class="sep"></span>P&oacute;s em Direito Tribut&aacute;rio</span>
-            <span class="marquee-item"><span class="sep"></span>Membro IBPT</span>
-            <span class="marquee-item"><span class="sep"></span>120+ Ind&uacute;strias Atendidas</span>
-            <span class="marquee-item"><span class="sep"></span>R$ 12M+ Recuperados</span>
-            <span class="marquee-item"><span class="sep"></span>Belo Horizonte &middot; MG</span>
-        </div>
-    </div>
-
-    <!-- ===== PAIN POINTS ===== -->
-    <section class="pains" id="dores">
-        <div class="container">
-            <div class="pains-header reveal">
-                <div class="section-tag">Sua ind&uacute;stria pode estar perdendo dinheiro</div>
-                <h2 class="heading">8 de cada 10 ind&uacute;strias em MG pagam <em>mais tributo do que deveriam</em></h2>
-                <p class="heading-sub">Esses s&atilde;o os 3 sinais mais comuns. Se voc&ecirc; se reconhece em pelo menos um, sua contabilidade atual pode estar custando caro.</p>
-            </div>
-            <div class="pains-grid stagger">
-                <div class="pain-card">
-                    <div class="pain-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-                    <h3>Voc&ecirc; sente que paga imposto demais &mdash; mas ningu&eacute;m mostra quanto.</h3>
-                    <p>A carga tribut&aacute;ria parece desproporcional ao lucro e seu contador nunca apresentou um plano concreto de redu&ccedil;&atilde;o. Enquanto isso, cr&eacute;ditos de ICMS e IPI ficam na mesa &mdash; invis&iacute;veis.</p>
-                </div>
-                <div class="pain-card">
-                    <div class="pain-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
-                    <h3>Voc&ecirc; n&atilde;o sabe o que uma fiscaliza&ccedil;&atilde;o encontraria hoje.</h3>
-                    <p>SPED, EFD, Bloco K &mdash; s&atilde;o obriga&ccedil;&otilde;es que s&oacute; a ind&uacute;stria tem. Um &uacute;nico erro pode gerar multas de at&eacute; 150% do tributo. E a responsabilidade &eacute; sua, n&atilde;o do contador.</p>
-                </div>
-                <div class="pain-card">
-                    <div class="pain-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
-                    <h3>Seu contador atende com&eacute;rcio e ind&uacute;stria com a mesma planilha.</h3>
-                    <p>Ele n&atilde;o sabe a diferen&ccedil;a entre ICMS pr&oacute;prio e ST, n&atilde;o entende NCM cr&iacute;tico e desconhece os incentivos fiscais de MG. Sua opera&ccedil;&atilde;o merece quem entenda sua complexidade.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== SERVICES ===== -->
-    <section class="services" id="servicos">
-        <div class="services-inner">
-            <div class="container">
-                <div class="services-header reveal">
-                    <div class="section-tag" style="color:var(--accent)">Especialidades</div>
-                    <h2 class="heading">6 especialidades que s&oacute; quem vive ind&uacute;stria <em>h&aacute; 20 anos</em> domina</h2>
-                    <p class="heading-sub">Cada servi&ccedil;o desenhado para dores reais de ind&uacute;strias. Nada gen&eacute;rico.</p>
-                </div>
-            </div>
-            <div class="services-track-wrapper">
-                <div class="services-scroll-hint" id="servicesHint">
-                    <span>Mais</span>
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </div>
-                <div class="services-track" id="servicesTrack">
-                    <div class="service-card">
-                        <div class="service-num">01</div>
-                        <h3>Planejamento Tribut&aacute;rio Industrial</h3>
-                        <p>An&aacute;lise de precis&atilde;o em ICMS, IPI, PIS/COFINS. Mapeamos o regime ideal e cada cr&eacute;dito que voc&ecirc; est&aacute; deixando na mesa.</p>
-                        <span class="service-badge">Economia real</span>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-num">02</div>
-                        <h3>Recupera&ccedil;&atilde;o de Cr&eacute;ditos</h3>
-                        <p>Auditoria retroativa de 5 anos. M&eacute;dia de R$ 180 mil recuperados por cliente em ICMS-ST, IPI e PIS/COFINS.</p>
-                        <span class="service-badge">Dinheiro de volta</span>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-num">03</div>
-                        <h3>Compliance Industrial</h3>
-                        <p>SPED Fiscal, EFD, Bloco K, REINF. Blindagem fiscal completa &mdash; sua ind&uacute;stria 100% protegida contra fiscaliza&ccedil;&otilde;es.</p>
-                        <span class="service-badge">Risco zero</span>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-num">04</div>
-                        <h3>Gest&atilde;o Cont&aacute;bil Estrat&eacute;gica</h3>
-                        <p>Balan&ccedil;os, DRE, fluxo de caixa, custos de produ&ccedil;&atilde;o. Relat&oacute;rios que ajudam a decidir com seguran&ccedil;a.</p>
-                        <span class="service-badge">Vis&atilde;o clara</span>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-num">05</div>
-                        <h3>Incentivos Fiscais de MG</h3>
-                        <p>TTD, Regime Especial, cr&eacute;ditos presumidos. Enquadramento e acompanhamento dos programas mineiros.</p>
-                        <span class="service-badge">Exclusivo MG</span>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-num">06</div>
-                        <h3>Consultoria para Crescimento</h3>
-                        <p>Abrir filial, importar insumo, expandir produ&ccedil;&atilde;o. Cada decis&atilde;o tem impacto tribut&aacute;rio.</p>
-                        <span class="service-badge">Crescimento seguro</span>
-                    </div>
-                </div>
-            </div>
-            <div class="services-nav">
-                <button onclick="scrollServices(-1)" aria-label="Anterior">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-                </button>
-                <button onclick="scrollServices(1)" aria-label="Pr&oacute;ximo">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </button>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== PROCESS ===== -->
-    <section class="process" id="processo">
-        <div class="container">
-            <div class="process-header reveal">
-                <div class="section-tag">Como funciona</div>
-                <h2 class="heading">3 passos. <em>Sem burocracia. Sem risco.</em></h2>
-                <p class="heading-sub">Voc&ecirc; s&oacute; avan&ccedil;a se fizer sentido para sua ind&uacute;stria.</p>
-            </div>
-            <div class="process-steps stagger">
-                <div class="step">
-                    <div class="step-circle">1</div>
-                    <h3>Diagn&oacute;stico Gratuito</h3>
-                    <p>30 minutos para analisar sua situa&ccedil;&atilde;o fiscal e identificar onde est&aacute; perdendo dinheiro.</p>
-                </div>
-                <div class="step">
-                    <div class="step-circle">2</div>
-                    <h3>Proposta Personalizada</h3>
-                    <p>Plano claro com estimativa de economia, escopo e investimento. Tudo transparente.</p>
-                </div>
-                <div class="step">
-                    <div class="step-circle">3</div>
-                    <h3>Gest&atilde;o Cont&iacute;nua</h3>
-                    <p>Contabilidade com foco em resultado. Relat&oacute;rios mensais e acesso direto pelo WhatsApp.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== MARQUEE 2 ===== -->
-    <div class="marquee-section-2">
-        <div class="marquee-track-2">
-            <span class="marquee-item-2"><span class="sep2"></span>Planejamento Tribut&aacute;rio</span>
-            <span class="marquee-item-2"><span class="sep2"></span>Recupera&ccedil;&atilde;o de Cr&eacute;ditos</span>
-            <span class="marquee-item-2"><span class="sep2"></span>Compliance Industrial</span>
-            <span class="marquee-item-2"><span class="sep2"></span>ICMS &middot; IPI &middot; PIS/COFINS</span>
-            <span class="marquee-item-2"><span class="sep2"></span>Incentivos Fiscais MG</span>
-            <span class="marquee-item-2"><span class="sep2"></span>Gest&atilde;o Cont&aacute;bil Estrat&eacute;gica</span>
-            <span class="marquee-item-2"><span class="sep2"></span>Bloco K &middot; SPED &middot; EFD</span>
-            <span class="marquee-item-2"><span class="sep2"></span>Consultoria para Crescimento</span>
-            <!-- duplicate -->
-            <span class="marquee-item-2"><span class="sep2"></span>Planejamento Tribut&aacute;rio</span>
-            <span class="marquee-item-2"><span class="sep2"></span>Recupera&ccedil;&atilde;o de Cr&eacute;ditos</span>
-            <span class="marquee-item-2"><span class="sep2"></span>Compliance Industrial</span>
-            <span class="marquee-item-2"><span class="sep2"></span>ICMS &middot; IPI &middot; PIS/COFINS</span>
-            <span class="marquee-item-2"><span class="sep2"></span>Incentivos Fiscais MG</span>
-            <span class="marquee-item-2"><span class="sep2"></span>Gest&atilde;o Cont&aacute;bil Estrat&eacute;gica</span>
-            <span class="marquee-item-2"><span class="sep2"></span>Bloco K &middot; SPED &middot; EFD</span>
-            <span class="marquee-item-2"><span class="sep2"></span>Consultoria para Crescimento</span>
-        </div>
-    </div>
-
-    <!-- ===== CLIENTS ===== -->
-    <section class="clients" id="clientes">
-        <div class="container">
-            <div class="clients-header reveal">
-                <div class="section-tag">Confian&ccedil;a</div>
-                <h2 class="heading">Ind&uacute;strias que escolheram <em>intelig&ecirc;ncia tribut&aacute;ria</em></h2>
-            </div>
-        </div>
-        <div class="clients-track-wrapper">
-            <div class="clients-track">
-                <div class="client-logo">Metal&uacute;rgica Horizonte</div>
-                <div class="client-logo">PL Pl&aacute;sticos</div>
-                <div class="client-logo">Ferreira Alimentos</div>
-                <div class="client-logo">A&ccedil;o Minas</div>
-                <div class="client-logo">TecnoFlex Industrial</div>
-                <div class="client-logo">BH T&ecirc;xtil</div>
-                <div class="client-logo">MG Autope&ccedil;as</div>
-                <div class="client-logo">Mineira de Embalagens</div>
-                <div class="client-logo">Sider&uacute;rgica Betim</div>
-                <div class="client-logo">Cer&acirc;mica Real</div>
-                <div class="client-logo">Ind&uacute;stria Viana</div>
-                <div class="client-logo">Qu&iacute;micos Contagem</div>
-                <!-- duplicate for seamless loop -->
-                <div class="client-logo">Metal&uacute;rgica Horizonte</div>
-                <div class="client-logo">PL Pl&aacute;sticos</div>
-                <div class="client-logo">Ferreira Alimentos</div>
-                <div class="client-logo">A&ccedil;o Minas</div>
-                <div class="client-logo">TecnoFlex Industrial</div>
-                <div class="client-logo">BH T&ecirc;xtil</div>
-                <div class="client-logo">MG Autope&ccedil;as</div>
-                <div class="client-logo">Mineira de Embalagens</div>
-                <div class="client-logo">Sider&uacute;rgica Betim</div>
-                <div class="client-logo">Cer&acirc;mica Real</div>
-                <div class="client-logo">Ind&uacute;stria Viana</div>
-                <div class="client-logo">Qu&iacute;micos Contagem</div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== TESTIMONIALS ===== -->
-    <section class="testimonials" id="depoimentos">
-        <div class="container">
-            <div class="testimonials-header reveal">
-                <div class="section-tag" style="color:var(--accent)">Depoimentos</div>
-                <h2 class="heading">127 ind&uacute;strias. <em>Alguns resultados.</em></h2>
-            </div>
-            <div class="testimonials-grid stagger">
-                <div class="test-card">
-                    <div class="test-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-                    <blockquote>&ldquo;A equipe da Amanda Cabral recuperou R$ 340 mil em cr&eacute;ditos de ICMS que nosso antigo contador nunca mencionou. Em 20 anos de ind&uacute;stria, nunca tive um escrit&oacute;rio que entendesse t&atilde;o bem nosso setor.&rdquo;</blockquote>
-                    <div class="test-author">
-                        <div class="test-avatar"><img src="https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Ricardo Moreira" loading="lazy"></div>
-                        <div><div class="test-name">Ricardo Moreira</div><div class="test-role">Diretor &mdash; Metal&uacute;rgica Horizonte</div></div>
-                    </div>
-                </div>
-                <div class="test-card">
-                    <div class="test-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-                    <blockquote>&ldquo;Passamos pelo Regime Especial de MG gra&ccedil;as &agrave; Amanda Cabral. Economia anual de quase R$ 500 mil. N&atilde;o s&atilde;o contadores, s&atilde;o estrategistas tribut&aacute;rios.&rdquo;</blockquote>
-                    <div class="test-author">
-                        <div class="test-avatar"><img src="https://images.pexels.com/photos/2381069/pexels-photo-2381069.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Patrícia Lima" loading="lazy"></div>
-                        <div><div class="test-name">Patr&iacute;cia Lima</div><div class="test-role">CEO &mdash; PL Pl&aacute;sticos Ind.</div></div>
-                    </div>
-                </div>
-                <div class="test-card">
-                    <div class="test-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
-                    <blockquote>&ldquo;Antes da Amanda Cabral, eu perdia 2 dias por m&ecirc;s com problemas cont&aacute;beis. Hoje n&atilde;o penso mais nisso. Cuidam de tudo e me avisam de oportunidades que eu nem sabia que existiam.&rdquo;</blockquote>
-                    <div class="test-author">
-                        <div class="test-avatar"><img src="https://images.pexels.com/photos/834863/pexels-photo-834863.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Carlos Ferreira" loading="lazy"></div>
-                        <div><div class="test-name">Carlos Ferreira</div><div class="test-role">S&oacute;cio &mdash; Ferreira Alimentos</div></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== MANIFESTO (Apple sticky pin) ===== -->
-    <div class="manifesto-wrapper" id="manifestoWrapper">
-        <section class="manifesto" id="manifesto">
-            <div class="manifesto-bg"></div>
-            <div class="manifesto-content">
-                <p class="m-line m-line-1" id="mLine1">Voc&ecirc; construiu sua ind&uacute;stria do zero.</p>
-                <p class="m-line m-line-2" id="mLine2">Cada m&aacute;quina, cada contrata&ccedil;&atilde;o, cada decis&atilde;o.</p>
-                <p class="m-line m-line-3" id="mLine3">N&atilde;o &eacute; justo perder dinheiro por uma tributa&ccedil;&atilde;o que ningu&eacute;m te ensinou <em>a decifrar.</em></p>
-                <span class="manifesto-attr" id="mAttr">Amanda Cabral</span>
-            </div>
-        </section>
-    </div>
-
-    <!-- ===== ABOUT ===== -->
-    <section class="about" id="sobre">
-        <div class="container">
-            <div class="about-layout">
-                <div class="reveal">
-                    <div class="about-photo">
-                        <img src="amanda-cabral.jpg" alt="Amanda Cabral - Contadora Especialista em Indústrias" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top center;border-radius:24px;">
-                    </div>
-                </div>
-                <div class="about-content reveal">
-                    <div class="section-tag">Sobre</div>
-                    <h2>Amanda Cabral. <em>H&aacute; mais de 20 anos dedicada a decifrar a tributa&ccedil;&atilde;o industrial.</em></h2>
-                    <p class="about-text">Nosso primeiro escrit&oacute;rio foi dentro de uma metal&uacute;rgica em Contagem. Entre o barulho das prensas e o calor do forno, aprendemos o que nenhuma p&oacute;s-gradua&ccedil;&atilde;o ensina: que ICMS industrial n&atilde;o se resolve com planilha gen&eacute;rica.</p>
-                    <p class="about-text">Duas d&eacute;cadas depois, atendemos exclusivamente ind&uacute;strias. Nunca aceitamos com&eacute;rcio. Nunca aceitamos servi&ccedil;os. Essa escolha nos custou clientes &mdash; e nos deu a profundidade que nenhum generalista tem.</p>
-                    <div class="about-tags">
-                        <span class="about-tag">CRC/MG Ativo</span>
-                        <span class="about-tag">P&oacute;s em Direito Tribut&aacute;rio</span>
-                        <span class="about-tag">Especialista ICMS/IPI</span>
-                        <span class="about-tag">Membro IBPT</span>
-                    </div>
-                    <a href="#contato" class="btn btn-primary">Solicitar diagn&oacute;stico</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== CTA FINAL ===== -->
-    <section class="cta-final" id="contato">
-        <div class="container">
-            <div class="cta-form-grid">
-                <div class="cta-form-info reveal">
-                    <div class="section-tag" style="color:var(--accent)">Pronta para come&ccedil;ar?</div>
-                    <h2 class="heading" style="color:var(--white);">Diagn&oacute;stico tribut&aacute;rio completo. <em>Gratuito para ind&uacute;strias selecionadas.</em></h2>
-                    <p class="heading-sub" style="color:var(--silver);">Em 30 minutos, mapeamos cr&eacute;ditos perdidos, riscos fiscais e oportunidades. Encontramos oportunidades em 8 de cada 10 ind&uacute;strias.</p>
-                    <div class="cta-form-features">
-                        <div class="cta-form-feat">
-                            <div class="cta-form-feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-                            Diagn&oacute;stico gratuito de 30 minutos
-                        </div>
-                        <div class="cta-form-feat">
-                            <div class="cta-form-feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-                            Raio-X completo da situa&ccedil;&atilde;o fiscal
-                        </div>
-                        <div class="cta-form-feat">
-                            <div class="cta-form-feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-                            Sem compromisso e sem custo
-                        </div>
-                        <div class="cta-form-feat">
-                            <div class="cta-form-feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-                            Resposta em at&eacute; 24h
-                        </div>
-                    </div>
-                    <span class="cta-limit" style="margin-top:28px;">M&aacute;ximo 50 ind&uacute;strias &mdash; cada cliente tem acesso direto &agrave; Amanda, e isso n&atilde;o escala.</span>
-                </div>
-                <div class="reveal">
-                    <div class="form-card">
-                        <div class="form-steps-dots">
-                            <div class="form-dot active" data-step="0"></div>
-                            <div class="form-dot" data-step="1"></div>
-                            <div class="form-dot" data-step="2"></div>
-                            <div class="form-dot" data-step="3"></div>
-                        </div>
-
-                        <!-- Step 1: Segmento -->
-                        <div class="form-panel active" data-panel="0">
-                            <h4>Qual o segmento da sua ind&uacute;stria?</h4>
-                            <p class="form-hint">Selecione o que melhor descreve sua opera&ccedil;&atilde;o</p>
-                            <div class="form-options" id="frmSegment">
-                                <button type="button" class="form-opt" data-value="Metalurgia" onclick="selOpt(this)">Metalurgia</button>
-                                <button type="button" class="form-opt" data-value="Alimentos" onclick="selOpt(this)">Alimentos</button>
-                                <button type="button" class="form-opt" data-value="Plásticos" onclick="selOpt(this)">Pl&aacute;sticos</button>
-                                <button type="button" class="form-opt" data-value="Autopeças" onclick="selOpt(this)">Autope&ccedil;as</button>
-                                <button type="button" class="form-opt" data-value="Têxtil" onclick="selOpt(this)">T&ecirc;xtil</button>
-                                <button type="button" class="form-opt" data-value="Outro segmento" onclick="selOpt(this)">Outro</button>
-                            </div>
-                            <div class="form-nav">
-                                <button type="button" class="btn btn-primary" style="width:100%" onclick="frmNext()">Pr&oacute;ximo &rarr;</button>
-                            </div>
-                        </div>
-
-                        <!-- Step 2: Faturamento -->
-                        <div class="form-panel" data-panel="1">
-                            <h4>Qual o faturamento anual?</h4>
-                            <p class="form-hint">Isso nos ajuda a calibrar o diagn&oacute;stico</p>
-                            <div class="form-options" id="frmRevenue">
-                                <button type="button" class="form-opt" data-value="R$ 500mil - R$ 2M" onclick="selOpt(this)">R$ 500mil - 2M</button>
-                                <button type="button" class="form-opt" data-value="R$ 2M - R$ 5M" onclick="selOpt(this)">R$ 2M - 5M</button>
-                                <button type="button" class="form-opt" data-value="R$ 5M - R$ 10M" onclick="selOpt(this)">R$ 5M - 10M</button>
-                                <button type="button" class="form-opt" data-value="Acima de R$ 10M" onclick="selOpt(this)">Acima de R$ 10M</button>
-                            </div>
-                            <div class="form-nav">
-                                <button type="button" class="btn btn-back" onclick="frmPrev()">&larr; Voltar</button>
-                                <button type="button" class="btn btn-primary" onclick="frmNext()">Pr&oacute;ximo &rarr;</button>
-                            </div>
-                        </div>
-
-                        <!-- Step 3: Dor principal -->
-                        <div class="form-panel" data-panel="2">
-                            <h4>Qual sua maior dor hoje?</h4>
-                            <p class="form-hint">Selecione a que mais incomoda</p>
-                            <div class="form-options" id="frmPain">
-                                <button type="button" class="form-opt" data-value="Pago imposto demais" onclick="selOpt(this)">Pago imposto demais</button>
-                                <button type="button" class="form-opt" data-value="Medo de fiscalização" onclick="selOpt(this)">Medo de fiscaliza&ccedil;&atilde;o</button>
-                                <button type="button" class="form-opt" data-value="Contador não entende indústria" onclick="selOpt(this)">Contador n&atilde;o entende ind&uacute;stria</button>
-                                <button type="button" class="form-opt" data-value="Quero recuperar créditos" onclick="selOpt(this)">Quero recuperar cr&eacute;ditos</button>
-                            </div>
-                            <div class="form-nav">
-                                <button type="button" class="btn btn-back" onclick="frmPrev()">&larr; Voltar</button>
-                                <button type="button" class="btn btn-primary" onclick="frmNext()">Pr&oacute;ximo &rarr;</button>
-                            </div>
-                        </div>
-
-                        <!-- Step 4: Contato -->
-                        <div class="form-panel" data-panel="3">
-                            <h4>Seus dados para contato</h4>
-                            <p class="form-hint">Responderemos em at&eacute; 24 horas</p>
-                            <input class="form-input" type="text" id="frmName" placeholder="Seu nome">
-                            <input class="form-input" type="text" id="frmCompany" placeholder="Nome da ind&uacute;stria">
-                            <input class="form-input" type="tel" id="frmPhone" placeholder="WhatsApp (DDD + n&uacute;mero)">
-                            <input class="form-input" type="text" id="frmCity" placeholder="Cidade">
-                            <textarea class="form-input" id="frmNotes" placeholder="Observa&ccedil;&otilde;es ou detalhes sobre sua opera&ccedil;&atilde;o (opcional)"></textarea>
-                            <div class="form-nav">
-                                <button type="button" class="btn btn-back" onclick="frmPrev()">&larr; Voltar</button>
-                                <button type="button" class="btn btn-submit" onclick="frmSubmit()">Enviar pelo WhatsApp</button>
-                            </div>
-                            <p class="form-privacy">Seus dados s&atilde;o usados exclusivamente para contato comercial.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== VIDEO ===== -->
-    <section class="video-section" id="video">
-        <div class="container">
-            <div class="video-layout">
-                <div class="video-content reveal">
-                    <div class="section-tag">Em vídeo</div>
-                    <h2 class="heading">Como identificamos R$ 340 mil em cr&eacute;ditos <em>que ningu&eacute;m viu</em></h2>
-                    <p class="heading-sub">Acompanhe o processo real de uma recupera&ccedil;&atilde;o tribut&aacute;ria para ind&uacute;strias em Belo Horizonte.</p>
-                </div>
-                <a href="https://www.youtube.com/watch?v=Ww0cVheJlyU" target="_blank" rel="noopener" class="video-wrapper reveal" style="display:block;text-decoration:none;">
-                    <div class="video-embed">
-                        <img src="https://img.youtube.com/vi/Ww0cVheJlyU/maxresdefault.jpg" alt="Assista ao vídeo da Amanda Cabral" style="width:100%;height:100%;object-fit:cover;">
-                        <div class="video-play-btn">
-                            <svg width="68" height="68" viewBox="0 0 68 68" fill="none"><circle cx="34" cy="34" r="33" stroke="white" stroke-width="2" opacity="0.8"/><path d="M28 22L48 34L28 46V22Z" fill="white" opacity="0.9"/></svg>
-                        </div>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== BLOG ===== -->
-    <section class="blog" id="blog">
-        <div class="container">
-            <div class="blog-header reveal">
-                <div class="section-tag">Conte&uacute;do</div>
-                <h2 class="heading">O que seu contador <em>n&atilde;o est&aacute; te contando</em></h2>
-                <p class="heading-sub">Artigos com dados reais sobre tributa&ccedil;&atilde;o industrial, compliance e gest&atilde;o fiscal em MG.</p>
-            </div>
-        </div>
-        <div class="blog-track-wrapper">
-            <div class="blog-track" id="blogTrack">
-                <div class="blog-card">
-                    <div class="blog-img"><img src="https://images.pexels.com/photos/95916/pexels-photo-95916.jpeg?auto=compress&cs=tinysrgb&w=640" alt="Créditos ICMS-ST indústria" loading="lazy"></div>
-                    <span class="blog-category">ICMS</span>
-                    <h3>Como recuperar cr&eacute;ditos de ICMS-ST na ind&uacute;stria: guia pr&aacute;tico</h3>
-                    <p class="blog-excerpt">Entenda o passo a passo para identificar e recuperar cr&eacute;ditos de substitui&ccedil;&atilde;o tribut&aacute;ria...</p>
-                    <div class="blog-meta">
-                        <span class="blog-date">12 Mar 2026</span>
-                        <a href="#" class="blog-link">Ler artigo &rarr;</a>
-                    </div>
-                </div>
-                <div class="blog-card">
-                    <div class="blog-img"><img src="https://images.pexels.com/photos/5668858/pexels-photo-5668858.jpeg?auto=compress&cs=tinysrgb&w=640" alt="Bloco K compliance industrial" loading="lazy"></div>
-                    <span class="blog-category">Compliance</span>
-                    <h3>Bloco K: o que sua ind&uacute;stria precisa saber para 2026</h3>
-                    <p class="blog-excerpt">As novas exig&ecirc;ncias do Bloco K impactam diretamente ind&uacute;strias de m&eacute;dio porte...</p>
-                    <div class="blog-meta">
-                        <span class="blog-date">28 Fev 2026</span>
-                        <a href="#" class="blog-link">Ler artigo &rarr;</a>
-                    </div>
-                </div>
-                <div class="blog-card">
-                    <div class="blog-img"><img src="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=640" alt="Regime Especial MG indústria" loading="lazy"></div>
-                    <span class="blog-category">Planejamento</span>
-                    <h3>Regime Especial de MG: sua ind&uacute;stria est&aacute; aproveitando?</h3>
-                    <p class="blog-excerpt">Minas Gerais oferece incentivos que podem reduzir at&eacute; 40% da carga tribut&aacute;ria...</p>
-                    <div class="blog-meta">
-                        <span class="blog-date">15 Fev 2026</span>
-                        <a href="#" class="blog-link">Ler artigo &rarr;</a>
-                    </div>
-                </div>
-                <div class="blog-card">
-                    <div class="blog-img"><img src="https://images.pexels.com/photos/6801648/pexels-photo-6801648.jpeg?auto=compress&cs=tinysrgb&w=640" alt="Indicadores financeiros indústria" loading="lazy"></div>
-                    <span class="blog-category">Gest&atilde;o</span>
-                    <h3>5 indicadores financeiros que todo industrial deveria acompanhar</h3>
-                    <p class="blog-excerpt">Margem de contribui&ccedil;&atilde;o, ponto de equil&iacute;brio e outros KPIs essenciais...</p>
-                    <div class="blog-meta">
-                        <span class="blog-date">01 Fev 2026</span>
-                        <a href="#" class="blog-link">Ler artigo &rarr;</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="blog-nav">
-            <button onclick="scrollBlog(-1)" aria-label="Anterior">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-            </button>
-            <button onclick="scrollBlog(1)" aria-label="Pr&oacute;ximo">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </button>
-        </div>
-    </section>
-
-    <!-- ===== FAQ ===== -->
-    <section class="faq" id="faq">
-        <div class="container">
-            <div class="faq-header reveal">
-                <div class="section-tag">D&uacute;vidas</div>
-                <h2 class="heading">As perguntas que todo industrial faz <em>antes de decidir</em></h2>
-                <p class="heading-sub">Se sua d&uacute;vida n&atilde;o est&aacute; aqui, chame no WhatsApp.</p>
-            </div>
-            <div class="faq-list reveal">
-                <div class="faq-item"><button class="faq-q">Qual a vantagem de uma contadora especializada em ind&uacute;strias?<div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">Especialista conhece ICMS, IPI, cr&eacute;ditos presumidos e incentivos fiscais de MG. Economia real e compliance blindado para fiscaliza&ccedil;&otilde;es.</div></div></div>
-                <div class="faq-item"><button class="faq-q">Qual porte de ind&uacute;stria voc&ecirc; atende?<div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">Pequeno, m&eacute;dio e grande porte em BH e regi&atilde;o metropolitana. Faturamento a partir de R$ 500 mil/ano. Metal&uacute;rgicas, aliment&iacute;cias, pl&aacute;sticos, autope&ccedil;as.</div></div></div>
-                <div class="faq-item"><button class="faq-q">Como funciona o diagn&oacute;stico gratuito?<div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">Reuni&atilde;o de 30 minutos (presencial ou online). Analiso sua situa&ccedil;&atilde;o fiscal, identifico oportunidades e riscos. Sem custo, sem compromisso.</div></div></div>
-                <div class="faq-item"><button class="faq-q">Quanto tempo para ver resultados?<div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">Diagn&oacute;stico completo nos primeiros 90 dias. Recupera&ccedil;&atilde;o de cr&eacute;ditos gera retorno em 60-120 dias. Planejamento tribut&aacute;rio impacta j&aacute; no primeiro trimestre.</div></div></div>
-                <div class="faq-item"><button class="faq-q">Atende fora de Belo Horizonte?<div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">Sim. Regi&atilde;o metropolitana (Contagem, Betim, Santa Luzia) e interior de MG, com reuni&otilde;es presenciais e remotas.</div></div></div>
-                <div class="faq-item"><button class="faq-q">J&aacute; tenho contador. Como &eacute; a transi&ccedil;&atilde;o?<div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">Cuido de todo o processo &mdash; transfer&ecirc;ncia de documentos, certificados digitais, migra&ccedil;&atilde;o sem interrup&ccedil;&otilde;es. Zero preocupa&ccedil;&atilde;o.</div></div></div>
-                <div class="faq-item"><button class="faq-q">Quanto custa a contabilidade especializada para ind&uacute;strias?<div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">O investimento depende do porte e complexidade da sua opera&ccedil;&atilde;o. O que podemos garantir: em 20 anos, cada cliente recuperou em cr&eacute;ditos e economia muito mais do que investiu em honor&aacute;rios. Come&ccedil;amos pelo diagn&oacute;stico gratuito &mdash; ali voc&ecirc; j&aacute; v&ecirc; o retorno potencial antes de decidir.</div></div></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== LOCATION ===== -->
-    <section class="location" id="localizacao">
-        <div class="container">
-            <div class="location-layout">
-                <div class="reveal">
-                    <div class="section-tag">Localiza&ccedil;&atilde;o</div>
-                    <h2 class="heading">No cora&ccedil;&atilde;o de <em>Belo Horizonte</em></h2>
-                    <div style="margin-top:40px;">
-                        <div class="location-info-item">
-                            <div class="location-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-                            </div>
-                            <div class="location-info-text">Av. Afonso Pena, 1000 &mdash; Funcion&aacute;rios, BH/MG</div>
-                        </div>
-                        <div class="location-info-item">
-                            <div class="location-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-                            </div>
-                            <div class="location-info-text">(31) 99999-9999</div>
-                        </div>
-                        <div class="location-info-item">
-                            <div class="location-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                            </div>
-                            <div class="location-info-text">contato@cabralhanani.com.br</div>
-                        </div>
-                        <div class="location-info-item">
-                            <div class="location-icon">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-                            </div>
-                            <div class="location-info-text">Seg-Sex, 08h &agrave;s 18h</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="reveal">
-                    <div class="location-map" style="padding:0;overflow:hidden;">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3750.9!2d-43.9386!3d-19.9191!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDU1JzA4LjgiUyA0M8KwNTYnMTkuMCJX!5e0!3m2!1spt-BR!2sbr!4v1" width="100%" height="100%" style="border:0;border-radius:16px;position:absolute;inset:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== BOTTOM BAR ===== -->
-    <div class="bottom-bar" id="bottomBar">
-        <div class="container">
-            <div class="bottom-bar-text">Intelig&ecirc;ncia tribut&aacute;ria para sua <em>ind&uacute;stria</em></div>
-            <a href="#contato" class="btn btn-primary">
-                Diagn&oacute;stico Gratuito
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-            </a>
-        </div>
-    </div>
-
-    <!-- ===== FOOTER ===== -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <div class="logo"><div class="logo-text"><span class="logo-name">Amanda Cabral</span><span class="logo-tag">Solu&ccedil;&otilde;es Empresariais</span></div></div>
-                    <p class="footer-desc" style="margin-top:16px">Amanda Cabral &mdash; Solu&ccedil;&otilde;es empresariais especializadas em ind&uacute;strias. 20 anos de resultados comprovados em Belo Horizonte.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Servi&ccedil;os</h4>
-                    <a href="#servicos">Planejamento Tribut&aacute;rio</a>
-                    <a href="#servicos">Recupera&ccedil;&atilde;o de Cr&eacute;ditos</a>
-                    <a href="#servicos">Compliance Industrial</a>
-                    <a href="#servicos">Incentivos Fiscais MG</a>
-                </div>
-                <div class="footer-col">
-                    <h4>Institucional</h4>
-                    <a href="#sobre">Sobre</a>
-                    <a href="#depoimentos">Depoimentos</a>
-                    <a href="#blog">Blog</a>
-                    <a href="#faq">FAQ</a>
-                    <a href="#">Privacidade</a>
-                </div>
-                <div class="footer-col">
-                    <h4>Contato</h4>
-                    <a href="#">Av. Afonso Pena, 1000<br>Funcion&aacute;rios &mdash; BH/MG</a>
-                    <a href="tel:+5531999999999">(31) 99999-9999</a>
-                    <a href="mailto:contato@cabralhanani.com.br">contato@cabralhanani.com.br</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Amanda Cabral Soluções Empresariais.</p>
-                <span class="footer-crc">CRC/MG &mdash; Registro Ativo</span>
-            </div>
-        </div>
-    </footer>
-
-
-    <!-- WhatsApp removido — CTA via bottom bar e formulário -->
-
-    <!-- ===== LENIS + GSAP ===== -->
-    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.18/dist/lenis.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/gsap.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
-
-    <script>
-    (function() {
-        'use strict';
-
-        // ---- LOADER ----
-        const loader = document.getElementById('loader');
-        setTimeout(() => loader.classList.add('done'), 2800);
-
-        // ---- LENIS SMOOTH SCROLL ----
-        const lenis = new Lenis({
-            duration: 1.2,
-            easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            smooth: true
-        });
-
-        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
-        requestAnimationFrame(raf);
-
-        gsap.ticker.add(time => lenis.raf(time * 1000));
-        gsap.ticker.lagSmoothing(0);
-
-        // ---- GSAP ScrollTrigger ----
-        gsap.registerPlugin(ScrollTrigger);
-
-        // Hero parallax
-        gsap.to('.hero-grid-bg', {
-            y: 200,
-            scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 0.5 }
-        });
-
-        gsap.to('.hero-orb-1', {
-            y: 150, scale: 1.2,
-            scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 0.5 }
-        });
-
-        gsap.to('.hero-content', {
-            y: 80, opacity: 0,
-            scrollTrigger: { trigger: '.hero', start: '60% top', end: 'bottom top', scrub: 0.5 }
-        });
-
-        // Manifesto Apple-style sticky pin (3 phases)
-        ScrollTrigger.create({
-            trigger: '#manifestoWrapper',
-            start: 'top top',
-            end: 'bottom bottom',
-            pin: '#manifesto',
-            pinSpacing: false,
-            onUpdate: function(self) {
-                const p = self.progress;
-                const line1 = document.getElementById('mLine1');
-                const line2 = document.getElementById('mLine2');
-                const line3 = document.getElementById('mLine3');
-
-                // Phase 1: 0-33% → Line 1 lights up
-                if (p < 0.33) {
-                    const t = p / 0.33;
-                    line1.classList.toggle('lit', t > 0.25);
-                    line1.style.transform = 'translateY(' + (1 - t) * 25 + 'px)';
-                    line2.classList.remove('lit');
-                    line3.classList.remove('lit');
-                }
-                // Phase 2: 33-66% → Line 2 lights up
-                else if (p < 0.66) {
-                    const t = (p - 0.33) / 0.33;
-                    line1.classList.add('lit');
-                    line1.style.transform = 'translateY(0)';
-                    line2.classList.toggle('lit', t > 0.25);
-                    line2.style.transform = 'translateY(' + (1 - t) * 25 + 'px)';
-                    line3.classList.remove('lit');
-                }
-                // Phase 3: 66-100% → Line 3 (punch) lights up + hold
-                else {
-                    const t = (p - 0.66) / 0.34;
-                    line1.classList.add('lit');
-                    line2.classList.add('lit');
-                    line2.style.transform = 'translateY(0)';
-                    line3.classList.toggle('lit', t > 0.15);
-                    line3.style.transform = 'translateY(' + (1 - Math.min(t * 1.5, 1)) * 35 + 'px) scale(' + (0.97 + Math.min(t * 1.5, 1) * 0.03) + ')';
-                    var attr = document.getElementById('mAttr');
-                    if (attr) attr.style.opacity = String(Math.max(0, (t - 0.5) / 0.5));
-                }
-            }
-        });
-
-        // ---- CUSTOM CURSOR ----
-        const cursor = document.getElementById('cursor');
-        const cursorDot = document.getElementById('cursorDot');
-        let cx = 0, cy = 0, dx = 0, dy = 0;
-
-        document.addEventListener('mousemove', e => { cx = e.clientX; cy = e.clientY; });
-
-        function animateCursor() {
-            dx += (cx - dx) * 0.12;
-            dy += (cy - dy) * 0.12;
-            cursor.style.left = dx + 'px';
-            cursor.style.top = dy + 'px';
-            cursorDot.style.left = cx + 'px';
-            cursorDot.style.top = cy + 'px';
-            requestAnimationFrame(animateCursor);
-        }
-        animateCursor();
-
-        document.querySelectorAll('a, button, .pain-card, .metric-card, .service-card, .test-card, .result-box, .step, .blog-card, .client-logo').forEach(el => {
-            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-        });
-
-        // ---- HEADER ----
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            header.classList.toggle('scrolled', window.scrollY > 60);
-        }, { passive: true });
-
-        // ---- SCROLL PROGRESS ----
-        const progressBar = document.getElementById('scrollProgress');
-        window.addEventListener('scroll', () => {
-            const h = document.documentElement.scrollHeight - window.innerHeight;
-            progressBar.style.width = ((window.scrollY / h) * 100) + '%';
-        }, { passive: true });
-
-        // ---- TOC SIDEBAR ----
-        const toc = document.getElementById('toc');
-        const tocDots = toc.querySelectorAll('.toc-dot');
-        const sections = ['hero','dores','servicos','processo','clientes','depoimentos','sobre','contato','blog','faq','localizacao'];
-        const darkSections = ['hero','servicos','depoimentos','manifesto','contato','video','faq'];
-
-        function updateToc() {
-            const scrollY = window.scrollY + window.innerHeight / 2;
-            const heroBottom = document.getElementById('hero').getBoundingClientRect().bottom + window.scrollY;
-            toc.classList.toggle('visible', window.scrollY > heroBottom * 0.5);
-
-            let currentIdx = 0;
-            sections.forEach((id, i) => {
-                const el = document.getElementById(id);
-                if (el && el.offsetTop <= scrollY) currentIdx = i;
-            });
-
-            tocDots.forEach((dot, i) => dot.classList.toggle('active', i === currentIdx));
-
-            // Light/dark detection
-            const mid = window.innerHeight / 2;
-            let onDark = false;
-            darkSections.forEach(id => {
-                const el = document.getElementById(id);
-                if (el) {
-                    const rect = el.getBoundingClientRect();
-                    if (rect.top < mid && rect.bottom > mid) onDark = true;
-                }
-            });
-            toc.classList.toggle('on-light', !onDark);
-        }
-
-        window.addEventListener('scroll', updateToc, { passive: true });
-        updateToc();
-
-        tocDots.forEach(dot => {
-            dot.addEventListener('click', () => {
-                const target = document.getElementById(dot.dataset.target);
-                if (target) lenis.scrollTo(target, { offset: -80 });
-            });
-        });
-
-        // ---- BOTTOM BAR ----
-        const bottomBar = document.getElementById('bottomBar');
-        const heroEl = document.getElementById('hero');
-        const ctaEl = document.getElementById('contato');
-
-        function checkBottomBar() {
-            const heroBottom = heroEl.getBoundingClientRect().bottom;
-            const ctaTop = ctaEl.getBoundingClientRect().top;
-            const show = heroBottom < 0 && ctaTop > window.innerHeight;
-            bottomBar.classList.toggle('visible', show);
-        }
-        window.addEventListener('scroll', checkBottomBar, { passive: true });
-
-        // ---- MOBILE MENU ----
-        document.getElementById('mobileToggle').addEventListener('click', () => {
-            document.getElementById('nav').classList.toggle('open');
-        });
-        document.getElementById('navClose').addEventListener('click', () => {
-            document.getElementById('nav').classList.remove('open');
-        });
-        document.querySelectorAll('.nav a').forEach(a => {
-            a.addEventListener('click', () => document.getElementById('nav').classList.remove('open'));
-        });
-
-        // ---- REVEAL (IntersectionObserver) ----
-        const revealEls = document.querySelectorAll('.reveal, .stagger');
-        const revealObs = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    revealObs.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
-        revealEls.forEach(el => revealObs.observe(el));
-
-        // ---- COUNTER ANIMATION ----
-        const counters = document.querySelectorAll('.num[data-target], .stat-number[data-target]');
-        const counterObs = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const el = entry.target;
-                    const target = parseInt(el.dataset.target);
-                    const prefix = el.dataset.prefix || '';
-                    const suffix = el.dataset.suffix || '';
-                    gsap.fromTo(el, { innerText: 0 }, {
-                        innerText: target,
-                        duration: 2,
-                        ease: 'expo.out',
-                        snap: { innerText: 1 },
-                        onUpdate() {
-                            el.textContent = prefix + Math.floor(parseFloat(el.innerText || 0)) + suffix;
-                        }
-                    });
-                    counterObs.unobserve(el);
-                }
-            });
-        }, { threshold: 0.5 });
-        counters.forEach(el => counterObs.observe(el));
-
-        // ---- CARD SPOTLIGHT ----
-        document.querySelectorAll('.pain-card, .result-box').forEach(card => {
-            card.addEventListener('mousemove', e => {
-                const r = card.getBoundingClientRect();
-                card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
-                card.style.setProperty('--my', (e.clientY - r.top) + 'px');
-            });
-        });
-
-        // ---- FAQ ----
-        document.querySelectorAll('.faq-q').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const item = btn.parentElement;
-                const answer = item.querySelector('.faq-a');
-                const isOpen = item.classList.contains('open');
-                document.querySelectorAll('.faq-item').forEach(i => {
-                    i.classList.remove('open');
-                    i.querySelector('.faq-a').style.maxHeight = null;
-                });
-                if (!isOpen) {
-                    item.classList.add('open');
-                    answer.style.maxHeight = answer.scrollHeight + 'px';
-                }
-            });
-        });
-
-        // ---- SMOOTH ANCHOR ----
-        document.querySelectorAll('a[href^="#"]').forEach(a => {
-            a.addEventListener('click', function(e) {
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    e.preventDefault();
-                    lenis.scrollTo(target, { offset: -80 });
-                }
-            });
-        });
-
-        // ---- SERVICES SCROLL ----
-        window.scrollServices = function(dir) {
-            const track = document.getElementById('servicesTrack');
-            track.scrollBy({ left: dir * 380, behavior: 'smooth' });
-        };
-
-        // Hide scroll hint when user scrolls services
-        const sTrack = document.getElementById('servicesTrack');
-        const sHint = document.getElementById('servicesHint');
-        if (sTrack && sHint) {
-            sTrack.addEventListener('scroll', function() {
-                if (sTrack.scrollLeft > 60) {
-                    sHint.style.opacity = '0';
-                    sHint.style.transition = 'opacity 0.4s';
-                } else {
-                    sHint.style.opacity = '1';
-                }
-            }, { passive: true });
-        }
-
-        // ---- BLOG SCROLL ----
-        window.scrollBlog = function(dir) {
-            const track = document.getElementById('blogTrack');
-            track.scrollBy({ left: dir * 360, behavior: 'smooth' });
-        };
-
-        // ---- MULTI-STEP FORM ----
-        let fStep = 0;
-        const fData = { segment:'', revenue:'', pain:'', name:'', company:'', phone:'', city:'' };
-
-        window.selOpt = function(btn) {
-            const parent = btn.parentElement;
-            parent.querySelectorAll('.form-opt').forEach(o => o.classList.remove('selected'));
-            btn.classList.add('selected');
-            if (parent.id === 'frmSegment') fData.segment = btn.dataset.value;
-            if (parent.id === 'frmRevenue') fData.revenue = btn.dataset.value;
-            if (parent.id === 'frmPain') fData.pain = btn.dataset.value;
-        };
-
-        function updateFrm() {
-            document.querySelectorAll('.form-panel').forEach((p,i) => p.classList.toggle('active', i===fStep));
-            document.querySelectorAll('.form-dot').forEach((d,i) => {
-                d.classList.remove('active','done');
-                if (i === fStep) d.classList.add('active');
-                if (i < fStep) d.classList.add('done');
-            });
-        }
-
-        window.frmNext = function() { if (fStep < 3) { fStep++; updateFrm(); } };
-        window.frmPrev = function() { if (fStep > 0) { fStep--; updateFrm(); } };
-
-        window.frmSubmit = function() {
-            fData.name = document.getElementById('frmName').value;
-            fData.company = document.getElementById('frmCompany').value;
-            fData.phone = document.getElementById('frmPhone').value;
-            fData.city = document.getElementById('frmCity').value;
-            fData.notes = document.getElementById('frmNotes').value;
-            const msg = `Olá Amanda Cabral! Solicito um diagnóstico tributário.\n\n` +
-                `*Segmento:* ${fData.segment || 'Não especificado'}\n` +
-                `*Faturamento:* ${fData.revenue || 'Não especificado'}\n` +
-                `*Maior dor:* ${fData.pain || 'Não especificado'}\n` +
-                `*Nome:* ${fData.name}\n` +
-                `*Indústria:* ${fData.company}\n` +
-                `*WhatsApp:* ${fData.phone}\n` +
-                `*Cidade:* ${fData.city}` +
-                (fData.notes ? `\n*Observações:* ${fData.notes}` : '');
-            window.open('https://wa.me/5531999999999?text=' + encodeURIComponent(msg), '_blank');
-        };
-
-    })();
-    </script>
-</body>
-</html<header class="site-header" id="siteHeader">
-  <nav class="site-nav" aria-label="Navegação principal">
-    <a href="/" class="nav-logo">AM Cabral</a>
-
-    <ul class="nav-links" id="navLinks">
-      <!-- Dropdown: Serviços -->
-      <li class="nav-item has-dropdown">
-        <button class="nav-trigger" aria-expanded="false" aria-haspopup="true">
-          Serviços <span class="nav-arrow" aria-hidden="true">▼</span>
-        </button>
-        <div class="nav-dropdown" role="menu">
-          <a href="/gestao-contabil-para-industrias/" role="menuitem">Gestão Contábil Estratégica</a>
-          <a href="/recuperacao-de-creditos-tributarios/" role="menuitem">Recuperação de Créditos</a>
-          <a href="/holding-patrimonial-e-familiar/" role="menuitem">Holding Patrimonial e Familiar</a>
-          <a href="/planejamento-tributario/" role="menuitem">Planejamento Tributário</a>
-          <a href="/consultoria-tributaria/" role="menuitem">Consultoria Tributária</a>
-          <a href="/servicos/" class="dropdown-all" role="menuitem">Ver todos os serviços →</a>
-        </div>
-      </li>
-
-      <!-- Link direto -->
-      <li class="nav-item"><a href="/reforma-tributaria/">Reforma Tributária</a></li>
-      <li class="nav-item"><a href="/blog/">Blog</a></li>
-
-      <!-- Dropdown: Sobre -->
-      <li class="nav-item has-dropdown">
-        <button class="nav-trigger" aria-expanded="false" aria-haspopup="true">
-          Sobre <span class="nav-arrow" aria-hidden="true">▼</span>
-        </button>
-        <div class="nav-dropdown" role="menu">
-          <a href="/sobre/" role="menuitem">Amanda Silva</a>
-          <a href="/casos-de-sucesso/" role="menuitem">Casos de Sucesso</a>
-          <a href="/depoimentos/" role="menuitem">Depoimentos</a>
-        </div>
-      </li>
-
-      <li class="nav-item"><a href="/contato/">Contato</a></li>
-    </ul>
-
-    <!-- CTA -->
-    <a href="/diagnostico-gratuito/" class="nav-cta">Diagnóstico Gratuito</a>
-
-    <!-- Hamburger mobile -->
-    <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
-</header>
-
-<!-- Mobile overlay -->
-<div class="mobile-nav" id="mobileNav" aria-hidden="true">
-  <button class="mobile-nav-close" id="mobileNavClose" aria-label="Fechar menu">✕</button>
-  <a href="/gestao-contabil-para-industrias/">Gestão Contábil Estratégica</a>
-  <a href="/recuperacao-de-creditos-tributarios/">Recuperação de Créditos</a>
-  <a href="/holding-patrimonial-e-familiar/">Holding Patrimonial e Familiar</a>
-  <a href="/planejamento-tributario/">Planejamento Tributário</a>
-  <a href="/consultoria-tributaria/">Consultoria Tributária</a>
-  <a href="/servicos/">Ver todos os serviços</a>
-  <a href="/reforma-tributaria/">Reforma Tributária</a>
-  <a href="/blog/">Blog</a>
-  <a href="/sobre/">Amanda Silva</a>
-  <a href="/casos-de-sucesso/">Casos de Sucesso</a>
-  <a href="/depoimentos/">Depoimentos</a>
-  <a href="/contato/">Contato</a>
-  <a href="/diagnostico-gratuito/" style="color: var(--accent-gold); margin-top: 20px; font-weight: 600;">Diagnóstico Gratuito</a>
-</div>
-
-<footer class="site-footer">
-  <div class="footer-inner">
-    <div class="footer-grid">
-      <!-- Col 1: A Empresa -->
-      <div class="footer-col">
-        <h3 class="footer-heading">A Empresa</h3>
-        <ul>
-          <li><a href="/sobre/">Sobre Amanda Silva</a></li>
-          <li><a href="/casos-de-sucesso/">Casos de Sucesso</a></li>
-          <li><a href="/depoimentos/">Depoimentos</a></li>
-          <li><a href="/faq/">FAQ</a></li>
-          <li><a href="/contato/">Contato</a></li>
-        </ul>
-      </div>
-
-      <!-- Col 2: Serviços -->
-      <div class="footer-col">
-        <h3 class="footer-heading">Serviços</h3>
-        <ul>
-          <li><a href="/gestao-contabil-para-industrias/">Gestão Contábil Estratégica</a></li>
-          <li><a href="/recuperacao-de-creditos-tributarios/">Recuperação de Créditos</a></li>
-          <li><a href="/holding-patrimonial-e-familiar/">Holding Patrimonial e Familiar</a></li>
-          <li><a href="/planejamento-tributario/">Planejamento Tributário</a></li>
-          <li><a href="/consultoria-tributaria/">Consultoria Tributária</a></li>
-        </ul>
-      </div>
-
-      <!-- Col 3: Conteúdo -->
-      <div class="footer-col">
-        <h3 class="footer-heading">Conteúdo</h3>
-        <ul>
-          <li><a href="/blog/">Blog</a></li>
-          <li><a href="/reforma-tributaria/">Reforma Tributária</a></li>
-          <li><a href="/faq/">FAQ</a></li>
-        </ul>
-      </div>
-
-      <!-- Col 4: Regiões -->
-      <div class="footer-col">
-        <h3 class="footer-heading">Regiões Atendidas</h3>
-        <ul>
-          <li><a href="/contabilidade-industrial-belo-horizonte/">Belo Horizonte</a></li>
-          <li><a href="/contabilidade-industrial-sao-paulo/">São Paulo</a></li>
-          <li><a href="/contabilidade-industrial-rio-de-janeiro/">Rio de Janeiro</a></li>
-          <li><a href="/contabilidade-industrial-vale-do-aco/">Vale do Aço</a></li>
-          <li><a href="/regioes-atendidas/">Ver todas →</a></li>
-        </ul>
-      </div>
-    </div>
-
-    <!-- Separador + Logo + CTA -->
-    <div class="footer-brand">
-      <a href="/" class="footer-logo">AM Cabral</a>
-      <a href="/diagnostico-gratuito/" class="footer-cta">Diagnóstico Gratuito</a>
-    </div>
-
-    <!-- Barra legal -->
-    <div class="footer-legal">
-      <p>© 2026 Amanda Silva Cabral Contabilidade. CRC/MG ativo.</p>
-      <div class="footer-legal-links">
-        <a href="/politica-de-privacidade/">Política de Privacidade</a>
-        <a href="/politica-de-cookies/">Política de Cookies</a>
-        <a href="/termos-de-uso/">Termos de Uso</a>
-      </div>
-    </div>
+<main id="main">
+
+<!-- HERO WITH PARALLAX -->
+<section class="hero">
+  <img class="parallax" data-speed="0.3" src="https://pub-bd2efcc812524f54a8c492f90052f3bd.r2.dev/amanda/amanda-cabral.jpg" alt="Amanda Cabral">
+  <img class="parallax" data-speed="0.6" src="https://pub-bd2efcc812524f54a8c492f90052f3bd.r2.dev/amanda/amanda-cabral-foto.jpg" alt="Contabilidade Estratégica">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1>Proteja seu patrimônio e maximize seu lucro</h1>
+    <p>30 anos de experiência. R$ 12M recuperados. 120+ empresas. Diagnóstico gratuito em 30 minutos.</p>
   </div>
-</footer>
+</section>
+
+<!-- SERVICES -->
+<section class="services">
+  <h2>Nossos Serviços</h2>
+  <div class="services-grid">
+    <a href="/gestao-contabil-para-industrias/" class="service-card">
+      <h3>Gestão Contábil Estratégica</h3>
+      <p>Contabilidade que vai além do compliance. Análise gerencial, indicadores e suporte à decisão.</p>
+    </a>
+
+    <a href="/recuperacao-de-creditos-tributarios/" class="service-card">
+      <h3>Recuperação de Créditos</h3>
+      <p>Mapeamento e recuperação de créditos de ICMS, IPI, PIS/COFINS perdidos nos últimos 5 anos.</p>
+    </a>
+
+    <a href="/holding-patrimonial-e-familiar/" class="service-card">
+      <h3>Holding Patrimonial</h3>
+      <p>Blindagem patrimonial, planejamento sucessório e economia tributária para proteger o que você construiu.</p>
+    </a>
+
+    <a href="/planejamento-tributario/" class="service-card">
+      <h3>Planejamento Tributário</h3>
+      <p>Análise de regime tributário, simulações e estratégias legais para reduzir a carga fiscal.</p>
+    </a>
+
+    <a href="/consultoria-tributaria/" class="service-card">
+      <h3>Consultoria Tributária</h3>
+      <p>Assessoria especializada em legislação tributária, compliance fiscal e otimização de operações.</p>
+    </a>
+
+    <a href="/sobre/" class="service-card">
+      <h3>Sobre Amanda Cabral</h3>
+      <p>30 anos dedicados à tributação empresarial. CRC ativo. Especialista em blindagem patrimonial e créditos tributários.</p>
+    </a>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <h2>Pronto para começar?</h2>
+  <p>Diagnóstico gratuito. Sem compromisso. Descubra quanto sua empresa pode economizar com blindagem tributária.</p>
+  <a href="/diagnostico-gratuito/" class="cta-button">Solicitar Diagnóstico</a>
+</section>
+
+</main>
 
 <script>
-(function(){
-  // Dropdown acessibilidade (aria-expanded)
-  document.querySelectorAll('.nav-trigger').forEach(btn => {
-    btn.addEventListener('click', function(){
-      const item = this.closest('.nav-item');
-      const expanded = item.classList.toggle('is-open');
-      this.setAttribute('aria-expanded', expanded);
-      // Fecha outros
-      document.querySelectorAll('.nav-item.has-dropdown').forEach(other => {
-        if(other !== item){
-          other.classList.remove('is-open');
-          other.querySelector('.nav-trigger').setAttribute('aria-expanded','false');
-        }
-      });
+  // Parallax effect on scroll
+  document.addEventListener('scroll', () => {
+    document.querySelectorAll('.parallax').forEach(img => {
+      const speed = parseFloat(img.dataset.speed);
+      img.style.transform = `translateY(${window.scrollY * speed}px)`;
     });
   });
-
-  // Fecha ao clicar fora
-  document.addEventListener('click', e => {
-    if(!e.target.closest('.has-dropdown')){
-      document.querySelectorAll('.nav-item.has-dropdown').forEach(item => {
-        item.classList.remove('is-open');
-        item.querySelector('.nav-trigger').setAttribute('aria-expanded','false');
-      });
-    }
-  });
-
-  // Mobile overlay
-  const hamburger = document.getElementById('navHamburger');
-  const mobileNav = document.getElementById('mobileNav');
-  const mobileClose = document.getElementById('mobileNavClose');
-
-  function openMobile(){
-    mobileNav.classList.add('is-open');
-    mobileNav.setAttribute('aria-hidden','false');
-    hamburger.setAttribute('aria-expanded','true');
-    document.body.style.overflow='hidden';
-  }
-
-  function closeMobile(){
-    mobileNav.classList.remove('is-open');
-    mobileNav.setAttribute('aria-hidden','true');
-    hamburger.setAttribute('aria-expanded','false');
-    document.body.style.overflow='';
-  }
-
-  hamburger.addEventListener('click', openMobile);
-  mobileClose.addEventListener('click', closeMobile);
-  mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobile));
-
-  // Header scroll
-  const header = document.getElementById('siteHeader');
-  window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 40), {passive:true});
-
-  // Parallax
-  const parallaxElements = document.querySelectorAll('.parallax');
-  if(parallaxElements.length){
-    window.addEventListener('scroll', function(){
-      const scrolled = window.scrollY;
-      parallaxElements.forEach(function(el){
-        const speed = parseFloat(el.dataset.speed);
-        el.style.transform = `translateY(${scrolled * speed}px)`;
-      });
-    }, {passive: true});
-  }
-})();
 </script>
+
 </body>
 </html>
