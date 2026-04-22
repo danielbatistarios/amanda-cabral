@@ -1,0 +1,1777 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#060E1A">
+<title>Cidades Atendidas | AM Cabral Contabilidade Industrial</title>
+<meta name="description" content="Contabilidade industrial especializada em todo o Brasil. Sede em Pará de Minas/MG, atendimento 100% digital. Mais de 120 indústrias protegidas em 25 cidades brasileiras.">
+<meta property="og:title" content="Cidades Atendidas | AM Cabral Contabilidade Industrial">
+<meta property="og:description" content="Sede em Pará de Minas/MG, atendimento 100% digital. Mais de 120 indústrias protegidas em 25 cidades brasileiras.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<link rel="canonical" href="https://amcabralblindagem.com.br/cidades-atendidas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+/* === LOADER === */
+.loader {
+  position: fixed;
+  inset: 0;
+  background: var(--z0, #060E1A);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 32px;
+}
+.loader-phrase {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: clamp(22px, 4.5vw, 42px);
+  font-style: italic;
+  color: rgba(255,255,255,.9);
+  letter-spacing: .01em;
+  text-align: center;
+  max-width: 600px;
+  padding: 0 24px;
+  overflow: hidden;
+}
+.loader-phrase span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity .4s ease, transform .4s ease;
+}
+.loader-phrase span.visible { opacity: 1; transform: none; }
+.loader-brand {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: #3B82F6;
+  opacity: 0;
+  transition: opacity .6s ease .3s;
+}
+.loader-brand.visible { opacity: 1; }
+.loader-line {
+  width: 48px;
+  height: 1px;
+  background: rgba(255,255,255,.12);
+  position: relative;
+  overflow: hidden;
+}
+.loader-line::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  height: 100%;
+  width: 0%;
+  background: #3B82F6;
+  transition: width 1.8s cubic-bezier(.16,1,.3,1);
+}
+.loader-line.active::after { width: 100%; }
+.loader.done {
+  opacity: 0;
+  transition: opacity .6s ease;
+  pointer-events: none;
+}
+
+/* === VARIABLES === */
+:root {
+  --ink: #060E1A;
+  --ink2: #0A1628;
+  --paper: #F1F5F9;
+  --paper2: #E2E8F0;
+  --paper3: #CBD5E1;
+  --dim: #94A3B8;
+  --faint: #CBD5E1;
+  --accent: #3B82F6;
+  --accent2: #60A5FA;
+  --accent-bg: rgba(59,130,246,.08);
+  --dourado: #C9A84C;
+  --serif: 'Instrument Serif', Georgia, serif;
+  --sans: 'Inter', system-ui, sans-serif;
+  --radius: 16px;
+  --radius-sm: 8px;
+  --sec-pad: clamp(100px, 12vw, 160px);
+  --spring: cubic-bezier(.16, 1, .3, 1);
+  --z0: #060E1A;
+  --z1: #0A1628;
+  --z2: #0F2137;
+  --z3: #132D4A;
+  --z4: #1A3A5C;
+  --glow-accent: rgba(59, 130, 246, .14);
+  --glow-accent-edge: rgba(96, 165, 250, .07);
+  --glow-accent2: rgba(96, 165, 250, .06);
+  --border-z1: rgba(255, 255, 255, .055);
+  --border-z2: rgba(255, 255, 255, .08);
+  --border-z3: rgba(255, 255, 255, .11);
+  --toplight: inset 0 1px 0 rgba(255, 255, 255, .06);
+  --toplight-strong: inset 0 1px 0 rgba(255, 255, 255, .1);
+  --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-6: 24px; --sp-8: 32px; --sp-10: 40px; --sp-12: 48px; --sp-16: 64px;
+  --r-sharp: 0px; --r-subtle: 4px; --r-card: 12px; --r-soft: 16px; --r-pill: 999px;
+  --zi-nav: 300; --zi-bar: 301; --zi-prog: 999;
+  --t-fast: 150ms; --t-normal: 250ms; --t-slow: 400ms; --t-slower: 750ms;
+  --shadow-2: 0 4px 12px rgba(0,0,0,.25), 0 2px 4px rgba(0,0,0,.2);
+  --shadow-3: 0 8px 24px rgba(0,0,0,.3), 0 4px 8px rgba(0,0,0,.2);
+  --shadow-5: 0 24px 80px rgba(0,0,0,.45), 0 12px 24px rgba(0,0,0,.25);
+}
+
+/* === RESET === */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+/* === GLOBAL === */
+body {
+  background: var(--z0);
+  color: var(--paper);
+  font-family: var(--sans);
+  font-size: 16px;
+  letter-spacing: -.008em;
+  line-height: 1.75;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: 0;
+}
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }
+
+/* === UTILITIES === */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(24px, 5vw, 80px);
+}
+
+/* Reveal animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .8s var(--spring), transform .8s var(--spring);
+}
+.reveal.in { opacity: 1; transform: none; }
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity .8s var(--spring), transform .8s var(--spring);
+}
+.reveal-left.in { opacity: 1; transform: none; }
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity .8s var(--spring), transform .8s var(--spring);
+}
+.reveal-right.in { opacity: 1; transform: none; }
+.reveal-scale {
+  opacity: 0;
+  transform: scale(.85);
+  transition: opacity .7s var(--spring), transform .7s var(--spring);
+}
+.reveal-scale.in { opacity: 1; transform: none; }
+.reveal-blur {
+  opacity: 0;
+  filter: blur(8px);
+  transform: translateY(12px);
+  transition: opacity .9s var(--spring), filter .9s var(--spring), transform .9s var(--spring);
+}
+.reveal-blur.in { opacity: 1; filter: blur(0); transform: none; }
+.reveal-3d {
+  opacity: 0;
+  transform: translateY(16px) rotateX(6deg);
+  transform-origin: top center;
+  transform-style: preserve-3d;
+  transition: opacity var(--t-slower) var(--spring), transform var(--t-slower) var(--spring);
+  will-change: opacity, transform;
+}
+.reveal-3d.in { opacity: 1; transform: none; will-change: auto; }
+
+/* Stagger delays */
+.d1 { transition-delay: .08s; }
+.d2 { transition-delay: .16s; }
+.d3 { transition-delay: .24s; }
+.d4 { transition-delay: .24s; }
+.d5 { transition-delay: .30s; }
+.d6 { transition-delay: .36s; }
+
+/* Section labels */
+.sec-label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.sec-label.lt { color: var(--dim); }
+.sec-label.dk { color: var(--accent); }
+.sec-h {
+  font-family: var(--serif);
+  font-size: clamp(32px, 4.5vw, 52px);
+  line-height: 1.1;
+  letter-spacing: -.02em;
+}
+.sec-h.lt { color: var(--paper); }
+.sec-h.dk { color: var(--ink); }
+.sec-h em { font-style: italic; }
+
+/* Primary button */
+.btn-p {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  padding: 14px 32px;
+  border: none;
+  cursor: pointer;
+  transition: transform var(--t-normal) var(--spring), box-shadow var(--t-normal);
+  font-family: var(--sans);
+}
+.btn-p:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 32px rgba(241, 245, 249, .14), 0 2px 8px rgba(241, 245, 249, .08);
+}
+.btn-p:active { transform: translateY(0) scale(.98); transition-duration: .1s; }
+
+/* Noise overlay */
+.noise { position: relative; }
+.noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.045'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  mix-blend-mode: screen;
+  opacity: .5;
+  transform: translate3d(0, 0, 0);
+}
+.noise > * { position: relative; z-index: 1; }
+
+/* Dot grid for white sections */
+.dot-grid { position: relative; }
+.dot-grid::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, #CBD5E1 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: .35;
+  pointer-events: none;
+}
+.dot-grid > * { position: relative; z-index: 1; }
+
+/* Cross pattern for dark z2 sections */
+.cross-pattern { position: relative; }
+.cross-pattern::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 18v4M18 20h4' stroke='%23ffffff' stroke-width='.5' opacity='.06' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+.cross-pattern > * { position: relative; z-index: 1; }
+
+/* === BAR (announcement) === */
+#bar {
+  background: #050B15;
+  border-bottom: 1px solid #0F2137;
+  padding: 9px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  font-size: 13px;
+  color: #94A3B8;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--zi-bar);
+}
+.bar-pill {
+  background: transparent;
+  border: 1px solid #0F2137;
+  color: #3B82F6;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: 2px 10px;
+  border-radius: 99px;
+}
+#bar a {
+  color: #3B82F6;
+  border-bottom: 1px solid rgba(59, 130, 246, .25);
+  transition: color .2s;
+}
+#bar a:hover { color: #93BBFD; }
+.bar-x {
+  position: absolute;
+  right: 40px;
+  background: none;
+  border: none;
+  color: #4a5568;
+  font-size: 18px;
+  cursor: pointer;
+  transition: color .2s;
+}
+.bar-x:hover { color: #888; }
+
+/* === NAV === */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--zi-nav);
+  height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  background: transparent;
+  backdrop-filter: none;
+  border-bottom: 1px solid transparent;
+  transition: top .3s, background .3s, border-color .3s, backdrop-filter .3s;
+  will-change: background, backdrop-filter;
+}
+nav.scrolled {
+  background: rgba(6, 14, 26, .9);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border-bottom-color: rgba(255, 255, 255, .07);
+  box-shadow: var(--toplight), 0 1px 20px rgba(0, 0, 0, .3);
+}
+.logo {
+  font-family: var(--serif);
+  font-size: 19px;
+  letter-spacing: .05em;
+  color: var(--paper);
+  transition: opacity .2s;
+}
+.logo:hover { opacity: .6; }
+.nav-links { display: flex; list-style: none; align-items: center; }
+.nav-btn {
+  background: none;
+  border: none;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, .55);
+  padding: 8px 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: color .2s;
+  white-space: nowrap;
+}
+.nav-btn:hover { color: var(--paper); }
+.nav-btn.active { color: var(--paper); }
+.nav-r { display: flex; align-items: center; gap: 12px; }
+.nav-cta {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  background: var(--paper);
+  color: var(--ink);
+  padding: 10px 24px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--sans);
+  transition: transform .2s, box-shadow .2s;
+}
+.nav-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(241, 245, 249, .15);
+}
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.hamburger span { display: block; width: 22px; height: 1.5px; background: var(--paper); }
+.skip-link { position: absolute; top: -100%; left: 16px; background: var(--accent); color: #fff; padding: 8px 16px; border-radius: 4px; z-index: 100000; font-size: 14px; transition: top .2s; }
+.skip-link:focus { top: 8px; }
+
+/* === MOBILE MENU === */
+.mob-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.6);
+  z-index: 298;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s;
+}
+.mob-overlay.open { opacity: 1; pointer-events: auto; }
+.mob-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 280px;
+  height: 100%;
+  background: var(--z1);
+  border-left: 1px solid var(--border-z2);
+  z-index: 299;
+  transform: translateX(100%);
+  transition: transform .4s var(--spring);
+  padding: 80px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.mob-menu.open { transform: translateX(0); }
+.mob-menu a {
+  display: block;
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(255,255,255,.6);
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-z1);
+  transition: color .2s;
+}
+.mob-menu a:hover { color: var(--paper); }
+.mob-menu a.active { color: var(--paper); }
+.mob-menu-cta {
+  margin-top: auto;
+  display: block;
+  text-align: center;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 14px 24px;
+}
+
+/* === HERO === */
+.cities-hero {
+  background: var(--z2);
+  padding: 140px 0 80px;
+  position: relative;
+  overflow: hidden;
+}
+.cities-hero::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--glow-accent) 0%, transparent 65%);
+  pointer-events: none;
+}
+.cities-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -15%;
+  left: -5%;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--glow-accent2) 0%, transparent 65%);
+  pointer-events: none;
+}
+.cities-hero .container { position: relative; z-index: 1; text-align: center; }
+.cities-hero-tag {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+  opacity: 0;
+  animation: up .9s .1s var(--spring) forwards;
+}
+.cities-hero-h1 {
+  font-family: var(--serif);
+  font-size: clamp(36px, 5vw, 60px);
+  line-height: 1;
+  letter-spacing: -.028em;
+  margin-bottom: 16px;
+  opacity: 0;
+  animation: up .9s .18s var(--spring) forwards;
+}
+.cities-hero-h1 em {
+  font-style: italic;
+  color: var(--accent2);
+}
+.cities-hero-sub {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: rgba(255,255,255,.6);
+  max-width: 620px;
+  margin: 0 auto;
+  opacity: 0;
+  animation: up .9s .35s var(--spring) forwards;
+}
+
+/* === SERVICES OVERVIEW === */
+.services-sec {
+  background: var(--paper);
+  padding: var(--sec-pad) 0;
+}
+.services-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+/* Carousel header with arrows */
+.services-header-top {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+}
+.carousel-arrows {
+  display: flex;
+  gap: 8px;
+  flex-shrink: 0;
+}
+.carousel-arrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #fff;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background .2s, border-color .2s, box-shadow .2s;
+}
+.carousel-arrow:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 4px 16px rgba(59,130,246,.2);
+}
+.carousel-arrow:hover svg { color: #fff; }
+.carousel-arrow svg { width: 18px; height: 18px; color: var(--ink); transition: color .2s; }
+.carousel-arrow.hidden { opacity: .3; pointer-events: none; }
+@media (max-width: 768px) {
+  .carousel-arrow { width: 38px; height: 38px; }
+  .carousel-arrow svg { width: 16px; height: 16px; }
+}
+
+/* Carousel grid */
+.services-carousel {
+  position: relative;
+}
+.services-grid {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  scroll-behavior: smooth;
+  padding-bottom: 4px;
+}
+.services-grid::-webkit-scrollbar { display: none; }
+.svc-card {
+  background: #fff;
+  border: 1px solid #E2E8F0;
+  border-radius: var(--r-card);
+  padding: 28px 24px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,.04);
+  transition: border-color .2s, transform .2s, box-shadow .2s;
+  min-width: 220px;
+  flex: 1 0 0;
+  scroll-snap-align: start;
+}
+@media (max-width: 768px) {
+  .svc-card {
+    min-width: 72vw;
+    flex: 0 0 72vw;
+  }
+}
+.svc-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(59,130,246,.1);
+}
+.svc-card-icon {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--r-subtle);
+  background: rgba(59,130,246,.08);
+}
+.svc-card-icon svg { width: 24px; height: 24px; stroke: var(--accent); fill: none; }
+.svc-card-title {
+  font-family: var(--serif);
+  font-size: 18px;
+  color: var(--ink);
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+.svc-card-desc {
+  font-size: 14px;
+  color: #64748B;
+  line-height: 1.5;
+}
+.svc-card a {
+  display: block;
+  color: inherit;
+}
+
+/* === CITIES SECTION === */
+.cities-sec {
+  background: var(--z1);
+  padding: var(--sec-pad) 0;
+}
+.cities-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+/* Filter pills */
+.filter-pills {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+.filter-pill {
+  background: transparent;
+  border: 1px solid var(--border-z3);
+  color: var(--dim);
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 8px 20px;
+  border-radius: var(--r-pill);
+  cursor: pointer;
+  transition: background .2s, color .2s, border-color .2s;
+  white-space: nowrap;
+}
+.filter-pill:hover {
+  border-color: var(--accent);
+  color: var(--paper);
+}
+.filter-pill.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+/* Region groups */
+.region-group {
+  margin-bottom: 40px;
+}
+.region-group:last-child { margin-bottom: 0; }
+.region-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border-z1);
+}
+.region-header svg { width: 18px; height: 18px; stroke: var(--accent); fill: none; flex-shrink: 0; }
+.region-name {
+  font-family: var(--sans);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--paper);
+}
+.region-count {
+  font-size: 14px;
+  color: var(--dim);
+  font-weight: 400;
+}
+
+/* City cards grid */
+.cities-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.city-card {
+  background: var(--z2);
+  border: 1px solid var(--border-z2);
+  border-radius: var(--r-card);
+  padding: 24px;
+  transition: border-color .25s, transform .25s;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.city-card:hover {
+  border-color: var(--accent);
+  transform: translateY(-3px);
+}
+.city-card-top {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.city-card-pin { flex-shrink: 0; }
+.city-card-pin svg { width: 20px; height: 20px; stroke: var(--accent); fill: none; }
+.city-card-name {
+  font-family: var(--serif);
+  font-size: 18px;
+  color: var(--paper);
+  line-height: 1.2;
+}
+.city-card-state {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--dim);
+  background: rgba(255,255,255,.06);
+  padding: 2px 8px;
+  border-radius: var(--r-subtle);
+  margin-left: 8px;
+}
+.city-card-link {
+  font-size: 14px;
+  color: var(--accent2);
+  line-height: 1.5;
+  transition: color .2s;
+}
+.city-card-link:hover { color: var(--accent); }
+
+/* Featured sede card */
+.city-card.sede {
+  grid-column: span 2;
+  border-top: 3px solid var(--accent);
+  position: relative;
+}
+.sede-badge {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: #fff;
+  background: var(--accent);
+  padding: 4px 12px;
+  border-radius: var(--r-subtle);
+}
+
+/* === PROCESS SECTION === */
+.process-sec {
+  background: var(--paper);
+  padding: var(--sec-pad) 0;
+}
+.process-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+.process-card {
+  background: #fff;
+  border: 1px solid #E2E8F0;
+  border-radius: var(--r-card);
+  padding: 32px 24px;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0,0,0,.04);
+}
+.process-num {
+  font-family: var(--serif);
+  font-size: 48px;
+  color: var(--dourado);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+.process-title {
+  font-family: var(--serif);
+  font-size: 20px;
+  color: var(--ink);
+  margin-bottom: 8px;
+  line-height: 1.2;
+}
+.process-desc {
+  font-size: 14px;
+  color: #64748B;
+  line-height: 1.6;
+}
+
+/* === CTA SECTION === */
+.cta-sec {
+  background: var(--z2);
+  padding: var(--sec-pad) 0;
+  text-align: center;
+}
+.cta-sec .container { max-width: 700px; }
+.cta-h {
+  font-family: var(--serif);
+  font-size: clamp(28px, 4vw, 44px);
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  color: var(--paper);
+  margin-bottom: 16px;
+}
+.cta-p {
+  font-size: 17px;
+  color: rgba(255,255,255,.6);
+  line-height: 1.7;
+  margin-bottom: 32px;
+}
+
+/* === FOOTER === */
+footer {
+  background: #040A14;
+  border-top: 1px solid #0A1628;
+  padding: 64px 40px 32px;
+}
+.foot-in { max-width: 1200px; margin: 0 auto; }
+.foot-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 64px;
+}
+.foot-brand {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--paper);
+  margin-bottom: 8px;
+}
+.foot-tag {
+  font-size: 14px;
+  font-weight: 300;
+  color: #4a5568;
+  line-height: 1.7;
+  max-width: 220px;
+  margin-bottom: 32px;
+}
+.foot-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #2d3748;
+  border: 1px solid #1a2332;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+.foot-live::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #3B82F6;
+  animation: pulse 2.5s infinite;
+}
+.fcol-h {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: #4a5568;
+  margin-bottom: 16px;
+}
+.flinks { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.flinks a { font-size: 14px; font-weight: 300; color: #4a5568; transition: color .2s; }
+.flinks a:hover { color: var(--paper); }
+.foot-bot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 32px;
+  border-top: 1px solid #0A1628;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.foot-copy { font-size: 13px; color: #2d3748; }
+.foot-socs { display: flex; gap: 24px; }
+.foot-socs a {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #2d3748;
+  transition: color .2s;
+}
+.foot-socs a:hover { color: var(--paper); }
+.foot-legal { width: 100%; display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 8px; }
+.foot-legal a { font-size: 12px; color: #2d3748; text-decoration: underline; text-underline-offset: 2px; transition: color .2s; }
+.foot-legal a:hover { color: var(--paper); }
+
+/* === BOTTOM BAR === */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 95;
+  background: rgba(241, 245, 249, .92);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, .06);
+  transform: translateY(100%);
+  transition: transform .5s var(--spring);
+}
+.bottom-bar.visible { transform: translateY(0); }
+.bb-desktop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 14px 40px;
+}
+.bb-info { font-size: 14px; font-weight: 500; color: var(--dim); display: inline-flex; align-items: center; gap: 6px; }
+.bb-stars { color: #F59E0B; font-size: 14px; letter-spacing: 1px; }
+.bb-sep { width: 1px; height: 20px; background: var(--faint); }
+.bb-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 28px;
+  border-radius: 50px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background .2s;
+}
+.bb-cta:hover { background: #2563EB; }
+.bb-cta svg { width: 16px; height: 16px; }
+.bb-mobile { display: none; }
+
+/* === TYPOGRAPHY === */
+.sec-h, .cities-hero-h1, .cta-h { text-wrap: balance; }
+p, .cities-hero-sub, .cta-p { text-wrap: pretty; }
+
+/* Performance */
+.reveal { will-change: opacity, transform; }
+.reveal.in, .reveal-left.in, .reveal-right.in, .reveal-scale.in, .reveal-blur.in { will-change: auto; }
+
+/* Retina noise */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .noise::after { background-size: 150px 150px; opacity: .38; }
+}
+
+/* === KEYFRAMES === */
+@keyframes up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .4; transform: scale(.75); }
+}
+
+/* === REDUCED MOTION === */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+  .reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur, .reveal-3d { opacity: 1 !important; transform: none !important; filter: none !important; }
+}
+
+/* === RESPONSIVE: TABLET (960px) === */
+@media (max-width: 960px) {
+  nav { padding: 0 20px; }
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  #bar { display: none; }
+  nav { top: 0 !important; }
+  body { padding-bottom: 66px; }
+  :root { --sec-pad: clamp(64px, 10vw, 100px); }
+
+  .bb-desktop { display: none; }
+  .bb-mobile {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 8px 16px calc(8px + env(safe-area-inset-bottom, 4px));
+  }
+  .bb-mobile-top { font-size: 11px; font-weight: 500; color: var(--dim); line-height: 1.3; display: flex; align-items: center; gap: 4px; }
+  .bb-mobile-stars { color: #F59E0B; font-size: 11px; letter-spacing: 1px; }
+  .bb-mobile { flex-wrap: wrap; justify-content: center; gap: 6px 10px; }
+  .bb-mobile-proof { font-size: 10px; color: var(--dim); width: 100%; text-align: center; }
+  .bb-mobile-cta {
+    display: flex; align-items: center; justify-content: center; gap: 5px;
+    padding: 8px 16px; border-radius: 50px;
+    background: var(--accent); color: #fff; font-size: 11px; font-weight: 600;
+    border: none; cursor: pointer; white-space: nowrap; flex-shrink: 0;
+  }
+
+  .cities-hero { padding: 90px 20px 48px; }
+  .cities-grid { grid-template-columns: repeat(2, 1fr); }
+  .city-card.sede { grid-column: span 2; }
+  .process-grid { grid-template-columns: repeat(2, 1fr); }
+  .foot-top { grid-template-columns: 1fr 1fr; }
+
+  .cities-hero, .services-sec, .cities-sec, .process-sec, .cta-sec,
+  footer { padding-left: 20px !important; padding-right: 20px !important; }
+
+  .filter-pills {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 8px;
+    scrollbar-width: none;
+  }
+  .filter-pills::-webkit-scrollbar { display: none; }
+}
+
+/* === RESPONSIVE: TABLET SMALL (768px) === */
+/* (services responsive handled inline above) */
+
+/* === RESPONSIVE: MOBILE (640px) === */
+@media (max-width: 640px) {
+  .cities-grid { grid-template-columns: 1fr; }
+  .city-card.sede { grid-column: span 1; }
+  .process-grid { grid-template-columns: 1fr; }
+}
+
+/* === RESPONSIVE: SMALL MOBILE (480px) === */
+@media (max-width: 480px) {
+  .cities-hero-h1 { font-size: 28px; line-height: 1.1; }
+  .cities-hero-sub { font-size: 16px; }
+  .sec-h { font-size: clamp(24px, 6.5vw, 32px); }
+  .foot-top { grid-template-columns: 1fr; }
+  .loader-phrase { font-size: clamp(18px, 5vw, 28px); }
+}
+
+/* 4-col desktop for cities */
+@media (min-width: 1100px) {
+  .cities-grid { grid-template-columns: repeat(4, 1fr); }
+}
+</style>
+    <meta property="og:image" content="https://amcabralblindagem.com.br/assets/og-image.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Schema Markup JSON-LD @graph -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebPage",
+      "@id": "https://amcabralblindagem.com.br/cidades-atendidas/#webpage",
+      "url": "https://amcabralblindagem.com.br/cidades-atendidas/",
+      "name": "Cidades Atendidas — AM Cabral Contabilidade Industrial",
+      "description": "Contabilidade tributária especializada em todo o Brasil. Sede em Pará de Minas/MG, atendimento 100% digital para empresas em qualquer cidade.",
+      "isPartOf": {
+        "@id": "https://amcabralblindagem.com.br/#website"
+      },
+      "publisher": {
+        "@id": "https://amcabralblindagem.com.br/#organization"
+      },
+      "breadcrumb": {
+        "@id": "https://amcabralblindagem.com.br/cidades-atendidas/#breadcrumb"
+      },
+      "inLanguage": "pt-BR"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://amcabralblindagem.com.br/cidades-atendidas/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Início",
+          "item": "https://amcabralblindagem.com.br/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Cidades Atendidas",
+          "item": "https://amcabralblindagem.com.br/cidades-atendidas/"
+        }
+      ]
+    }
+  ]
+}
+    </script>
+</head>
+<body>
+
+<!-- 1. LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-phrase" id="loaderPhrase"></div>
+  <div class="loader-line" id="loaderLine"></div>
+  <div class="loader-brand" id="loaderBrand">AM Cabral</div>
+</div>
+
+<!-- 2. BAR (FIXED) -->
+<div id="bar">
+  <span class="bar-pill">Reforma 2026</span>
+  &nbsp;A reforma tribut&#225;ria muda tudo em 2026. Sua ind&#250;stria est&#225; preparada?&nbsp;<a href="diagnostico-gratuito.html">Descubra agora</a>
+  <button class="bar-x" onclick="this.parentElement.remove();updateNavTop()">&#215;</button>
+</div>
+
+<!-- 3. NAV (FIXED) -->
+<a href="#main-content" class="skip-link">Pular para conte&#250;do</a>
+<nav id="nav">
+  <a href="index.html" class="logo">AM Cabral</a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="nav-btn">Home</a></li>
+    <li><a href="servicos.html" class="nav-btn">Servi&#231;os</a></li>
+    <li><a href="reforma-tributaria.html" class="nav-btn">Reforma Tribut&#225;ria</a></li>
+    <li><a href="blog.html" class="nav-btn">Blog</a></li>
+    <li><a href="sobre.html" class="nav-btn">Sobre</a></li>
+    <li><a href="contato.html" class="nav-btn">Contato</a></li>
+  </ul>
+  <div class="nav-r">
+    <a href="diagnostico-gratuito.html" class="nav-cta">Diagn&#243;stico Gratuito</a>
+    <button class="hamburger" id="hambBtn" aria-label="Abrir menu de navega&#231;&#227;o"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mob-overlay" id="mobOverlay"></div>
+<div class="mob-menu" id="mobMenu">
+  <a href="index.html">Home</a>
+  <a href="servicos.html">Servi&#231;os</a>
+  <a href="reforma-tributaria.html">Reforma Tribut&#225;ria</a>
+  <a href="blog.html">Blog</a>
+  <a href="sobre.html">Sobre</a>
+  <a href="casos-de-sucesso.html">Casos de Sucesso</a>
+  <a href="contato.html">Contato</a>
+  <a href="diagnostico-gratuito.html" class="mob-menu-cta">Diagn&#243;stico Gratuito</a>
+</div>
+
+<!-- 4. HERO (--z2, noise, glows) -->
+<section class="cities-hero noise" id="main-content">
+  <div class="container">
+    <span class="cities-hero-tag">Cidades Atendidas</span>
+    <h1 class="cities-hero-h1">Contabilidade industrial especializada em <em>todo o Brasil</em></h1>
+    <p class="cities-hero-sub">Sede em Par&#225; de Minas/MG, atendimento 100% digital. Mais de 120 ind&#250;strias protegidas em 25 cidades brasileiras.</p>
+  </div>
+</section>
+
+<!-- 5. SERVICES OVERVIEW (--paper, white, dot grid) -->
+<section class="services-sec dot-grid">
+  <div class="container">
+    <div class="services-header reveal">
+      <div class="services-header-top">
+        <div>
+          <div class="sec-label dk" style="color: var(--accent);">Nossos Serviços</div>
+          <h2 class="sec-h dk">O que fazemos pela sua indústria</h2>
+        </div>
+        <div class="carousel-arrows" id="svcArrows">
+          <button class="carousel-arrow prev hidden" id="svcPrev" aria-label="Anterior">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+          </button>
+          <button class="carousel-arrow next" id="svcNext" aria-label="Próximo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="services-carousel">
+    <div class="services-grid" id="svcGrid">
+      <div class="svc-card reveal d1">
+        <div class="svc-card-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7V4h16v3"/><path d="M9 20h6"/><path d="M12 4v16"/><path d="M2 12h4"/><path d="M18 12h4"/></svg>
+        </div>
+        <div class="svc-card-title">Gest&#227;o Cont&#225;bil Estrat&#233;gica</div>
+        <div class="svc-card-desc">Custos, DRE, fluxo de caixa, DP e obriga&#231;&#245;es acess&#243;rias</div>
+      </div>
+      <div class="svc-card reveal d2">
+        <div class="svc-card-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <div class="svc-card-title">Recupera&#231;&#227;o de Cr&#233;ditos</div>
+        <div class="svc-card-desc">ICMS-ST, IPI, PIS/COFINS. Auditoria retroativa de 5 anos</div>
+      </div>
+      <div class="svc-card reveal d3">
+        <div class="svc-card-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+        </div>
+        <div class="svc-card-title">Holding Patrimonial e Familiar</div>
+        <div class="svc-card-desc">Prote&#231;&#227;o de bens, sucess&#227;o e tributa&#231;&#227;o otimizada</div>
+      </div>
+      <div class="svc-card reveal d4">
+        <div class="svc-card-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>
+        </div>
+        <div class="svc-card-title">Planejamento Tribut&#225;rio</div>
+        <div class="svc-card-desc">Regime ideal, elis&#227;o fiscal e incentivos de cada estado</div>
+      </div>
+      <div class="svc-card reveal d5">
+        <div class="svc-card-icon">
+          <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+        </div>
+        <div class="svc-card-title">Consultoria Tribut&#225;ria</div>
+        <div class="svc-card-desc">Compliance fiscal, reforma tribut&#225;ria, SPED e EFD</div>
+      </div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- 6. CITIES BY REGION (--z1, dark) -->
+<section class="cities-sec" id="cidades">
+  <div class="container">
+    <div class="cities-header reveal">
+      <div class="sec-label lt">Onde Atendemos</div>
+      <h2 class="sec-h lt">Presente nas principais cidades industriais do Brasil</h2>
+    </div>
+
+    <!-- Filter pills -->
+    <div class="filter-pills reveal">
+      <button class="filter-pill active" data-filter="all">Todas (25)</button>
+      <button class="filter-pill" data-filter="mg">Minas Gerais</button>
+      <button class="filter-pill" data-filter="sp">S&#227;o Paulo</button>
+      <button class="filter-pill" data-filter="sul">Sul</button>
+      <button class="filter-pill" data-filter="nordeste">Nordeste</button>
+      <button class="filter-pill" data-filter="norte">Norte</button>
+      <button class="filter-pill" data-filter="centro-oeste">Centro-Oeste</button>
+    </div>
+
+    <!-- MINAS GERAIS -->
+    <div class="region-group reveal" data-region="mg">
+      <div class="region-header">
+        <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span class="region-name">Minas Gerais</span>
+        <span class="region-count">(6 cidades)</span>
+      </div>
+      <div class="cities-grid">
+        <div class="city-card sede" data-region="mg">
+          <span class="sede-badge">SEDE</span>
+          <div class="city-card-top">
+            <span class="city-card-pin"><svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span class="city-card-name">Par&#225; de Minas</span>
+            <span class="city-card-state">MG</span>
+          </div>
+          <a href="/contabilidade-para-de-minas/" class="city-card-link">Escrit&#243;rio de contabilidade em Par&#225; de Minas</a>
+        </div>
+        <div class="city-card" data-region="mg">
+          <div class="city-card-top">
+            <span class="city-card-pin"><svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span class="city-card-name">Sete Lagoas</span>
+            <span class="city-card-state">MG</span>
+          </div>
+          <a href="/contabilidade-sete-lagoas/" class="city-card-link">Contabilidade industrial em Sete Lagoas</a>
+        </div>
+        <div class="city-card" data-region="mg">
+          <div class="city-card-top">
+            <span class="city-card-pin"><svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span class="city-card-name">Montes Claros</span>
+            <span class="city-card-state">MG</span>
+          </div>
+          <a href="/contabilidade-montes-claros/" class="city-card-link">Contador especializado em ind&#250;strias de Montes Claros</a>
+        </div>
+        <div class="city-card" data-region="mg">
+          <div class="city-card-top">
+            <span class="city-card-pin"><svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span class="city-card-name">Uberaba</span>
+            <span class="city-card-state">MG</span>
+          </div>
+          <a href="/contador-uberaba/" class="city-card-link">Consultoria tribut&#225;ria para ind&#250;strias em Uberaba</a>
+        </div>
+        <div class="city-card" data-region="mg">
+          <div class="city-card-top">
+            <span class="city-card-pin"><svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span class="city-card-name">Uberl&#226;ndia</span>
+            <span class="city-card-state">MG</span>
+          </div>
+          <a href="/contador-uberlandia/" class="city-card-link">Escrit&#243;rio cont&#225;bil industrial em Uberl&#226;ndia</a>
+        </div>
+        <div class="city-card" data-region="mg">
+          <div class="city-card-top">
+            <span class="city-card-pin"><svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span class="city-card-name">Betim</span>
+            <span class="city-card-state">MG</span>
+          </div>
+          <a href="/contador-betim/" class="city-card-link">Contabilidade e planejamento tribut&#225;rio em Betim</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- S&#195;O PAULO -->
+    <div class="region-group reveal" data-region="sp">
+      <div class="region-header">
+        <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span class="region-name">S&#227;o Paulo</span>
+        <span class="region-count">(6 cidades)</span>
+      </div>
+      <div class="cities-grid">
+        <div class="city-card" data-region="sp">
+          <div class="city-card-top">
+            <span class="city-card-pin"><svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span class="city-card-name">Sorocaba</span>
+            <span class="city-card-state">SP</span>
+          </div>
+          <a href="/contador-sorocaba/" class="city-card-link">Contador para ind&#250;strias em Sorocaba</a>
+        </div>
+        <div class="city-card" data-region="sp">
+          <div class="city-card-top">
+            <span class="city-card-pin"><svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span class="city-card-name">Guarulhos</span>
+            <span class="city-card-state">SP</span>
+          </div>
+          <a href="/contador-guarulhos/" class="city-card-link">Escrit&#243;rio de contabilidade industrial em Guarulhos</a>
+        </div>
+        <div class="city-card" data-region="sp">
+          <div class="city-card-top">
+            <span class="city-card-pin"><svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span class="city-card-name">Osasco</span>
+            <span class="city-card-state">SP</span>
+          </div>
+          <a href="/contador-osasco/" class="city-card-link">Contabilidade especializada para ind&#250;strias de Osasco</a>
+        </div>
+        <div class="city-card" data-region="sp">
+          <div class="city-card-top">
+            <span class="city-card-pin"><svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span class="city-card-name">Ribeir&#227;o Preto</span>
+            <span class="city-card-state">SP</span>
+          </div>
+          <a href="/contador-ribeirao-preto/" class="city-card-link">Planejamento tribut&#225;rio industrial em Ribeir&#227;o Preto</a>
+        </div>
+        <div class="city-card" data-region="sp">
+          <div class="city-card-top">
+            <span class="city-card-pin"><svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span class="city-card-name">Piracicaba</span>
+            <span class="city-card-state">SP</span>
+          </div>
+          <a href="/contador-piracicaba/" class="city-card-link">Contador tributarista para ind&#250;strias em Piracicaba</a>
+        </div>
+        <div class="city-card" data-region="sp">
+          <div class="city-card-top">
+            <span class="city-card-pin"><svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span class="city-card-name">Campinas</span>
+            <span class="city-card-state">SP</span>
+          </div>
+          <a href="/contador-campinas/" class="city-card-link">Consultoria cont&#225;bil industrial na regi&#227;o de Campinas</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- SUL -->
+    <div class="region-group reveal" data-region="sul">
+      <div class="region-header">
+        <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span class="region-name">Sul</span>
+        <span class="region-count">(5 cidades)</span>
+      </div>
+      <div class="cities-grid">
+        <div class="city-card" data-region="sul">
+          <div class="city-card-top">
+            <span class="city-card-pin"><svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span class="city-card-name">Curitiba</span>
+            <span class="city-card-state">PR</span>
+          </div>
+          <a href="/contador-curitiba/" class="city-card-link">Escrit&#243;rio de contabilidade para ind&#250;strias em Curitiba</a>
+        </div>
+        <div class="city-card" data-region="sul">
+          <div class="city-card-top">
+            <span class="city-card-pin"><svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span class="city-card-name">Caxias do Sul</span>
+            <span class="city-card-state">RS</span>
+          </div>
+          <a href="/contador-caxias-do-sul/" class="city-card-link">Contabilidade tribut&#225;ria industrial em Caxias do Sul</a>
+        </div>
+        <div class="city-card" data-region="sul">
+          <div class="city-card-top">
+            <span class="city-card-pin"><svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span class="city-card-name">Blumenau</span>
+            <span class="city-card-state">SC</span>
+          </div>
+          <a href="/contador-blumenau/" class="city-card-link">Contador especialista em ind&#250;strias de Blumenau</a>
+        </div>
+        <div class="city-card" data-region="sul">
+          <div class="city-card-top">
+            <span class="city-card-pin"><svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span class="city-card-name">Joinville</span>
+            <span class="city-card-state">SC</span>
+          </div>
+          <a href="/contador-joinville/" class="city-card-link">Gest&#227;o cont&#225;bil e tribut&#225;ria para ind&#250;strias em Joinville</a>
+        </div>
+        <div class="city-card" data-region="sul">
+          <div class="city-card-top">
+            <span class="city-card-pin"><svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span class="city-card-name">Po&#231;os de Caldas</span>
+            <span class="city-card-state">MG</span>
+          </div>
+          <a href="/contador-pocos-de-caldas/" class="city-card-link">Escrit&#243;rio cont&#225;bil especializado em Po&#231;os de Caldas</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- NORDESTE -->
+    <div class="region-group reveal" data-region="nordeste">
+      <div class="region-header">
+        <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span class="region-name">Nordeste</span>
+        <span class="region-count">(4 cidades)</span>
+      </div>
+      <div class="cities-grid">
+        <div class="city-card" data-region="nordeste">
+          <div class="city-card-top">
+            <span class="city-card-pin"><svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span class="city-card-name">Fortaleza</span>
+            <span class="city-card-state">CE</span>
+          </div>
+          <a href="/contador-fortaleza/" class="city-card-link">Contabilidade industrial remota para empresas de Fortaleza</a>
+        </div>
+        <div class="city-card" data-region="nordeste">
+          <div class="city-card-top">
+            <span class="city-card-pin"><svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span class="city-card-name">Jo&#227;o Pessoa</span>
+            <span class="city-card-state">PB</span>
+          </div>
+          <a href="/contador-joao-pessoa/" class="city-card-link">Contador industrial com atendimento digital em Jo&#227;o Pessoa</a>
+        </div>
+        <div class="city-card" data-region="nordeste">
+          <div class="city-card-top">
+            <span class="city-card-pin"><svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span class="city-card-name">Salvador</span>
+            <span class="city-card-state">BA</span>
+          </div>
+          <a href="/contador-salvador/" class="city-card-link">Escrit&#243;rio de contabilidade industrial para Salvador</a>
+        </div>
+        <div class="city-card" data-region="nordeste">
+          <div class="city-card-top">
+            <span class="city-card-pin"><svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span class="city-card-name">Feira de Santana</span>
+            <span class="city-card-state">BA</span>
+          </div>
+          <a href="/contador-feira-de-santana/" class="city-card-link">Consultoria tribut&#225;ria para ind&#250;strias de Feira de Santana</a>
+        </div>
+        <div class="city-card" data-region="nordeste">
+          <div class="city-card-top">
+            <span class="city-card-pin"><svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span class="city-card-name">Recife</span>
+            <span class="city-card-state">PE</span>
+          </div>
+          <a href="/contador-recife/" class="city-card-link">Contabilidade e recupera&#231;&#227;o de cr&#233;ditos para ind&#250;strias em Recife</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- NORTE -->
+    <div class="region-group reveal" data-region="norte">
+      <div class="region-header">
+        <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span class="region-name">Norte</span>
+        <span class="region-count">(1 cidade)</span>
+      </div>
+      <div class="cities-grid">
+        <div class="city-card" data-region="norte">
+          <div class="city-card-top">
+            <span class="city-card-pin"><svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span class="city-card-name">Manaus</span>
+            <span class="city-card-state">AM</span>
+          </div>
+          <a href="/contador-manaus/" class="city-card-link">Contador para ind&#250;strias da Zona Franca de Manaus</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CENTRO-OESTE -->
+    <div class="region-group reveal" data-region="centro-oeste">
+      <div class="region-header">
+        <svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span class="region-name">Centro-Oeste</span>
+        <span class="region-count">(1 cidade)</span>
+      </div>
+      <div class="cities-grid">
+        <div class="city-card" data-region="centro-oeste">
+          <div class="city-card-top">
+            <span class="city-card-pin"><svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span class="city-card-name">Goi&#226;nia</span>
+            <span class="city-card-state">GO</span>
+          </div>
+          <a href="/contador-goiania/" class="city-card-link">Escrit&#243;rio de contabilidade tribut&#225;ria em Goi&#226;nia</a>
+        </div>
+        <div class="city-card" data-region="centro-oeste">
+          <div class="city-card-top">
+            <span class="city-card-pin"><svg viewBox="0 0 24 24" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span class="city-card-name">Rio de Janeiro</span>
+            <span class="city-card-state">RJ</span>
+          </div>
+          <a href="/contador-rio-de-janeiro/" class="city-card-link">Contabilidade industrial especializada no Rio de Janeiro</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- 7. HOW IT WORKS (--paper, white, dot grid) -->
+<section class="process-sec dot-grid">
+  <div class="container">
+    <div class="process-header reveal">
+      <div class="sec-label dk" style="color: var(--accent);">Atendimento Digital</div>
+      <h2 class="sec-h dk">Como funciona o atendimento remoto</h2>
+    </div>
+    <div class="process-grid">
+      <div class="process-card reveal d1">
+        <div class="process-num">1</div>
+        <div class="process-title">Diagn&#243;stico Gratuito</div>
+        <p class="process-desc">Analisamos sua situa&#231;&#227;o tribut&#225;ria por videoconfer&#234;ncia. Sem custo.</p>
+      </div>
+      <div class="process-card reveal d2">
+        <div class="process-num">2</div>
+        <div class="process-title">Proposta Personalizada</div>
+        <p class="process-desc">Voc&#234; recebe um plano com oportunidades de economia e recupera&#231;&#227;o de cr&#233;ditos.</p>
+      </div>
+      <div class="process-card reveal d3">
+        <div class="process-num">3</div>
+        <div class="process-title">Acesso Digital</div>
+        <p class="process-desc">Conectamos aos seus sistemas cont&#225;beis via acesso remoto seguro. Sua rotina n&#227;o muda.</p>
+      </div>
+      <div class="process-card reveal d4">
+        <div class="process-num">4</div>
+        <div class="process-title">Resultados Mensais</div>
+        <p class="process-desc">Relat&#243;rios claros todo m&#234;s. Cr&#233;ditos recuperados, carga reduzida, patrim&#244;nio protegido.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. CTA (--z2, dark, SVG cross pattern) -->
+<section class="cta-sec noise cross-pattern">
+  <div class="container">
+    <h2 class="cta-h reveal">N&#227;o encontrou sua cidade? Atendemos toda ind&#250;stria no Brasil.</h2>
+    <p class="cta-p reveal d1">Nosso atendimento &#233; 100% digital. Se sua ind&#250;stria est&#225; no Lucro Real ou Presumido, podemos proteger seu lucro de qualquer lugar.</p>
+    <a href="fale-com-especialista.html" class="btn-p reveal d2">
+      Solicitar Diagn&#243;stico Gratuito
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- 9. FOOTER -->
+<footer>
+  <div class="foot-in">
+    <div class="foot-top">
+      <div>
+        <div class="foot-brand">AM Cabral</div>
+        <p class="foot-tag">Intelig&#234;ncia tribut&#225;ria para ind&#250;strias que competem para vencer.</p>
+        <div class="foot-live">Monitoramento ativo</div>
+      </div>
+      <div>
+        <div class="fcol-h">A Empresa</div>
+        <ul class="flinks">
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="casos-de-sucesso.html">Casos de Sucesso</a></li>
+          <li><a href="depoimentos.html">Depoimentos</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fcol-h">Servi&#231;os</div>
+        <ul class="flinks">
+          <li><a href="servicos.html">Gest&#227;o Cont&#225;bil</a></li>
+          <li><a href="servicos.html">Recupera&#231;&#227;o de Cr&#233;ditos</a></li>
+          <li><a href="servicos.html">Holding</a></li>
+          <li><a href="servicos.html">Planejamento Tribut&#225;rio</a></li>
+          <li><a href="servicos.html">Consultoria Tribut&#225;ria</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fcol-h">Conte&#250;do</div>
+        <ul class="flinks">
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="reforma-tributaria.html">Reforma Tribut&#225;ria</a></li>
+          <li><a href="calculadora.html">Calculadora</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fcol-h">Regi&#245;es</div>
+        <ul class="flinks">
+          <li><a href="#">Para de Minas</a></li>
+          <li><a href="#">Belo Horizonte</a></li>
+          <li><a href="#">Contagem</a></li>
+          <li><a href="#">Betim</a></li>
+          <li><a href="#">Ver todas</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <div class="foot-legal">
+        <a href="politica-de-privacidade.html">Pol&#237;tica de Privacidade</a>
+        <a href="politica-de-cookies.html">Pol&#237;tica de Cookies</a>
+        <a href="termos-de-uso.html">Termos de Uso</a>
+      </div>
+      <div class="foot-copy">&#169; 2026 AM Cabral Contabilidade</div>
+      <div class="foot-socs">
+        <a href="#" target="_blank" aria-label="Instagram da AM Cabral">Instagram</a>
+        <a href="#" target="_blank" aria-label="LinkedIn da AM Cabral">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- 10. BOTTOM BAR -->
+<div class="bottom-bar" id="bottomBar">
+  <div class="bb-desktop">
+    <span class="bb-info"><span class="bb-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> Nota 4.9</span>
+    <div class="bb-sep"></div>
+    <span class="bb-info">120+ ind&#250;strias atendidas</span>
+    <div class="bb-sep"></div>
+    <span class="bb-info">R$ 12M recuperados em cr&#233;ditos</span>
+    <a href="diagnostico-gratuito.html" class="bb-cta">
+      Diagn&#243;stico Gratuito
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    </a>
+  </div>
+  <div class="bb-mobile">
+    <span class="bb-mobile-top"><span class="bb-mobile-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 4.9</span>
+    <a href="diagnostico-gratuito.html" class="bb-mobile-cta">Diagn&#243;stico Gratuito</a>
+    <a href="https://wa.me/5537999967558" class="bb-mobile-cta" style="background:#25D366;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.613.613l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.392 0-4.597-.804-6.36-2.155l-.444-.356-3.254 1.091 1.091-3.254-.356-.444A9.95 9.95 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+      WhatsApp
+    </a>
+    <div class="bb-mobile-proof">120+ ind&#250;strias atendidas. R$ 12M recuperados.</div>
+  </div>
+</div>
+
+<script>
+/* === LOADER === */
+(function() {
+  var loader = document.getElementById('loader');
+  var phrase = document.getElementById('loaderPhrase');
+  var line = document.getElementById('loaderLine');
+  var brand = document.getElementById('loaderBrand');
+  if (!loader || !phrase) return;
+  var words = 'Intelig\u00eancia tribut\u00e1ria para ind\u00fastrias que competem para vencer'.split(' ');
+  phrase.innerHTML = words.map(function(w) { return '<span>' + w + '</span>'; }).join(' ');
+  var spans = phrase.querySelectorAll('span');
+  document.body.style.overflow = 'hidden';
+  requestAnimationFrame(function() { if (line) line.classList.add('active'); });
+  spans.forEach(function(s, i) {
+    setTimeout(function() { s.classList.add('visible'); }, 200 + i * 200);
+  });
+  setTimeout(function() { if (brand) brand.classList.add('visible'); }, 200 + words.length * 200 + 200);
+  setTimeout(function() {
+    loader.classList.add('done');
+    document.body.style.overflow = '';
+    setTimeout(function() { loader.style.display = 'none'; }, 700);
+  }, 200 + words.length * 200 + 800);
+})();
+
+/* === NAV SCROLL + BAR === */
+var navEl = document.getElementById('nav');
+function updateNavTop() {
+  var b = document.getElementById('bar');
+  if (navEl) navEl.style.top = b ? b.offsetHeight + 'px' : '0px';
+}
+updateNavTop();
+var bottomBar = document.getElementById('bottomBar');
+window.addEventListener('scroll', function() {
+  if (navEl) navEl.classList.toggle('scrolled', window.scrollY > 80);
+  if (bottomBar) bottomBar.classList.toggle('visible', window.scrollY > window.innerHeight * 0.5);
+}, {passive: true});
+
+/* === MOBILE MENU === */
+var hambBtn = document.getElementById('hambBtn');
+var mobMenu = document.getElementById('mobMenu');
+var mobOverlay = document.getElementById('mobOverlay');
+if (hambBtn && mobMenu && mobOverlay) {
+  hambBtn.addEventListener('click', function() {
+    var isOpen = mobMenu.classList.contains('open');
+    mobMenu.classList.toggle('open');
+    mobOverlay.classList.toggle('open');
+    document.body.style.overflow = isOpen ? '' : 'hidden';
+  });
+  mobOverlay.addEventListener('click', function() {
+    mobMenu.classList.remove('open');
+    mobOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+  mobMenu.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      mobMenu.classList.remove('open');
+      mobOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+}
+
+/* === REVEAL ON SCROLL === */
+document.querySelectorAll('.reveal, .reveal-3d, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur').forEach(function(el) {
+  if (el) {
+    new IntersectionObserver(function(e) {
+      if (e[0].isIntersecting) { el.classList.add('in'); this.unobserve(el); }
+    }, {threshold: .1, rootMargin: '0px 0px -40px 0px'}).observe(el);
+  }
+});
+
+/* === SERVICES CAROUSEL ARROWS === */
+(function() {
+  var grid = document.getElementById('svcGrid');
+  var prevBtn = document.getElementById('svcPrev');
+  var nextBtn = document.getElementById('svcNext');
+  if (!grid || !prevBtn || !nextBtn) return;
+  var scrollAmt = 280;
+
+  function updateArrows() {
+    prevBtn.classList.toggle('hidden', grid.scrollLeft < 10);
+    nextBtn.classList.toggle('hidden', grid.scrollLeft + grid.clientWidth >= grid.scrollWidth - 10);
+  }
+
+  nextBtn.addEventListener('click', function() {
+    grid.scrollBy({ left: scrollAmt, behavior: 'smooth' });
+  });
+  prevBtn.addEventListener('click', function() {
+    grid.scrollBy({ left: -scrollAmt, behavior: 'smooth' });
+  });
+  grid.addEventListener('scroll', updateArrows);
+  updateArrows();
+})();
+
+/* === CITY FILTER === */
+(function() {
+  var pills = document.querySelectorAll('.filter-pill');
+  var regionGroups = document.querySelectorAll('.region-group');
+
+  pills.forEach(function(pill) {
+    pill.addEventListener('click', function() {
+      var filter = this.getAttribute('data-filter');
+
+      // Update active pill
+      pills.forEach(function(p) { p.classList.remove('active'); });
+      this.classList.add('active');
+
+      // Show/hide regions
+      regionGroups.forEach(function(group) {
+        var region = group.getAttribute('data-region');
+        if (filter === 'all' || region === filter) {
+          group.style.display = '';
+        } else {
+          group.style.display = 'none';
+        }
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,2761 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#060E1A">
+<title>Contabilidade Industrial em Pará de Minas | AC Contabilidade</title>
+<meta name="description" content="Contabilidade especializada para indústrias em Pará de Minas. 30 anos de experiência. Recuperação de créditos tributários, planejamento fiscal, holding patrimonial. Sede na Rua Major Fidélis, 244.">
+<meta property="og:title" content="Contabilidade Industrial em Pará de Minas | AC Contabilidade">
+<meta property="og:description" content="Sede da AC Contabilidade. 30 anos protegendo o lucro e o patrimônio das indústrias do centro-oeste mineiro. Diagnóstico tributário gratuito.">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="pt_BR">
+<link rel="canonical" href="https://amcabralblindagem.com.br/contabilidade-para-de-minas">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+/* === LOADER === */
+.loader {
+  position: fixed;
+  inset: 0;
+  background: var(--z0, #060E1A);
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 32px;
+}
+.loader-phrase {
+  font-family: 'Instrument Serif', Georgia, serif;
+  font-size: clamp(22px, 4.5vw, 42px);
+  font-style: italic;
+  color: rgba(255,255,255,.9);
+  letter-spacing: .01em;
+  text-align: center;
+  max-width: 600px;
+  padding: 0 24px;
+  overflow: hidden;
+}
+.loader-phrase span {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity .4s ease, transform .4s ease;
+}
+.loader-phrase span.visible { opacity: 1; transform: none; }
+.loader-brand {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: #3B82F6;
+  opacity: 0;
+  transition: opacity .6s ease .3s;
+}
+.loader-brand.visible { opacity: 1; }
+.loader-line {
+  width: 48px;
+  height: 1px;
+  background: rgba(255,255,255,.12);
+  position: relative;
+  overflow: hidden;
+}
+.loader-line::after {
+  content: '';
+  position: absolute;
+  left: 0; top: 0;
+  height: 100%;
+  width: 0%;
+  background: #3B82F6;
+  transition: width 1.8s cubic-bezier(.16,1,.3,1);
+}
+.loader-line.active::after { width: 100%; }
+.loader.done {
+  opacity: 0;
+  transition: opacity .6s ease;
+  pointer-events: none;
+}
+
+/* === VARIABLES === */
+:root {
+  --ink: #060E1A;
+  --ink2: #0A1628;
+  --paper: #F1F5F9;
+  --paper2: #E2E8F0;
+  --paper3: #CBD5E1;
+  --dim: #94A3B8;
+  --faint: #CBD5E1;
+  --accent: #3B82F6;
+  --accent2: #60A5FA;
+  --accent-bg: rgba(59,130,246,.08);
+  --dourado: #C9A84C;
+  --serif: 'Instrument Serif', Georgia, serif;
+  --sans: 'Inter', system-ui, sans-serif;
+  --radius: 16px;
+  --radius-sm: 8px;
+  --sec-pad: clamp(100px, 12vw, 160px);
+  --spring: cubic-bezier(.16, 1, .3, 1);
+  --z0: #060E1A;
+  --z1: #0A1628;
+  --z2: #0F2137;
+  --z3: #132D4A;
+  --z4: #1A3A5C;
+  --glow-accent: rgba(59, 130, 246, .14);
+  --glow-accent-edge: rgba(96, 165, 250, .07);
+  --glow-accent2: rgba(96, 165, 250, .06);
+  --border-z1: rgba(255, 255, 255, .055);
+  --border-z2: rgba(255, 255, 255, .08);
+  --border-z3: rgba(255, 255, 255, .11);
+  --toplight: inset 0 1px 0 rgba(255, 255, 255, .06);
+  --toplight-strong: inset 0 1px 0 rgba(255, 255, 255, .1);
+  --sp-2: 8px; --sp-3: 12px; --sp-4: 16px; --sp-6: 24px; --sp-8: 32px; --sp-10: 40px; --sp-12: 48px; --sp-16: 64px;
+  --r-sharp: 0px; --r-subtle: 4px; --r-card: 12px; --r-soft: 16px; --r-pill: 999px;
+  --zi-nav: 300; --zi-bar: 301; --zi-prog: 999;
+  --t-fast: 150ms; --t-normal: 250ms; --t-slow: 400ms; --t-slower: 750ms;
+  --shadow-2: 0 4px 12px rgba(0,0,0,.25), 0 2px 4px rgba(0,0,0,.2);
+  --shadow-3: 0 8px 24px rgba(0,0,0,.3), 0 4px 8px rgba(0,0,0,.2);
+  --shadow-5: 0 24px 80px rgba(0,0,0,.45), 0 12px 24px rgba(0,0,0,.25);
+}
+
+/* === RESET === */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+/* === GLOBAL === */
+body {
+  background: var(--z0);
+  color: var(--paper);
+  font-family: var(--sans);
+  font-size: 18px;
+  letter-spacing: -.008em;
+  line-height: 1.75;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  padding-bottom: 0;
+}
+a { text-decoration: none; color: inherit; }
+img { display: block; max-width: 100%; }
+
+/* === UTILITIES === */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 clamp(24px, 5vw, 80px);
+}
+
+/* Reveal animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .8s var(--spring), transform .8s var(--spring);
+}
+.reveal.in { opacity: 1; transform: none; }
+.reveal-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  transition: opacity .8s var(--spring), transform .8s var(--spring);
+}
+.reveal-left.in { opacity: 1; transform: none; }
+.reveal-right {
+  opacity: 0;
+  transform: translateX(40px);
+  transition: opacity .8s var(--spring), transform .8s var(--spring);
+}
+.reveal-right.in { opacity: 1; transform: none; }
+.reveal-scale {
+  opacity: 0;
+  transform: scale(.85);
+  transition: opacity .7s var(--spring), transform .7s var(--spring);
+}
+.reveal-scale.in { opacity: 1; transform: none; }
+.reveal-blur {
+  opacity: 0;
+  filter: blur(8px);
+  transform: translateY(12px);
+  transition: opacity .9s var(--spring), filter .9s var(--spring), transform .9s var(--spring);
+}
+.reveal-blur.in { opacity: 1; filter: blur(0); transform: none; }
+.reveal-3d {
+  opacity: 0;
+  transform: translateY(16px) rotateX(6deg);
+  transform-origin: top center;
+  transform-style: preserve-3d;
+  transition: opacity var(--t-slower) var(--spring), transform var(--t-slower) var(--spring);
+  will-change: opacity, transform;
+}
+.reveal-3d.in { opacity: 1; transform: none; will-change: auto; }
+
+/* Stagger delays */
+.d1 { transition-delay: .08s; }
+.d2 { transition-delay: .16s; }
+.d3 { transition-delay: .24s; }
+.d4 { transition-delay: .24s; }
+.d5 { transition-delay: .30s; }
+.d6 { transition-delay: .36s; }
+
+/* Section labels */
+.sec-label {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.sec-label.lt { color: var(--dim); }
+.sec-label.dk { color: var(--accent); }
+.sec-h {
+  font-family: var(--serif);
+  font-size: clamp(32px, 4.5vw, 52px);
+  line-height: 1.1;
+  letter-spacing: -.02em;
+}
+.sec-h.lt { color: var(--paper); }
+.sec-h.dk { color: var(--ink); }
+.sec-h em { font-style: italic; }
+
+/* Primary button */
+.btn-p {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  padding: 14px 32px;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--r-subtle);
+  transition: transform var(--t-normal) var(--spring), box-shadow var(--t-normal);
+  font-family: var(--sans);
+}
+.btn-p:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 32px rgba(59,130,246,.25), 0 2px 8px rgba(59,130,246,.15);
+}
+.btn-p:active { transform: translateY(0) scale(.98); transition-duration: .1s; }
+
+.btn-wa {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #25D366;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  padding: 14px 32px;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--r-subtle);
+  transition: transform var(--t-normal) var(--spring), box-shadow var(--t-normal);
+  font-family: var(--sans);
+}
+.btn-wa:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 32px rgba(37,211,102,.25);
+}
+
+/* Noise overlay */
+.noise { position: relative; }
+.noise::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.045'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  mix-blend-mode: screen;
+  opacity: .5;
+  transform: translate3d(0, 0, 0);
+}
+.noise > * { position: relative; z-index: 1; }
+
+/* Dot grid pattern for white sections */
+.dot-grid { position: relative; }
+.dot-grid::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, #CBD5E1 1px, transparent 1px);
+  background-size: 24px 24px;
+  opacity: .35;
+  pointer-events: none;
+}
+.dot-grid > * { position: relative; z-index: 1; }
+
+/* Cross pattern for dark sections */
+.cross-pattern { position: relative; overflow: hidden; }
+.cross-pattern::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0v40M0 20h40' stroke='%23ffffff' stroke-width='.3' opacity='.06'/%3E%3C/svg%3E");
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+.cross-pattern > * { position: relative; z-index: 1; }
+
+/* === BAR (announcement) === */
+#bar {
+  background: #050B15;
+  border-bottom: 1px solid #0F2137;
+  padding: 9px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  font-size: 13px;
+  color: #94A3B8;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--zi-bar);
+}
+.bar-pill {
+  background: transparent;
+  border: 1px solid #0F2137;
+  color: #3B82F6;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  padding: 2px 10px;
+  border-radius: 99px;
+}
+#bar a {
+  color: #3B82F6;
+  border-bottom: 1px solid rgba(59, 130, 246, .25);
+  transition: color .2s;
+}
+#bar a:hover { color: #93BBFD; }
+.bar-x {
+  position: absolute;
+  right: 40px;
+  background: none;
+  border: none;
+  color: #4a5568;
+  font-size: 18px;
+  cursor: pointer;
+  transition: color .2s;
+}
+.bar-x:hover { color: #888; }
+
+/* === NAV === */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--zi-nav);
+  height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  background: transparent;
+  backdrop-filter: none;
+  border-bottom: 1px solid transparent;
+  transition: top .3s, background .3s, border-color .3s, backdrop-filter .3s;
+  will-change: background, backdrop-filter;
+}
+nav.scrolled {
+  background: rgba(6, 14, 26, .9);
+  backdrop-filter: blur(28px) saturate(180%);
+  -webkit-backdrop-filter: blur(28px) saturate(180%);
+  border-bottom-color: rgba(255, 255, 255, .07);
+  box-shadow: var(--toplight), 0 1px 20px rgba(0, 0, 0, .3);
+}
+.logo {
+  font-family: var(--serif);
+  font-size: 19px;
+  letter-spacing: .05em;
+  color: var(--paper);
+  transition: opacity .2s;
+}
+.logo:hover { opacity: .6; }
+.nav-links { display: flex; list-style: none; align-items: center; }
+.nav-btn {
+  background: none;
+  border: none;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, .55);
+  padding: 8px 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: color .2s;
+  white-space: nowrap;
+}
+.nav-btn:hover { color: var(--paper); }
+.nav-btn.active { color: var(--paper); }
+.nav-r { display: flex; align-items: center; gap: 12px; }
+.nav-cta {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  background: var(--paper);
+  color: var(--ink);
+  padding: 10px 24px;
+  border: none;
+  cursor: pointer;
+  font-family: var(--sans);
+  transition: transform .2s, box-shadow .2s;
+}
+.nav-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 20px rgba(241, 245, 249, .15);
+}
+.hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+}
+.hamburger span { display: block; width: 22px; height: 1.5px; background: var(--paper); }
+.skip-link { position: absolute; top: -100%; left: 16px; background: var(--accent); color: #fff; padding: 8px 16px; border-radius: 4px; z-index: 100000; font-size: 14px; transition: top .2s; }
+.skip-link:focus { top: 8px; }
+
+/* === MOBILE MENU === */
+.mob-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.6);
+  z-index: 298;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .3s;
+}
+.mob-overlay.open { opacity: 1; pointer-events: auto; }
+.mob-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 280px;
+  height: 100%;
+  background: var(--z1);
+  border-left: 1px solid var(--border-z2);
+  z-index: 299;
+  transform: translateX(100%);
+  transition: transform .4s var(--spring);
+  padding: 80px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.mob-menu.open { transform: translateX(0); }
+.mob-menu a {
+  display: block;
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(255,255,255,.6);
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-z1);
+  transition: color .2s;
+}
+.mob-menu a:hover { color: var(--paper); }
+.mob-menu a.active { color: var(--paper); }
+.mob-menu-cta {
+  margin-top: auto;
+  display: block;
+  text-align: center;
+  background: var(--paper);
+  color: var(--ink);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 14px 24px;
+}
+
+/* === HERO === */
+.city-hero {
+  background: var(--z2);
+  padding: 140px 0 80px;
+  position: relative;
+  overflow: hidden;
+}
+.city-hero::before {
+  content: '';
+  position: absolute;
+  top: -20%;
+  right: -10%;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--glow-accent) 0%, transparent 65%);
+  pointer-events: none;
+}
+.city-hero::after {
+  content: '';
+  position: absolute;
+  bottom: -15%;
+  left: -5%;
+  width: 400px;
+  height: 400px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--glow-accent2) 0%, transparent 65%);
+  pointer-events: none;
+}
+.city-hero .container { position: relative; z-index: 1; }
+
+.hero-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--dim);
+  margin-bottom: 24px;
+  opacity: 0;
+  animation: up .9s .1s var(--spring) forwards;
+}
+.hero-breadcrumb a { color: var(--dim); transition: color .2s; }
+.hero-breadcrumb a:hover { color: var(--paper); }
+.hero-breadcrumb svg { width: 12px; height: 12px; opacity: .5; }
+
+.hero-tag {
+  display: inline-block;
+  background: rgba(59,130,246,.12);
+  border: 1px solid rgba(59,130,246,.25);
+  color: var(--accent2);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: var(--r-pill);
+  margin-bottom: 24px;
+  opacity: 0;
+  animation: up .9s .15s var(--spring) forwards;
+}
+
+.hero-h1 {
+  font-family: var(--serif);
+  font-size: clamp(36px, 5vw, 56px);
+  line-height: 1.05;
+  letter-spacing: -.028em;
+  color: var(--paper);
+  margin-bottom: 20px;
+  max-width: 700px;
+  opacity: 0;
+  animation: up .9s .22s var(--spring) forwards;
+}
+
+.hero-sub {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.7;
+  color: rgba(255,255,255,.6);
+  max-width: 640px;
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: up .9s .32s var(--spring) forwards;
+}
+
+.hero-author {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: up .8s .4s var(--spring) forwards;
+}
+.hero-author-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--z3);
+  border: 2px solid var(--border-z3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-size: 16px;
+  font-style: italic;
+  color: var(--accent2);
+  flex-shrink: 0;
+}
+.hero-author-info { display: flex; flex-direction: column; gap: 2px; }
+.hero-author-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--paper);
+}
+.hero-author-role {
+  font-size: 13px;
+  color: var(--dim);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.hero-author-role span {
+  display: inline-block;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: var(--dim);
+}
+
+.hero-badges {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
+  opacity: 0;
+  animation: up .8s .48s var(--spring) forwards;
+}
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--z3);
+  border: 1px solid var(--border-z2);
+  border-radius: var(--r-pill);
+  padding: 8px 20px;
+  font-size: 14px;
+  color: var(--paper);
+  white-space: nowrap;
+}
+.hero-badge-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--dourado);
+}
+.hero-badge-crc {
+  color: var(--accent2);
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.hero-cta-wrap {
+  opacity: 0;
+  animation: up .8s .55s var(--spring) forwards;
+}
+.hero-small {
+  display: block;
+  font-size: 13px;
+  color: var(--dim);
+  margin-top: 12px;
+}
+
+/* === CREDENTIALS MARQUEE === */
+.cred-strip {
+  background: var(--z0);
+  border-top: 1px solid var(--border-z1);
+  border-bottom: 1px solid var(--border-z1);
+  padding: 14px 0;
+  overflow: hidden;
+  position: relative;
+}
+.cred-track {
+  display: flex;
+  gap: 0;
+  white-space: nowrap;
+  animation: marquee 40s linear infinite;
+}
+.cred-item {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--dim);
+  padding: 0 16px;
+  flex-shrink: 0;
+}
+.cred-dot {
+  color: var(--accent);
+  padding: 0 4px;
+  flex-shrink: 0;
+}
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* === AUTHORITY INTRO === */
+.authority-sec {
+  background: var(--paper);
+  padding: var(--sec-pad) 0;
+  color: var(--ink);
+}
+.authority-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+.authority-text p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #334155;
+  margin-bottom: 20px;
+}
+.authority-text p:last-child { margin-bottom: 0; }
+
+.stats-card {
+  background: var(--z2);
+  border: 1px solid var(--border-z2);
+  border-radius: var(--radius);
+  padding: 40px 32px;
+}
+.stat-row {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--border-z1);
+}
+.stat-row:first-child { padding-top: 0; }
+.stat-row:last-child { border-bottom: none; padding-bottom: 0; }
+.stat-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 42px;
+  color: var(--dourado);
+  line-height: 1.1;
+}
+.stat-label {
+  font-size: 14px;
+  color: var(--dim);
+  margin-top: 4px;
+}
+
+/* === SERVICES CAROUSEL === */
+.services-sec {
+  background: var(--paper);
+  padding: var(--sec-pad) 0;
+  color: var(--ink);
+}
+.services-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.services-head-left { flex: 1; min-width: 0; }
+.services-arrows {
+  display: flex;
+  gap: 8px;
+}
+.services-arrow {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid #E2E8F0;
+  background: #fff;
+  color: var(--ink);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background .2s, border-color .2s;
+}
+.services-arrow:hover {
+  background: #F8FAFC;
+  border-color: var(--accent);
+}
+.services-arrow svg { width: 18px; height: 18px; }
+
+.services-track {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 8px;
+}
+.services-track::-webkit-scrollbar { display: none; }
+
+.svc-card {
+  min-width: 300px;
+  max-width: 340px;
+  flex-shrink: 0;
+  scroll-snap-align: start;
+  background: #fff;
+  border: 1px solid #E2E8F0;
+  border-radius: var(--radius);
+  padding: 32px 28px;
+  transition: transform .3s var(--spring), border-color .3s, box-shadow .3s;
+}
+.svc-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+  box-shadow: 0 12px 40px rgba(0,0,0,.08);
+}
+.svc-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: var(--r-card);
+  background: rgba(59,130,246,.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+.svc-icon svg { width: 24px; height: 24px; color: var(--accent); }
+.svc-title {
+  font-family: var(--serif);
+  font-size: 22px;
+  color: var(--ink);
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+.svc-desc {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #64748B;
+  margin-bottom: 20px;
+}
+.svc-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: gap .2s;
+}
+.svc-link:hover { gap: 10px; }
+.svc-link svg { width: 14px; height: 14px; }
+
+/* === LOCAL CONTEXT === */
+.local-sec {
+  background: var(--paper);
+  padding: var(--sec-pad) 0;
+  color: var(--ink);
+}
+.local-content {
+  max-width: 760px;
+}
+.local-content p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #334155;
+  margin-bottom: 24px;
+}
+.local-cities {
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid var(--paper2);
+}
+.local-cities p {
+  font-size: 16px;
+  color: #475569;
+  line-height: 1.8;
+}
+.local-cities a {
+  color: var(--accent);
+  font-weight: 500;
+  border-bottom: 1px solid rgba(59,130,246,.25);
+  transition: border-color .2s;
+}
+.local-cities a:hover { border-color: var(--accent); }
+
+/* === NUMBERS IMPACT === */
+.numbers-sec {
+  background: var(--z2);
+  padding: 80px 0;
+}
+.numbers-grid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+  flex-wrap: wrap;
+}
+.numbers-item {
+  text-align: center;
+  padding: 24px 48px;
+  flex-shrink: 0;
+}
+.numbers-sep {
+  width: 1px;
+  height: 56px;
+  background: var(--border-z2);
+  flex-shrink: 0;
+}
+.numbers-val {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: clamp(36px, 5vw, 52px);
+  color: var(--dourado);
+  line-height: 1.1;
+}
+.numbers-val.accent-color { color: var(--accent); }
+.numbers-label {
+  font-size: 14px;
+  color: var(--dim);
+  margin-top: 6px;
+}
+
+/* === PROCESS === */
+.process-sec {
+  background: var(--paper);
+  padding: var(--sec-pad) 0;
+  color: var(--ink);
+}
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  margin-top: 48px;
+}
+.process-card {
+  background: #fff;
+  border: 1px solid var(--paper2);
+  border-radius: var(--radius);
+  padding: 32px 24px;
+  transition: transform .3s var(--spring), box-shadow .3s;
+}
+.process-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,.08);
+}
+.process-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 48px;
+  color: var(--dourado);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+.process-title {
+  font-family: var(--serif);
+  font-size: 20px;
+  color: var(--ink);
+  margin-bottom: 12px;
+  line-height: 1.2;
+}
+.process-desc {
+  font-size: 15px;
+  line-height: 1.7;
+  color: #475569;
+}
+
+/* === FAQ === */
+.faq-sec {
+  background: var(--z1);
+  padding: var(--sec-pad) 0;
+}
+.faq-list {
+  max-width: 800px;
+  margin: 48px auto 0;
+}
+.faq-item {
+  border-bottom: 1px solid var(--border-z1);
+}
+.faq-q {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 24px 0;
+  background: none;
+  border: none;
+  font-family: var(--sans);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--paper);
+  text-align: left;
+  cursor: pointer;
+  gap: 16px;
+  transition: color .2s;
+}
+.faq-q:hover { color: var(--accent2); }
+.faq-q svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+  color: var(--dim);
+  transition: transform .3s var(--spring);
+}
+.faq-item.open .faq-q svg { transform: rotate(45deg); }
+.faq-a {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .4s var(--spring), padding .4s var(--spring);
+}
+.faq-item.open .faq-a {
+  max-height: 300px;
+  padding-bottom: 24px;
+}
+.faq-a p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--dim);
+}
+
+/* === CTA FINAL === */
+.cta-sec {
+  background: var(--z2);
+  padding: var(--sec-pad) 0;
+  text-align: center;
+}
+.cta-sec .sec-h { margin-bottom: 20px; max-width: 700px; margin-left: auto; margin-right: auto; }
+.cta-sec p {
+  font-size: 18px;
+  line-height: 1.7;
+  color: var(--dim);
+  max-width: 600px;
+  margin: 0 auto 36px;
+}
+.cta-btns {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+.cta-info {
+  font-size: 14px;
+  color: var(--dim);
+  line-height: 1.6;
+}
+
+/* === FOOTER === */
+footer {
+  background: #040A14;
+  border-top: 1px solid #0A1628;
+  padding: 64px 40px 32px;
+}
+.foot-in { max-width: 1200px; margin: 0 auto; }
+.foot-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 64px;
+}
+.foot-brand {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-style: italic;
+  color: var(--paper);
+  margin-bottom: 8px;
+}
+.foot-tag {
+  font-size: 14px;
+  font-weight: 300;
+  color: #4a5568;
+  line-height: 1.7;
+  max-width: 220px;
+  margin-bottom: 32px;
+}
+.foot-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #2d3748;
+  border: 1px solid #1a2332;
+  padding: 4px 10px;
+  border-radius: 4px;
+}
+.foot-live::before {
+  content: '';
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #3B82F6;
+  animation: pulse 2.5s infinite;
+}
+.fcol-h {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: #4a5568;
+  margin-bottom: 16px;
+}
+.flinks { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.flinks a { font-size: 14px; font-weight: 300; color: #4a5568; transition: color .2s; }
+.flinks a:hover { color: var(--paper); }
+.foot-bot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 32px;
+  border-top: 1px solid #0A1628;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.foot-copy { font-size: 13px; color: #2d3748; }
+.foot-socs { display: flex; gap: 24px; }
+.foot-socs a {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #2d3748;
+  transition: color .2s;
+}
+.foot-socs a:hover { color: var(--paper); }
+.foot-legal { width: 100%; display: flex; gap: 24px; flex-wrap: wrap; margin-bottom: 8px; }
+.foot-legal a { font-size: 12px; color: #2d3748; text-decoration: underline; text-underline-offset: 2px; transition: color .2s; }
+.foot-legal a:hover { color: var(--paper); }
+
+/* === BOTTOM BAR === */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 95;
+  background: rgba(241, 245, 249, .92);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 -1px 0 rgba(0, 0, 0, .06);
+  transform: translateY(100%);
+  transition: transform .5s var(--spring);
+}
+.bottom-bar.visible { transform: translateY(0); }
+.bb-desktop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 14px 40px;
+}
+.bb-info { font-size: 14px; font-weight: 500; color: var(--dim); display: inline-flex; align-items: center; gap: 6px; }
+.bb-stars { color: #F59E0B; font-size: 14px; letter-spacing: 1px; }
+.bb-sep { width: 1px; height: 20px; background: var(--faint); }
+.bb-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 28px;
+  border-radius: 50px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background .2s;
+}
+.bb-cta:hover { background: #2563EB; }
+.bb-cta svg { width: 16px; height: 16px; }
+.bb-mobile { display: none; }
+
+/* === TYPOGRAPHY === */
+.sec-h, .hero-h1 { text-wrap: balance; }
+p, .hero-sub { text-wrap: pretty; }
+
+/* Performance */
+.reveal { will-change: opacity, transform; }
+.reveal.in, .reveal-left.in, .reveal-right.in, .reveal-scale.in, .reveal-blur.in { will-change: auto; }
+
+/* Retina noise */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .noise::after { background-size: 150px 150px; opacity: .38; }
+}
+
+/* === DIFERENCIAL === */
+.diferencial-sec {
+  background: var(--z1);
+  padding: var(--sec-pad) 0;
+}
+.diferencial-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+.diferencial-text p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--dim);
+  margin-bottom: 20px;
+}
+.diferencial-text p:last-child { margin-bottom: 0; }
+.diferencial-card {
+  background: var(--z2);
+  border: 1px solid var(--border-z2);
+  border-radius: 16px;
+  padding: 40px 32px;
+}
+.diferencial-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.diferencial-list li {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 15px;
+  color: var(--paper);
+  line-height: 1.5;
+}
+.diferencial-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+/* === COMPARATIVO === */
+.comparativo-sec {
+  background: var(--z2);
+  padding: var(--sec-pad) 0;
+}
+.comparativo-wrap {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.comparativo-table-wrap {
+  margin-top: 48px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.comparativo-table {
+  width: 100%;
+  min-width: 600px;
+  border-collapse: collapse;
+}
+.comparativo-table thead th {
+  background: var(--z3);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  padding: 14px 20px;
+  text-align: left;
+}
+.comparativo-table thead th:first-child { color: var(--paper); border-radius: 8px 0 0 0; }
+.comparativo-table thead th:nth-child(2) { color: var(--dim); }
+.comparativo-table thead th:nth-child(3) { color: var(--accent2); border-radius: 0 8px 0 0; }
+.comparativo-table tbody td {
+  padding: 16px 20px;
+  font-size: 15px;
+  line-height: 1.6;
+  border-bottom: 1px solid var(--border-z2);
+  vertical-align: top;
+}
+.comparativo-table tbody td:first-child { font-weight: 600; color: var(--paper); }
+.comparativo-table tbody td:nth-child(2) { color: var(--dim); }
+.comparativo-table tbody td:nth-child(3) { color: var(--accent2); }
+.comparativo-table tbody tr:last-child td { border-bottom: none; }
+
+/* === CASES === */
+.cases-sec {
+  background: var(--paper);
+  padding: var(--sec-pad) 0;
+  color: var(--ink);
+}
+.cases-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 48px;
+}
+.case-card {
+  background: #fff;
+  border: 1px solid #E2E8F0;
+  border-radius: 16px;
+  padding: 32px 28px;
+  transition: transform .3s var(--spring), box-shadow .3s;
+}
+.case-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 40px rgba(0,0,0,.08);
+}
+.case-pill {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  background: rgba(59,130,246,.1);
+  color: var(--accent);
+  padding: 4px 12px;
+  border-radius: var(--r-pill);
+  margin-bottom: 16px;
+}
+.case-title {
+  font-family: var(--serif);
+  font-size: 20px;
+  color: var(--ink);
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+.case-stat {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 36px;
+  color: var(--dourado);
+  line-height: 1.1;
+  margin-bottom: 4px;
+}
+.case-stat-label {
+  font-size: 14px;
+  color: #64748B;
+  margin-bottom: 12px;
+}
+.case-detail {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #64748B;
+  margin-bottom: 16px;
+}
+.case-link {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: gap .2s;
+}
+.case-link:hover { gap: 10px; }
+
+/* === SETORES MARQUEE === */
+.setores-marquee {
+  background: var(--z0);
+  border-top: 1px solid var(--border-z1);
+  border-bottom: 1px solid var(--border-z1);
+  padding: 20px 0;
+  overflow: hidden;
+  position: relative;
+}
+.setores-track {
+  display: flex;
+  gap: 0;
+  white-space: nowrap;
+  animation: setoresScroll 30s linear infinite;
+}
+.setores-item {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--dim);
+  padding: 0 16px;
+  flex-shrink: 0;
+}
+.setores-sep {
+  color: var(--accent);
+  padding: 0 4px;
+  flex-shrink: 0;
+}
+@keyframes setoresScroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+/* === DEPOIMENTOS === */
+.depoimentos-sec {
+  background: var(--z1);
+  padding: var(--sec-pad) 0;
+}
+.depoimentos-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 48px;
+}
+.depo-card {
+  background: var(--z2);
+  border: 1px solid var(--border-z2);
+  border-radius: 16px;
+  border-left: 3px solid var(--accent);
+  padding: 32px 28px;
+}
+.depo-stars {
+  color: #F59E0B;
+  font-size: 16px;
+  letter-spacing: 2px;
+  margin-bottom: 16px;
+}
+.depo-quote {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--paper);
+  margin-bottom: 20px;
+}
+.depo-attr {
+  font-size: 13px;
+  color: var(--dim);
+  line-height: 1.5;
+}
+.depo-role { font-weight: 600; color: var(--paper); display: block; margin-bottom: 2px; font-style: normal; font-family: var(--sans); font-size: 13px; }
+
+/* === CONTENT HUB === */
+.hub-sec {
+  background: var(--paper);
+  padding: var(--sec-pad) 0;
+  color: var(--ink);
+}
+.hub-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  margin-top: 48px;
+}
+.hub-card {
+  background: #fff;
+  border: 1px solid #E2E8F0;
+  border-radius: 12px;
+  padding: 28px 24px;
+  transition: transform .3s var(--spring), border-color .3s, box-shadow .3s;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.hub-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+  box-shadow: 0 12px 40px rgba(0,0,0,.08);
+}
+.hub-title {
+  font-family: var(--serif);
+  font-size: 18px;
+  color: var(--ink);
+  line-height: 1.2;
+}
+.hub-desc {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #64748B;
+  flex: 1;
+}
+.hub-arrow {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: gap .2s;
+}
+.hub-arrow:hover { gap: 8px; }
+
+/* === FORM MULTI-STEP === */
+.form-final-sec {
+  background: var(--z2);
+  padding: var(--sec-pad) 0;
+}
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+}
+.form-pitch h2 {
+  font-family: var(--serif);
+  font-size: clamp(32px, 4.5vw, 48px);
+  line-height: 1.1;
+  letter-spacing: -.02em;
+  color: var(--paper);
+  margin-bottom: 20px;
+}
+.form-pitch p {
+  font-size: 18px;
+  line-height: 1.8;
+  color: var(--dim);
+  margin-bottom: 32px;
+}
+.form-checks {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+.form-checks li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 15px;
+  color: var(--paper);
+  line-height: 1.5;
+}
+.form-checks li svg {
+  width: 20px;
+  height: 20px;
+  color: #22C55E;
+  flex-shrink: 0;
+}
+.form-card {
+  background: var(--z3);
+  border: 1px solid var(--border-z3);
+  border-radius: 16px;
+  padding: 40px 32px;
+  backdrop-filter: blur(12px);
+}
+.form-steps-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+.form-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--border-z3);
+  transition: background .3s;
+}
+.form-dot.active { background: var(--accent); }
+.form-dot.done { background: #22C55E; }
+.form-step { display: none; }
+.form-step.active { display: block; }
+.form-step-title {
+  font-family: var(--serif);
+  font-size: 22px;
+  color: var(--paper);
+  margin-bottom: 24px;
+  text-align: center;
+}
+.form-group {
+  margin-bottom: 16px;
+}
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--dim);
+  margin-bottom: 6px;
+  letter-spacing: .03em;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  background: var(--z4);
+  border: 1px solid var(--border-z3);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-family: var(--sans);
+  font-size: 15px;
+  color: var(--paper);
+  outline: none;
+  transition: border-color .2s;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--accent);
+}
+.form-group textarea { min-height: 80px; resize: vertical; }
+.form-group select { appearance: none; cursor: pointer; }
+.form-radios {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.form-radio-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 16px;
+  background: var(--z4);
+  border: 1px solid var(--border-z3);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color .2s, background .2s;
+}
+.form-radio-item:hover { border-color: var(--accent); }
+.form-radio-item input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
+  flex-shrink: 0;
+}
+.form-radio-item span {
+  font-size: 15px;
+  color: var(--paper);
+}
+.form-nav {
+  display: flex;
+  gap: 12px;
+  margin-top: 24px;
+}
+.form-btn-next {
+  flex: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  padding: 14px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: var(--sans);
+  transition: transform .2s var(--spring), box-shadow .2s;
+}
+.form-btn-next:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(59,130,246,.25);
+}
+.form-btn-back {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: transparent;
+  color: var(--dim);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 14px 20px;
+  border: 1px solid var(--border-z3);
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: var(--sans);
+  transition: color .2s, border-color .2s;
+}
+.form-btn-back:hover { color: var(--paper); border-color: var(--paper); }
+.form-privacy {
+  font-size: 12px;
+  color: var(--dim);
+  text-align: center;
+  margin-top: 16px;
+  line-height: 1.5;
+}
+.form-privacy a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+
+/* === KEYFRAMES === */
+@keyframes up {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: .4; transform: scale(.75); }
+}
+
+/* === REDUCED MOTION === */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+  .reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur, .reveal-3d { opacity: 1 !important; transform: none !important; filter: none !important; }
+}
+
+/* === RESPONSIVE: TABLET (960px) === */
+@media (max-width: 960px) {
+  nav { padding: 0 20px; }
+  .nav-links, .nav-cta { display: none; }
+  .hamburger { display: flex; }
+  #bar { display: none; }
+  nav { top: 0 !important; }
+  body { padding-bottom: 66px; }
+  :root { --sec-pad: clamp(64px, 10vw, 100px); }
+
+  .bb-desktop { display: none; }
+  .bb-mobile {
+    display: flex; align-items: center; justify-content: space-between; gap: 12px;
+    padding: 8px 16px calc(8px + env(safe-area-inset-bottom, 4px));
+  }
+  .bb-mobile-top { font-size: 11px; font-weight: 500; color: var(--dim); line-height: 1.3; display: flex; align-items: center; gap: 4px; }
+  .bb-mobile-stars { color: #F59E0B; font-size: 11px; letter-spacing: 1px; }
+  .bb-mobile { flex-wrap: wrap; justify-content: center; gap: 6px 10px; }
+  .bb-mobile-proof { font-size: 10px; color: var(--dim); width: 100%; text-align: center; }
+  .bb-mobile-cta {
+    display: flex; align-items: center; justify-content: center; gap: 5px;
+    padding: 8px 16px; border-radius: 50px;
+    background: var(--accent); color: #fff; font-size: 11px; font-weight: 600;
+    border: none; cursor: pointer; white-space: nowrap; flex-shrink: 0;
+  }
+
+  .city-hero { padding: 90px 20px 48px; }
+  .authority-grid { grid-template-columns: 1fr; gap: 40px; }
+  .process-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
+  .numbers-grid { gap: 0; }
+  .numbers-item { padding: 20px 32px; }
+  .svc-card { min-width: 280px; }
+  .foot-top { grid-template-columns: 1fr 1fr; }
+
+  .diferencial-grid { grid-template-columns: 1fr; gap: 40px; }
+  .cases-grid { grid-template-columns: repeat(2, 1fr); }
+  .depoimentos-grid { grid-template-columns: repeat(2, 1fr); }
+  .hub-grid { grid-template-columns: repeat(2, 1fr); }
+  .form-grid { grid-template-columns: 1fr; gap: 40px; }
+  .comparativo-table { min-width: 560px; }
+
+  .city-hero, .authority-sec, .services-sec, .local-sec, .numbers-sec, .process-sec, .faq-sec,
+  .diferencial-sec, .comparativo-sec, .cases-sec, .depoimentos-sec, .hub-sec, .form-final-sec,
+  footer { padding-left: 20px !important; padding-right: 20px !important; }
+}
+
+/* === RESPONSIVE: MOBILE (768px) === */
+@media (max-width: 768px) {
+  .hero-badges { flex-direction: column; align-items: flex-start; }
+  .numbers-grid { flex-direction: column; align-items: center; }
+  .numbers-sep { width: 56px; height: 1px; }
+  .process-grid { grid-template-columns: 1fr; }
+  .cases-grid { grid-template-columns: 1fr; }
+  .depoimentos-grid { grid-template-columns: 1fr; }
+  .hub-grid { grid-template-columns: 1fr; overflow-x: auto; scroll-snap-type: x mandatory; gap: 16px; flex-wrap: nowrap; display: flex; }
+  .hub-card { min-width: 260px; flex-shrink: 0; scroll-snap-align: start; }
+}
+
+/* === RESPONSIVE: SMALL MOBILE (480px) === */
+@media (max-width: 480px) {
+  .hero-h1 { font-size: 28px; line-height: 1.1; }
+  .hero-sub { font-size: 16px; }
+  .sec-h { font-size: clamp(24px, 6.5vw, 32px); }
+  .foot-top { grid-template-columns: 1fr; }
+  .loader-phrase { font-size: clamp(18px, 5vw, 28px); }
+  .svc-card { min-width: 260px; max-width: 100%; }
+  .numbers-item { padding: 16px 24px; }
+  .case-stat { font-size: 28px; }
+  .form-card { padding: 28px 20px; }
+  .hub-card { min-width: 240px; }
+}
+</style>
+    <meta property="og:image" content="https://amcabralblindagem.com.br/assets/og-image.webp">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+
+    <!-- Schema Markup JSON-LD @graph -->
+    <script type="application/ld+json">
+    {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": [
+        "LocalBusiness",
+        "ProfessionalService"
+      ],
+      "@id": "https://amcabralblindagem.com.br/contabilidade-para-de-minas/#localbusiness",
+      "name": "AC Contabilidade e Consultoria — Pará de Minas",
+      "legalName": "AC Contabilidade e Consultoria LTDA",
+      "taxID": "34733620000151",
+      "url": "https://amcabralblindagem.com.br/contabilidade-para-de-minas/",
+      "telephone": [
+        "+55 37 99996-7558"
+      ],
+      "email": "contato@amcabralblindagem.com.br",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Rua Major Fidélis, 244, Centro",
+        "addressLocality": "Pará de Minas",
+        "addressRegion": "MG",
+        "postalCode": "35660-109",
+        "addressCountry": "BR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -19.8607,
+        "longitude": -44.6089
+      },
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday"
+          ],
+          "opens": "08:00",
+          "closes": "18:00"
+        }
+      ],
+      "areaServed": [
+        {
+          "@type": "City",
+          "name": "Pará de Minas",
+          "sameAs": "https://www.wikidata.org/wiki/Q2913906"
+        },
+        {
+          "@type": "City",
+          "name": "Itaúna"
+        },
+        {
+          "@type": "City",
+          "name": "Divinópolis"
+        },
+        {
+          "@type": "City",
+          "name": "Sete Lagoas"
+        },
+        {
+          "@type": "City",
+          "name": "Bom Despacho"
+        }
+      ],
+      "parentOrganization": {
+        "@id": "https://amcabralblindagem.com.br/#organization"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/in/amanda-cabral-de-oliveira-82183a179/"
+      ]
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://amcabralblindagem.com.br/contabilidade-para-de-minas/#webpage",
+      "url": "https://amcabralblindagem.com.br/contabilidade-para-de-minas/",
+      "name": "Contabilidade em Pará de Minas — AC Contabilidade e Consultoria",
+      "description": "Contabilidade tributária especializada para empresas em Pará de Minas, MG. Recuperação de créditos, planejamento tributário e holding patrimonial.",
+      "isPartOf": {
+        "@id": "https://amcabralblindagem.com.br/#website"
+      },
+      "publisher": {
+        "@id": "https://amcabralblindagem.com.br/#organization"
+      },
+      "mainEntity": {
+        "@id": "https://amcabralblindagem.com.br/contabilidade-para-de-minas/#localbusiness"
+      },
+      "breadcrumb": {
+        "@id": "https://amcabralblindagem.com.br/contabilidade-para-de-minas/#breadcrumb"
+      },
+      "inLanguage": "pt-BR"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": "https://amcabralblindagem.com.br/contabilidade-para-de-minas/#breadcrumb",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Início",
+          "item": "https://amcabralblindagem.com.br/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Contabilidade em Pará de Minas",
+          "item": "https://amcabralblindagem.com.br/contabilidade-para-de-minas/"
+        }
+      ]
+    }
+  ]
+}
+    </script>
+</head>
+<body>
+
+<!-- 1. LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-phrase" id="loaderPhrase"></div>
+  <div class="loader-line" id="loaderLine"></div>
+  <div class="loader-brand" id="loaderBrand">AM Cabral</div>
+</div>
+
+<!-- 2. BAR (FIXED) -->
+<div id="bar">
+  <span class="bar-pill">Reforma 2026</span>
+  &nbsp;A reforma tribut&#225;ria muda tudo em 2026. Sua ind&#250;stria est&#225; preparada?&nbsp;<a href="diagnostico-gratuito.html">Descubra agora</a>
+  <button class="bar-x" onclick="this.parentElement.remove();updateNavTop()">&#215;</button>
+</div>
+
+<!-- 3. NAV (FIXED) -->
+<a href="#main-content" class="skip-link">Pular para conte&#250;do</a>
+<nav id="nav">
+  <a href="index.html" class="logo">AM Cabral</a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="nav-btn">Home</a></li>
+    <li><a href="servicos.html" class="nav-btn">Servi&#231;os</a></li>
+    <li><a href="reforma-tributaria.html" class="nav-btn">Reforma Tribut&#225;ria</a></li>
+    <li><a href="blog.html" class="nav-btn">Blog</a></li>
+    <li><a href="sobre.html" class="nav-btn">Sobre</a></li>
+    <li><a href="contato.html" class="nav-btn">Contato</a></li>
+  </ul>
+  <div class="nav-r">
+    <a href="diagnostico-gratuito.html" class="nav-cta">Diagn&#243;stico Gratuito</a>
+    <button class="hamburger" id="hambBtn" aria-label="Abrir menu de navega&#231;&#227;o"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mob-overlay" id="mobOverlay"></div>
+<div class="mob-menu" id="mobMenu">
+  <a href="index.html">Home</a>
+  <a href="servicos.html">Servi&#231;os</a>
+  <a href="reforma-tributaria.html">Reforma Tribut&#225;ria</a>
+  <a href="blog.html">Blog</a>
+  <a href="sobre.html">Sobre</a>
+  <a href="casos-de-sucesso.html">Casos de Sucesso</a>
+  <a href="contato.html">Contato</a>
+  <a href="diagnostico-gratuito.html" class="mob-menu-cta">Diagn&#243;stico Gratuito</a>
+</div>
+
+<!-- 4. HERO (--z2, noise, radial glows) -->
+<section class="city-hero noise" id="main-content">
+  <div class="container">
+    <div class="hero-breadcrumb">
+      <a href="index.html">Home</a>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+      <a href="cidades-atendidas.html">Cidades Atendidas</a>
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+      <span>Par&#225; de Minas</span>
+    </div>
+
+    <div class="hero-tag">SEDE | PAR&#193; DE MINAS, MG</div>
+
+    <h1 class="hero-h1">Contabilidade industrial em Par&#225; de Minas</h1>
+
+    <p class="hero-sub">Sede da AC Contabilidade. 30 anos protegendo o lucro e o patrim&#244;nio das ind&#250;strias do centro-oeste mineiro. De Par&#225; de Minas para todo o Brasil.</p>
+
+    <div class="hero-author">
+      <div class="hero-author-avatar">AC</div>
+      <div class="hero-author-info">
+        <div class="hero-author-name">Amanda Cabral</div>
+        <div class="hero-author-role">Estrategista Tribut&#225;ria Industrial <span></span> CRC/MG Ativo</div>
+      </div>
+    </div>
+
+    <div class="hero-badges">
+      <div class="hero-badge"><span class="hero-badge-num">30</span> anos</div>
+      <div class="hero-badge"><span class="hero-badge-num">120+</span> ind&#250;strias</div>
+      <div class="hero-badge"><span class="hero-badge-num">R$ 12M</span> recuperados</div>
+      <div class="hero-badge"><span class="hero-badge-crc">CRC/MG Ativo</span></div>
+    </div>
+
+    <div class="hero-cta-wrap">
+      <a href="diagnostico-gratuito.html" class="btn-p">Solicitar Diagn&#243;stico Gratuito <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      <span class="hero-small">Sem custo. Sem compromisso. Resposta em 24h.</span>
+    </div>
+  </div>
+</section>
+
+<!-- 5. CREDENTIALS MARQUEE (--z0, thin strip) -->
+<div class="cred-strip">
+  <div class="cred-track" id="credTrack">
+    <span class="cred-item">CRC/MG Ativo</span><span class="cred-dot">&#183;</span>
+    <span class="cred-item">30 Anos de Experi&#234;ncia</span><span class="cred-dot">&#183;</span>
+    <span class="cred-item">Especialista ICMS/IPI</span><span class="cred-dot">&#183;</span>
+    <span class="cred-item">P&#243;s-gradua&#231;&#227;o em Direito Tribut&#225;rio</span><span class="cred-dot">&#183;</span>
+    <span class="cred-item">Membro IBPT</span><span class="cred-dot">&#183;</span>
+    <span class="cred-item">R$ 12M Recuperados</span><span class="cred-dot">&#183;</span>
+    <span class="cred-item">120+ Ind&#250;strias</span><span class="cred-dot">&#183;</span>
+    <span class="cred-item">CNPJ 34.733.620/0001-51</span><span class="cred-dot">&#183;</span>
+    <span class="cred-item">Par&#225; de Minas, MG</span><span class="cred-dot">&#183;</span>
+    <!-- duplicate for seamless loop -->
+    <span class="cred-item">CRC/MG Ativo</span><span class="cred-dot">&#183;</span>
+    <span class="cred-item">30 Anos de Experi&#234;ncia</span><span class="cred-dot">&#183;</span>
+    <span class="cred-item">Especialista ICMS/IPI</span><span class="cred-dot">&#183;</span>
+    <span class="cred-item">P&#243;s-gradua&#231;&#227;o em Direito Tribut&#225;rio</span><span class="cred-dot">&#183;</span>
+    <span class="cred-item">Membro IBPT</span><span class="cred-dot">&#183;</span>
+    <span class="cred-item">R$ 12M Recuperados</span><span class="cred-dot">&#183;</span>
+    <span class="cred-item">120+ Ind&#250;strias</span><span class="cred-dot">&#183;</span>
+    <span class="cred-item">CNPJ 34.733.620/0001-51</span><span class="cred-dot">&#183;</span>
+    <span class="cred-item">Par&#225; de Minas, MG</span><span class="cred-dot">&#183;</span>
+  </div>
+</div>
+
+<!-- 6. AUTHORITY INTRO (--paper, white, dot grid) -->
+<section class="authority-sec dot-grid">
+  <div class="container">
+    <div class="authority-grid">
+      <div class="authority-text reveal-left">
+        <div class="sec-label dk">A Empresa</div>
+        <h2 class="sec-h dk" style="margin-bottom:32px;">Quem &#233; a AC Contabilidade</h2>
+        <p>A AC Contabilidade nasceu em Par&#225; de Minas em 1996. N&#227;o como mais um escrit&#243;rio cont&#225;bil. Nasceu com uma miss&#227;o: proteger o lucro de quem produz.</p>
+        <p>Nos primeiros anos, atendi ind&#250;strias do Distrito Industrial de Par&#225; de Minas que perdiam dinheiro sem saber. Cr&#233;ditos de ICMS-ST n&#227;o recuperados. Regimes tribut&#225;rios inadequados. Patrim&#244;nio do dono misturado com a empresa.</p>
+        <p>Hoje, 30 anos depois, a opera&#231;&#227;o cresceu. Atendo ind&#250;strias de todo o Brasil por acesso remoto. Mas a sede continua aqui. Na Rua Major Fid&#233;lis, 244, Centro. Onde tudo come&#231;ou.</p>
+      </div>
+      <div class="stats-card reveal-right">
+        <div class="stat-row">
+          <div class="stat-num">30</div>
+          <div class="stat-label">anos em Par&#225; de Minas</div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-num">120+</div>
+          <div class="stat-label">ind&#250;strias protegidas</div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-num">R$ 12M</div>
+          <div class="stat-label">em cr&#233;ditos recuperados</div>
+        </div>
+        <div class="stat-row">
+          <div class="stat-num">98%</div>
+          <div class="stat-label">de reten&#231;&#227;o de clientes</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. DIFERENCIAL (--z1, dark) -->
+<section class="diferencial-sec noise">
+  <div class="container">
+    <div class="diferencial-grid">
+      <div class="diferencial-text reveal-left">
+        <div class="sec-label lt">Por que somos diferentes</div>
+        <h2 class="sec-h lt" style="margin-bottom:32px;">N&#227;o somos um escrit&#243;rio cont&#225;bil comum</h2>
+        <p>A maioria dos escrit&#243;rios cont&#225;beis faz o b&#225;sico: declara&#231;&#245;es, folha de pagamento, obriga&#231;&#245;es acess&#243;rias. Cumprem a lei. E s&#243;.</p>
+        <p>Na AC Contabilidade, cada n&#250;mero que entra no sistema &#233; analisado como oportunidade. Cr&#233;ditos de ICMS-ST que ningu&#233;m viu. Regimes tribut&#225;rios que ningu&#233;m questionou. Patrim&#244;nio do dono exposto que ningu&#233;m protegeu.</p>
+        <p>A diferen&#231;a entre um contador e uma estrategista tribut&#225;ria &#233; o que acontece com o lucro da sua ind&#250;stria.</p>
+      </div>
+      <div class="diferencial-card reveal-right">
+        <ul class="diferencial-list">
+          <li><span class="diferencial-dot"></span>Auditoria retroativa de 5 anos inclu&#237;da</li>
+          <li><span class="diferencial-dot"></span>An&#225;lise de regime tribut&#225;rio trimestral</li>
+          <li><span class="diferencial-dot"></span>Recupera&#231;&#227;o ativa de cr&#233;ditos (n&#227;o passiva)</li>
+          <li><span class="diferencial-dot"></span>Planejamento patrimonial integrado</li>
+          <li><span class="diferencial-dot"></span>Consultoria em reforma tribut&#225;ria inclu&#237;da</li>
+          <li><span class="diferencial-dot"></span>Atendimento direto com Amanda Cabral</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. SERVICES CAROUSEL (--paper, white, dot grid) -->
+<section class="services-sec dot-grid">
+  <div class="container">
+    <div class="services-head">
+      <div class="services-head-left">
+        <div class="sec-label dk">Nossos Servi&#231;os</div>
+        <h2 class="sec-h dk">Cinco frentes de blindagem tribut&#225;ria</h2>
+      </div>
+      <div class="services-arrows">
+        <button class="services-arrow" id="svcPrev" aria-label="Anterior">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+        </button>
+        <button class="services-arrow" id="svcNext" aria-label="Pr&#243;ximo">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="services-track" id="svcTrack">
+      <!-- Card 1 -->
+      <div class="svc-card reveal d1">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
+        </div>
+        <div class="svc-title">Gest&#227;o Cont&#225;bil Estrat&#233;gica</div>
+        <p class="svc-desc">Contabilidade que vai al&#233;m do compliance. Custos de produ&#231;&#227;o, DRE, fluxo de caixa e departamento pessoal integrados numa vis&#227;o estrat&#233;gica para ind&#250;strias de Par&#225; de Minas.</p>
+        <a href="gestao-contabil-para-industrias.html" class="svc-link">Conhecer servi&#231;o <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      </div>
+      <!-- Card 2 -->
+      <div class="svc-card reveal d2">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+        </div>
+        <div class="svc-title">Recupera&#231;&#227;o de Cr&#233;ditos Tribut&#225;rios</div>
+        <p class="svc-desc">Auditoria retroativa de 5 anos. ICMS-ST, IPI, PIS/COFINS. M&#233;dia de <span style="color:var(--dourado);font-weight:600;">R$ 180 mil</span> recuperados por ind&#250;stria no centro-oeste mineiro.</p>
+        <a href="recuperacao-creditos-tributarios.html" class="svc-link">Conhecer servi&#231;o <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      </div>
+      <!-- Card 3 -->
+      <div class="svc-card reveal d3">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/></svg>
+        </div>
+        <div class="svc-title">Constitui&#231;&#227;o de Holding Patrimonial e Familiar</div>
+        <p class="svc-desc">Prote&#231;&#227;o de bens, planejamento sucess&#243;rio e tributa&#231;&#227;o otimizada. Para industriais de Par&#225; de Minas que querem blindar patrim&#244;nio e organizar a sucess&#227;o.</p>
+        <a href="holding-patrimonial-familiar.html" class="svc-link">Conhecer servi&#231;o <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      </div>
+      <!-- Card 4 -->
+      <div class="svc-card reveal d4">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H2v7l6.29 6.29c.94.94 2.48.94 3.42 0l3.58-3.58c.94-.94.94-2.48 0-3.42L9 5Z"/><path d="M6 9.01V9"/><path d="m15 5 6.3 6.3a2.4 2.4 0 0 1 0 3.4L17 19"/></svg>
+        </div>
+        <div class="svc-title">Planejamento Tribut&#225;rio</div>
+        <p class="svc-desc">An&#225;lise de precis&#227;o em ICMS, IPI, PIS/COFINS. Mapeamos o regime ideal para ind&#250;strias da regi&#227;o. Lucro Real, Presumido ou migra&#231;&#227;o do Simples.</p>
+        <a href="planejamento-tributario.html" class="svc-link">Conhecer servi&#231;o <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      </div>
+      <!-- Card 5 -->
+      <div class="svc-card reveal d5">
+        <div class="svc-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
+        </div>
+        <div class="svc-title">Consultoria Tribut&#225;ria (Compliance Fiscal)</div>
+        <p class="svc-desc">SPED Fiscal, EFD, Bloco K, REINF. Blindagem fiscal completa. Sua ind&#250;stria 100% protegida contra fiscaliza&#231;&#245;es em Minas Gerais.</p>
+        <a href="consultoria-tributaria.html" class="svc-link">Conhecer servi&#231;o <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9. COMPARATIVO (--z2, dark, SVG cross pattern) -->
+<section class="comparativo-sec cross-pattern noise">
+  <div class="container">
+    <div class="comparativo-wrap">
+      <div class="sec-label lt reveal" style="text-align:center;">Comparativo</div>
+      <h2 class="sec-h lt reveal" style="text-align:center;margin-bottom:0;">Contador comum vs. AC Contabilidade</h2>
+      <div class="comparativo-table-wrap reveal">
+        <table class="comparativo-table">
+          <thead>
+            <tr>
+              <th>Aspecto</th>
+              <th>Contador Comum</th>
+              <th>AC Contabilidade</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Foco</td>
+              <td>Declara&#231;&#245;es e obriga&#231;&#245;es</td>
+              <td>Intelig&#234;ncia tribut&#225;ria e blindagem</td>
+            </tr>
+            <tr>
+              <td>Cr&#233;ditos tribut&#225;rios</td>
+              <td>N&#227;o audita retroativamente</td>
+              <td>Auditoria de 5 anos inclusa</td>
+            </tr>
+            <tr>
+              <td>Regime tribut&#225;rio</td>
+              <td>Mant&#233;m o atual sem questionar</td>
+              <td>Reavalia trimestralmente</td>
+            </tr>
+            <tr>
+              <td>Patrim&#244;nio do dono</td>
+              <td>N&#227;o se envolve</td>
+              <td>Holding patrimonial e sucess&#243;ria</td>
+            </tr>
+            <tr>
+              <td>Reforma tribut&#225;ria</td>
+              <td>Reage quando mudar</td>
+              <td>Prepara antes da mudan&#231;a</td>
+            </tr>
+            <tr>
+              <td>Relat&#243;rios</td>
+              <td>Balan&#231;o e DRE padr&#227;o</td>
+              <td>Relat&#243;rios com oportunidades em R$</td>
+            </tr>
+            <tr>
+              <td>Fiscaliza&#231;&#227;o</td>
+              <td>Resolve quando notificado</td>
+              <td>Previne com blindagem fiscal</td>
+            </tr>
+            <tr>
+              <td>Atendimento</td>
+              <td>Auxiliar ou estagi&#225;rio</td>
+              <td>Direto com Amanda Cabral</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10. CASES (--paper, white, dot grid) -->
+<section class="cases-sec dot-grid">
+  <div class="container">
+    <div class="sec-label dk reveal" style="text-align:center;">Resultados Reais</div>
+    <h2 class="sec-h dk reveal" style="text-align:center;margin-bottom:0;">O que j&#225; fizemos por ind&#250;strias como a sua</h2>
+    <div class="cases-grid">
+      <div class="case-card reveal d1">
+        <div class="case-pill">Recupera&#231;&#227;o de Cr&#233;ditos</div>
+        <div class="case-title">Metal&#250;rgica em Contagem</div>
+        <div class="case-stat">R$ 340 mil</div>
+        <div class="case-stat-label">recuperados em cr&#233;ditos</div>
+        <p class="case-detail">ICMS-ST e PIS/COFINS sobre insumos. 6 meses de trabalho.</p>
+        <a href="casos-de-sucesso/metalurgica-contagem/" class="case-link">Ver caso completo <span>&#8594;</span></a>
+      </div>
+      <div class="case-card reveal d2">
+        <div class="case-pill">Planejamento Tribut&#225;rio</div>
+        <div class="case-title">Ind&#250;stria de Alimentos em Par&#225; de Minas</div>
+        <div class="case-stat">R$ 280 mil/ano</div>
+        <div class="case-stat-label">de economia tribut&#225;ria</div>
+        <p class="case-detail">Migra&#231;&#227;o de Lucro Presumido para Real. Regime corrigido em 60 dias.</p>
+      </div>
+      <div class="case-card reveal d3">
+        <div class="case-pill">Holding Patrimonial</div>
+        <div class="case-title">Grupo Industrial em Belo Horizonte</div>
+        <div class="case-stat">R$ 4M</div>
+        <div class="case-stat-label">em patrim&#244;nio protegido</div>
+        <p class="case-detail">Tributa&#231;&#227;o de aluguel reduzida de 27,5% para 8,4%. Sucess&#227;o estruturada.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 11. SETORES MARQUEE (--z0, thin strip) -->
+<div class="setores-marquee">
+  <div class="setores-track" id="setoresTrack">
+    <span class="setores-item">Metalurgia</span><span class="setores-sep">&#183;</span>
+    <span class="setores-item">Alimentos e Latic&#237;nios</span><span class="setores-sep">&#183;</span>
+    <span class="setores-item">Farmac&#234;utica</span><span class="setores-sep">&#183;</span>
+    <span class="setores-item">Metal-Mec&#226;nica</span><span class="setores-sep">&#183;</span>
+    <span class="setores-item">Confec&#231;&#245;es</span><span class="setores-sep">&#183;</span>
+    <span class="setores-item">Cer&#226;mica</span><span class="setores-sep">&#183;</span>
+    <span class="setores-item">T&#234;xtil</span><span class="setores-sep">&#183;</span>
+    <span class="setores-item">Holding Patrimonial</span><span class="setores-sep">&#183;</span>
+    <span class="setores-item">Holding Familiar</span><span class="setores-sep">&#183;</span>
+    <!-- duplicate for seamless loop -->
+    <span class="setores-item">Metalurgia</span><span class="setores-sep">&#183;</span>
+    <span class="setores-item">Alimentos e Latic&#237;nios</span><span class="setores-sep">&#183;</span>
+    <span class="setores-item">Farmac&#234;utica</span><span class="setores-sep">&#183;</span>
+    <span class="setores-item">Metal-Mec&#226;nica</span><span class="setores-sep">&#183;</span>
+    <span class="setores-item">Confec&#231;&#245;es</span><span class="setores-sep">&#183;</span>
+    <span class="setores-item">Cer&#226;mica</span><span class="setores-sep">&#183;</span>
+    <span class="setores-item">T&#234;xtil</span><span class="setores-sep">&#183;</span>
+    <span class="setores-item">Holding Patrimonial</span><span class="setores-sep">&#183;</span>
+    <span class="setores-item">Holding Familiar</span><span class="setores-sep">&#183;</span>
+  </div>
+</div>
+
+<!-- 12. DEPOIMENTOS (--z1, dark) -->
+<section class="depoimentos-sec noise">
+  <div class="container">
+    <div class="sec-label lt reveal" style="text-align:center;">Depoimentos</div>
+    <h2 class="sec-h lt reveal" style="text-align:center;margin-bottom:0;">O que nossos clientes dizem</h2>
+    <div class="depoimentos-grid">
+      <div class="depo-card reveal d1">
+        <div class="depo-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="depo-quote">&#8220;Em 6 meses, a Amanda identificou R$ 340 mil em cr&#233;ditos que nosso contador anterior ignorou. O diagn&#243;stico gratuito mudou a forma como enxergamos a tributa&#231;&#227;o.&#8221;</p>
+        <div class="depo-attr">
+          <span class="depo-role">Diretor Industrial</span>
+          Metal&#250;rgica, Contagem/MG
+        </div>
+      </div>
+      <div class="depo-card reveal d2">
+        <div class="depo-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="depo-quote">&#8220;Migramos do Presumido para o Real e a economia foi imediata. R$ 280 mil por ano. Dev&#237;amos ter feito isso h&#225; 5 anos.&#8221;</p>
+        <div class="depo-attr">
+          <span class="depo-role">S&#243;cio-fundador</span>
+          Ind&#250;stria de Alimentos, Par&#225; de Minas/MG
+        </div>
+      </div>
+      <div class="depo-card reveal d3">
+        <div class="depo-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p class="depo-quote">&#8220;A holding resolveu dois problemas de uma vez: protegeu o patrim&#244;nio da fam&#237;lia e reduziu o imposto sobre aluguel de 27,5% para 8,4%.&#8221;</p>
+        <div class="depo-attr">
+          <span class="depo-role">Empres&#225;rio</span>
+          Grupo Industrial, Belo Horizonte/MG
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 13. LOCAL CONTEXT (--paper, white, dot grid) -->
+<section class="local-sec dot-grid">
+  <div class="container">
+    <div class="local-content">
+      <div class="sec-label dk reveal">Par&#225; de Minas</div>
+      <h2 class="sec-h dk reveal" style="margin-bottom:32px;">Intelig&#234;ncia tribut&#225;ria no cora&#231;&#227;o industrial de Minas Gerais</h2>
+      <p class="reveal">Par&#225; de Minas &#233; um dos maiores polos industriais do centro-oeste mineiro. Com mais de 800 ind&#250;strias ativas, a cidade concentra opera&#231;&#245;es nos setores de alimentos e latic&#237;nios, metalurgia, confec&#231;&#245;es e cer&#226;mica. A proximidade com Belo Horizonte (90km via BR-262) e a infraestrutura log&#237;stica dos Distritos Industriais I e II fazem de Par&#225; de Minas uma base estrat&#233;gica para opera&#231;&#245;es industriais em Minas Gerais.</p>
+      <p class="reveal">A complexidade tribut&#225;ria dessas ind&#250;strias &#233; proporcional &#224; sua diversidade. Uma ind&#250;stria de latic&#237;nios em Par&#225; de Minas tem obriga&#231;&#245;es fiscais completamente diferentes de uma metal&#250;rgica em Ita&#250;na ou uma confec&#231;&#227;o em Divin&#243;polis. Cada setor exige an&#225;lise de precis&#227;o em ICMS, IPI, PIS/COFINS e incentivos fiscais estaduais.</p>
+      <p class="reveal">&#201; por isso que a AC Contabilidade opera a partir daqui. 30 anos de experi&#234;ncia com a tributa&#231;&#227;o espec&#237;fica das ind&#250;strias desta regi&#227;o. Conhecemos cada incentivo fiscal de MG, cada TTD de ICMS, cada regime especial dispon&#237;vel para ind&#250;strias do centro-oeste mineiro.</p>
+      <div class="local-cities reveal">
+        <p>Tamb&#233;m atendemos ind&#250;strias em <a href="contador-itauna.html">Ita&#250;na</a>, <a href="contador-divinopolis.html">Divin&#243;polis</a>, <a href="contador-sete-lagoas.html">Sete Lagoas</a>, <a href="contador-bom-despacho.html">Bom Despacho</a>, <a href="contador-pitangui.html">Pitangui</a>, <a href="contador-nova-serrana.html">Nova Serrana</a> e toda a regi&#227;o metropolitana de Belo Horizonte.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 14. NUMBERS IMPACT (--z2, dark, SVG cross pattern) -->
+<section class="numbers-sec cross-pattern">
+  <div class="container">
+    <div class="numbers-grid">
+      <div class="numbers-item reveal d1">
+        <div class="numbers-val">30</div>
+        <div class="numbers-label">anos nesta cidade</div>
+      </div>
+      <div class="numbers-sep"></div>
+      <div class="numbers-item reveal d2">
+        <div class="numbers-val">120+</div>
+        <div class="numbers-label">ind&#250;strias protegidas</div>
+      </div>
+      <div class="numbers-sep"></div>
+      <div class="numbers-item reveal d3">
+        <div class="numbers-val">R$ 12M</div>
+        <div class="numbers-label">em cr&#233;ditos recuperados</div>
+      </div>
+      <div class="numbers-sep"></div>
+      <div class="numbers-item reveal d4">
+        <div class="numbers-val accent-color">Sede</div>
+        <div class="numbers-label">Rua Major Fid&#233;lis, 244</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 15. PROCESS (--paper, white, dot grid) -->
+<section class="process-sec dot-grid">
+  <div class="container">
+    <div class="sec-label dk reveal">Como Funciona</div>
+    <h2 class="sec-h dk reveal" style="margin-bottom:0;">Do diagn&#243;stico aos resultados em 4 passos</h2>
+    <div class="process-grid">
+      <div class="process-card reveal d1">
+        <div class="process-num">1</div>
+        <div class="process-title">Diagn&#243;stico Gratuito</div>
+        <p class="process-desc">Analisamos a situa&#231;&#227;o tribut&#225;ria da sua ind&#250;stria por videoconfer&#234;ncia ou presencialmente em Par&#225; de Minas. Identificamos cr&#233;ditos perdidos e oportunidades.</p>
+      </div>
+      <div class="process-card reveal d2">
+        <div class="process-num">2</div>
+        <div class="process-title">Proposta com N&#250;meros</div>
+        <p class="process-desc">Voc&#234; recebe um relat&#243;rio com valores em R$: quanto pode recuperar, quanto pode reduzir, quanto o patrim&#244;nio precisa de prote&#231;&#227;o.</p>
+      </div>
+      <div class="process-card reveal d3">
+        <div class="process-num">3</div>
+        <div class="process-title">Implementa&#231;&#227;o</div>
+        <p class="process-desc">Assumimos o controle cont&#225;bil e tribut&#225;rio. Conectamos aos seus sistemas via acesso remoto. Sua rotina n&#227;o muda.</p>
+      </div>
+      <div class="process-card reveal d4">
+        <div class="process-num">4</div>
+        <div class="process-title">Resultados Mensais</div>
+        <p class="process-desc">Relat&#243;rios claros todo m&#234;s. Cr&#233;ditos recuperados, carga reduzida, patrim&#244;nio protegido. Tudo em R$.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 16. FAQ (--z1, dark) -->
+<section class="faq-sec">
+  <div class="container">
+    <h2 class="sec-h lt reveal" style="text-align:center;">Perguntas frequentes sobre contabilidade em Par&#225; de Minas</h2>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Preciso ir pessoalmente ao escrit&#243;rio em Par&#225; de Minas?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+        </button>
+        <div class="faq-a"><p>N&#227;o necessariamente. Nosso atendimento &#233; 100% digital via videoconfer&#234;ncia e acesso remoto seguro. Mas se preferir, nosso escrit&#243;rio na Rua Major Fid&#233;lis, 244 est&#225; aberto de segunda a sexta, das 8h &#224;s 18h.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Voc&#234;s atendem ind&#250;strias fora de Par&#225; de Minas?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+        </button>
+        <div class="faq-a"><p>Sim. Atendemos ind&#250;strias em todo o Brasil. Temos clientes em Ita&#250;na, Divin&#243;polis, Sete Lagoas, Belo Horizonte, S&#227;o Paulo, Curitiba e mais 20 cidades. A opera&#231;&#227;o digital permite atendimento completo em qualquer localidade.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Quanto custa o diagn&#243;stico tribut&#225;rio?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+        </button>
+        <div class="faq-a"><p>O diagn&#243;stico &#233; gratuito. Em 30 minutos, mapeamos cr&#233;ditos perdidos, riscos fiscais e oportunidades para a sua ind&#250;stria. Sem custo e sem compromisso.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Minha ind&#250;stria est&#225; no Simples Nacional. Voc&#234;s atendem?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+        </button>
+        <div class="faq-a"><p>Sim. Atendemos desde ind&#250;strias no Simples Nacional at&#233; grandes opera&#231;&#245;es no Lucro Real. Muitas ind&#250;strias em Par&#225; de Minas pagam mais no Simples do que pagariam no Presumido ou Real. O diagn&#243;stico identifica o regime ideal.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Qual a especialidade da AC Contabilidade?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+        </button>
+        <div class="faq-a"><p>Contabilidade tribut&#225;ria para ind&#250;strias e constitui&#231;&#227;o de holding patrimonial e familiar. N&#227;o fazemos contabilidade gen&#233;rica para com&#233;rcio ou servi&#231;os. Nosso foco &#233; exclusivo em opera&#231;&#245;es industriais e prote&#231;&#227;o patrimonial.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Como funciona a recupera&#231;&#227;o de cr&#233;ditos tribut&#225;rios?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+        </button>
+        <div class="faq-a"><p>Fazemos uma auditoria retroativa dos &#250;ltimos 5 anos. Identificamos cr&#233;ditos de ICMS-ST, IPI, PIS e COFINS que n&#227;o foram aproveitados. A m&#233;dia de recupera&#231;&#227;o para ind&#250;strias de m&#233;dio porte em Minas Gerais &#233; de R$ 180 mil.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          Voc&#234;s conhecem os incentivos fiscais de Minas Gerais?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+        </button>
+        <div class="faq-a"><p>Profundamente. Operamos em MG h&#225; 30 anos. Conhecemos cada TTD de ICMS, cada regime especial, cada cr&#233;dito presumido dispon&#237;vel para ind&#250;strias mineiras. O enquadramento correto pode reduzir a carga tribut&#225;ria em at&#233; 40%.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" aria-expanded="false">
+          A reforma tribut&#225;ria vai afetar minha ind&#250;stria em Par&#225; de Minas?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+        </button>
+        <div class="faq-a"><p>Sim. O IBS e a CBS substituem ICMS, ISS, PIS e COFINS a partir de 2026. A transi&#231;&#227;o vai at&#233; 2033. Ind&#250;strias que n&#227;o se prepararem v&#227;o perder competitividade. Oferecemos consultoria especializada em reforma tribut&#225;ria para ind&#250;strias.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 17. CONTENT HUB (--paper, white, dot grid) -->
+<section class="hub-sec dot-grid">
+  <div class="container">
+    <div class="sec-label dk reveal" style="text-align:center;">Explore Mais</div>
+    <h2 class="sec-h dk reveal" style="text-align:center;margin-bottom:0;">Conte&#250;do para industriais</h2>
+    <div class="hub-grid">
+      <a href="blog/" class="hub-card reveal d1">
+        <div class="hub-title">Blog</div>
+        <p class="hub-desc">Artigos sobre reforma tribut&#225;ria, holding, cr&#233;ditos e planejamento para ind&#250;strias.</p>
+        <span class="hub-arrow">Acessar &#8594;</span>
+      </a>
+      <a href="reforma-tributaria/" class="hub-card reveal d2">
+        <div class="hub-title">Reforma Tribut&#225;ria</div>
+        <p class="hub-desc">Hub completo sobre IBS, CBS, cronograma e impacto na ind&#250;stria.</p>
+        <span class="hub-arrow">Acessar &#8594;</span>
+      </a>
+      <a href="casos-de-sucesso/" class="hub-card reveal d3">
+        <div class="hub-title">Casos de Sucesso</div>
+        <p class="hub-desc">Resultados reais: cr&#233;ditos recuperados, patrim&#244;nio protegido, carga reduzida.</p>
+        <span class="hub-arrow">Acessar &#8594;</span>
+      </a>
+      <a href="cidades-atendidas/" class="hub-card reveal d4">
+        <div class="hub-title">Cidades Atendidas</div>
+        <p class="hub-desc">25 cidades. De Par&#225; de Minas para todo o Brasil.</p>
+        <span class="hub-arrow">Acessar &#8594;</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- 18. FORM MULTI-STEP (--z2, dark, cross pattern) -->
+<section class="form-final-sec cross-pattern noise" id="diagnostico">
+  <div class="container">
+    <div class="form-grid">
+      <div class="form-pitch reveal-left">
+        <h2>Diagn&#243;stico tribut&#225;rio gratuito para sua ind&#250;stria</h2>
+        <p>Em 30 minutos, mapeamos cr&#233;ditos perdidos, riscos fiscais e oportunidades. Presencialmente em Par&#225; de Minas ou por videoconfer&#234;ncia.</p>
+        <ul class="form-checks">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Sem custo e sem compromisso</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Resposta em at&#233; 24 horas</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>An&#225;lise personalizada com Amanda Cabral</li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Relat&#243;rio com valores em R$</li>
+        </ul>
+      </div>
+      <div class="form-card reveal-right">
+        <div class="form-steps-dots">
+          <div class="form-dot active" data-step="1"></div>
+          <div class="form-dot" data-step="2"></div>
+          <div class="form-dot" data-step="3"></div>
+        </div>
+        <form id="diagForm" novalidate>
+          <!-- Step 1 -->
+          <div class="form-step active" data-step="1">
+            <div class="form-step-title">Sua empresa</div>
+            <div class="form-group">
+              <label for="empresa">Nome da empresa</label>
+              <input type="text" id="empresa" name="empresa" placeholder="Ex: Metal&#250;rgica Exemplo Ltda" required>
+            </div>
+            <div class="form-group">
+              <label for="setor">Setor industrial</label>
+              <select id="setor" name="setor" required>
+                <option value="" disabled selected>Selecione o setor</option>
+                <option value="Metalurgia">Metalurgia</option>
+                <option value="Alimentos/Latic&#237;nios">Alimentos/Latic&#237;nios</option>
+                <option value="Farmac&#234;utica">Farmac&#234;utica</option>
+                <option value="Metal-Mec&#226;nica">Metal-Mec&#226;nica</option>
+                <option value="Confec&#231;&#245;es">Confec&#231;&#245;es</option>
+                <option value="Cer&#226;mica">Cer&#226;mica</option>
+                <option value="T&#234;xtil">T&#234;xtil</option>
+                <option value="Outro">Outro</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="faturamento">Faturamento anual</label>
+              <select id="faturamento" name="faturamento" required>
+                <option value="" disabled selected>Selecione a faixa</option>
+                <option value="At&#233; R$ 4,8M">At&#233; R$ 4,8M</option>
+                <option value="R$ 4,8M a R$ 20M">R$ 4,8M a R$ 20M</option>
+                <option value="R$ 20M a R$ 78M">R$ 20M a R$ 78M</option>
+                <option value="Acima de R$ 78M">Acima de R$ 78M</option>
+                <option value="Prefiro n&#227;o informar">Prefiro n&#227;o informar</option>
+              </select>
+            </div>
+            <div class="form-nav">
+              <button type="button" class="form-btn-next" onclick="formNext(2)">Pr&#243;ximo &#8594;</button>
+            </div>
+          </div>
+          <!-- Step 2 -->
+          <div class="form-step" data-step="2">
+            <div class="form-step-title">Servi&#231;o de interesse</div>
+            <div class="form-radios">
+              <label class="form-radio-item"><input type="radio" name="servico" value="Diagn&#243;stico Tribut&#225;rio Gratuito" checked><span>Diagn&#243;stico Tribut&#225;rio Gratuito</span></label>
+              <label class="form-radio-item"><input type="radio" name="servico" value="Recupera&#231;&#227;o de Cr&#233;ditos"><span>Recupera&#231;&#227;o de Cr&#233;ditos</span></label>
+              <label class="form-radio-item"><input type="radio" name="servico" value="Planejamento Tribut&#225;rio"><span>Planejamento Tribut&#225;rio</span></label>
+              <label class="form-radio-item"><input type="radio" name="servico" value="Constitui&#231;&#227;o de Holding"><span>Constitui&#231;&#227;o de Holding</span></label>
+              <label class="form-radio-item"><input type="radio" name="servico" value="Gest&#227;o Cont&#225;bil"><span>Gest&#227;o Cont&#225;bil</span></label>
+              <label class="form-radio-item"><input type="radio" name="servico" value="Consultoria Tribut&#225;ria"><span>Consultoria Tribut&#225;ria</span></label>
+            </div>
+            <div class="form-nav">
+              <button type="button" class="form-btn-back" onclick="formBack(1)">&#8592; Voltar</button>
+              <button type="button" class="form-btn-next" onclick="formNext(3)">Pr&#243;ximo &#8594;</button>
+            </div>
+          </div>
+          <!-- Step 3 -->
+          <div class="form-step" data-step="3">
+            <div class="form-step-title">Seus dados</div>
+            <div class="form-group">
+              <label for="nome">Nome completo</label>
+              <input type="text" id="nome" name="nome" placeholder="Seu nome" required>
+            </div>
+            <div class="form-group">
+              <label for="whatsapp">WhatsApp</label>
+              <input type="tel" id="whatsapp" name="whatsapp" placeholder="(37) 99999-9999" required>
+            </div>
+            <div class="form-group">
+              <label for="email">E-mail</label>
+              <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+            </div>
+            <div class="form-group">
+              <label for="mensagem">Mensagem (opcional)</label>
+              <textarea id="mensagem" name="mensagem" placeholder="Conte um pouco sobre sua necessidade..."></textarea>
+            </div>
+            <div class="form-nav">
+              <button type="button" class="form-btn-back" onclick="formBack(2)">&#8592; Voltar</button>
+              <button type="submit" class="form-btn-next">Solicitar Diagn&#243;stico Gratuito &#8594;</button>
+            </div>
+            <p class="form-privacy">Seus dados est&#227;o protegidos conforme nossa <a href="politica-de-privacidade.html">Pol&#237;tica de Privacidade</a>.</p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 19. FOOTER -->
+<footer>
+  <div class="foot-in">
+    <div class="foot-top">
+      <div>
+        <div class="foot-brand">AM Cabral</div>
+        <p class="foot-tag">Intelig&#234;ncia tribut&#225;ria para ind&#250;strias que competem para vencer.</p>
+        <div class="foot-live">Monitoramento ativo</div>
+      </div>
+      <div>
+        <div class="fcol-h">A Empresa</div>
+        <ul class="flinks">
+          <li><a href="sobre.html">Sobre</a></li>
+          <li><a href="casos-de-sucesso.html">Casos de Sucesso</a></li>
+          <li><a href="depoimentos.html">Depoimentos</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fcol-h">Servi&#231;os</div>
+        <ul class="flinks">
+          <li><a href="servicos.html">Gest&#227;o Cont&#225;bil</a></li>
+          <li><a href="servicos.html">Recupera&#231;&#227;o de Cr&#233;ditos</a></li>
+          <li><a href="servicos.html">Holding</a></li>
+          <li><a href="servicos.html">Planejamento Tribut&#225;rio</a></li>
+          <li><a href="servicos.html">Consultoria Tribut&#225;ria</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fcol-h">Conte&#250;do</div>
+        <ul class="flinks">
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="reforma-tributaria.html">Reforma Tribut&#225;ria</a></li>
+          <li><a href="calculadora.html">Calculadora</a></li>
+          <li><a href="faq.html">FAQ</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="fcol-h">Regi&#245;es</div>
+        <ul class="flinks">
+          <li><a href="contabilidade-para-de-minas.html">Par&#225; de Minas</a></li>
+          <li><a href="#">Belo Horizonte</a></li>
+          <li><a href="#">Contagem</a></li>
+          <li><a href="#">Betim</a></li>
+          <li><a href="cidades-atendidas.html">Ver todas</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bot">
+      <div class="foot-legal">
+        <a href="politica-de-privacidade.html">Pol&#237;tica de Privacidade</a>
+        <a href="politica-de-cookies.html">Pol&#237;tica de Cookies</a>
+        <a href="termos-de-uso.html">Termos de Uso</a>
+      </div>
+      <div class="foot-copy">&#169; 2026 AM Cabral Contabilidade</div>
+      <div class="foot-socs">
+        <a href="#" target="_blank" aria-label="Instagram da AM Cabral">Instagram</a>
+        <a href="#" target="_blank" aria-label="LinkedIn da AM Cabral">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- 20. BOTTOM BAR -->
+<div class="bottom-bar" id="bottomBar">
+  <div class="bb-desktop">
+    <span class="bb-info"><span class="bb-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> Nota 4.9</span>
+    <div class="bb-sep"></div>
+    <span class="bb-info">120+ ind&#250;strias atendidas</span>
+    <div class="bb-sep"></div>
+    <span class="bb-info">R$ 12M recuperados em cr&#233;ditos</span>
+    <a href="diagnostico-gratuito.html" class="bb-cta">
+      Diagn&#243;stico Gratuito
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+    </a>
+  </div>
+  <div class="bb-mobile">
+    <span class="bb-mobile-top"><span class="bb-mobile-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 4.9</span>
+    <a href="diagnostico-gratuito.html" class="bb-mobile-cta">Diagn&#243;stico Gratuito</a>
+    <a href="https://wa.me/5537999967558" class="bb-mobile-cta" style="background:#25D366;">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.613.613l4.458-1.495A11.952 11.952 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.392 0-4.597-.804-6.36-2.155l-.444-.356-3.254 1.091 1.091-3.254-.356-.444A9.95 9.95 0 012 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+      WhatsApp
+    </a>
+    <div class="bb-mobile-proof">120+ ind&#250;strias atendidas. R$ 12M recuperados.</div>
+  </div>
+</div>
+
+<script>
+/* === LOADER === */
+(function() {
+  var loader = document.getElementById('loader');
+  var phrase = document.getElementById('loaderPhrase');
+  var line = document.getElementById('loaderLine');
+  var brand = document.getElementById('loaderBrand');
+  if (!loader || !phrase) return;
+  var words = 'Intelig\u00eancia tribut\u00e1ria para ind\u00fastrias que competem para vencer'.split(' ');
+  phrase.innerHTML = words.map(function(w) { return '<span>' + w + '</span>'; }).join(' ');
+  var spans = phrase.querySelectorAll('span');
+  document.body.style.overflow = 'hidden';
+  requestAnimationFrame(function() { if (line) line.classList.add('active'); });
+  spans.forEach(function(s, i) {
+    setTimeout(function() { s.classList.add('visible'); }, 200 + i * 200);
+  });
+  setTimeout(function() { if (brand) brand.classList.add('visible'); }, 200 + words.length * 200 + 200);
+  setTimeout(function() {
+    loader.classList.add('done');
+    document.body.style.overflow = '';
+    setTimeout(function() { loader.style.display = 'none'; }, 700);
+  }, 200 + words.length * 200 + 800);
+})();
+
+/* === NAV SCROLL + BAR === */
+var navEl = document.getElementById('nav');
+function updateNavTop() {
+  var b = document.getElementById('bar');
+  if (navEl) navEl.style.top = b ? b.offsetHeight + 'px' : '0px';
+}
+updateNavTop();
+var bottomBar = document.getElementById('bottomBar');
+window.addEventListener('scroll', function() {
+  if (navEl) navEl.classList.toggle('scrolled', window.scrollY > 80);
+  if (bottomBar) bottomBar.classList.toggle('visible', window.scrollY > window.innerHeight * 0.5);
+}, {passive: true});
+
+/* === MOBILE MENU === */
+var hambBtn = document.getElementById('hambBtn');
+var mobMenu = document.getElementById('mobMenu');
+var mobOverlay = document.getElementById('mobOverlay');
+if (hambBtn && mobMenu && mobOverlay) {
+  hambBtn.addEventListener('click', function() {
+    var isOpen = mobMenu.classList.contains('open');
+    mobMenu.classList.toggle('open');
+    mobOverlay.classList.toggle('open');
+    document.body.style.overflow = isOpen ? '' : 'hidden';
+  });
+  mobOverlay.addEventListener('click', function() {
+    mobMenu.classList.remove('open');
+    mobOverlay.classList.remove('open');
+    document.body.style.overflow = '';
+  });
+  mobMenu.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      mobMenu.classList.remove('open');
+      mobOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+}
+
+/* === REVEAL ON SCROLL === */
+document.querySelectorAll('.reveal, .reveal-3d, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur').forEach(function(el) {
+  if (el) {
+    new IntersectionObserver(function(e) {
+      if (e[0].isIntersecting) { el.classList.add('in'); this.unobserve(el); }
+    }, {threshold: .1, rootMargin: '0px 0px -40px 0px'}).observe(el);
+  }
+});
+
+/* === FAQ ACCORDION === */
+document.querySelectorAll('.faq-q').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    var item = this.closest('.faq-item');
+    var wasOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(function(el) {
+      el.classList.remove('open');
+      el.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
+    });
+    if (!wasOpen) {
+      item.classList.add('open');
+      this.setAttribute('aria-expanded', 'true');
+    }
+  });
+});
+
+/* === SERVICES CAROUSEL === */
+(function() {
+  var track = document.getElementById('svcTrack');
+  var prev = document.getElementById('svcPrev');
+  var next = document.getElementById('svcNext');
+  if (!track || !prev || !next) return;
+  var scrollAmount = 340;
+  prev.addEventListener('click', function() {
+    track.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+  });
+  next.addEventListener('click', function() {
+    track.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+  });
+})();
+
+/* === FORM MULTI-STEP === */
+function formNext(step) {
+  var steps = document.querySelectorAll('.form-step');
+  var dots = document.querySelectorAll('.form-dot');
+  steps.forEach(function(s) { s.classList.remove('active'); });
+  var target = document.querySelector('.form-step[data-step="' + step + '"]');
+  if (target) target.classList.add('active');
+  dots.forEach(function(d) {
+    var ds = parseInt(d.getAttribute('data-step'));
+    d.classList.remove('active', 'done');
+    if (ds < step) d.classList.add('done');
+    if (ds === step) d.classList.add('active');
+  });
+}
+function formBack(step) {
+  formNext(step);
+}
+(function() {
+  var form = document.getElementById('diagForm');
+  if (!form) return;
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var empresa = (document.getElementById('empresa').value || '').trim();
+    var setor = (document.getElementById('setor').value || '').trim();
+    var faturamento = (document.getElementById('faturamento').value || '').trim();
+    var servico = '';
+    var radioChecked = form.querySelector('input[name="servico"]:checked');
+    if (radioChecked) servico = radioChecked.value;
+    var nome = (document.getElementById('nome').value || '').trim();
+    var whatsapp = (document.getElementById('whatsapp').value || '').trim();
+    var email = (document.getElementById('email').value || '').trim();
+    var mensagem = (document.getElementById('mensagem').value || '').trim();
+    if (!nome || !whatsapp || !email) {
+      alert('Por favor, preencha todos os campos obrigat\u00f3rios.');
+      return;
+    }
+    var text = 'Ol\u00e1! Solicito um diagn\u00f3stico tribut\u00e1rio gratuito.\n\n';
+    text += 'Empresa: ' + empresa + '\n';
+    text += 'Setor: ' + setor + '\n';
+    text += 'Faturamento: ' + faturamento + '\n';
+    text += 'Servi\u00e7o: ' + servico + '\n';
+    text += 'Nome: ' + nome + '\n';
+    text += 'WhatsApp: ' + whatsapp + '\n';
+    text += 'E-mail: ' + email + '\n';
+    if (mensagem) text += 'Mensagem: ' + mensagem + '\n';
+    var url = 'https://wa.me/5537999967558?text=' + encodeURIComponent(text);
+    window.open(url, '_blank');
+  });
+})();
+</script>
+</body>
+</html>
