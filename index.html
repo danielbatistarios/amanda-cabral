@@ -2259,6 +2259,762 @@
             .m-line-3 { font-size: 1.35rem; }
             .form-panel h4 { font-size: 1.1rem; }
         }
+
+        /* === NEW SITE HEADER & FOOTER === */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to bottom, rgba(15, 20, 25, 0.95), rgba(15, 20, 25, 0.8));
+            z-index: 100;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(8px);
+        }
+
+        .site-nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 48px;
+        }
+
+        .nav-logo {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            color: #FFFFFF;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            list-style: none;
+            flex: 1;
+            align-items: center;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-item > a {
+            font-size: 13px;
+            font-weight: 500;
+            color: #A8B5C6;
+            padding: 8px 12px;
+            transition: color 0.3s ease;
+            display: block;
+        }
+
+        .nav-item > a:hover {
+            color: #C4A574;
+        }
+
+        .nav-trigger {
+            font-size: 13px;
+            font-weight: 500;
+            color: #A8B5C6;
+            background: none;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-trigger:hover {
+            color: #C4A574;
+        }
+
+        .nav-arrow {
+            font-size: 10px;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .nav-item.is-open .nav-arrow {
+            transform: rotate(180deg);
+        }
+
+        .nav-dropdown {
+            position: absolute;
+            top: calc(100% + 12px);
+            left: 0;
+            background: #1A2535;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 4px;
+            min-width: 240px;
+            padding: 8px 0;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(-8px);
+            transition: opacity 0.25s, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        }
+
+        .nav-item.has-dropdown:hover .nav-dropdown,
+        .nav-item.has-dropdown:focus-within .nav-dropdown {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        .nav-dropdown a {
+            display: block;
+            padding: 10px 16px;
+            font-size: 13px;
+            color: #A8B5C6;
+            transition: color 0.2s;
+        }
+
+        .nav-dropdown a:hover {
+            color: #C4A574;
+        }
+
+        .dropdown-all {
+            border-top: 1px solid rgba(255,255,255,0.04);
+            margin-top: 4px;
+            padding-top: 10px;
+            color: #C4A574 !important;
+        }
+
+        .nav-cta {
+            display: inline-block;
+            padding: 10px 24px;
+            background: #C4A574;
+            color: #0F1419;
+            font-weight: 600;
+            font-size: 12px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(196, 165, 116, 0.2);
+        }
+
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        .nav-hamburger span {
+            width: 20px;
+            height: 2px;
+            background: #FFFFFF;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .mobile-nav {
+            position: fixed;
+            inset: 0;
+            background: #0F1419;
+            z-index: 99;
+            display: flex;
+            flex-direction: column;
+            padding: 80px 24px 24px;
+            overflow-y: auto;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        .mobile-nav.is-open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .mobile-nav-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            background: none;
+            border: none;
+            color: #FFFFFF;
+            font-size: 28px;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .mobile-nav a {
+            padding: 12px 0;
+            font-size: 16px;
+            color: #A8B5C6;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+
+        .mobile-nav a:hover {
+            color: #C4A574;
+        }
+
+        @media (max-width: 900px) {
+            .nav-links {
+                display: none;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .nav-hamburger {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .site-nav {
+                padding: 0 16px;
+                gap: 24px;
+            }
+
+            .nav-logo {
+                font-size: 16px;
+            }
+        }
+
+        /* === FOOTER === */
+        .site-footer {
+            background: #0F1419;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding: 72px 0 32px;
+            margin-top: 80px;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 48px;
+            margin-bottom: 56px;
+        }
+
+        .footer-col {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-heading {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #C4A574;
+            margin-bottom: 20px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col a {
+            display: block;
+            font-size: 0.875rem;
+            color: #A8B5C6;
+            margin-bottom: 10px;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover {
+            color: #FFFFFF;
+        }
+
+        .footer-brand {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding: 32px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 1.25rem;
+            color: #FFFFFF;
+        }
+
+        .footer-cta {
+            display: inline-block;
+            padding: 12px 28px;
+            background: #C4A574;
+            color: #0F1419;
+            font-weight: 600;
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            cursor: pointer;
+            border: none;
+        }
+
+        .footer-cta:hover {
+            box-shadow: 0 8px 24px rgba(196, 165, 116, 0.2);
+        }
+
+        .footer-legal {
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-legal p,
+        .footer-legal-links a {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.2);
+        }
+
+        .footer-legal-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-legal-links a:hover {
+            color: #C4A574;
+        }
+
+        @media (max-width: 900px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .site-footer {
+                padding: 48px 0 24px;
+            }
+
+            .footer-inner {
+                padding: 0 16px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .footer-brand {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .footer-legal {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+
+            .footer-legal-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
+    
+        /* === NEW SITE HEADER & FOOTER === */
+        .site-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to bottom, rgba(15, 20, 25, 0.95), rgba(15, 20, 25, 0.8));
+            z-index: 100;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.08);
+            backdrop-filter: blur(8px);
+        }
+
+        .site-nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 48px;
+        }
+
+        .nav-logo {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: 0.02em;
+            color: #FFFFFF;
+            white-space: nowrap;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 8px;
+            list-style: none;
+            flex: 1;
+            align-items: center;
+        }
+
+        .nav-item {
+            position: relative;
+        }
+
+        .nav-item > a {
+            font-size: 13px;
+            font-weight: 500;
+            color: #A8B5C6;
+            padding: 8px 12px;
+            transition: color 0.3s ease;
+            display: block;
+        }
+
+        .nav-item > a:hover {
+            color: #C4A574;
+        }
+
+        .nav-trigger {
+            font-size: 13px;
+            font-weight: 500;
+            color: #A8B5C6;
+            background: none;
+            border: none;
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: color 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .nav-trigger:hover {
+            color: #C4A574;
+        }
+
+        .nav-arrow {
+            font-size: 10px;
+            transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .nav-item.is-open .nav-arrow {
+            transform: rotate(180deg);
+        }
+
+        .nav-dropdown {
+            position: absolute;
+            top: calc(100% + 12px);
+            left: 0;
+            background: #1A2535;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 4px;
+            min-width: 240px;
+            padding: 8px 0;
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(-8px);
+            transition: opacity 0.25s, transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+        }
+
+        .nav-item.has-dropdown:hover .nav-dropdown,
+        .nav-item.has-dropdown:focus-within .nav-dropdown {
+            opacity: 1;
+            pointer-events: auto;
+            transform: translateY(0);
+        }
+
+        .nav-dropdown a {
+            display: block;
+            padding: 10px 16px;
+            font-size: 13px;
+            color: #A8B5C6;
+            transition: color 0.2s;
+        }
+
+        .nav-dropdown a:hover {
+            color: #C4A574;
+        }
+
+        .dropdown-all {
+            border-top: 1px solid rgba(255,255,255,0.04);
+            margin-top: 4px;
+            padding-top: 10px;
+            color: #C4A574 !important;
+        }
+
+        .nav-cta {
+            display: inline-block;
+            padding: 10px 24px;
+            background: #C4A574;
+            color: #0F1419;
+            font-weight: 600;
+            font-size: 12px;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+
+        .nav-cta:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 32px rgba(196, 165, 116, 0.2);
+        }
+
+        .nav-hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            padding: 8px;
+            cursor: pointer;
+        }
+
+        .nav-hamburger span {
+            width: 20px;
+            height: 2px;
+            background: #FFFFFF;
+            border-radius: 2px;
+            transition: all 0.3s;
+        }
+
+        .mobile-nav {
+            position: fixed;
+            inset: 0;
+            background: #0F1419;
+            z-index: 99;
+            display: flex;
+            flex-direction: column;
+            padding: 80px 24px 24px;
+            overflow-y: auto;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+        }
+
+        .mobile-nav.is-open {
+            opacity: 1;
+            pointer-events: auto;
+        }
+
+        .mobile-nav-close {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            background: none;
+            border: none;
+            color: #FFFFFF;
+            font-size: 28px;
+            cursor: pointer;
+            padding: 4px;
+        }
+
+        .mobile-nav a {
+            padding: 12px 0;
+            font-size: 16px;
+            color: #A8B5C6;
+            border-bottom: 1px solid rgba(255,255,255,0.04);
+        }
+
+        .mobile-nav a:hover {
+            color: #C4A574;
+        }
+
+        @media (max-width: 900px) {
+            .nav-links {
+                display: none;
+            }
+
+            .nav-cta {
+                display: none;
+            }
+
+            .nav-hamburger {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .site-nav {
+                padding: 0 16px;
+                gap: 24px;
+            }
+
+            .nav-logo {
+                font-size: 16px;
+            }
+        }
+
+        /* === FOOTER === */
+        .site-footer {
+            background: #0F1419;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding: 72px 0 32px;
+            margin-top: 80px;
+        }
+
+        .footer-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 48px;
+            margin-bottom: 56px;
+        }
+
+        .footer-col {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .footer-heading {
+            font-size: 0.65rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: #C4A574;
+            margin-bottom: 20px;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col a {
+            display: block;
+            font-size: 0.875rem;
+            color: #A8B5C6;
+            margin-bottom: 10px;
+            transition: color 0.2s;
+        }
+
+        .footer-col a:hover {
+            color: #FFFFFF;
+        }
+
+        .footer-brand {
+            border-top: 1px solid rgba(255,255,255,0.08);
+            padding: 32px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-family: 'Instrument Serif', Georgia, serif;
+            font-size: 1.25rem;
+            color: #FFFFFF;
+        }
+
+        .footer-cta {
+            display: inline-block;
+            padding: 12px 28px;
+            background: #C4A574;
+            color: #0F1419;
+            font-weight: 600;
+            font-size: 0.8rem;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            cursor: pointer;
+            border: none;
+        }
+
+        .footer-cta:hover {
+            box-shadow: 0 8px 24px rgba(196, 165, 116, 0.2);
+        }
+
+        .footer-legal {
+            border-top: 1px solid rgba(255,255,255,0.05);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .footer-legal p,
+        .footer-legal-links a {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.2);
+        }
+
+        .footer-legal-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .footer-legal-links a:hover {
+            color: #C4A574;
+        }
+
+        @media (max-width: 900px) {
+            .footer-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 32px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .site-footer {
+                padding: 48px 0 24px;
+            }
+
+            .footer-inner {
+                padding: 0 16px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .footer-brand {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .footer-legal {
+                flex-direction: column;
+                gap: 12px;
+                text-align: center;
+            }
+
+            .footer-legal-links {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+        }
     </style>
 
     <!-- Schema.org -->
@@ -2339,39 +3095,72 @@
         <div class="toc-dot" data-target="localizacao"><span class="toc-label">Localização</span></div>
     </nav>
 
-    <!-- ===== HEADER ===== -->
-    <header class="header" id="header">
-        <div class="container">
-            <a href="#" class="logo">
-                <div class="logo-symbol">
-                    <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <ellipse cx="50" cy="42" rx="28" ry="18" stroke="white" stroke-width="3" opacity="0.8"/>
-                        <ellipse cx="50" cy="42" rx="14" ry="9" stroke="white" stroke-width="2" opacity="0.4"/>
-                        <line x1="50" y1="60" x2="50" y2="78" stroke="white" stroke-width="3" opacity="0.6"/>
-                        <line x1="38" y1="72" x2="62" y2="72" stroke="white" stroke-width="2.5" opacity="0.5"/>
-                    </svg>
-                </div>
-                <div class="logo-text">
-                    <span class="logo-name">Amanda Cabral</span>
-                    <span class="logo-tag">Solu&ccedil;&otilde;es Empresariais</span>
-                </div>
-            </a>
-            <nav class="nav" id="nav">
-                <button class="nav-close" id="navClose" aria-label="Fechar menu">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-                </button>
-                <a href="#servicos">Servi&ccedil;os</a>
-                <a href="#contato">Diagn&oacute;stico</a>
-                <a href="#sobre">Sobre</a>
-                <a href="#blog">Blog</a>
-                <a href="#faq">FAQ</a>
-                <a href="#contato" class="nav-cta">Diagn&oacute;stico Gratuito</a>
-            </nav>
-            <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
-                <span></span><span></span><span></span>
-            </button>
+<header class="site-header" id="siteHeader">
+  <nav class="site-nav" aria-label="Navegação principal">
+    <a href="/" class="nav-logo">AM Cabral</a>
+
+    <ul class="nav-links" id="navLinks">
+      <!-- Dropdown: Serviços -->
+      <li class="nav-item has-dropdown">
+        <button class="nav-trigger" aria-expanded="false" aria-haspopup="true">
+          Serviços <span class="nav-arrow" aria-hidden="true">▼</span>
+        </button>
+        <div class="nav-dropdown" role="menu">
+          <a href="/gestao-contabil-para-industrias/" role="menuitem">Gestão Contábil Estratégica</a>
+          <a href="/recuperacao-de-creditos-tributarios/" role="menuitem">Recuperação de Créditos</a>
+          <a href="/holding-patrimonial-e-familiar/" role="menuitem">Holding Patrimonial e Familiar</a>
+          <a href="/planejamento-tributario/" role="menuitem">Planejamento Tributário</a>
+          <a href="/consultoria-tributaria/" role="menuitem">Consultoria Tributária</a>
+          <a href="/servicos/" class="dropdown-all" role="menuitem">Ver todos os serviços →</a>
         </div>
-    </header>
+      </li>
+
+      <!-- Link direto -->
+      <li class="nav-item"><a href="/reforma-tributaria/">Reforma Tributária</a></li>
+      <li class="nav-item"><a href="/blog/">Blog</a></li>
+
+      <!-- Dropdown: Sobre -->
+      <li class="nav-item has-dropdown">
+        <button class="nav-trigger" aria-expanded="false" aria-haspopup="true">
+          Sobre <span class="nav-arrow" aria-hidden="true">▼</span>
+        </button>
+        <div class="nav-dropdown" role="menu">
+          <a href="/sobre/" role="menuitem">Amanda Silva</a>
+          <a href="/casos-de-sucesso/" role="menuitem">Casos de Sucesso</a>
+          <a href="/depoimentos/" role="menuitem">Depoimentos</a>
+        </div>
+      </li>
+
+      <li class="nav-item"><a href="/contato/">Contato</a></li>
+    </ul>
+
+    <!-- CTA -->
+    <a href="/diagnostico-gratuito/" class="nav-cta">Diagnóstico Gratuito</a>
+
+    <!-- Hamburger mobile -->
+    <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<!-- Mobile overlay -->
+<div class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <button class="mobile-nav-close" id="mobileNavClose" aria-label="Fechar menu">✕</button>
+  <a href="/gestao-contabil-para-industrias/">Gestão Contábil Estratégica</a>
+  <a href="/recuperacao-de-creditos-tributarios/">Recuperação de Créditos</a>
+  <a href="/holding-patrimonial-e-familiar/">Holding Patrimonial e Familiar</a>
+  <a href="/planejamento-tributario/">Planejamento Tributário</a>
+  <a href="/consultoria-tributaria/">Consultoria Tributária</a>
+  <a href="/servicos/">Ver todos os serviços</a>
+  <a href="/reforma-tributaria/">Reforma Tributária</a>
+  <a href="/blog/">Blog</a>
+  <a href="/sobre/">Amanda Silva</a>
+  <a href="/casos-de-sucesso/">Casos de Sucesso</a>
+  <a href="/depoimentos/">Depoimentos</a>
+  <a href="/contato/">Contato</a>
+  <a href="/diagnostico-gratuito/" style="color: var(--accent-gold); margin-top: 20px; font-weight: 600;">Diagnóstico Gratuito</a>
+</div>
 
     <!-- ===== HERO ===== -->
     <section class="hero" id="hero">
@@ -2974,42 +3763,73 @@
         </div>
     </div>
 
-    <!-- ===== FOOTER ===== -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div>
-                    <div class="logo"><div class="logo-text"><span class="logo-name">Amanda Cabral</span><span class="logo-tag">Solu&ccedil;&otilde;es Empresariais</span></div></div>
-                    <p class="footer-desc" style="margin-top:16px">Amanda Cabral &mdash; Solu&ccedil;&otilde;es empresariais especializadas em ind&uacute;strias. 20 anos de resultados comprovados em Belo Horizonte.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Servi&ccedil;os</h4>
-                    <a href="#servicos">Planejamento Tribut&aacute;rio</a>
-                    <a href="#servicos">Recupera&ccedil;&atilde;o de Cr&eacute;ditos</a>
-                    <a href="#servicos">Compliance Industrial</a>
-                    <a href="#servicos">Incentivos Fiscais MG</a>
-                </div>
-                <div class="footer-col">
-                    <h4>Institucional</h4>
-                    <a href="#sobre">Sobre</a>
-                    <a href="#depoimentos">Depoimentos</a>
-                    <a href="#blog">Blog</a>
-                    <a href="#faq">FAQ</a>
-                    <a href="#">Privacidade</a>
-                </div>
-                <div class="footer-col">
-                    <h4>Contato</h4>
-                    <a href="#">Av. Afonso Pena, 1000<br>Funcion&aacute;rios &mdash; BH/MG</a>
-                    <a href="tel:+5531999999999">(31) 99999-9999</a>
-                    <a href="mailto:contato@cabralhanani.com.br">contato@cabralhanani.com.br</a>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Amanda Cabral Soluções Empresariais.</p>
-                <span class="footer-crc">CRC/MG &mdash; Registro Ativo</span>
-            </div>
-        </div>
-    </footer>
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <!-- Col 1: A Empresa -->
+      <div class="footer-col">
+        <h3 class="footer-heading">A Empresa</h3>
+        <ul>
+          <li><a href="/sobre/">Sobre Amanda Silva</a></li>
+          <li><a href="/casos-de-sucesso/">Casos de Sucesso</a></li>
+          <li><a href="/depoimentos/">Depoimentos</a></li>
+          <li><a href="/faq/">FAQ</a></li>
+          <li><a href="/contato/">Contato</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 2: Serviços -->
+      <div class="footer-col">
+        <h3 class="footer-heading">Serviços</h3>
+        <ul>
+          <li><a href="/gestao-contabil-para-industrias/">Gestão Contábil Estratégica</a></li>
+          <li><a href="/recuperacao-de-creditos-tributarios/">Recuperação de Créditos</a></li>
+          <li><a href="/holding-patrimonial-e-familiar/">Holding Patrimonial e Familiar</a></li>
+          <li><a href="/planejamento-tributario/">Planejamento Tributário</a></li>
+          <li><a href="/consultoria-tributaria/">Consultoria Tributária</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Conteúdo -->
+      <div class="footer-col">
+        <h3 class="footer-heading">Conteúdo</h3>
+        <ul>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/reforma-tributaria/">Reforma Tributária</a></li>
+          <li><a href="/faq/">FAQ</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Regiões -->
+      <div class="footer-col">
+        <h3 class="footer-heading">Regiões Atendidas</h3>
+        <ul>
+          <li><a href="/contabilidade-industrial-belo-horizonte/">Belo Horizonte</a></li>
+          <li><a href="/contabilidade-industrial-sao-paulo/">São Paulo</a></li>
+          <li><a href="/contabilidade-industrial-rio-de-janeiro/">Rio de Janeiro</a></li>
+          <li><a href="/contabilidade-industrial-vale-do-aco/">Vale do Aço</a></li>
+          <li><a href="/regioes-atendidas/">Ver todas →</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Separador + Logo + CTA -->
+    <div class="footer-brand">
+      <a href="/" class="footer-logo">AM Cabral</a>
+      <a href="/diagnostico-gratuito/" class="footer-cta">Diagnóstico Gratuito</a>
+    </div>
+
+    <!-- Barra legal -->
+    <div class="footer-legal">
+      <p>© 2026 Amanda Silva Cabral Contabilidade. CRC/MG ativo.</p>
+      <div class="footer-legal-links">
+        <a href="/politica-de-privacidade/">Política de Privacidade</a>
+        <a href="/politica-de-cookies/">Política de Cookies</a>
+        <a href="/termos-de-uso/">Termos de Uso</a>
+      </div>
+    </div>
+  </div>
+</footer>
 
 
     <!-- WhatsApp removido — CTA via bottom bar e formulário -->
@@ -3022,6 +3842,51 @@
     <script>
     (function() {
         'use strict';
+
+        // ---- MEGA MENU & MOBILE NAV ----
+        document.querySelectorAll('.nav-trigger').forEach(btn => {
+            btn.addEventListener('click', function(){
+                const item = this.closest('.nav-item');
+                const expanded = item.classList.toggle('is-open');
+                this.setAttribute('aria-expanded', expanded);
+                document.querySelectorAll('.nav-item.has-dropdown').forEach(other => {
+                    if(other !== item){
+                        other.classList.remove('is-open');
+                        other.querySelector('.nav-trigger').setAttribute('aria-expanded','false');
+                    }
+                });
+            });
+        });
+
+        document.addEventListener('click', e => {
+            if(!e.target.closest('.has-dropdown')){
+                document.querySelectorAll('.nav-item.has-dropdown').forEach(item => {
+                    item.classList.remove('is-open');
+                    item.querySelector('.nav-trigger').setAttribute('aria-expanded','false');
+                });
+            }
+        });
+
+        const hamburger = document.getElementById('navHamburger');
+        const mobileNav = document.getElementById('mobileNav');
+        const mobileClose = document.getElementById('mobileNavClose');
+
+        function openMobile(){
+            mobileNav.classList.add('is-open');
+            mobileNav.setAttribute('aria-hidden','false');
+            hamburger.setAttribute('aria-expanded','true');
+            document.body.style.overflow='hidden';
+        }
+        function closeMobile(){
+            mobileNav.classList.remove('is-open');
+            mobileNav.setAttribute('aria-hidden','true');
+            hamburger.setAttribute('aria-expanded','false');
+            document.body.style.overflow='';
+        }
+
+        hamburger.addEventListener('click', openMobile);
+        mobileClose.addEventListener('click', closeMobile);
+        mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobile));
 
         // ---- LOADER ----
         const loader = document.getElementById('loader');
@@ -3349,5 +4214,53 @@
 
     })();
     </script>
+
+<script>
+(function(){
+  document.querySelectorAll('.nav-trigger').forEach(btn => {
+    btn.addEventListener('click', function(){
+      const item = this.closest('.nav-item');
+      const expanded = item.classList.toggle('is-open');
+      this.setAttribute('aria-expanded', expanded);
+      document.querySelectorAll('.nav-item.has-dropdown').forEach(other => {
+        if(other !== item){
+          other.classList.remove('is-open');
+          other.querySelector('.nav-trigger').setAttribute('aria-expanded','false');
+        }
+      });
+    });
+  });
+
+  document.addEventListener('click', e => {
+    if(!e.target.closest('.has-dropdown')){
+      document.querySelectorAll('.nav-item.has-dropdown').forEach(item => {
+        item.classList.remove('is-open');
+        item.querySelector('.nav-trigger').setAttribute('aria-expanded','false');
+      });
+    }
+  });
+
+  const hamburger = document.getElementById('navHamburger');
+  const mobileNav = document.getElementById('mobileNav');
+  const mobileClose = document.getElementById('mobileNavClose');
+
+  function openMobile(){
+    mobileNav.classList.add('is-open');
+    mobileNav.setAttribute('aria-hidden','false');
+    hamburger.setAttribute('aria-expanded','true');
+    document.body.style.overflow='hidden';
+  }
+  function closeMobile(){
+    mobileNav.classList.remove('is-open');
+    mobileNav.setAttribute('aria-hidden','true');
+    hamburger.setAttribute('aria-expanded','false');
+    document.body.style.overflow='';
+  }
+
+  hamburger.addEventListener('click', openMobile);
+  mobileClose.addEventListener('click', closeMobile);
+  mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobile));
+})();
+</script>
 </body>
 </html>
