@@ -512,7 +512,71 @@ nav.scrolled {
   background: radial-gradient(circle, var(--glow-accent2) 0%, transparent 65%);
   pointer-events: none;
 }
-.city-hero .container { position: relative; z-index: 1; }
+.city-hero .container {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 64px;
+  align-items: center;
+}
+.hero-content { display: flex; flex-direction: column; }
+.hero-photo {
+  position: relative;
+  align-self: flex-end;
+}
+.hero-photo img {
+  width: 100%;
+  max-width: 420px;
+  border-radius: 20px 20px 0 0;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  filter: brightness(.95) contrast(1.02);
+}
+.hero-photo::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px 20px 0 0;
+  background: linear-gradient(to bottom, transparent 55%, var(--z2) 100%);
+  z-index: 1;
+  pointer-events: none;
+}
+.hero-photo-badge {
+  position: absolute;
+  bottom: 24px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  background: rgba(10,22,40,.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,.1);
+  border-radius: 40px;
+  padding: 10px 20px;
+  white-space: nowrap;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .05em;
+  color: rgba(255,255,255,.75);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.hero-photo-badge::before {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #22c55e;
+  flex-shrink: 0;
+  box-shadow: 0 0 6px #22c55e;
+  animation: pulse-dot 2s infinite;
+}
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50% { opacity: .4; }
+}
 
 .hero-breadcrumb {
   display: flex;
@@ -710,30 +774,48 @@ nav.scrolled {
 .authority-text p:last-child { margin-bottom: 0; }
 
 .stats-card {
-  background: var(--z2);
-  border: 1px solid var(--border-z2);
+  position: relative;
   border-radius: var(--radius);
-  padding: 40px 32px;
+  overflow: hidden;
+}
+.stats-card-photo {
+  width: 100%;
+  display: block;
+  border-radius: var(--radius);
+  object-fit: cover;
+  object-position: center top;
+  aspect-ratio: 3/4;
+}
+.stats-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(6,14,26,.92) 0%, rgba(6,14,26,.5) 45%, transparent 75%);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 28px;
+  gap: 0;
 }
 .stat-row {
   display: flex;
   flex-direction: column;
-  padding: 20px 0;
-  border-bottom: 1px solid var(--border-z1);
+  padding: 14px 0;
+  border-bottom: 1px solid rgba(255,255,255,.08);
 }
 .stat-row:first-child { padding-top: 0; }
 .stat-row:last-child { border-bottom: none; padding-bottom: 0; }
 .stat-num {
   font-family: var(--serif);
   font-style: italic;
-  font-size: 42px;
+  font-size: 36px;
   color: var(--dourado);
   line-height: 1.1;
 }
 .stat-label {
-  font-size: 14px;
-  color: var(--dim);
-  margin-top: 4px;
+  font-size: 13px;
+  color: rgba(255,255,255,.6);
+  margin-top: 3px;
 }
 
 /* === SERVICES CAROUSEL === */
@@ -1732,6 +1814,86 @@ p, .hero-sub { text-wrap: pretty; }
   border-radius: 20px; color: rgba(255,255,255,0.5);
 }
 
+/* === AMANDA CTA PHOTO STRIP === */
+.amanda-cta-strip {
+  background: var(--z1);
+  padding: var(--sec-pad) 0;
+  overflow: hidden;
+}
+.amanda-cta-inner {
+  display: grid;
+  grid-template-columns: 1fr 380px;
+  gap: 64px;
+  align-items: center;
+}
+.amanda-cta-photo {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  order: 2;
+}
+.amanda-cta-photo img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center top;
+  aspect-ratio: 3/4;
+  border-radius: 20px;
+  filter: brightness(.92) contrast(1.03);
+}
+.amanda-cta-photo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(59,130,246,.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+.amanda-cta-text { order: 1; }
+.amanda-cta-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--dourado);
+  margin-bottom: 16px;
+}
+.amanda-cta-h {
+  font-family: var(--serif);
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-style: italic;
+  color: var(--paper);
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+.amanda-cta-p {
+  font-size: 17px;
+  line-height: 1.75;
+  color: rgba(255,255,255,.65);
+  margin-bottom: 36px;
+}
+.amanda-cta-quote {
+  border-left: 2px solid var(--dourado);
+  padding-left: 20px;
+  margin-bottom: 36px;
+}
+.amanda-cta-quote p {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 19px;
+  color: rgba(255,255,255,.8);
+  line-height: 1.6;
+}
+.amanda-cta-quote cite {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: .08em;
+  color: var(--dim);
+  font-style: normal;
+  margin-top: 8px;
+  display: block;
+}
+
 /* === RESPONSIVE: TABLET (960px) === */
 @media (max-width: 960px) {
   nav { padding: 0 20px; }
@@ -1759,6 +1921,8 @@ p, .hero-sub { text-wrap: pretty; }
   }
 
   .city-hero { padding: 90px 20px 48px; }
+  .city-hero .container { grid-template-columns: 1fr; gap: 40px; }
+  .hero-photo { display: none; }
   .authority-grid { grid-template-columns: 1fr; gap: 40px; }
   .process-grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
   .numbers-grid { gap: 0; }
@@ -1774,10 +1938,12 @@ p, .hero-sub { text-wrap: pretty; }
   .comparativo-table { min-width: 560px; }
 
   .location-grid { grid-template-columns: 1fr; }
+  .amanda-cta-inner { grid-template-columns: 1fr; }
+  .amanda-cta-photo { display: none; }
 
   .city-hero, .authority-sec, .services-sec, .local-sec, .numbers-sec, .process-sec, .faq-sec,
   .diferencial-sec, .comparativo-sec, .cases-sec, .depoimentos-sec, .hub-sec, .form-final-sec,
-  .location-sec, footer { padding-left: 20px !important; padding-right: 20px !important; }
+  .amanda-cta-strip, .location-sec, footer { padding-left: 20px !important; padding-right: 20px !important; }
 }
 
 /* === RESPONSIVE: MOBILE (768px) === */
@@ -1979,38 +2145,51 @@ p, .hero-sub { text-wrap: pretty; }
 <main>
 <section class="city-hero noise" id="main-content">
   <div class="container">
-    <div class="hero-breadcrumb">
-      <a href="index.html">Home</a>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
-      <a href="cidades-atendidas.html">Cidades Atendidas</a>
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
-      <span>Par&#225; de Minas</span>
-    </div>
+    <div class="hero-content">
+      <div class="hero-breadcrumb">
+        <a href="index.html">Home</a>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+        <a href="cidades-atendidas.html">Cidades Atendidas</a>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m9 18 6-6-6-6"/></svg>
+        <span>Par&#225; de Minas</span>
+      </div>
 
-    <div class="hero-tag">SEDE | PAR&#193; DE MINAS, MG</div>
+      <div class="hero-tag">SEDE | PAR&#193; DE MINAS, MG</div>
 
-    <h1 class="hero-h1">Contador em Par&#225; de Minas para empresas que querem pagar menos imposto dentro da lei</h1>
+      <h1 class="hero-h1">Contador em Par&#225; de Minas para empresas que querem pagar menos imposto dentro da lei</h1>
 
-    <p class="hero-sub">30 anos na cidade. Escritório na Rua Major Fidélis, 244. Contabilidade para comércio, serviços e indústrias. 8 em cada 10 empresas que atendemos encontram créditos que o contador anterior ignorou.</p>
+      <p class="hero-sub">30 anos na cidade. Escritório na Rua Major Fidélis, 244. Contabilidade para comércio, serviços e indústrias. 8 em cada 10 empresas que atendemos encontram créditos que o contador anterior ignorou.</p>
 
-    <div class="hero-author">
-      <div class="hero-author-avatar">AC</div>
-      <div class="hero-author-info">
-        <div class="hero-author-name">Amanda Cabral</div>
-        <div class="hero-author-role">Contadora em Par&#225; de Minas <span></span> CRC/MG Ativo</div>
+      <div class="hero-author">
+        <div class="hero-author-avatar">AC</div>
+        <div class="hero-author-info">
+          <div class="hero-author-name">Amanda Cabral</div>
+          <div class="hero-author-role">Contadora em Par&#225; de Minas <span></span> CRC/MG Ativo</div>
+        </div>
+      </div>
+
+      <div class="hero-badges">
+        <div class="hero-badge"><span class="hero-badge-num">30</span> anos na cidade</div>
+        <div class="hero-badge"><span class="hero-badge-num">127+</span> empresas</div>
+        <div class="hero-badge"><span class="hero-badge-num">R$ 12,3M</span> recuperados</div>
+        <div class="hero-badge"><span class="hero-badge-crc">CRC/MG Ativo</span></div>
+      </div>
+
+      <div class="hero-cta-wrap">
+        <a href="diagnostico-gratuito.html" class="btn-p">Solicitar Diagn&#243;stico Gratuito <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+        <span class="hero-small">Sem custo. Sem compromisso. Resposta em 24h.</span>
       </div>
     </div>
 
-    <div class="hero-badges">
-      <div class="hero-badge"><span class="hero-badge-num">30</span> anos na cidade</div>
-      <div class="hero-badge"><span class="hero-badge-num">127+</span> empresas</div>
-      <div class="hero-badge"><span class="hero-badge-num">R$ 12,3M</span> recuperados</div>
-      <div class="hero-badge"><span class="hero-badge-crc">CRC/MG Ativo</span></div>
-    </div>
-
-    <div class="hero-cta-wrap">
-      <a href="diagnostico-gratuito.html" class="btn-p">Solicitar Diagn&#243;stico Gratuito <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-      <span class="hero-small">Sem custo. Sem compromisso. Resposta em 24h.</span>
+    <div class="hero-photo">
+      <img
+        src="assets/amanda-cabral-contadora-para-de-minas-hero.jpg"
+        alt="Amanda Cabral, contadora em Par&#225; de Minas, especialista em tributa&#231;&#227;o e planejamento fiscal"
+        width="420"
+        loading="eager"
+        fetchpriority="high"
+      >
+      <div class="hero-photo-badge">Escritório em Par&#225; de Minas, MG</div>
     </div>
   </div>
 </section>
@@ -2052,21 +2231,30 @@ p, .hero-sub { text-wrap: pretty; }
         <p>Esse &#233; o trabalho que fazemos aqui. Para com&#233;rcio, servi&#231;os e ind&#250;strias de Par&#225; de Minas e regi&#227;o. A sede continua na Rua Major Fid&#233;lis, 244. Onde tudo come&#231;ou, em <time datetime="1996">1996</time>.</p>
       </div>
       <div class="stats-card reveal-right">
-        <div class="stat-row">
-          <div class="stat-num">30</div>
-          <div class="stat-label">anos em Par&#225; de Minas</div>
-        </div>
-        <div class="stat-row">
-          <div class="stat-num">127+</div>
-          <div class="stat-label">empresas atendidas</div>
-        </div>
-        <div class="stat-row">
-          <div class="stat-num">R$ 12,3M</div>
-          <div class="stat-label">em cr&#233;ditos recuperados</div>
-        </div>
-        <div class="stat-row">
-          <div class="stat-num">98%</div>
-          <div class="stat-label">de reten&#231;&#227;o de clientes</div>
+        <img
+          class="stats-card-photo"
+          src="assets/amanda-cabral-contadora-autoridade.jpg"
+          alt="Amanda Cabral, contadora especialista em tributa&#231;&#227;o em Par&#225; de Minas"
+          width="440"
+          loading="lazy"
+        >
+        <div class="stats-card-overlay">
+          <div class="stat-row">
+            <div class="stat-num">30</div>
+            <div class="stat-label">anos em Par&#225; de Minas</div>
+          </div>
+          <div class="stat-row">
+            <div class="stat-num">127+</div>
+            <div class="stat-label">empresas atendidas</div>
+          </div>
+          <div class="stat-row">
+            <div class="stat-num">R$ 12,3M</div>
+            <div class="stat-label">em cr&#233;ditos recuperados</div>
+          </div>
+          <div class="stat-row">
+            <div class="stat-num">98%</div>
+            <div class="stat-label">de reten&#231;&#227;o de clientes</div>
+          </div>
         </div>
       </div>
     </div>
@@ -2482,6 +2670,32 @@ p, .hero-sub { text-wrap: pretty; }
         <p class="hub-desc">25 cidades. De Par&#225; de Minas para todo o Brasil.</p>
         <span class="hub-arrow">Acessar &#8594;</span>
       </a>
+    </div>
+  </div>
+</section>
+
+<!-- 17B. AMANDA CTA STRIP (--z1, dark) -->
+<section class="amanda-cta-strip noise">
+  <div class="container">
+    <div class="amanda-cta-inner">
+      <div class="amanda-cta-text reveal-left">
+        <div class="amanda-cta-label">Quem vai cuidar da sua empresa</div>
+        <h2 class="amanda-cta-h">Amanda Cabral de Oliveira, CRC/MG Ativo</h2>
+        <div class="amanda-cta-quote">
+          <p>"30 anos em Par&#225; de Minas me ensinaram uma coisa: empresa que confia o tribut&#225;rio para um contador que s&#243; cumpre prazo est&#225; deixando dinheiro na mesa todo m&#234;s."</p>
+          <cite>Amanda Cabral, contadora. CRC/MG Ativo.</cite>
+        </div>
+        <p class="amanda-cta-p">P&#243;s-graduada em Direito Tribut&#225;rio. Especialista em recupera&#231;&#227;o de cr&#233;ditos ICMS, IPI e PIS/COFINS. Atende diretamente cada cliente, sem intermedi&#225;rios.</p>
+        <a href="#diagnostico" class="btn-p">Falar com Amanda <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+      </div>
+      <div class="amanda-cta-photo reveal-right">
+        <img
+          src="assets/amanda-cabral-contadora-consultoria.jpg"
+          alt="Amanda Cabral, contadora em Par&#225; de Minas, com 30 anos de experi&#234;ncia em tributa&#231;&#227;o"
+          width="380"
+          loading="lazy"
+        >
+      </div>
     </div>
   </div>
 </section>
