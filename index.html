@@ -935,8 +935,8 @@
 
         .hero h1 em {
             font-style: italic;
+            color: var(--accent-light);
         }
-        .h1-white { color: var(--accent-light); }
 
         .hero-sub {
             font-size: 0.95rem;
@@ -1009,81 +1009,6 @@
             border: 1.5px solid var(--border);
         }
         .btn-outline-dark:hover { border-color: var(--accent); color: var(--accent); }
-
-        /* ── Hero entrance animations ── */
-
-        /* 1. Word split reveal — h1 */
-        .hero-word {
-            display: inline-block;
-            overflow: hidden;
-            vertical-align: bottom;
-        }
-        .hero-word span {
-            display: inline-block;
-            transform: translateY(110%);
-            opacity: 0;
-            animation: heroWordUp 0.7s cubic-bezier(0.22,1,0.36,1) forwards;
-        }
-
-        @keyframes heroWordUp {
-            to { transform: translateY(0); opacity: 1; }
-        }
-
-        /* 2. Shimmer único no dourado */
-        @keyframes heroShimmer {
-            0%   { background-position: -200% center; }
-            100% { background-position: 200% center; }
-        }
-        .h1-gold {
-            background: linear-gradient(
-                90deg,
-                var(--gold) 0%,
-                #F5E6B8 40%,
-                var(--gold) 60%,
-                #C9A84C 100%
-            );
-            background-size: 200% auto;
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: heroShimmer 1.8s 1.2s ease forwards;
-            background-position: -200% center;
-        }
-
-        /* 3. Reveal mascarado da foto */
-        .hero-photo-desktop-only {
-            position: relative;
-        }
-        .hero-photo-desktop-only::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: var(--blue-900);
-            z-index: 2;
-            border-radius: 24px;
-            transform-origin: bottom;
-            animation: heroPhotoReveal 1s 0.3s cubic-bezier(0.76,0,0.24,1) forwards;
-        }
-        @keyframes heroPhotoReveal {
-            0%   { transform: scaleY(1); }
-            100% { transform: scaleY(0); }
-        }
-
-        /* Delays escalonados por palavra */
-        .hero-word:nth-child(1) span { animation-delay: 0.05s; }
-        .hero-word:nth-child(2) span { animation-delay: 0.12s; }
-        .hero-word:nth-child(3) span { animation-delay: 0.19s; }
-        .hero-word:nth-child(4) span { animation-delay: 0.26s; }
-        .hero-word:nth-child(5) span { animation-delay: 0.33s; }
-        .hero-word:nth-child(6) span { animation-delay: 0.40s; }
-        .hero-word:nth-child(7) span { animation-delay: 0.47s; }
-
-        /* Reduced motion */
-        @media (prefers-reduced-motion: reduce) {
-            .hero-word span { transform: none; opacity: 1; animation: none; }
-            .hero-photo-desktop-only::before { display: none; }
-            .h1-gold { animation: none; background-position: 0 center; }
-        }
 
         /* Hero metrics */
         .hero-metrics {
@@ -2596,17 +2521,7 @@
                         <span class="hero-tag-full">Intelig&ecirc;ncia Tribut&aacute;ria &middot; H&aacute; 20 anos &middot; Par&aacute; de Minas, MG</span>
                         <span class="hero-tag-short">Intelig&ecirc;ncia Tribut&aacute;ria &middot; H&aacute; 20 anos</span>
                     </div>
-                    <h1 aria-label="Amanda Cabral, Contabilidade Estratégica & Holding Patrimonial">
-                        <span class="hero-word"><span>Amanda</span></span>
-                        <span class="hero-word"><span>Cabral,</span></span>
-                        <em>
-                        <span class="hero-word"><span class="h1-gold">Contabilidade</span></span>
-                        <span class="hero-word"><span class="h1-gold">Estrat&eacute;gica</span></span>
-                        <span class="hero-word"><span class="h1-white">&amp;</span></span>
-                        <span class="hero-word"><span class="h1-white">Holding</span></span>
-                        <span class="hero-word"><span class="h1-white">Patrimonial</span></span>
-                        </em>
-                    </h1>
+                    <h1>Amanda Cabral, <em><span class="h1-gold">Contabilidade Estrat&eacute;gica</span> <span class="h1-white">&amp; Holding Patrimonial</span></em></h1>
                     <div class="hero-photo-mobile-wrap">
                         <div class="hero-photo hero-photo-mobile-only">
                             <img src="amanda-hero-mobile.jpg" alt="Amanda Cabral - Contadora Especialista em Tributa&ccedil;&atilde;o para Empresas" loading="eager" width="900" height="600">
