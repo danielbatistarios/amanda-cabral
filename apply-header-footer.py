@@ -1,108 +1,248 @@
 #!/usr/bin/env python3
-import os
-import re
-from pathlib import Path
+"""
+Header/Footer Rollout — Amanda Cabral
+======================================
+Uso:
+    1. Suba o servidor local:  python3 server.py   (ou: python3 -m http.server 8000)
+    2. Edite header/footer/mega-menu na index.html
+    3. Rode este script:       python3 apply-header-footer.py
+    4. Commit + push:          git add -A && git commit -m "chore: rollout header/footer"
 
-def extract_header_footer(index_path):
-    """Extrai header e footer da index.html"""
-    with open(index_path, 'r', encoding='utf-8') as f:
-        content = f.read()
+O script lê o header, mega-menu, hdr-mob, footer e script de animação direto do
+localhost:8000 (a home) e propaga para todas as páginas ativas.
+"""
+import re, os, urllib.request
 
-    # Encontra o header (tudo antes de <main>)
-    main_match = re.search(r'<main[^>]*>', content)
-    if not main_match:
-        raise ValueError("Não encontrou <main> na index.html")
+BASE = os.path.dirname(os.path.abspath(__file__))
 
-    header = content[:main_match.start()]
+# ── Fetch source from localhost ──────────────────────────────────────────────
+print('Buscando http://localhost:8000 ...')
+try:
+    content = urllib.request.urlopen('http://localhost:8000').read().decode('utf-8')
+except Exception as e:
+    print(f'ERRO: não consegui conectar em localhost:8000 — {e}')
+    print('Suba o servidor antes de rodar este script.')
+    exit(1)
 
-    # Encontra o footer (tudo depois de </main>)
-    main_close = content.rfind('</main>')
-    if main_close == -1:
-        raise ValueError("Não encontrou </main> na index.html")
+# ── Extract CSS block (HEADER section to end of <style>) ────────────────────
+style_start = content.find('<style>') + len('<style>')
+style_end   = content.find('</style>')
+style_content = content[style_start:style_end]
+hdr_section   = style_content.find('HEADER / MEGA-MENU')
+comment_start = style_content.rfind('/*', 0, hdr_section)
+HEADER_CSS    = style_content[comment_start:]
 
-    footer = content[main_close + len('</main>'):]
+# ── Extract HTML blocks ──────────────────────────────────────────────────────
+hdr_html_start = content.find('<header id="hdr">')
+hdr_html_end   = content.find('</header>', hdr_html_start) + len('</header>')
+HEADER_HTML    = content[hdr_html_start:hdr_html_end]
 
-    # Remove o corpo vazio entre header e footer
-    main_content = content[main_match.start():main_close + len('</main>')]
+mob_start  = content.find('<div id="hdr-mob">')
+MEGA_HTML  = content[hdr_html_end:mob_start]   # mega panels between header and hdr-mob
 
-    return header, footer
-
-def apply_header_footer_to_page(page_path, header, footer):
-    """Aplica header e footer a uma página, preservando seu conteúdo principal"""
-    with open(page_path, 'r', encoding='utf-8') as f:
-        page_content = f.read()
-
-    # Encontra <main> ou <body>
-    main_match = re.search(r'<main[^>]*>(.*?)</main>', page_content, re.DOTALL)
-    body_match = re.search(r'<body[^>]*>(.*?)</body>', page_content, re.DOTALL)
-
-    if main_match:
-        # Se tem <main>, preserva o conteúdo dentro
-        main_inner = main_match.group(1)
-        updated = header + f'<main>{main_inner}</main>' + footer
-    elif body_match:
-        # Se não tem <main>, tira tudo de <body> e reaplica
-        body_inner = body_match.group(1)
-        # Remove header/footer antigos se existirem
-        body_inner = re.sub(r'<header[^>]*>.*?</header>', '', body_inner, flags=re.DOTALL)
-        body_inner = re.sub(r'<footer[^>]*>.*?</footer>', '', body_inner, flags=re.DOTALL)
-        updated = header + f'<main>{body_inner}</main>' + footer
+# hdr-mob: count divs to find full closing tag
+pos = mob_start + len('<div id="hdr-mob">')
+depth = 1
+while depth > 0 and pos < len(content):
+    next_open  = content.find('<div', pos)
+    next_close = content.find('</div>', pos)
+    if next_close == -1:
+        break
+    if next_open != -1 and next_open < next_close:
+        depth += 1
+        pos = next_open + 4
     else:
-        raise ValueError(f"Não encontrou <main> ou <body> em {page_path}")
+        depth -= 1
+        pos = next_close + 6
+MOB_HTML = content[mob_start:pos]
 
-    return updated
+ftr_start   = content.find('<footer class="site-footer">')
+ftr_end     = content.find('</footer>', ftr_start) + len('</footer>')
+FOOTER_HTML = content[ftr_start:ftr_end]
 
-def main():
-    project_dir = Path('/Users/jrios/amanda-cabral-contadora')
-    index_path = project_dir / 'index.html'
+# Mega-menu script
+pos2 = pos
+SCRIPT_HTML = ''
+while True:
+    s = content.find('<script>', pos2)
+    if s == -1:
+        break
+    e = content.find('</script>', s) + len('</script>')
+    chunk = content[s:min(s + 300, e)]
+    if 'hdrTimer' in chunk or 'MEGA-MENU' in chunk:
+        SCRIPT_HTML = content[s:e]
+        break
+    pos2 = e
 
-    # Arquivos a atualizar (13 páginas)
-    pages_to_update = [
-        'author.html',
-        'bio.html',
-        'consultoria-tributaria.html',
-        'faq.html',
-        'gestao-contabil-industrial.html',
-        'holding-patrimonial.html',
-        'planejamento-tributario.html',
-        'recuperacao-creditos-tributarios.html',
-        'servicos.html',
-    ]
+# ── Pages to update ──────────────────────────────────────────────────────────
+PAGES = [
+    '404.html', 'author.html', 'bio.html',
+    'blog/index.html', 'blog/o-que-e-ibs-e-cbs/index.html',
+    'casos-de-sucesso/index.html', 'cidades-atendidas/index.html',
+    'contabilidade-para-de-minas/index.html', 'fale-com-especialista/index.html',
+    'faq-amcabralblindagem.html', 'index.html',
+    'nossos-servicos/consultoria-tributaria/index.html',
+    'nossos-servicos/gestao-contabil/index.html',
+    'nossos-servicos/holding-patrimonial/index.html',
+    'nossos-servicos/planejamento-tributario/index.html',
+    'nossos-servicos/recuperacao-creditos-tributarios/index.html',
+    'para-de-minas-mg/escritorio-de-contabilidade/index.html',
+    'politica-de-cookies/index.html', 'politica-de-privacidade/index.html',
+    'sobre-amcabral-blindagem/index.html', 'termos-de-uso/index.html',
+]
 
-    # Extrai header e footer
-    print("Extraindo header e footer de index.html...")
-    header, footer = extract_header_footer(index_path)
-    print(f"✓ Header: {len(header)} caracteres")
-    print(f"✓ Footer: {len(footer)} caracteres")
 
-    # Aplica em cada página
-    for page_file in pages_to_update:
-        page_path = project_dir / page_file
-        if not page_path.exists():
-            print(f"⚠ Arquivo não encontrado: {page_file}")
-            continue
+def fix_image_paths(html, is_subdirectory):
+    if is_subdirectory:
+        html = html.replace('src="amanda-sobre.webp"', 'src="/amanda-sobre.webp"')
+    return html
 
-        print(f"\nAtualizando {page_file}...")
-        try:
-            updated_content = apply_header_footer_to_page(page_path, header, footer)
 
-            # Backup
-            backup_path = project_dir / f"{page_file}.bak"
-            if not backup_path.exists():
-                with open(backup_path, 'w', encoding='utf-8') as f:
-                    with open(page_path, 'r', encoding='utf-8') as orig:
-                        f.write(orig.read())
-                print(f"  → Backup criado: {page_file}.bak")
+def remove_old_hdr_css(style_content):
+    marker = 'HEADER / MEGA-MENU'
+    pos = style_content.find(marker)
+    if pos == -1:
+        pos = style_content.find('#hdr {')
+        if pos == -1:
+            pos = style_content.find('#hdr{')
+    if pos == -1:
+        return style_content
+    comment_start = style_content.rfind('/*', 0, pos)
+    if comment_start == -1:
+        comment_start = pos
+    return style_content[:comment_start].rstrip()
 
-            # Salva arquivo atualizado
-            with open(page_path, 'w', encoding='utf-8') as f:
-                f.write(updated_content)
-            print(f"  ✓ {page_file} atualizado ({len(updated_content)} caracteres)")
 
-        except Exception as e:
-            print(f"  ✗ Erro ao atualizar {page_file}: {e}")
+def process_page(rel):
+    path = os.path.join(BASE, rel)
+    if not os.path.exists(path):
+        print(f'  SKIP (não encontrado): {rel}')
+        return False
 
-    print("\n✓ Pronto! Todas as páginas foram atualizadas com o header/footer global.")
+    original = open(path, encoding='utf-8').read()
+    c = original
+    is_sub = rel.count('/') > 0
 
-if __name__ == '__main__':
-    main()
+    mega_html = fix_image_paths(MEGA_HTML, is_sub)
+
+    # 1. CSS: inject/replace header CSS in <style> block
+    style_s = c.find('<style>')
+    style_e = c.find('</style>')
+    if style_s != -1 and style_e != -1:
+        inner       = c[style_s + len('<style>'):style_e]
+        inner_clean = remove_old_hdr_css(inner)
+        new_inner   = inner_clean + '\n\n' + HEADER_CSS
+        c = c[:style_s + len('<style>')] + new_inner + c[style_e:]
+    else:
+        inject = f'<style>\n{HEADER_CSS}\n</style>'
+        c = c.replace('</head>', inject + '\n</head>', 1)
+
+    # 2. Remove existing mega + hdr-mob blocks
+    for panel_id in ['mega-sobre', 'mega-servicos', 'mega-blog']:
+        start_tag = f'<div class="hdr-mega" id="{panel_id}">'
+        p = c.find(start_tag)
+        if p != -1:
+            pos = p + len(start_tag)
+            depth = 1
+            while depth > 0 and pos < len(c):
+                no = c.find('<div', pos)
+                nc = c.find('</div>', pos)
+                if nc == -1:
+                    break
+                if no != -1 and no < nc:
+                    depth += 1; pos = no + 4
+                else:
+                    depth -= 1; pos = nc + 6
+            c = c[:p] + c[pos:]
+
+    # Remove hdr-mob (div or nav tag)
+    for mob_tag in ['<div id="hdr-mob">', '<nav id="hdr-mob">']:
+        close_tag = '</div>' if mob_tag.startswith('<div') else '</nav>'
+        mob_s = c.find(mob_tag)
+        if mob_s != -1:
+            pos = mob_s + len(mob_tag)
+            depth = 1
+            open_tag_name = mob_tag[1:4]  # 'div' or 'nav'
+            while depth > 0 and pos < len(c):
+                no = c.find(f'<{open_tag_name}', pos)
+                nc = c.find(close_tag, pos)
+                if nc == -1:
+                    break
+                if no != -1 and no < nc:
+                    depth += 1; pos = no + len(open_tag_name) + 1
+                else:
+                    depth -= 1; pos = nc + len(close_tag)
+            c = c[:mob_s] + c[pos:]
+
+    # 3. Replace <header> block
+    hdr_s = c.find('<header')
+    if hdr_s != -1:
+        hdr_e = c.find('</header>', hdr_s) + len('</header>')
+        replacement = HEADER_HTML + '\n\n' + mega_html + '\n\n' + MOB_HTML
+        c = c[:hdr_s] + replacement + c[hdr_e:]
+    else:
+        body_tag = c.find('<body')
+        if body_tag != -1:
+            body_end = c.find('>', body_tag) + 1
+            replacement = '\n' + HEADER_HTML + '\n\n' + mega_html + '\n\n' + MOB_HTML + '\n'
+            c = c[:body_end] + replacement + c[body_end:]
+
+    # 4. Replace <footer class="site-footer"> (remove all, inject once)
+    while True:
+        ftr_s = c.find('<footer class="site-footer">')
+        if ftr_s == -1:
+            break
+        ftr_e = c.find('</footer>', ftr_s) + len('</footer>')
+        c = c[:ftr_s] + c[ftr_e:]
+
+    body_close = c.rfind('</body>')
+    if body_close != -1:
+        c = c[:body_close] + '\n' + FOOTER_HTML + '\n' + c[body_close:]
+    else:
+        c += '\n' + FOOTER_HTML
+
+    # 5. Replace/inject mega-menu script
+    if SCRIPT_HTML:
+        while True:
+            s = c.rfind('<script>')
+            if s == -1:
+                break
+            e = c.find('</script>', s) + len('</script>')
+            chunk = c[s:min(s + 400, e)]
+            if 'hdrTimer' in chunk or 'hdr-hamburger' in chunk or 'closeAll' in chunk:
+                c = c[:s] + c[e:]
+                break
+            else:
+                break
+        body_close2 = c.rfind('</body>')
+        if body_close2 != -1:
+            c = c[:body_close2] + '\n' + SCRIPT_HTML + '\n' + c[body_close2:]
+
+    changed = c != original
+    if changed:
+        with open(path, 'w', encoding='utf-8') as f:
+            f.write(c)
+    print(f'  {"ATUALIZADO" if changed else "sem mudança"}: {rel}')
+    return changed
+
+
+# ── Run ──────────────────────────────────────────────────────────────────────
+print()
+print('=== Header/Footer Rollout — Amanda Cabral ===')
+print(f'Páginas: {len(PAGES)}')
+print()
+
+updated = 0
+for rel in PAGES:
+    changed = process_page(rel)
+    if changed:
+        updated += 1
+
+print()
+print(f'Concluído. {updated}/{len(PAGES)} páginas atualizadas.')
+if updated > 0:
+    print()
+    print('Próximos passos:')
+    print('  git add -A')
+    print('  git commit -m "chore: rollout header/footer global"')
+    print('  git push origin main')
