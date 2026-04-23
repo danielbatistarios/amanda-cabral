@@ -1,804 +1,42 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0F1419">
-  <title>AM Cabral — Contabilidade Estratégica e Blindagem Patrimonial | Pará de Minas, MG</title>
-  <meta name="description" content="Contabilidade estratégica e blindagem patrimonial para empresas em Minas Gerais. R$ 12M recuperados em créditos tributários. 120+ empresas. 30 anos de experiência. Diagnóstico gratuito.">
-  <link rel="canonical" href="https://amcabralblindagem.com.br/">
-  <meta property="og:title" content="AM Cabral — Contabilidade Estratégica e Blindagem Patrimonial">
-  <meta property="og:description" content="30 anos protegendo o lucro e o patrimônio de empresas em Minas Gerais. R$ 12M recuperados em créditos tributários. Diagnóstico gratuito.">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="pt_BR">
-      <meta property="og:image" content="https://amcabralblindagem.com.br/assets/og-image.webp">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,700&display=swap" rel="stylesheet">
-
-<style>
-    /* === COLOR TOKENS === */
-    :root {
-      --dark-hero: #0F1419;
-      --accent-gold: #C4A574;
-      --text-light: #FFFFFF;
-      --text-secondary: #A8B5C6;
-      --surface-dark: #1A2535;
-      --shadow-soft: 0 8px 24px rgba(0,0,0,0.15);
-      --easing-spring: cubic-bezier(0.16, 1, 0.3, 1);
-      --blue-800: #0A1628;
-      --blue-700: #0F2137;
-      --silver: #94A3B8;
-      --silver-light: #CBD5E1;
-      --white: #FFFFFF;
-      --accent-light: #60A5FA;
-      --font-display: 'Instrument Serif', Georgia, serif;
-    }
-
-    /* === RESET === */
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    /* === GLOBAL === */
-    body {
-      background: var(--dark-hero);
-      color: var(--text-light);
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      font-size: 16px;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-      height: auto;
-    }
-
-    /* === HEADER === */
-    .site-header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: var(--dark-hero);
-      z-index: 100;
-      padding: 16px 0;
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      backdrop-filter: blur(8px);
-    }
-
-    .site-nav {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 48px;
-    }
-
-    .nav-logo {
-      font-family: 'Instrument Serif', serif;
-      font-size: 18px;
-      font-weight: 700;
-      letter-spacing: 0.02em;
-      color: var(--text-light);
-      white-space: nowrap;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 8px;
-      list-style: none;
-      flex: 1;
-      align-items: center;
-    }
-
-    .nav-item {
-      position: relative;
-    }
-
-    .nav-item > a {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--text-secondary);
-      padding: 8px 12px;
-      transition: color 0.3s ease;
-      display: block;
-    }
-
-    .nav-item > a:hover {
-      color: var(--accent-gold);
-    }
-
-    .nav-trigger {
-      font-size: 13px;
-      font-weight: 500;
-      color: var(--text-secondary);
-      background: none;
-      border: none;
-      padding: 8px 12px;
-      cursor: pointer;
-      transition: color 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .nav-trigger:hover {
-      color: var(--accent-gold);
-    }
-
-    .nav-arrow {
-      font-size: 10px;
-      transition: transform 0.3s var(--easing-spring);
-    }
-
-    .nav-item.is-open .nav-arrow {
-      transform: rotate(180deg);
-    }
-
-    /* MEGA-MENU STRUCTURE */
-    .nav-item-dropdown {
-      position: relative;
-    }
-
-    .nav-item-dropdown::after {
-      content: '';
-      position: absolute;
-      top: 100%;
-      left: 0;
-      right: 0;
-      height: 16px;
-      pointer-events: auto;
-    }
-
-    .nav-dropdown {
-      position: fixed;
-      top: 60px;
-      left: 0;
-      right: 0;
-      width: 100%;
-      background: rgba(15, 20, 25, 0.95);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-      backdrop-filter: blur(24px);
-      -webkit-backdrop-filter: blur(24px);
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(-12px);
-      transition: opacity 0.3s ease, transform 0.3s ease;
-      z-index: 1000;
-      max-height: calc(100vh - 70px);
-      overflow-y: auto;
-    }
-
-    .nav-item-dropdown.is-open .nav-dropdown {
-      opacity: 1;
-      pointer-events: auto;
-      transform: translateY(0);
-    }
-
-    .nav-mega-inner {
-      display: grid;
-      grid-template-columns: 280px 1fr;
-      gap: 48px;
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 32px 24px;
-      align-items: start;
-    }
-
-    .nav-mega-img {
-      display: block;
-      position: relative;
-      border-radius: 8px;
-      overflow: hidden;
-      aspect-ratio: 3/4;
-      background: linear-gradient(135deg, var(--blue-800) 0%, var(--blue-700) 100%);
-    }
-
-    .nav-mega-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.4s ease;
-    }
-
-    .nav-mega-img:hover img {
-      transform: scale(1.05);
-    }
-
-    .nav-mega-img-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 24px;
-      color: var(--white);
-    }
-
-    .nav-mega-img-label {
-      font-family: var(--font-display);
-      font-size: 18px;
-      font-weight: 700;
-      margin-bottom: 4px;
-    }
-
-    .nav-mega-img-subtitle {
-      font-size: 13px;
-      color: var(--silver-light);
-      margin-bottom: 12px;
-    }
-
-    .nav-mega-cta {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      padding: 8px 16px;
-      background: var(--accent-gold);
-      color: var(--dark-hero);
-      font-size: 12px;
-      font-weight: 600;
-      border-radius: 4px;
-      transition: all 0.3s ease;
-      width: fit-content;
-    }
-
-    .nav-mega-cta:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(196, 165, 116, 0.25);
-    }
-
-    .nav-mega-links {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 24px 48px;
-    }
-
-    .nav-mega-link {
-      display: block;
-      padding: 12px 0;
-      text-decoration: none;
-      border-bottom: 1px solid transparent;
-      transition: all 0.3s ease;
-    }
-
-    .nav-mega-link-title {
-      display: block;
-      font-weight: 600;
-      color: var(--white);
-      margin-bottom: 4px;
-      font-size: 14px;
-    }
-
-    .nav-mega-link-sub {
-      display: block;
-      font-size: 12px;
-      color: var(--silver);
-      font-weight: 400;
-    }
-
-    .nav-mega-link:hover .nav-mega-link-title {
-      color: var(--accent-gold);
-    }
-
-    .nav-mega-link:hover .nav-mega-link-sub {
-      color: var(--accent-light);
-    }
-
-    .nav-mega-all {
-      grid-column: 1 / -1;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding-top: 16px;
-      margin-top: 16px;
-    }
-
-    .nav-mega-all .nav-mega-link-title {
-      color: var(--accent-gold);
-    }
-
-    /* FALLBACK: Simple dropdown for items without mega-menu */
-    .nav-dropdown.simple {
-      position: absolute;
-      top: calc(100% + 12px);
-      left: 0;
-      width: auto;
-      right: auto;
-      background: var(--surface-dark);
-      border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 4px;
-      min-width: 240px;
-      padding: 8px 0;
-      max-height: none;
-      overflow-y: visible;
-      backdrop-filter: none;
-      -webkit-backdrop-filter: none;
-    }
-
-    .nav-dropdown.simple a {
-      display: block;
-      padding: 10px 16px;
-      font-size: 13px;
-      color: var(--text-secondary);
-      transition: color 0.2s;
-      border: none;
-      margin: 0;
-      padding: 10px 16px;
-    }
-
-    .nav-dropdown.simple a:hover {
-      color: var(--accent-gold);
-    }
-
-    .nav-cta {
-      display: inline-block;
-      padding: 10px 24px;
-      background: var(--accent-gold);
-      color: var(--dark-hero);
-      font-weight: 600;
-      font-size: 12px;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      transition: all 0.3s var(--easing-spring);
-      border: none;
-      cursor: pointer;
-      border-radius: 4px;
-      white-space: nowrap;
-    }
-
-    .nav-cta:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 32px rgba(196, 165, 116, 0.2);
-    }
-
-    .nav-hamburger {
-      display: none;
-      flex-direction: column;
-      gap: 5px;
-      background: none;
-      border: none;
-      padding: 8px;
-      cursor: pointer;
-    }
-
-    .nav-hamburger span {
-      width: 20px;
-      height: 2px;
-      background: var(--text-light);
-      border-radius: 2px;
-      transition: all 0.3s;
-    }
-
-    .mobile-nav {
-      position: fixed;
-      inset: 0;
-      background: var(--dark-hero);
-      z-index: 99;
-      display: flex;
-      flex-direction: column;
-      padding: 80px 24px 24px;
-      overflow-y: auto;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s;
-    }
-
-    .mobile-nav.is-open {
-      opacity: 1;
-      pointer-events: auto;
-    }
-
-    .mobile-nav-close {
-      position: absolute;
-      top: 24px;
-      right: 24px;
-      background: none;
-      border: none;
-      color: var(--text-light);
-      font-size: 28px;
-      cursor: pointer;
-      padding: 4px;
-    }
-
-    .mobile-nav a {
-      padding: 12px 0;
-      font-size: 16px;
-      color: var(--text-secondary);
-      border-bottom: 1px solid rgba(255,255,255,0.04);
-    }
-
-    .mobile-nav a:hover {
-      color: var(--accent-gold);
-    }
-
-    @media (max-width: 900px) {
-      .nav-links {
-        display: none;
-      }
-
-      .nav-cta {
-        display: none;
-      }
-
-      .nav-hamburger {
-        display: flex;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .site-nav {
-        padding: 0 16px;
-        gap: 24px;
-      }
-
-      .nav-logo {
-        font-size: 16px;
-      }
-    }
-
-    /* === HERO === */
-    .hero {
-      position: relative;
-      width: 100%;
-      height: 100vh;
-      margin-top: 60px;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .parallax {
-      position: absolute;
-      width: 100%;
-      height: 120%;
-      object-fit: cover;
-      object-position: center;
-    }
-
-    .hero-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(to bottom, rgba(15, 20, 25, 0.6), rgba(15, 20, 25, 1));
-      z-index: 2;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 3;
-      text-align: center;
-      max-width: 720px;
-      padding: 0 24px;
-    }
-
-    .hero h1 {
-      font-family: 'Instrument Serif', serif;
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      line-height: 1.2;
-      font-weight: 700;
-      margin-bottom: 16px;
-      letter-spacing: -0.02em;
-    }
-
-    .hero p {
-      font-size: clamp(1rem, 2.5vw, 1.25rem);
-      color: var(--text-secondary);
-      font-weight: 400;
-      line-height: 1.4;
-    }
-
-    @media (max-width: 600px) {
-      .hero {
-        margin-top: 50px;
-      }
-
-      .hero-content {
-        padding: 0 16px;
-      }
-    }
-
-    /* === SERVICES === */
-    .services {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 80px 24px;
-    }
-
-    .services h2 {
-      font-family: 'Instrument Serif', serif;
-      font-size: clamp(1.5rem, 3vw, 2.5rem);
-      text-align: center;
-      margin-bottom: 64px;
-      letter-spacing: -0.02em;
-    }
-
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 32px;
-    }
-
-    .service-card {
-      position: relative;
-      padding: 32px;
-      background: var(--surface-dark);
-      border: 1px solid rgba(255,255,255,0.08);
-      transition: all 0.4s var(--easing-spring);
-      cursor: pointer;
-    }
-
-    .service-card:hover {
-      transform: scale(1.05);
-      box-shadow: var(--shadow-soft);
-    }
-
-    .service-card h3 {
-      font-family: 'Instrument Serif', serif;
-      font-size: 1.25rem;
-      margin-bottom: 12px;
-      color: var(--accent-gold);
-      letter-spacing: -0.01em;
-    }
-
-    .service-card p {
-      font-size: 0.95rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-    }
-
-    @media (max-width: 900px) {
-      .services {
-        padding: 60px 16px;
-      }
-
-      .services-grid {
-        gap: 20px;
-      }
-
-      .service-card {
-        padding: 24px;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .services {
-        padding: 48px 16px;
-      }
-
-      .services h2 {
-        margin-bottom: 40px;
-      }
-
-      .services-grid {
-        gap: 16px;
-      }
-
-      .service-card {
-        padding: 20px;
-      }
-    }
-
-    /* === CTA SECTION === */
-    .cta {
-      background: linear-gradient(135deg, var(--surface-dark) 0%, rgba(45, 90, 123, 0.3) 100%);
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 64px 24px;
-      text-align: center;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
-    }
-
-    .cta h2 {
-      font-family: 'Instrument Serif', serif;
-      font-size: clamp(1.5rem, 3vw, 2rem);
-      margin-bottom: 16px;
-      letter-spacing: -0.01em;
-    }
-
-    .cta p {
-      font-size: 1.05rem;
-      color: var(--text-secondary);
-      margin-bottom: 32px;
-      max-width: 600px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .cta-button {
-      display: inline-block;
-      padding: 14px 32px;
-      background: var(--accent-gold);
-      color: var(--dark-hero);
-      font-weight: 600;
-      font-size: 13px;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-      transition: all 0.3s var(--easing-spring);
-      border: none;
-      cursor: pointer;
-    }
-
-    .cta-button:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 12px 32px rgba(196, 165, 116, 0.2);
-    }
-
-    @media (max-width: 600px) {
-      .cta {
-        padding: 48px 16px;
-      }
-
-      .cta-button {
-        padding: 12px 24px;
-        font-size: 12px;
-      }
-    }
-
-    /* === FOOTER === */
-    .site-footer {
-      background: var(--dark-hero);
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding: 72px 0 32px;
-    }
-
-    .footer-inner {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 48px;
-      margin-bottom: 56px;
-    }
-
-    .footer-col {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .footer-heading {
-      font-size: 0.65rem;
-      font-weight: 700;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--accent-gold);
-      margin-bottom: 20px;
-    }
-
-    .footer-col ul {
-      list-style: none;
-    }
-
-    .footer-col a {
-      display: block;
-      font-size: 0.875rem;
-      color: var(--text-secondary);
-      margin-bottom: 10px;
-      transition: color 0.2s;
-    }
-
-    .footer-col a:hover {
-      color: var(--text-light);
-    }
-
-    .footer-brand {
-      border-top: 1px solid rgba(255,255,255,0.08);
-      padding: 32px 0;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
-    .footer-logo {
-      font-family: 'Instrument Serif', serif;
-      font-size: 1.25rem;
-      color: var(--text-light);
-    }
-
-    .footer-cta {
-      display: inline-block;
-      padding: 12px 28px;
-      background: var(--accent-gold);
-      color: var(--dark-hero);
-      font-weight: 600;
-      font-size: 0.8rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      cursor: pointer;
-      border: none;
-    }
-
-    .footer-cta:hover {
-      box-shadow: 0 8px 24px rgba(196, 165, 116, 0.2);
-    }
-
-    .footer-legal {
-      border-top: 1px solid rgba(255,255,255,0.05);
-      padding-top: 24px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .footer-legal p,
-    .footer-legal-links a {
-      font-size: 0.75rem;
-      color: rgba(255,255,255,0.2);
-    }
-
-    .footer-legal-links {
-      display: flex;
-      gap: 20px;
-    }
-
-    .footer-legal-links a:hover {
-      color: var(--accent-gold);
-    }
-
-    @media (max-width: 900px) {
-      .footer-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 32px;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .site-footer {
-        padding: 48px 0 24px;
-      }
-
-      .footer-inner {
-        padding: 0 16px;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr;
-        gap: 24px;
-      }
-
-      .footer-brand {
-        flex-direction: column;
-        gap: 20px;
-        text-align: center;
-      }
-
-      .footer-legal {
-        flex-direction: column;
-        gap: 12px;
-        text-align: center;
-      }
-
-      .footer-legal-links {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-    }
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="shortcut icon" href="/favicon.svg">
+    <title>Sobre Amanda Cabral | Contadora Tributária | AM Cabral Blindagem Fiscal</title>
+    <meta name="description" content="Conheça Amanda Cabral, contadora com 20 anos de experiência em planejamento tributário para indústrias em Minas Gerais. CRC/MG ativo, pós-graduada em Direito Tributário.">
+    <meta property="og:title" content="Sobre Amanda Cabral | Contadora Tributária | AM Cabral Blindagem Fiscal">
+    <meta property="og:description" content="Conheça Amanda Cabral, contadora com 20 anos de experiência em planejamento tributário para indústrias em Minas Gerais.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://amcabralblindagem.com.br/assets/og-image.webp">
+    <link rel="canonical" href="https://amcabralblindagem.com.br/sobre-amcabral-blindagem/">
+    <meta name="robots" content="index, follow">
+    <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/instrument-serif-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <style>
+        @font-face { font-family: 'Inter'; font-style: normal; font-weight: 100 900; font-display: swap; src: url('/assets/fonts/inter-latin.woff2') format('woff2'); }
+        @font-face { font-family: 'Instrument Serif'; font-style: normal; font-weight: 400; font-display: swap; src: url('/assets/fonts/instrument-serif-normal.woff2') format('woff2'); }
+        @font-face { font-family: 'Instrument Serif'; font-style: italic; font-weight: 400; font-display: swap; src: url('/assets/fonts/instrument-serif-italic.woff2') format('woff2'); }
+
+        *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --blue-900: #060E1A; --blue-800: #0A1628; --blue-700: #0F2137;
+            --accent: #3B82F6; --accent-light: #60A5FA;
+            --silver: #94A3B8; --white: #FFFFFF; --text: #1E293B;
+            --gold: #C9A84C; --accent-gold: #C4A574;
+            --font-body: 'Inter', system-ui, sans-serif;
+            --font-display: 'Instrument Serif', Georgia, serif;
+            --max-w: 1200px;
+        }
+
+        html { font-size: 16px; }
+        body { font-family: var(--font-body); color: var(--white); background: var(--blue-900); line-height: 1.7; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        img { max-width: 100%; display: block; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
 
 /* ============================
            HEADER / MEGA-MENU — v2 clean
@@ -1985,55 +1223,53 @@
         }
     </style>
 
-    <!-- Schema Markup — JSON-LD @graph -->
     <script type="application/ld+json">
     {
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebPage",
-      "@id": "https://amcabralblindagem.com.br/sobre-amcabral-blindagem/#webpage",
-      "url": "https://amcabralblindagem.com.br/sobre-amcabral-blindagem/",
-      "name": "Amanda Cabral de Oliveira — Contadora Especialista em Tributação",
-      "description": "Conheça Amanda Cabral de Oliveira, contadora especialista em tributação empresarial, sócia da AC Contabilidade e Consultoria em Pará de Minas, MG.",
-      "isPartOf": {
-        "@id": "https://amcabralblindagem.com.br/#website"
-      },
-      "publisher": {
-        "@id": "https://amcabralblindagem.com.br/#organization"
-      },
-      "mainEntity": {
-        "@id": "https://amcabralblindagem.com.br/#person-amanda-silva"
-      },
-      "breadcrumb": {
-        "@id": "https://amcabralblindagem.com.br/sobre-amcabral-blindagem/#breadcrumb"
-      },
-      "inLanguage": "pt-BR"
-    },
-    {
-      "@type": "BreadcrumbList",
-      "@id": "https://amcabralblindagem.com.br/sobre-amcabral-blindagem/#breadcrumb",
-      "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Início",
-          "item": "https://amcabralblindagem.com.br/"
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "@id": "https://amcabralblindagem.com.br/#amanda",
+        "name": "Amanda Cabral",
+        "jobTitle": "Contadora Tributária",
+        "description": "Especialista em planejamento tributário e recuperação de créditos para indústrias em Minas Gerais, com 20 anos de experiência e CRC/MG ativo.",
+        "url": "https://amcabralblindagem.com.br/sobre-amcabral-blindagem/",
+        "image": "https://amcabralblindagem.com.br/assets/og-image.webp",
+        "alumniOf": [
+            { "@type": "EducationalOrganization", "name": "Pós-graduação em Direito Tributário" }
+        ],
+        "memberOf": [
+            { "@type": "Organization", "name": "CRC/MG", "description": "Conselho Regional de Contabilidade de Minas Gerais" },
+            { "@type": "Organization", "name": "IBPT", "description": "Instituto Brasileiro de Planejamento e Tributação" }
+        ],
+        "worksFor": {
+            "@type": "AccountingService",
+            "@id": "https://amcabralblindagem.com.br/#empresa",
+            "name": "AM Cabral Contabilidade",
+            "url": "https://amcabralblindagem.com.br/"
         },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Sobre Amanda",
-          "item": "https://amcabralblindagem.com.br/sobre-amcabral-blindagem/"
-        }
-      ]
+        "knowsAbout": [
+            "Planejamento Tributário",
+            "Recuperação de Créditos Tributários",
+            "Holding Patrimonial",
+            "Reforma Tributária",
+            "IBS e CBS",
+            "Contabilidade Industrial"
+        ]
     }
-  ]
-}
+    </script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://amcabralblindagem.com.br/" },
+            { "@type": "ListItem", "position": 2, "name": "Sobre a AM Cabral", "item": "https://amcabralblindagem.com.br/sobre-amcabral-blindagem/" }
+        ]
+    }
     </script>
 </head>
 <body>
 
+<!-- ===== HEADER ===== -->
 <header id="hdr">
   <div id="hdr-inner">
     <a href="/" id="hdr-logo">AM Cabral</a>
@@ -2064,7 +1300,7 @@
 <div class="hdr-mega" id="mega-sobre">
   <div class="hdr-mega-inner">
     <a href="/sobre-amcabral-blindagem/" class="hdr-mega-img">
-      <img src="amanda-sobre.webp" alt="Amanda Cabral Contadora" loading="lazy" width="600" height="800" style="object-position:top center;">
+      <img src="/amanda-sobre.webp" alt="Amanda Cabral Contadora" loading="lazy" width="600" height="800" style="object-position:top center;">
     </a>
     <div class="hdr-mega-col">
       <div class="hdr-mega-col-title">Sobre a AM Cabral</div>
@@ -2119,9 +1355,6 @@
   </div>
 </div>
 
-<!-- Mobile nav -->
-
-
 <div id="hdr-mob">
   <button id="hdr-mob-close">✕</button>
   <a href="/">Início</a>
@@ -2135,291 +1368,290 @@
   <a href="/fale-com-especialista/" id="hdrMobCta" style="color:var(--accent-gold);margin-top:16px;font-weight:700;">Diagnóstico Gratuito</a>
 </div>
 
-<!-- Mobile overlay -->
-<div class="mobile-nav" id="mobileNav" aria-hidden="true">
-  <button class="mobile-nav-close" id="mobileNavClose" aria-label="Fechar menu">✕</button>
-  <a href="/gestao-contabil/">Gestão Contábil Estratégica</a>
-  <a href="/recuperacao-creditos-tributarios/">Recuperação de Créditos</a>
-  <a href="/constituicao-de-holding-patrimonial-e-familiar/">Holding Patrimonial e Familiar</a>
-  <a href="/planejamento-tributario/">Planejamento Tributário</a>
-  <a href="/consultoria-tributaria/">Consultoria Tributária</a>
-  <a href="/nossos-servicos/">Ver todos os serviços</a>
-  <a href="/reforma-tributaria-industria/">Reforma Tributária</a>
-  <a href="/blog/">Blog</a>
-  <a href="/sobre-amcabral-blindagem/">Amanda Silva</a>
-  <a href="/casos-de-sucesso/">Casos de Sucesso</a>
-  <a href="/sobre-amcabral-blindagem/">Depoimentos</a>
-  <a href="/fale-com-especialista/">Contato</a>
-  <a href="/fale-com-especialista/" style="color: var(--accent-gold); margin-top: 20px; font-weight: 600;">Diagnóstico Gratuito</a>
+<!-- Mobile nav -->
+
+
+
+
+<!-- Mega: Sobre -->
+
+
+<!-- Mega: Serviços -->
+
+
+<!-- Mega: Blog -->
+
+
+<!-- Mobile Nav -->
+
+
+<!-- ===== BREADCRUMB ===== -->
+<div class="breadcrumb">
+    <nav aria-label="Breadcrumb">
+        <a href="/">Início</a>
+        <span>›</span>
+        <span aria-current="page">Sobre a AM Cabral</span>
+    </nav>
 </div>
 
-<main>
-
-<!-- BIO -->
-<section class="bio" aria-labelledby="bio-h2">
-  <div class="container">
-    <div class="bio__grid">
-      <div class="bio__main reveal">
-        <span class="section-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Sobre</span>
-        <h2 id="bio-h2">Quem é <span>Amanda Cabral</span></h2>
-        <p>Aos 14 anos, Amanda perdeu o pai — um grande empresário que não planejou a sucessão. A família não recebeu nada. Foi trabalhar no escritório de contabilidade que atendia o pai, e ali ficou. Cresceu, aprendeu na prática o que nenhuma faculdade ensina, e construiu o próprio escritório do zero.</p>
-        <p>Três décadas depois, Amanda é referência em contabilidade industrial em Minas Gerais. Atende exclusivamente indústrias — nunca aceitou comércio, nunca aceitou serviços. Essa escolha custou clientes, mas deu a profundidade que nenhum generalista tem. R$ 12 milhões já foram recuperados em créditos que estavam invisíveis para outros contadores.</p>
-        <p>Hoje, atua como um braço do empresário: treina equipes, analisa os detalhes do dia a dia, cuida da carga tributária e das rotinas gerenciais para que tudo funcione. Não é apenas uma contadora — é uma parceira de negócios que entende a realidade de quem produz.</p>
-        <p>Mais de 120 empresas industriais já passaram pela gestão contábil de Amanda. A maioria permanece como cliente há anos, o que reflete um padrão de atendimento baseado em resultado concreto, acesso direto e compromisso com cada centavo do empresário.</p>
-      </div>
-      <aside class="reveal reveal-d2">
-        <div class="bio__card">
-          <h3>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
-            Áreas de especialidade
-          </h3>
-          <ul class="bio__card-list">
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Gestão Contábil Estratégica</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Recuperação de Créditos Tributários</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Holding Patrimonial e Familiar</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Planejamento Tributário</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Consultoria Tributária e Compliance</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> ICMS · IPI · PIS/COFINS</li>
-            <li><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> Incentivos Fiscais de MG</li>
-          </ul>
+<!-- ===== HERO SOBRE ===== -->
+<section class="sobre-hero">
+    <div class="sobre-hero-inner">
+        <div>
+            <p class="sobre-eyebrow">Quem é Amanda Cabral</p>
+            <h1>
+                20 anos protegendo empresas com <em>blindagem fiscal</em> real
+            </h1>
+            <p class="sobre-hero-lead">
+                Sou contadora especializada em tributação para indústrias e empresas de médio porte em Minas Gerais. Minha trajetória começou quando percebi que a maioria das empresas paga mais imposto do que deveria porque nunca tiveram acesso a uma contabilidade realmente estratégica.
+            </p>
+            <div class="sobre-creds">
+                <span class="sobre-cred-tag"><span class="tag-dot"></span>CRC/MG Ativo</span>
+                <span class="sobre-cred-tag"><span class="tag-dot"></span>Pós-graduada em Direito Tributário</span>
+                <span class="sobre-cred-tag"><span class="tag-dot"></span>Membro IBPT</span>
+                <span class="sobre-cred-tag"><span class="tag-dot"></span>20 Anos de Experiência</span>
+                <span class="sobre-cred-tag"><span class="tag-dot"></span>Especialista Reforma Tributária</span>
+            </div>
         </div>
-        <div class="bio__card">
-          <h3>
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Escritório
-          </h3>
-          <div class="bio__contact-item">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            <span>Rua Major Fidélis, 244, Centro, Pará de Minas/MG</span>
-          </div>
-          <div class="bio__contact-item">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-7.86-7.86 19.79 19.79 0 01-3.07-8.67A2 2 0 012.33 1h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L6.91 8.92a16 16 0 006.07 6.07l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
-            <a href="tel:+5537999967558">(37) 9 9996-7558</a>
-          </div>
-          <div class="bio__contact-item">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            <a href="mailto:contato@amcabralblindagem.com.br">contato@amcabralblindagem.com.br</a>
-          </div>
+        <div class="sobre-hero-photo">
+            <div class="sobre-hero-photo-frame">
+                <img src="/assets/amanda-hero.webp" alt="Amanda Cabral, contadora tributária em Minas Gerais" width="440" height="587" loading="eager">
+            </div>
+            <div class="sobre-hero-photo-badge">
+                <div class="badge-number">R$12M+</div>
+                <div class="badge-label">
+                    <strong>Créditos recuperados</strong>
+                    para clientes em MG
+                </div>
+            </div>
         </div>
-      </aside>
     </div>
-  </div>
 </section>
 
-<!-- TIMELINE -->
-<section class="trajectory" aria-labelledby="traj-h2">
-  <div class="container">
-    <div class="trajectory__header reveal">
-      <span class="section-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 20V10"/><path d="M18 20V4"/><path d="M6 20v-4"/></svg> Trajetória</span>
-      <h2 id="traj-h2">A história de <span>Amanda Cabral</span> na contabilidade industrial</h2>
+<!-- ===== STATS BAR ===== -->
+<div class="stats-bar">
+    <div class="stats-bar-inner">
+        <div>
+            <div class="stat-item-n">R$ 12M+</div>
+            <div class="stat-item-l">em créditos recuperados</div>
+        </div>
+        <div>
+            <div class="stat-item-n">120+</div>
+            <div class="stat-item-l">empresas atendidas</div>
+        </div>
+        <div>
+            <div class="stat-item-n">20 anos</div>
+            <div class="stat-item-l">de experiência</div>
+        </div>
+        <div>
+            <div class="stat-item-n">0%</div>
+            <div class="stat-item-l">de autuações fiscais em clientes ativos</div>
+        </div>
     </div>
+</div>
 
-    <div class="timeline">
-      <div class="timeline__item reveal">
-        <div class="timeline__dot"></div>
-        <h3 class="timeline__title">Aos 14 anos, no escritório do pai</h3>
-        <p class="timeline__desc">Após perder o pai — um empresário que não planejou a sucessão e deixou a família sem nada — Amanda foi trabalhar no escritório de contabilidade que atendia a empresa do pai. Ali começou a entender que tributação mal feita destrói patrimônios inteiros. Essa experiência moldou tudo que viria depois.</p>
-      </div>
-      <div class="timeline__item reveal">
-        <div class="timeline__dot"></div>
-        <h3 class="timeline__title">Fundação do próprio escritório</h3>
-        <p class="timeline__desc">Depois de anos aprendendo na prática, Amanda fundou a AM Cabral Contabilidade em Pará de Minas. Desde o primeiro cliente, a decisão foi clara: atender exclusivamente indústrias. Nunca comércio, nunca serviços. Essa especialização virou o maior diferencial do escritório.</p>
-      </div>
-      <div class="timeline__item reveal">
-        <div class="timeline__dot"></div>
-        <h3 class="timeline__title">R$ 12 milhões em créditos recuperados</h3>
-        <p class="timeline__desc">Com o foco total em tributação industrial, Amanda passou a identificar créditos que outros contadores não viam. PIS/COFINS sobre insumos, ICMS acumulado, IPI não aproveitado. O acumulado já ultrapassa R$ 12 milhões devolvidos a indústrias que nem sabiam que tinham esse dinheiro.</p>
-      </div>
-      <div class="timeline__item reveal">
-        <div class="timeline__dot"></div>
-        <h3 class="timeline__title">120+ empresas e 30 anos de estrada</h3>
-        <p class="timeline__desc">Hoje, Amanda é parceira de mais de 120 indústrias em Minas Gerais. Não apenas faz a contabilidade — treina equipes, analisa rotinas, cuida da carga tributária e atua como braço direito do empresário. A maioria dos clientes permanece há anos, porque resultado concreto não precisa de contrato longo.</p>
-      </div>
+<!-- ===== TRAJETÓRIA ===== -->
+<section class="trajetoria">
+    <div class="trajetoria-inner">
+        <p class="section-label">Trajetória Profissional</p>
+        <h2 class="section-title">Uma carreira construída <em>dentro das indústrias</em></h2>
+        <p class="section-lead">Cada etapa da minha formação foi moldada pelo contato direto com os desafios reais de empresas industriais e de médio porte.</p>
+
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-dot">🎓</div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2004</div>
+                    <h3>Formação em Ciências Contábeis</h3>
+                    <p>Graduação com foco em tributação e contabilidade empresarial. Primeiros estágios em escritórios contábeis da Grande BH, onde aprendi que a diferença entre uma empresa lucrativa e uma endividada muitas vezes está na gestão fiscal.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot">🏭</div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2006</div>
+                    <h3>Especialização em Indústrias</h3>
+                    <p>Início da atuação exclusiva no segmento industrial. Primeiro grande projeto de recuperação de créditos de IPI e ICMS para uma metalúrgica de Contagem. Resultado: R$ 340 mil recuperados no primeiro ano de contrato.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot">📚</div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2010</div>
+                    <h3>Pós-graduação em Direito Tributário</h3>
+                    <p>Especialização que aprofundou o domínio sobre legislação tributária, teses jurídicas aplicáveis e jurisprudência do CARF e STJ. Base técnica para as estratégias de blindagem que aplico até hoje.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot">🏢</div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2014</div>
+                    <h3>Fundação da AM Cabral Contabilidade</h3>
+                    <p>Abertura do escritório próprio com foco exclusivo em empresas de médio porte. Missão desde o início: oferecer o mesmo nível de planejamento tributário que grandes corporações têm, mas para empresas que realmente precisam desse resultado.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot">⚖️</div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2019</div>
+                    <h3>Ingresso no IBPT e expansão para holdings</h3>
+                    <p>Filiação ao Instituto Brasileiro de Planejamento e Tributação e ampliação da atuação para estruturação de holdings patrimoniais e planejamento sucessório. Hoje, mais de 30% dos clientes têm holdings ativas gerenciadas pelo escritório.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot">🔄</div>
+                <div class="timeline-content">
+                    <div class="timeline-year">2024</div>
+                    <h3>Especialização em Reforma Tributária</h3>
+                    <p>Com a aprovação da EC 132/2023 e a LC 214/2025, tornei-me referência em preparação para o novo sistema IBS/CBS. Ajudo empresas a entenderem o impacto real da reforma antes que ela bata na porta.</p>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
 </section>
 
-<!-- QUOTE -->
-<section class="quote-section" aria-label="Citação de Amanda Cabral">
-  <div class="container reveal">
-    <span class="quote-section__mark">"</span>
-    <p class="quote-section__text">Cada real que a indústria perde por ignorância tributária é um insulto ao trabalho do dono. Meu trabalho é garantir que nenhum centavo do esforço dele seja desperdiçado.</p>
-    <div class="quote-section__author">
-      <img src="https://pub-bd2efcc812524f54a8c492f90052f3bd.r2.dev/amanda/amanda-cabral-foto.jpg" alt="Amanda Cabral" width="48" height="48" loading="lazy">
-      <div class="quote-section__author-info">
-        <div class="quote-section__author-name">Amanda Cabral</div>
-        <div class="quote-section__author-title">Fundadora, AM Cabral Contabilidade</div>
-      </div>
+<!-- ===== METODOLOGIA ===== -->
+<section class="metodologia">
+    <div class="metodologia-inner">
+        <p class="section-label">Metodologia</p>
+        <h2 class="section-title">O que significa <em>blindagem fiscal</em> na prática</h2>
+        <p class="section-lead">Blindagem não é evasão fiscal. É o uso inteligente e legal de todos os instrumentos que a legislação oferece para proteger o patrimônio e reduzir a carga tributária da empresa.</p>
+        <div class="metodologia-grid">
+            <div class="metodo-card">
+                <div class="metodo-icon">🔍</div>
+                <h3>Diagnóstico Profundo</h3>
+                <p>Antes de qualquer recomendação, analisamos o histórico fiscal dos últimos 5 anos. Identificamos os tributos pagos a maior, créditos não aproveitados e exposições que podem virar autuação.</p>
+            </div>
+            <div class="metodo-card">
+                <div class="metodo-icon">🗺️</div>
+                <h3>Planejamento Estratégico</h3>
+                <p>Criamos um mapa tributário personalizado para a estrutura da empresa, com projeções de economia por linha de atuação: regime tributário, créditos, incentivos fiscais e estrutura societária.</p>
+            </div>
+            <div class="metodo-card">
+                <div class="metodo-icon">⚙️</div>
+                <h3>Implementação Controlada</h3>
+                <p>Cada mudança é implementada dentro dos prazos legais, com documentação robusta e embasamento jurídico. Sem surpresas, sem riscos, sem atalhos que possam comprometer a empresa no futuro.</p>
+            </div>
+            <div class="metodo-card">
+                <div class="metodo-icon">📊</div>
+                <h3>Monitoramento Contínuo</h3>
+                <p>A legislação muda. Nós monitoramos alterações na lei, novas decisões judiciais e regulamentações que possam abrir ou fechar oportunidades para nossos clientes em tempo real.</p>
+            </div>
+        </div>
     </div>
-  </div>
 </section>
 
-<!-- CONTEÚDOS -->
-<section class="content-section" aria-labelledby="artigos-h2">
-  <div class="container">
-    <div class="content-section__header reveal">
-      <span class="section-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M2 3h6a4 4 0 014 4v14a3 3 0 00-3-3H2z"/><path d="M22 3h-6a4 4 0 00-4 4v14a3 3 0 013-3h7z"/></svg> Conteúdos</span>
-      <h2 id="artigos-h2">Páginas escritas por <span>Amanda Cabral</span></h2>
+<!-- ===== FORMAÇÃO E REGISTROS ===== -->
+<section class="formacao">
+    <div class="formacao-inner">
+        <p class="section-label">Credenciais</p>
+        <h2 class="section-title">Formação e <em>registros profissionais</em></h2>
+        <div class="formacao-grid">
+            <div>
+                <p class="formacao-col-title">Formação Acadêmica</p>
+                <div class="formacao-item">
+                    <div class="formacao-icon">🎓</div>
+                    <div class="formacao-text">
+                        <strong>Pós-graduação em Direito Tributário</strong>
+                        <span>Especialização em legislação e planejamento fiscal</span>
+                    </div>
+                </div>
+                <div class="formacao-item">
+                    <div class="formacao-icon">📖</div>
+                    <div class="formacao-text">
+                        <strong>Bacharelado em Ciências Contábeis</strong>
+                        <span>Graduação com foco em tributação empresarial</span>
+                    </div>
+                </div>
+                <div class="formacao-item">
+                    <div class="formacao-icon">📋</div>
+                    <div class="formacao-text">
+                        <strong>Formação em Contabilidade Industrial</strong>
+                        <span>Especialização em indústrias de manufatura e distribuição</span>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <p class="formacao-col-title">Registros e Filiações</p>
+                <div class="formacao-item">
+                    <div class="formacao-icon">✅</div>
+                    <div class="formacao-text">
+                        <strong>CRC/MG — Registro Ativo</strong>
+                        <span>Conselho Regional de Contabilidade de Minas Gerais</span>
+                    </div>
+                </div>
+                <div class="formacao-item">
+                    <div class="formacao-icon">🏛️</div>
+                    <div class="formacao-text">
+                        <strong>Membro do IBPT</strong>
+                        <span>Instituto Brasileiro de Planejamento e Tributação</span>
+                    </div>
+                </div>
+                <div class="formacao-item">
+                    <div class="formacao-icon">📜</div>
+                    <div class="formacao-text">
+                        <strong>Certificação em Reforma Tributária</strong>
+                        <span>Especialização em IBS, CBS e Imposto Seletivo (EC 132/2023)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="articles-grid">
-      <a href="/reforma-tributaria-industria/" class="article-card article-card--blue reveal">
-        <span class="article-card__tag article-card__tag--blue">Guia completo</span>
-        <div class="article-card__title">Reforma Tributária para Indústrias: Guia Completo 2026</div>
-        <p class="article-card__desc">IBS, CBS, cronograma de transição e o que muda para quem produz. Tudo que o industrial precisa saber.</p>
-        <span class="article-card__cta">Ler conteúdo <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
-      </a>
-      <a href="/constituicao-de-holding-patrimonial-e-familiar/" class="article-card article-card--gold reveal reveal-d1">
-        <span class="article-card__tag article-card__tag--gold">Holding</span>
-        <div class="article-card__title">Constituição de Holding Patrimonial e Familiar</div>
-        <p class="article-card__desc">Proteja seu patrimônio, planeje a sucessão e pague menos imposto sobre aluguel e dividendos.</p>
-        <span class="article-card__cta">Ler conteúdo <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
-      </a>
-      <a href="/recuperacao-creditos-tributarios/" class="article-card article-card--cyan reveal reveal-d2">
-        <span class="article-card__tag article-card__tag--cyan">Créditos</span>
-        <div class="article-card__title">Recuperação de Créditos Tributários</div>
-        <p class="article-card__desc">PIS/COFINS, ICMS, IPI — até 5 anos retroativos. 8 em cada 10 indústrias têm créditos perdidos.</p>
-        <span class="article-card__cta">Ler conteúdo <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
-      </a>
-      <a href="/planejamento-tributario-industrial/" class="article-card article-card--blue reveal reveal-d3">
-        <span class="article-card__tag article-card__tag--blue">Planejamento</span>
-        <div class="article-card__title">Planejamento Tributário Industrial: Estratégia Completa para 2026</div>
-        <p class="article-card__desc">Como pagar menos imposto de forma legal. Elisão fiscal, regime ideal e incentivos de MG.</p>
-        <span class="article-card__cta">Ler conteúdo <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
-      </a>
-      <a href="/empresa-rica-dono-pobre/" class="article-card article-card--gold reveal reveal-d4">
-        <span class="article-card__tag article-card__tag--gold">Artigo</span>
-        <div class="article-card__title">Empresa Rica, Dono Pobre: O Problema que 8 em 10 Não Sabem que Têm</div>
-        <p class="article-card__desc">O dinheiro está na empresa mas não chega no seu bolso. Como resolver com planejamento tributário.</p>
-        <span class="article-card__cta">Ler conteúdo <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
-      </a>
-      <a href="/gestao-contabil-industrial/" class="article-card article-card--blue reveal reveal-d5">
-        <span class="article-card__tag article-card__tag--blue">Serviço</span>
-        <div class="article-card__title">Gestão Contábil Estratégica</div>
-        <p class="article-card__desc">Balanços, DRE, fluxo de caixa, custos de produção, folha de pagamento e compliance.</p>
-        <span class="article-card__cta">Ler conteúdo <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
-      </a>
-    </div>
-  </div>
 </section>
 
-</main>
+<!-- ===== VALORES ===== -->
+<section class="valores">
+    <div class="valores-inner">
+        <p class="section-label">Princípios</p>
+        <h2 class="section-title">O que guia <em>cada decisão</em></h2>
+        <div class="valores-list">
+            <div class="valor-card">
+                <div class="valor-icon">🧱</div>
+                <h3>Solidez Técnica</h3>
+                <p>Toda recomendação tem amparo legal explícito. Não trabalhamos com interpretações arriscadas que podem virar autuação no futuro.</p>
+            </div>
+            <div class="valor-card">
+                <div class="valor-icon">🤝</div>
+                <h3>Transparência Total</h3>
+                <p>Você sabe o que está sendo feito, por que e qual o risco de cada estratégia. Sem caixa preta, sem promessas sem embasamento.</p>
+            </div>
+            <div class="valor-card">
+                <div class="valor-icon">🎯</div>
+                <h3>Resultado Mensurável</h3>
+                <p>Cada contrato tem metas de economia definidas antes do início. Medimos o resultado em reais, não em relatórios bonitos.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== DEPOIMENTO ===== -->
+<section class="depoimento-section">
+    <div class="depoimento-inner">
+        <blockquote class="depoimento-quote">
+            A Amanda não é apenas nossa contadora. Ela é a pessoa que nos fez perceber que estávamos pagando R$ 280 mil por ano a mais de imposto do que precisávamos. Em dois anos de trabalho, recuperamos isso e ainda reestruturamos o patrimônio da família.
+        </blockquote>
+        <p class="depoimento-author">
+            <strong>Roberto Mendes</strong>
+            Diretor Financeiro, Metalúrgica Mendes Ltda. — Contagem/MG
+        </p>
+    </div>
+</section>
+
+<!-- ===== CTA FINAL ===== -->
+<section class="cta-final">
+    <div class="cta-final-inner">
+        <h2>Pronto para conhecer o quanto sua empresa <em>pode economizar?</em></h2>
+        <p>O diagnóstico tributário gratuito leva 45 minutos e já mostra os principais pontos de oportunidade para a sua empresa.</p>
+        <div class="cta-btn-group">
+            <a href="/fale-com-especialista/" class="btn-primary">Agendar Diagnóstico Gratuito</a>
+            <a href="/casos-de-sucesso/" class="btn-ghost">Ver Casos de Sucesso</a>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
 
 
-
-<script>
-(function(){
-  // Dropdown acessibilidade (aria-expanded)
-  // ---- MEGA-MENU DROPDOWN WITH HOVER DELAY ----
-  let closeTimer = null;
-
-  document.querySelectorAll('.nav-item-dropdown').forEach(item => {
-    const trigger = item.querySelector('.nav-trigger');
-    const dropdown = item.querySelector('.nav-dropdown');
-
-    // Mouse enter trigger
-    trigger.addEventListener('mouseenter', () => {
-      clearTimeout(closeTimer);
-      // Close all other dropdowns
-      document.querySelectorAll('.nav-item-dropdown.is-open').forEach(other => {
-        if (other !== item) {
-          other.classList.remove('is-open');
-          other.querySelector('.nav-trigger').setAttribute('aria-expanded', 'false');
-        }
-      });
-      // Open this dropdown
-      item.classList.add('is-open');
-      trigger.setAttribute('aria-expanded', 'true');
-    });
-
-    // Mouse leave trigger with delay
-    trigger.addEventListener('mouseleave', () => {
-      closeTimer = setTimeout(() => {
-        item.classList.remove('is-open');
-        trigger.setAttribute('aria-expanded', 'false');
-      }, 150);
-    });
-
-    // Keep dropdown open on hover
-    dropdown.addEventListener('mouseenter', () => {
-      clearTimeout(closeTimer);
-      item.classList.add('is-open');
-      trigger.setAttribute('aria-expanded', 'true');
-    });
-
-    // Close dropdown when leaving
-    dropdown.addEventListener('mouseleave', () => {
-      closeTimer = setTimeout(() => {
-        item.classList.remove('is-open');
-        trigger.setAttribute('aria-expanded', 'false');
-      }, 150);
-    });
-
-    // Click to toggle (for accessibility)
-    trigger.addEventListener('click', (e) => {
-      e.preventDefault();
-      const isOpen = item.classList.toggle('is-open');
-      trigger.setAttribute('aria-expanded', isOpen);
-      // Close others
-      document.querySelectorAll('.nav-item-dropdown').forEach(other => {
-        if (other !== item) {
-          other.classList.remove('is-open');
-          other.querySelector('.nav-trigger').setAttribute('aria-expanded', 'false');
-        }
-      });
-    });
-  });
-
-  // Close dropdowns when clicking outside
-  document.addEventListener('click', e => {
-    if (!e.target.closest('.nav-item-dropdown')) {
-      document.querySelectorAll('.nav-item-dropdown.is-open').forEach(item => {
-        item.classList.remove('is-open');
-        item.querySelector('.nav-trigger').setAttribute('aria-expanded', 'false');
-      });
-    }
-  });
-
-  // Mobile overlay
-  const hamburger = document.getElementById('navHamburger');
-  const mobileNav = document.getElementById('mobileNav');
-  const mobileClose = document.getElementById('mobileNavClose');
-
-  function openMobile(){
-    mobileNav.classList.add('is-open');
-    mobileNav.setAttribute('aria-hidden','false');
-    hamburger.setAttribute('aria-expanded','true');
-    document.body.style.overflow='hidden';
-  }
-
-  function closeMobile(){
-    mobileNav.classList.remove('is-open');
-    mobileNav.setAttribute('aria-hidden','true');
-    hamburger.setAttribute('aria-expanded','false');
-    document.body.style.overflow='';
-  }
-
-  hamburger.addEventListener('click', openMobile);
-  mobileClose.addEventListener('click', closeMobile);
-  mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobile));
-
-  // Header scroll
-  const header = document.getElementById('siteHeader');
-  window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 40), {passive:true});
-
-  // Parallax
-  const parallaxElements = document.querySelectorAll('.parallax');
-  if(parallaxElements.length){
-    window.addEventListener('scroll', function(){
-      const scrolled = window.scrollY;
-      parallaxElements.forEach(function(el){
-        const speed = parseFloat(el.dataset.speed);
-        el.style.transform = `translateY(${scrolled * speed}px)`;
-      });
-    }, {passive: true});
-  }
-})();
-</script>
 
 
 <footer class="site-footer">
