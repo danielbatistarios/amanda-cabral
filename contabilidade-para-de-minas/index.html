@@ -592,19 +592,41 @@ nav.scrolled {
 .lp-breadcrumb ol li[aria-current] { color: rgba(255,255,255,.5); }
 
 .hero-tag {
-  display: inline-block;
-  background: rgba(59,130,246,.12);
-  border: 1px solid rgba(59,130,246,.25);
-  color: var(--accent2);
-  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background: rgba(201,168,76,.08);
+  border: 1px solid rgba(201,168,76,.15);
+  color: rgba(255,255,255,.45);
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: .15em;
+  letter-spacing: .2em;
   text-transform: uppercase;
   padding: 6px 16px;
-  border-radius: var(--r-pill);
+  border-radius: 60px;
   margin-bottom: 24px;
+  backdrop-filter: blur(10px);
   opacity: 0;
   animation: up .9s .15s var(--spring) forwards;
+}
+.hero-tag .dot {
+  width: 6px; height: 6px;
+  background: var(--dourado);
+  border-radius: 50%;
+  position: relative;
+  flex-shrink: 0;
+}
+.hero-tag .dot::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid var(--dourado);
+  animation: dotPulse 2s ease-out infinite;
+}
+@keyframes dotPulse {
+  0%   { transform: scale(1); opacity: 1; }
+  100% { transform: scale(2.5); opacity: 0; }
 }
 
 .hero-h1 {
@@ -2072,7 +2094,7 @@ p, .hero-sub { text-wrap: pretty; }
   <div class="container">
     <div class="hero-layout">
       <div class="hero-content">
-        <div class="hero-tag" style="color:rgba(255,255,255,.6);border-color:rgba(255,255,255,.15);background:rgba(255,255,255,.06);">SEDE | PAR&#193; DE MINAS, MG</div>
+        <div class="hero-tag"><span class="dot"></span>Contabilidade Estrat&eacute;gica &middot; 30 anos &middot; Par&aacute; de Minas, MG</div>
 
         <h1 class="hero-h1">Contador em <span style="color:var(--dourado)">Par&#225; de Minas</span> para empresas que querem pagar menos imposto dentro da lei</h1>
 
