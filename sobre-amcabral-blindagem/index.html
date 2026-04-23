@@ -2103,17 +2103,6 @@ body { padding-top: 60px; }
     </div>
 </section>
 
-<!-- ===== BOTTOM BAR ===== -->
-<div class="bottom-bar" id="bottomBar">
-  <div class="bb-inner">
-    <span class="bb-info"><span class="bb-stars">★★★★★</span>&nbsp; 4.9 · 47 avaliações</span>
-    <div class="bb-sep"></div>
-    <a href="/fale-com-especialista/" class="bb-cta">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-      Diagnóstico Gratuito
-    </a>
-  </div>
-</div>
 
 <!-- ===== WHATSAPP FLOAT ===== -->
 <a href="https://wa.me/5537999967558?text=Ol%C3%A1%2C+vim+pelo+site+e+gostaria+de+um+diagn%C3%B3stico+gratuito" class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">
@@ -2261,14 +2250,6 @@ body { padding-top: 60px; }
         }, { passive: true });
     }
 
-    // ---- BOTTOM BAR ----
-    const bottomBar = document.getElementById('bottomBar');
-    if (bottomBar) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 300) bottomBar.classList.add('visible');
-            else bottomBar.classList.remove('visible');
-        }, { passive: true });
-    }
 
     // ---- REVEAL on scroll ----
     const revealEls = document.querySelectorAll('.reveal');
@@ -2311,7 +2292,7 @@ body { padding-top: 60px; }
                 requestAnimationFrame(step);
                 countIO.unobserve(el);
             });
-        }, { threshold: 0.4 });
+        }, { threshold: 0.6, rootMargin: '-80px 0px 0px 0px' });
         counters.forEach(el => countIO.observe(el));
     }
 
