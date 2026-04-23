@@ -1863,25 +1863,25 @@ body { padding-top: 60px; }
     <div class="stats-bar-inner">
         <div class="stat-entry">
             <div class="stat-item-n">
-                <span class="stat-prefix">R$&nbsp;</span><span class="stat-num" data-count="12" data-suffix="M+">0</span>
+                <span class="stat-prefix">R$&nbsp;</span><span class="stat-num" data-count="12" data-from="0" data-suffix="M+">0</span>
             </div>
             <div class="stat-item-l">em créditos recuperados</div>
         </div>
         <div class="stat-entry">
             <div class="stat-item-n">
-                <span class="stat-num" data-count="120" data-suffix="+">0</span>
+                <span class="stat-num" data-count="120" data-from="0" data-suffix="+">0</span>
             </div>
             <div class="stat-item-l">empresas atendidas</div>
         </div>
         <div class="stat-entry">
             <div class="stat-item-n">
-                <span class="stat-num" data-count="20" data-suffix="">0</span><span class="stat-suffix-text">&nbsp;anos</span>
+                <span class="stat-num" data-count="20" data-from="0" data-suffix="">0</span><span class="stat-suffix-text">&nbsp;anos</span>
             </div>
             <div class="stat-item-l">de experiência</div>
         </div>
         <div class="stat-entry">
             <div class="stat-item-n">
-                <span class="stat-num" data-count="0" data-suffix="%">100</span>
+                <span class="stat-num" data-count="0" data-from="100" data-suffix="%">0</span>
             </div>
             <div class="stat-item-l">de autuações fiscais em clientes ativos</div>
             <span class="stat-badge">histórico limpo</span>
@@ -2260,40 +2260,40 @@ body { padding-top: 60px; }
         revealEls.forEach(el => io.observe(el));
     }
 
-    // ---- COUNTER ANIMATION (stat-num + fade-in reveal) ----
-    const counters = document.querySelectorAll('.stat-num[data-count]');
-    if (counters.length) {
-        const countIO = new IntersectionObserver((entries) => {
-            entries.forEach(e => {
-                if (!e.isIntersecting) return;
-                const el = e.target;
-                const target = parseFloat(el.dataset.count);
-                const from = parseFloat(el.textContent) || 0;
-                const suffix = el.dataset.suffix || '';
-                const duration = 1600;
-                const start = performance.now();
-
-                // trigger fade-in on parent stat-entry
+    // ---- COUNTER ANIMATION — observa o bloco .stats-bar, não os spans ----
+    const statsBar = document.querySelector('.stats-bar');
+    if (statsBar) {
+        let fired = false;
+        const runCounters = () => {
+            if (fired) return;
+            fired = true;
+            const counters = statsBar.querySelectorAll('.stat-num[data-count]');
+            counters.forEach((el, i) => {
                 const entry = el.closest('.stat-entry');
-                if (entry) entry.classList.add('counted');
-
-                const step = (now) => {
-                    const progress = Math.min((now - start) / duration, 1);
-                    // ease-out cubic
-                    const eased = 1 - Math.pow(1 - progress, 3);
-                    const current = from + (target - from) * eased;
-                    // decimals for small targets (e.g. 12 → show as integer, 0.5 → 1dp)
-                    const display = target % 1 !== 0
-                        ? current.toFixed(1)
-                        : Math.round(current);
-                    el.textContent = display + suffix;
-                    if (progress < 1) requestAnimationFrame(step);
-                };
-                requestAnimationFrame(step);
-                countIO.unobserve(el);
+                const target = parseFloat(el.dataset.count);
+                const from   = parseFloat(el.dataset.from  || el.textContent) || 0;
+                const suffix = el.dataset.suffix || '';
+                const delay  = i * 120;
+                setTimeout(() => {
+                    if (entry) entry.classList.add('counted');
+                    const duration = 1800;
+                    const start = performance.now();
+                    const step = (now) => {
+                        const p = Math.min((now - start) / duration, 1);
+                        const eased = 1 - Math.pow(1 - p, 3);
+                        const cur = from + (target - from) * eased;
+                        el.textContent = Math.round(cur) + suffix;
+                        if (p < 1) requestAnimationFrame(step);
+                    };
+                    requestAnimationFrame(step);
+                }, delay);
             });
-        }, { threshold: 0.6, rootMargin: '-80px 0px 0px 0px' });
-        counters.forEach(el => countIO.observe(el));
+        };
+
+        const barIO = new IntersectionObserver((entries) => {
+            entries.forEach(e => { if (e.isIntersecting) { runCounters(); barIO.disconnect(); } });
+        }, { threshold: 0, rootMargin: '-120px 0px 0px 0px' });
+        barIO.observe(statsBar);
     }
 
     // ---- MEGA-MENU — painéis fora do header ----
