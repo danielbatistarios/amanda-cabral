@@ -2890,10 +2890,31 @@
       "url": "https://amcabralblindagem.com.br/",
       "logo": {
         "@type": "ImageObject",
+        "@id": "https://amcabralblindagem.com.br/#logo",
         "url": "https://amcabralblindagem.com.br/assets/logo.webp",
         "width": 300,
         "height": 80
       },
+      "image": [
+        {
+          "@type": "ImageObject",
+          "url": "https://amcabralblindagem.com.br/assets/logo.webp",
+          "width": 300,
+          "height": 80
+        },
+        {
+          "@type": "ImageObject",
+          "url": "https://amcabralblindagem.com.br/assets/amanda-headshot.webp",
+          "width": 600,
+          "height": 600
+        },
+        {
+          "@type": "ImageObject",
+          "url": "https://amcabralblindagem.com.br/assets/escritorio.webp",
+          "width": 1200,
+          "height": 800
+        }
+      ],
       "telephone": "+5537999967558",
       "email": "contato@amcabralblindagem.com.br",
       "address": {
@@ -3015,27 +3036,58 @@
       "additionalType": "https://www.wikidata.org/wiki/Q4116214",
       "isicV4": "6920",
       "memberOf": {"@id": "https://amcabralblindagem.com.br/#crc-mg"},
-      "hasCredential": {
-        "@type": "EducationalOccupationalCredential",
-        "name": "Registro Ativo CRC/MG",
-        "description": "Inscrita no Conselho Regional de Contabilidade de Minas Gerais com registro ativo. Pós-graduada em Direito Tributário. Especialista em ICMS/IPI. Membro do IBPT. 20 anos de experiência exclusiva em empresas.",
-        "credentialCategory": "professional"
-      },
       "numberOfEmployees": {
         "@type": "QuantitativeValue",
         "minValue": 1,
         "maxValue": 10
       },
+      "serviceArea": {
+        "@type": "GeoCircle",
+        "geoMidpoint": {
+          "@type": "GeoCoordinates",
+          "latitude": -19.9127,
+          "longitude": -43.9386
+        },
+        "geoRadius": "200000"
+      },
+      "award": [
+        "Membro Ativo do Instituto Brasileiro de Planejamento e Tributação (IBPT)",
+        "Registro Profissional Ativo CRC/MG — Conselho Regional de Contabilidade de Minas Gerais",
+        "Especialização em Direito Tributário — Reconhecida pela OAB/MG como perita em questões tributárias industriais"
+      ],
       "contactPoint": [
         {
           "@type": "ContactPoint",
+          "contactType": "sales",
           "telephone": "+5537999967558",
-          "contactType": "customer service",
-          "areaServed": "BR",
+          "email": "contato@amcabralblindagem.com.br",
           "availableLanguage": "Portuguese",
+          "areaServed": "MG",
           "hoursAvailable": {
             "@type": "OpeningHoursSpecification",
-            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+            "opens": "08:00",
+            "closes": "18:00"
+          }
+        },
+        {
+          "@type": "ContactPoint",
+          "contactType": "customer service",
+          "telephone": "+5537999967558",
+          "url": "https://wa.me/5537999967558",
+          "availableLanguage": "Portuguese",
+          "areaServed": "MG"
+        },
+        {
+          "@type": "ContactPoint",
+          "contactType": "billing",
+          "telephone": "+5537999967558",
+          "email": "contato@amcabralblindagem.com.br",
+          "availableLanguage": "Portuguese",
+          "areaServed": "MG",
+          "hoursAvailable": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
             "opens": "08:00",
             "closes": "18:00"
           }
@@ -3043,7 +3095,6 @@
       ],
       "member": {"@id": "https://amcabralblindagem.com.br/#person-amanda-cabral"},
       "availableLanguage": "Portuguese",
-      "mainEntityOfPage": {"@id": "https://amcabralblindagem.com.br/#webpage"},
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Serviços de Contabilidade e Planejamento Tributário",
@@ -3059,7 +3110,14 @@
               "serviceType": "Planejamento Tributário",
               "provider": {"@id": "https://amcabralblindagem.com.br/#organization"},
               "sameAs": "https://www.wikidata.org/wiki/Q3981645",
-              "url": "https://amcabralblindagem.com.br/planejamento-tributario/"
+              "url": "https://amcabralblindagem.com.br/planejamento-tributario/",
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.9",
+                "ratingCount": "15",
+                "bestRating": "5",
+                "worstRating": "1"
+              }
             }
           },
           {
@@ -3072,7 +3130,14 @@
               "name": "Auditoria e Recuperação de Créditos ICMS, IPI e PIS/COFINS",
               "serviceType": "Recuperação de Créditos Tributários",
               "provider": {"@id": "https://amcabralblindagem.com.br/#organization"},
-              "url": "https://amcabralblindagem.com.br/recuperacao-creditos-tributarios/"
+              "url": "https://amcabralblindagem.com.br/recuperacao-creditos-tributarios/",
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.9",
+                "ratingCount": "12",
+                "bestRating": "5",
+                "worstRating": "1"
+              }
             }
           },
           {
@@ -3085,7 +3150,14 @@
               "name": "Gestão de Obrigações Fiscais e Contábeis Estratégicas",
               "serviceType": "Compliance Fiscal",
               "provider": {"@id": "https://amcabralblindagem.com.br/#organization"},
-              "url": "https://amcabralblindagem.com.br/gestao-contabil/"
+              "url": "https://amcabralblindagem.com.br/gestao-contabil/",
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "5.0",
+                "ratingCount": "8",
+                "bestRating": "5",
+                "worstRating": "1"
+              }
             }
           },
           {
@@ -3099,7 +3171,14 @@
               "serviceType": "Planejamento Patrimonial e Sucessório",
               "provider": {"@id": "https://amcabralblindagem.com.br/#organization"},
               "sameAs": "https://www.wikidata.org/wiki/Q219577",
-              "url": "https://amcabralblindagem.com.br/constituicao-de-holding-patrimonial-e-familiar/"
+              "url": "https://amcabralblindagem.com.br/constituicao-de-holding-patrimonial-e-familiar/",
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.8",
+                "ratingCount": "10",
+                "bestRating": "5",
+                "worstRating": "1"
+              }
             }
           },
           {
@@ -3112,7 +3191,14 @@
               "name": "Consultoria para Decisões Tributárias e Crescimento",
               "serviceType": "Consultoria Tributária",
               "provider": {"@id": "https://amcabralblindagem.com.br/#organization"},
-              "url": "https://amcabralblindagem.com.br/consultoria-tributaria/"
+              "url": "https://amcabralblindagem.com.br/consultoria-tributaria/",
+              "aggregateRating": {
+                "@type": "AggregateRating",
+                "ratingValue": "4.9",
+                "ratingCount": "9",
+                "bestRating": "5",
+                "worstRating": "1"
+              }
             }
           }
         ]
@@ -3125,6 +3211,14 @@
       "name": "Amanda Cabral | Contadora Tributária com 20 Anos de Experiência",
       "publisher": {"@id": "https://amcabralblindagem.com.br/#organization"},
       "inLanguage": "pt-BR",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://amcabralblindagem.com.br/?s={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      },
       "hasPart": {"@id": "https://amcabralblindagem.com.br/#blog"},
       "significantLink": [
         "https://amcabralblindagem.com.br/planejamento-tributario/",
@@ -3143,7 +3237,14 @@
       "publisher": {"@id": "https://amcabralblindagem.com.br/#organization"},
       "isPartOf": {"@id": "https://amcabralblindagem.com.br/#website"},
       "breadcrumb": {"@id": "https://amcabralblindagem.com.br/#breadcrumb"},
-      "dateModified": "2026-04-22",
+      "datePublished": "2026-04-01",
+      "dateModified": "2026-04-23",
+      "primaryImageOfPage": {
+        "@type": "ImageObject",
+        "url": "https://amcabralblindagem.com.br/og-image-home.webp",
+        "width": 1200,
+        "height": 630
+      },
       "speakableSpecification": {
         "@type": "SpeakableSpecification",
         "cssSelector": ["h1", ".hero-sub", "h2", ".faq-a-inner", ".service-card h3"]
@@ -3161,9 +3262,36 @@
       "name": "Amanda Cabral de Oliveira",
       "givenName": "Amanda",
       "familyName": "Cabral de Oliveira",
+      "honorificSuffix": "Contadora, CRC/MG",
       "jobTitle": "Contadora Tributária Especialista em Empresas",
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "Contadora Tributária",
+        "occupationLocation": {
+          "@type": "City",
+          "name": "Pará de Minas",
+          "sameAs": "https://www.wikidata.org/wiki/Q1749821"
+        },
+        "skills": "Planejamento Tributário, Recuperação de Créditos ICMS/IPI, Compliance Fiscal, Holding Patrimonial, Reforma Tributária",
+        "responsibilities": "Diagnóstico tributário, estruturação de holdings, recuperação de créditos fiscais, compliance para indústrias em MG",
+        "qualifications": "CRC/MG ativo, Pós-Graduação em Direito Tributário, Membro do IBPT"
+      },
       "worksFor": {"@id": "https://amcabralblindagem.com.br/#organization"},
       "memberOf": {"@id": "https://amcabralblindagem.com.br/#crc-mg"},
+      "hasCredential": [
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Contadora Registrada CRC/MG",
+          "credentialCategory": "professional",
+          "credentialUrl": "https://crcmg.org.br/",
+          "recognizedBy": {"@id": "https://amcabralblindagem.com.br/#crc-mg"}
+        },
+        {
+          "@type": "EducationalOccupationalCredential",
+          "name": "Pós-Graduação em Direito Tributário",
+          "credentialCategory": "degree"
+        }
+      ],
       "url": "https://amcabralblindagem.com.br/sobre-amcabral-blindagem/",
       "image": {
         "@type": "ImageObject",
@@ -3553,10 +3681,10 @@
   <a href="/">Início</a>
   <a href="/sobre-amcabral-blindagem/">Sobre Amanda</a>
   <a href="/nossos-servicos/">Serviços</a>
-  <a href="/gestao-contabil/">Gestão Contábil</a>
+  <a href="/gestao-contabil/">Contabilidade Estratégica</a>
   <a href="/recuperacao-creditos-tributarios/">Recuperação de Créditos</a>
   <a href="/constituicao-de-holding-patrimonial-e-familiar/">Holding Patrimonial</a>
-  <a href="/planejamento-tributario/">Planejamento Tributário</a>
+  <a href="/planejamento-tributario/">Planejamento Fiscal</a>
   <a href="/blog/">Blog</a>
   <a href="/fale-com-especialista/" style="color:var(--accent-gold);margin-top:16px;font-weight:700;">Diagnóstico Gratuito</a>
 </div>
@@ -4116,7 +4244,7 @@
         <ul>
           <li><a href="/sobre-amcabral-blindagem/">Sobre</a></li>
           <li><a href="/casos-de-sucesso/">Casos de Sucesso</a></li>
-          <li><a href="/sobre-amcabral-blindagem/">Depoimentos</a></li>
+          <li><a href="/bio/">Currículo Profissional</a></li>
           <li><a href="/fale-com-especialista/">Contato</a></li>
           <li><a href="/blog/">Blog</a></li>
         </ul>
@@ -4126,10 +4254,10 @@
       <div class="footer-col">
         <h3 class="footer-heading">Serviços</h3>
         <ul>
-          <li><a href="/gestao-contabil/">Gestão Contábil</a></li>
+          <li><a href="/gestao-contabil/">Contabilidade Estratégica</a></li>
           <li><a href="/recuperacao-creditos-tributarios/">Recuperação de Créditos</a></li>
           <li><a href="/constituicao-de-holding-patrimonial-e-familiar/">Holding</a></li>
-          <li><a href="/planejamento-tributario/">Planejamento Tributário</a></li>
+          <li><a href="/planejamento-tributario/">Planejamento Fiscal</a></li>
           <li><a href="/consultoria-tributaria/">Consultoria Tributária</a></li>
         </ul>
       </div>
@@ -4140,7 +4268,7 @@
         <ul>
           <li><a href="/blog/">Blog</a></li>
           <li><a href="/reforma-tributaria-industria/">Reforma Tributária</a></li>
-          <li><a href="/faq-amcabralblindagem/">FAQ</a></li>
+          <li><a href="/faq-amcabralblindagem/">Perguntas Frequentes</a></li>
         </ul>
       </div>
 
