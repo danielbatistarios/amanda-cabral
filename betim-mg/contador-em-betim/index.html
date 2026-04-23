@@ -554,24 +554,6 @@
   --font-display: 'Instrument Serif', Georgia, serif;
   --gold: #C9A84C;
   --dark-hero: #0A0E14;
-
-
-  /* legacy template vars */
-  --blue-900: #060E1A;
-  --blue-700: #0F2137;
-  --white: #FFFFFF;
-  --gold: #C9A84C;
-  --accent-gold: #C4A574;
-  --accent-light: #60A5FA;
-  --silver: #94A3B8;
-  --dark-hero: #0F1419;
-  --text: #1E293B;
-  --text-muted: #64748B;
-  --border: #E2E8F0;
-  --font-body: 'Inter', system-ui, sans-serif;
-  --font-display: 'Instrument Serif', Georgia, serif;
-  --ease: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* === RESET === */
@@ -629,10 +611,12 @@ img { display: block; max-width: 100%; }
 }
 .reveal-scale.in { opacity: 1; transform: none; }
 .reveal-blur {
-  opacity: 0;transform: translateY(12px);
+  opacity: 0;
+  filter: blur(8px);
+  transform: translateY(12px);
   transition: opacity .9s var(--spring), filter .9s var(--spring), transform .9s var(--spring);
 }
-.reveal-blur.in { opacity: 1;transform: none; }
+.reveal-blur.in { opacity: 1; filter: blur(0); transform: none; }
 .reveal-3d {
   opacity: 0;
   transform: translateY(16px) rotateX(6deg);

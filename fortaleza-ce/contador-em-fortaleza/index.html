@@ -554,24 +554,6 @@
   --font-display: 'Instrument Serif', Georgia, serif;
   --gold: #C9A84C;
   --dark-hero: #0A0E14;
-
-
-  /* legacy template vars */
-  --blue-900: #060E1A;
-  --blue-700: #0F2137;
-  --white: #FFFFFF;
-  --gold: #C9A84C;
-  --accent-gold: #C4A574;
-  --accent-light: #60A5FA;
-  --silver: #94A3B8;
-  --dark-hero: #0F1419;
-  --text: #1E293B;
-  --text-muted: #64748B;
-  --border: #E2E8F0;
-  --font-body: 'Inter', system-ui, sans-serif;
-  --font-display: 'Instrument Serif', Georgia, serif;
-  --ease: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* === RESET === */
@@ -629,10 +611,12 @@ img { display: block; max-width: 100%; }
 }
 .reveal-scale.in { opacity: 1; transform: none; }
 .reveal-blur {
-  opacity: 0;transform: translateY(12px);
+  opacity: 0;
+  filter: blur(8px);
+  transform: translateY(12px);
   transition: opacity .9s var(--spring), filter .9s var(--spring), transform .9s var(--spring);
 }
-.reveal-blur.in { opacity: 1;transform: none; }
+.reveal-blur.in { opacity: 1; filter: blur(0); transform: none; }
 .reveal-3d {
   opacity: 0;
   transform: translateY(16px) rotateX(6deg);
@@ -3363,10 +3347,10 @@ fieldset legend.form-step-title + * { clear: both; }
       <h2 class="sec-h dk reveal" style="margin-bottom:32px;">Planejamento fiscal para a capital econômica do Nordeste</h2>
       <div class="expandable-wrap">
         <div class="expandable-content" id="localExpand">
-          <p>Fortaleza lidera a produção de calçados do Nordeste e concentra um dos maiores parques têxteis do país, com destaque para confecção de roupas, rendas e artesanato industrializado. Além da indústria, a capital cearense movimenta turismo de alto padrão e um setor de serviços diversificado que atende tanto o mercado regional quanto a demanda de visitantes nacionais e estrangeiros. Esse perfil multissetorial cria obrigações fiscais simultâneas que exigem domínio de regimes distintos.</p>
-<p>Fabricantes de calçados operam com PIS/COFINS monofásico, cujas alíquotas diferenciadas por NCM geram créditos específicos raramente aproveitados pela maioria dos escritórios contábeis da região. Empresas têxteis que exportam beneficiam-se de desonerações de IPI e crédito presumido de PIS/COFINS, mas precisam de controle rigoroso da escrituração para não perder esses direitos em auditoria. Hotéis e pousadas calculam ISS com alíquotas municipais variáveis e precisam monitorar a retenção de IRRF em contratos corporativos.</p>
-<p>O atendimento digital que oferecemos permite acompanhar empresas de Fortaleza com a mesma profundidade reservada a clientes do entorno imediato do escritório. Videoconferência, acesso remoto seguro e relatórios periódicos constroem uma relação de assessoria contínua, sem barreiras geográficas.</p>
-<p>O ponto de partida é sempre o diagnóstico gratuito: 30 minutos que revelam o potencial de redução de carga tributária e o volume de créditos recuperáveis nos últimos cinco anos. Sem compromisso de contratação na etapa inicial.</p>
+          <p>Fortaleza lidera a produção calçadista do Nordeste brasileiro e abriga um dos maiores complexos têxteis do país, com fabricantes de rendas, bordados industriais e confecção de moda que abastecem varejistas de quatro continentes. A capital cearense não é só polo de manufatura: o turismo litorâneo sustenta uma rede hoteleira e de gastronomia que opera durante o ano inteiro, e o Maracanaú Industrial, distrito contíguo, concentra farmacêuticas e distribuidoras que ampliam a base fiscal do município.</p>
+<p>Fábricas de calçados do Ceará operam sob regime de tributação concentrada, em que as contribuições sobre a receita são recolhidas pelo fabricante ou importador de matéria-prima a uma alíquota específica por código de produto, eliminando a incidência nas etapas seguintes. Quando a cadeia de fornecimento envolve partes importadas de países com acordo de não-dupla-tributação, a apuração do imposto de importação exige classificação correta na Tabela TIPI e validação das condicionantes do regime especial, dois pontos que a maioria dos escritórios convencionais terceiriza sem domínio real. Hotéis e pousadas de Fortaleza calculam a contribuição ao Fundo Municipal de Turismo sobre a receita de hospedagem, parcela que integra a base de cálculo do ISS mas raramente está segregada na escrituração padrão, gerando inconsistências visíveis em cruzamentos eletrônicos da Secretaria Municipal de Finanças.</p>
+<p>A base metodológica construída em três décadas de assessoria a fabricantes e prestadores de serviços de diferentes perfis permite mapear, com exatidão, onde cada operação acumula tributação acima do que a legislação determina.</p>
+<p>Para empresas de Fortaleza, a análise de viabilidade tributária não tem custo. O trabalho acontece por formato digital, abrange o enquadramento atual da empresa, o aproveitamento de crédito no período de prescrição de cinco anos e as inconsistências identificadas nos arquivos de escrituração periódica.</p>
           <div class="local-cities reveal">
             <p>Além de Fortaleza, atendemos empresas em Caucaia, Maracanaú, Horizonte, Pacatuba, Eusébio, Aquiraz e Maranguape. <a href="/cidades-atendidas/">Ver todas as cidades atendidas</a>.</p>
           </div>

@@ -554,24 +554,6 @@
   --font-display: 'Instrument Serif', Georgia, serif;
   --gold: #C9A84C;
   --dark-hero: #0A0E14;
-
-
-  /* legacy template vars */
-  --blue-900: #060E1A;
-  --blue-700: #0F2137;
-  --white: #FFFFFF;
-  --gold: #C9A84C;
-  --accent-gold: #C4A574;
-  --accent-light: #60A5FA;
-  --silver: #94A3B8;
-  --dark-hero: #0F1419;
-  --text: #1E293B;
-  --text-muted: #64748B;
-  --border: #E2E8F0;
-  --font-body: 'Inter', system-ui, sans-serif;
-  --font-display: 'Instrument Serif', Georgia, serif;
-  --ease: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 /* === RESET === */
@@ -629,10 +611,12 @@ img { display: block; max-width: 100%; }
 }
 .reveal-scale.in { opacity: 1; transform: none; }
 .reveal-blur {
-  opacity: 0;transform: translateY(12px);
+  opacity: 0;
+  filter: blur(8px);
+  transform: translateY(12px);
   transition: opacity .9s var(--spring), filter .9s var(--spring), transform .9s var(--spring);
 }
-.reveal-blur.in { opacity: 1;transform: none; }
+.reveal-blur.in { opacity: 1; filter: blur(0); transform: none; }
 .reveal-3d {
   opacity: 0;
   transform: translateY(16px) rotateX(6deg);
@@ -3363,10 +3347,10 @@ fieldset legend.form-step-title + * { clear: both; }
       <h2 class="sec-h dk reveal" style="margin-bottom:32px;">Otimização tributária para o hub logístico do Aeroporto de Cumbica</h2>
       <div class="expandable-wrap">
         <div class="expandable-content" id="localExpand">
-          <p>Guarulhos responde por um fluxo fiscal que poucos municípios brasileiros conseguem igualar. O Aeroporto Internacional de Cumbica, segundo maior do país, ancora um ecossistema de operadores logísticos, tradings, despachantes aduaneiros e distribuidoras que movimentam mercadorias de todos os continentes. Mais de 400 empresas de médio e grande porte têm sede ou filial no município, atraídas pela malha rodoviária que conecta a Anhanguera, a Dutra e a Presidente Dutra.</p>
-<p>Empresas que operam com importação enfrentam o regime de ICMS na entrada de mercadoria estrangeira, a classificação correta de NCM para evitar autuações da Receita Federal e o aproveitamento de crédito de IPI sobre produtos industrializados importados. Operadores logísticos precisam controlar o ICMS nas transferências interestaduais e a substituição tributária de ponta quando distribuem para varejo paulista. Cada um desses pontos é um risco fiscal se não for monitorado por especialista.</p>
-<p>A assessoria tributária que oferecemos funciona inteiramente de forma remota, sem que o empresário precise sair da operação para uma reunião presencial. Acesso digital aos registros contábeis, videoconferência e entrega de relatórios periódicos compõem um modelo que se adapta à velocidade das operações logísticas.</p>
-<p>Para empresas de Guarulhos, o processo começa com uma avaliação tributária gratuita: 30 minutos de análise do regime atual, dos créditos acumulados nos últimos cinco anos e dos riscos identificados. Esse diagnóstico inicial é a base para qualquer proposta subsequente.</p>
+          <p>Guarulhos concentra um volume fiscal proporcional ao Aeroporto Internacional de Cumbica, segundo maior do Brasil em movimentação de cargas. Operadores logísticos, tradings, despachantes aduaneiros e distribuidoras que movimentam mercadorias de todos os continentes têm sede ou filial no município, atraídas pela malha rodoviária que liga Anhanguera, Dutra e Presidente Dutra num único nó de distribuição para toda a Grande SP.</p>
+<p>Importadoras precisam classificar corretamente o NCM de cada mercadoria para definir a alíquota de IPI e evitar autuações da Receita Federal na entrada. Tradings que revendem mercadoria importada para varejistas paulistas enfrentam ICMS-ST com pauta fiscal específica e substituição tributária de ponta, cujo cálculo incorreto gera passivo que só aparece na fiscalização estadual. Operadores logísticos com frota própria precisam controlar o ICMS diferencial de alíquota na aquisição de veículos e o INSS sobre terceiros contratados.</p>
+<p>Três décadas de assessoria a empresas com cadeias tributárias complexas consolidaram uma metodologia que parte do mapeamento das entradas e saídas antes de qualquer recomendação. Esse diagnóstico de base revela exatamente onde o tributo está sendo pago além do necessário.</p>
+<p>O levantamento inicial é gratuito e ocorre por chamada de vídeo. O escopo cobre regime atual, créditos acumulados nos últimos sessenta meses e riscos identificados nas obrigações acessórias vigentes.</p>
           <div class="local-cities reveal">
             <p>Além de Guarulhos, atendemos empresas em Arujá, Santa Isabel, Mairiporã, Nazaré Paulista, Bragança Paulista, Franco da Rocha e Caieiras. <a href="/cidades-atendidas/">Ver todas as cidades atendidas</a>.</p>
           </div>
