@@ -590,10 +590,11 @@ img { display: block; max-width: 100%; }
 .article-meta {
   display: flex;
   align-items: center;
-  gap: 12px;
-  font-size: 14px;
+  gap: 8px;
+  font-size: 13px;
   color: var(--dim);
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  overflow: hidden;
 }
 .article-avatar {
   width: 40px;
@@ -608,7 +609,8 @@ img { display: block; max-width: 100%; }
   color: #fff;
   flex-shrink: 0;
 }
-.article-meta-name { font-weight: 600; color: var(--paper); }
+.article-meta-name { font-weight: 600; color: var(--paper); text-decoration: none; }
+.article-meta-name:hover { color: var(--accent); }
 .article-meta-sep { width: 3px; height: 3px; border-radius: 50%; background: var(--dim); flex-shrink: 0; }
 
 /* === ARTICLE LAYOUT === */
@@ -1493,6 +1495,8 @@ p { text-wrap: pretty; }
   .article-content blockquote { font-size: 17px; }
   .article-hero { padding: 100px 20px 40px; }
   .article-hero .container { padding: 0; }
+  .article-meta { gap: 6px; font-size: 12px; }
+  .article-avatar { width: 32px; height: 32px; font-size: 11px; }
   .breadcrumb { font-size: 12px; gap: 4px; }
   .breadcrumb span:last-child {
     overflow: hidden;
@@ -1655,7 +1659,7 @@ p { text-wrap: pretty; }
     <h1>O que é IBS e CBS: como funcionam os novos impostos</h1>
     <div class="article-meta">
       <div class="article-avatar">AC</div>
-      <span class="article-meta-name">Amanda Cabral</span>
+      <a href="/author-amanda-cabral/" class="article-meta-name">Amanda Cabral</a>
       <span class="article-meta-sep"></span>
       <span>28 Mar 2026</span>
       <span class="article-meta-sep"></span>
