@@ -1,20 +1,21 @@
 /* ================================================
    MOBILE PATCH — index.html (Amanda Cabral)
-   Gerado por /mobile-review em 2026-04-23
-   Score antes: ~52/100 | Estimativa após: ~82/100
-   P0: 6 fixes | P1: 9 fixes
+   Gerado por /mobile-review + correções visuais
    ================================================ */
 
-/* ── P0.1: Container usa 80px padding — esmagado em mobile ── */
-/* Já tem 768px fix, mas falta 480px e abaixo */
+/* ── CONTAINER: remover padding lateral excessivo em todos os breakpoints mobile ── */
+@media (max-width: 768px) {
+  .container {
+    padding: 0 24px;
+  }
+}
 @media (max-width: 480px) {
   .container {
-    padding: 0 20px;
+    padding: 0 16px;
   }
 }
 
-/* ── P0.2: Hero padding-top insuficiente — header fixo de 60px cobre conteúdo ── */
-/* #hdr tem height: 60px. Hero precisa de pelo menos 80px de offset */
+/* ── HERO: padding-top para não ficar sob header fixo de 60px ── */
 @media (max-width: 900px) {
   .hero {
     padding-top: 100px;
@@ -27,46 +28,122 @@
   }
 }
 
-/* ── P0.3: .hero-tag font-size 0.55rem (8.8px) — abaixo do mínimo legível ── */
+/* ── HERO TAG / LOGO TAG: font-size mínimo legível ── */
 @media (max-width: 768px) {
   .hero-tag {
     font-size: 0.65rem;
     letter-spacing: 1.5px;
   }
-}
-
-/* ── P0.4: Services track — 80px padding-right corta conteúdo em 320px ── */
-@media (max-width: 480px) {
-  .services-track {
-    padding: 16px 60px 16px 20px;
-  }
-  .service-card {
-    min-width: 260px;
-    max-width: 260px;
-  }
-}
-
-/* ── P0.5: .logo-tag font-size 0.55rem (8.8px) ilegível ── */
-@media (max-width: 768px) {
   .logo-tag {
     font-size: 0.6rem;
     letter-spacing: 2px;
   }
 }
 
-/* ── P0.6: Bottom bar cobre conteúdo sem safe area em iOS ── */
-@media (max-width: 600px) {
-  .bottom-bar {
-    padding-bottom: env(safe-area-inset-bottom, 0px);
+/* ── PAIN CARDS: garantir coluna única com largura completa ── */
+@media (max-width: 768px) {
+  .pains-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
-  /* Garante que o último conteúdo não fique coberto pela bottom bar */
-  body {
-    padding-bottom: 80px;
+  .pain-card {
+    width: 100%;
+    box-sizing: border-box;
   }
 }
 
-/* ── P1.1: #hdr-hamburger touch target 8px padding — muito pequeno ── */
-/* O hambúrguer atual tem apenas padding: 8px, abaixo dos 44px mínimos */
+/* ── SERVICES: carousel mobile com snap e nav visível ── */
+@media (max-width: 768px) {
+  /* Remover padding direito excessivo que corta conteúdo */
+  .services-track {
+    padding: 16px 24px 16px 0;
+    gap: 12px;
+  }
+  .service-card {
+    min-width: 280px;
+    max-width: 85vw;
+    flex-shrink: 0;
+    scroll-snap-align: start;
+  }
+  /* Botões de nav visíveis e grandes o suficiente */
+  .services-nav {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px;
+    padding: 0 16px;
+  }
+  .services-nav button {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+@media (max-width: 480px) {
+  .service-card {
+    min-width: 260px;
+    max-width: 88vw;
+  }
+  /* Hint de scroll mais visível */
+  .services-scroll-hint {
+    right: 8px;
+  }
+}
+
+/* ── ABOUT: foto + texto empilhados corretamente ── */
+@media (max-width: 768px) {
+  .about-layout {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  /* Foto: proporção vertical elegante, não esmagada 4/3 */
+  .about-photo {
+    max-width: 100%;
+    aspect-ratio: 4/5;
+    max-height: 420px;
+    margin: 0 auto;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .about-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    border-radius: 16px;
+  }
+  /* Conteúdo centralizado */
+  .about-content {
+    text-align: left;
+  }
+  .about-content h2 {
+    font-size: clamp(1.4rem, 5.5vw, 1.9rem);
+    line-height: 1.2;
+  }
+  .about-tags {
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+}
+@media (max-width: 480px) {
+  .about-photo {
+    aspect-ratio: 3/4;
+    max-height: 360px;
+  }
+}
+
+/* ── SECTION TAG: legibilidade mínima ── */
+@media (max-width: 600px) {
+  .section-tag {
+    font-size: 0.72rem;
+    letter-spacing: 2px;
+  }
+}
+
+/* ── HAMBURGER E CLOSE: touch target 44px mínimo ── */
 @media (max-width: 900px) {
   #hdr-hamburger {
     padding: 12px 10px;
@@ -75,10 +152,6 @@
     justify-content: center;
     align-items: center;
   }
-}
-
-/* ── P1.2: #hdr-mob-close touch target pequeno (font-size 28px, sem padding) ── */
-@media (max-width: 900px) {
   #hdr-mob-close {
     min-width: 44px;
     min-height: 44px;
@@ -86,10 +159,6 @@
     align-items: center;
     justify-content: center;
   }
-}
-
-/* ── P1.3: Links do menu mobile com padding: 14px 0 — área de toque ok vertical mas zero horizontal ── */
-@media (max-width: 900px) {
   #hdr-mob a {
     padding: 14px 8px;
     min-height: 44px;
@@ -98,15 +167,7 @@
   }
 }
 
-/* ── P1.4: .section-tag 0.68rem (10.9px) — abaixo do mínimo ── */
-@media (max-width: 600px) {
-  .section-tag {
-    font-size: 0.72rem;
-    letter-spacing: 2px;
-  }
-}
-
-/* ── P1.5: .footer-proof-label font-size 0.75rem (12px) — ok, mas em 320px pode comprimir ── */
+/* ── FOOTER PROOF: compactar em telas pequenas ── */
 @media (max-width: 375px) {
   .footer-proof-label {
     font-size: 0.7rem;
@@ -119,7 +180,7 @@
   }
 }
 
-/* ── P1.6: Hover states sem @media(hover:hover) — colam em touch ── */
+/* ── HOVER STATES: desativar em touch (evitar estado "colado") ── */
 @media (hover: none) {
   .hdr-btn:hover,
   .nav a:hover,
@@ -131,7 +192,7 @@
   }
 }
 
-/* ── P1.7: Hero layout em 480px — foto grande demais, texto espremido ── */
+/* ── HERO LAYOUT 480px: foto proporcional, sem esmagamento ── */
 @media (max-width: 480px) {
   .hero-layout {
     gap: 32px;
@@ -145,7 +206,7 @@
   }
 }
 
-/* ── P1.8: .stats-grid itens com padding 16px 8px muito pequeno em 320px ── */
+/* ── STATS 375px ── */
 @media (max-width: 375px) {
   .stat-item {
     padding: 12px 6px;
@@ -158,7 +219,7 @@
   }
 }
 
-/* ── P1.9: Form inputs sem altura mínima de 48px ── */
+/* ── FORM INPUTS: sem zoom automático no iOS ── */
 @media (max-width: 768px) {
   .form-opt {
     min-height: 48px;
@@ -171,11 +232,21 @@
   textarea,
   select {
     min-height: 48px;
-    font-size: 16px; /* evita zoom automático no iOS */
+    font-size: 16px;
   }
 }
 
-/* ── P2: prefers-reduced-motion ── */
+/* ── BOTTOM BAR: safe area iOS ── */
+@media (max-width: 600px) {
+  .bottom-bar {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  body {
+    padding-bottom: 80px;
+  }
+}
+
+/* ── REDUCED MOTION ── */
 @media (prefers-reduced-motion: reduce) {
   .hero-tag .dot::after,
   .loader-word,
@@ -189,7 +260,7 @@
   }
 }
 
-/* ── P2: scroll-padding-top para âncoras não ficarem sob o header ── */
+/* ── SCROLL PADDING: âncoras não ficam sob o header ── */
 html {
   scroll-padding-top: 72px;
 }
