@@ -24,16 +24,16 @@ CIDADES_VIZINHAS = """<p>Além de Sete Lagoas, atendemos empresas em Paraopeba, 
 # ---------------------------------------------------------------------------
 # COVERAGE NEARBY LINKS
 # ---------------------------------------------------------------------------
-COVERAGE_NEARBY_LINKS = """<ul class="coverage-list">
-  <li><a href="/cidades-atendidas/">Paraopeba</a></li>
-  <li><a href="/cidades-atendidas/">Matozinhos</a></li>
-  <li><a href="/cidades-atendidas/">Prudente de Morais</a></li>
-  <li><a href="/cidades-atendidas/">Capim Branco</a></li>
-  <li><a href="/cidades-atendidas/">Cordisburgo</a></li>
-  <li><a href="/cidades-atendidas/">Funilândia</a></li>
-  <li><a href="/cidades-atendidas/">Esmeraldas</a></li>
-  <li><a href="/cidades-atendidas/">Jaboticatubas</a></li>
-</ul>"""
+COVERAGE_NEARBY_LINKS = """<div class="coverage-nearby-links">
+  <a href="/cidades-atendidas/">Paraopeba</a>
+  <a href="/cidades-atendidas/">Matozinhos</a>
+  <a href="/cidades-atendidas/">Prudente de Morais</a>
+  <a href="/cidades-atendidas/">Capim Branco</a>
+  <a href="/cidades-atendidas/">Cordisburgo</a>
+  <a href="/cidades-atendidas/">Funilândia</a>
+  <a href="/cidades-atendidas/">Esmeraldas</a>
+  <a href="/cidades-atendidas/">Jaboticatubas</a>
+</div>"""
 
 # ---------------------------------------------------------------------------
 # BAIRROS
