@@ -1592,193 +1592,7 @@ img { display: block; max-width: 100%; }
   line-height: 1.6;
 }
 
-/* === FOOTER === */
-footer {
-  background: #040A14;
-  border-top: 1px solid #0A1628;
-  padding: 64px 40px 32px;
-}
-
-.site-footer {
-            background: #040A14;
-            border-top: 1px solid #0A1628;
-            padding: 64px 0 0;
-        }
-
-        .footer-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 40px;
-        }
-
-        .footer-proof {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 40px;
-            padding: 32px 0;
-            border-bottom: 1px solid #0A1628;
-            margin-bottom: 56px;
-        }
-        .footer-proof-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 5px;
-        }
-        .footer-proof-stars {
-            color: var(--gold);
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-            line-height: 1;
-        }
-        .footer-proof-value {
-            font-family: var(--font-display);
-            font-size: 1.6rem;
-            font-style: italic;
-            color: var(--white);
-            line-height: 1;
-        }
-        .footer-proof-label {
-            font-size: 0.75rem;
-            color: #4a5568;
-            letter-spacing: 0.04em;
-        }
-        .footer-proof-divider {
-            width: 1px;
-            height: 40px;
-            background: #0A1628;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 48px;
-            margin-bottom: 64px;
-        }
-
-        /* Col 0: brand */
-        .footer-brand-col { display: flex; flex-direction: column; }
-        /* Fale Conosco */
-        .footer-contact-title {
-            font-size: 0.8125rem;
-            font-weight: 700;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 14px;
-        }
-        .footer-nap { display: flex; flex-direction: column; gap: 10px; font-style: normal; }
-        .footer-nap-row {
-            display: flex; align-items: flex-start; gap: 10px;
-            font-size: 0.8125rem; color: #4a5568;
-            text-decoration: none; transition: color 0.2s;
-            line-height: 1.6;
-        }
-        a.footer-nap-row:hover { color: rgba(255,255,255,0.75); }
-        a.footer-nap-row:hover svg { color: var(--gold); }
-        .footer-nap-row svg { flex-shrink: 0; margin-top: 2px; color: var(--gold); transition: color 0.2s; }
-
-        /* Cols 1-4 */
-        .footer-col { display: flex; flex-direction: column; }
-
-        .footer-heading {
-            font-size: 0.8125rem;
-            font-weight: 700;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 16px;
-        }
-
-        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-
-        .footer-col a {
-            display: block;
-            font-size: 0.875rem;
-            font-weight: 300;
-            color: #4a5568;
-            transition: color 0.2s;
-            text-decoration: none;
-        }
-
-        .footer-col a:hover { color: var(--white); }
-
-        .footer-wordmark-tagline {
-            text-align: center;
-            font-family: var(--font-display);
-            font-size: clamp(0.95rem, 1.5vw, 1.15rem);
-            color: rgba(255,255,255,0.55);
-            margin-bottom: 8px;
-            font-weight: 300;
-            letter-spacing: 0.01em;
-        }
-        .footer-wordmark {
-            font-family: var(--font-display);
-            font-size: clamp(3.5rem, 8vw, 7rem);
-            font-style: italic;
-            font-weight: 400;
-            color: transparent;
-            -webkit-text-stroke: 1px rgba(201,168,76,0.2);
-            letter-spacing: -0.02em;
-            line-height: 1;
-            margin-bottom: 0;
-            user-select: none;
-            text-align: center;
-        }
-
-        .footer-legal {
-            border-top: 1px solid #0A1628;
-            padding: 24px 0;
-            margin-top: 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-
-        .footer-legal p {
-            font-size: 0.8125rem;
-            color: #2d3748;
-        }
-
-        .footer-legal-links {
-            display: flex;
-            gap: 24px;
-        }
-
-        .footer-legal-links a {
-            font-size: 0.8125rem;
-            color: #2d3748;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .footer-legal-links a:hover { color: var(--white); }
-
-        .footer-social-icons {
-            display: flex;
-            gap: 16px;
-            align-items: center;
-        }
-        .footer-social-icons a {
-            color: #4a5568;
-            transition: color 0.2s;
-            display: flex;
-            align-items: center;
-        }
-        .footer-social-icons a:hover { color: var(--gold); }
-
-        @media (max-width: 1024px) {
-            .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
-        }
-
-
-
-        @media (max-width: 600px) {
-            .site-footer { padding: 48px 0 0; }
+.site-footer { padding: 48px 0 0; }
             .footer-inner { padding: 0 20px; }
             .footer-proof { gap: 20px; }
             .footer-proof-divider { display: none; }
@@ -3463,11 +3277,12 @@ footer {
       <h2 class="sec-h dk reveal" style="margin-bottom:32px;">Contabilidade local com conhecimento profundo de Par&#225; de Minas</h2>
       <div class="expandable-wrap">
         <div class="expandable-content" id="localExpand">
-          <p class="reveal">Par&#225; de Minas &#233; uma cidade com economia diversa: ind&#250;strias, com&#233;rcio atacadista e varejista, prestadores de servi&#231;os, profissionais liberais, cl&#237;nicas e construtoras. Cada setor tem suas pr&#243;prias obriga&#231;&#245;es fiscais, seus pr&#243;prios cr&#233;ditos e seus pr&#243;prios riscos. Contador que n&#227;o conhece essa diversidade aplica a mesma f&#243;rmula para todos. E a f&#243;rmula errada custa caro.</p>
+          <p class="reveal"><a href="https://pt.wikipedia.org/wiki/Par%C3%A1_de_Minas" target="_blank" rel="noopener">Par&#225; de Minas</a> &#233; uma cidade com economia diversa: ind&#250;strias, com&#233;rcio atacadista e varejista, prestadores de servi&#231;os, profissionais liberais, cl&#237;nicas e construtoras. Cada setor tem suas pr&#243;prias obriga&#231;&#245;es fiscais, seus pr&#243;prios cr&#233;ditos e seus pr&#243;prios riscos. Contador que n&#227;o conhece essa diversidade aplica a mesma f&#243;rmula para todos. E a f&#243;rmula errada custa caro.</p>
           <p class="reveal">Estamos nesta cidade h&#225; 30 anos. Conhecemos a legisla&#231;&#227;o municipal de Par&#225; de Minas, o comportamento do fisco estadual em Minas Gerais, os incentivos dispon&#237;veis para cada tipo de opera&#231;&#227;o e os regimes que realmente fazem sentido para empresas daqui. N&#227;o &#233; teoria. &#201; 30 anos de pr&#225;tica neste mercado espec&#237;fico.</p>
           <p class="reveal">Se voc&#234; est&#225; procurando um contador em Par&#225; de Minas que conhe&#231;a a sua realidade, o escrit&#243;rio est&#225; na Rua Major Fid&#233;lis, 244, Centro. Atendemos tamb&#233;m por videoconfer&#234;ncia para quem prefere o formato remoto.</p>
+          <p class="reveal">A economia de Pará de Minas é industrial e diversa. O Distrito Industrial Antônio Júlio de Faria concentra cerca de 45 empresas nos setores têxtil, fundição, cerâmica e mineração de agalmatolito. O Distrito Industrial 2, às margens da BR-262, abriga operações de maior porte, incluindo o complexo da Itambé Laticínios. No eixo comercial, o movimento se concentra na Avenida Benedito Valadares, na Avenida Getúlio Vargas e na Rua Direita, no Centro, onde convivem comércio atacadista, varejista e prestadores de serviço. Atendemos empresas em todos esses polos: indústrias do Jardim Industrial e do Parque Industrial, comércios do Centro, Santos Dumont, Padre Libério e Eldorado, clínicas e escritórios no Dom Bosco e no Belvedere.</p>
           <div class="local-cities reveal">
-            <p>Tamb&#233;m atendemos empresas em <a href="contador-itauna.html">Ita&#250;na</a>, <a href="contador-divinopolis.html">Divin&#243;polis</a>, <a href="contador-sete-lagoas.html">Sete Lagoas</a>, <a href="contador-bom-despacho.html">Bom Despacho</a>, <a href="contador-pitangui.html">Pitangui</a>, <a href="contador-nova-serrana.html">Nova Serrana</a> e toda a regi&#227;o metropolitana de Belo Horizonte.</p>
+            <p>Também atendemos empresas em <a href="/itauna-mg/">Itaúna</a>, <a href="/divinopolis-mg/">Divinópolis</a>, <a href="/sete-lagoas-mg/contabilidade-industrial-em-sete-lagoas/">Sete Lagoas</a>, <a href="/cidades-atendidas/">Bom Despacho</a>, <a href="/cidades-atendidas/">Nova Serrana</a> e toda a região metropolitana de Belo Horizonte.</p>
           </div>
         </div>
         <div class="expandable-fade"></div>
@@ -3752,8 +3567,6 @@ function toggleLocalExpand() {
 })();
 </script>
 
-
-
 <footer class="site-footer">
   <div class="footer-inner">
 
@@ -3813,7 +3626,7 @@ function toggleLocalExpand() {
       <div class="footer-col">
         <h3 class="footer-heading">Cidades Atendidas</h3>
         <ul>
-          <li><a href="/contabilidade-para-de-minas/">Pará de Minas</a></li>
+          <li><a href="/para-de-minas-mg/escritorio-de-contabilidade/">Pará de Minas</a></li>
           <li><a href="/contabilidade-sete-lagoas/">Sete Lagoas</a></li>
           <li><a href="/contador-betim/">Betim</a></li>
           <li><a href="/contador-belo-horizonte/">Belo Horizonte</a></li>
