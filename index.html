@@ -128,7 +128,7 @@
             backdrop-filter: blur(10px);
             border-bottom: 1px solid rgba(255,255,255,0.07);
             z-index: 500;
-            height: 60px;
+            height: clamp(60px, 14vw, 72px);
         }
         #hdr-inner {
             max-width: 1200px; margin: 0 auto;
@@ -139,7 +139,7 @@
         }
         #hdr-logo {
             font-family: var(--font-display);
-            font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+            font-size: clamp(1.15rem, 5vw, 1.45rem);
             font-style: italic;
             font-weight: 400;
             color: transparent;
@@ -231,9 +231,9 @@
         /* Mobile */
         #hdr-hamburger {
             display: none; background: none; border: none;
-            cursor: pointer; flex-direction: column; gap: 5px; padding: 8px;
+            cursor: pointer; flex-direction: column; gap: 6px; padding: 8px;
         }
-        #hdr-hamburger span { width: 20px; height: 2px; background: #E2DAC8; border-radius: 2px; display: block; transition: background 0.2s; }
+        #hdr-hamburger span { width: 22px; height: 2px; background: #E2DAC8; border-radius: 2px; display: block; transition: background 0.2s; }
         #hdr-hamburger:hover span { background: #fff; }
         #hdr-mob {
             display: none; position: fixed; inset: 0;
