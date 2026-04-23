@@ -233,7 +233,8 @@
             display: none; background: none; border: none;
             cursor: pointer; flex-direction: column; gap: 5px; padding: 8px;
         }
-        #hdr-hamburger span { width: 20px; height: 2px; background: #E2DAC8; border-radius: 2px; display: block; }
+        #hdr-hamburger span { width: 20px; height: 2px; background: #E2DAC8; border-radius: 2px; display: block; transition: background 0.2s; }
+        #hdr-hamburger:hover span { background: #fff; }
         #hdr-mob {
             display: none; position: fixed; inset: 0;
             background: #060E1A; z-index: 600;
