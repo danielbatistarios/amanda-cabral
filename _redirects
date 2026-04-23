@@ -1,7 +1,9 @@
 # 301 redirects — serviços movidos para /nossos-servicos/
 # 301 redirects — cidades antigas → nova estrutura cidade-uf/slug
-/contabilidade-para-de-minas/          /para-de-minas-mg/escritorio-de-contabilidade-em-para-de-minas/   301
-/contabilidade-para-de-minas           /para-de-minas-mg/escritorio-de-contabilidade-em-para-de-minas/   301
+/contabilidade-para-de-minas/          /para-de-minas-mg/escritorio-de-contabilidade/   301
+/contabilidade-para-de-minas           /para-de-minas-mg/escritorio-de-contabilidade/   301
+/para-de-minas-mg/escritorio-de-contabilidade-em-para-de-minas/ /para-de-minas-mg/escritorio-de-contabilidade/ 301
+/para-de-minas-mg/escritorio-de-contabilidade-em-para-de-minas  /para-de-minas-mg/escritorio-de-contabilidade/ 301
 /contabilidade-sete-lagoas/            /sete-lagoas-mg/contabilidade-industrial-em-sete-lagoas/            301
 /contabilidade-sete-lagoas             /sete-lagoas-mg/contabilidade-industrial-em-sete-lagoas/            301
 /contabilidade-montes-claros/          /montes-claros-mg/contador-especializado-industrias-montes-claros/  301
