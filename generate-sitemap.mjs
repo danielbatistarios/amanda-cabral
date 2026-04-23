@@ -50,12 +50,12 @@ const pages = [
   ['/fale-com-especialista',                     '0.6', 'monthly'],
 
   // Serviços
-  ['/nossos-servicos',                           '0.8', 'monthly'],
-  ['/gestao-contabil',                           '0.7', 'monthly'],
-  ['/recuperacao-creditos-tributarios',          '0.7', 'monthly'],
-  ['/constituicao-de-holding-patrimonial-e-familiar', '0.7', 'monthly'],
-  ['/planejamento-tributario',                   '0.7', 'monthly'],
-  ['/consultoria-tributaria',                    '0.7', 'monthly'],
+  ['/nossos-servicos',                                          '0.8', 'monthly'],
+  ['/nossos-servicos/gestao-contabil',                          '0.7', 'monthly'],
+  ['/nossos-servicos/recuperacao-creditos-tributarios',         '0.7', 'monthly'],
+  ['/nossos-servicos/holding-patrimonial',                      '0.7', 'monthly'],
+  ['/nossos-servicos/planejamento-tributario',                  '0.7', 'monthly'],
+  ['/nossos-servicos/consultoria-tributaria',                   '0.7', 'monthly'],
 
   // Cidades
   ['/cidades-atendidas',                         '0.8', 'monthly'],
