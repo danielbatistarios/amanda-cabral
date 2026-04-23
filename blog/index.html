@@ -1235,76 +1235,330 @@
     
 /* ── Blog Index — Content CSS ── */
 body { padding-top: 60px; }
-.page-hero {
+
+/* ANNOUNCEMENT BAR */
+.ann-bar {
+  background: #0B1A2E; border-bottom: 1px solid rgba(201,168,76,.25);
+  padding: 10px clamp(20px,4vw,40px); display: flex; align-items: center;
+  justify-content: center; gap: 10px; font-size: .82rem; position: relative;
+}
+.ann-label {
+  font-size: .68rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+  background: var(--gold,#C9A84C); color: #060E1A; padding: 2px 8px; border-radius: 3px;
+  white-space: nowrap;
+}
+.ann-text { color: rgba(255,255,255,.7); }
+.ann-text a { color: var(--gold,#C9A84C); text-decoration: underline; text-underline-offset: 2px; }
+.ann-close {
+  position: absolute; right: 16px; top: 50%; transform: translateY(-50%);
+  background: none; border: none; color: rgba(255,255,255,.35); font-size: 1.1rem;
+  cursor: pointer; padding: 4px 8px; line-height: 1;
+}
+.ann-close:hover { color: rgba(255,255,255,.7); }
+
+/* BLOG HERO */
+.blog-hero {
   background: var(--blue-900,#060E1A);
-  padding: clamp(80px,10vw,120px) 0 clamp(60px,8vw,88px);
+  padding: clamp(64px,9vw,100px) 0 clamp(48px,6vw,72px);
+  text-align: center;
 }
-.page-hero-inner { max-width: 720px; }
-.page-eyebrow {
-  display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .18em;
-  text-transform: uppercase; color: var(--accent-gold,#C4A574); margin-bottom: 16px;
-}
-.page-hero-title {
+.blog-hero-inner { max-width: 760px; margin: 0 auto; padding: 0 clamp(20px,4vw,40px); }
+.blog-hero-title {
   font-family: var(--font-display,'Instrument Serif',Georgia,serif);
-  font-size: clamp(2rem,4vw,3rem); font-weight: 400; color: #fff; line-height: 1.2;
+  font-size: clamp(1.9rem,4.5vw,3rem); font-weight: 400; color: #fff;
+  line-height: 1.15; margin-bottom: 18px;
 }
-.page-hero-title em { font-style: italic; color: var(--accent-gold,#C4A574); }
+.blog-hero-title em { font-style: italic; color: var(--gold,#C9A84C); }
+.blog-hero-desc {
+  font-size: .97rem; color: rgba(255,255,255,.55); line-height: 1.75;
+  margin-bottom: 28px;
+}
+.blog-search {
+  display: flex; max-width: 520px; margin: 0 auto 20px; border-radius: 8px;
+  overflow: hidden; border: 1px solid rgba(255,255,255,.12);
+  background: rgba(255,255,255,.05);
+}
+.blog-search input {
+  flex: 1; background: none; border: none; padding: 13px 18px;
+  font-size: .92rem; color: #fff; font-family: inherit; outline: none;
+}
+.blog-search input::placeholder { color: rgba(255,255,255,.3); }
+.blog-search button {
+  background: var(--gold,#C9A84C); border: none; padding: 0 18px;
+  cursor: pointer; color: #060E1A; font-size: 1rem; display: flex; align-items: center;
+}
+.blog-hero-tagline { font-size: .8rem; color: rgba(255,255,255,.3); letter-spacing: .02em; }
 
-.categories { padding: 24px 0; background: rgba(255,255,255,.03); border-bottom: 1px solid rgba(255,255,255,.08); }
-.categories .container { display: flex; gap: 8px; flex-wrap: wrap; }
-.cat-pill {
-  font-size: .8rem; font-weight: 600; padding: 6px 16px; border-radius: 99px;
-  border: 1px solid rgba(255,255,255,.15); background: transparent;
-  color: rgba(255,255,255,.55); cursor: pointer; text-decoration: none; transition: all .2s;
+/* FEATURED SECTION (light gray bg, 1 large + 2 small) */
+.featured-section {
+  background: #F0F4F8;
+  padding: clamp(52px,7vw,72px) 0;
 }
-.cat-pill:hover, .cat-pill.active {
-  background: var(--accent-gold,#C4A574); border-color: var(--accent-gold,#C4A574); color: #0a0e14;
-}
-
-.featured-section { padding: clamp(64px,8vw,88px) 0; background: var(--blue-900, #060E1A); }
 .featured-inner { max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px,4vw,40px); }
-.featured-post {
-  background: var(--blue-900,#060E1A); border-radius: 20px; padding: 48px;
-  display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+.featured-layout { display: grid; grid-template-columns: 1fr 340px; gap: 20px; align-items: start; }
+
+/* Large featured card (left) */
+.feat-main-card {
+  background: #0C1A2E; border-radius: 14px; overflow: hidden;
+  text-decoration: none; display: block; transition: box-shadow .25s;
 }
-.featured-meta { font-size: .78rem; color: rgba(255,255,255,.4); margin-bottom: 12px; }
-.featured-title {
+.feat-main-card:hover { box-shadow: 0 8px 32px rgba(0,0,0,.18); }
+.feat-main-img { position: relative; height: 280px; overflow: hidden; }
+.feat-main-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .5s ease; }
+.feat-main-card:hover .feat-main-img img { transform: scale(1.04); }
+.feat-main-body { padding: 32px 28px; }
+.feat-badge {
+  display: inline-block; font-size: .68rem; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; background: #1E3A5F; color: #5B9BD5;
+  padding: 3px 10px; border-radius: 4px; margin-bottom: 14px;
+}
+.feat-main-body h2 {
   font-family: var(--font-display,'Instrument Serif',Georgia,serif);
-  font-size: clamp(1.5rem,2.5vw,2rem); font-weight: 400; color: #fff; margin-bottom: 16px;
+  font-size: clamp(1.3rem,2vw,1.65rem); font-weight: 400; color: #fff;
+  line-height: 1.3; margin-bottom: 12px;
 }
-.featured-cta {
+.feat-main-body p { font-size: .88rem; color: rgba(255,255,255,.5); line-height: 1.7; margin-bottom: 16px; }
+.feat-meta { font-size: .74rem; color: rgba(255,255,255,.3); display: flex; gap: 4px; flex-wrap: wrap; }
+.feat-meta span + span::before { content: '·'; margin: 0 4px; }
+
+/* Small stacked cards (right) */
+.feat-stack { display: flex; flex-direction: column; gap: 12px; }
+.feat-small-card {
+  background: #fff; border-radius: 12px; overflow: hidden;
+  text-decoration: none; display: flex; gap: 0; transition: box-shadow .2s;
+  border: 1px solid #E2E8F0;
+}
+.feat-small-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
+.feat-small-img { width: 120px; flex-shrink: 0; overflow: hidden; }
+.feat-small-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.feat-small-body { padding: 16px 16px; flex: 1; display: flex; flex-direction: column; justify-content: center; }
+.feat-small-badge {
+  display: inline-block; font-size: .62rem; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; padding: 2px 8px; border-radius: 3px;
+  margin-bottom: 8px; width: fit-content;
+}
+.badge-holding { background: rgba(201,168,76,.15); color: #9A7833; }
+.badge-reforma { background: rgba(37,99,235,.12); color: #2563EB; }
+.badge-creditos { background: rgba(16,185,129,.12); color: #059669; }
+.badge-planejamento { background: rgba(124,58,237,.1); color: #7C3AED; }
+.badge-compliance { background: rgba(245,158,11,.12); color: #D97706; }
+.badge-setores { background: rgba(14,165,233,.12); color: #0284C7; }
+.feat-small-body h3 { font-size: .88rem; font-weight: 700; color: #0C1A2E; line-height: 1.35; margin-bottom: 8px; }
+.feat-small-meta { font-size: .72rem; color: #94A3B8; display: flex; gap: 4px; }
+.feat-small-meta span + span::before { content: '·'; margin: 0 3px; }
+
+/* ARTICLES + SIDEBAR (dark bg) */
+.articles-section {
+  background: var(--blue-900,#060E1A);
+  padding: clamp(52px,7vw,72px) 0;
+}
+.articles-inner { max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px,4vw,40px); }
+
+/* Category pills row */
+.cat-row {
+  display: flex; align-items: center; gap: 8px; margin-bottom: 36px;
+  flex-wrap: wrap;
+}
+.cat-pill {
+  font-size: .75rem; font-weight: 600; padding: 6px 16px; border-radius: 99px;
+  border: 1px solid rgba(255,255,255,.14); background: transparent;
+  color: rgba(255,255,255,.45); cursor: pointer; text-decoration: none;
+  transition: all .2s; white-space: nowrap;
+}
+.cat-pill:hover { color: rgba(255,255,255,.85); border-color: rgba(255,255,255,.28); }
+.cat-pill.active { background: #fff; border-color: #fff; color: #060E1A; }
+.cat-count { margin-left: auto; font-size: .8rem; color: rgba(255,255,255,.3); white-space: nowrap; }
+
+/* Articles + sidebar layout */
+.articles-layout { display: grid; grid-template-columns: 1fr 300px; gap: 40px; align-items: start; }
+
+/* 2-col article grid */
+.articles-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; }
+.art-card {
+  background: #0A1628; border-radius: 12px; overflow: hidden;
+  text-decoration: none; display: flex; flex-direction: column;
+  border: 1px solid rgba(255,255,255,.05); transition: border-color .2s, transform .2s;
+}
+.art-card:hover { border-color: rgba(255,255,255,.12); transform: translateY(-2px); }
+.art-card-img { overflow: hidden; aspect-ratio: 16/9; }
+.art-card-img img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s; }
+.art-card:hover .art-card-img img { transform: scale(1.04); }
+.art-card-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+.art-badge {
+  display: inline-block; font-size: .62rem; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; padding: 3px 9px; border-radius: 4px;
+  margin-bottom: 10px; width: fit-content;
+}
+.art-card-body h3 { font-size: .9rem; font-weight: 700; color: #fff; line-height: 1.4; margin-bottom: 8px; flex: 1; }
+.art-card-body p { font-size: .8rem; color: rgba(255,255,255,.4); line-height: 1.6; margin-bottom: 12px; }
+.art-meta { font-size: .72rem; color: rgba(255,255,255,.25); display: flex; gap: 4px; flex-wrap: wrap; border-top: 1px solid rgba(255,255,255,.06); padding-top: 12px; }
+.art-meta span + span::before { content: '·'; margin: 0 3px; }
+
+/* SIDEBAR */
+.art-sidebar { display: flex; flex-direction: column; gap: 20px; }
+
+.sb-card {
+  background: #0A1628; border-radius: 12px; padding: 22px;
+  border: 1px solid rgba(255,255,255,.06);
+}
+.sb-title {
+  font-size: .7rem; font-weight: 700; letter-spacing: .15em; text-transform: uppercase;
+  color: rgba(255,255,255,.3); margin-bottom: 16px;
+}
+.sb-list { display: flex; flex-direction: column; gap: 0; }
+.sb-item {
+  display: flex; gap: 12px; align-items: flex-start;
+  padding: 11px 0; border-bottom: 1px solid rgba(255,255,255,.06);
+  text-decoration: none;
+}
+.sb-item:last-child { border-bottom: none; padding-bottom: 0; }
+.sb-rank { font-size: 1.3rem; font-weight: 800; color: rgba(255,255,255,.08); line-height: 1; min-width: 22px; }
+.sb-info {}
+.sb-art-title { font-size: .82rem; font-weight: 600; color: rgba(255,255,255,.8); line-height: 1.4; margin-bottom: 3px; display: block; }
+.sb-item:hover .sb-art-title { color: var(--gold,#C9A84C); }
+.sb-cat-label { font-size: .67rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+
+.sb-newsletter { background: #0A1628; border: 1px solid rgba(255,255,255,.06); border-radius: 12px; padding: 22px; }
+.sb-newsletter h4 { font-family: var(--font-display,'Instrument Serif',Georgia,serif); font-size: 1rem; color: #fff; margin-bottom: 8px; line-height: 1.35; }
+.sb-newsletter p { font-size: .8rem; color: rgba(255,255,255,.45); margin-bottom: 14px; line-height: 1.6; }
+.sb-form { display: flex; flex-direction: column; gap: 8px; }
+.sb-form input {
+  background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.1);
+  border-radius: 6px; padding: 10px 12px; font-size: .82rem; color: #fff;
+  outline: none; font-family: inherit;
+}
+.sb-form input::placeholder { color: rgba(255,255,255,.25); }
+.sb-form input:focus { border-color: rgba(201,168,76,.4); }
+.sb-form button {
+  background: #1E3A5F; color: #5B9BD5; font-size: .8rem; font-weight: 700;
+  padding: 10px; border-radius: 6px; border: none; cursor: pointer; transition: background .2s;
+  letter-spacing: .04em;
+}
+.sb-form button:hover { background: #254A78; }
+
+.sb-diag { background: #0A1628; border: 1px solid rgba(255,255,255,.06); border-radius: 12px; padding: 22px; }
+.sb-diag h4 { font-family: var(--font-display,'Instrument Serif',Georgia,serif); font-size: .98rem; color: #fff; margin-bottom: 8px; line-height: 1.35; }
+.sb-diag p { font-size: .8rem; color: rgba(255,255,255,.45); margin-bottom: 14px; line-height: 1.6; }
+.sb-diag a { display: block; text-align: center; }
+.sb-diag-btn {
+  display: block; background: #1E3A5F; color: #5B9BD5; font-size: .8rem; font-weight: 700;
+  padding: 11px 16px; border-radius: 6px; text-decoration: none; text-align: center;
+  letter-spacing: .04em; transition: background .2s;
+}
+.sb-diag-btn:hover { background: #254A78; }
+
+/* MIDPAGE CTA */
+.mid-cta-section {
+  background: var(--blue-900,#060E1A);
+  padding: clamp(56px,7vw,80px) 0;
+  border-top: 1px solid rgba(255,255,255,.06);
+  text-align: center;
+}
+.mid-cta-inner { max-width: 640px; margin: 0 auto; padding: 0 clamp(20px,4vw,40px); }
+.mid-cta-inner h2 {
+  font-family: var(--font-display,'Instrument Serif',Georgia,serif);
+  font-size: clamp(1.6rem,3vw,2.2rem); font-weight: 400; color: #fff;
+  margin-bottom: 16px; line-height: 1.25;
+}
+.mid-cta-inner p { font-size: .95rem; color: rgba(255,255,255,.5); margin-bottom: 28px; line-height: 1.75; }
+.btn-outline-white {
   display: inline-flex; align-items: center; gap: 8px;
-  background: var(--accent-gold,#C4A574); color: #0a0e14;
-  font-size: .85rem; font-weight: 700; padding: 12px 24px;
-  border-radius: 6px; text-decoration: none;
+  border: 1.5px solid rgba(255,255,255,.45); background: transparent; color: #fff;
+  font-size: .88rem; font-weight: 700; padding: 13px 30px; border-radius: 6px;
+  text-decoration: none; letter-spacing: .04em; transition: all .2s;
 }
+.btn-outline-white:hover { background: rgba(255,255,255,.07); border-color: rgba(255,255,255,.7); }
 
-.posts-section { padding: clamp(64px,8vw,88px) 0; background: #fff; }
-.posts-inner { max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px,4vw,40px); }
-.posts-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 40px; }
-.post-card {
-  background: #F8FAFC; border: 1px solid rgba(0,0,0,.07); border-radius: 14px;
-  padding: 28px 24px; transition: box-shadow .2s; text-decoration: none; display: block;
+/* EXPLORAR POR TEMA */
+.themes-section {
+  background: #fff;
+  padding: clamp(52px,7vw,72px) 0;
 }
-.post-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,.08); }
-.post-date { font-size: .75rem; color: #94A3B8; margin-bottom: 10px; }
-.post-title { font-size: 1.05rem; font-weight: 700; color: var(--blue-900,#060E1A); margin-bottom: 10px; line-height: 1.4; }
-.post-excerpt { font-size: .875rem; color: #64748B; line-height: 1.65; margin-bottom: 16px; }
-.post-author { display: flex; align-items: center; gap: 8px; font-size: .78rem; color: #94A3B8; }
-
-.blog-cta { background: var(--blue-900,#060E1A); padding: clamp(64px,8vw,88px) 0; }
-.blog-cta-inner { max-width: 600px; margin: 0 auto; text-align: center; }
-.blog-cta-tag { font-size: 11px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--accent-gold,#C4A574); display: block; margin-bottom: 14px; }
-.blog-cta-h { font-family: var(--font-display,'Instrument Serif',Georgia,serif); font-size: clamp(1.6rem,2.5vw,2.25rem); font-weight: 400; color: #fff; margin-bottom: 12px; }
-.blog-cta-desc { font-size: .95rem; color: rgba(255,255,255,.6); margin-bottom: 24px; }
-.blog-cta-btn {
-  display: inline-flex; align-items: center; gap: 10px;
-  background: #25D366; color: #fff; font-size: .9rem; font-weight: 700;
-  padding: 14px 28px; border-radius: 6px; text-decoration: none;
+.themes-inner { max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px,4vw,40px); }
+.themes-header { text-align: center; margin-bottom: 40px; }
+.themes-header h2 {
+  font-family: var(--font-display,'Instrument Serif',Georgia,serif);
+  font-size: clamp(1.5rem,2.5vw,2rem); font-weight: 400; color: #0C1A2E;
 }
+.themes-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+.theme-card {
+  background: #fff; border: 1px solid #E8EDF2; border-radius: 12px; padding: 28px 24px;
+  border-top: 2px solid var(--gold,#C9A84C);
+  display: flex; flex-direction: column; gap: 0;
+}
+.theme-card-name { font-size: .95rem; font-weight: 700; color: #0C1A2E; margin-bottom: 4px; }
+.theme-card-count { font-size: .75rem; color: #94A3B8; margin-bottom: 16px; }
+.theme-card-list { list-style: none; padding: 0; margin: 0 0 16px; display: flex; flex-direction: column; gap: 8px; }
+.theme-card-list li a {
+  font-size: .82rem; color: #374151; text-decoration: none; line-height: 1.45;
+  display: block; transition: color .15s;
+}
+.theme-card-list li a:hover { color: #1E40AF; }
+.theme-card-more { font-size: .8rem; color: #2563EB; font-weight: 600; text-decoration: none; }
+.theme-card-more:hover { text-decoration: underline; }
 
-@media (max-width: 900px) { .featured-post, .posts-grid { grid-template-columns: 1fr; } }
-@media (max-width: 600px) { .posts-grid { grid-template-columns: 1fr; } }
+/* NEWSLETTER FULL-WIDTH */
+.newsletter-section {
+  background: var(--blue-900,#060E1A);
+  padding: clamp(56px,7vw,80px) 0;
+  text-align: center;
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+.newsletter-inner { max-width: 600px; margin: 0 auto; padding: 0 clamp(20px,4vw,40px); }
+.newsletter-inner h2 {
+  font-family: var(--font-display,'Instrument Serif',Georgia,serif);
+  font-size: clamp(1.7rem,3vw,2.3rem); font-weight: 400; color: #fff;
+  margin-bottom: 14px; line-height: 1.2;
+}
+.newsletter-inner p { font-size: .92rem; color: rgba(255,255,255,.5); margin-bottom: 28px; line-height: 1.75; }
+.nl-form { display: flex; gap: 0; border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,.1); max-width: 480px; margin: 0 auto; }
+.nl-form input {
+  flex: 1; background: rgba(255,255,255,.05); border: none; padding: 13px 16px;
+  font-size: .88rem; color: #fff; font-family: inherit; outline: none;
+}
+.nl-form input::placeholder { color: rgba(255,255,255,.28); }
+.nl-form button {
+  background: #2563EB; color: #fff; border: none; padding: 0 22px;
+  font-size: .82rem; font-weight: 700; cursor: pointer; letter-spacing: .06em;
+  white-space: nowrap; transition: background .2s;
+}
+.nl-form button:hover { background: #1D4ED8; }
+
+/* BOTTOM STICKY BAR */
+.bottom-bar {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 500;
+  background: #F1F5F9; border-top: 1px solid #E2E8F0;
+  padding: 12px clamp(20px,4vw,40px);
+  display: flex; align-items: center; justify-content: space-between; gap: 16px;
+}
+.bottom-bar-text { font-size: .88rem; color: #334155; font-weight: 500; }
+.bottom-bar-btn {
+  background: #2563EB; color: #fff; font-size: .82rem; font-weight: 700;
+  padding: 10px 22px; border-radius: 6px; text-decoration: none; white-space: nowrap;
+  transition: background .2s; letter-spacing: .02em;
+}
+.bottom-bar-btn:hover { background: #1D4ED8; }
+
+/* RESPONSIVE */
+@media (max-width: 1024px) {
+  .featured-layout { grid-template-columns: 1fr; }
+  .feat-stack { flex-direction: row; }
+  .feat-small-card { flex: 1; }
+  .articles-layout { grid-template-columns: 1fr; }
+  .art-sidebar { display: grid; grid-template-columns: 1fr 1fr; }
+  .themes-grid { grid-template-columns: repeat(2,1fr); }
+}
+@media (max-width: 700px) {
+  .articles-grid { grid-template-columns: 1fr; }
+  .art-sidebar { grid-template-columns: 1fr; }
+  .themes-grid { grid-template-columns: 1fr; }
+  .feat-stack { flex-direction: column; }
+  .feat-small-img { width: 100px; }
+  .ann-bar { flex-wrap: wrap; justify-content: flex-start; padding-right: 40px; }
+  .bottom-bar { flex-direction: column; text-align: center; }
+  .nl-form { flex-direction: column; border-radius: 8px; }
+  .nl-form button { padding: 12px; }
+}
 
 </style>
     <script type="application/ld+json">
@@ -1440,99 +1694,475 @@ body { padding-top: 60px; }
 
 
 <main>
-    <section class="page-hero">
-        <div class="page-hero-inner">
-            <div class="page-tag">Blog</div>
-            <h1>Inteligência Tributária <em>para Indústrias</em></h1>
-            <p>Conteúdo especializado em planejamento fiscal, recuperação de créditos e blindagem patrimonial. Escrito por quem aplica na prática.</p>
-        </div>
-    </section>
 
-    <div class="categories">
-        <div class="categories-inner">
-            <a href="/blog/" class="cat-tag active">Todos</a>
-            <a href="/nossos-servicos/planejamento-tributario/" class="cat-tag">Planejamento Tributário</a>
-            <a href="/nossos-servicos/recuperacao-creditos-tributarios/" class="cat-tag">Recuperação de Créditos</a>
-            <a href="/nossos-servicos/holding-patrimonial/" class="cat-tag">Holding Patrimonial</a>
-            <a href="/nossos-servicos/gestao-contabil/" class="cat-tag">Gestão Contábil</a>
-            <span class="cat-tag">Reforma Tributária</span>
-        </div>
+  <!-- ANNOUNCEMENT BAR -->
+  <div class="ann-bar" id="annBar">
+    <span class="ann-label">REFORMA 2026</span>
+    <span class="ann-text"> A reforma tributária muda tudo em 2026. Sua indústria está preparada? <a href="/nossos-servicos/consultoria-tributaria/">Descubra agora</a></span>
+    <button class="ann-close" id="annClose" aria-label="Fechar aviso">&#215;</button>
+  </div>
+
+  <!-- BLOG HERO -->
+  <section class="blog-hero">
+    <div class="blog-hero-inner">
+      <h1 class="blog-hero-title">Blog AM Cabral | Inteligência Tributária <em>para Indústrias</em></h1>
+      <p class="blog-hero-desc">Conteúdo para donos de indústria, CFOs e herdeiros que querem pagar menos imposto, recuperar créditos e proteger patrimônio.</p>
+      <div class="blog-search">
+        <input type="search" placeholder="Buscar artigo..." aria-label="Buscar artigo">
+        <button type="button" aria-label="Pesquisar">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+      </div>
+      <p class="blog-hero-tagline">Artigos escritos por Amanda Cabral. 30 anos decifrando a tributação industrial.</p>
     </div>
+  </section>
 
-    <!-- FEATURED -->
-    <section class="featured-section">
-        <div class="featured-inner">
-            <div class="section-label">Destaque</div>
-            <a href="/blog/o-que-e-ibs-e-cbs/" class="featured-card">
-                <div class="featured-card-img">
-                    <img src="https://images.unsplash.com/photo-1554224154-26032ffc0d8b?w=800&h=600&fit=crop" alt="Reforma Tributária IBS e CBS" loading="lazy" width="800" height="600">
-                </div>
-                <div class="featured-card-body">
-                    <div class="card-cat">Reforma Tributária</div>
-                    <h2>O que é IBS e CBS? O guia completo para indústrias em MG</h2>
-                    <p>A reforma tributária vai mudar a forma como sua empresa paga impostos a partir de 2026. Entenda o que é o IBS, a CBS e o Imposto Seletivo, e o que você precisa fazer agora para não ser pego de surpresa.</p>
-                    <div class="card-meta">
-                        <span>Por Amanda Cabral</span>
-                        <span>·</span>
-                        <span>Abril 2026</span>
-                        <span>·</span>
-                        <span>12 min de leitura</span>
-                    </div>
-                    <div class="card-read-more">Ler artigo <span>→</span></div>
-                </div>
-            </a>
-        </div>
-    </section>
+  <!-- FEATURED SECTION (light gray bg) -->
+  <section class="featured-section">
+    <div class="featured-inner">
+      <div class="featured-layout">
 
-    <!-- POSTS GRID -->
-    <section class="posts-section">
-        <div class="posts-inner">
-            <div class="section-label">Artigos Recentes</div>
-            <div class="posts-grid">
-                <a href="/nossos-servicos/recuperacao-creditos-tributarios/" class="post-card">
-                    <div class="post-card-img">
-                        <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&h=340&fit=crop" alt="Recuperação de Créditos ICMS" loading="lazy" width="600" height="340">
-                    </div>
-                    <div class="post-card-body">
-                        <div class="card-cat">Recuperação de Créditos</div>
-                        <h3>Como recuperar créditos de ICMS que sua empresa pagou a mais nos últimos 5 anos</h3>
-                        <p>Empresas industriais têm direito a recuperar valores pagos indevidamente. Saiba como funciona o processo e quanto tempo leva.</p>
-                        <div class="card-meta"><span>Amanda Cabral</span><span>·</span><span>Mar 2026</span></div>
-                    </div>
-                </a>
-                <a href="/nossos-servicos/holding-patrimonial/" class="post-card">
-                    <div class="post-card-img">
-                        <img src="https://images.unsplash.com/photo-1560472355-536de3962603?w=600&h=340&fit=crop" alt="Holding Patrimonial Familiar" loading="lazy" width="600" height="340">
-                    </div>
-                    <div class="post-card-body">
-                        <div class="card-cat">Holding Patrimonial</div>
-                        <h3>Holding familiar: como proteger patrimônio e reduzir impostos ao mesmo tempo</h3>
-                        <p>A estrutura certa pode reduzir carga tributária em até 40% e facilitar a transmissão do patrimônio para os herdeiros.</p>
-                        <div class="card-meta"><span>Amanda Cabral</span><span>·</span><span>Fev 2026</span></div>
-                    </div>
-                </a>
-                <a href="/nossos-servicos/planejamento-tributario/" class="post-card">
-                    <div class="post-card-img">
-                        <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=600&h=340&fit=crop" alt="Planejamento Tributário 2026" loading="lazy" width="600" height="340">
-                    </div>
-                    <div class="post-card-body">
-                        <div class="card-cat">Planejamento Tributário</div>
-                        <h3>Planejamento tributário 2026: o que fazer antes da reforma entrar em vigor</h3>
-                        <p>Com a transição do IBS/CBS chegando, empresas que se planejarem agora terão vantagem competitiva nos próximos anos.</p>
-                        <div class="card-meta"><span>Amanda Cabral</span><span>·</span><span>Jan 2026</span></div>
-                    </div>
-                </a>
+        <!-- Large card (left) -->
+        <a href="/blog/reforma-tributaria-guia-industrias/" class="feat-main-card">
+          <div class="feat-main-img">
+            <img src="https://images.unsplash.com/photo-1554224154-26032ffc0d8b?w=800&h=400&fit=crop" alt="Reforma Tributária para Indústrias Guia 2026" loading="lazy" width="800" height="400">
+          </div>
+          <div class="feat-main-body">
+            <span class="feat-badge">REFORMA TRIBUTÁRIA</span>
+            <h2>Reforma Tributária para Indústrias: Guia Completo 2026</h2>
+            <p>O que muda no IBS, CBS e Imposto Seletivo. Como preparar sua indústria para a transição de 2026 a 2033 sem perder competitividade nem créditos tributários acumulados.</p>
+            <div class="feat-meta">
+              <span>Amanda Cabral</span>
+              <span>28 Mar 2026</span>
+              <span>14 min</span>
             </div>
-        </div>
-    </section>
+          </div>
+        </a>
 
-    <!-- CTA -->
-    <div class="blog-cta">
-        <h2>Sua empresa paga imposto demais?</h2>
-        <p>Descubra em uma conversa gratuita quanto você pode economizar com planejamento tributário especializado.</p>
-        <a href="/fale-com-especialista/">Solicitar diagnóstico gratuito</a>
+        <!-- Small stacked cards (right) -->
+        <div class="feat-stack">
+          <a href="/blog/empresa-rica-dono-pobre/" class="feat-small-card">
+            <div class="feat-small-img">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=240&h=180&fit=crop" alt="Empresa Rica Dono Pobre" loading="lazy" width="240" height="180">
+            </div>
+            <div class="feat-small-body">
+              <span class="feat-small-badge badge-holding">HOLDING</span>
+              <h3>Empresa Rica, Dono Pobre: O Problema que 8 em Cada 10 Industriais Não Sabem que Têm</h3>
+              <div class="feat-small-meta"><span>25 Mar 2026</span><span>10 min</span></div>
+            </div>
+          </a>
+          <a href="/blog/87-industrias-mg-pagam-icms-a-mais/" class="feat-small-card">
+            <div class="feat-small-img">
+              <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=240&h=180&fit=crop" alt="87% Industrias MG pagam ICMS a mais" loading="lazy" width="240" height="180">
+            </div>
+            <div class="feat-small-body">
+              <span class="feat-small-badge badge-creditos">CRÉDITOS</span>
+              <h3>87% das Indústrias em MG Pagam ICMS a Mais</h3>
+              <div class="feat-small-meta"><span>22 Mar 2026</span><span>7 min</span></div>
+            </div>
+          </a>
+        </div>
+
+      </div>
     </div>
+  </section>
+
+  <!-- ARTICLES + SIDEBAR (dark bg) -->
+  <section class="articles-section">
+    <div class="articles-inner">
+
+      <!-- Category pills -->
+      <div class="cat-row">
+        <button class="cat-pill active" data-cat="todos">Todos</button>
+        <button class="cat-pill" data-cat="reforma">Reforma Tributária</button>
+        <button class="cat-pill" data-cat="holding">Holding &amp; Patrimônio</button>
+        <button class="cat-pill" data-cat="planejamento">Planejamento Tributário</button>
+        <button class="cat-pill" data-cat="creditos">Recuperação de Créditos</button>
+        <button class="cat-pill" data-cat="compliance">Compliance</button>
+        <span class="cat-count" id="artCount">12 artigos</span>
+      </div>
+
+      <div class="articles-layout">
+
+        <!-- 2-col articles grid -->
+        <div class="articles-grid" id="artGrid">
+
+          <!-- 1 -->
+          <a href="/blog/o-que-e-ibs-e-cbs/" class="art-card" data-cat="reforma">
+            <div class="art-card-img">
+              <img src="https://images.unsplash.com/photo-1554224154-26032ffc0d8b?w=600&h=340&fit=crop" alt="O que é IBS e CBS" loading="lazy" width="600" height="340">
+            </div>
+            <div class="art-card-body">
+              <span class="art-badge badge-reforma">REFORMA TRIBUTÁRIA</span>
+              <h3>O que é IBS e CBS: como funcionam os novos impostos</h3>
+              <div class="art-meta"><span>Amanda Cabral</span><span>18 Mar 2026</span></div>
+            </div>
+          </a>
+
+          <!-- 2 -->
+          <a href="/blog/como-montar-holding-patrimonial/" class="art-card" data-cat="holding">
+            <div class="art-card-img">
+              <img src="https://images.unsplash.com/photo-1560472355-536de3962603?w=600&h=340&fit=crop" alt="Como montar holding patrimonial" loading="lazy" width="600" height="340">
+            </div>
+            <div class="art-card-body">
+              <span class="art-badge badge-holding">HOLDING</span>
+              <h3>Como Montar uma Holding Patrimonial: Passo a Passo</h3>
+              <div class="art-meta"><span>Amanda Cabral</span><span>15 Mar 2026</span></div>
+            </div>
+          </a>
+
+          <!-- 3 -->
+          <a href="/blog/como-recuperar-creditos-tributarios/" class="art-card" data-cat="creditos">
+            <div class="art-card-img">
+              <img src="https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=600&h=340&fit=crop" alt="Como recuperar créditos tributários" loading="lazy" width="600" height="340">
+            </div>
+            <div class="art-card-body">
+              <span class="art-badge badge-creditos">CRÉDITOS</span>
+              <h3>Como Recuperar Créditos Tributários: passo a passo</h3>
+              <div class="art-meta"><span>Amanda Cabral</span><span>12 Mar 2026</span></div>
+            </div>
+          </a>
+
+          <!-- 4 -->
+          <a href="/blog/regime-tributario-ideal-industrias/" class="art-card" data-cat="planejamento">
+            <div class="art-card-img">
+              <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?w=600&h=340&fit=crop" alt="Regime tributário ideal indústrias" loading="lazy" width="600" height="340">
+            </div>
+            <div class="art-card-body">
+              <span class="art-badge badge-planejamento">PLANEJAMENTO</span>
+              <h3>Regime Tributário Ideal para Indústrias: Real, Presumido ou Simples</h3>
+              <div class="art-meta"><span>Amanda Cabral</span><span>8 Mar 2026</span></div>
+            </div>
+          </a>
+
+          <!-- 5 -->
+          <a href="/blog/sped-efd-reinf-industrias/" class="art-card" data-cat="compliance">
+            <div class="art-card-img">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&h=340&fit=crop" alt="SPED EFD-REINF industrias" loading="lazy" width="600" height="340">
+            </div>
+            <div class="art-card-body">
+              <span class="art-badge badge-compliance">COMPLIANCE</span>
+              <h3>SPED e EFD-REINF para Indústrias: guia prático</h3>
+              <div class="art-meta"><span>Amanda Cabral</span><span>5 Mar 2026</span></div>
+            </div>
+          </a>
+
+          <!-- 6 -->
+          <a href="/blog/cronograma-reforma-tributaria/" class="art-card" data-cat="reforma">
+            <div class="art-card-img">
+              <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=600&h=340&fit=crop" alt="Cronograma reforma tributária 2026 2033" loading="lazy" width="600" height="340">
+            </div>
+            <div class="art-card-body">
+              <span class="art-badge badge-reforma">REFORMA TRIBUTÁRIA</span>
+              <h3>Cronograma da Reforma Tributária: transição 2026 a 2033</h3>
+              <div class="art-meta"><span>Amanda Cabral</span><span>1 Mar 2026</span></div>
+            </div>
+          </a>
+
+          <!-- 7 -->
+          <a href="/blog/holding-vs-pessoa-fisica-simulacao/" class="art-card" data-cat="holding">
+            <div class="art-card-img">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=340&fit=crop" alt="Holding vs pessoa fisica simulação" loading="lazy" width="600" height="340">
+            </div>
+            <div class="art-card-body">
+              <span class="art-badge badge-holding">HOLDING</span>
+              <h3>Holding vs Pessoa Física: Simulação Tributária com 4 imóveis</h3>
+              <div class="art-meta"><span>Amanda Cabral</span><span>25 Fev 2026</span></div>
+            </div>
+          </a>
+
+          <!-- 8 -->
+          <a href="/blog/tributacao-industria-alimentos-bebidas/" class="art-card" data-cat="setores">
+            <div class="art-card-img">
+              <img src="https://images.unsplash.com/photo-1565043666747-69f6646db940?w=600&h=340&fit=crop" alt="Tributação industria alimentos bebidas" loading="lazy" width="600" height="340">
+            </div>
+            <div class="art-card-body">
+              <span class="art-badge badge-setores">SETORES</span>
+              <h3>Tributação na Indústria de Alimentos e Bebidas</h3>
+              <div class="art-meta"><span>Amanda Cabral</span><span>20 Fev 2026</span></div>
+            </div>
+          </a>
+
+          <!-- 9 -->
+          <a href="/blog/credito-pis-cofins-insumos/" class="art-card" data-cat="creditos">
+            <div class="art-card-img">
+              <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=600&h=340&fit=crop" alt="Crédito PIS COFINS insumos industriais" loading="lazy" width="600" height="340">
+            </div>
+            <div class="art-card-body">
+              <span class="art-badge badge-creditos">CRÉDITOS</span>
+              <h3>Crédito PIS/COFINS em Insumos Industriais</h3>
+              <div class="art-meta"><span>Amanda Cabral</span><span>15 Fev 2026</span></div>
+            </div>
+          </a>
+
+          <!-- 10 -->
+          <a href="/blog/como-reduzir-carga-tributaria-industria/" class="art-card" data-cat="planejamento">
+            <div class="art-card-img">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&h=340&fit=crop" alt="Como reduzir carga tributária industria" loading="lazy" width="600" height="340">
+            </div>
+            <div class="art-card-body">
+              <span class="art-badge badge-planejamento">PLANEJAMENTO</span>
+              <h3>Como Reduzir a Carga Tributária na Indústria: 7 estratégias legais</h3>
+              <div class="art-meta"><span>Amanda Cabral</span><span>10 Fev 2026</span></div>
+            </div>
+          </a>
+
+          <!-- 11 -->
+          <a href="/blog/split-payment-fluxo-caixa-industrial/" class="art-card" data-cat="reforma">
+            <div class="art-card-img">
+              <img src="https://images.unsplash.com/photo-1604594849809-dfedbc827105?w=600&h=340&fit=crop" alt="Split payment fluxo de caixa industrial" loading="lazy" width="600" height="340">
+            </div>
+            <div class="art-card-body">
+              <span class="art-badge badge-reforma">REFORMA TRIBUTÁRIA</span>
+              <h3>Split Payment: impacto no fluxo de caixa industrial</h3>
+              <div class="art-meta"><span>Amanda Cabral</span><span>5 Fev 2026</span></div>
+            </div>
+          </a>
+
+          <!-- 12 -->
+          <a href="/blog/planejamento-sucessorio-empresarial/" class="art-card" data-cat="holding">
+            <div class="art-card-img">
+              <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&h=340&fit=crop" alt="Planejamento sucessório empresarial" loading="lazy" width="600" height="340">
+            </div>
+            <div class="art-card-body">
+              <span class="art-badge badge-holding">HOLDING</span>
+              <h3>Planejamento Sucessório Empresarial: Proteja o Legado Industrial</h3>
+              <div class="art-meta"><span>Amanda Cabral</span><span>1 Fev 2026</span></div>
+            </div>
+          </a>
+
+        </div><!-- /articles-grid -->
+
+        <!-- SIDEBAR -->
+        <aside class="art-sidebar">
+
+          <!-- Mais Lidos -->
+          <div class="sb-card">
+            <p class="sb-title">Mais Lidos</p>
+            <div class="sb-list">
+              <a href="/blog/reforma-tributaria-guia-industrias/" class="sb-item">
+                <span class="sb-rank">1</span>
+                <div class="sb-info">
+                  <span class="sb-art-title">Reforma Tributária para Indústrias: Guia Completo 2026</span>
+                  <span class="sb-cat-label badge-reforma" style="color:#2563EB;">REFORMA TRIBUTÁRIA</span>
+                </div>
+              </a>
+              <a href="/blog/empresa-rica-dono-pobre/" class="sb-item">
+                <span class="sb-rank">2</span>
+                <div class="sb-info">
+                  <span class="sb-art-title">Empresa Rica, Dono Pobre</span>
+                  <span class="sb-cat-label" style="color:#9A7833;">HOLDING</span>
+                </div>
+              </a>
+              <a href="/blog/como-recuperar-creditos-tributarios/" class="sb-item">
+                <span class="sb-rank">3</span>
+                <div class="sb-info">
+                  <span class="sb-art-title">Como Recuperar Créditos Tributários</span>
+                  <span class="sb-cat-label" style="color:#059669;">CRÉDITOS</span>
+                </div>
+              </a>
+              <a href="/blog/regime-tributario-ideal-industrias/" class="sb-item">
+                <span class="sb-rank">4</span>
+                <div class="sb-info">
+                  <span class="sb-art-title">Regime Tributário Ideal para Indústrias</span>
+                  <span class="sb-cat-label" style="color:#7C3AED;">PLANEJAMENTO</span>
+                </div>
+              </a>
+              <a href="/blog/87-industrias-mg-pagam-icms-a-mais/" class="sb-item">
+                <span class="sb-rank">5</span>
+                <div class="sb-info">
+                  <span class="sb-art-title">87% das Indústrias em MG Pagam ICMS a Mais</span>
+                  <span class="sb-cat-label" style="color:#059669;">CRÉDITOS</span>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Newsletter -->
+          <div class="sb-newsletter">
+            <p class="sb-title">Boletim Tributário Industrial</p>
+            <h4>Receba alertas fiscais antes que impactem sua empresa</h4>
+            <p>Todo mês: mudanças na legislação, oportunidades e alertas tributários para indústrias em MG.</p>
+            <form class="sb-form" onsubmit="return false;">
+              <input type="email" placeholder="Seu melhor e-mail">
+              <button type="submit">RECEBER BOLETIM</button>
+            </form>
+          </div>
+
+          <!-- CTA -->
+          <div class="sb-diag">
+            <p class="sb-title">Diagnóstico Gratuito</p>
+            <h4>Sua indústria paga imposto demais?</h4>
+            <p>A AM Cabral identificou mais de R$ 12M em créditos recuperáveis. Veja os <a href="/casos-de-sucesso/" style="color:var(--gold,#C9A84C);">casos de sucesso</a>.</p>
+            <a href="/fale-com-especialista/" class="sb-diag-btn">DIAGNÓSTICO GRATUITO</a>
+          </div>
+
+        </aside>
+
+      </div><!-- /articles-layout -->
+    </div><!-- /articles-inner -->
+  </section>
+
+  <!-- MIDPAGE CTA -->
+  <section class="mid-cta-section">
+    <div class="mid-cta-inner">
+      <h2>Sua indústria está preparada para a reforma tributária?</h2>
+      <p>A AM Cabral decifra a tributação industrial há 30 anos. Mais de R$ 12M recuperados em créditos para indústrias de Minas Gerais. Diagnóstico gratuito. Descubra quanto sua empresa pode economizar.</p>
+      <a href="/fale-com-especialista/" class="btn-outline-white">SOLICITAR DIAGNÓSTICO &#8594;</a>
+    </div>
+  </section>
+
+  <!-- EXPLORAR POR TEMA -->
+  <section class="themes-section">
+    <div class="themes-inner">
+      <div class="themes-header">
+        <h2>Explore por Tema</h2>
+      </div>
+      <div class="themes-grid">
+
+        <div class="theme-card">
+          <div class="theme-card-name">Reforma Tributária</div>
+          <div class="theme-card-count">12 artigos</div>
+          <ul class="theme-card-list">
+            <li><a href="/blog/o-que-e-ibs-e-cbs/">O que é IBS e CBS</a></li>
+            <li><a href="/blog/cronograma-reforma-tributaria/">Cronograma da Reforma Tributária</a></li>
+            <li><a href="/blog/split-payment-fluxo-caixa-industrial/">Split Payment</a></li>
+            <li><a href="/blog/iva-dual-industrias/">IVA Dual</a></li>
+            <li><a href="/blog/lc-214-2025/">LC 214/25</a></li>
+          </ul>
+          <a href="/nossos-servicos/consultoria-tributaria/" class="theme-card-more">Ver todos &#8594;</a>
+        </div>
+
+        <div class="theme-card">
+          <div class="theme-card-name">Holding &amp; Patrimônio</div>
+          <div class="theme-card-count">10 artigos</div>
+          <ul class="theme-card-list">
+            <li><a href="/blog/empresa-rica-dono-pobre/">Empresa Rica, Dono Pobre</a></li>
+            <li><a href="/blog/como-montar-holding-patrimonial/">Como Montar uma Holding</a></li>
+            <li><a href="/blog/holding-vs-pessoa-fisica-simulacao/">Holding vs Pessoa Física</a></li>
+            <li><a href="/blog/planejamento-sucessorio-empresarial/">Planejamento Sucessório Empresarial</a></li>
+            <li><a href="/blog/protecao-patrimonial/">Proteção Patrimonial</a></li>
+          </ul>
+          <a href="/nossos-servicos/holding-patrimonial/" class="theme-card-more">Ver todos &#8594;</a>
+        </div>
+
+        <div class="theme-card">
+          <div class="theme-card-name">Planejamento Tributário</div>
+          <div class="theme-card-count">7 artigos</div>
+          <ul class="theme-card-list">
+            <li><a href="/blog/regime-tributario-ideal-industrias/">Regime Tributário Ideal</a></li>
+            <li><a href="/blog/como-reduzir-carga-tributaria-industria/">Como Reduzir a Carga Tributária</a></li>
+            <li><a href="/blog/incentivos-fiscais-minas-gerais/">Incentivos Fiscais de Minas Gerais</a></li>
+            <li><a href="/blog/lucro-real-vs-lucro-presumido/">Lucro Real vs Lucro Presumido</a></li>
+            <li><a href="/blog/panorama-tributario-industria-mg/">Panorama Tributário da Indústria em MG</a></li>
+          </ul>
+          <a href="/nossos-servicos/planejamento-tributario/" class="theme-card-more">Ver todos &#8594;</a>
+        </div>
+
+        <div class="theme-card">
+          <div class="theme-card-name">Recuperação de Créditos</div>
+          <div class="theme-card-count">5 artigos</div>
+          <ul class="theme-card-list">
+            <li><a href="/blog/como-recuperar-creditos-tributarios/">Como Recuperar Créditos Tributários</a></li>
+            <li><a href="/blog/credito-pis-cofins-insumos/">Crédito PIS/COFINS</a></li>
+            <li><a href="/blog/revisao-creditos-icms/">Revisão de Créditos de ICMS</a></li>
+            <li><a href="/blog/prazo-prescricional-creditos/">Prazo Prescricional</a></li>
+            <li><a href="/blog/restituicao-tributos-pagos-a-maior/">Restituição de Tributos Pagos a Maior</a></li>
+          </ul>
+          <a href="/nossos-servicos/recuperacao-creditos-tributarios/" class="theme-card-more">Ver todos &#8594;</a>
+        </div>
+
+        <div class="theme-card">
+          <div class="theme-card-name">Compliance</div>
+          <div class="theme-card-count">5 artigos</div>
+          <ul class="theme-card-list">
+            <li><a href="/blog/sped-efd-reinf-industrias/">SPED e EFD-REINF</a></li>
+            <li><a href="/blog/ciap-credito-icms-ativos/">CIAP e Crédito de ICMS em Ativos</a></li>
+            <li><a href="/blog/obrigacoes-acessorias-2026/">Obrigações Acessórias 2026</a></li>
+            <li><a href="/blog/nfe-automacao-fiscal/">NF-e e Automação Fiscal</a></li>
+            <li><a href="/blog/contabilidade-de-custos-industrial/">Contabilidade de Custos Industrial</a></li>
+          </ul>
+          <a href="/nossos-servicos/gestao-contabil/" class="theme-card-more">Ver todos &#8594;</a>
+        </div>
+
+        <div class="theme-card">
+          <div class="theme-card-name">Setores Industriais</div>
+          <div class="theme-card-count">8 artigos</div>
+          <ul class="theme-card-list">
+            <li><a href="/blog/tributacao-industria-alimentos-bebidas/">Tributação na Indústria de Alimentos</a></li>
+            <li><a href="/blog/reforma-tributaria-medicamentos/">Reforma Tributária para Medicamentos</a></li>
+            <li><a href="/blog/tributacao-industria-metal-mecanica/">Tributação Indústria Metal-Mecânica</a></li>
+            <li><a href="/blog/ttd-icms-mg/">TTD ICMS MG</a></li>
+            <li><a href="/blog/regime-especial-mg/">Regime Especial de MG</a></li>
+          </ul>
+          <a href="/nossos-servicos/gestao-contabil/" class="theme-card-more">Ver todos &#8594;</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- NEWSLETTER FULL-WIDTH -->
+  <section class="newsletter-section">
+    <div class="newsletter-inner">
+      <h2>Boletim Tributário Industrial</h2>
+      <p>Todo mês, Amanda Cabral mapeia as mudanças tributárias que impactam sua indústria. Legislação, oportunidades e alertas. Direto de quem decifra tributação há 30 anos.</p>
+      <div class="nl-form">
+        <input type="email" placeholder="Seu e-mail profissional">
+        <button type="button">INSCREVER-SE</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- BOTTOM STICKY BAR -->
+  <div class="bottom-bar" id="bottomBar">
+    <span class="bottom-bar-text">Descubra quanto sua indústria pode economizar</span>
+    <a href="/fale-com-especialista/" class="bottom-bar-btn">Diagnóstico Gratuito &#8594;</a>
+  </div>
+
 </main>
+
+<script>
+  // Announcement bar dismiss
+  const annClose = document.getElementById('annClose');
+  const annBar = document.getElementById('annBar');
+  if (annClose && annBar) {
+    annClose.addEventListener('click', () => {
+      annBar.style.display = 'none';
+    });
+  }
+
+  // Category filter
+  const pills = document.querySelectorAll('.cat-pill');
+  const cards = document.querySelectorAll('#artGrid .art-card');
+  const artCount = document.getElementById('artCount');
+
+  pills.forEach(pill => {
+    pill.addEventListener('click', () => {
+      pills.forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      const cat = pill.dataset.cat;
+      let visible = 0;
+      cards.forEach(card => {
+        const match = cat === 'todos' || card.dataset.cat === cat;
+        card.style.display = match ? '' : 'none';
+        if (match) visible++;
+      });
+      if (artCount) artCount.textContent = visible + (visible === 1 ? ' artigo' : ' artigos');
+    });
+  });
+
+  // Bottom bar: hide on scroll up, show on scroll down
+  let lastScroll = 0;
+  const bottomBar = document.getElementById('bottomBar');
+  window.addEventListener('scroll', () => {
+    const current = window.scrollY;
+    if (bottomBar) {
+      bottomBar.style.transform = current < 200 ? 'translateY(100%)' : 'translateY(0)';
+    }
+    lastScroll = current;
+  }, { passive: true });
+</script>
 
 
 
