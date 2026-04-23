@@ -1383,7 +1383,7 @@
         @media (max-width: 768px) {
           .services-track { padding: 16px 16px 16px 0 !important; }
           .service-card   { min-width: 80vw !important; max-width: 88vw !important; }
-          .services-nav   { display: flex !important; justify-content: center; gap: 12px; margin-top: 20px; padding: 0 16px; }
+          .services-nav   { display: flex !important; justify-content: flex-end; gap: 12px; margin-bottom: 16px; padding: 0 16px; }
           .services-nav button { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
         }
         @media (max-width: 480px) {
@@ -2458,6 +2458,14 @@
                     <h2 class="heading">6 especialidades que protegem seu lucro e <em style="color:var(--gold)">patrimônio</em></h2>
                     <p class="heading-sub">Cada servi&ccedil;o desenhado para dores reais de ind&uacute;strias. Nada gen&eacute;rico.</p>
                 </div>
+                <div class="services-nav">
+                    <button onclick="scrollServices(-1)" aria-label="Anterior">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    </button>
+                    <button onclick="scrollServices(1)" aria-label="Pr&oacute;ximo">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
             </div>
             <div class="services-track-wrapper">
                 <div class="services-scroll-hint" id="servicesHint">
@@ -2508,14 +2516,6 @@
                         <span class="service-link">Saiba mais <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
                     </a>
                 </div>
-            </div>
-            <div class="services-nav">
-                <button onclick="scrollServices(-1)" aria-label="Anterior">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-                </button>
-                <button onclick="scrollServices(1)" aria-label="Pr&oacute;ximo">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </button>
             </div>
         </div>
     </section>
