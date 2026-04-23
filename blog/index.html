@@ -1295,7 +1295,7 @@ body { padding-top: 60px; }
   padding: clamp(52px,7vw,72px) 0;
 }
 .featured-inner { max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px,4vw,40px); }
-.featured-layout { display: grid; grid-template-columns: 1fr 340px; gap: 20px; align-items: start; }
+.featured-layout { display: grid; grid-template-columns: 1fr 340px; gap: 20px; align-items: stretch; }
 
 /* Large featured card (left) */
 .feat-main-card {
@@ -1322,11 +1322,11 @@ body { padding-top: 60px; }
 .feat-meta span + span::before { content: '·'; margin: 0 4px; }
 
 /* Small stacked cards (right) */
-.feat-stack { display: flex; flex-direction: column; gap: 12px; }
+.feat-stack { display: flex; flex-direction: column; gap: 12px; height: 100%; }
 .feat-small-card {
   background: #fff; border-radius: 12px; overflow: hidden;
   text-decoration: none; display: flex; gap: 0; transition: box-shadow .2s;
-  border: 1px solid #E2E8F0;
+  border: 1px solid #E2E8F0; flex: 1;
 }
 .feat-small-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,.08); }
 .feat-small-img { width: 120px; flex-shrink: 0; overflow: hidden; }
