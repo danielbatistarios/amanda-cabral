@@ -544,17 +544,14 @@
         }
         .loader-brand-name {
             font-family: var(--font-display);
-            font-size: clamp(2.8rem, 10vw, 5.5rem);
-            font-style: italic;
+            font-size: clamp(1.6rem, 4vw, 2.4rem);
             font-weight: 400;
-            color: transparent;
-            -webkit-text-stroke: 1px rgba(201,168,76,0.35);
-            letter-spacing: -0.02em;
-            line-height: 1.1;
-            text-align: center;
+            color: var(--gold);
             opacity: 0;
             transform: translateY(16px);
             animation: loaderWordIn 0.8s 0.1s cubic-bezier(0.22,1,0.36,1) forwards;
+            letter-spacing: 0.02em;
+            line-height: 1.2;
         }
         .loader-brand-sep {
             width: 0;
@@ -1332,7 +1329,7 @@
 
             /* Loader */
             .loader-phrase { gap: 4px 8px; }
-            .loader-brand-name { font-size: clamp(2.2rem, 12vw, 4rem); }
+            .loader-brand-name { font-size: clamp(1.5rem, 6vw, 2rem); }
             .loader-word { font-size: clamp(1.05rem, 4.5vw, 1.4rem); }
         }
 
