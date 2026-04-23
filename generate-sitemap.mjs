@@ -57,33 +57,72 @@ const pages = [
   ['/nossos-servicos/planejamento-tributario',                  '0.7', 'monthly'],
   ['/nossos-servicos/consultoria-tributaria',                   '0.7', 'monthly'],
 
-  // Cidades
-  ['/cidades-atendidas',                         '0.8', 'monthly'],
-  ['/contabilidade-para-de-minas',               '0.7', 'monthly'],
-  ['/contabilidade-sete-lagoas',                 '0.7', 'monthly'],
-  ['/contabilidade-montes-claros',               '0.7', 'monthly'],
-  ['/contador-uberaba',                          '0.7', 'monthly'],
-  ['/contador-uberlandia',                       '0.7', 'monthly'],
-  ['/contador-pocos-de-caldas',                  '0.7', 'monthly'],
-  ['/contador-betim',                            '0.7', 'monthly'],
-  ['/contador-curitiba',                         '0.7', 'monthly'],
-  ['/contador-sorocaba',                         '0.7', 'monthly'],
-  ['/contador-guarulhos',                        '0.7', 'monthly'],
-  ['/contador-manaus',                           '0.7', 'monthly'],
-  ['/contador-osasco',                           '0.7', 'monthly'],
-  ['/contador-caxias-do-sul',                    '0.7', 'monthly'],
-  ['/contador-fortaleza',                        '0.7', 'monthly'],
-  ['/contador-goiania',                          '0.7', 'monthly'],
-  ['/contador-joao-pessoa',                      '0.7', 'monthly'],
-  ['/contador-ribeirao-preto',                   '0.7', 'monthly'],
-  ['/contador-salvador',                         '0.7', 'monthly'],
-  ['/contador-blumenau',                         '0.7', 'monthly'],
-  ['/contador-feira-de-santana',                 '0.7', 'monthly'],
-  ['/contador-piracicaba',                       '0.7', 'monthly'],
-  ['/contador-recife',                           '0.7', 'monthly'],
-  ['/contador-rio-de-janeiro',                   '0.7', 'monthly'],
-  ['/contador-joinville',                        '0.7', 'monthly'],
-  ['/contador-campinas',                         '0.7', 'monthly'],
+  // Hub de cidades
+  ['/cidades-atendidas',                                              '0.8', 'monthly'],
+
+  // Minas Gerais — silos de cidade
+  ['/para-de-minas-mg',                                              '0.8', 'monthly'],
+  ['/para-de-minas-mg/escritorio-de-contabilidade-em-para-de-minas', '0.7', 'monthly'],
+  ['/sete-lagoas-mg',                                                '0.7', 'monthly'],
+  ['/sete-lagoas-mg/contabilidade-industrial-em-sete-lagoas',        '0.7', 'monthly'],
+  ['/montes-claros-mg',                                              '0.7', 'monthly'],
+  ['/montes-claros-mg/contador-especializado-industrias-montes-claros','0.7','monthly'],
+  ['/uberaba-mg',                                                    '0.7', 'monthly'],
+  ['/uberaba-mg/consultoria-tributaria-industrias-uberaba',          '0.7', 'monthly'],
+  ['/uberlandia-mg',                                                 '0.7', 'monthly'],
+  ['/uberlandia-mg/escritorio-contabil-industrial-uberlandia',       '0.7', 'monthly'],
+  ['/betim-mg',                                                      '0.7', 'monthly'],
+  ['/betim-mg/contabilidade-planejamento-tributario-betim',          '0.7', 'monthly'],
+  ['/pocos-de-caldas-mg',                                            '0.7', 'monthly'],
+  ['/pocos-de-caldas-mg/escritorio-contabil-pocos-de-caldas',        '0.7', 'monthly'],
+
+  // São Paulo — silos de cidade
+  ['/sorocaba-sp',                                                   '0.7', 'monthly'],
+  ['/sorocaba-sp/contador-industrias-sorocaba',                      '0.7', 'monthly'],
+  ['/guarulhos-sp',                                                  '0.7', 'monthly'],
+  ['/guarulhos-sp/escritorio-contabilidade-industrial-guarulhos',    '0.7', 'monthly'],
+  ['/osasco-sp',                                                     '0.7', 'monthly'],
+  ['/osasco-sp/contabilidade-especializada-industrias-osasco',       '0.7', 'monthly'],
+  ['/ribeirao-preto-sp',                                             '0.7', 'monthly'],
+  ['/ribeirao-preto-sp/planejamento-tributario-industrial-ribeirao-preto','0.7','monthly'],
+  ['/piracicaba-sp',                                                 '0.7', 'monthly'],
+  ['/piracicaba-sp/contador-tributarista-industrias-piracicaba',     '0.7', 'monthly'],
+  ['/campinas-sp',                                                   '0.7', 'monthly'],
+  ['/campinas-sp/consultoria-contabil-industrial-campinas',          '0.7', 'monthly'],
+
+  // Sul — silos de cidade
+  ['/curitiba-pr',                                                   '0.7', 'monthly'],
+  ['/curitiba-pr/escritorio-contabilidade-industrias-curitiba',      '0.7', 'monthly'],
+  ['/caxias-do-sul-rs',                                              '0.7', 'monthly'],
+  ['/caxias-do-sul-rs/contabilidade-tributaria-industrial-caxias-do-sul','0.7','monthly'],
+  ['/blumenau-sc',                                                   '0.7', 'monthly'],
+  ['/blumenau-sc/contador-especialista-industrias-blumenau',         '0.7', 'monthly'],
+  ['/joinville-sc',                                                  '0.7', 'monthly'],
+  ['/joinville-sc/gestao-contabil-tributaria-industrias-joinville',  '0.7', 'monthly'],
+
+  // Nordeste — silos de cidade
+  ['/fortaleza-ce',                                                  '0.7', 'monthly'],
+  ['/fortaleza-ce/contabilidade-industrial-remota-fortaleza',        '0.7', 'monthly'],
+  ['/joao-pessoa-pb',                                                '0.7', 'monthly'],
+  ['/joao-pessoa-pb/contador-industrial-atendimento-digital-joao-pessoa','0.7','monthly'],
+  ['/salvador-ba',                                                   '0.7', 'monthly'],
+  ['/salvador-ba/escritorio-contabilidade-industrial-salvador',      '0.7', 'monthly'],
+  ['/feira-de-santana-ba',                                           '0.7', 'monthly'],
+  ['/feira-de-santana-ba/consultoria-tributaria-industrias-feira-de-santana','0.7','monthly'],
+  ['/recife-pe',                                                     '0.7', 'monthly'],
+  ['/recife-pe/contabilidade-recuperacao-creditos-industrias-recife', '0.7', 'monthly'],
+
+  // Norte
+  ['/manaus-am',                                                     '0.7', 'monthly'],
+  ['/manaus-am/contador-industrias-zona-franca-manaus',              '0.7', 'monthly'],
+
+  // Centro-Oeste
+  ['/goiania-go',                                                    '0.7', 'monthly'],
+  ['/goiania-go/escritorio-contabilidade-tributaria-goiania',        '0.7', 'monthly'],
+
+  // Rio de Janeiro
+  ['/rio-de-janeiro-rj',                                             '0.7', 'monthly'],
+  ['/rio-de-janeiro-rj/contabilidade-industrial-rio-de-janeiro',     '0.7', 'monthly'],
 
   // Cluster Holding / Patrimônio
   ['/cib-cadastro-imovel-brasileiro',            '0.7', 'monthly'],
