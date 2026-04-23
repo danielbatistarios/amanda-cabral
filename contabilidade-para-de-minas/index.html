@@ -1367,6 +1367,23 @@ img { display: block; max-width: 100%; }
 }
 .local-cities a:hover { border-color: var(--accent); }
 
+/* === COBERTURA (bairros) === */
+.coverage-sec { background: var(--surface); padding: var(--sec-pad) 0; }
+.coverage-sec .sec-h { text-align: center; margin-bottom: 56px; }
+.coverage-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-bottom: 48px; }
+.coverage-col h3 { font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--accent-gold); margin-bottom: 16px; }
+.coverage-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
+.coverage-col li { font-size: 15px; color: rgba(255,255,255,.7); padding-left: 14px; position: relative; }
+.coverage-col li::before { content: ''; position: absolute; left: 0; top: 50%; transform: translateY(-50%); width: 5px; height: 5px; border-radius: 50%; background: var(--accent-gold); opacity: .5; }
+.coverage-nearby { margin-bottom: 48px; text-align: center; }
+.coverage-nearby h3 { font-size: 13px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: rgba(255,255,255,.45); margin-bottom: 20px; }
+.coverage-nearby-links { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.coverage-nearby-links a { padding: 10px 20px; border: 1px solid rgba(255,255,255,.12); border-radius: 4px; font-size: 14px; color: rgba(255,255,255,.7); transition: all .2s; text-decoration: none; }
+.coverage-nearby-links a:hover { border-color: var(--accent-gold); color: var(--accent-gold); }
+@media (max-width: 768px) {
+  .coverage-grid { grid-template-columns: 1fr; gap: 24px; }
+}
+
 /* === EXPANDABLE (continuar lendo) === */
 .expandable-wrap { position: relative; }
 .expandable-content {
@@ -3312,13 +3329,100 @@ fieldset legend.form-step-title + * { clear: both; }
   </div>
 </section>
 
-<!-- 19. ONDE ESTAMOS -->
+<!-- LOCAL CONTEXT (SEO — Pará de Minas) -->
+<section class="local-sec dot-grid">
+  <div class="container">
+    <div class="local-content">
+      <div class="sec-label dk reveal">Par&#225; de Minas</div>
+      <h2 class="sec-h dk reveal" style="margin-bottom:32px;">Contabilidade local com conhecimento profundo de Par&#225; de Minas</h2>
+      <div class="expandable-wrap">
+        <div class="expandable-content" id="localExpand">
+          <p class="reveal"><a href="https://pt.wikipedia.org/wiki/Par%C3%A1_de_Minas" target="_blank" rel="noopener">Par&#225; de Minas</a> &#233; uma cidade com economia diversa: ind&#250;strias, com&#233;rcio atacadista e varejista, prestadores de servi&#231;os, profissionais liberais, cl&#237;nicas e construtoras. Cada setor tem suas pr&#243;prias obriga&#231;&#245;es fiscais, seus pr&#243;prios cr&#233;ditos e seus pr&#243;prios riscos. Contador que n&#227;o conhece essa diversidade aplica a mesma f&#243;rmula para todos. E a f&#243;rmula errada custa caro.</p>
+          <p class="reveal">Estamos nesta cidade h&#225; 30 anos. Conhecemos a legisla&#231;&#227;o municipal de Par&#225; de Minas, o comportamento do fisco estadual em Minas Gerais, os incentivos dispon&#237;veis para cada tipo de opera&#231;&#227;o e os regimes que realmente fazem sentido para empresas daqui. N&#227;o &#233; teoria. &#201; 30 anos de pr&#225;tica neste mercado espec&#237;fico.</p>
+          <p class="reveal">Se voc&#234; est&#225; procurando um contador em Par&#225; de Minas que conhe&#231;a a sua realidade, o escrit&#243;rio est&#225; na Rua Major Fid&#233;lis, 244, Centro. Atendemos tamb&#233;m por videoconfer&#234;ncia para quem prefere o formato remoto.</p>
+          <p class="reveal">A economia de Pará de Minas é industrial e diversa. O Distrito Industrial Antônio Júlio de Faria concentra cerca de 45 empresas nos setores têxtil, fundição, cerâmica e mineração de agalmatolito. O Distrito Industrial 2, às margens da BR-262, abriga operações de maior porte, incluindo o complexo da Itambé Laticínios. No eixo comercial, o movimento se concentra na Avenida Benedito Valadares, na Avenida Getúlio Vargas e na Rua Direita, no Centro, onde convivem comércio atacadista, varejista e prestadores de serviço. Atendemos empresas em todos esses polos: indústrias do Jardim Industrial e do Parque Industrial, comércios do Centro, Santos Dumont, Padre Libério e Eldorado, clínicas e escritórios no Dom Bosco e no Belvedere.</p>
+          <div class="local-cities reveal">
+            <p>Também atendemos empresas em <a href="/itauna-mg/">Itaúna</a>, <a href="/divinopolis-mg/">Divinópolis</a>, <a href="/sete-lagoas-mg/contabilidade-industrial-em-sete-lagoas/">Sete Lagoas</a>, <a href="/cidades-atendidas/">Bom Despacho</a>, <a href="/cidades-atendidas/">Nova Serrana</a> e toda a região metropolitana de Belo Horizonte.</p>
+          </div>
+        </div>
+        <div class="expandable-fade"></div>
+        <button class="expandable-toggle" id="localToggle" onclick="toggleLocalExpand()">
+          Continuar lendo <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COBERTURA — Bairros e cidades atendidas -->
+<section class="coverage-sec">
+  <div class="container">
+    <h2 class="sec-h reveal">Bairros e cidades atendidas</h2>
+    <div class="coverage-grid reveal">
+      <div class="coverage-col">
+        <h3>Zona Industrial</h3>
+        <ul>
+          <li>Distrito Industrial Antônio Júlio de Faria</li>
+          <li>Distrito Industrial 2 (BR-262)</li>
+          <li>Jardim Industrial</li>
+          <li>Parque Industrial</li>
+          <li>Polo Têxtil</li>
+          <li>Santos Dumont</li>
+          <li>Eldorado</li>
+          <li>Novo Horizonte</li>
+        </ul>
+      </div>
+      <div class="coverage-col">
+        <h3>Zona Comercial</h3>
+        <ul>
+          <li>Centro</li>
+          <li>Padre Libério</li>
+          <li>Santo Antônio</li>
+          <li>São José</li>
+          <li>Recanto da Lagoa</li>
+          <li>Esplanada</li>
+          <li>Funcionários</li>
+          <li>JK</li>
+          <li>Liberdade</li>
+        </ul>
+      </div>
+      <div class="coverage-col">
+        <h3>Zona Residencial e Serviços</h3>
+        <ul>
+          <li>Dom Bosco</li>
+          <li>Belvedere</li>
+          <li>Bela Vista</li>
+          <li>São Francisco</li>
+          <li>São Cristóvão</li>
+          <li>Nossa Senhora de Lourdes</li>
+          <li>Nossa Senhora das Graças</li>
+          <li>Flores</li>
+          <li>Coração de Jesus</li>
+        </ul>
+      </div>
+    </div>
+    <div class="coverage-nearby reveal">
+      <h3>Cidades da Região Atendidas</h3>
+      <div class="coverage-nearby-links">
+        <a href="/itauna-mg/">Itaúna</a>
+        <a href="/divinopolis-mg/">Divinópolis</a>
+        <a href="/sete-lagoas-mg/contabilidade-industrial-em-sete-lagoas/">Sete Lagoas</a>
+        <a href="/cidades-atendidas/">Nova Serrana</a>
+        <a href="/cidades-atendidas/">Bom Despacho</a>
+        <a href="/cidades-atendidas/">Pitangui</a>
+        <a href="/cidades-atendidas/">Todas as cidades →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ONDE ESTAMOS -->
 <section class="location-sec" id="onde-estamos">
   <div class="container">
     <div class="location-header reveal">
-      <div class="sec-label">Localiza&#231;&#227;o</div>
-      <h2 class="sec-h">Par&#225; de Minas. <em>Atendimento em todo o estado de MG.</em></h2>
-      <p>Escrit&#243;rio na regi&#227;o central, reuni&#245;es presenciais e remotas para clientes de todo Minas Gerais.</p>
+      <div class="sec-label">Localização</div>
+      <h2 class="sec-h">Pará de Minas. <em>Atendimento em todo o estado de MG.</em></h2>
+      <p>Escritório na região central, reuniões presenciais e remotas para clientes de todo Minas Gerais.</p>
     </div>
     <div class="location-grid">
       <div class="location-map reveal">
@@ -3326,7 +3430,7 @@ fieldset legend.form-step-title + * { clear: both; }
           src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.123!2d-44.6126!3d-19.8607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDUxJzM4LjUiUyA0NMKwMzYnNDUuNCJX!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr"
           allowfullscreen="" loading="lazy"
           referrerpolicy="no-referrer-when-downgrade"
-          title="Localiza&#231;&#227;o AC Contabilidade &#8212; Par&#225; de Minas">
+          title="Localização AC Contabilidade — Pará de Minas">
         </iframe>
       </div>
       <div class="location-info reveal">
@@ -3335,8 +3439,8 @@ fieldset legend.form-step-title + * { clear: both; }
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
           </div>
           <div>
-            <div class="location-card-label">Endere&#231;o</div>
-            <div class="location-card-value">Rua Major Fid&#233;lis, 244, Centro<br>Par&#225; de Minas, MG 35660-109</div>
+            <div class="location-card-label">Endereço</div>
+            <div class="location-card-value">Rua Major Fidélis, 244, Centro<br>Pará de Minas, MG 35660-109</div>
           </div>
         </div>
         <div class="location-card">
@@ -3353,8 +3457,8 @@ fieldset legend.form-step-title + * { clear: both; }
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
           </div>
           <div>
-            <div class="location-card-label">Hor&#225;rio</div>
-            <div class="location-card-value">Seg a Sex, das 8h &#224;s 18h<br>Atendimento remoto dispon&#237;vel</div>
+            <div class="location-card-label">Horário</div>
+            <div class="location-card-value">Seg a Sex, das 8h às 18h<br>Atendimento remoto disponível</div>
           </div>
         </div>
         <div class="location-card">
@@ -3364,9 +3468,9 @@ fieldset legend.form-step-title + * { clear: both; }
           <div>
             <div class="location-card-label">Cidades Atendidas</div>
             <div class="location-cities">
-              <span class="location-city-tag">Par&#225; de Minas</span>
-              <span class="location-city-tag">Ita&#250;na</span>
-              <span class="location-city-tag">Divin&#243;polis</span>
+              <span class="location-city-tag">Pará de Minas</span>
+              <span class="location-city-tag">Itaúna</span>
+              <span class="location-city-tag">Divinópolis</span>
               <span class="location-city-tag">Sete Lagoas</span>
               <span class="location-city-tag">Bom Despacho</span>
               <span class="location-city-tag">Nova Serrana</span>
@@ -3374,30 +3478,6 @@ fieldset legend.form-step-title + * { clear: both; }
             </div>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- LOCAL CONTEXT (SEO — Pará de Minas) -->
-<section class="local-sec dot-grid">
-  <div class="container">
-    <div class="local-content">
-      <div class="sec-label dk reveal">Par&#225; de Minas</div>
-      <h2 class="sec-h dk reveal" style="margin-bottom:32px;">Contabilidade local com conhecimento profundo de Par&#225; de Minas</h2>
-      <div class="expandable-wrap">
-        <div class="expandable-content" id="localExpand">
-          <p class="reveal">Par&#225; de Minas &#233; uma cidade com economia diversa: ind&#250;strias, com&#233;rcio atacadista e varejista, prestadores de servi&#231;os, profissionais liberais, cl&#237;nicas e construtoras. Cada setor tem suas pr&#243;prias obriga&#231;&#245;es fiscais, seus pr&#243;prios cr&#233;ditos e seus pr&#243;prios riscos. Contador que n&#227;o conhece essa diversidade aplica a mesma f&#243;rmula para todos. E a f&#243;rmula errada custa caro.</p>
-          <p class="reveal">Estamos nesta cidade h&#225; 30 anos. Conhecemos a legisla&#231;&#227;o municipal de Par&#225; de Minas, o comportamento do fisco estadual em Minas Gerais, os incentivos dispon&#237;veis para cada tipo de opera&#231;&#227;o e os regimes que realmente fazem sentido para empresas daqui. N&#227;o &#233; teoria. &#201; 30 anos de pr&#225;tica neste mercado espec&#237;fico.</p>
-          <p class="reveal">Se voc&#234; est&#225; procurando um contador em Par&#225; de Minas que conhe&#231;a a sua realidade, o escrit&#243;rio est&#225; na Rua Major Fid&#233;lis, 244, Centro. Atendemos tamb&#233;m por videoconfer&#234;ncia para quem prefere o formato remoto.</p>
-          <div class="local-cities reveal">
-            <p>Tamb&#233;m atendemos empresas em <a href="contador-itauna.html">Ita&#250;na</a>, <a href="contador-divinopolis.html">Divin&#243;polis</a>, <a href="contador-sete-lagoas.html">Sete Lagoas</a>, <a href="contador-bom-despacho.html">Bom Despacho</a>, <a href="contador-pitangui.html">Pitangui</a>, <a href="contador-nova-serrana.html">Nova Serrana</a> e toda a regi&#227;o metropolitana de Belo Horizonte.</p>
-          </div>
-        </div>
-        <div class="expandable-fade"></div>
-        <button class="expandable-toggle" id="localToggle" onclick="toggleLocalExpand()">
-          Continuar lendo <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
-        </button>
       </div>
     </div>
   </div>
