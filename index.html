@@ -308,7 +308,7 @@
 
         .footer-grid {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
             gap: 48px;
             margin-bottom: 64px;
         }
@@ -329,18 +329,9 @@
             color: #4a5568;
             line-height: 1.7;
             max-width: 220px;
-            margin-bottom: 24px;
+            margin-bottom: 20px;
         }
-        .footer-nap { display: flex; flex-direction: column; gap: 4px; margin-bottom: 24px; font-style: normal; }
-        .footer-nap-row {
-            display: flex; align-items: flex-start; gap: 8px;
-            font-size: 0.8125rem; color: #4a5568;
-            text-decoration: none; transition: color 0.2s;
-            line-height: 1.8;
-        }
-        a.footer-nap-row:hover { color: rgba(255,255,255,0.75); }
-        .footer-nap-row svg { flex-shrink: 0; margin-top: 3px; color: #4a5568; }
-        .footer-social { display: flex; gap: 24px; margin-top: auto; }
+        .footer-social { display: flex; gap: 24px; margin-bottom: 28px; }
         .footer-social a {
             font-size: 0.8125rem;
             font-weight: 600;
@@ -351,6 +342,25 @@
             transition: color 0.2s;
         }
         .footer-social a:hover { color: var(--white); }
+        /* Fale Conosco */
+        .footer-contact-title {
+            font-size: 0.8125rem;
+            font-weight: 700;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: #4a5568;
+            margin-bottom: 14px;
+        }
+        .footer-nap { display: flex; flex-direction: column; gap: 10px; font-style: normal; }
+        .footer-nap-row {
+            display: flex; align-items: flex-start; gap: 10px;
+            font-size: 0.8125rem; color: #4a5568;
+            text-decoration: none; transition: color 0.2s;
+            line-height: 1.6;
+        }
+        a.footer-nap-row:hover { color: rgba(255,255,255,0.75); }
+        a.footer-nap-row:hover svg { color: var(--gold); }
+        .footer-nap-row svg { flex-shrink: 0; margin-top: 2px; color: var(--gold); transition: color 0.2s; }
 
         /* Cols 1-4 */
         .footer-col { display: flex; flex-direction: column; }
@@ -422,8 +432,11 @@
         .footer-legal-links a:hover { color: var(--white); }
 
         @media (max-width: 1024px) {
-            .footer-grid { grid-template-columns: 1fr 1fr 1fr; gap: 40px; }
+            .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
         }
+
+        /* Social mobile — escondido no desktop */
+        .footer-social-mobile { display: none; }
 
         @media (max-width: 600px) {
             .site-footer { padding: 48px 0 0; }
@@ -431,11 +444,24 @@
             .footer-proof { gap: 20px; }
             .footer-proof-divider { display: none; }
             .footer-grid { grid-template-columns: 1fr; gap: 32px; }
-            .footer-brand {
-                flex-direction: column;
-                gap: 20px;
-                text-align: center;
+            /* no mobile: esconde o social dentro da brand-col */
+            .footer-brand-col .footer-social { display: none; }
+            /* mostra o social mobile após as colunas de links */
+            .footer-social-mobile {
+                display: flex;
+                gap: 24px;
+                padding-top: 8px;
             }
+            .footer-social-mobile a {
+                font-size: 0.8125rem;
+                font-weight: 600;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                color: #2d3748;
+                text-decoration: none;
+                transition: color 0.2s;
+            }
+            .footer-social-mobile a:hover { color: var(--white); }
 
             .footer-legal {
                 flex-direction: column;
@@ -2660,19 +2686,33 @@
 
     <div class="footer-grid">
 
-      <!-- Col 1: Brand + NAP -->
+      <!-- Col 1: Brand + Social + Fale Conosco -->
       <div class="footer-brand-col">
         <a href="/" class="footer-logo"><em>AM Cabral</em></a>
         <p class="footer-tagline">Inteligência tributária para empresas que competem para vencer.</p>
-        <address class="footer-nap">
-          <a href="tel:+5537999967558" class="footer-nap-row">(37) 99996-7558</a>
-          <a href="mailto:contato@amcabralblindagem.com.br" class="footer-nap-row">contato@amcabralblindagem.com.br</a>
-          <span class="footer-nap-row">Rua Major Fidelis, 244, Centro<br>Pará de Minas, MG 35660-109</span>
-        </address>
         <div class="footer-social">
           <a href="https://www.instagram.com/amandacabral28/" target="_blank" rel="noopener">Instagram</a>
           <a href="https://www.linkedin.com/in/amanda-cabral-de-oliveira-82183a179/" target="_blank" rel="noopener">LinkedIn</a>
         </div>
+        <p class="footer-contact-title">Fale Conosco</p>
+        <address class="footer-nap">
+          <a href="tel:+5537999967558" class="footer-nap-row">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.83a16 16 0 0 0 5.38 5.38l1.92-1.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            (37) 99996-7558
+          </a>
+          <a href="mailto:contato@amcabralblindagem.com.br" class="footer-nap-row">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            contato@amcabralblindagem.com.br
+          </a>
+          <span class="footer-nap-row">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Rua Major Fidelis, 244, Centro<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Pará de Minas, MG 35660-109
+          </span>
+          <span class="footer-nap-row">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            CNPJ 34.733.620/0001-51
+          </span>
+        </address>
       </div>
 
       <!-- Col 2: A Empresa -->
@@ -2681,7 +2721,7 @@
         <ul>
           <li><a href="/sobre-amcabral-blindagem/">Sobre</a></li>
           <li><a href="/casos-de-sucesso/">Casos de Sucesso</a></li>
-          <li><a href="/bio/">Currículo Profissional</a></li>
+          <li><a href="/faq-amcabralblindagem/">Duvidas Frequentes</a></li>
           <li><a href="/fale-com-especialista/">Contato</a></li>
           <li><a href="/blog/">Blog</a></li>
         </ul>
@@ -2699,28 +2739,24 @@
         </ul>
       </div>
 
-      <!-- Col 4: Conteúdo -->
+      <!-- Col 4: Cidades Atendidas -->
       <div class="footer-col">
-        <h3 class="footer-heading">Conteúdo</h3>
-        <ul>
-          <li><a href="/blog/">Blog</a></li>
-          <li><a href="/reforma-tributaria-industria/">Reforma Tributária</a></li>
-          <li><a href="/faq-amcabralblindagem/">Perguntas Frequentes</a></li>
-        </ul>
-      </div>
-
-      <!-- Col 5: Regiões -->
-      <div class="footer-col">
-        <h3 class="footer-heading">Regiões</h3>
+        <h3 class="footer-heading">Cidades Atendidas</h3>
         <ul>
           <li><a href="/contabilidade-para-de-minas/">Pará de Minas</a></li>
-          <li><a href="/cidades-atendidas/">Belo Horizonte</a></li>
-          <li><a href="/cidades-atendidas/">Contagem</a></li>
-          <li><a href="/cidades-atendidas/">Betim</a></li>
-          <li><a href="/cidades-atendidas/">Ver todas →</a></li>
+          <li><a href="/contabilidade-sete-lagoas/">Sete Lagoas</a></li>
+          <li><a href="/contador-betim/">Betim</a></li>
+          <li><a href="/contador-belo-horizonte/">Belo Horizonte</a></li>
+          <li><a href="/cidades-atendidas/">Ver todas as cidades →</a></li>
         </ul>
       </div>
 
+    </div>
+
+    <!-- Social — visível apenas no mobile, aparece abaixo dos links -->
+    <div class="footer-social-mobile">
+      <a href="https://www.instagram.com/amandacabral28/" target="_blank" rel="noopener">Instagram</a>
+      <a href="https://www.linkedin.com/in/amanda-cabral-de-oliveira-82183a179/" target="_blank" rel="noopener">LinkedIn</a>
     </div>
 
     <div class="footer-wordmark">AM Cabral Contabilidade</div>
