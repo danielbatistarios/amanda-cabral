@@ -383,35 +383,7 @@
         }
 
 
-        .services-scroll-hint {
-            position: absolute;
-            right: 28px;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 4;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            pointer-events: none;
-            animation: hintPulse 2s ease-in-out infinite;
-        }
-        .services-scroll-hint span {
-            color: var(--white);
-            font-size: 0.65rem;
-            font-weight: 700;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            writing-mode: vertical-rl;
-            opacity: 0.6;
-        }
-        .services-scroll-hint svg { width: 18px; height: 18px; color: var(--gold); opacity: 0.8; }
-        @keyframes hintPulse {
-            0%, 100% { opacity: 0.7; transform: translateY(-50%) translateX(0); }
-            50% { opacity: 1; transform: translateY(-50%) translateX(4px); }
-        }
-
-        .services-track {
+.services-track {
             display: flex;
             gap: 20px;
             padding: 20px 160px 20px 24px;
