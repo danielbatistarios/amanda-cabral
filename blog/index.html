@@ -2114,11 +2114,6 @@ body { padding-top: 60px; }
     </div>
   </section>
 
-  <!-- BOTTOM STICKY BAR -->
-  <div class="bottom-bar" id="bottomBar">
-    <span class="bottom-bar-text">Descubra quanto sua indústria pode economizar</span>
-    <a href="/fale-com-especialista/" class="bottom-bar-btn">Diagnóstico Gratuito &#8594;</a>
-  </div>
 
 </main>
 
@@ -2152,16 +2147,6 @@ body { padding-top: 60px; }
     });
   });
 
-  // Bottom bar: hide on scroll up, show on scroll down
-  let lastScroll = 0;
-  const bottomBar = document.getElementById('bottomBar');
-  window.addEventListener('scroll', () => {
-    const current = window.scrollY;
-    if (bottomBar) {
-      bottomBar.style.transform = current < 200 ? 'translateY(100%)' : 'translateY(0)';
-    }
-    lastScroll = current;
-  }, { passive: true });
 </script>
 
 
