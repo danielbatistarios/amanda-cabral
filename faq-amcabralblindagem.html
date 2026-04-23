@@ -1261,7 +1261,60 @@
             .m-line-3 { font-size: 1.35rem; }
             .form-panel h4 { font-size: 1.1rem; }
         }
-    </style>
+    
+/* ── FAQ Page — Content CSS ── */
+body { padding-top: 60px; }
+.page-hero { background: var(--blue-900,#060E1A); padding: clamp(80px,10vw,120px) 0 clamp(60px,8vw,88px); }
+.page-hero h1 {
+  font-family: var(--font-display,'Instrument Serif',Georgia,serif);
+  font-size: clamp(2rem,4vw,3rem); font-weight: 400; color: #fff; line-height: 1.2;
+}
+.page-hero h1 em { font-style: italic; color: var(--accent-gold,#C4A574); }
+.page-hero p { font-size: 1rem; color: rgba(255,255,255,.65); margin-top: 16px; }
+
+/* chip groups / category filter */
+.faq-chips-wrap { display: flex; flex-direction: column; gap: 32px; margin-bottom: 48px; }
+.chip-group { }
+.chip-group-header {
+  display: flex; align-items: center; gap: 10px;
+  font-size: 11px; font-weight: 700; text-transform: uppercase;
+  letter-spacing: .12em; color: rgba(255,255,255,.4); margin-bottom: 12px;
+}
+.chip-group-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--accent-gold,#C4A574); }
+.chip-group-name { color: rgba(255,255,255,.65); }
+.chip-group-count { color: rgba(255,255,255,.25); }
+.chip-group-chips { display: flex; gap: 8px; flex-wrap: wrap; }
+
+/* sr-only utility */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); border: 0; }
+
+/* faq items */
+.faq-item { border-bottom: 1px solid rgba(255,255,255,.08); }
+.faq-q {
+  width: 100%; display: flex; justify-content: space-between; align-items: center; gap: 16px;
+  background: none; border: none; padding: 20px 0; cursor: pointer;
+  font-size: .95rem; font-weight: 600; color: #fff; text-align: left; transition: color .2s;
+}
+.faq-q:hover { color: var(--accent-gold,#C4A574); }
+.q-chip-icon { display: flex; align-items: center; gap: 10px; }
+.q-chip-icon svg { flex-shrink: 0; width: 20px; height: 20px; color: var(--accent-gold,#C4A574); transition: transform .25s; }
+.faq-q[aria-expanded="true"] svg { transform: rotate(45deg); }
+.faq-answer-inline { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
+.faq-answer-inline.open { max-height: 600px; }
+.faq-answer-inline p { padding: 0 0 20px; font-size: .9rem; color: rgba(255,255,255,.6); line-height: 1.7; }
+.answer-link { color: var(--accent-gold,#C4A574); text-decoration: underline; }
+
+/* author byline */
+.faq-author-byline { display: flex; align-items: center; gap: 12px; margin-top: 8px; }
+.faq-author-byline img { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
+.faq-author-byline span { font-size: .78rem; color: rgba(255,255,255,.4); font-style: italic; }
+
+/* sections */
+.faq-section { padding: clamp(64px,8vw,96px) 0; }
+.faq-section.dark { background: var(--blue-900,#060E1A); }
+.faq-section.light { background: #F1F5F9; }
+
+</style>
 
     <!-- Schema Markup — JSON-LD @graph -->
     <script type="application/ld+json">

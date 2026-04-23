@@ -1238,7 +1238,91 @@
             .m-line-3 { font-size: 1.35rem; }
             .form-panel h4 { font-size: 1.1rem; }
         }
-    </style>
+    
+/* ── Fale com Especialista — Content CSS ── */
+body { padding-top: 60px; }
+.page-hero {
+  background: var(--blue-900,#060E1A);
+  padding: clamp(80px,10vw,120px) 0 clamp(60px,8vw,88px);
+}
+.page-hero-inner { max-width: 720px; }
+.page-tag {
+  display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--accent-gold,#C4A574); margin-bottom: 16px;
+}
+.page-hero h1 {
+  font-family: var(--font-display,'Instrument Serif',Georgia,serif);
+  font-size: clamp(2rem,4vw,3rem); font-weight: 400; color: #fff; line-height: 1.2; margin-bottom: 16px;
+}
+.page-hero h1 em { font-style: italic; color: var(--accent-gold,#C4A574); }
+.page-hero p { font-size: 1rem; color: rgba(255,255,255,.65); line-height: 1.7; }
+
+/* trust bar */
+.trust-bar { background: rgba(255,255,255,.03); border-top: 1px solid rgba(255,255,255,.08); border-bottom: 1px solid rgba(255,255,255,.08); padding: 24px 0; }
+.trust-bar-inner { display: flex; justify-content: center; gap: 48px; flex-wrap: wrap; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.trust-item { text-align: center; }
+.trust-item-val { font-family: var(--font-display,'Instrument Serif',Georgia,serif); font-size: 1.6rem; font-style: italic; color: var(--accent-gold,#C4A574); }
+.trust-item-label { font-size: .78rem; color: rgba(255,255,255,.4); margin-top: 4px; }
+
+/* contact section */
+.contact-section { background: #F1F5F9; padding: clamp(64px,8vw,96px) 0; }
+.contact-inner { max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px,4vw,40px); display: grid; grid-template-columns: 1fr 400px; gap: 64px; align-items: start; }
+.contact-form-wrap { background: #fff; border-radius: 16px; padding: 40px; box-shadow: 0 4px 24px rgba(0,0,0,.08); }
+.contact-form-wrap h2 { font-family: var(--font-display,'Instrument Serif',Georgia,serif); font-size: clamp(1.4rem,2.5vw,1.875rem); font-weight: 400; color: var(--blue-900,#060E1A); margin-bottom: 24px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 16px; }
+.form-group label { font-size: .82rem; font-weight: 600; color: var(--blue-900,#060E1A); }
+.form-group input, .form-group select, .form-group textarea {
+  border: 1px solid rgba(0,0,0,.15); border-radius: 8px; padding: 10px 14px;
+  font-size: .9rem; font-family: inherit; color: var(--blue-900,#060E1A);
+  background: #F8FAFC; transition: border-color .2s; width: 100%;
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus {
+  outline: none; border-color: var(--accent-gold,#C4A574);
+}
+.form-submit {
+  width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px;
+  background: #25D366; color: #fff; font-size: .95rem; font-weight: 700;
+  padding: 14px; border-radius: 8px; border: none; cursor: pointer; transition: opacity .2s;
+}
+.form-submit:hover { opacity: .9; }
+.form-notice { font-size: .75rem; color: #64748B; text-align: center; margin-top: 12px; }
+
+.contact-info { }
+.contact-info h3 { font-size: 1.2rem; font-weight: 700; color: var(--blue-900,#060E1A); margin-bottom: 20px; }
+.contact-channels { display: flex; flex-direction: column; gap: 16px; }
+.contact-channel {
+  display: flex; align-items: center; gap: 16px;
+  background: #fff; border-radius: 12px; padding: 18px;
+  box-shadow: 0 2px 8px rgba(0,0,0,.06); text-decoration: none; transition: box-shadow .2s;
+}
+.contact-channel:hover { box-shadow: 0 6px 20px rgba(0,0,0,.1); }
+.contact-channel-icon {
+  width: 44px; height: 44px; border-radius: 10px;
+  background: rgba(59,130,246,.08); display: flex;
+  align-items: center; justify-content: center; flex-shrink: 0;
+}
+.contact-channel-icon svg { width: 22px; height: 22px; }
+.contact-channel-label { font-size: .78rem; font-weight: 600; text-transform: uppercase; letter-spacing: .06em; color: #64748B; }
+.contact-channel-value { font-size: .95rem; font-weight: 700; color: var(--blue-900,#060E1A); }
+
+/* process steps (how it works) */
+.process-steps { display: flex; flex-direction: column; gap: 16px; margin-top: 32px; }
+.process-step { display: flex; align-items: flex-start; gap: 14px; }
+.step-num {
+  width: 32px; height: 32px; border-radius: 50%; flex-shrink: 0;
+  background: var(--accent-gold,#C4A574); color: #0a0e14;
+  display: flex; align-items: center; justify-content: center;
+  font-size: .85rem; font-weight: 700;
+}
+.step-text { font-size: .9rem; color: #475569; line-height: 1.6; padding-top: 6px; }
+
+@media (max-width: 900px) {
+  .contact-inner { grid-template-columns: 1fr; }
+  .form-row { grid-template-columns: 1fr; }
+}
+
+</style>
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",

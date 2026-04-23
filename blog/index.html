@@ -1237,7 +1237,81 @@
             .m-line-3 { font-size: 1.35rem; }
             .form-panel h4 { font-size: 1.1rem; }
         }
-    </style>
+    
+/* ── Blog Index — Content CSS ── */
+body { padding-top: 60px; }
+.page-hero {
+  background: var(--blue-900,#060E1A);
+  padding: clamp(80px,10vw,120px) 0 clamp(60px,8vw,88px);
+}
+.page-hero-inner { max-width: 720px; }
+.page-eyebrow {
+  display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--accent-gold,#C4A574); margin-bottom: 16px;
+}
+.page-hero-title {
+  font-family: var(--font-display,'Instrument Serif',Georgia,serif);
+  font-size: clamp(2rem,4vw,3rem); font-weight: 400; color: #fff; line-height: 1.2;
+}
+.page-hero-title em { font-style: italic; color: var(--accent-gold,#C4A574); }
+
+.categories { padding: 24px 0; background: rgba(255,255,255,.03); border-bottom: 1px solid rgba(255,255,255,.08); }
+.categories .container { display: flex; gap: 8px; flex-wrap: wrap; }
+.cat-pill {
+  font-size: .8rem; font-weight: 600; padding: 6px 16px; border-radius: 99px;
+  border: 1px solid rgba(255,255,255,.15); background: transparent;
+  color: rgba(255,255,255,.55); cursor: pointer; text-decoration: none; transition: all .2s;
+}
+.cat-pill:hover, .cat-pill.active {
+  background: var(--accent-gold,#C4A574); border-color: var(--accent-gold,#C4A574); color: #0a0e14;
+}
+
+.featured-section { padding: clamp(64px,8vw,88px) 0; background: #F1F5F9; }
+.featured-inner { max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px,4vw,40px); }
+.featured-post {
+  background: var(--blue-900,#060E1A); border-radius: 20px; padding: 48px;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+}
+.featured-meta { font-size: .78rem; color: rgba(255,255,255,.4); margin-bottom: 12px; }
+.featured-title {
+  font-family: var(--font-display,'Instrument Serif',Georgia,serif);
+  font-size: clamp(1.5rem,2.5vw,2rem); font-weight: 400; color: #fff; margin-bottom: 16px;
+}
+.featured-cta {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--accent-gold,#C4A574); color: #0a0e14;
+  font-size: .85rem; font-weight: 700; padding: 12px 24px;
+  border-radius: 6px; text-decoration: none;
+}
+
+.posts-section { padding: clamp(64px,8vw,88px) 0; background: #fff; }
+.posts-inner { max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px,4vw,40px); }
+.posts-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 40px; }
+.post-card {
+  background: #F8FAFC; border: 1px solid rgba(0,0,0,.07); border-radius: 14px;
+  padding: 28px 24px; transition: box-shadow .2s; text-decoration: none; display: block;
+}
+.post-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,.08); }
+.post-date { font-size: .75rem; color: #94A3B8; margin-bottom: 10px; }
+.post-title { font-size: 1.05rem; font-weight: 700; color: var(--blue-900,#060E1A); margin-bottom: 10px; line-height: 1.4; }
+.post-excerpt { font-size: .875rem; color: #64748B; line-height: 1.65; margin-bottom: 16px; }
+.post-author { display: flex; align-items: center; gap: 8px; font-size: .78rem; color: #94A3B8; }
+
+.blog-cta { background: var(--blue-900,#060E1A); padding: clamp(64px,8vw,88px) 0; }
+.blog-cta-inner { max-width: 600px; margin: 0 auto; text-align: center; }
+.blog-cta-tag { font-size: 11px; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--accent-gold,#C4A574); display: block; margin-bottom: 14px; }
+.blog-cta-h { font-family: var(--font-display,'Instrument Serif',Georgia,serif); font-size: clamp(1.6rem,2.5vw,2.25rem); font-weight: 400; color: #fff; margin-bottom: 12px; }
+.blog-cta-desc { font-size: .95rem; color: rgba(255,255,255,.6); margin-bottom: 24px; }
+.blog-cta-btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  background: #25D366; color: #fff; font-size: .9rem; font-weight: 700;
+  padding: 14px 28px; border-radius: 6px; text-decoration: none;
+}
+
+@media (max-width: 900px) { .featured-post, .posts-grid { grid-template-columns: 1fr; } }
+@media (max-width: 600px) { .posts-grid { grid-template-columns: 1fr; } }
+
+</style>
     <script type="application/ld+json">
     {
         "@context": "https://schema.org",
