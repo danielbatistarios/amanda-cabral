@@ -229,18 +229,60 @@
         #hdr-hamburger span { width: 20px; height: 2px; background: #fff; border-radius: 2px; display: block; }
         #hdr-mob {
             display: none; position: fixed; inset: 0;
-            background: #0a0e14; z-index: 600;
-            flex-direction: column; padding: 72px 24px 24px;
+            background: #060E1A; z-index: 600;
+            flex-direction: column; padding: 80px 28px 32px;
             overflow-y: auto;
         }
         #hdr-mob.open { display: flex; }
         #hdr-mob-close {
-            position: absolute; top: 16px; right: 20px;
-            background: none; border: none; color: #fff;
-            font-size: 28px; cursor: pointer; line-height: 1;
+            position: absolute; top: 18px; right: 20px;
+            background: none; border: 1px solid rgba(201,168,76,0.25);
+            border-radius: 50%; width: 36px; height: 36px;
+            color: rgba(201,168,76,0.7); font-size: 16px;
+            cursor: pointer; line-height: 1;
+            display: flex; align-items: center; justify-content: center;
+            transition: border-color 0.2s, color 0.2s;
         }
-        #hdr-mob a { color: rgba(255,255,255,0.75); font-size: 16px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.06); text-decoration: none; display: block; }
-        #hdr-mob a:hover { color: #fff; }
+        #hdr-mob-close:hover { border-color: var(--gold); color: var(--gold); }
+        /* Brand block no topo do menu */
+        .mob-brand {
+            margin-bottom: 28px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(201,168,76,0.12);
+        }
+        .mob-brand-name {
+            font-family: var(--font-display);
+            font-size: clamp(2rem, 9vw, 2.8rem);
+            font-style: italic;
+            font-weight: 400;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(201,168,76,0.45);
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            display: block;
+        }
+        .mob-brand-sub {
+            font-family: var(--font-body);
+            font-size: 0.72rem;
+            letter-spacing: 0.14em;
+            text-transform: uppercase;
+            color: rgba(201,168,76,0.5);
+            margin-top: 6px;
+            display: block;
+        }
+        /* Links dourados */
+        #hdr-mob a {
+            color: rgba(201,168,76,0.65);
+            font-size: 1rem;
+            padding: 13px 0;
+            border-bottom: 1px solid rgba(201,168,76,0.07);
+            text-decoration: none;
+            display: block;
+            letter-spacing: 0.01em;
+            transition: color 0.2s, padding-left 0.2s;
+        }
+        #hdr-mob a:hover { color: var(--gold); padding-left: 4px; }
+        #hdr-mob a + a { } /* reset default */
 
         @media (max-width: 900px) {
             #hdr-nav, .hdr-cta { display: none; }
@@ -2427,6 +2469,10 @@
 
 <div id="hdr-mob">
   <button id="hdr-mob-close">✕</button>
+  <div class="mob-brand">
+    <span class="mob-brand-name">AM Cabral</span>
+    <span class="mob-brand-sub">Contabilidade &amp; Planejamento Tributário</span>
+  </div>
   <a href="/">Início</a>
   <a href="/sobre-amcabral-blindagem/">Sobre Amanda</a>
   <a href="/nossos-servicos/">Serviços</a>
@@ -2435,7 +2481,7 @@
   <a href="/nossos-servicos/holding-patrimonial/">Holding Patrimonial</a>
   <a href="/nossos-servicos/planejamento-tributario/">Planejamento Fiscal</a>
   <a href="/blog/">Blog</a>
-  <a href="/fale-com-especialista/" id="hdrMobCta" style="color:var(--accent-gold);margin-top:16px;font-weight:700;">Diagnóstico Gratuito</a>
+  <a href="/fale-com-especialista/" id="hdrMobCta" style="color:var(--gold);margin-top:20px;font-weight:600;border-color:rgba(201,168,76,0.2);letter-spacing:0.04em;">→ Diagnóstico Gratuito</a>
 </div>
 
 <!-- Mega-menus fora do header (evita backdrop-filter stacking context) -->
