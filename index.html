@@ -964,25 +964,9 @@
             color: rgba(255,255,255,0.2);
         }
 
-        .scroll-line {
-            width: 1px;
-            height: 48px;
-            background: rgba(255,255,255,0.06);
-            position: relative;
-            overflow: hidden;
-        }
-        .scroll-line::after {
-            content: '';
-            position: absolute;
-            width: 100%;
-            height: 16px;
-            background: var(--gold);
-            animation: scrollAnim 2s ease-in-out infinite;
-            top: -16px;
-        }
         @keyframes scrollAnim {
-            0% { top: -16px; }
-            100% { top: 48px; }
+            0%, 100% { transform: translateY(0); opacity: 0.7; }
+            50% { transform: translateY(6px); opacity: 1; }
         }
 
         /* ============================
@@ -1487,6 +1471,23 @@
             border-radius: 60px;
             background: rgba(201,168,76,0.06);
         }
+
+        a.service-card { display: flex; flex-direction: column; text-decoration: none; color: inherit; }
+
+        .service-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 20px;
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            color: var(--accent-light);
+            opacity: 0;
+            transform: translateX(-4px);
+            transition: opacity 0.25s ease, transform 0.25s ease;
+        }
+        .service-card:hover .service-link { opacity: 1; transform: translateX(0); }
 
         .services-nav {
             display: flex;
@@ -2447,7 +2448,11 @@
             font-size: 0.75rem; padding: 4px 12px;
             border: 1px solid rgba(255,255,255,0.1);
             border-radius: 20px; color: rgba(255,255,255,0.5);
+            text-decoration: none;
+            transition: border-color 0.2s, color 0.2s;
         }
+        a.location-city-tag:hover { border-color: var(--gold); color: var(--gold); }
+        .location-city-tag--more { border-color: rgba(201,168,76,0.3); color: var(--gold); font-weight: 600; }
 
         /* ============================
            BLOG
@@ -3612,7 +3617,7 @@
       </li>
     </ul>
 
-    <a href="/fale-com-especialista/" class="hdr-cta">Diagnóstico Gratuito</a>
+    <a href="/fale-com-especialista/" class="hdr-cta" id="hdrCta">Diagnóstico Gratuito</a>
     <button id="hdr-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </header>
@@ -3686,7 +3691,7 @@
   <a href="/constituicao-de-holding-patrimonial-e-familiar/">Holding Patrimonial</a>
   <a href="/planejamento-tributario/">Planejamento Fiscal</a>
   <a href="/blog/">Blog</a>
-  <a href="/fale-com-especialista/" style="color:var(--accent-gold);margin-top:16px;font-weight:700;">Diagnóstico Gratuito</a>
+  <a href="/fale-com-especialista/" id="hdrMobCta" style="color:var(--accent-gold);margin-top:16px;font-weight:700;">Diagnóstico Gratuito</a>
 </div>
 
     <main>
@@ -3706,7 +3711,7 @@
                     <div class="hero-buttons">
                         <a href="#contato" class="btn btn-primary">
                             Solicitar an&aacute;lise tribut&aacute;ria
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
                         </a>
                         <a href="#contato" class="btn btn-ghost">Ver o que recuperamos</a>
                     </div>
@@ -3721,7 +3726,7 @@
     <!-- Scroll hint — fixed overlay, fora do hero para evitar overflow:hidden do parent -->
     <div class="scroll-hint">
         <span>Scroll</span>
-        <div class="scroll-line"></div>
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="rgba(201,168,76,0.7)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="animation:scrollAnim 2s ease-in-out infinite"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
     </div>
 
     <!-- ===== MARQUEE ===== -->
@@ -3795,42 +3800,48 @@
                     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </div>
                 <div class="services-track" id="servicesTrack">
-                    <div class="service-card">
+                    <a href="/planejamento-tributario/" class="service-card">
                         <div class="service-num">01</div>
                         <h3>Planejamento Tribut&aacute;rio para Empresas</h3>
                         <p>An&aacute;lise de precis&atilde;o em ICMS, IPI, PIS/COFINS. Mapeamos o regime ideal e cada cr&eacute;dito que voc&ecirc; est&aacute; deixando na mesa.</p>
                         <span class="service-badge">Economia real</span>
-                    </div>
-                    <div class="service-card">
+                        <span class="service-link">Ver detalhes <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                    </a>
+                    <a href="/recuperacao-creditos-tributarios/" class="service-card">
                         <div class="service-num">02</div>
                         <h3>Recupera&ccedil;&atilde;o de Cr&eacute;ditos</h3>
                         <p>Auditoria retroativa de 5 anos. M&eacute;dia de R$ 180 mil recuperados por cliente em ICMS-ST, IPI e PIS/COFINS.</p>
                         <span class="service-badge">Dinheiro de volta</span>
-                    </div>
-                    <div class="service-card">
+                        <span class="service-link">Ver detalhes <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                    </a>
+                    <a href="/gestao-contabil/" class="service-card">
                         <div class="service-num">03</div>
-                        <h3>Compliance para Empresas</h3>
-                        <p>SPED Fiscal, EFD, Bloco K, REINF. Blindagem fiscal completa para sua ind&uacute;stria 100% protegida contra fiscaliza&ccedil;&otilde;es.</p>
-                        <span class="service-badge">Risco zero</span>
-                    </div>
-                    <div class="service-card">
-                        <div class="service-num">04</div>
                         <h3>Gest&atilde;o Cont&aacute;bil Estrat&eacute;gica</h3>
-                        <p>Balan&ccedil;os, DRE, fluxo de caixa, custos de produ&ccedil;&atilde;o. Relat&oacute;rios que ajudam a decidir com seguran&ccedil;a.</p>
+                        <p>SPED Fiscal, EFD, Bloco K, REINF. Balan&ccedil;os, DRE e fluxo de caixa. Blindagem fiscal e vis&atilde;o completa do financeiro.</p>
                         <span class="service-badge">Vis&atilde;o clara</span>
-                    </div>
-                    <div class="service-card">
+                        <span class="service-link">Ver detalhes <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                    </a>
+                    <a href="/constituicao-de-holding-patrimonial-e-familiar/" class="service-card">
+                        <div class="service-num">04</div>
+                        <h3>Holding Patrimonial e Familiar</h3>
+                        <p>Blindagem do patrim&ocirc;nio, redu&ccedil;&atilde;o de ITCMD e organiza&ccedil;&atilde;o da sucess&atilde;o empresarial. Do diagn&oacute;stico &agrave; constitui&ccedil;&atilde;o.</p>
+                        <span class="service-badge">Patrim&ocirc;nio protegido</span>
+                        <span class="service-link">Ver detalhes <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                    </a>
+                    <a href="/incentivos-fiscais-minas-gerais/" class="service-card">
                         <div class="service-num">05</div>
                         <h3>Incentivos Fiscais de MG</h3>
                         <p>TTD, Regime Especial, cr&eacute;ditos presumidos. Enquadramento e acompanhamento dos programas mineiros.</p>
                         <span class="service-badge">Exclusivo MG</span>
-                    </div>
-                    <div class="service-card">
+                        <span class="service-link">Ver detalhes <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                    </a>
+                    <a href="/consultoria-tributaria/" class="service-card">
                         <div class="service-num">06</div>
-                        <h3>Consultoria para Crescimento</h3>
-                        <p>Abrir filial, importar insumo, expandir produ&ccedil;&atilde;o. Cada decis&atilde;o tem impacto tribut&aacute;rio.</p>
+                        <h3>Consultoria Tribut&aacute;ria</h3>
+                        <p>Abrir filial, importar insumo, expandir produ&ccedil;&atilde;o. Cada decis&atilde;o tem impacto tribut&aacute;rio. Decida com dados.</p>
                         <span class="service-badge">Crescimento seguro</span>
-                    </div>
+                        <span class="service-link">Ver detalhes <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+                    </a>
                 </div>
             </div>
             <div class="services-nav">
@@ -4182,13 +4193,13 @@
                         <div>
                             <div class="location-card-label">Cidades Atendidas</div>
                             <div class="location-cities">
-                                <span class="location-city-tag">Pará de Minas</span>
-                                <span class="location-city-tag">Belo Horizonte</span>
-                                <span class="location-city-tag">Contagem</span>
-                                <span class="location-city-tag">Betim</span>
-                                <span class="location-city-tag">Divinópolis</span>
-                                <span class="location-city-tag">Sete Lagoas</span>
-                                <span class="location-city-tag">Todo MG</span>
+                                <a href="/contabilidade-para-de-minas/" class="location-city-tag">Pará de Minas</a>
+                                <a href="/cidades-atendidas/" class="location-city-tag">Belo Horizonte</a>
+                                <a href="/cidades-atendidas/" class="location-city-tag">Contagem</a>
+                                <a href="/contador-betim/" class="location-city-tag">Betim</a>
+                                <a href="/cidades-atendidas/" class="location-city-tag">Divinópolis</a>
+                                <a href="/contabilidade-sete-lagoas/" class="location-city-tag">Sete Lagoas</a>
+                                <a href="/cidades-atendidas/" class="location-city-tag location-city-tag--more">Ver todas as cidades →</a>
                             </div>
                         </div>
                     </div>
@@ -4418,6 +4429,19 @@
             window.addEventListener('scroll', () => {
                 header.classList.toggle('scrolled', window.scrollY > 60);
             }, { passive: true });
+        }
+
+        // Botão "Diagnóstico Gratuito" do header/mobile: na home vai para #contato; em outras páginas vai para /fale-com-especialista/
+        if (window.location.pathname === '/') {
+            ['hdrCta', 'hdrMobCta'].forEach(id => {
+                const el = document.getElementById(id);
+                if (!el) return;
+                el.href = '#contato';
+                el.addEventListener('click', e => {
+                    e.preventDefault();
+                    lenis.scrollTo('#contato', { duration: 1.2 });
+                });
+            });
         }
 
         // ---- SCROLL PROGRESS ----
