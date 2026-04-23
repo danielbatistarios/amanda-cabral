@@ -5,10 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/svg+xml" href="/favicon.svg">
     <link rel="shortcut icon" href="/favicon.svg">
-    <title>Amanda Cabral | Contadora Especialista em Tributação</title>
-    <meta name="description" content="20 anos dedicados à contabilidade para indústrias em Minas Gerais. CRC/MG ativo, pós em Direito Tributário. Conheça quem vai cuidar do seu planejamento fiscal.">
-    <meta property="og:title" content="Sobre Amanda Cabral | Contadora Tributária | AM Cabral Blindagem Fiscal">
-    <meta property="og:description" content="Conheça Amanda Cabral, contadora com 20 anos de experiência em planejamento tributário para indústrias em Minas Gerais.">
+    <title>Amanda Cabral, CRC/MG — Contadora Tributária para Indústrias em Minas Gerais</title>
+    <meta name="description" content="R$ 12M em créditos recuperados, 120+ empresas atendidas, 0 autuações fiscais. Amanda Cabral, CRC/MG ativo, pós em Direito Tributário. Conheça a metodologia de blindagem fiscal para indústrias em MG.">
+    <meta property="og:title" content="Amanda Cabral, CRC/MG — Contadora Tributária para Indústrias em MG">
+    <meta property="og:description" content="R$ 12M em créditos recuperados para empresas de MG. Pós-graduada em Direito Tributário, membro IBPT, especialista em Reforma Tributária. Conheça a metodologia de blindagem fiscal.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://amcabralblindagem.com.br/assets/og-image.webp">
     <link rel="canonical" href="https://amcabralblindagem.com.br/sobre-amcabral-blindagem/">
@@ -1110,15 +1110,42 @@
 /* Body offset for fixed 60px header */
 body { padding-top: 60px; }
 
-/* Breadcrumb */
-.breadcrumb {
-    background: var(--z1, #0A1628);
-    border-bottom: 1px solid rgba(255,255,255,.05);
-    padding: 12px clamp(24px, 5vw, 80px);
+/* Breadcrumb — formato LP */
+.lp-breadcrumb {
+    background: #1E293B;
+    border-top: 1px solid #334155;
+    border-bottom: 1px solid #334155;
+    padding: 10px 0;
 }
-.breadcrumb nav { display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--dim, #94A3B8); }
-.breadcrumb a { color: var(--gold, #C9A84C); text-decoration: none; }
-.breadcrumb a:hover { text-decoration: underline; }
+.lp-breadcrumb ol {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    list-style: none;
+    flex-wrap: wrap;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: #94A3B8;
+    font-family: var(--font-body);
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 clamp(24px, 5vw, 80px);
+}
+.lp-breadcrumb ol li:not(:last-child)::after {
+    content: '›';
+    margin-left: 6px;
+    color: #475569;
+}
+.lp-breadcrumb ol a {
+    color: #94A3B8;
+    text-decoration: none;
+    transition: color .2s;
+}
+.lp-breadcrumb ol a:hover { color: #fff; }
+.lp-breadcrumb ol li[aria-current] { color: var(--gold, #C9A84C); }
 
 /* Section utilities */
 .section-label {
@@ -1232,7 +1259,7 @@ body { padding-top: 60px; }
 }
 .badge-label strong { display: block; color: var(--blue-900, #060E1A); }
 
-/* Stats Bar */
+/* Stats Bar — Expert Steve Schoger: hierarquia relativa, dado mais forte em destaque */
 .stats-bar {
     background: #fff;
     border-top: 1px solid #E2E8F0;
@@ -1244,9 +1271,14 @@ body { padding-top: 60px; }
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 32px;
+    gap: 0;
     text-align: center;
 }
+.stats-bar-inner > div {
+    padding: 16px 32px;
+    border-right: 1px solid #E2E8F0;
+}
+.stats-bar-inner > div:last-child { border-right: none; }
 .stat-item-n {
     font-family: var(--serif, 'Instrument Serif', Georgia, serif);
     font-size: clamp(1.8rem, 4vw, 2.4rem);
@@ -1254,10 +1286,26 @@ body { padding-top: 60px; }
     line-height: 1;
     margin-bottom: 6px;
 }
+.stats-bar-inner > div:last-child .stat-item-n {
+    font-size: clamp(2.2rem, 5vw, 3rem);
+    color: #0F172A;
+}
 .stat-item-l {
     font-size: 13px;
     color: #64748B;
     line-height: 1.4;
+}
+.stat-badge {
+    display: inline-block;
+    margin-top: 6px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: #fff;
+    background: #10B981;
+    padding: 2px 8px;
+    border-radius: 20px;
 }
 
 /* Trajetória / Timeline */
@@ -1284,15 +1332,20 @@ body { padding-top: 60px; }
 .timeline-item:last-child { margin-bottom: 0; }
 .timeline-dot {
     width: 32px; height: 32px;
-    background: var(--z2, #0F2137);
-    border: 1px solid rgba(201,168,76,.35);
+    background: var(--blue-900, #060E1A);
+    border: 2px solid rgba(201,168,76,.5);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 14px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--gold, #C9A84C);
+    font-family: var(--font-body);
+    letter-spacing: -.01em;
     margin-left: -48px;
     flex-shrink: 0;
+    box-shadow: 0 0 0 4px rgba(201,168,76,.06);
 }
 .timeline-content { padding-bottom: 8px; }
 .timeline-year {
@@ -1342,20 +1395,28 @@ body { padding-top: 60px; }
     transform: translateY(-2px);
     box-shadow: 0 8px 24px rgba(0,0,0,.06);
 }
-.metodo-icon { font-size: 2rem; margin-bottom: 16px; }
+.metodo-num {
+    font-family: var(--serif, 'Instrument Serif', Georgia, serif);
+    font-size: 3rem;
+    line-height: 1;
+    color: rgba(201,168,76,.18);
+    margin-bottom: 8px;
+    letter-spacing: -.02em;
+}
 .metodo-card h3 {
-    font-size: 1.1rem;
-    font-weight: 600;
+    font-size: 1.05rem;
+    font-weight: 700;
     color: #0F172A;
     margin-bottom: 10px;
+    letter-spacing: -.01em;
 }
 .metodo-card p {
-    font-size: 0.95rem;
+    font-size: 0.925rem;
     color: #475569;
-    line-height: 1.7;
+    line-height: 1.75;
 }
 
-/* Formação */
+/* Formação — Expert Sasha Grief: distinção visual clara entre colunas */
 .formacao {
     background: var(--z0, #060E1A);
     padding: clamp(64px, 10vw, 120px) clamp(24px, 5vw, 80px);
@@ -1364,10 +1425,26 @@ body { padding-top: 60px; }
 .formacao-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 48px;
+    gap: 32px;
     margin-top: 16px;
+    align-items: start;
+}
+.formacao-col {
+    padding: 32px;
+    border-radius: 20px;
+}
+.formacao-col.col-academica {
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(255,255,255,.06);
+}
+.formacao-col.col-registros {
+    background: rgba(201,168,76,.05);
+    border: 1px solid rgba(201,168,76,.15);
 }
 .formacao-col-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     font-size: 11px;
     font-weight: 700;
     letter-spacing: .14em;
@@ -1377,21 +1454,31 @@ body { padding-top: 60px; }
     padding-bottom: 12px;
     border-bottom: 1px solid rgba(201,168,76,.15);
 }
+.formacao-col-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px; height: 20px;
+    background: rgba(201,168,76,.15);
+    border-radius: 50%;
+    font-size: 10px;
+}
 .formacao-item {
     display: flex;
     gap: 14px;
     align-items: flex-start;
     margin-bottom: 20px;
 }
-.formacao-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
+.formacao-item:last-child { margin-bottom: 0; }
+.formacao-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; }
 .formacao-text strong {
     display: block;
-    font-size: 0.95rem;
+    font-size: 0.94rem;
     font-weight: 600;
     color: #fff;
     margin-bottom: 3px;
 }
-.formacao-text span { font-size: 0.88rem; color: var(--dim, #94A3B8); }
+.formacao-text span { font-size: 0.875rem; color: var(--dim, #94A3B8); line-height: 1.5; }
 
 /* Valores */
 .valores {
@@ -1417,14 +1504,22 @@ body { padding-top: 60px; }
     transition: box-shadow .25s, transform .25s;
 }
 .valor-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,.07); transform: translateY(-2px); }
-.valor-icon { font-size: 2rem; margin-bottom: 16px; }
+.valor-num {
+    font-family: var(--serif, 'Instrument Serif', Georgia, serif);
+    font-size: 1.75rem;
+    color: var(--gold, #C9A84C);
+    line-height: 1;
+    margin-bottom: 16px;
+    opacity: .7;
+}
 .valor-card h3 {
     font-size: 1.05rem;
-    font-weight: 600;
+    font-weight: 700;
     color: #0F172A;
     margin-bottom: 10px;
+    letter-spacing: -.01em;
 }
-.valor-card p { font-size: 0.95rem; color: #475569; line-height: 1.7; }
+.valor-card p { font-size: 0.925rem; color: #475569; line-height: 1.75; }
 
 /* Depoimento */
 .depoimento-section {
@@ -1711,15 +1806,6 @@ body { padding-top: 60px; }
 <!-- Mobile Nav -->
 
 
-<!-- ===== BREADCRUMB ===== -->
-<div class="breadcrumb">
-    <nav aria-label="Breadcrumb">
-        <a href="/">Início</a>
-        <span>›</span>
-        <span aria-current="page">Sobre a AM Cabral</span>
-    </nav>
-</div>
-
 <!-- ===== HERO SOBRE ===== -->
 <section class="sobre-hero">
     <div class="sobre-hero-inner">
@@ -1772,9 +1858,19 @@ body { padding-top: 60px; }
         <div>
             <div class="stat-item-n">0%</div>
             <div class="stat-item-l">de autuações fiscais em clientes ativos</div>
+            <span class="stat-badge">histórico limpo</span>
         </div>
     </div>
 </div>
+
+<!-- ===== BREADCRUMB ===== -->
+<nav class="lp-breadcrumb" aria-label="Navegação estrutural">
+  <ol>
+    <li><a href="/">Amanda Cabral Contadora</a></li>
+    <li><a href="/sobre-amcabral-blindagem/">Sobre</a></li>
+    <li aria-current="page">AM Cabral Blindagem Fiscal</li>
+  </ol>
+</nav>
 
 <!-- ===== TRAJETÓRIA ===== -->
 <section class="trajetoria">
@@ -1785,7 +1881,7 @@ body { padding-top: 60px; }
 
         <div class="timeline">
             <div class="timeline-item">
-                <div class="timeline-dot">🎓</div>
+                <div class="timeline-dot">01</div>
                 <div class="timeline-content">
                     <div class="timeline-year">2004</div>
                     <h3>Formação em Ciências Contábeis</h3>
@@ -1793,7 +1889,7 @@ body { padding-top: 60px; }
                 </div>
             </div>
             <div class="timeline-item">
-                <div class="timeline-dot">🏭</div>
+                <div class="timeline-dot">02</div>
                 <div class="timeline-content">
                     <div class="timeline-year">2006</div>
                     <h3>Especialização em Indústrias</h3>
@@ -1801,7 +1897,7 @@ body { padding-top: 60px; }
                 </div>
             </div>
             <div class="timeline-item">
-                <div class="timeline-dot">📚</div>
+                <div class="timeline-dot">03</div>
                 <div class="timeline-content">
                     <div class="timeline-year">2010</div>
                     <h3>Pós-graduação em Direito Tributário</h3>
@@ -1809,7 +1905,7 @@ body { padding-top: 60px; }
                 </div>
             </div>
             <div class="timeline-item">
-                <div class="timeline-dot">🏢</div>
+                <div class="timeline-dot">04</div>
                 <div class="timeline-content">
                     <div class="timeline-year">2014</div>
                     <h3>Fundação da AM Cabral Contabilidade</h3>
@@ -1817,7 +1913,7 @@ body { padding-top: 60px; }
                 </div>
             </div>
             <div class="timeline-item">
-                <div class="timeline-dot">⚖️</div>
+                <div class="timeline-dot">05</div>
                 <div class="timeline-content">
                     <div class="timeline-year">2019</div>
                     <h3>Ingresso no IBPT e expansão para holdings</h3>
@@ -1825,7 +1921,7 @@ body { padding-top: 60px; }
                 </div>
             </div>
             <div class="timeline-item">
-                <div class="timeline-dot">🔄</div>
+                <div class="timeline-dot">06</div>
                 <div class="timeline-content">
                     <div class="timeline-year">2024</div>
                     <h3>Especialização em Reforma Tributária</h3>
@@ -1844,22 +1940,22 @@ body { padding-top: 60px; }
         <p class="section-lead">Blindagem não é evasão fiscal. É o uso inteligente e legal de todos os instrumentos que a legislação oferece para proteger o patrimônio e reduzir a carga tributária da empresa.</p>
         <div class="metodologia-grid">
             <div class="metodo-card">
-                <div class="metodo-icon">🔍</div>
+                <div class="metodo-num">01</div>
                 <h3>Diagnóstico Profundo</h3>
                 <p>Antes de qualquer recomendação, analisamos o histórico fiscal dos últimos 5 anos. Identificamos os tributos pagos a maior, créditos não aproveitados e exposições que podem virar autuação.</p>
             </div>
             <div class="metodo-card">
-                <div class="metodo-icon">🗺️</div>
+                <div class="metodo-num">02</div>
                 <h3>Planejamento Estratégico</h3>
                 <p>Criamos um mapa tributário personalizado para a estrutura da empresa, com projeções de economia por linha de atuação: regime tributário, créditos, incentivos fiscais e estrutura societária.</p>
             </div>
             <div class="metodo-card">
-                <div class="metodo-icon">⚙️</div>
+                <div class="metodo-num">03</div>
                 <h3>Implementação Controlada</h3>
                 <p>Cada mudança é implementada dentro dos prazos legais, com documentação robusta e embasamento jurídico. Sem surpresas, sem riscos, sem atalhos que possam comprometer a empresa no futuro.</p>
             </div>
             <div class="metodo-card">
-                <div class="metodo-icon">📊</div>
+                <div class="metodo-num">04</div>
                 <h3>Monitoramento Contínuo</h3>
                 <p>A legislação muda. Nós monitoramos alterações na lei, novas decisões judiciais e regulamentações que possam abrir ou fechar oportunidades para nossos clientes em tempo real.</p>
             </div>
@@ -1873,34 +1969,40 @@ body { padding-top: 60px; }
         <p class="section-label">Credenciais</p>
         <h2 class="section-title">Formação e <em>registros profissionais</em></h2>
         <div class="formacao-grid">
-            <div>
-                <p class="formacao-col-title">Formação Acadêmica</p>
+            <div class="formacao-col col-academica">
+                <p class="formacao-col-title">
+                    <span class="formacao-col-badge">🎓</span>
+                    Formação Acadêmica
+                </p>
                 <div class="formacao-item">
-                    <div class="formacao-icon">🎓</div>
+                    <div class="formacao-icon">📚</div>
                     <div class="formacao-text">
                         <strong>Pós-graduação em Direito Tributário</strong>
                         <span>Especialização em legislação e planejamento fiscal</span>
                     </div>
                 </div>
                 <div class="formacao-item">
-                    <div class="formacao-icon">📖</div>
+                    <div class="formacao-icon">🏫</div>
                     <div class="formacao-text">
                         <strong>Bacharelado em Ciências Contábeis</strong>
                         <span>Graduação com foco em tributação empresarial</span>
                     </div>
                 </div>
                 <div class="formacao-item">
-                    <div class="formacao-icon">📋</div>
+                    <div class="formacao-icon">🏭</div>
                     <div class="formacao-text">
                         <strong>Formação em Contabilidade Industrial</strong>
                         <span>Especialização em indústrias de manufatura e distribuição</span>
                     </div>
                 </div>
             </div>
-            <div>
-                <p class="formacao-col-title">Registros e Filiações</p>
+            <div class="formacao-col col-registros">
+                <p class="formacao-col-title">
+                    <span class="formacao-col-badge">✦</span>
+                    Registros e Filiações
+                </p>
                 <div class="formacao-item">
-                    <div class="formacao-icon">✅</div>
+                    <div class="formacao-icon">🛡️</div>
                     <div class="formacao-text">
                         <strong>CRC/MG, Registro Ativo</strong>
                         <span>Conselho Regional de Contabilidade de Minas Gerais</span>
@@ -1932,17 +2034,17 @@ body { padding-top: 60px; }
         <h2 class="section-title">O que guia <em>cada decisão</em></h2>
         <div class="valores-list">
             <div class="valor-card">
-                <div class="valor-icon">🧱</div>
+                <div class="valor-num">I.</div>
                 <h3>Solidez Técnica</h3>
                 <p>Toda recomendação tem amparo legal explícito. Não trabalhamos com interpretações arriscadas que podem virar autuação no futuro.</p>
             </div>
             <div class="valor-card">
-                <div class="valor-icon">🤝</div>
+                <div class="valor-num">II.</div>
                 <h3>Transparência Total</h3>
                 <p>Você sabe o que está sendo feito, por que e qual o risco de cada estratégia. Sem caixa preta, sem promessas sem embasamento.</p>
             </div>
             <div class="valor-card">
-                <div class="valor-icon">🎯</div>
+                <div class="valor-num">III.</div>
                 <h3>Resultado Mensurável</h3>
                 <p>Cada contrato tem metas de economia definidas antes do início. Medimos o resultado em reais, não em relatórios bonitos.</p>
             </div>
