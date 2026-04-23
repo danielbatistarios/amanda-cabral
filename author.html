@@ -14,10 +14,14 @@
       <meta property="og:image" content="https://amcabralblindagem.com.br/assets/og-image.webp">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,700&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/instrument-serif-normal.woff2" as="font" type="font/woff2" crossorigin>
 
 <style>
+    @font-face { font-family: 'Inter'; font-style: normal; font-weight: 100 900; font-display: swap; src: url('/assets/fonts/inter-latin.woff2') format('woff2'); }
+    @font-face { font-family: 'Instrument Serif'; font-style: normal; font-weight: 400; font-display: swap; src: url('/assets/fonts/instrument-serif-normal.woff2') format('woff2'); }
+    @font-face { font-family: 'Instrument Serif'; font-style: italic; font-weight: 400; font-display: swap; src: url('/assets/fonts/instrument-serif-italic.woff2') format('woff2'); }
+
     /* === COLOR TOKENS === */
     :root {
       --dark-hero: #0F1419;
@@ -1725,9 +1729,9 @@ a.bio__contact-item:hover { color: var(--accent-gold); }
       <div class="bio__main reveal">
         <span class="section-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg> Sobre</span>
         <h2 id="bio-h2">Quem é <span>Amanda Cabral</span></h2>
-        <p>Aos 14 anos, Amanda perdeu o pai — um grande empresário que não planejou a sucessão. A família não recebeu nada. Foi trabalhar no escritório de contabilidade que atendia o pai, e ali ficou. Cresceu, aprendeu na prática o que nenhuma faculdade ensina, e construiu o próprio escritório do zero.</p>
-        <p>Três décadas depois, Amanda é referência em contabilidade industrial em Minas Gerais. Atende exclusivamente indústrias — nunca aceitou comércio, nunca aceitou serviços. Essa escolha custou clientes, mas deu a profundidade que nenhum generalista tem. R$ 12 milhões já foram recuperados em créditos que estavam invisíveis para outros contadores.</p>
-        <p>Hoje, atua como um braço do empresário: treina equipes, analisa os detalhes do dia a dia, cuida da carga tributária e das rotinas gerenciais para que tudo funcione. Não é apenas uma contadora — é uma parceira de negócios que entende a realidade de quem produz.</p>
+        <p>Aos 14 anos, Amanda perdeu o pai, um grande empresário que não planejou a sucessão. A família não recebeu nada. Foi trabalhar no escritório de contabilidade que atendia o pai, e ali ficou. Cresceu, aprendeu na prática o que nenhuma faculdade ensina, e construiu o próprio escritório do zero.</p>
+        <p>Três décadas depois, Amanda é referência em contabilidade industrial em Minas Gerais. Atende exclusivamente indústrias. Nunca aceitou comércio, nunca aceitou serviços. Essa escolha custou clientes, mas deu a profundidade que nenhum generalista tem. R$ 12 milhões já foram recuperados em créditos que estavam invisíveis para outros contadores.</p>
+        <p>Hoje, atua como um braço do empresário: treina equipes, analisa os detalhes do dia a dia, cuida da carga tributária e das rotinas gerenciais para que tudo funcione. É uma parceira de negócios que entende a realidade de quem produz.</p>
         <p>Mais de 120 empresas industriais já passaram pela gestão contábil de Amanda. A maioria permanece como cliente há anos, o que reflete um padrão de atendimento baseado em resultado concreto, acesso direto e compromisso com cada centavo do empresário.</p>
       </div>
       <aside class="reveal reveal-d2">
@@ -1781,7 +1785,7 @@ a.bio__contact-item:hover { color: var(--accent-gold); }
       <div class="timeline__item reveal">
         <div class="timeline__dot"></div>
         <h3 class="timeline__title">Aos 14 anos, no escritório do pai</h3>
-        <p class="timeline__desc">Após perder o pai — um empresário que não planejou a sucessão e deixou a família sem nada — Amanda foi trabalhar no escritório de contabilidade que atendia a empresa do pai. Ali começou a entender que tributação mal feita destrói patrimônios inteiros. Essa experiência moldou tudo que viria depois.</p>
+        <p class="timeline__desc">Após perder o pai, um empresário que não planejou a sucessão e deixou a família sem nada, Amanda foi trabalhar no escritório de contabilidade que atendia a empresa do pai. Ali começou a entender que tributação mal feita destrói patrimônios inteiros. Essa experiência moldou tudo que viria depois.</p>
       </div>
       <div class="timeline__item reveal">
         <div class="timeline__dot"></div>
@@ -1796,7 +1800,7 @@ a.bio__contact-item:hover { color: var(--accent-gold); }
       <div class="timeline__item reveal">
         <div class="timeline__dot"></div>
         <h3 class="timeline__title">120+ empresas e 30 anos de estrada</h3>
-        <p class="timeline__desc">Hoje, Amanda é parceira de mais de 120 indústrias em Minas Gerais. Não apenas faz a contabilidade — treina equipes, analisa rotinas, cuida da carga tributária e atua como braço direito do empresário. A maioria dos clientes permanece há anos, porque resultado concreto não precisa de contrato longo.</p>
+        <p class="timeline__desc">Hoje, Amanda é parceira de mais de 120 indústrias em Minas Gerais. Vai além da contabilidade: treina equipes, analisa rotinas, cuida da carga tributária e atua como braço direito do empresário. A maioria dos clientes permanece há anos, porque resultado concreto não precisa de contrato longo.</p>
       </div>
     </div>
   </div>
@@ -1841,7 +1845,7 @@ a.bio__contact-item:hover { color: var(--accent-gold); }
       <a href="/recuperacao-creditos-tributarios/" class="article-card article-card--cyan reveal reveal-d2">
         <span class="article-card__tag article-card__tag--cyan">Créditos</span>
         <div class="article-card__title">Recuperação de Créditos Tributários</div>
-        <p class="article-card__desc">PIS/COFINS, ICMS, IPI — até 5 anos retroativos. 8 em cada 10 indústrias têm créditos perdidos.</p>
+        <p class="article-card__desc">PIS/COFINS, ICMS, IPI. Até 5 anos retroativos. 8 em cada 10 indústrias têm créditos perdidos.</p>
         <span class="article-card__cta">Ler conteúdo <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
       </a>
       <a href="/planejamento-tributario-industrial/" class="article-card article-card--blue reveal reveal-d3">

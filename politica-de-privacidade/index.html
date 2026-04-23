@@ -822,20 +822,17 @@
         }
 
         .btn-primary {
-            background: var(--accent);
-            color: var(--white);
-            box-shadow: 0 4px 24px rgba(59,130,246,0.2);
+            display: inline-flex; align-items: center; gap: 8px;
+            background: transparent; color: var(--gold,#C9A84C);
+            border: 1.5px solid var(--gold,#C9A84C);
+            font-size: .9rem; font-weight: 600; letter-spacing: .04em;
+            padding: 14px 32px; border-radius: 60px; text-decoration: none;
+            transition: background .25s ease, color .25s ease, box-shadow .25s ease;
+            cursor: pointer;
         }
         .btn-primary:hover {
-            box-shadow: 0 12px 48px rgba(59,130,246,0.35);
-            transform: translateY(-2px);
-        }
-        .btn-primary::after {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%; width: 60%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-            animation: btn-shimmer 3s 2s infinite;
+            background: var(--gold,#C9A84C); color: #060E1A;
+            box-shadow: 0 8px 24px rgba(196,165,116,.2);
         }
 
         .btn-ghost {
@@ -1351,7 +1348,7 @@
         <span class="legal-date">Última atualização: abril de 2026</span>
         <div class="lgpd-badge">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          Em conformidade com a LGPD — Lei n. 13.709/2018
+          Em conformidade com a LGPD, Lei n. 13.709/2018
         </div>
 
         <p>A AM Cabral Contabilidade (CNPJ 34.733.620/0001-51) respeita sua privacidade e está comprometida com a proteção dos seus dados pessoais. Esta política explica como coletamos, usamos e protegemos suas informações ao acessar nosso site.</p>
@@ -1394,9 +1391,9 @@
         <h2>4. Base Legal</h2>
         <p>O tratamento dos seus dados é realizado com base nas seguintes hipóteses previstas na LGPD:</p>
         <ul>
-          <li><strong>Consentimento</strong> — quando você preenche nossos formulários</li>
-          <li><strong>Legítimo interesse</strong> — para análise de desempenho e melhoria do site</li>
-          <li><strong>Cumprimento de obrigação legal</strong> — para atender exigências regulatórias</li>
+          <li><strong>Consentimento:</strong> quando você preenche nossos formulários</li>
+          <li><strong>Legítimo interesse:</strong> para análise de desempenho e melhoria do site</li>
+          <li><strong>Cumprimento de obrigação legal:</strong> para atender exigências regulatórias</li>
         </ul>
 
         <h2>5. Compartilhamento de Dados</h2>
