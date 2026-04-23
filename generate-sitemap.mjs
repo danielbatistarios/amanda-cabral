@@ -60,69 +60,163 @@ const pages = [
   // Hub de cidades
   ['/cidades-atendidas',                                              '0.8', 'monthly'],
 
-  // Minas Gerais — silos de cidade
-  ['/para-de-minas-mg',                                              '0.8', 'monthly'],
-  ['/para-de-minas-mg/escritorio-de-contabilidade-em-para-de-minas', '0.7', 'monthly'],
-  ['/sete-lagoas-mg',                                                '0.7', 'monthly'],
-  ['/sete-lagoas-mg/contabilidade-industrial-em-sete-lagoas',        '0.7', 'monthly'],
-  ['/montes-claros-mg',                                              '0.7', 'monthly'],
-  ['/montes-claros-mg/contador-especializado-industrias-montes-claros','0.7','monthly'],
-  ['/uberaba-mg',                                                    '0.7', 'monthly'],
-  ['/uberaba-mg/consultoria-tributaria-industrias-uberaba',          '0.7', 'monthly'],
-  ['/uberlandia-mg',                                                 '0.7', 'monthly'],
-  ['/uberlandia-mg/escritorio-contabil-industrial-uberlandia',       '0.7', 'monthly'],
-  ['/betim-mg',                                                      '0.7', 'monthly'],
-  ['/betim-mg/contabilidade-planejamento-tributario-betim',          '0.7', 'monthly'],
-  ['/pocos-de-caldas-mg',                                            '0.7', 'monthly'],
-  ['/pocos-de-caldas-mg/escritorio-contabil-pocos-de-caldas',        '0.7', 'monthly'],
+  // ── MINAS GERAIS ──────────────────────────────────────────────────────────
 
-  // São Paulo — silos de cidade
-  ['/sorocaba-sp',                                                   '0.7', 'monthly'],
-  ['/sorocaba-sp/contador-industrias-sorocaba',                      '0.7', 'monthly'],
-  ['/guarulhos-sp',                                                  '0.7', 'monthly'],
-  ['/guarulhos-sp/escritorio-contabilidade-industrial-guarulhos',    '0.7', 'monthly'],
-  ['/osasco-sp',                                                     '0.7', 'monthly'],
-  ['/osasco-sp/contabilidade-especializada-industrias-osasco',       '0.7', 'monthly'],
-  ['/ribeirao-preto-sp',                                             '0.7', 'monthly'],
-  ['/ribeirao-preto-sp/planejamento-tributario-industrial-ribeirao-preto','0.7','monthly'],
-  ['/piracicaba-sp',                                                 '0.7', 'monthly'],
-  ['/piracicaba-sp/contador-tributarista-industrias-piracicaba',     '0.7', 'monthly'],
-  ['/campinas-sp',                                                   '0.7', 'monthly'],
-  ['/campinas-sp/consultoria-contabil-industrial-campinas',          '0.7', 'monthly'],
+  // Pará de Minas — SEDE (conjunto completo: contador + abertura + holding + planejamento + recuperação)
+  ['/para-de-minas-mg',                                                          '0.8', 'monthly'],
+  ['/para-de-minas-mg/escritorio-de-contabilidade-em-para-de-minas',             '0.8', 'monthly'],
+  ['/para-de-minas-mg/abertura-de-empresa-para-de-minas',                        '0.7', 'monthly'],
+  ['/para-de-minas-mg/holding-patrimonial-para-de-minas',                        '0.7', 'monthly'],
+  ['/para-de-minas-mg/planejamento-tributario-para-de-minas',                    '0.7', 'monthly'],
+  ['/para-de-minas-mg/recuperacao-creditos-tributarios-para-de-minas',           '0.7', 'monthly'],
 
-  // Sul — silos de cidade
-  ['/curitiba-pr',                                                   '0.7', 'monthly'],
-  ['/curitiba-pr/escritorio-contabilidade-industrias-curitiba',      '0.7', 'monthly'],
-  ['/caxias-do-sul-rs',                                              '0.7', 'monthly'],
-  ['/caxias-do-sul-rs/contabilidade-tributaria-industrial-caxias-do-sul','0.7','monthly'],
-  ['/blumenau-sc',                                                   '0.7', 'monthly'],
-  ['/blumenau-sc/contador-especialista-industrias-blumenau',         '0.7', 'monthly'],
-  ['/joinville-sc',                                                  '0.7', 'monthly'],
-  ['/joinville-sc/gestao-contabil-tributaria-industrias-joinville',  '0.7', 'monthly'],
+  // Uberlândia — polo industrial grande (contador + abertura + holding + planejamento + recuperação)
+  ['/uberlandia-mg',                                                              '0.7', 'monthly'],
+  ['/uberlandia-mg/contador-em-uberlandia',                                       '0.7', 'monthly'],
+  ['/uberlandia-mg/abertura-de-empresa-uberlandia',                               '0.7', 'monthly'],
+  ['/uberlandia-mg/holding-patrimonial-uberlandia',                               '0.7', 'monthly'],
+  ['/uberlandia-mg/planejamento-tributario-uberlandia',                           '0.7', 'monthly'],
+  ['/uberlandia-mg/recuperacao-creditos-tributarios-uberlandia',                  '0.7', 'monthly'],
 
-  // Nordeste — silos de cidade
-  ['/fortaleza-ce',                                                  '0.7', 'monthly'],
-  ['/fortaleza-ce/contabilidade-industrial-remota-fortaleza',        '0.7', 'monthly'],
-  ['/joao-pessoa-pb',                                                '0.7', 'monthly'],
-  ['/joao-pessoa-pb/contador-industrial-atendimento-digital-joao-pessoa','0.7','monthly'],
-  ['/salvador-ba',                                                   '0.7', 'monthly'],
-  ['/salvador-ba/escritorio-contabilidade-industrial-salvador',      '0.7', 'monthly'],
-  ['/feira-de-santana-ba',                                           '0.7', 'monthly'],
-  ['/feira-de-santana-ba/consultoria-tributaria-industrias-feira-de-santana','0.7','monthly'],
-  ['/recife-pe',                                                     '0.7', 'monthly'],
-  ['/recife-pe/contabilidade-recuperacao-creditos-industrias-recife', '0.7', 'monthly'],
+  // Betim — polo industrial (contador + abertura + recuperação)
+  ['/betim-mg',                                                                   '0.7', 'monthly'],
+  ['/betim-mg/contador-em-betim',                                                 '0.7', 'monthly'],
+  ['/betim-mg/abertura-de-empresa-betim',                                         '0.7', 'monthly'],
+  ['/betim-mg/recuperacao-creditos-tributarios-betim',                            '0.7', 'monthly'],
 
-  // Norte
-  ['/manaus-am',                                                     '0.7', 'monthly'],
-  ['/manaus-am/contador-industrias-zona-franca-manaus',              '0.7', 'monthly'],
+  // Sete Lagoas — polo industrial (contador + abertura + recuperação)
+  ['/sete-lagoas-mg',                                                             '0.7', 'monthly'],
+  ['/sete-lagoas-mg/contador-em-sete-lagoas',                                     '0.7', 'monthly'],
+  ['/sete-lagoas-mg/abertura-de-empresa-sete-lagoas',                             '0.7', 'monthly'],
+  ['/sete-lagoas-mg/recuperacao-creditos-tributarios-sete-lagoas',                '0.7', 'monthly'],
 
-  // Centro-Oeste
-  ['/goiania-go',                                                    '0.7', 'monthly'],
-  ['/goiania-go/escritorio-contabilidade-tributaria-goiania',        '0.7', 'monthly'],
+  // Montes Claros — polo regional (contador + abertura)
+  ['/montes-claros-mg',                                                           '0.7', 'monthly'],
+  ['/montes-claros-mg/contador-em-montes-claros',                                 '0.7', 'monthly'],
+  ['/montes-claros-mg/abertura-de-empresa-montes-claros',                         '0.7', 'monthly'],
 
-  // Rio de Janeiro
-  ['/rio-de-janeiro-rj',                                             '0.7', 'monthly'],
-  ['/rio-de-janeiro-rj/contabilidade-industrial-rio-de-janeiro',     '0.7', 'monthly'],
+  // Uberaba — polo regional (contador + abertura)
+  ['/uberaba-mg',                                                                 '0.7', 'monthly'],
+  ['/uberaba-mg/contador-em-uberaba',                                             '0.7', 'monthly'],
+  ['/uberaba-mg/abertura-de-empresa-uberaba',                                     '0.7', 'monthly'],
+
+  // Poços de Caldas — 1 LP
+  ['/pocos-de-caldas-mg',                                                         '0.7', 'monthly'],
+  ['/pocos-de-caldas-mg/contador-em-pocos-de-caldas',                             '0.7', 'monthly'],
+
+  // ── SÃO PAULO ──────────────────────────────────────────────────────────────
+
+  // Campinas — polo industrial grande (contador + abertura + holding + planejamento + recuperação)
+  ['/campinas-sp',                                                                '0.7', 'monthly'],
+  ['/campinas-sp/contador-em-campinas',                                           '0.7', 'monthly'],
+  ['/campinas-sp/abertura-de-empresa-campinas',                                   '0.7', 'monthly'],
+  ['/campinas-sp/holding-patrimonial-campinas',                                   '0.7', 'monthly'],
+  ['/campinas-sp/planejamento-tributario-campinas',                               '0.7', 'monthly'],
+  ['/campinas-sp/recuperacao-creditos-tributarios-campinas',                      '0.7', 'monthly'],
+
+  // Sorocaba — polo industrial (contador + abertura + recuperação)
+  ['/sorocaba-sp',                                                                '0.7', 'monthly'],
+  ['/sorocaba-sp/contador-em-sorocaba',                                           '0.7', 'monthly'],
+  ['/sorocaba-sp/abertura-de-empresa-sorocaba',                                   '0.7', 'monthly'],
+  ['/sorocaba-sp/recuperacao-creditos-tributarios-sorocaba',                      '0.7', 'monthly'],
+
+  // Guarulhos — polo industrial (contador + abertura + recuperação)
+  ['/guarulhos-sp',                                                               '0.7', 'monthly'],
+  ['/guarulhos-sp/contador-em-guarulhos',                                         '0.7', 'monthly'],
+  ['/guarulhos-sp/abertura-de-empresa-guarulhos',                                 '0.7', 'monthly'],
+  ['/guarulhos-sp/recuperacao-creditos-tributarios-guarulhos',                    '0.7', 'monthly'],
+
+  // Ribeirão Preto — polo regional (contador + abertura + holding)
+  ['/ribeirao-preto-sp',                                                          '0.7', 'monthly'],
+  ['/ribeirao-preto-sp/contador-em-ribeirao-preto',                               '0.7', 'monthly'],
+  ['/ribeirao-preto-sp/abertura-de-empresa-ribeirao-preto',                       '0.7', 'monthly'],
+  ['/ribeirao-preto-sp/holding-patrimonial-ribeirao-preto',                       '0.7', 'monthly'],
+
+  // Piracicaba — polo industrial (contador + abertura)
+  ['/piracicaba-sp',                                                              '0.7', 'monthly'],
+  ['/piracicaba-sp/contador-em-piracicaba',                                       '0.7', 'monthly'],
+  ['/piracicaba-sp/abertura-de-empresa-piracicaba',                               '0.7', 'monthly'],
+
+  // Osasco — polo industrial (contador + abertura)
+  ['/osasco-sp',                                                                  '0.7', 'monthly'],
+  ['/osasco-sp/contador-em-osasco',                                               '0.7', 'monthly'],
+  ['/osasco-sp/abertura-de-empresa-osasco',                                       '0.7', 'monthly'],
+
+  // ── SUL ───────────────────────────────────────────────────────────────────
+
+  // Curitiba — polo industrial grande (contador + abertura + holding + planejamento + recuperação)
+  ['/curitiba-pr',                                                                '0.7', 'monthly'],
+  ['/curitiba-pr/contador-em-curitiba',                                           '0.7', 'monthly'],
+  ['/curitiba-pr/abertura-de-empresa-curitiba',                                   '0.7', 'monthly'],
+  ['/curitiba-pr/holding-patrimonial-curitiba',                                   '0.7', 'monthly'],
+  ['/curitiba-pr/planejamento-tributario-curitiba',                               '0.7', 'monthly'],
+  ['/curitiba-pr/recuperacao-creditos-tributarios-curitiba',                      '0.7', 'monthly'],
+
+  // Joinville — polo industrial (contador + abertura + recuperação)
+  ['/joinville-sc',                                                               '0.7', 'monthly'],
+  ['/joinville-sc/contador-em-joinville',                                         '0.7', 'monthly'],
+  ['/joinville-sc/abertura-de-empresa-joinville',                                 '0.7', 'monthly'],
+  ['/joinville-sc/recuperacao-creditos-tributarios-joinville',                    '0.7', 'monthly'],
+
+  // Caxias do Sul — polo industrial (contador + abertura + recuperação)
+  ['/caxias-do-sul-rs',                                                           '0.7', 'monthly'],
+  ['/caxias-do-sul-rs/contador-em-caxias-do-sul',                                 '0.7', 'monthly'],
+  ['/caxias-do-sul-rs/abertura-de-empresa-caxias-do-sul',                         '0.7', 'monthly'],
+  ['/caxias-do-sul-rs/recuperacao-creditos-tributarios-caxias-do-sul',            '0.7', 'monthly'],
+
+  // Blumenau — polo regional (contador + abertura)
+  ['/blumenau-sc',                                                                '0.7', 'monthly'],
+  ['/blumenau-sc/contador-em-blumenau',                                           '0.7', 'monthly'],
+  ['/blumenau-sc/abertura-de-empresa-blumenau',                                   '0.7', 'monthly'],
+
+  // ── NORDESTE ──────────────────────────────────────────────────────────────
+
+  // Recife — polo regional grande (contador + abertura + recuperação)
+  ['/recife-pe',                                                                  '0.7', 'monthly'],
+  ['/recife-pe/contador-em-recife',                                               '0.7', 'monthly'],
+  ['/recife-pe/abertura-de-empresa-recife',                                       '0.7', 'monthly'],
+  ['/recife-pe/recuperacao-creditos-tributarios-recife',                          '0.7', 'monthly'],
+
+  // Fortaleza — polo regional grande (contador + abertura)
+  ['/fortaleza-ce',                                                               '0.7', 'monthly'],
+  ['/fortaleza-ce/contador-em-fortaleza',                                         '0.7', 'monthly'],
+  ['/fortaleza-ce/abertura-de-empresa-fortaleza',                                 '0.7', 'monthly'],
+
+  // Salvador — polo regional (contador + abertura)
+  ['/salvador-ba',                                                                '0.7', 'monthly'],
+  ['/salvador-ba/contador-em-salvador',                                           '0.7', 'monthly'],
+  ['/salvador-ba/abertura-de-empresa-salvador',                                   '0.7', 'monthly'],
+
+  // Feira de Santana — 1 LP
+  ['/feira-de-santana-ba',                                                        '0.7', 'monthly'],
+  ['/feira-de-santana-ba/contador-em-feira-de-santana',                           '0.7', 'monthly'],
+
+  // João Pessoa — 1 LP
+  ['/joao-pessoa-pb',                                                             '0.7', 'monthly'],
+  ['/joao-pessoa-pb/contador-em-joao-pessoa',                                     '0.7', 'monthly'],
+
+  // ── NORTE ─────────────────────────────────────────────────────────────────
+
+  // Manaus — polo industrial Zona Franca (contador + abertura)
+  ['/manaus-am',                                                                  '0.7', 'monthly'],
+  ['/manaus-am/contador-em-manaus',                                               '0.7', 'monthly'],
+  ['/manaus-am/abertura-de-empresa-manaus',                                       '0.7', 'monthly'],
+
+  // ── CENTRO-OESTE ──────────────────────────────────────────────────────────
+
+  // Goiânia — polo regional (contador + abertura)
+  ['/goiania-go',                                                                 '0.7', 'monthly'],
+  ['/goiania-go/contador-em-goiania',                                             '0.7', 'monthly'],
+  ['/goiania-go/abertura-de-empresa-goiania',                                     '0.7', 'monthly'],
+
+  // ── RIO DE JANEIRO ────────────────────────────────────────────────────────
+
+  // Rio de Janeiro — polo grande (contador + abertura + holding + planejamento)
+  ['/rio-de-janeiro-rj',                                                          '0.7', 'monthly'],
+  ['/rio-de-janeiro-rj/contador-em-rio-de-janeiro',                               '0.7', 'monthly'],
+  ['/rio-de-janeiro-rj/abertura-de-empresa-rio-de-janeiro',                       '0.7', 'monthly'],
+  ['/rio-de-janeiro-rj/holding-patrimonial-rio-de-janeiro',                       '0.7', 'monthly'],
+  ['/rio-de-janeiro-rj/planejamento-tributario-rio-de-janeiro',                   '0.7', 'monthly'],
 
   // Cluster Holding / Patrimônio
   ['/cib-cadastro-imovel-brasileiro',            '0.7', 'monthly'],
