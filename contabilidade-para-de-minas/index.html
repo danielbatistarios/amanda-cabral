@@ -564,13 +564,15 @@ nav.scrolled {
 
 /* === BREADCRUMB STRIP === */
 .lp-breadcrumb {
-  background: var(--z1);
-  border-bottom: 1px solid rgba(255,255,255,.06);
+  background: var(--paper2);
+  border-top: 1px solid var(--paper3);
+  border-bottom: 1px solid var(--paper3);
   padding: 12px 0;
 }
 .lp-breadcrumb ol {
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 6px;
   list-style: none;
   flex-wrap: wrap;
@@ -579,17 +581,17 @@ nav.scrolled {
   font-family: var(--sans);
 }
 .lp-breadcrumb ol li:not(:last-child)::after {
-  content: '/';
+  content: '›';
   margin-left: 6px;
-  color: rgba(255,255,255,.2);
+  color: var(--paper3);
 }
 .lp-breadcrumb ol a {
-  color: var(--accent2);
+  color: var(--accent);
   text-decoration: none;
   transition: color .2s;
 }
-.lp-breadcrumb ol a:hover { color: var(--paper); }
-.lp-breadcrumb ol li[aria-current] { color: rgba(255,255,255,.5); }
+.lp-breadcrumb ol a:hover { color: var(--ink); }
+.lp-breadcrumb ol li[aria-current] { color: var(--dim); }
 
 .hero-tag {
   display: inline-flex;
@@ -2119,17 +2121,6 @@ p, .hero-sub { text-wrap: pretty; }
   </div>
 </section>
 
-<!-- BREADCRUMB STRIP -->
-<nav class="lp-breadcrumb" aria-label="Navegação estrutural">
-  <div class="container">
-    <ol>
-      <li><a href="/">Amanda Cabral Contadora</a></li>
-      <li><a href="/cidades-atendidas/">Cidades Atendidas</a></li>
-      <li aria-current="page">Par&#225; de Minas</li>
-    </ol>
-  </div>
-</nav>
-
 <!-- 5. CREDENTIALS MARQUEE (--z0, thin strip) -->
 <div class="cred-strip">
   <div class="cred-track" id="credTrack">
@@ -2178,6 +2169,17 @@ p, .hero-sub { text-wrap: pretty; }
     </div>
   </div>
 </section>
+
+<!-- BREADCRUMB STRIP -->
+<nav class="lp-breadcrumb" aria-label="Navegação estrutural">
+  <div class="container">
+    <ol>
+      <li><a href="/">Amanda Cabral Contadora</a></li>
+      <li><a href="/cidades-atendidas/">Cidades Atendidas</a></li>
+      <li aria-current="page">Par&#225; de Minas</li>
+    </ol>
+  </div>
+</nav>
 
 <!-- 7. NUMBERS IMPACT (--z2, dark, SVG cross pattern) -->
 <section class="numbers-sec cross-pattern">
