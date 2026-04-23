@@ -92,6 +92,48 @@ PAGES = [
 ]
 
 
+LEGACY_VARS_BLOCK = """  /* legacy template vars */
+  --blue-900: #060E1A;
+  --blue-700: #0F2137;
+  --white: #FFFFFF;
+  --gold: #C9A84C;
+  --accent-gold: #C4A574;
+  --accent-light: #60A5FA;
+  --silver: #94A3B8;
+  --dark-hero: #0F1419;
+  --text: #1E293B;
+  --text-muted: #64748B;
+  --border: #E2E8F0;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-display: 'Instrument Serif', Georgia, serif;
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);"""
+
+
+def ensure_legacy_vars(c):
+    """Inject missing legacy CSS vars into :root so header CSS works on all pages."""
+    if '/* legacy template vars */' in c:
+        return c
+    root_start = c.find(':root {')
+    if root_start == -1:
+        root_start = c.find(':root{')
+    if root_start == -1:
+        return c
+    pos = c.find('{', root_start) + 1
+    depth = 1
+    while depth > 0 and pos < len(c):
+        nc = c.find('}', pos)
+        no = c.find('{', pos)
+        if nc == -1:
+            break
+        if no != -1 and no < nc:
+            depth += 1; pos = no + 1
+        else:
+            depth -= 1; pos = nc + 1
+    close_brace = pos - 1
+    return c[:close_brace] + '\n' + LEGACY_VARS_BLOCK + '\n' + c[close_brace:]
+
+
 def fix_image_paths(html, is_subdirectory):
     if is_subdirectory:
         html = html.replace('src="amanda-sobre.webp"', 'src="/amanda-sobre.webp"')
@@ -124,6 +166,7 @@ def process_page(rel):
     is_sub = rel.count('/') > 0
 
     mega_html = fix_image_paths(MEGA_HTML, is_sub)
+    c = ensure_legacy_vars(c)
 
     # 1. CSS: inject/replace header CSS in <style> block
     style_s = c.find('<style>')
