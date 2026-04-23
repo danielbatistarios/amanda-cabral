@@ -1308,6 +1308,9 @@
         .hero-tag-short { display: none; }
         .hero-tag-full  { display: inline; }
 
+        /* H1 line break: visível no desktop, oculto no mobile */
+        .h1-br { display: block; }
+
         /* Hero foto: desktop = coluna ao lado, mobile = após H1 */
         .hero-photo-mobile-only { display: none; }
         .hero-photo-desktop-only { display: block; }
@@ -1350,7 +1353,8 @@
           }
           .hero-photo-desktop-only { display: none !important; }
           .hero-content { text-align: center; }
-          .hero-content h1 { text-align: center; font-size: clamp(1.5rem, 6vw, 2rem) !important; line-height: 1.15; }
+          .hero-content h1 { text-align: center; font-size: clamp(1.45rem, 5.5vw, 1.9rem) !important; line-height: 1.2; }
+          .h1-br { display: none; }
           .hero-content .hero-sub { text-align: center; margin-top: 10px; }
           .hero-photo-mobile-only { margin-top: 10px !important; margin-bottom: 0 !important; }
           .hero-buttons { flex-direction: column; justify-content: center; align-items: center; }
@@ -2348,7 +2352,7 @@
                         <span class="hero-tag-full">Intelig&ecirc;ncia Tribut&aacute;ria &middot; H&aacute; 20 anos &middot; Par&aacute; de Minas, MG</span>
                         <span class="hero-tag-short">Intelig&ecirc;ncia Tribut&aacute;ria &middot; H&aacute; 20 anos</span>
                     </div>
-                    <h1>Amanda Cabral, <em><span style="color:var(--gold)">Contabilidade Estrat&eacute;gica</span><br><span style="color:var(--white)">&amp; Holding Patrimonial</span></em></h1>
+                    <h1>Amanda Cabral, <em><span style="color:var(--gold)">Contabilidade Estrat&eacute;gica</span><span class="h1-br"> </span><span style="color:var(--white)">&amp; Holding Patrimonial</span></em></h1>
                     <div class="hero-photo hero-photo-mobile-only">
                         <img src="amanda-hero.webp" alt="Amanda Cabral - Contadora Especialista em Tributa&ccedil;&atilde;o para Empresas" loading="eager" width="420" height="560">
                     </div>
