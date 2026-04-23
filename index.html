@@ -1301,14 +1301,56 @@
             .form-panel h4 { font-size: 1.1rem; }
         }
         /* ============================
-           MOBILE PATCH v2
+           MOBILE PATCH v3
         ============================ */
+
+        /* Hero tag: versão curta/longa */
+        .hero-tag-short { display: none; }
+        .hero-tag-full  { display: inline; }
+
+        /* Hero foto: desktop = coluna ao lado, mobile = após H1 */
+        .hero-photo-mobile-only { display: none; }
+        .hero-photo-desktop-only { display: block; }
+
+        /* Process nav: oculto no desktop */
+        .process-nav { display: none; }
+
         /* Container: padding lateral correto em mobile */
         @media (max-width: 768px) {
-          .container { padding: 0 24px; }
+          .container { padding: 0 20px !important; }
         }
         @media (max-width: 480px) {
-          .container { padding: 0 16px; }
+          .container { padding: 0 16px !important; }
+        }
+
+        /* Hero tag: versão curta no mobile */
+        @media (max-width: 600px) {
+          .hero-tag-full  { display: none; }
+          .hero-tag-short { display: inline; }
+          .hero-tag { font-size: 0.65rem !important; letter-spacing: 1px; padding: 6px 12px; }
+        }
+
+        /* Hero: foto abaixo do H1, botão único */
+        @media (max-width: 768px) {
+          .hero-layout { display: flex !important; flex-direction: column !important; }
+          .hero-photo-mobile-only {
+            display: block !important;
+            width: 100%;
+            max-width: 300px;
+            margin: 24px auto 0;
+            border-radius: 16px;
+            overflow: hidden;
+            aspect-ratio: 3/4;
+          }
+          .hero-photo-mobile-only img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+          }
+          .hero-photo-desktop-only { display: none !important; }
+          .hero-buttons { flex-direction: column; }
+          .hero-buttons .btn { width: 100%; justify-content: center; }
         }
 
         /* Hero: offset do header fixo */
@@ -1316,43 +1358,109 @@
           .hero { padding-top: 100px; }
         }
         @media (max-width: 600px) {
-          .hero { padding-top: 88px; padding-bottom: 48px; }
+          .hero { padding-top: 88px !important; padding-bottom: 48px; }
         }
 
-        /* Tags legíveis */
+        /* Pain cards: coluna única OBRIGATÓRIA */
         @media (max-width: 768px) {
-          .hero-tag { font-size: 0.65rem; letter-spacing: 1.5px; }
-          .logo-tag  { font-size: 0.6rem;  letter-spacing: 2px; }
-          .section-tag { font-size: 0.72rem; letter-spacing: 2px; }
-        }
-
-        /* Pain cards: coluna única sem apertamento */
-        @media (max-width: 768px) {
-          .pains-grid { grid-template-columns: 1fr; gap: 16px; }
-          .pain-card  { width: 100%; box-sizing: border-box; }
+          .pains-grid { grid-template-columns: 1fr !important; gap: 16px !important; }
+          .pain-card  { width: 100% !important; box-sizing: border-box !important; max-width: 100% !important; }
         }
 
         /* Services carousel: remover padding-right excessivo */
         @media (max-width: 768px) {
-          .services-track { padding: 16px 24px 16px 0; }
-          .service-card   { min-width: 280px; max-width: 85vw; }
-          .services-nav   { display: flex; justify-content: center; gap: 12px; margin-top: 20px; padding: 0 16px; }
+          .services-track { padding: 16px 16px 16px 0 !important; }
+          .service-card   { min-width: 80vw !important; max-width: 88vw !important; }
+          .services-nav   { display: flex !important; justify-content: center; gap: 12px; margin-top: 20px; padding: 0 16px; }
           .services-nav button { width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center; }
         }
         @media (max-width: 480px) {
-          .service-card { min-width: 260px; max-width: 88vw; }
+          .service-card { min-width: 84vw !important; max-width: 90vw !important; }
         }
 
-        /* About: foto vertical elegante + texto sem corte */
+        /* Process: carousel mobile com setas */
         @media (max-width: 768px) {
-          .about-layout  { grid-template-columns: 1fr; gap: 32px; }
-          .about-photo   { max-width: 100%; aspect-ratio: 4/5; max-height: 420px; margin: 0 auto; }
-          .about-photo img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+          .process-steps {
+            display: flex !important;
+            flex-direction: row !important;
+            overflow-x: auto !important;
+            scroll-snap-type: x mandatory !important;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+            gap: 16px !important;
+            padding-bottom: 16px;
+          }
+          .process-steps::-webkit-scrollbar { display: none; }
+          .process-steps::before { display: none !important; }
+          .step {
+            min-width: 75vw !important;
+            max-width: 80vw !important;
+            flex-shrink: 0;
+            scroll-snap-align: start;
+            border: 1px solid rgba(255,255,255,0.08);
+            border-radius: 16px;
+            padding: 28px 20px;
+            background: rgba(255,255,255,0.03);
+          }
+          .process-nav {
+            display: flex !important;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 20px;
+          }
+          .process-nav button {
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.15);
+            background: rgba(255,255,255,0.06);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+          }
+          .process-nav button svg { width: 20px; height: 20px; }
+          .process-nav button:active { background: rgba(255,255,255,0.12); }
+        }
+
+        /* About: foto DENTRO da seção, vertical */
+        @media (max-width: 768px) {
+          .about-layout { grid-template-columns: 1fr !important; gap: 32px !important; }
+          .about-photo {
+            max-width: 100% !important;
+            width: 100% !important;
+            aspect-ratio: 4/5 !important;
+            max-height: 400px !important;
+            margin: 0 auto !important;
+            border-radius: 16px !important;
+            overflow: hidden !important;
+          }
+          .about-photo img {
+            width: 100% !important;
+            height: 100% !important;
+            object-fit: cover !important;
+            object-position: top center !important;
+            border-radius: 16px !important;
+          }
           .about-content h2 { font-size: clamp(1.4rem, 5.5vw, 1.9rem); line-height: 1.2; }
           .about-tags { flex-wrap: wrap; gap: 8px; }
         }
         @media (max-width: 480px) {
-          .about-photo { aspect-ratio: 3/4; max-height: 360px; }
+          .about-photo { aspect-ratio: 3/4 !important; max-height: 340px !important; }
+        }
+
+        /* CTA: form abaixo do texto (já é 1fr, mas garantir ordem correta) */
+        @media (max-width: 768px) {
+          .cta-form-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+          .cta-form-info { order: 1; }
+          .cta-form-grid > div:last-child { order: 2; }
+        }
+
+        /* Tags legíveis */
+        @media (max-width: 600px) {
+          .section-tag { font-size: 0.7rem; letter-spacing: 2px; }
+          .logo-tag    { font-size: 0.6rem; letter-spacing: 2px; }
         }
 
         /* Hamburger touch target 44px */
@@ -1365,7 +1473,7 @@
         /* Form inputs: sem zoom iOS */
         @media (max-width: 768px) {
           .form-opt { min-height: 48px; display: flex; align-items: center; }
-          input[type="text"], input[type="email"], input[type="tel"], textarea, select { min-height: 48px; font-size: 16px; }
+          input[type="text"], input[type="email"], input[type="tel"], textarea, select { min-height: 48px; font-size: 16px !important; }
         }
 
         /* Bottom bar: safe area iOS */
@@ -2215,19 +2323,22 @@
                 <div class="hero-content">
                     <div class="hero-tag">
                         <span class="dot"></span>
-                        Intelig&ecirc;ncia Tribut&aacute;ria &middot; H&aacute; 20 anos &middot; Par&aacute; de Minas, MG
+                        <span class="hero-tag-full">Intelig&ecirc;ncia Tribut&aacute;ria &middot; H&aacute; 20 anos &middot; Par&aacute; de Minas, MG</span>
+                        <span class="hero-tag-short">Intelig&ecirc;ncia Tribut&aacute;ria &middot; H&aacute; 20 anos</span>
                     </div>
                     <h1>Amanda Cabral, <em><span style="color:var(--gold)">Contabilidade Estrat&eacute;gica</span><br><span style="color:var(--white)">&amp; Holding Patrimonial</span></em></h1>
                     <p class="hero-sub">Sua empresa paga imposto demais, e n&oacute;s sabemos exatamente quanto. Especialistas em tributa&ccedil;&atilde;o para empresas h&aacute; 20 anos. R$ 12 milh&otilde;es recuperados em cr&eacute;ditos que estavam invis&iacute;veis para outros contadores.</p>
+                    <div class="hero-photo hero-photo-mobile-only">
+                        <img src="amanda-hero.webp" alt="Amanda Cabral - Contadora Especialista em Tributa&ccedil;&atilde;o para Empresas" loading="eager" width="420" height="560">
+                    </div>
                     <div class="hero-buttons">
                         <a href="#contato" class="btn btn-primary">
                             Solicitar an&aacute;lise tribut&aacute;ria
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
                         </a>
-                        <a href="#contato" class="btn btn-ghost">Ver o que recuperamos</a>
                     </div>
                 </div>
-                <div class="hero-photo">
+                <div class="hero-photo hero-photo-desktop-only">
                     <img src="amanda-hero.webp" alt="Amanda Cabral - Contadora Especialista em Tributa&ccedil;&atilde;o para Empresas" loading="eager" width="420" height="560">
                 </div>
             </div>
@@ -2395,26 +2506,36 @@
                 <div class="section-tag" style="color:var(--accent)">Como funciona</div>
                 <h2 class="heading">Como funciona o planejamento tributário <em style="color:var(--gold)">com a Amanda Cabral</em></h2>
             </div>
-            <div class="process-steps stagger">
-                <div class="step">
-                    <div class="step-circle">01</div>
-                    <h3>Diagn&oacute;stico</h3>
-                    <p>An&aacute;lise gratuita de 30 minutos. Mapeamos cr&eacute;ditos, riscos e oportunidades.</p>
+            <div class="process-steps-wrapper">
+                <div class="process-steps stagger" id="processTrack">
+                    <div class="step">
+                        <div class="step-circle">01</div>
+                        <h3>Diagn&oacute;stico</h3>
+                        <p>An&aacute;lise gratuita de 30 minutos. Mapeamos cr&eacute;ditos, riscos e oportunidades.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-circle">02</div>
+                        <h3>Mapeamento</h3>
+                        <p>Radiografia completa: regime, obriga&ccedil;&otilde;es, cr&eacute;ditos acumulados, patrim&ocirc;nio.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-circle">03</div>
+                        <h3>Implementa&ccedil;&atilde;o</h3>
+                        <p>Recupera&ccedil;&atilde;o de cr&eacute;ditos, ajuste de regime, constitui&ccedil;&atilde;o de holding. Resultado mensur&aacute;vel.</p>
+                    </div>
+                    <div class="step">
+                        <div class="step-circle">04</div>
+                        <h3>Acompanhamento</h3>
+                        <p>Gest&atilde;o cont&iacute;nua com relat&oacute;rios claros, alertas proativos e acesso direto &agrave; Amanda.</p>
+                    </div>
                 </div>
-                <div class="step">
-                    <div class="step-circle">02</div>
-                    <h3>Mapeamento</h3>
-                    <p>Radiografia completa: regime, obriga&ccedil;&otilde;es, cr&eacute;ditos acumulados, patrim&ocirc;nio.</p>
-                </div>
-                <div class="step">
-                    <div class="step-circle">03</div>
-                    <h3>Implementa&ccedil;&atilde;o</h3>
-                    <p>Recupera&ccedil;&atilde;o de cr&eacute;ditos, ajuste de regime, constitui&ccedil;&atilde;o de holding. Resultado mensur&aacute;vel.</p>
-                </div>
-                <div class="step">
-                    <div class="step-circle">04</div>
-                    <h3>Acompanhamento</h3>
-                    <p>Gest&atilde;o cont&iacute;nua com relat&oacute;rios claros, alertas proativos e acesso direto &agrave; Amanda.</p>
+                <div class="process-nav" id="processNav">
+                    <button onclick="scrollProcess(-1)" aria-label="Anterior">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    </button>
+                    <button onclick="scrollProcess(1)" aria-label="Pr&oacute;ximo">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
                 </div>
             </div>
         </div>
@@ -3042,6 +3163,12 @@
         window.scrollServices = function(dir) {
             const track = document.getElementById('servicesTrack');
             track.scrollBy({ left: dir * 380, behavior: 'smooth' });
+        };
+
+        // ---- PROCESS SCROLL ----
+        window.scrollProcess = function(dir) {
+            const track = document.getElementById('processTrack');
+            if (track) track.scrollBy({ left: dir * (window.innerWidth * 0.8), behavior: 'smooth' });
         };
 
         // Hide scroll hint when user scrolls services
