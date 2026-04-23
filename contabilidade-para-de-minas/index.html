@@ -2186,22 +2186,22 @@ p, .hero-sub { text-wrap: pretty; }
   <div class="container">
     <div class="numbers-grid">
       <div class="numbers-item reveal d1">
-        <div class="numbers-val">30</div>
+        <div class="numbers-val" data-count="30" data-suffix="">30</div>
         <div class="numbers-label">anos nesta cidade</div>
       </div>
       <div class="numbers-sep"></div>
       <div class="numbers-item reveal d2">
-        <div class="numbers-val">127+</div>
+        <div class="numbers-val" data-count="127" data-suffix="+">127+</div>
         <div class="numbers-label">empresas atendidas</div>
       </div>
       <div class="numbers-sep"></div>
       <div class="numbers-item reveal d3">
-        <div class="numbers-val">R$ 12M</div>
+        <div class="numbers-val" data-count="12" data-prefix="R$ " data-suffix="M">R$ 12M</div>
         <div class="numbers-label">em cr&#233;ditos recuperados</div>
       </div>
       <div class="numbers-sep"></div>
       <div class="numbers-item reveal d4">
-        <div class="numbers-val accent-color">Sede</div>
+        <div class="numbers-val">Sede</div>
         <div class="numbers-label">Rua Major Fid&#233;lis, 244</div>
       </div>
     </div>
@@ -2955,6 +2955,29 @@ document.querySelectorAll('.reveal, .reveal-3d, .reveal-left, .reveal-right, .re
       if (e[0].isIntersecting) { el.classList.add('in'); this.unobserve(el); }
     }, {threshold: .1, rootMargin: '0px 0px -40px 0px'}).observe(el);
   }
+});
+
+/* === NUMBER COUNTER === */
+document.querySelectorAll('.numbers-val[data-count]').forEach(function(el) {
+  var counted = false;
+  new IntersectionObserver(function(entries) {
+    if (entries[0].isIntersecting && !counted) {
+      counted = true;
+      var target = +el.dataset.count;
+      var prefix = el.dataset.prefix || '';
+      var suffix = el.dataset.suffix || '';
+      var duration = 1400;
+      var start = performance.now();
+      function tick(now) {
+        var progress = Math.min((now - start) / duration, 1);
+        var ease = 1 - Math.pow(1 - progress, 3);
+        var val = Math.round(ease * target);
+        el.textContent = prefix + val + suffix;
+        if (progress < 1) requestAnimationFrame(tick);
+      }
+      requestAnimationFrame(tick);
+    }
+  }, {threshold: .5}).observe(el);
 });
 
 /* === FAQ ACCORDION === */
