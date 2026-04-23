@@ -1249,7 +1249,9 @@
 
             /* FAQ */
             .faq { padding: 64px 0 !important; }
-            .faq-q { font-size: 0.95rem; padding: 18px 0; }
+            .faq-q { font-size: 0.9rem; padding: 16px 0; }
+            .faq-h3 { font-size: 0.9rem !important; line-height: 1.4; }
+            .faq-list { padding: 0 2px; width: 100%; box-sizing: border-box; }
 
             /* Location */
             .location { padding: 64px 0 !important; }
@@ -1316,8 +1318,9 @@
         .hero-photo-mobile-only { display: none; }
         .hero-photo-desktop-only { display: block; }
 
-        /* Process nav: oculto no desktop */
+        /* Process/Testimonials nav: oculto no desktop */
         .process-nav { display: none; }
+        .testimonials-nav { display: none; }
 
         /* Container: padding lateral correto em mobile */
         @media (max-width: 768px) {
@@ -1434,24 +1437,49 @@
           }
           .process-nav {
             display: flex !important;
-            justify-content: center;
+            justify-content: flex-end;
             gap: 12px;
-            margin-top: 20px;
+            margin-top: 16px;
+            margin-bottom: 0;
           }
           .process-nav button {
-            width: 48px;
-            height: 48px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
-            border: 1px solid rgba(255,255,255,0.15);
-            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.03);
             color: var(--white);
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
+            transition: all 0.3s;
           }
-          .process-nav button svg { width: 20px; height: 20px; }
+          .process-nav button svg { width: 18px; height: 18px; }
+          .process-nav button:hover { border-color: var(--accent); background: rgba(59,130,246,0.1); }
           .process-nav button:active { background: rgba(255,255,255,0.12); }
+          /* Testimonials nav */
+          .testimonials-nav {
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            margin-top: 16px;
+          }
+          .testimonials-nav button {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255,255,255,0.03);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+          }
+          .testimonials-nav button svg { width: 18px; height: 18px; }
+          .testimonials-nav button:hover { border-color: var(--accent); background: rgba(59,130,246,0.1); }
         }
 
         /* About: foto DENTRO da seção, vertical */
@@ -2564,6 +2592,14 @@
             <div class="process-header reveal">
                 <div class="section-tag" style="color:var(--accent)">Como funciona</div>
                 <h2 class="heading">Como funciona o planejamento tributário <em style="color:var(--gold)">com a Amanda Cabral</em></h2>
+                <div class="process-nav" id="processNav">
+                    <button onclick="scrollProcess(-1)" aria-label="Anterior">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    </button>
+                    <button onclick="scrollProcess(1)" aria-label="Pr&oacute;ximo">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
             </div>
             <div class="process-steps-wrapper">
                 <div class="process-steps stagger" id="processTrack">
@@ -2588,14 +2624,6 @@
                         <p>Gest&atilde;o cont&iacute;nua com relat&oacute;rios claros, alertas proativos e acesso direto &agrave; Amanda.</p>
                     </div>
                 </div>
-                <div class="process-nav" id="processNav">
-                    <button onclick="scrollProcess(-1)" aria-label="Anterior">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-                    </button>
-                    <button onclick="scrollProcess(1)" aria-label="Pr&oacute;ximo">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                    </button>
-                </div>
             </div>
         </div>
     </section>
@@ -2607,8 +2635,16 @@
             <div class="testimonials-header reveal">
                 <div class="section-tag" style="color:var(--accent)">Depoimentos</div>
                 <h2 class="heading">O que muda na sua empresa com um <em style="color:var(--gold)">planejamento tributário bem feito</em></h2>
+                <div class="testimonials-nav">
+                    <button onclick="scrollTestimonials(-1)" aria-label="Anterior">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    </button>
+                    <button onclick="scrollTestimonials(1)" aria-label="Pr&oacute;ximo">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
+                </div>
             </div>
-            <div class="testimonials-grid stagger">
+            <div class="testimonials-grid stagger" id="testimonialsTrack">
                 <div class="test-card">
                     <div class="test-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
                     <blockquote>&ldquo;A equipe da Amanda Cabral recuperou R$ 340 mil em cr&eacute;ditos de ICMS que nosso antigo contador nunca mencionou. Em 20 anos de ind&uacute;stria, nunca tive um escrit&oacute;rio que entendesse t&atilde;o bem nosso setor.&rdquo;</blockquote>
@@ -3228,6 +3264,12 @@
         window.scrollProcess = function(dir) {
             const track = document.getElementById('processTrack');
             if (track) track.scrollBy({ left: dir * (window.innerWidth * 0.8), behavior: 'smooth' });
+        };
+
+        // ---- TESTIMONIALS SCROLL ----
+        window.scrollTestimonials = function(dir) {
+            const track = document.getElementById('testimonialsTrack');
+            if (track) track.scrollBy({ left: dir * 320, behavior: 'smooth' });
         };
 
         // Hide scroll hint when user scrolls services
