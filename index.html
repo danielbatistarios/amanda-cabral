@@ -1487,10 +1487,23 @@
           input[type="text"], input[type="email"], input[type="tel"], textarea, select { min-height: 48px; font-size: 16px !important; }
         }
 
-        /* Bottom bar: safe area iOS */
+        /* Bottom bar: safe area iOS + ocultar item extra no mobile */
         @media (max-width: 600px) {
           .bottom-bar { padding-bottom: env(safe-area-inset-bottom, 0px); }
           body { padding-bottom: 80px; }
+          /* Ocultar "R$ 12M" e separador anterior para não sobrecarregar a faixa */
+          .bb-12m, .bb-sep-12m { display: none !important; }
+        }
+
+        /* Form opts: coluna única e toque fácil no mobile */
+        @media (max-width: 600px) {
+          .cta-opts { grid-template-columns: 1fr !important; gap: 8px !important; }
+          .cta-opt {
+            padding: 14px 16px !important;
+            font-size: 0.95rem !important;
+            min-height: 52px !important;
+            border-radius: 12px !important;
+          }
         }
 
         /* Hover colado em touch */
@@ -2875,8 +2888,8 @@
             <span class="bb-info"><span class="bb-stars">★★★★★</span> Nota 4.9</span>
             <div class="bb-sep"></div>
             <span class="bb-info">120+ empresas atendidas</span>
-            <div class="bb-sep"></div>
-            <span class="bb-info">R$ 12M recuperados em créditos</span>
+            <div class="bb-sep bb-sep-12m"></div>
+            <span class="bb-info bb-12m">R$ 12M recuperados em créditos</span>
             <div class="bb-sep"></div>
             <a href="#contato" class="bb-cta">
                 Diagnóstico Gratuito
