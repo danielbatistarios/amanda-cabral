@@ -564,10 +564,10 @@ nav.scrolled {
 
 /* === BREADCRUMB STRIP === */
 .lp-breadcrumb {
-  background: #CBD5E1;
-  border-top: 1px solid #94A3B8;
-  border-bottom: 1px solid #94A3B8;
-  padding: 12px 0;
+  background: #1E293B;
+  border-top: 1px solid #334155;
+  border-bottom: 1px solid #334155;
+  padding: 10px 0;
 }
 .lp-breadcrumb ol {
   display: flex;
@@ -576,22 +576,25 @@ nav.scrolled {
   gap: 6px;
   list-style: none;
   flex-wrap: wrap;
-  font-size: 12px;
-  color: var(--dim);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: #94A3B8;
   font-family: var(--sans);
 }
 .lp-breadcrumb ol li:not(:last-child)::after {
   content: '›';
   margin-left: 6px;
-  color: #94A3B8;
+  color: #475569;
 }
 .lp-breadcrumb ol a {
-  color: #3B82F6;
+  color: #94A3B8;
   text-decoration: none;
   transition: color .2s;
 }
-.lp-breadcrumb ol a:hover { color: #060E1A; }
-.lp-breadcrumb ol li[aria-current] { color: #475569; }
+.lp-breadcrumb ol a:hover { color: #fff; }
+.lp-breadcrumb ol li[aria-current] { color: var(--dourado); }
 
 .hero-tag {
   display: inline-flex;
@@ -2672,8 +2675,8 @@ p, .hero-sub { text-wrap: pretty; }
 <!-- 17. CONTENT HUB (--paper, white, dot grid) -->
 <section class="hub-sec dot-grid">
   <div class="container">
-    <div class="sec-label dk reveal" style="text-align:center;">Explore Mais</div>
-    <h2 class="sec-h dk reveal" style="text-align:center;margin-bottom:0;">Conte&#250;do para empres&#225;rios de Par&#225; de Minas</h2>
+    <div class="sec-label dk reveal">Explore Mais</div>
+    <h2 class="sec-h dk reveal" style="margin-bottom:0;">Conte&#250;do para empres&#225;rios de Par&#225; de Minas</h2>
     <div class="hub-grid">
       <a href="blog/" class="hub-card reveal d1">
         <div class="hub-title">Blog</div>
