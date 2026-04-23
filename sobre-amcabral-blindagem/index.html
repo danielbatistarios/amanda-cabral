@@ -1234,9 +1234,9 @@ body { padding-top: 60px; }
 
 /* Stats Bar */
 .stats-bar {
-    background: var(--z1, #0A1628);
-    border-top: 1px solid rgba(255,255,255,.06);
-    border-bottom: 1px solid rgba(255,255,255,.06);
+    background: #fff;
+    border-top: 1px solid #E2E8F0;
+    border-bottom: 1px solid #E2E8F0;
     padding: 40px clamp(24px, 5vw, 80px);
 }
 .stats-bar-inner {
@@ -1256,7 +1256,7 @@ body { padding-top: 60px; }
 }
 .stat-item-l {
     font-size: 13px;
-    color: var(--dim, #94A3B8);
+    color: #64748B;
     line-height: 1.4;
 }
 
@@ -1317,36 +1317,41 @@ body { padding-top: 60px; }
 
 /* Metodologia */
 .metodologia {
-    background: var(--z1, #0A1628);
+    background: #fff;
     padding: clamp(64px, 10vw, 120px) clamp(24px, 5vw, 80px);
 }
 .metodologia-inner { max-width: 1200px; margin: 0 auto; }
+.metodologia .section-label { color: var(--gold, #C9A84C); }
+.metodologia .section-title { color: #0F172A; }
+.metodologia .section-title em { color: var(--gold, #C9A84C); }
+.metodologia .section-lead { color: #475569; }
 .metodologia-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
 }
 .metodo-card {
-    background: var(--z2, #0F2137);
-    border: 1px solid rgba(255,255,255,.07);
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
     border-radius: 16px;
     padding: 32px;
-    transition: border-color .25s, transform .25s;
+    transition: border-color .25s, transform .25s, box-shadow .25s;
 }
 .metodo-card:hover {
-    border-color: rgba(201,168,76,.35);
+    border-color: rgba(201,168,76,.5);
     transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0,0,0,.06);
 }
 .metodo-icon { font-size: 2rem; margin-bottom: 16px; }
 .metodo-card h3 {
     font-size: 1.1rem;
     font-weight: 600;
-    color: #fff;
+    color: #0F172A;
     margin-bottom: 10px;
 }
 .metodo-card p {
     font-size: 0.95rem;
-    color: var(--dim, #94A3B8);
+    color: #475569;
     line-height: 1.7;
 }
 
@@ -1390,10 +1395,13 @@ body { padding-top: 60px; }
 
 /* Valores */
 .valores {
-    background: var(--z1, #0A1628);
+    background: #fff;
     padding: clamp(64px, 10vw, 120px) clamp(24px, 5vw, 80px);
 }
 .valores-inner { max-width: 1200px; margin: 0 auto; }
+.valores .section-label { color: var(--gold, #C9A84C); }
+.valores .section-title { color: #0F172A; }
+.valores .section-title em { color: var(--gold, #C9A84C); }
 .valores-list {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
@@ -1401,19 +1409,22 @@ body { padding-top: 60px; }
     margin-top: 16px;
 }
 .valor-card {
-    background: var(--z2, #0F2137);
-    border: 1px solid rgba(255,255,255,.07);
+    background: #F8FAFC;
+    border: 1px solid #E2E8F0;
+    border-top: 3px solid var(--gold, #C9A84C);
     border-radius: 16px;
     padding: 32px;
+    transition: box-shadow .25s, transform .25s;
 }
+.valor-card:hover { box-shadow: 0 8px 24px rgba(0,0,0,.07); transform: translateY(-2px); }
 .valor-icon { font-size: 2rem; margin-bottom: 16px; }
 .valor-card h3 {
     font-size: 1.05rem;
     font-weight: 600;
-    color: #fff;
+    color: #0F172A;
     margin-bottom: 10px;
 }
-.valor-card p { font-size: 0.95rem; color: var(--dim, #94A3B8); line-height: 1.7; }
+.valor-card p { font-size: 0.95rem; color: #475569; line-height: 1.7; }
 
 /* Depoimento */
 .depoimento-section {
