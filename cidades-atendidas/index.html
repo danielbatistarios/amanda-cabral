@@ -280,52 +280,6 @@ img { display: block; max-width: 100%; }
 }
 .cross-pattern > * { position: relative; z-index: 1; }
 
-/* === BAR (announcement) === */
-#bar {
-  background: #050B15;
-  border-bottom: 1px solid #0F2137;
-  padding: 9px 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 16px;
-  font-size: 13px;
-  color: #94A3B8;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: var(--zi-bar);
-}
-.bar-pill {
-  background: transparent;
-  border: 1px solid #0F2137;
-  color: #3B82F6;
-  font-size: 13px;
-  font-weight: 700;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  padding: 2px 10px;
-  border-radius: 99px;
-}
-#bar a {
-  color: #3B82F6;
-  border-bottom: 1px solid rgba(59, 130, 246, .25);
-  transition: color .2s;
-}
-#bar a:hover { color: #93BBFD; }
-.bar-x {
-  position: absolute;
-  right: 40px;
-  background: none;
-  border: none;
-  color: #4a5568;
-  font-size: 18px;
-  cursor: pointer;
-  transition: color .2s;
-}
-.bar-x:hover { color: #888; }
-
 /* ============================
            HEADER / MEGA-MENU — v2 clean
         ============================ */
@@ -1666,16 +1620,6 @@ img { display: block; max-width: 100%; }
   <div class="loader-phrase" id="loaderPhrase"></div>
   <div class="loader-line" id="loaderLine"></div>
   <div class="loader-brand" id="loaderBrand">AM Cabral</div>
-</div><div class="mob-overlay" id="mobOverlay"></div>
-<div class="mob-menu" id="mobMenu">
-  <a href="/">Home</a>
-  <a href="/nossos-servicos/">Servi&#231;os</a>
-  <a href="/reforma-tributaria-industria/">Reforma Tribut&#225;ria</a>
-  <a href="/blog/">Blog</a>
-  <a href="/sobre-amcabral-blindagem/">Sobre</a>
-  <a href="/casos-de-sucesso/">Casos de Sucesso</a>
-  <a href="/fale-com-especialista/">Contato</a>
-  <a href="/fale-com-especialista/" class="mob-menu-cta">Diagn&#243;stico Gratuito</a>
 </div>
 
 <!-- 4. HERO (--z2, noise, glows) -->
@@ -2132,43 +2076,10 @@ img { display: block; max-width: 100%; }
   }, 200 + words.length * 200 + 800);
 })();
 
-/* === NAV SCROLL + BAR === */
-var navEl = document.getElementById('nav');
-function updateNavTop() {
-  var b = document.getElementById('bar');
-  if (navEl) navEl.style.top = b ? b.offsetHeight + 'px' : '0px';
-}
-updateNavTop();
 var bottomBar = document.getElementById('bottomBar');
 window.addEventListener('scroll', function() {
-  if (navEl) navEl.classList.toggle('scrolled', window.scrollY > 80);
   if (bottomBar) bottomBar.classList.toggle('visible', window.scrollY > window.innerHeight * 0.5);
 }, {passive: true});
-
-/* === MOBILE MENU === */
-var hambBtn = document.getElementById('hambBtn');
-var mobMenu = document.getElementById('mobMenu');
-var mobOverlay = document.getElementById('mobOverlay');
-if (hambBtn && mobMenu && mobOverlay) {
-  hambBtn.addEventListener('click', function() {
-    var isOpen = mobMenu.classList.contains('open');
-    mobMenu.classList.toggle('open');
-    mobOverlay.classList.toggle('open');
-    document.body.style.overflow = isOpen ? '' : 'hidden';
-  });
-  mobOverlay.addEventListener('click', function() {
-    mobMenu.classList.remove('open');
-    mobOverlay.classList.remove('open');
-    document.body.style.overflow = '';
-  });
-  mobMenu.querySelectorAll('a').forEach(function(a) {
-    a.addEventListener('click', function() {
-      mobMenu.classList.remove('open');
-      mobOverlay.classList.remove('open');
-      document.body.style.overflow = '';
-    });
-  });
-}
 
 /* === REVEAL ON SCROLL === */
 document.querySelectorAll('.reveal, .reveal-3d, .reveal-left, .reveal-right, .reveal-scale, .reveal-blur').forEach(function(el) {
