@@ -1,0 +1,195 @@
+/* ================================================
+   MOBILE PATCH — index.html (Amanda Cabral)
+   Gerado por /mobile-review em 2026-04-23
+   Score antes: ~52/100 | Estimativa após: ~82/100
+   P0: 6 fixes | P1: 9 fixes
+   ================================================ */
+
+/* ── P0.1: Container usa 80px padding — esmagado em mobile ── */
+/* Já tem 768px fix, mas falta 480px e abaixo */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 20px;
+  }
+}
+
+/* ── P0.2: Hero padding-top insuficiente — header fixo de 60px cobre conteúdo ── */
+/* #hdr tem height: 60px. Hero precisa de pelo menos 80px de offset */
+@media (max-width: 900px) {
+  .hero {
+    padding-top: 100px;
+  }
+}
+@media (max-width: 600px) {
+  .hero {
+    padding-top: 88px;
+    padding-bottom: 48px;
+  }
+}
+
+/* ── P0.3: .hero-tag font-size 0.55rem (8.8px) — abaixo do mínimo legível ── */
+@media (max-width: 768px) {
+  .hero-tag {
+    font-size: 0.65rem;
+    letter-spacing: 1.5px;
+  }
+}
+
+/* ── P0.4: Services track — 80px padding-right corta conteúdo em 320px ── */
+@media (max-width: 480px) {
+  .services-track {
+    padding: 16px 60px 16px 20px;
+  }
+  .service-card {
+    min-width: 260px;
+    max-width: 260px;
+  }
+}
+
+/* ── P0.5: .logo-tag font-size 0.55rem (8.8px) ilegível ── */
+@media (max-width: 768px) {
+  .logo-tag {
+    font-size: 0.6rem;
+    letter-spacing: 2px;
+  }
+}
+
+/* ── P0.6: Bottom bar cobre conteúdo sem safe area em iOS ── */
+@media (max-width: 600px) {
+  .bottom-bar {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  /* Garante que o último conteúdo não fique coberto pela bottom bar */
+  body {
+    padding-bottom: 80px;
+  }
+}
+
+/* ── P1.1: #hdr-hamburger touch target 8px padding — muito pequeno ── */
+/* O hambúrguer atual tem apenas padding: 8px, abaixo dos 44px mínimos */
+@media (max-width: 900px) {
+  #hdr-hamburger {
+    padding: 12px 10px;
+    min-width: 44px;
+    min-height: 44px;
+    justify-content: center;
+    align-items: center;
+  }
+}
+
+/* ── P1.2: #hdr-mob-close touch target pequeno (font-size 28px, sem padding) ── */
+@media (max-width: 900px) {
+  #hdr-mob-close {
+    min-width: 44px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* ── P1.3: Links do menu mobile com padding: 14px 0 — área de toque ok vertical mas zero horizontal ── */
+@media (max-width: 900px) {
+  #hdr-mob a {
+    padding: 14px 8px;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+/* ── P1.4: .section-tag 0.68rem (10.9px) — abaixo do mínimo ── */
+@media (max-width: 600px) {
+  .section-tag {
+    font-size: 0.72rem;
+    letter-spacing: 2px;
+  }
+}
+
+/* ── P1.5: .footer-proof-label font-size 0.75rem (12px) — ok, mas em 320px pode comprimir ── */
+@media (max-width: 375px) {
+  .footer-proof-label {
+    font-size: 0.7rem;
+  }
+  .footer-proof-value {
+    font-size: 1.3rem;
+  }
+  .footer-proof {
+    gap: 12px;
+  }
+}
+
+/* ── P1.6: Hover states sem @media(hover:hover) — colam em touch ── */
+@media (hover: none) {
+  .hdr-btn:hover,
+  .nav a:hover,
+  .hdr-mega-link:hover strong,
+  .hdr-mega-link:hover span,
+  .footer-col a:hover,
+  a.footer-nap-row:hover {
+    color: inherit;
+  }
+}
+
+/* ── P1.7: Hero layout em 480px — foto grande demais, texto espremido ── */
+@media (max-width: 480px) {
+  .hero-layout {
+    gap: 32px;
+  }
+  .hero-photo {
+    max-width: 280px;
+    max-height: 340px;
+  }
+  .hero-metrics {
+    gap: 8px;
+  }
+}
+
+/* ── P1.8: .stats-grid itens com padding 16px 8px muito pequeno em 320px ── */
+@media (max-width: 375px) {
+  .stat-item {
+    padding: 12px 6px;
+  }
+  .stat-number {
+    font-size: clamp(1.6rem, 11vw, 2rem);
+  }
+  .stat-label {
+    font-size: 0.62rem;
+  }
+}
+
+/* ── P1.9: Form inputs sem altura mínima de 48px ── */
+@media (max-width: 768px) {
+  .form-opt {
+    min-height: 48px;
+    display: flex;
+    align-items: center;
+  }
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  textarea,
+  select {
+    min-height: 48px;
+    font-size: 16px; /* evita zoom automático no iOS */
+  }
+}
+
+/* ── P2: prefers-reduced-motion ── */
+@media (prefers-reduced-motion: reduce) {
+  .hero-tag .dot::after,
+  .loader-word,
+  .loader-line::after,
+  .marquee-track,
+  .nav-cta::after {
+    animation: none;
+  }
+  * {
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ── P2: scroll-padding-top para âncoras não ficarem sob o header ── */
+html {
+  scroll-padding-top: 72px;
+}
