@@ -331,24 +331,14 @@
             max-width: 220px;
             margin-bottom: 20px;
         }
-        .footer-social { display: flex; gap: 24px; margin-bottom: 28px; }
-        .footer-social a {
-            font-size: 0.8125rem;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            text-transform: uppercase;
-            color: #2d3748;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-        .footer-social a:hover { color: var(--white); }
+
         /* Fale Conosco */
         .footer-contact-title {
             font-size: 0.8125rem;
             font-weight: 700;
             letter-spacing: 0.18em;
             text-transform: uppercase;
-            color: #4a5568;
+            color: var(--gold);
             margin-bottom: 14px;
         }
         .footer-nap { display: flex; flex-direction: column; gap: 10px; font-style: normal; }
@@ -370,7 +360,7 @@
             font-weight: 700;
             letter-spacing: 0.18em;
             text-transform: uppercase;
-            color: #4a5568;
+            color: var(--gold);
             margin-bottom: 16px;
         }
 
@@ -431,12 +421,24 @@
 
         .footer-legal-links a:hover { color: var(--white); }
 
+        .footer-social-icons {
+            display: flex;
+            gap: 16px;
+            align-items: center;
+        }
+        .footer-social-icons a {
+            color: #4a5568;
+            transition: color 0.2s;
+            display: flex;
+            align-items: center;
+        }
+        .footer-social-icons a:hover { color: var(--gold); }
+
         @media (max-width: 1024px) {
             .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
         }
 
-        /* Social mobile — escondido no desktop */
-        .footer-social-mobile { display: none; }
+
 
         @media (max-width: 600px) {
             .site-footer { padding: 48px 0 0; }
@@ -444,25 +446,6 @@
             .footer-proof { gap: 20px; }
             .footer-proof-divider { display: none; }
             .footer-grid { grid-template-columns: 1fr; gap: 32px; }
-            /* no mobile: esconde o social dentro da brand-col */
-            .footer-brand-col .footer-social { display: none; }
-            /* mostra o social mobile após as colunas de links */
-            .footer-social-mobile {
-                display: flex;
-                gap: 24px;
-                padding-top: 8px;
-            }
-            .footer-social-mobile a {
-                font-size: 0.8125rem;
-                font-weight: 600;
-                letter-spacing: 0.1em;
-                text-transform: uppercase;
-                color: #2d3748;
-                text-decoration: none;
-                transition: color 0.2s;
-            }
-            .footer-social-mobile a:hover { color: var(--white); }
-
             .footer-legal {
                 flex-direction: column;
                 gap: 12px;
@@ -1337,12 +1320,12 @@
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": ["AccountingService", "LocalBusiness"],
+      "@type": "AccountingService",
       "@id": "https://amcabralblindagem.com.br/#organization",
       "name": "Amanda Cabral Soluções Empresariais",
       "legalName": "AC Contabilidade e Consultoria LTDA",
       "taxID": "34733620000151",
-      "foundingDate": "2019-09-02",
+      "foundingDate": "1996-01-01",
       "url": "https://amcabralblindagem.com.br/",
       "logo": {
         "@type": "ImageObject",
@@ -1383,8 +1366,8 @@
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": -19.9127,
-        "longitude": -43.9386
+        "latitude": -19.8607,
+        "longitude": -44.6126
       },
       "areaServed": [
         {
@@ -1444,7 +1427,8 @@
       ],
       "sameAs": [
         "https://www.linkedin.com/in/amanda-cabral-de-oliveira-82183a179/",
-        "https://www.instagram.com/amandacabral28/"
+        "https://www.instagram.com/amandacabral28/",
+        "https://pt.wikipedia.org/wiki/Contabilidade"
       ],
       "knowsAbout": [
         {
@@ -1459,21 +1443,21 @@
         },
         {
           "@type": "DefinedTerm",
-          "@id": "https://www.wikidata.org/wiki/Q626741",
-          "name": "Compliance Fiscal"
-        },
-        {
-          "@type": "DefinedTerm",
           "@id": "https://www.wikidata.org/wiki/Q219577",
           "name": "Holding Patrimonial"
         },
         {
           "@type": "DefinedTerm",
-          "name": "Recuperação de Créditos ICMS e IPI"
+          "@id": "https://www.wikidata.org/wiki/Q326653",
+          "name": "Contador"
         },
         {
           "@type": "DefinedTerm",
-          "name": "Reforma Tributária CBS IBS"
+          "name": "Recuperação de Créditos IPI/PIS/COFINS"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "Reforma Tributária IBS/CBS"
         }
       ],
       "priceRange": "A partir de R$ 997",
@@ -1489,7 +1473,10 @@
       "description": "Especialista em planejamento tributário e recuperação de créditos ICMS e IPI para indústrias em Minas Gerais. Mais de 20 anos de experiência exclusiva em empresas, R$ 12 milhões recuperados em créditos tributários, 120 empresas atendidas.",
       "slogan": "Contabilidade de alta performance para empresas que competem para vencer.",
       "hasMap": "https://maps.google.com/?q=Amanda+Cabral+Contadora+Para+de+Minas+MG",
-      "additionalType": "https://www.wikidata.org/wiki/Q4116214",
+      "additionalType": [
+        "https://www.wikidata.org/wiki/Q4116214",
+        "https://www.wikidata.org/wiki/Q2029911"
+      ],
       "isicV4": "6920",
       "memberOf": {"@id": "https://amcabralblindagem.com.br/#crc-mg"},
       "numberOfEmployees": {
@@ -1501,8 +1488,8 @@
         "@type": "GeoCircle",
         "geoMidpoint": {
           "@type": "GeoCoordinates",
-          "latitude": -19.9127,
-          "longitude": -43.9386
+          "latitude": -19.8607,
+          "longitude": -44.6126
         },
         "geoRadius": "200000"
       },
@@ -1517,7 +1504,7 @@
           "contactType": "sales",
           "telephone": "+5537999967558",
           "email": "contato@amcabralblindagem.com.br",
-          "availableLanguage": "Portuguese",
+          "availableLanguage": {"@language": "pt-BR"},
           "areaServed": "MG",
           "hoursAvailable": {
             "@type": "OpeningHoursSpecification",
@@ -1531,7 +1518,7 @@
           "contactType": "customer service",
           "telephone": "+5537999967558",
           "url": "https://wa.me/5537999967558",
-          "availableLanguage": "Portuguese",
+          "availableLanguage": {"@language": "pt-BR"},
           "areaServed": "MG"
         },
         {
@@ -1539,7 +1526,7 @@
           "contactType": "billing",
           "telephone": "+5537999967558",
           "email": "contato@amcabralblindagem.com.br",
-          "availableLanguage": "Portuguese",
+          "availableLanguage": {"@language": "pt-BR"},
           "areaServed": "MG",
           "hoursAvailable": {
             "@type": "OpeningHoursSpecification",
@@ -1550,7 +1537,7 @@
         }
       ],
       "member": {"@id": "https://amcabralblindagem.com.br/#person-amanda-cabral"},
-      "availableLanguage": "Portuguese",
+      "availableLanguage": {"@language": "pt-BR"},
       "hasOfferCatalog": {
         "@type": "OfferCatalog",
         "name": "Serviços de Contabilidade e Planejamento Tributário",
@@ -1606,6 +1593,7 @@
               "name": "Gestão de Obrigações Fiscais e Contábeis Estratégicas",
               "serviceType": "Compliance Fiscal",
               "provider": {"@id": "https://amcabralblindagem.com.br/#organization"},
+              "sameAs": "https://www.wikidata.org/wiki/Q4116214",
               "url": "https://amcabralblindagem.com.br/nossos-servicos/gestao-contabil/",
               "aggregateRating": {
                 "@type": "AggregateRating",
@@ -1667,14 +1655,6 @@
       "name": "Amanda Cabral | Contadora Tributária com 20 Anos de Experiência",
       "publisher": {"@id": "https://amcabralblindagem.com.br/#organization"},
       "inLanguage": "pt-BR",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": {
-          "@type": "EntryPoint",
-          "urlTemplate": "https://amcabralblindagem.com.br/?s={search_term_string}"
-        },
-        "query-input": "required name=search_term_string"
-      },
       "hasPart": {"@id": "https://amcabralblindagem.com.br/#blog"},
       "significantLink": [
         "https://amcabralblindagem.com.br/nossos-servicos/planejamento-tributario/",
@@ -1690,6 +1670,14 @@
       "name": "Amanda Cabral | Contadora Tributária com 20 Anos de Experiência",
       "description": "Especialista em planejamento tributário e recuperação de créditos para empresas em MG. R$ 12M recuperados, 120 empresas atendidas. Diagnóstico gratuito.",
       "mainEntity": {"@id": "https://amcabralblindagem.com.br/#organization"},
+      "about": [
+        {"@id": "https://amcabralblindagem.com.br/#organization"},
+        {"@type": "Thing", "name": "Contabilidade", "sameAs": "https://pt.wikipedia.org/wiki/Contabilidade"},
+        {"@type": "Place", "name": "Pará de Minas", "sameAs": [
+          "https://pt.wikipedia.org/wiki/Par%C3%A1_de_Minas",
+          "https://www.wikidata.org/wiki/Q1749821"
+        ]}
+      ],
       "publisher": {"@id": "https://amcabralblindagem.com.br/#organization"},
       "isPartOf": {"@id": "https://amcabralblindagem.com.br/#website"},
       "breadcrumb": {"@id": "https://amcabralblindagem.com.br/#breadcrumb"},
@@ -1706,8 +1694,7 @@
         "cssSelector": ["h1", ".hero-sub", "h2", ".faq-a-inner", ".service-card h3"]
       },
       "hasPart": [
-        {"@id": "https://amcabralblindagem.com.br/#faqpage"},
-        {"@id": "https://amcabralblindagem.com.br/#howto-processo"}
+        {"@id": "https://amcabralblindagem.com.br/#faqpage"}
       ],
       "inLanguage": "pt-BR",
       "license": "https://creativecommons.org/licenses/by/4.0/"
@@ -1772,7 +1759,13 @@
         },
         {
           "@type": "DefinedTerm",
-          "name": "ICMS e IPI"
+          "@id": "https://www.wikidata.org/wiki/Q219577",
+          "name": "Holding Patrimonial e Familiar"
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://www.wikidata.org/wiki/Q326653",
+          "name": "Contador"
         },
         {
           "@type": "DefinedTerm",
@@ -1780,11 +1773,7 @@
         },
         {
           "@type": "DefinedTerm",
-          "name": "Holding Patrimonial e Familiar"
-        },
-        {
-          "@type": "DefinedTerm",
-          "name": "Reforma Tributária 2026"
+          "name": "Reforma Tributária IBS/CBS"
         }
       ],
       "description": "Amanda Cabral de Oliveira é contadora tributária com 20 anos de experiência exclusiva em empresas. Sócia-proprietária da AC Contabilidade e Consultoria em Pará de Minas, MG. Especialista em planejamento tributário, recuperação de créditos ICMS/IPI e estruturação de holdings patrimoniais para PMEs em Minas Gerais. Já recuperou mais de R$ 12 milhões em créditos tributários para 120 empresas atendidas."
@@ -1798,40 +1787,6 @@
           "position": 1,
           "name": "Início",
           "item": "https://amcabralblindagem.com.br/"
-        }
-      ]
-    },
-    {
-      "@type": "HowTo",
-      "@id": "https://amcabralblindagem.com.br/#howto-processo",
-      "name": "Como funciona o planejamento tributário com a Amanda Cabral",
-      "description": "Processo em 4 etapas para reduzir a carga tributária da sua empresa de forma legal e segura.",
-      "totalTime": "P90D",
-      "provider": {"@id": "https://amcabralblindagem.com.br/#organization"},
-      "step": [
-        {
-          "@type": "HowToStep",
-          "position": 1,
-          "name": "Diagnóstico Tributário Gratuito",
-          "text": "Análise gratuita de 30 minutos. Mapeamos créditos, riscos e oportunidades fiscais da sua empresa."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 2,
-          "name": "Mapeamento Completo",
-          "text": "Radiografia completa do regime tributário, obrigações acessórias, créditos acumulados e patrimônio."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 3,
-          "name": "Implementação do Planejamento",
-          "text": "Execução das estratégias tributárias definidas: recuperação de créditos, adequação de regime e compliance."
-        },
-        {
-          "@type": "HowToStep",
-          "position": 4,
-          "name": "Acompanhamento Contínuo",
-          "text": "Monitoramento permanente das obrigações fiscais, alertas proativos e adaptação às mudanças da legislação tributária."
         }
       ]
     },
@@ -2688,12 +2643,7 @@
 
       <!-- Col 1: Brand + Social + Fale Conosco -->
       <div class="footer-brand-col">
-        <a href="/" class="footer-logo"><em>AM Cabral</em></a>
-        <p class="footer-tagline">Inteligência tributária para empresas que competem para vencer.</p>
-        <div class="footer-social">
-          <a href="https://www.instagram.com/amandacabral28/" target="_blank" rel="noopener">Instagram</a>
-          <a href="https://www.linkedin.com/in/amanda-cabral-de-oliveira-82183a179/" target="_blank" rel="noopener">LinkedIn</a>
-        </div>
+
         <p class="footer-contact-title">Fale Conosco</p>
         <address class="footer-nap">
           <a href="tel:+5537999967558" class="footer-nap-row">
@@ -2753,17 +2703,21 @@
 
     </div>
 
-    <!-- Social — visível apenas no mobile, aparece abaixo dos links -->
-    <div class="footer-social-mobile">
-      <a href="https://www.instagram.com/amandacabral28/" target="_blank" rel="noopener">Instagram</a>
-      <a href="https://www.linkedin.com/in/amanda-cabral-de-oliveira-82183a179/" target="_blank" rel="noopener">LinkedIn</a>
-    </div>
 
+    <p class="footer-wordmark-tagline"><em>Inteligência tributária para empresas que competem para vencer.</em></p>
     <div class="footer-wordmark">AM Cabral Contabilidade</div>
 
     <!-- Barra legal -->
     <div class="footer-legal">
       <p>© 2026 Amanda Silva Cabral Contabilidade. CNPJ 34.733.620/0001-51. CRC/MG ativo.</p>
+      <div class="footer-social-icons">
+        <a href="https://www.instagram.com/amandacabral28/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/amanda-cabral-de-oliveira-82183a179/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
       <div class="footer-legal-links">
         <a href="/politica-de-privacidade/">Política de Privacidade</a>
         <a href="/politica-de-cookies/">Política de Cookies</a>
