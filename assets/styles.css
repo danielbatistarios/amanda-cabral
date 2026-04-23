@@ -134,7 +134,7 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            font-size: 0.75rem;
+            font-size: 0.78rem;
             font-weight: 700;
             letter-spacing: 3px;
             text-transform: uppercase;
@@ -443,7 +443,7 @@
         }
 
         .service-card p {
-            font-size: 0.88rem;
+            font-size: 1rem;
             color: var(--silver);
             line-height: 1.75;
         }
@@ -618,7 +618,7 @@
         }
 
         .step p {
-            font-size: 0.9rem;
+            font-size: 1rem;
             color: var(--text-light);
             max-width: none;
             margin: 0;
@@ -657,7 +657,7 @@
         .test-stars svg { width: 14px; height: 14px; fill: var(--gold); color: var(--gold); }
 
         .test-card blockquote {
-            font-size: 0.92rem;
+            font-size: 1rem;
             color: var(--silver-light);
             line-height: 1.85;
             margin-bottom: 28px;
@@ -677,8 +677,8 @@
             height: 100%;
             object-fit: cover;
         }
-        .test-name { font-weight: 700; font-size: 0.88rem; color: var(--white); }
-        .test-role { font-size: 0.75rem; color: var(--silver); }
+        .test-name { font-weight: 700; font-size: 0.92rem; color: var(--white); }
+        .test-role { font-size: 0.8rem; color: var(--silver); }
 
         /* ============================
            ABOUT
@@ -745,7 +745,7 @@
         .about-content h2 em { font-style: italic; color: var(--accent); }
 
         .about-text {
-            font-size: 1rem;
+            font-size: 1.05rem;
             color: var(--text-light);
             line-height: 1.85;
             margin-bottom: 16px;
@@ -758,7 +758,7 @@
         .about-tag {
             padding: 7px 18px;
             border-radius: 60px;
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             font-weight: 600;
             background: var(--ice);
             color: var(--text);
@@ -826,7 +826,7 @@
         }
         .faq-a-inner {
             padding-bottom: 28px;
-            font-size: 0.95rem;
+            font-size: 1rem;
             color: var(--silver);
             line-height: 1.85;
         }
@@ -1012,7 +1012,7 @@
         }
 
         .blog-category {
-            font-size: 0.65rem;
+            font-size: 0.72rem;
             font-weight: 700;
             letter-spacing: 2px;
             text-transform: uppercase;
@@ -1027,7 +1027,7 @@
         }
 
         .blog-excerpt {
-            font-size: 0.88rem;
+            font-size: 1rem;
             color: var(--text-light);
             line-height: 1.7;
             display: -webkit-box;
@@ -1044,7 +1044,7 @@
         }
 
         .blog-date {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: var(--text-muted);
         }
 
