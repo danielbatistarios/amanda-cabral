@@ -24,6 +24,13 @@
       --surface-dark: #1A2535;
       --shadow-soft: 0 8px 24px rgba(0,0,0,0.15);
       --easing-spring: cubic-bezier(0.16, 1, 0.3, 1);
+      --blue-800: #0A1628;
+      --blue-700: #0F2137;
+      --silver: #94A3B8;
+      --silver-light: #CBD5E1;
+      --white: #FFFFFF;
+      --accent-light: #60A5FA;
+      --font-display: 'Instrument Serif', Georgia, serif;
     }
 
     /* === RESET === */
@@ -142,21 +149,37 @@
       transform: rotate(180deg);
     }
 
+    .nav-item-dropdown {
+      position: relative;
+    }
+
+    .nav-item-dropdown::after {
+      content: '';
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      height: 16px;
+      pointer-events: auto;
+    }
+
     .nav-dropdown {
       position: fixed;
       top: 60px;
       left: 0;
       right: 0;
       width: 100%;
-      background: rgba(15, 20, 25, 0.98);
+      background: rgba(15, 20, 25, 0.95);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
-      border-bottom: 1px solid rgba(255,255,255,0.08);
       opacity: 0;
       pointer-events: none;
-      transform: translateY(-8px);
+      transform: translateY(-12px);
       transition: opacity 0.3s ease, transform 0.3s ease;
-      z-index: 99;
+      z-index: 1000;
+      max-height: calc(100vh - 70px);
+      overflow-y: auto;
     }
 
     .nav-item-dropdown.is-open .nav-dropdown {
@@ -168,94 +191,123 @@
     .nav-mega-inner {
       display: grid;
       grid-template-columns: 280px 1fr;
-      gap: 0;
+      gap: 48px;
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0;
+      padding: 32px 24px;
+      align-items: start;
     }
 
     .nav-mega-img {
+      display: block;
       position: relative;
-      height: 320px;
-      background: linear-gradient(135deg, rgba(196, 165, 116, 0.1), rgba(45, 90, 123, 0.1));
-      display: flex;
-      align-items: flex-end;
-      padding: 24px;
+      border-radius: 8px;
       overflow: hidden;
+      aspect-ratio: 3/4;
+      background: linear-gradient(135deg, var(--blue-800) 0%, var(--blue-700) 100%);
     }
 
-    .nav-mega-img::after {
-      content: '';
+    .nav-mega-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+
+    .nav-mega-img:hover img {
+      transform: scale(1.05);
+    }
+
+    .nav-mega-img-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(to bottom, transparent 30%, rgba(15, 20, 25, 0.8));
-      pointer-events: none;
-    }
-
-    .nav-mega-img-content {
-      position: relative;
-      z-index: 2;
+      background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 24px;
+      color: var(--white);
     }
 
     .nav-mega-img-label {
-      font-family: 'Instrument Serif', serif;
-      font-size: 1.25rem;
-      color: var(--text-light);
-      margin-bottom: 12px;
-      letter-spacing: -0.01em;
+      font-family: var(--font-display);
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 4px;
     }
 
-    .nav-mega-img-cta {
-      display: inline-block;
+    .nav-mega-img-subtitle {
+      font-size: 13px;
+      color: var(--silver-light);
+      margin-bottom: 12px;
+    }
+
+    .nav-mega-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       padding: 8px 16px;
       background: var(--accent-gold);
       color: var(--dark-hero);
       font-size: 12px;
       font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      border: none;
-      cursor: pointer;
-      border-radius: 2px;
+      border-radius: 4px;
       transition: all 0.3s ease;
+      width: fit-content;
+      text-decoration: none;
     }
 
-    .nav-mega-img-cta:hover {
+    .nav-mega-cta:hover {
       transform: translateY(-2px);
-      box-shadow: 0 8px 24px rgba(196, 165, 116, 0.3);
+      box-shadow: 0 8px 20px rgba(196, 165, 116, 0.25);
     }
 
     .nav-mega-links {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      padding: 24px;
-      align-content: start;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px 48px;
     }
 
-    .nav-mega-col {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .nav-mega-links a {
+    .nav-mega-link {
       display: block;
-      padding: 8px 0;
-      font-size: 13px;
-      color: var(--text-secondary);
-      transition: color 0.2s ease;
+      padding: 12px 0;
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+      transition: all 0.3s ease;
     }
 
-    .nav-mega-links a:hover {
-      color: var(--accent-gold);
-    }
-
-    .nav-mega-links .nav-link-all {
-      margin-top: 12px;
-      padding-top: 12px;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      color: var(--accent-gold);
+    .nav-mega-link-title {
+      display: block;
       font-weight: 600;
+      color: var(--white);
+      margin-bottom: 4px;
+      font-size: 14px;
+    }
+
+    .nav-mega-link-sub {
+      display: block;
+      font-size: 12px;
+      color: var(--silver);
+      font-weight: 400;
+    }
+
+    .nav-mega-link:hover .nav-mega-link-title {
+      color: var(--accent-gold);
+    }
+
+    .nav-mega-link:hover .nav-mega-link-sub {
+      color: var(--accent-light);
+    }
+
+    .nav-mega-all {
+      grid-column: 1 / -1;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding-top: 16px;
+      margin-top: 16px;
+    }
+
+    .nav-mega-all .nav-mega-link-title {
+      color: var(--accent-gold);
     }
 
     .dropdown-all {
@@ -726,63 +778,153 @@
     <a href="/" class="nav-logo">AM Cabral</a>
 
     <ul class="nav-links" id="navLinks">
-      <!-- Dropdown: Serviços (Mega Menu) -->
+      <!-- Mega-menu: Início -->
+      <li class="nav-item nav-item-dropdown">
+        <button class="nav-trigger" aria-expanded="false" aria-haspopup="true">
+          Início <span class="nav-arrow" aria-hidden="true">▼</span>
+        </button>
+        <div class="nav-dropdown" role="menu">
+          <div class="nav-mega-inner">
+            <a href="/" class="nav-mega-img">
+              <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=280&h=380&fit=crop" alt="Home" loading="lazy">
+              <div class="nav-mega-img-overlay">
+                <div class="nav-mega-img-label">Bem-vindo</div>
+                <div class="nav-mega-img-subtitle">Transformando gestão contábil</div>
+                <a href="/" class="nav-mega-cta">Voltar →</a>
+              </div>
+            </a>
+            <div class="nav-mega-links">
+              <a href="/" class="nav-mega-link" role="menuitem">
+                <span class="nav-mega-link-title">Home Principal</span>
+                <span class="nav-mega-link-sub">Página inicial</span>
+              </a>
+              <a href="/diagnostico-gratuito/" class="nav-mega-link" role="menuitem">
+                <span class="nav-mega-link-title">Diagnóstico Gratuito</span>
+                <span class="nav-mega-link-sub">Avaliação completa da sua empresa</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- Mega-menu: Sobre a AM Cabral -->
+      <li class="nav-item nav-item-dropdown">
+        <button class="nav-trigger" aria-expanded="false" aria-haspopup="true">
+          Sobre a AM Cabral <span class="nav-arrow" aria-hidden="true">▼</span>
+        </button>
+        <div class="nav-dropdown" role="menu">
+          <div class="nav-mega-inner">
+            <a href="/sobre/" class="nav-mega-img">
+              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=280&h=380&fit=crop" alt="Amanda Cabral - Contadora" loading="lazy">
+              <div class="nav-mega-img-overlay">
+                <div class="nav-mega-img-label">Conhecer Amanda</div>
+                <div class="nav-mega-img-subtitle">20 anos de expertise em contabilidade</div>
+                <a href="/sobre/" class="nav-mega-cta">Saiba mais →</a>
+              </div>
+            </a>
+            <div class="nav-mega-links">
+              <a href="/sobre/" class="nav-mega-link" role="menuitem">
+                <span class="nav-mega-link-title">Amanda Silva</span>
+                <span class="nav-mega-link-sub">Trajetória e formação profissional</span>
+              </a>
+              <a href="/casos-de-sucesso/" class="nav-mega-link" role="menuitem">
+                <span class="nav-mega-link-title">Casos de Sucesso</span>
+                <span class="nav-mega-link-sub">Empresas que transformamos</span>
+              </a>
+              <a href="/depoimentos/" class="nav-mega-link" role="menuitem">
+                <span class="nav-mega-link-title">Depoimentos</span>
+                <span class="nav-mega-link-sub">Vozes de clientes satisfeitos</span>
+              </a>
+              <a href="/sobre/" class="nav-mega-link nav-mega-all" role="menuitem">
+                <span class="nav-mega-link-title">Ver tudo</span>
+                <span class="nav-mega-link-sub">História completa →</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </li>
+
+      <!-- Mega-menu: Serviços -->
       <li class="nav-item nav-item-dropdown">
         <button class="nav-trigger" aria-expanded="false" aria-haspopup="true">
           Serviços <span class="nav-arrow" aria-hidden="true">▼</span>
         </button>
         <div class="nav-dropdown" role="menu">
           <div class="nav-mega-inner">
-            <div class="nav-mega-img">
-              <div class="nav-mega-img-content">
-                <div class="nav-mega-img-label">Serviços</div>
-                <button class="nav-mega-img-cta" onclick="location.href='/servicos/'">Conhecer Todos</button>
+            <a href="/servicos/" class="nav-mega-img">
+              <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=280&h=380&fit=crop" alt="Gestão Contábil Estratégica" loading="lazy">
+              <div class="nav-mega-img-overlay">
+                <div class="nav-mega-img-label">Serviços Contábeis</div>
+                <div class="nav-mega-img-subtitle">Soluções integradas para sua empresa</div>
+                <a href="/servicos/" class="nav-mega-cta">Explorar →</a>
               </div>
-            </div>
+            </a>
             <div class="nav-mega-links">
-              <div class="nav-mega-col">
-                <a href="/gestao-contabil-para-industrias/" role="menuitem">Gestão Contábil Estratégica</a>
-                <a href="/recuperacao-de-creditos-tributarios/" role="menuitem">Recuperação de Créditos</a>
-                <a href="/holding-patrimonial-e-familiar/" role="menuitem">Holding Patrimonial e Familiar</a>
-              </div>
-              <div class="nav-mega-col">
-                <a href="/planejamento-tributario/" role="menuitem">Planejamento Tributário</a>
-                <a href="/consultoria-tributaria/" role="menuitem">Consultoria Tributária</a>
-              </div>
+              <a href="/gestao-contabil-para-empresas/" class="nav-mega-link" role="menuitem">
+                <span class="nav-mega-link-title">Gestão Contábil Estratégica</span>
+                <span class="nav-mega-link-sub">Controle financeiro e fiscal</span>
+              </a>
+              <a href="/recuperacao-de-creditos-tributarios/" class="nav-mega-link" role="menuitem">
+                <span class="nav-mega-link-title">Recuperação de Créditos</span>
+                <span class="nav-mega-link-sub">Até R$ 12,3M em créditos invisíveis</span>
+              </a>
+              <a href="/holding-patrimonial-e-familiar/" class="nav-mega-link" role="menuitem">
+                <span class="nav-mega-link-title">Holding Patrimonial</span>
+                <span class="nav-mega-link-sub">Blindagem patrimonial familiar</span>
+              </a>
+              <a href="/planejamento-tributario/" class="nav-mega-link" role="menuitem">
+                <span class="nav-mega-link-title">Planejamento Tributário</span>
+                <span class="nav-mega-link-sub">Redução legal de impostos</span>
+              </a>
+              <a href="/consultoria-tributaria/" class="nav-mega-link" role="menuitem">
+                <span class="nav-mega-link-title">Consultoria Tributária</span>
+                <span class="nav-mega-link-sub">Decisões baseadas em inteligência</span>
+              </a>
+              <a href="/servicos/" class="nav-mega-link nav-mega-all" role="menuitem">
+                <span class="nav-mega-link-title">Ver todos os serviços</span>
+                <span class="nav-mega-link-sub">Portfólio completo →</span>
+              </a>
             </div>
           </div>
         </div>
       </li>
 
-      <!-- Link direto -->
-      <li class="nav-item"><a href="/reforma-tributaria/">Reforma Tributária</a></li>
-      <li class="nav-item"><a href="/blog/">Blog</a></li>
-
-      <!-- Dropdown: Sobre (Mega Menu) -->
+      <!-- Mega-menu: Blog -->
       <li class="nav-item nav-item-dropdown">
         <button class="nav-trigger" aria-expanded="false" aria-haspopup="true">
-          Sobre <span class="nav-arrow" aria-hidden="true">▼</span>
+          Blog <span class="nav-arrow" aria-hidden="true">▼</span>
         </button>
         <div class="nav-dropdown" role="menu">
           <div class="nav-mega-inner">
-            <div class="nav-mega-img">
-              <div class="nav-mega-img-content">
-                <div class="nav-mega-img-label">Amanda Cabral</div>
-                <button class="nav-mega-img-cta" onclick="location.href='/sobre/'">Conhecer</button>
+            <a href="/blog/" class="nav-mega-img">
+              <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=280&h=380&fit=crop" alt="Blog" loading="lazy">
+              <div class="nav-mega-img-overlay">
+                <div class="nav-mega-img-label">Artigos e Insights</div>
+                <div class="nav-mega-img-subtitle">Conhecimento contábil e tributário</div>
+                <a href="/blog/" class="nav-mega-cta">Explorar →</a>
               </div>
-            </div>
+            </a>
             <div class="nav-mega-links">
-              <div class="nav-mega-col">
-                <a href="/sobre/" role="menuitem">Amanda Silva</a>
-                <a href="/casos-de-sucesso/" role="menuitem">Casos de Sucesso</a>
-                <a href="/depoimentos/" role="menuitem">Depoimentos</a>
-              </div>
+              <a href="/blog/" class="nav-mega-link" role="menuitem">
+                <span class="nav-mega-link-title">Todos os Artigos</span>
+                <span class="nav-mega-link-sub">Base de conhecimento completa</span>
+              </a>
+              <a href="/blog/" class="nav-mega-link" role="menuitem">
+                <span class="nav-mega-link-title">Dicas e Estratégias</span>
+                <span class="nav-mega-link-sub">Insights para seu negócio</span>
+              </a>
+              <a href="/blog/" class="nav-mega-link" role="menuitem">
+                <span class="nav-mega-link-title">Notícias Fiscais</span>
+                <span class="nav-mega-link-sub">Atualizações do mercado</span>
+              </a>
+              <a href="/blog/" class="nav-mega-link nav-mega-all" role="menuitem">
+                <span class="nav-mega-link-title">Ir para o Blog</span>
+                <span class="nav-mega-link-sub">Central de conteúdo →</span>
+              </a>
             </div>
           </div>
         </div>
       </li>
-
-      <li class="nav-item"><a href="/contato/">Contato</a></li>
     </ul>
 
     <!-- CTA -->
@@ -818,12 +960,6 @@
 <!-- SKIP LINK -->
 <a href="#servicos" class="skip-link">Ir para serviços</a>
 
-<!-- LOADER -->
-<div class="loader" id="loader">
-  <div class="loader-phrase" id="loaderPhrase"></div>
-  <div class="loader-line" id="loaderLine"></div>
-  <div class="loader-brand" id="loaderBrand">AM Cabral</div>
-</div>
 
 <!-- READING PROGRESS -->
 <div class="reading-prog" id="readingProg"></div>
@@ -1372,28 +1508,6 @@
 </a>
 
 <script>
-/* === LOADER === */
-(function() {
-  var loader = document.getElementById('loader');
-  var phrase = document.getElementById('loaderPhrase');
-  var line = document.getElementById('loaderLine');
-  var brand = document.getElementById('loaderBrand');
-  if (!loader || !phrase) return;
-  var words = 'Menos imposto. Mais patrimônio.'.split(' ');
-  phrase.innerHTML = words.map(function(w) { return '<span>' + w + '</span>'; }).join(' ');
-  var spans = phrase.querySelectorAll('span');
-  document.body.style.overflow = 'hidden';
-  requestAnimationFrame(function() { if (line) line.classList.add('active'); });
-  spans.forEach(function(s, i) {
-    setTimeout(function() { s.classList.add('visible'); }, 200 + i * 200);
-  });
-  setTimeout(function() { if (brand) brand.classList.add('visible'); }, 200 + words.length * 200 + 200);
-  setTimeout(function() {
-    loader.classList.add('done');
-    document.body.style.overflow = '';
-    setTimeout(function() { loader.style.display = 'none'; }, 700);
-  }, 200 + words.length * 200 + 800);
-})();
 
 /* === READING PROGRESS === */
 window.addEventListener('scroll', function() {
@@ -1475,14 +1589,14 @@ if (mobOverlay) mobOverlay.addEventListener('click', toggleMob);
 
     trigger.addEventListener('mouseenter', () => {
       clearTimeout(closeTimer);
-      item.classList.add('is-open');
-      trigger.setAttribute('aria-expanded', 'true');
-      document.querySelectorAll('.nav-item-dropdown').forEach(other => {
+      document.querySelectorAll('.nav-item-dropdown.is-open').forEach(other => {
         if (other !== item) {
           other.classList.remove('is-open');
           other.querySelector('.nav-trigger').setAttribute('aria-expanded', 'false');
         }
       });
+      item.classList.add('is-open');
+      trigger.setAttribute('aria-expanded', 'true');
     });
 
     trigger.addEventListener('mouseleave', () => {
@@ -1495,6 +1609,7 @@ if (mobOverlay) mobOverlay.addEventListener('click', toggleMob);
     dropdown.addEventListener('mouseenter', () => {
       clearTimeout(closeTimer);
       item.classList.add('is-open');
+      trigger.setAttribute('aria-expanded', 'true');
     });
 
     dropdown.addEventListener('mouseleave', () => {
@@ -1506,57 +1621,8 @@ if (mobOverlay) mobOverlay.addEventListener('click', toggleMob);
 
     trigger.addEventListener('click', (e) => {
       e.preventDefault();
-      const expanded = item.classList.toggle('is-open');
-      trigger.setAttribute('aria-expanded', expanded);
-    });
-  });
-
-  document.addEventListener('click', e => {
-    if (!e.target.closest('.nav-item-dropdown')) {
-      document.querySelectorAll('.nav-item-dropdown').forEach(item => {
-        item.classList.remove('is-open');
-        item.querySelector('.nav-trigger').setAttribute('aria-expanded', 'false');
-      });
-    }
-  });
-
-  const hamburger = document.getElementById('navHamburger');
-  const mobileNav = document.getElementById('mobileNav');
-  const mobileClose = document.getElementById('mobileNavClose');
-
-  function openMobile(){
-    mobileNav.classList.add('is-open');
-    mobileNav.setAttribute('aria-hidden','false');
-    hamburger.setAttribute('aria-expanded','true');
-    document.body.style.overflow='hidden';
-  }
-  function closeMobile(){
-    mobileNav.classList.remove('is-open');
-    mobileNav.setAttribute('aria-hidden','true');
-    hamburger.setAttribute('aria-expanded','false');
-    document.body.style.overflow='';
-  }
-
-  hamburger.addEventListener('click', openMobile);
-  mobileClose.addEventListener('click', closeMobile);
-  mobileNav.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobile));
-})();
-</script>
-
-<script>
-(function(){
-  let closeTimer = null;
-
-  document.querySelectorAll('.nav-item-dropdown').forEach(item => {
-    const trigger = item.querySelector('.nav-trigger');
-    const dropdown = item.querySelector('.nav-dropdown');
-
-    if (!trigger || !dropdown) return;
-
-    trigger.addEventListener('mouseenter', () => {
-      clearTimeout(closeTimer);
-      item.classList.add('is-open');
-      trigger.setAttribute('aria-expanded', 'true');
+      const isOpen = item.classList.toggle('is-open');
+      trigger.setAttribute('aria-expanded', isOpen);
       document.querySelectorAll('.nav-item-dropdown').forEach(other => {
         if (other !== item) {
           other.classList.remove('is-open');
@@ -1564,36 +1630,11 @@ if (mobOverlay) mobOverlay.addEventListener('click', toggleMob);
         }
       });
     });
-
-    trigger.addEventListener('mouseleave', () => {
-      closeTimer = setTimeout(() => {
-        item.classList.remove('is-open');
-        trigger.setAttribute('aria-expanded', 'false');
-      }, 150);
-    });
-
-    dropdown.addEventListener('mouseenter', () => {
-      clearTimeout(closeTimer);
-      item.classList.add('is-open');
-    });
-
-    dropdown.addEventListener('mouseleave', () => {
-      closeTimer = setTimeout(() => {
-        item.classList.remove('is-open');
-        trigger.setAttribute('aria-expanded', 'false');
-      }, 150);
-    });
-
-    trigger.addEventListener('click', (e) => {
-      e.preventDefault();
-      const expanded = item.classList.toggle('is-open');
-      trigger.setAttribute('aria-expanded', expanded);
-    });
   });
 
   document.addEventListener('click', e => {
     if (!e.target.closest('.nav-item-dropdown')) {
-      document.querySelectorAll('.nav-item-dropdown').forEach(item => {
+      document.querySelectorAll('.nav-item-dropdown.is-open').forEach(item => {
         item.classList.remove('is-open');
         item.querySelector('.nav-trigger').setAttribute('aria-expanded', 'false');
       });

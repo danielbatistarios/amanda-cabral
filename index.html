@@ -3,10 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amanda Cabral | Contadora Especialista em Empresas em BH</title>
-    <meta name="description" content="Contabilidade estratégica para empresas em BH. 20 anos, R$ 12,3M recuperados em créditos invisíveis. 8 em cada 10 empresas pagam ICMS a mais. Diagnóstico gratuito.">
-    <meta property="og:title" content="Amanda Cabral | Contadora Especialista em Empresas em BH">
-    <meta property="og:description" content="20 anos transformando a gestão tributária de empresas em Belo Horizonte.">
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <link rel="shortcut icon" href="/favicon.svg">
+    <title>Amanda Cabral | Contadora Tributária com 20 Anos de Experiência</title>
+    <meta name="description" content="Especialista em planejamento tributário e recuperação de créditos para empresas em MG. R$ 12M recuperados, 120 empresas atendidas. Diagnóstico gratuito.">
+    <meta property="og:title" content="Amanda Cabral | Contadora Tributária com 20 Anos de Experiência">
+    <meta property="og:description" content="Especialista em planejamento tributário e recuperação de créditos para empresas em MG. R$ 12M recuperados, 120 empresas atendidas. Diagnóstico gratuito.">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://amcabralblindagem.com.br/assets/og-image.webp">
     <meta property="og:image:width" content="1200">
@@ -15,6 +17,13 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+    <link rel="preload" as="image" href="amanda-hero.jpg">
+    <meta name="robots" content="index, follow">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Amanda Cabral | Contadora Tributária com 20 Anos de Experiência">
+    <meta name="twitter:description" content="Especialista em planejamento tributário e recuperação de créditos para empresas em MG. R$ 12M recuperados, 120 empresas atendidas. Diagnóstico gratuito.">
+    <meta name="twitter:image" content="https://amcabralblindagem.com.br/assets/og-image.webp">
+    <meta property="og:url" content="https://amcabralblindagem.com.br/">
     <style>
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -73,529 +82,320 @@
         button { cursor: none; }
         ul { list-style: none; }
 
-        .container { max-width: var(--max-w); margin: 0 auto; padding: 0 24px; }
+        .container { max-width: var(--max-w); margin: 0 auto; padding: 0 80px; }
 
         /* ============================
-           HEADER/NAV/FOOTER STYLES
+           HEADER / MEGA-MENU — v2 clean
         ============================ */
-        .site-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background: var(--dark-hero);
-            z-index: 100;
-            padding: 16px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-            backdrop-filter: blur(8px);
+        #hdr {
+            position: fixed; top: 0; left: 0; width: 100%;
+            background: rgba(10,14,20,0.96);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+            z-index: 500;
+            height: 60px;
         }
-
-        .site-nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-            display: flex;
+        #hdr-inner {
+            max-width: 1200px; margin: 0 auto;
+            padding: 0 24px; height: 100%;
+            display: flex; align-items: center;
             justify-content: space-between;
-            align-items: center;
-            gap: 48px;
+            position: relative;
         }
-
-        .nav-logo {
+        #hdr-logo {
             font-family: var(--font-display);
-            font-size: 18px;
-            font-weight: 700;
-            letter-spacing: 0.02em;
-            color: var(--text-light);
-            white-space: nowrap;
+            font-size: 17px; font-weight: 700;
+            color: #fff; white-space: nowrap;
+            text-decoration: none;
         }
-
-        .nav-links {
-            display: flex;
-            gap: 8px;
-            list-style: none;
-            flex: 1;
-            align-items: center;
+        #hdr-nav { display: flex; align-items: center; gap: 4px; list-style: none; position: absolute; left: 50%; transform: translateX(-50%); }
+        .hdr-item { position: relative; }
+        .hdr-btn {
+            background: none; border: none; cursor: pointer;
+            font-size: 13px; font-weight: 500;
+            color: rgba(255,255,255,0.7);
+            padding: 8px 14px; display: flex; align-items: center; gap: 5px;
+            transition: color 0.2s;
         }
-
-        .nav-item {
-            position: relative;
+        .hdr-btn:hover { color: #fff; }
+        .hdr-item.open .hdr-btn { color: var(--accent-gold); }
+        .hdr-arrow { font-size: 9px; transition: transform 0.25s; }
+        .hdr-item.open .hdr-arrow { transform: rotate(180deg); }
+        .hdr-cta {
+            display: inline-block; padding: 9px 22px;
+            background: var(--accent-gold); color: #0a0e14;
+            font-size: 12px; font-weight: 700;
+            letter-spacing: 0.05em; text-transform: uppercase;
+            border-radius: 4px; text-decoration: none;
+            transition: opacity 0.2s;
         }
+        .hdr-cta:hover { opacity: 0.88; }
 
-        .nav-item > a {
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--text-secondary);
-            padding: 8px 12px;
-            transition: color 0.3s ease;
-            display: block;
-        }
-
-        .nav-item > a:hover {
-            color: var(--accent-gold);
-        }
-
-        .nav-trigger {
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--text-secondary);
-            background: none;
-            border: none;
-            padding: 8px 12px;
-            cursor: pointer;
-            transition: color 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        .nav-trigger:hover {
-            color: var(--accent-gold);
-        }
-
-        .nav-arrow {
-            font-size: 10px;
-            transition: transform 0.3s var(--easing-spring);
-        }
-
-        .nav-item.is-open .nav-arrow {
-            transform: rotate(180deg);
-        }
-
-        /* MEGA-MENU STRUCTURE */
-        .nav-item-dropdown {
-            position: relative;
-        }
-
-        .nav-item-dropdown::after {
-            content: '';
-            position: absolute;
-            top: 100%;
-            left: 0;
-            right: 0;
-            height: 16px;
-            pointer-events: auto;
-        }
-
-        .nav-dropdown {
-            position: fixed;
-            top: 60px;
-            left: 0;
-            right: 0;
-            width: 100%;
-            background: rgba(15, 20, 25, 0.95);
+        /* Mega panel */
+        .hdr-mega {
+            display: none;
+            position: fixed; top: 60px; left: 0; right: 0;
+            background: rgba(10,14,20,0.97);
             border-bottom: 1px solid rgba(255,255,255,0.08);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            opacity: 0;
-            pointer-events: none;
-            transform: translateY(-12px);
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            z-index: 1000;
-            max-height: calc(100vh - 70px);
-            overflow-y: auto;
+            backdrop-filter: blur(20px);
+            z-index: 499;
         }
-
-        .nav-item-dropdown.is-open .nav-dropdown {
-            opacity: 1;
-            pointer-events: auto;
-            transform: translateY(0);
-        }
-
-        .nav-mega-inner {
-            display: grid;
-            grid-template-columns: 280px 1fr;
-            gap: 48px;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 32px 24px;
+        .hdr-mega.open { display: block; }
+        .hdr-mega-inner {
+            max-width: 1400px; margin: 0 auto;
+            padding: 36px 48px;
+            display: grid; grid-template-columns: 300px 1fr; gap: 64px;
             align-items: start;
         }
-
-        .nav-mega-img {
-            display: block;
-            position: relative;
-            border-radius: 8px;
-            overflow: hidden;
+        .hdr-mega-img {
+            display: block; position: relative;
+            border-radius: 10px; overflow: hidden;
             aspect-ratio: 3/4;
-            background: linear-gradient(135deg, var(--blue-800) 0%, var(--blue-700) 100%);
         }
-
-        .nav-mega-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.4s ease;
+        .hdr-mega-img img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+        .hdr-mega-img-overlay { display: none; }
+        .hdr-mega-img-cta { display: none; }
+        .hdr-mega-col { display: flex; flex-direction: column; }
+        .hdr-mega-col-title { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.35); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+        .hdr-mega-col-cta {
+            display: inline-block; margin-top: 16px; padding: 7px 14px;
+            background: var(--accent-gold); color: #0a0e14;
+            font-size: 11px; font-weight: 700; border-radius: 3px;
+            text-decoration: none; width: fit-content;
         }
-
-        .nav-mega-img:hover img {
-            transform: scale(1.05);
-        }
-
-        .nav-mega-img-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.6) 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 24px;
-            color: var(--white);
-        }
-
-        .nav-mega-img-label {
-            font-family: var(--font-display);
-            font-size: 18px;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .nav-mega-img-subtitle {
-            font-size: 13px;
-            color: var(--silver-light);
-            margin-bottom: 12px;
-        }
-
-        .nav-mega-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            padding: 8px 16px;
-            background: var(--accent-gold);
-            color: var(--dark-hero);
-            font-size: 12px;
-            font-weight: 600;
-            border-radius: 4px;
-            transition: all 0.3s ease;
-            width: fit-content;
-        }
-
-        .nav-mega-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(196, 165, 116, 0.25);
-        }
-
-        .nav-mega-links {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 24px 48px;
-        }
-
-        .nav-mega-link {
-            display: block;
-            padding: 12px 0;
+        .hdr-mega-col-secondary {
+            display: inline-block; margin-top: 8px; margin-left: 12px;
+            font-size: 11px; color: rgba(255,255,255,0.45);
             text-decoration: none;
-            border-bottom: 1px solid transparent;
-            transition: all 0.3s ease;
         }
-
-        .nav-mega-link-title {
-            display: block;
-            font-weight: 600;
-            color: var(--white);
-            margin-bottom: 4px;
-            font-size: 14px;
+        .hdr-mega-col-secondary:hover { color: rgba(255,255,255,0.75); }
+        .hdr-mega-links { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 64px; }
+        .hdr-mega-link {
+            display: block; padding: 12px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+            text-decoration: none; transition: color 0.15s;
         }
-
-        .nav-mega-link-sub {
-            display: block;
-            font-size: 12px;
-            color: var(--silver);
-            font-weight: 400;
-        }
-
-        .nav-mega-link:hover .nav-mega-link-title {
-            color: var(--accent-gold);
-        }
-
-        .nav-mega-link:hover .nav-mega-link-sub {
-            color: var(--accent-light);
-        }
-
-        .nav-mega-all {
-            grid-column: 1 / -1;
+        .hdr-mega-link strong { display: block; font-size: 14px; color: #fff; margin-bottom: 3px; transition: color 0.15s; }
+        .hdr-mega-link span { font-size: 12px; color: rgba(255,255,255,0.5); transition: color 0.15s; }
+        .hdr-mega-link:hover strong { color: var(--accent-gold); }
+        .hdr-mega-link:hover span { color: rgba(255,255,255,0.75); }
+        .hdr-mega-all {
+            grid-column: 1/-1;
             border-top: 1px solid rgba(255,255,255,0.08);
-            padding-top: 16px;
-            margin-top: 16px;
+            margin-top: 8px; padding-top: 12px;
         }
+        .hdr-mega-all strong { color: var(--accent-gold) !important; }
 
-        .nav-mega-all .nav-mega-link-title {
-            color: var(--accent-gold);
+        /* Mobile */
+        #hdr-hamburger {
+            display: none; background: none; border: none;
+            cursor: pointer; flex-direction: column; gap: 5px; padding: 8px;
         }
-
-        /* FALLBACK: Simple dropdown for items without mega-menu */
-        .nav-dropdown.simple {
-            position: absolute;
-            top: calc(100% + 12px);
-            left: 0;
-            width: auto;
-            right: auto;
-            background: var(--surface-dark);
-            border: 1px solid rgba(255,255,255,0.08);
-            border-radius: 4px;
-            min-width: 240px;
-            padding: 8px 0;
-            max-height: none;
-            overflow-y: visible;
-            backdrop-filter: none;
-            -webkit-backdrop-filter: none;
-        }
-
-        .nav-dropdown.simple a {
-            display: block;
-            padding: 10px 16px;
-            font-size: 13px;
-            color: var(--text-secondary);
-            transition: color 0.2s;
-            border: none;
-            margin: 0;
-            padding: 10px 16px;
-        }
-
-        .nav-dropdown.simple a:hover {
-            color: var(--accent-gold);
-        }
-
-        .dropdown-all {
-            border-top: 1px solid rgba(255,255,255,0.04);
-            margin-top: 4px;
-            padding-top: 10px;
-            color: var(--accent-gold) !important;
-        }
-
-        .nav-cta {
-            display: inline-block;
-            padding: 10px 24px;
-            background: var(--accent-gold);
-            color: var(--dark-hero);
-            font-weight: 600;
-            font-size: 12px;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            transition: all 0.3s var(--easing-spring);
-            border: none;
-            cursor: pointer;
-            border-radius: 4px;
-            white-space: nowrap;
-        }
-
-        .nav-cta:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 12px 32px rgba(196, 165, 116, 0.2);
-        }
-
-        .nav-hamburger {
-            display: none;
-            flex-direction: column;
-            gap: 5px;
-            background: none;
-            border: none;
-            padding: 8px;
-            cursor: pointer;
-        }
-
-        .nav-hamburger span {
-            width: 20px;
-            height: 2px;
-            background: var(--text-light);
-            border-radius: 2px;
-            transition: all 0.3s;
-        }
-
-        .mobile-nav {
-            position: fixed;
-            inset: 0;
-            background: var(--dark-hero);
-            z-index: 99;
-            display: flex;
-            flex-direction: column;
-            padding: 80px 24px 24px;
+        #hdr-hamburger span { width: 20px; height: 2px; background: #fff; border-radius: 2px; display: block; }
+        #hdr-mob {
+            display: none; position: fixed; inset: 0;
+            background: #0a0e14; z-index: 600;
+            flex-direction: column; padding: 72px 24px 24px;
             overflow-y: auto;
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.3s;
         }
-
-        .mobile-nav.is-open {
-            opacity: 1;
-            pointer-events: auto;
+        #hdr-mob.open { display: flex; }
+        #hdr-mob-close {
+            position: absolute; top: 16px; right: 20px;
+            background: none; border: none; color: #fff;
+            font-size: 28px; cursor: pointer; line-height: 1;
         }
-
-        .mobile-nav-close {
-            position: absolute;
-            top: 24px;
-            right: 24px;
-            background: none;
-            border: none;
-            color: var(--text-light);
-            font-size: 28px;
-            cursor: pointer;
-            padding: 4px;
-        }
-
-        .mobile-nav a {
-            padding: 12px 0;
-            font-size: 16px;
-            color: var(--text-secondary);
-            border-bottom: 1px solid rgba(255,255,255,0.04);
-        }
-
-        .mobile-nav a:hover {
-            color: var(--accent-gold);
-        }
+        #hdr-mob a { color: rgba(255,255,255,0.75); font-size: 16px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.06); text-decoration: none; display: block; }
+        #hdr-mob a:hover { color: #fff; }
 
         @media (max-width: 900px) {
-            .nav-links {
-                display: none;
-            }
-
-            .nav-cta {
-                display: none;
-            }
-
-            .nav-hamburger {
-                display: flex;
-            }
+            #hdr-nav, .hdr-cta { display: none; }
+            #hdr-hamburger { display: flex; }
         }
-
         @media (max-width: 600px) {
-            .site-nav {
-                padding: 0 16px;
-                gap: 24px;
-            }
-
-            .nav-logo {
-                font-size: 16px;
-            }
+            #hdr-inner { padding: 0 16px; }
         }
+
+        /* Keep old classes that page body uses */
+        .nav-cta { display: inline-block; padding: 10px 24px; background: var(--accent-gold); color: var(--dark-hero); font-weight: 600; font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase; transition: all 0.3s; border: none; cursor: pointer; border-radius: 4px; white-space: nowrap; }
 
         /* === FOOTER === */
         .site-footer {
-            background: var(--dark-hero);
-            border-top: 1px solid rgba(255,255,255,0.08);
-            padding: 72px 0 32px;
+            background: #040A14;
+            border-top: 1px solid #0A1628;
+            padding: 64px 0 0;
         }
 
         .footer-inner {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 24px;
+            padding: 0 40px;
+        }
+
+        .footer-proof {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            padding: 32px 0;
+            border-bottom: 1px solid #0A1628;
+            margin-bottom: 56px;
+        }
+        .footer-proof-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 5px;
+        }
+        .footer-proof-stars {
+            color: var(--gold);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            line-height: 1;
+        }
+        .footer-proof-value {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-style: italic;
+            color: var(--white);
+            line-height: 1;
+        }
+        .footer-proof-label {
+            font-size: 0.75rem;
+            color: #4a5568;
+            letter-spacing: 0.04em;
+        }
+        .footer-proof-divider {
+            width: 1px;
+            height: 40px;
+            background: #0A1628;
         }
 
         .footer-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
             gap: 48px;
-            margin-bottom: 56px;
+            margin-bottom: 64px;
         }
 
-        .footer-col {
-            display: flex;
-            flex-direction: column;
+        /* Col 0: brand */
+        .footer-brand-col { display: flex; flex-direction: column; }
+        .footer-logo {
+            font-family: var(--font-display);
+            font-size: 1.375rem;
+            font-style: italic;
+            color: var(--white);
+            text-decoration: none;
+            margin-bottom: 8px;
         }
+        .footer-tagline {
+            font-size: 0.875rem;
+            font-weight: 300;
+            color: #4a5568;
+            line-height: 1.7;
+            max-width: 220px;
+            margin-bottom: 24px;
+        }
+        .footer-nap { display: flex; flex-direction: column; gap: 4px; margin-bottom: 24px; font-style: normal; }
+        .footer-nap-row {
+            display: flex; align-items: flex-start; gap: 8px;
+            font-size: 0.8125rem; color: #4a5568;
+            text-decoration: none; transition: color 0.2s;
+            line-height: 1.8;
+        }
+        a.footer-nap-row:hover { color: rgba(255,255,255,0.75); }
+        .footer-nap-row svg { flex-shrink: 0; margin-top: 3px; color: #4a5568; }
+        .footer-social { display: flex; gap: 24px; margin-top: auto; }
+        .footer-social a {
+            font-size: 0.8125rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #2d3748;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .footer-social a:hover { color: var(--white); }
+
+        /* Cols 1-4 */
+        .footer-col { display: flex; flex-direction: column; }
 
         .footer-heading {
-            font-size: 0.65rem;
+            font-size: 0.8125rem;
             font-weight: 700;
-            letter-spacing: 0.15em;
+            letter-spacing: 0.18em;
             text-transform: uppercase;
-            color: var(--accent-gold);
-            margin-bottom: 20px;
+            color: #4a5568;
+            margin-bottom: 16px;
         }
 
-        .footer-col ul {
-            list-style: none;
-        }
+        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
 
         .footer-col a {
             display: block;
             font-size: 0.875rem;
-            color: var(--text-secondary);
-            margin-bottom: 10px;
+            font-weight: 300;
+            color: #4a5568;
             transition: color 0.2s;
+            text-decoration: none;
         }
 
-        .footer-col a:hover {
-            color: var(--text-light);
-        }
+        .footer-col a:hover { color: var(--white); }
 
-        .footer-brand {
-            border-top: 1px solid rgba(255,255,255,0.08);
-            padding: 32px 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .footer-logo {
+        .footer-wordmark {
             font-family: var(--font-display);
-            font-size: 1.25rem;
-            color: var(--text-light);
-        }
-
-        .footer-cta {
-            display: inline-block;
-            padding: 12px 28px;
-            background: var(--accent-gold);
-            color: var(--dark-hero);
-            font-weight: 600;
-            font-size: 0.8rem;
-            letter-spacing: 0.08em;
-            text-transform: uppercase;
-            cursor: pointer;
-            border: none;
-            transition: box-shadow 0.3s ease;
-        }
-
-        .footer-cta:hover {
-            box-shadow: 0 8px 24px rgba(196, 165, 116, 0.2);
+            font-size: clamp(3.5rem, 8vw, 7rem);
+            font-style: italic;
+            font-weight: 400;
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(201,168,76,0.2);
+            letter-spacing: -0.02em;
+            line-height: 1;
+            margin-bottom: 0;
+            user-select: none;
+            text-align: center;
         }
 
         .footer-legal {
-            border-top: 1px solid rgba(255,255,255,0.05);
-            padding-top: 24px;
+            border-top: 1px solid #0A1628;
+            padding: 24px 0;
+            margin-top: 0;
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 16px;
         }
 
-        .footer-legal p,
-        .footer-legal-links a {
-            font-size: 0.75rem;
-            color: rgba(255,255,255,0.2);
+        .footer-legal p {
+            font-size: 0.8125rem;
+            color: #2d3748;
         }
 
         .footer-legal-links {
             display: flex;
-            gap: 20px;
+            gap: 24px;
         }
 
-        .footer-legal-links a:hover {
-            color: var(--accent-gold);
+        .footer-legal-links a {
+            font-size: 0.8125rem;
+            color: #2d3748;
+            text-decoration: none;
+            transition: color 0.2s;
         }
 
-        @media (max-width: 900px) {
-            .footer-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 32px;
-            }
+        .footer-legal-links a:hover { color: var(--white); }
+
+        @media (max-width: 1024px) {
+            .footer-grid { grid-template-columns: 1fr 1fr 1fr; gap: 40px; }
         }
 
         @media (max-width: 600px) {
-            .site-footer {
-                padding: 48px 0 24px;
-            }
-
-            .footer-inner {
-                padding: 0 16px;
-            }
-
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 24px;
-            }
-
+            .site-footer { padding: 48px 0 0; }
+            .footer-inner { padding: 0 20px; }
+            .footer-proof { gap: 20px; }
+            .footer-proof-divider { display: none; }
+            .footer-grid { grid-template-columns: 1fr; gap: 32px; }
             .footer-brand {
                 flex-direction: column;
                 gap: 20px;
@@ -769,7 +569,7 @@
         ============================ */
         .toc {
             position: fixed;
-            left: 28px;
+            left: 16px;
             top: 50%;
             transform: translateY(-50%);
             z-index: 100;
@@ -804,22 +604,24 @@
             left: 24px;
             top: 50%;
             transform: translateY(-50%);
-            font-size: 0.7rem;
+            font-size: 0.62rem;
             font-weight: 600;
             letter-spacing: 1px;
             text-transform: uppercase;
-            color: var(--white);
+            color: rgba(255,255,255,0.35);
             white-space: nowrap;
-            opacity: 0;
-            transition: opacity 0.3s;
+            opacity: 1;
+            transition: color 0.3s;
             pointer-events: none;
         }
 
-        .toc-dot:hover .toc-label { opacity: 1; }
+        .toc-dot:hover .toc-label { color: rgba(255,255,255,0.6); }
+        .toc-dot.active .toc-label { color: var(--gold); }
 
         .toc.on-light .toc-dot { background: rgba(0,0,0,0.15); }
         .toc.on-light .toc-dot.active { background: var(--gold); }
-        .toc.on-light .toc-label { color: var(--text); }
+        .toc.on-light .toc-label { color: rgba(0,0,0,0.35); }
+        .toc.on-light .toc-dot.active .toc-label { color: var(--gold); }
 
         /* ============================
            HEADER
@@ -910,13 +712,13 @@
            HERO
         ============================ */
         .hero {
-            min-height: 100vh;
+            min-height: auto;
             background: var(--blue-900);
             display: flex;
             align-items: center;
             position: relative;
             overflow: hidden;
-            padding: 120px 0 80px;
+            padding: 110px 0 132px;
         }
 
         .hero-grid-bg {
@@ -959,12 +761,29 @@
         .hero .container { position: relative; z-index: 2; }
 
         .hero-layout {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: 1fr 340px;
+            gap: 48px;
             align-items: center;
-            text-align: center;
-            max-width: 850px;
-            margin: 0 auto;
+        }
+        .hero-photo {
+            position: relative;
+            border-radius: 24px;
+            overflow: hidden;
+            aspect-ratio: 3/4;
+            max-height: 440px;
+        }
+        .hero-photo img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
+        }
+        .hero-photo::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(6,14,26,0.6) 0%, transparent 50%);
         }
 
         .hero-tag {
@@ -973,14 +792,14 @@
             gap: 10px;
             background: rgba(201,168,76,0.08);
             border: 1px solid rgba(201,168,76,0.15);
-            padding: 8px 20px;
+            padding: 6px 16px;
             border-radius: 60px;
             font-size: 0.68rem;
             font-weight: 700;
-            color: var(--accent);
+            color: rgba(255,255,255,0.45);
             letter-spacing: 2px;
             text-transform: uppercase;
-            margin-bottom: 36px;
+            margin-bottom: 20px;
             backdrop-filter: blur(10px);
         }
 
@@ -1003,10 +822,10 @@
 
         .hero h1 {
             font-family: var(--font-display);
-            font-size: clamp(3rem, 6vw, 5rem);
+            font-size: clamp(1.9rem, 3.6vw, 3rem);
             color: var(--white);
-            line-height: 1.05;
-            margin-bottom: 28px;
+            line-height: 1.1;
+            margin-bottom: 16px;
         }
 
         .hero h1 em {
@@ -1015,23 +834,23 @@
         }
 
         .hero-sub {
-            font-size: 1.1rem;
-            color: var(--silver);
-            line-height: 1.8;
-            max-width: 580px;
-            margin: 0 auto 44px;
+            font-size: 0.95rem;
+            color: rgba(255,255,255,0.75);
+            line-height: 1.7;
+            max-width: 520px;
+            margin: 0 0 28px;
         }
 
-        .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; }
+        .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; justify-content: flex-start; }
 
         .btn {
             display: inline-flex;
             align-items: center;
             gap: 10px;
-            padding: 18px 40px;
+            padding: 14px 32px;
             border-radius: 60px;
             font-family: var(--font-body);
-            font-size: 0.92rem;
+            font-size: 0.88rem;
             font-weight: 600;
             border: none;
             transition: all 0.5s var(--ease);
@@ -1122,8 +941,8 @@
 
         /* Hero scroll indicator */
         .scroll-hint {
-            position: absolute;
-            bottom: 40px;
+            position: fixed;
+            bottom: 120px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
@@ -1131,7 +950,11 @@
             align-items: center;
             gap: 8px;
             z-index: 2;
+            pointer-events: none;
+            opacity: 1;
+            transition: opacity 0.4s ease;
         }
+        .scroll-hint.hidden { opacity: 0; }
 
         .scroll-hint span {
             font-size: 0.65rem;
@@ -1184,6 +1007,16 @@
         .marquee-section::before { left: 0; background: linear-gradient(90deg, var(--blue-800), transparent); }
         .marquee-section::after { right: 0; background: linear-gradient(-90deg, var(--blue-800), transparent); }
 
+        .marquee-section--gold {
+            background: var(--gold);
+            border-top: none;
+            border-bottom: none;
+        }
+        .marquee-section--gold::before { background: linear-gradient(90deg, var(--gold), transparent); }
+        .marquee-section--gold::after { background: linear-gradient(-90deg, var(--gold), transparent); }
+        .marquee-section--gold .marquee-item { color: #0A0E14; font-weight: 700; }
+        .marquee-section--gold .sep { background: rgba(0,0,0,0.35) !important; }
+
         .marquee-track {
             display: flex;
             gap: 48px;
@@ -1205,15 +1038,17 @@
             font-weight: 600;
             letter-spacing: 1px;
             text-transform: uppercase;
-            color: rgba(255,255,255,0.3);
+            color: rgba(255,255,255,0.85);
             white-space: nowrap;
         }
 
         .marquee-item .sep {
+            display: inline-block;
             width: 4px; height: 4px;
             background: var(--gold);
             border-radius: 50%;
             opacity: 0.6;
+            flex-shrink: 0;
         }
 
         /* ============================
@@ -1286,9 +1121,9 @@
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            font-size: 0.68rem;
+            font-size: 0.75rem;
             font-weight: 700;
-            letter-spacing: 4px;
+            letter-spacing: 3px;
             text-transform: uppercase;
             color: var(--accent);
             margin-bottom: 20px;
@@ -1303,9 +1138,9 @@
 
         h2.heading {
             font-family: var(--font-display);
-            font-size: clamp(2.2rem, 4.5vw, 3.6rem);
+            font-size: clamp(1.6rem, 2.8vw, 2.2rem);
             color: var(--text);
-            line-height: 1.08;
+            line-height: 1.15;
             margin-bottom: 20px;
         }
 
@@ -1341,7 +1176,7 @@
         .pain-card {
             background: var(--ice);
             border-radius: 20px;
-            padding: 44px 32px;
+            padding: 40px 32px;
             border: 1px solid transparent;
             transition: all 0.5s var(--ease);
             position: relative;
@@ -1593,7 +1428,7 @@
             background: rgba(255,255,255,0.02);
             border: 1px solid rgba(255,255,255,0.05);
             border-radius: 20px;
-            padding: 44px 32px;
+            padding: 40px 32px;
             transition: all 0.5s var(--ease);
             flex-shrink: 0;
             scroll-snap-align: start;
@@ -1700,7 +1535,7 @@
         .result-box {
             background: var(--ice);
             border-radius: 20px;
-            padding: 40px 24px;
+            padding: 40px 32px;
             text-align: center;
             border: 1px solid transparent;
             transition: all 0.5s var(--ease);
@@ -1746,42 +1581,58 @@
 
         .process-steps {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 48px;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
             position: relative;
         }
 
         .process-steps::before {
             content: '';
             position: absolute;
-            top: 52px;
-            left: 16%; right: 16%;
+            top: 50%;
+            left: calc(12.5% + 16px);
+            right: calc(12.5% + 16px);
             height: 1px;
-            background: linear-gradient(90deg, transparent, var(--accent), transparent);
-            opacity: 0.15;
+            background: linear-gradient(90deg, transparent, rgba(201,168,76,0.5) 12%, rgba(201,168,76,0.5) 88%, transparent);
+            z-index: 0;
+            pointer-events: none;
         }
 
-        .step { text-align: center; }
+        .step {
+            text-align: left;
+            background: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 40px 32px;
+            box-shadow: 0 4px 24px rgba(15,23,42,0.05);
+            transition: box-shadow 0.3s var(--ease), border-color 0.3s var(--ease), transform 0.3s var(--ease);
+        }
+        .step:hover {
+            border-color: rgba(201,168,76,0.3);
+            box-shadow: 0 12px 40px rgba(201,168,76,0.08);
+            transform: translateY(-4px);
+        }
 
         .step-circle {
-            width: 104px; height: 104px;
-            margin: 0 auto 36px;
-            background: var(--white);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
+            width: auto; height: auto;
+            margin: 0 0 24px;
+            background: none;
+            border-radius: 0;
+            display: block;
             font-family: var(--font-display);
-            font-size: 2rem;
-            color: var(--gold);
-            box-shadow: 0 8px 40px rgba(15,23,42,0.04);
-            border: 1.5px solid var(--border);
-            position: relative; z-index: 1;
-            transition: all 0.5s var(--ease);
+            font-size: 2.8rem;
+            font-style: italic;
+            color: rgba(201,168,76,0.25);
+            box-shadow: none;
+            border: none;
+            line-height: 1;
+            transition: color 0.3s;
         }
-        .step:hover .step-circle { border-color: var(--gold); box-shadow: 0 8px 40px rgba(201,168,76,0.15); transform: scale(1.06); }
+        .step:hover .step-circle { color: rgba(201,168,76,0.5); }
 
         .step h3 {
             font-family: var(--font-display);
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             color: var(--text);
             margin-bottom: 12px;
         }
@@ -1789,8 +1640,8 @@
         .step p {
             font-size: 0.9rem;
             color: var(--text-light);
-            max-width: 280px;
-            margin: 0 auto;
+            max-width: none;
+            margin: 0;
             line-height: 1.75;
         }
 
@@ -1895,10 +1746,10 @@
 
         .about-content h2 {
             font-family: var(--font-display);
-            font-size: clamp(2rem, 3.5vw, 2.8rem);
+            font-size: clamp(1.5rem, 2.6vw, 2rem);
             color: var(--text);
             margin-bottom: 28px;
-            line-height: 1.1;
+            line-height: 1.15;
         }
         .about-content h2 em { font-style: italic; color: var(--accent); }
 
@@ -1947,13 +1798,20 @@
             background: none; border: none;
             padding: 28px 0;
             display: flex; align-items: center; justify-content: space-between;
-            font-family: var(--font-display);
-            font-size: 1.1rem;
             color: var(--white);
             text-align: left;
             gap: 20px;
             transition: color 0.3s;
             cursor: none;
+        }
+        .faq-h3 {
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: inherit;
+            margin: 0;
+            line-height: 1.4;
+            flex: 1;
         }
         .faq-q:hover { color: var(--accent-light); }
 
@@ -2276,14 +2134,8 @@
         }
 
         .location-map {
-            aspect-ratio: 4/3;
             background: var(--blue-900);
             border-radius: 16px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
             position: relative;
             overflow: hidden;
         }
@@ -2354,148 +2206,374 @@
             text-align: left;
         }
 
-        .cta-form-info .heading { text-align: left; }
-        .cta-form-info .heading-sub { text-align: left; }
+        .cta-form-info .heading { text-align: left; margin-left: 0; margin-right: 0; }
+        .cta-form-info .heading-sub { text-align: left; margin-left: 0; margin-right: 0; }
 
-        .cta-form-features {
+        /* form-checks (lado esquerdo) */
+        .form-checks {
+            list-style: none;
             display: flex;
             flex-direction: column;
             gap: 14px;
             margin-top: 32px;
         }
-
-        .cta-form-feat {
+        .form-checks li {
             display: flex;
             align-items: center;
             gap: 12px;
-            color: rgba(255,255,255,0.7);
-            font-size: 0.88rem;
+            font-size: 0.94rem;
+            color: rgba(255,255,255,0.8);
+            line-height: 1.5;
         }
-
-        .cta-form-feat-icon {
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            background: rgba(59,130,246,0.12);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .form-checks li svg {
+            width: 20px; height: 20px;
+            color: #22C55E;
             flex-shrink: 0;
         }
 
-        .cta-form-feat-icon svg { width: 14px; height: 14px; color: var(--accent); }
-
+        /* card do form */
         .form-card {
             background: rgba(255,255,255,0.04);
             border: 1px solid rgba(255,255,255,0.08);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 40px;
+            border-radius: 16px;
+            padding: 40px 32px;
         }
 
+        /* dots de progresso */
         .form-steps-dots {
             display: flex;
+            justify-content: center;
             gap: 8px;
-            margin-bottom: 28px;
+            margin-bottom: 32px;
         }
-
         .form-dot {
-            flex: 1;
-            height: 3px;
-            border-radius: 3px;
+            width: 10px; height: 10px;
+            border-radius: 50%;
             background: rgba(255,255,255,0.1);
-            transition: background 0.4s;
+            transition: background 0.3s;
         }
-
         .form-dot.active { background: var(--gold); }
-        .form-dot.done { background: var(--accent); }
+        .form-dot.done { background: #22C55E; }
 
-        .form-panel { display: none; }
-        .form-panel.active { display: block; }
+        /* steps */
+        .form-step { display: none; }
+        .form-step.active { display: block; }
 
-        .form-panel h4 {
+        .form-step-title {
             font-family: var(--font-display);
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             color: var(--white);
-            margin-bottom: 6px;
+            margin-bottom: 20px;
+            text-align: center;
         }
-
-        .form-panel .form-hint {
-            font-size: 0.82rem;
-            color: var(--silver);
-            margin-bottom: 24px;
-        }
-
-        .form-options {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 10px;
+        .form-step-sub {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.45);
+            text-align: center;
+            margin-top: -14px;
             margin-bottom: 20px;
         }
 
-        .form-opt {
-            padding: 14px 16px;
-            border-radius: 12px;
-            border: 1.5px solid rgba(255,255,255,0.08);
-            background: rgba(255,255,255,0.03);
-            color: rgba(255,255,255,0.6);
+        /* botões de escolha */
+        .cta-opts {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        .cta-opt {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 13px 14px;
+            border-radius: 10px;
+            background: rgba(255,255,255,0.05);
+            border: 1.5px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.7);
             font-family: var(--font-body);
-            font-size: 0.85rem;
-            font-weight: 500;
-            text-align: center;
-            transition: all 0.3s;
+            font-size: 0.82rem;
+            text-align: left;
             cursor: pointer;
+            transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.15s;
+            line-height: 1.3;
         }
+        .cta-opt:hover { background: rgba(201,168,76,0.1); border-color: rgba(201,168,76,0.35); color: #fff; }
+        .cta-opt.selected { background: rgba(201,168,76,0.15); border-color: var(--gold); color: #fff; }
+        .cta-opt:active { transform: scale(.97); }
+        .cta-opt-icon { font-size: 1.2em; line-height: 1; flex-shrink: 0; }
 
-        .form-opt:hover { border-color: rgba(255,255,255,0.2); color: var(--white); }
-        .form-opt.selected { border-color: var(--gold); background: rgba(201,168,76,0.08); color: var(--white); }
-
-        .form-input {
+        /* inputs step 4 */
+        .form-group { margin-bottom: 16px; }
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: rgba(255,255,255,0.5);
+            margin-bottom: 6px;
+            letter-spacing: 0.03em;
+        }
+        .form-group input {
             width: 100%;
-            padding: 14px 18px;
-            border-radius: 12px;
-            border: 1.5px solid rgba(255,255,255,0.08);
-            background: rgba(255,255,255,0.03);
-            color: var(--white);
+            background: rgba(255,255,255,0.04);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            padding: 12px 16px;
             font-family: var(--font-body);
-            font-size: 0.9rem;
-            margin-bottom: 12px;
+            font-size: 0.94rem;
+            color: var(--white);
             outline: none;
-            transition: border-color 0.3s;
+            transition: border-color 0.2s;
         }
+        .form-group input:focus { border-color: var(--gold); }
+        .form-group input::placeholder { color: rgba(255,255,255,0.25); }
 
-        .form-input::placeholder { color: rgba(255,255,255,0.25); }
-        .form-input:focus { border-color: var(--accent); }
-        textarea.form-input { min-height: 80px; resize: vertical; }
-
+        /* navegação step 4 */
         .form-nav {
             display: flex;
-            gap: 10px;
-            margin-top: 8px;
+            gap: 12px;
+            margin-top: 24px;
         }
-
-        .form-nav .btn { flex: 1; justify-content: center; padding: 14px 24px; }
-
-        .btn-back {
-            background: rgba(255,255,255,0.06);
-            color: rgba(255,255,255,0.6);
-            border: 1px solid rgba(255,255,255,0.08);
+        .form-btn-next {
+            flex: 1;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--gold);
+            color: #060E1A;
+            font-size: 0.875rem;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            padding: 14px 24px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: var(--font-body);
+            transition: transform 0.2s, box-shadow 0.2s;
         }
-        .btn-back:hover { border-color: rgba(255,255,255,0.2); color: var(--white); }
-
-        .btn-submit {
-            background: var(--accent);
-            color: var(--white);
+        .form-btn-next:hover { transform: translateY(-2px); box-shadow: 0 8px 32px rgba(201,168,76,0.3); }
+        .form-btn-back {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: transparent;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.875rem;
             font-weight: 600;
+            padding: 14px 20px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: var(--font-body);
+            transition: color 0.2s, border-color 0.2s;
         }
-        .btn-submit:hover { box-shadow: 0 8px 32px rgba(59,130,246,0.3); }
+        .form-btn-back:hover { color: var(--white); border-color: rgba(255,255,255,0.3); }
 
         .form-privacy {
-            font-size: 0.72rem;
-            color: rgba(255,255,255,0.2);
-            margin-top: 14px;
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.3);
             text-align: center;
+            margin-top: 16px;
+            line-height: 1.5;
+        }
+
+        /* ============================
+           ONDE ESTAMOS
+        ============================ */
+        .location {
+            padding: 120px 0;
+            background: #0A1628;
+        }
+        .location h2.heading { color: #fff !important; }
+        .location .heading-sub { color: #94A3B8 !important; margin: 0 auto; }
+        .location-header { text-align: center; margin-bottom: 64px; }
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            align-items: stretch;
+        }
+        .location-map {
+            border-radius: 16px;
+            overflow: hidden;
+            min-height: 320px;
+            position: relative;
+            border: 1px solid rgba(255,255,255,0.06);
+        }
+        .location-map iframe {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            display: block;
+        }
+        .location-info { display: flex; flex-direction: column; gap: 28px; }
+        .location-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 16px;
+            padding: 24px 28px;
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+        }
+        .location-card-icon {
+            width: 40px; height: 40px; flex-shrink: 0;
+            background: rgba(201,168,76,0.1);
+            border-radius: 10px;
+            display: flex; align-items: center; justify-content: center;
+            color: var(--accent-gold);
+        }
+        .location-card-icon svg { width: 20px; height: 20px; }
+        .location-card-label {
+            font-size: 0.65rem; font-weight: 700; letter-spacing: 0.12em;
+            text-transform: uppercase; color: var(--accent-gold); margin-bottom: 4px;
+        }
+        .location-card-value {
+            font-size: 0.9rem; color: rgba(255,255,255,0.7); line-height: 1.5;
+        }
+        .location-card-value a {
+            color: rgba(255,255,255,0.7); text-decoration: none; transition: color 0.2s;
+        }
+        .location-card-value a:hover { color: var(--accent-gold); }
+        .location-cities {
+            display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px;
+        }
+        .location-city-tag {
+            font-size: 0.75rem; padding: 4px 12px;
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 20px; color: rgba(255,255,255,0.5);
+        }
+
+        /* ============================
+           BLOG
+        ============================ */
+        .blog-section {
+            padding: 120px 0;
+            background: #0A1628;
+        }
+        .blog-section h2.heading { color: #fff !important; }
+        .blog-section .heading-sub { color: #94A3B8 !important; }
+        .blog-header-centered {
+            text-align: center;
+            max-width: 640px;
+            margin: 0 auto 56px;
+        }
+        .blog-link-all {
+            font-size: 0.85rem; font-weight: 600;
+            color: var(--accent-gold); text-decoration: none;
+            display: inline-flex; align-items: center; gap: 6px;
+            white-space: nowrap; transition: gap 0.2s;
+        }
+        .blog-link-all:hover { gap: 10px; }
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+        .blog-card {
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 16px;
+            overflow: hidden;
+            display: flex; flex-direction: column;
+            transition: border-color 0.25s, transform 0.25s;
+            text-decoration: none;
+        }
+        .blog-card:hover {
+            border-color: rgba(201,168,76,0.3);
+            transform: translateY(-4px);
+        }
+        .blog-card-thumb {
+            aspect-ratio: 16/9;
+            background: linear-gradient(135deg, rgba(201,168,76,0.08) 0%, rgba(10,22,40,0.6) 100%);
+            display: flex; align-items: center; justify-content: center;
+            position: relative; overflow: hidden;
+        }
+        .blog-card-thumb img {
+            position: absolute; inset: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s var(--ease);
+            filter: brightness(0.65) saturate(0.8);
+        }
+        .blog-card:hover .blog-card-thumb img { transform: scale(1.04); }
+        .blog-card-thumb-tag {
+            position: absolute; top: 14px; left: 14px;
+            font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em;
+            text-transform: uppercase; color: var(--accent-gold);
+            background: rgba(201,168,76,0.12);
+            border: 1px solid rgba(201,168,76,0.25);
+            padding: 4px 10px; border-radius: 20px;
+        }
+        .blog-card-body { padding: 28px; flex: 1; display: flex; flex-direction: column; }
+        .blog-card-title {
+            font-family: var(--font-display);
+            font-size: 1.2rem; font-style: italic;
+            color: var(--white); line-height: 1.35;
+            margin-bottom: 12px;
+        }
+        .blog-card:hover .blog-card-title { color: var(--accent-gold); transition: color 0.2s; }
+        .blog-card-desc {
+            font-size: 0.9rem; color: rgba(255,255,255,0.45);
+            line-height: 1.6; flex: 1;
+        }
+        .blog-card-meta {
+            margin-top: 20px; padding-top: 16px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            font-size: 0.72rem; color: rgba(255,255,255,0.25);
+            display: flex; align-items: center; justify-content: space-between;
+        }
+        .blog-card-read {
+            font-size: 0.75rem; color: var(--accent-gold);
+            font-weight: 600; display: flex; align-items: center; gap: 4px;
+        }
+
+        @media (max-width: 900px) {
+            .location-grid { grid-template-columns: 1fr; gap: 32px; }
+            .blog-grid { grid-template-columns: 1fr 1fr; }
+        }
+        @media (max-width: 600px) {
+            .blog-grid { grid-template-columns: 1fr; }
+            .blog-header { flex-direction: column; align-items: flex-start; }
+        }
+
+        /* ============================
+           MARQUEE DOURADO
+        ============================ */
+        .marquee-gold {
+            background: var(--gold);
+            padding: 18px 0;
+            overflow: hidden;
+            position: relative;
+        }
+        .marquee-gold-track {
+            display: flex;
+            width: max-content;
+            animation: marquee 30s linear infinite;
+        }
+        .marquee-gold:hover .marquee-gold-track { animation-play-state: paused; }
+        .marquee-gold-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 0 40px;
+            white-space: nowrap;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: #0A0E14;
+        }
+        .marquee-gold-item .mgold-dot {
+            width: 5px; height: 5px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.35);
+            flex-shrink: 0;
         }
 
         /* ============================
@@ -2505,63 +2583,47 @@
             position: fixed;
             bottom: 0; left: 0; right: 0;
             z-index: 998;
-            background: rgba(10, 22, 40, 0.92);
-            backdrop-filter: blur(30px);
-            -webkit-backdrop-filter: blur(30px);
-            border-top: 1px solid rgba(255,255,255,0.04);
-            padding: 14px 0;
+            background: rgba(241, 245, 249, 0.94);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            box-shadow: 0 -1px 0 rgba(0,0,0,0.06);
             transform: translateY(100%);
-            transition: transform 0.4s var(--ease);
+            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
         }
         .bottom-bar.visible { transform: translateY(0); }
 
-        .bottom-bar .container {
+        .bb-inner {
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: center;
+            gap: 24px;
+            padding: 14px 40px;
         }
-
-        .bottom-bar-text {
-            font-family: var(--font-display);
-            font-size: 1rem;
-            color: var(--white);
+        .bb-info {
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
         }
-        .bottom-bar-text em { font-style: italic; color: var(--accent); }
-
-        .bottom-bar .btn { padding: 12px 28px; font-size: 0.85rem; }
-
-        /* ============================
-           FOOTER
-        ============================ */
-        .footer {
-            background: #040A12;
-            padding: 72px 0 32px;
+        .bb-stars { color: #F59E0B; font-size: 0.875rem; letter-spacing: 1px; }
+        .bb-sep { width: 1px; height: 20px; background: var(--border); }
+        .bb-cta {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 28px;
+            border-radius: 50px;
+            background: var(--accent);
+            color: #fff;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s;
         }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 1.5fr 1fr 1fr 1fr;
-            gap: 48px;
-            margin-bottom: 56px;
-        }
-
-        .footer .logo-name { font-size: 1.15rem; }
-        .footer .logo-tag { margin-bottom: 16px; }
-        .footer-desc { font-size: 0.85rem; color: rgba(255,255,255,0.2); line-height: 1.75; }
-
-        .footer-col h4 {
-            font-size: 0.65rem; font-weight: 700; letter-spacing: 3px;
-            text-transform: uppercase; color: var(--accent); margin-bottom: 24px;
-        }
-        .footer-col a { display: block; font-size: 0.85rem; color: rgba(255,255,255,0.3); margin-bottom: 14px; transition: color 0.3s; }
-        .footer-col a:hover { color: var(--accent-light); }
-
-        .footer-bottom {
-            border-top: 1px solid rgba(255,255,255,0.03);
-            padding-top: 28px;
-            display: flex; justify-content: space-between; align-items: center;
-        }
-        .footer-bottom p, .footer-crc { font-size: 0.75rem; color: rgba(255,255,255,0.15); }
+        .bb-cta:hover { background: #2563EB; }
+        .bb-cta svg { width: 15px; height: 15px; }
 
         /* ============================
            WHATSAPP
@@ -2626,12 +2688,14 @@
         ============================ */
         @media (max-width: 1024px) {
             .hero-layout { grid-template-columns: 1fr; gap: 48px; }
+            .hero-photo { max-width: 360px; margin: 0 auto; }
             .hero-metrics { max-width: 420px; }
+            .process-steps { grid-template-columns: 1fr 1fr; gap: 24px; }
             .pains-grid { grid-template-columns: 1fr 1fr; }
             .about-layout { grid-template-columns: 1fr; gap: 60px; }
             .about-photo { max-width: 340px; }
             .testimonials-grid { grid-template-columns: 1fr 1fr; }
-            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr 1fr; gap: 32px; }
             .toc { display: none; }
             .location-layout { grid-template-columns: 1fr; gap: 48px; }
         }
@@ -2785,15 +2849,16 @@
             .footer-grid { grid-template-columns: 1fr; gap: 32px; }
             .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
 
-            /* Bottom bar */
-            .bottom-bar .container { flex-direction: column; gap: 10px; text-align: center; }
-            .bottom-bar .btn { width: 100%; justify-content: center; }
-            .bottom-bar-text { font-size: 0.85rem; }
+            /* Bottom bar mobile */
+            .bb-inner { gap: 12px; padding: 12px 20px; flex-wrap: wrap; justify-content: center; }
+            .bb-sep { display: none; }
+            .bb-info { font-size: 0.8rem; }
+            .bb-cta { padding: 9px 22px; font-size: 0.8rem; }
 
             /* Section padding reduction */
-            .section-tag { font-size: 0.6rem; letter-spacing: 3px; }
-            h2.heading { font-size: clamp(1.6rem, 6vw, 2.2rem); }
-            .heading-sub { font-size: 0.95rem; }
+            .section-tag { font-size: 0.68rem; letter-spacing: 2.5px; }
+            h2.heading { font-size: clamp(1.3rem, 5vw, 1.7rem); }
+            .heading-sub { font-size: 1rem; }
 
             /* Loader */
             .loader-phrase { gap: 4px 8px; }
@@ -2812,11 +2877,11 @@
 
     <!-- Schema.org — @graph com 8 nodes (Organization, WebSite, WebPage, Person, BreadcrumbList, FAQPage) -->
     <script type="application/ld+json">
-    {
+{
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": ["LocalBusiness", "ProfessionalService"],
+      "@type": ["AccountingService", "LocalBusiness"],
       "@id": "https://amcabralblindagem.com.br/#organization",
       "name": "Amanda Cabral Soluções Empresariais",
       "legalName": "AC Contabilidade e Consultoria LTDA",
@@ -2829,36 +2894,61 @@
         "width": 300,
         "height": 80
       },
-      "telephone": ["+55 37 99996-7558"],
+      "telephone": "+5537999967558",
       "email": "contato@amcabralblindagem.com.br",
       "address": {
         "@type": "PostalAddress",
         "streetAddress": "Rua Major Fidelis, 244, Centro",
-        "addressLocality": "Para de Minas",
+        "addressLocality": "Pará de Minas",
         "addressRegion": "MG",
         "postalCode": "35660-109",
         "addressCountry": "BR"
       },
       "geo": {
         "@type": "GeoCoordinates",
-        "latitude": -19.9191,
+        "latitude": -19.9127,
         "longitude": -43.9386
       },
       "areaServed": [
         {
           "@type": "City",
-          "name": "Para de Minas",
-          "sameAs": "https://www.wikidata.org/wiki/Q2913906"
+          "name": "Pará de Minas",
+          "sameAs": [
+            "https://www.wikidata.org/wiki/Q1749821",
+            "https://pt.wikipedia.org/wiki/Par%C3%A1_de_Minas"
+          ]
         },
         {
           "@type": "City",
           "name": "Belo Horizonte",
-          "sameAs": "https://www.wikidata.org/wiki/Q601"
+          "sameAs": [
+            "https://www.wikidata.org/wiki/Q42800",
+            "https://pt.wikipedia.org/wiki/Belo_Horizonte"
+          ]
         },
         {
-          "@type": "State",
+          "@type": "City",
+          "name": "Contagem",
+          "sameAs": [
+            "https://www.wikidata.org/wiki/Q271333",
+            "https://pt.wikipedia.org/wiki/Contagem_(Minas_Gerais)"
+          ]
+        },
+        {
+          "@type": "City",
+          "name": "Betim",
+          "sameAs": [
+            "https://www.wikidata.org/wiki/Q737644",
+            "https://pt.wikipedia.org/wiki/Betim"
+          ]
+        },
+        {
+          "@type": "AdministrativeArea",
           "name": "Minas Gerais",
-          "sameAs": "https://www.wikidata.org/wiki/Q1061"
+          "sameAs": [
+            "https://www.wikidata.org/wiki/Q39109",
+            "https://pt.wikipedia.org/wiki/Minas_Gerais"
+          ]
         }
       ],
       "openingHoursSpecification": [
@@ -2867,147 +2957,209 @@
           "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
           "opens": "08:00",
           "closes": "18:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": "PublicHolidays",
+          "opens": "00:00",
+          "closes": "00:00"
         }
       ],
       "sameAs": [
-        "https://www.linkedin.com/in/amanda-cabral-de-oliveira-82183a179/"
+        "https://www.linkedin.com/in/amanda-cabral-de-oliveira-82183a179/",
+        "https://www.instagram.com/amandacabral28/"
       ],
       "knowsAbout": [
         {
           "@type": "DefinedTerm",
-          "@id": "https://www.wikidata.org/wiki/Q232156",
+          "@id": "https://www.wikidata.org/wiki/Q3981645",
           "name": "Planejamento Tributário"
         },
         {
           "@type": "DefinedTerm",
-          "@id": "https://www.wikidata.org/wiki/Q12913062",
+          "@id": "https://www.wikidata.org/wiki/Q4116214",
+          "name": "Contabilidade Empresarial"
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://www.wikidata.org/wiki/Q626741",
           "name": "Compliance Fiscal"
         },
         {
           "@type": "DefinedTerm",
-          "@id": "https://www.wikidata.org/wiki/Q318193",
-          "name": "Contabilidade de Empresas"
+          "@id": "https://www.wikidata.org/wiki/Q219577",
+          "name": "Holding Patrimonial"
         },
         {
           "@type": "DefinedTerm",
-          "name": "Recuperação de Créditos ICMS/IPI"
+          "name": "Recuperação de Créditos ICMS e IPI"
         },
         {
           "@type": "DefinedTerm",
-          "name": "Gestão Contábil Estratégica"
+          "name": "Reforma Tributária CBS IBS"
         }
       ],
-      "qualifications": "Inscrita no Conselho Regional de Contabilidade (CRC/MG). Especializada em empresas industriais e comerciais. 20 anos de experiência.",
-      "additionalType": "https://www.wikidata.org/wiki/Q318193",
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "Serviços de Contabilidade e Tributação",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "name": "Planejamento Tributário",
-            "businessFunction": "https://purl.org/goodrelations/v1#LeaseOut",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Análise Tributária Especializada",
-              "serviceType": "Planejamento Tributário",
-              "sameAs": "https://www.wikidata.org/wiki/Q232156",
-              "url": "https://amcabralblindagem.com.br/planejamento-tributario/"
-            }
-          },
-          {
-            "@type": "Offer",
-            "name": "Recuperação de Créditos",
-            "businessFunction": "https://purl.org/goodrelations/v1#LeaseOut",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Auditoria de Créditos ICMS, IPI e PIS/COFINS",
-              "serviceType": "Recuperação de Créditos",
-              "url": "https://amcabralblindagem.com.br/recuperacao-de-creditos-tributarios/"
-            }
-          },
-          {
-            "@type": "Offer",
-            "name": "Compliance Fiscal",
-            "businessFunction": "https://purl.org/goodrelations/v1#LeaseOut",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Gestão de Obrigações Fiscais e Contábeis",
-              "serviceType": "Compliance",
-              "url": "https://amcabralblindagem.com.br/gestao-contabil-para-empresas/"
-            }
-          },
-          {
-            "@type": "Offer",
-            "name": "Holding Patrimonial e Familiar",
-            "businessFunction": "https://purl.org/goodrelations/v1#LeaseOut",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Estruturação de Holdings e Planejamento Familiar",
-              "serviceType": "Planejamento Patrimonial",
-              "url": "https://amcabralblindagem.com.br/holding-patrimonial-e-familiar/"
-            }
-          },
-          {
-            "@type": "Offer",
-            "name": "Consultoria Tributária",
-            "businessFunction": "https://purl.org/goodrelations/v1#LeaseOut",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "Consultoria para Decisões Tributárias",
-              "serviceType": "Consultoria",
-              "url": "https://amcabralblindagem.com.br/consultoria-tributaria/"
-            }
-          }
-        ]
+      "description": "Especialista em planejamento tributário e recuperação de créditos ICMS e IPI para indústrias em Minas Gerais. Mais de 20 anos de experiência exclusiva em empresas, R$ 12 milhões recuperados em créditos tributários, 120 empresas atendidas.",
+      "slogan": "Contabilidade de alta performance para empresas que competem para vencer.",
+      "hasMap": "https://maps.google.com/?q=Amanda+Cabral+Contadora+Para+de+Minas+MG",
+      "additionalType": "https://www.wikidata.org/wiki/Q4116214",
+      "isicV4": "6920",
+      "memberOf": {"@id": "https://amcabralblindagem.com.br/#crc-mg"},
+      "hasCredential": {
+        "@type": "EducationalOccupationalCredential",
+        "name": "Registro Ativo CRC/MG",
+        "description": "Inscrita no Conselho Regional de Contabilidade de Minas Gerais com registro ativo. Pós-graduada em Direito Tributário. Especialista em ICMS/IPI. Membro do IBPT. 20 anos de experiência exclusiva em empresas.",
+        "credentialCategory": "professional"
       },
       "numberOfEmployees": {
         "@type": "QuantitativeValue",
         "minValue": 1,
         "maxValue": 10
       },
-      "availableLanguage": {"@language": "pt-BR"},
-      "mainEntityOfPage": {"@id": "https://amcabralblindagem.com.br/#webpage"}
+      "contactPoint": [
+        {
+          "@type": "ContactPoint",
+          "telephone": "+5537999967558",
+          "contactType": "customer service",
+          "areaServed": "BR",
+          "availableLanguage": "Portuguese",
+          "hoursAvailable": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "08:00",
+            "closes": "18:00"
+          }
+        }
+      ],
+      "member": {"@id": "https://amcabralblindagem.com.br/#person-amanda-cabral"},
+      "availableLanguage": "Portuguese",
+      "mainEntityOfPage": {"@id": "https://amcabralblindagem.com.br/#webpage"},
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Serviços de Contabilidade e Planejamento Tributário",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "name": "Planejamento Tributário para Empresas",
+            "businessFunction": "https://purl.org/goodrelations/v1#ProvideService",
+            "itemOffered": {
+              "@type": "Service",
+              "@id": "https://amcabralblindagem.com.br/#service-planejamento-tributario",
+              "name": "Planejamento Tributário Especializado",
+              "serviceType": "Planejamento Tributário",
+              "provider": {"@id": "https://amcabralblindagem.com.br/#organization"},
+              "sameAs": "https://www.wikidata.org/wiki/Q3981645",
+              "url": "https://amcabralblindagem.com.br/planejamento-tributario/"
+            }
+          },
+          {
+            "@type": "Offer",
+            "name": "Recuperação de Créditos Tributários",
+            "businessFunction": "https://purl.org/goodrelations/v1#ProvideService",
+            "itemOffered": {
+              "@type": "Service",
+              "@id": "https://amcabralblindagem.com.br/#service-recuperacao-creditos",
+              "name": "Auditoria e Recuperação de Créditos ICMS, IPI e PIS/COFINS",
+              "serviceType": "Recuperação de Créditos Tributários",
+              "provider": {"@id": "https://amcabralblindagem.com.br/#organization"},
+              "url": "https://amcabralblindagem.com.br/recuperacao-de-creditos-tributarios/"
+            }
+          },
+          {
+            "@type": "Offer",
+            "name": "Compliance e Gestão Contábil",
+            "businessFunction": "https://purl.org/goodrelations/v1#ProvideService",
+            "itemOffered": {
+              "@type": "Service",
+              "@id": "https://amcabralblindagem.com.br/#service-compliance",
+              "name": "Gestão de Obrigações Fiscais e Contábeis Estratégicas",
+              "serviceType": "Compliance Fiscal",
+              "provider": {"@id": "https://amcabralblindagem.com.br/#organization"},
+              "url": "https://amcabralblindagem.com.br/gestao-contabil-para-empresas/"
+            }
+          },
+          {
+            "@type": "Offer",
+            "name": "Holding Patrimonial e Familiar",
+            "businessFunction": "https://purl.org/goodrelations/v1#ProvideService",
+            "itemOffered": {
+              "@type": "Service",
+              "@id": "https://amcabralblindagem.com.br/#service-holding",
+              "name": "Estruturação de Holdings Patrimoniais e Familiares",
+              "serviceType": "Planejamento Patrimonial e Sucessório",
+              "provider": {"@id": "https://amcabralblindagem.com.br/#organization"},
+              "sameAs": "https://www.wikidata.org/wiki/Q219577",
+              "url": "https://amcabralblindagem.com.br/holding-patrimonial-e-familiar/"
+            }
+          },
+          {
+            "@type": "Offer",
+            "name": "Consultoria Tributária",
+            "businessFunction": "https://purl.org/goodrelations/v1#ProvideService",
+            "itemOffered": {
+              "@type": "Service",
+              "@id": "https://amcabralblindagem.com.br/#service-consultoria",
+              "name": "Consultoria para Decisões Tributárias e Crescimento",
+              "serviceType": "Consultoria Tributária",
+              "provider": {"@id": "https://amcabralblindagem.com.br/#organization"},
+              "url": "https://amcabralblindagem.com.br/consultoria-tributaria/"
+            }
+          }
+        ]
+      }
     },
     {
       "@type": "WebSite",
       "@id": "https://amcabralblindagem.com.br/#website",
       "url": "https://amcabralblindagem.com.br/",
-      "name": "Amanda Cabral - Contadora Especialista em Empresas",
+      "name": "Amanda Cabral | Contadora Tributária com 20 Anos de Experiência",
       "publisher": {"@id": "https://amcabralblindagem.com.br/#organization"},
-      "inLanguage": "pt-BR"
+      "inLanguage": "pt-BR",
+      "hasPart": {"@id": "https://amcabralblindagem.com.br/#blog"},
+      "significantLink": [
+        "https://amcabralblindagem.com.br/planejamento-tributario/",
+        "https://amcabralblindagem.com.br/recuperacao-de-creditos-tributarios/",
+        "https://amcabralblindagem.com.br/holding-patrimonial-e-familiar/",
+        "https://amcabralblindagem.com.br/diagnostico-gratuito/"
+      ]
     },
     {
       "@type": "WebPage",
       "@id": "https://amcabralblindagem.com.br/#webpage",
       "url": "https://amcabralblindagem.com.br/",
-      "name": "Amanda Cabral | Contadora Especialista em Empresas em BH",
-      "description": "Contabilidade estratégica para empresas em BH. 20 anos, R$ 12,3M recuperados em créditos invisíveis. 8 em cada 10 empresas pagam ICMS a mais. Diagnóstico gratuito.",
+      "name": "Amanda Cabral | Contadora Tributária com 20 Anos de Experiência",
+      "description": "Especialista em planejamento tributário e recuperação de créditos para empresas em MG. R$ 12M recuperados, 120 empresas atendidas. Diagnóstico gratuito.",
       "mainEntity": {"@id": "https://amcabralblindagem.com.br/#organization"},
       "publisher": {"@id": "https://amcabralblindagem.com.br/#organization"},
       "isPartOf": {"@id": "https://amcabralblindagem.com.br/#website"},
       "breadcrumb": {"@id": "https://amcabralblindagem.com.br/#breadcrumb"},
+      "dateModified": "2026-04-22",
       "speakableSpecification": {
         "@type": "SpeakableSpecification",
-        "cssSelector": ["h1", ".hero__subtitle", "h2", ".faq__answer", ".servicos__titulo"]
+        "cssSelector": ["h1", ".hero-sub", "h2", ".faq-a-inner", ".service-card h3"]
       },
+      "hasPart": [
+        {"@id": "https://amcabralblindagem.com.br/#faqpage"},
+        {"@id": "https://amcabralblindagem.com.br/#howto-processo"}
+      ],
       "inLanguage": "pt-BR",
       "license": "https://creativecommons.org/licenses/by/4.0/"
     },
     {
       "@type": "Person",
-      "@id": "https://amcabralblindagem.com.br/#person-amanda-silva",
+      "@id": "https://amcabralblindagem.com.br/#person-amanda-cabral",
       "name": "Amanda Cabral de Oliveira",
       "givenName": "Amanda",
       "familyName": "Cabral de Oliveira",
-      "jobTitle": "Contadora Especialista em Tributação",
+      "jobTitle": "Contadora Tributária Especialista em Empresas",
       "worksFor": {"@id": "https://amcabralblindagem.com.br/#organization"},
+      "memberOf": {"@id": "https://amcabralblindagem.com.br/#crc-mg"},
       "url": "https://amcabralblindagem.com.br/sobre/",
       "image": {
         "@type": "ImageObject",
-        "url": "https://amcabralblindagem.com.br/assets/amanda-silva.jpg",
-        "width": 400,
-        "height": 400
+        "url": "https://amcabralblindagem.com.br/amanda-sobre.jpg",
+        "width": 600,
+        "height": 800
       },
       "sameAs": [
         "https://www.linkedin.com/in/amanda-cabral-de-oliveira-82183a179/",
@@ -3016,8 +3168,13 @@
       "knowsAbout": [
         {
           "@type": "DefinedTerm",
-          "@id": "https://www.wikidata.org/wiki/Q232156",
-          "name": "Tributação"
+          "@id": "https://www.wikidata.org/wiki/Q3981645",
+          "name": "Planejamento Tributário"
+        },
+        {
+          "@type": "DefinedTerm",
+          "@id": "https://www.wikidata.org/wiki/Q4116214",
+          "name": "Contabilidade Empresarial"
         },
         {
           "@type": "DefinedTerm",
@@ -3025,19 +3182,22 @@
         },
         {
           "@type": "DefinedTerm",
-          "name": "Planejamento Fiscal"
+          "name": "Recuperação de Créditos Fiscais"
         },
         {
           "@type": "DefinedTerm",
-          "name": "Recuperação de Créditos"
+          "name": "Holding Patrimonial e Familiar"
+        },
+        {
+          "@type": "DefinedTerm",
+          "name": "Reforma Tributária 2026"
         }
       ],
-      "description": "Amanda Cabral de Oliveira, contadora especialista em tributação e consultoria empresarial. Sócia-proprietária de AC Contabilidade e Consultoria, com atuação em planejamento fiscal, recuperação de créditos e gestão contábil estratégica para PMEs em Minas Gerais."
+      "description": "Amanda Cabral de Oliveira é contadora tributária com 20 anos de experiência exclusiva em empresas. Sócia-proprietária da AC Contabilidade e Consultoria em Pará de Minas, MG. Especialista em planejamento tributário, recuperação de créditos ICMS/IPI e estruturação de holdings patrimoniais para PMEs em Minas Gerais. Já recuperou mais de R$ 12 milhões em créditos tributários para 120 empresas atendidas."
     },
     {
       "@type": "BreadcrumbList",
       "@id": "https://amcabralblindagem.com.br/#breadcrumb",
-      "isPartOf": {"@id": "https://amcabralblindagem.com.br/#webpage"},
       "itemListElement": [
         {
           "@type": "ListItem",
@@ -3048,24 +3208,153 @@
       ]
     },
     {
+      "@type": "HowTo",
+      "@id": "https://amcabralblindagem.com.br/#howto-processo",
+      "name": "Como funciona o planejamento tributário com a Amanda Cabral",
+      "description": "Processo em 4 etapas para reduzir a carga tributária da sua empresa de forma legal e segura.",
+      "totalTime": "P90D",
+      "provider": {"@id": "https://amcabralblindagem.com.br/#organization"},
+      "step": [
+        {
+          "@type": "HowToStep",
+          "position": 1,
+          "name": "Diagnóstico Tributário Gratuito",
+          "text": "Análise gratuita de 30 minutos. Mapeamos créditos, riscos e oportunidades fiscais da sua empresa."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 2,
+          "name": "Mapeamento Completo",
+          "text": "Radiografia completa do regime tributário, obrigações acessórias, créditos acumulados e patrimônio."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 3,
+          "name": "Implementação do Planejamento",
+          "text": "Execução das estratégias tributárias definidas: recuperação de créditos, adequação de regime e compliance."
+        },
+        {
+          "@type": "HowToStep",
+          "position": 4,
+          "name": "Acompanhamento Contínuo",
+          "text": "Monitoramento permanente das obrigações fiscais, alertas proativos e adaptação às mudanças da legislação tributária."
+        }
+      ]
+    },
+    {
+      "@type": "Blog",
+      "@id": "https://amcabralblindagem.com.br/#blog",
+      "name": "Blog AM Cabral — Tributação e Planejamento Fiscal para Empresários",
+      "description": "Conteúdo especializado sobre planejamento tributário, reforma tributária, recuperação de créditos e holding patrimonial para empresas em Minas Gerais.",
+      "url": "https://amcabralblindagem.com.br/blog/",
+      "publisher": {"@id": "https://amcabralblindagem.com.br/#organization"},
+      "isPartOf": {"@id": "https://amcabralblindagem.com.br/#website"},
+      "blogPost": [
+        {
+          "@type": "BlogPosting",
+          "@id": "https://amcabralblindagem.com.br/reforma-tributaria-para-industrias/#article",
+          "headline": "O que muda para as indústrias com a Reforma Tributária de 2026",
+          "description": "IBS, CBS e IS entram em vigor em fases. Saiba o que sua empresa precisa fazer agora para não ser pega de surpresa pela maior reforma do sistema tributário brasileiro.",
+          "keywords": ["reforma tributária 2026", "IBS", "CBS", "indústrias Minas Gerais", "planejamento tributário"],
+          "datePublished": "2026-04-01",
+          "url": "https://amcabralblindagem.com.br/reforma-tributaria-para-industrias/",
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://amcabralblindagem.com.br/blog/reforma-tributaria-industrias-og.webp",
+            "width": 1200,
+            "height": 630
+          },
+          "author": {"@id": "https://amcabralblindagem.com.br/#person-amanda-cabral"},
+          "publisher": {"@id": "https://amcabralblindagem.com.br/#organization"}
+        },
+        {
+          "@type": "BlogPosting",
+          "@id": "https://amcabralblindagem.com.br/recuperacao-de-creditos-icms/#article",
+          "headline": "Créditos de ICMS que sua indústria provavelmente está deixando na mesa",
+          "description": "A maioria das indústrias perde entre 3% e 8% do faturamento em créditos de ICMS não aproveitados. Entenda como identificá-los e recuperá-los de forma legal.",
+          "keywords": ["créditos de ICMS", "recuperação de créditos tributários", "indústria MG", "ICMS/IPI", "contadora especializada"],
+          "datePublished": "2026-03-15",
+          "url": "https://amcabralblindagem.com.br/recuperacao-de-creditos-icms/",
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://amcabralblindagem.com.br/blog/recuperacao-creditos-icms-og.webp",
+            "width": 1200,
+            "height": 630
+          },
+          "author": {"@id": "https://amcabralblindagem.com.br/#person-amanda-cabral"},
+          "publisher": {"@id": "https://amcabralblindagem.com.br/#organization"}
+        },
+        {
+          "@type": "BlogPosting",
+          "@id": "https://amcabralblindagem.com.br/holding-patrimonial-para-empresarios/#article",
+          "headline": "Holding patrimonial: quando faz sentido e quanto custa não ter uma",
+          "description": "Proteção de patrimônio e sucessão sem burocracia. O guia direto para empresários que estão pensando em estruturar seu legado e blindar seus bens de forma legal.",
+          "keywords": ["holding patrimonial", "holding familiar", "sucessão empresarial", "blindagem patrimonial", "planejamento sucessório MG"],
+          "datePublished": "2026-02-20",
+          "url": "https://amcabralblindagem.com.br/holding-patrimonial-para-empresarios/",
+          "image": {
+            "@type": "ImageObject",
+            "url": "https://amcabralblindagem.com.br/blog/holding-patrimonial-empresarios-og.webp",
+            "width": 1200,
+            "height": 630
+          },
+          "author": {"@id": "https://amcabralblindagem.com.br/#person-amanda-cabral"},
+          "publisher": {"@id": "https://amcabralblindagem.com.br/#organization"}
+        }
+      ]
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "@id": "https://amcabralblindagem.com.br/#nav-sobre",
+      "name": "Sobre a AM Cabral",
+      "url": "https://amcabralblindagem.com.br/sobre/",
+      "isPartOf": {"@id": "https://amcabralblindagem.com.br/#website"},
+      "potentialAction": {"@type": "ReadAction", "target": "https://amcabralblindagem.com.br/sobre/"}
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "@id": "https://amcabralblindagem.com.br/#nav-servicos",
+      "name": "Serviços",
+      "url": "https://amcabralblindagem.com.br/servicos/",
+      "isPartOf": {"@id": "https://amcabralblindagem.com.br/#website"},
+      "potentialAction": {"@type": "ReadAction", "target": "https://amcabralblindagem.com.br/servicos/"}
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "@id": "https://amcabralblindagem.com.br/#nav-blog",
+      "name": "Blog",
+      "url": "https://amcabralblindagem.com.br/blog/",
+      "isPartOf": {"@id": "https://amcabralblindagem.com.br/#website"},
+      "potentialAction": {"@type": "ReadAction", "target": "https://amcabralblindagem.com.br/blog/"}
+    },
+    {
+      "@type": "SiteNavigationElement",
+      "@id": "https://amcabralblindagem.com.br/#nav-diagnostico",
+      "name": "Diagnóstico Gratuito",
+      "url": "https://amcabralblindagem.com.br/diagnostico-gratuito/",
+      "isPartOf": {"@id": "https://amcabralblindagem.com.br/#website"},
+      "potentialAction": {"@type": "ReadAction", "target": "https://amcabralblindagem.com.br/diagnostico-gratuito/"}
+    },
+    {
       "@type": "FAQPage",
       "@id": "https://amcabralblindagem.com.br/#faqpage",
       "about": {"@id": "https://amcabralblindagem.com.br/#organization"},
+      "isPartOf": {"@id": "https://amcabralblindagem.com.br/#webpage"},
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Qual a vantagem de ter uma contadora especializada em empresas?",
+          "name": "Qual a vantagem de uma contadora especializada em indústrias?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Uma contadora especializada conhece ICMS, IPI, créditos presumidos e incentivos fiscais específicos. Economia real e compliance garantido."
+            "text": "Uma contadora especializada em indústrias conhece em profundidade os tributos específicos do setor, como ICMS, IPI, créditos presumidos e incentivos fiscais de Minas Gerais. Essa especialização gera economia real: identificamos créditos que contadores generalistas não enxergam e estruturamos compliance blindado para fiscalizações. Empresas que trocam de contador generalista para especializado reduzem, em média, 15% a 30% da carga tributária efetiva."
           }
         },
         {
           "@type": "Question",
-          "name": "Qual porte de empresa atende?",
+          "name": "Qual porte de indústria você atende?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Pequeno, médio e grande porte em BH e região metropolitana, faturamento a partir de R$ 500 mil/ano."
+            "text": "Atendemos empresas de pequeno, médio e grande porte em Pará de Minas, Belo Horizonte, Contagem, Betim e em todo o estado de Minas Gerais. O critério principal é faturamento a partir de R$ 500 mil por ano. Atendemos metalúrgicas, alimentícias, empresas de plásticos, autopeças e indústrias em geral que precisam de especialização tributária, não de contabilidade genérica."
           }
         },
         {
@@ -3073,18 +3362,49 @@
           "name": "Como funciona o diagnóstico gratuito?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Reunião de 30 minutos para analisar sua situação fiscal. Sem custo, sem compromisso."
+            "text": "O diagnóstico é uma reunião de 30 minutos, presencial em Pará de Minas ou online por videoconferência. Analisamos sua situação fiscal atual, identificamos oportunidades de recuperação de créditos e mapeamos riscos de fiscalização. Ao final, você recebe um relatório inicial com o potencial de economia estimado. Sem custo e sem compromisso de contratação."
           }
         },
         {
           "@type": "Question",
-          "name": "Atende fora de BH?",
+          "name": "Quanto tempo para ver resultados?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Sim. Região metropolitana e interior de MG, com reuniões presenciais e remotas."
+            "text": "O diagnóstico tributário completo é concluído nos primeiros 90 dias. A recuperação de créditos de ICMS e IPI gera retorno financeiro em 60 a 120 dias após o início do processo. O planejamento tributário estratégico impacta já no primeiro trimestre fiscal, com redução visível na apuração de impostos. Casos de recuperação de créditos volumosos podem levar entre 6 e 18 meses para conclusão total."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Atende fora de Belo Horizonte?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. Nossa sede fica em Pará de Minas, MG, e atendemos toda a região metropolitana de Belo Horizonte, incluindo Contagem, Betim e Santa Luzia, além do interior de Minas Gerais. Realizamos reuniões presenciais e remotas por videoconferência, o que permite atender clientes em todo o estado sem comprometer a qualidade do serviço."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Já tenho contador. Como é a transição?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cuidamos de todo o processo de transição. Fazemos a transferência de documentos, certificados digitais e histórico contábil de forma organizada e sem interrupções nas obrigações fiscais da sua empresa. A troca de contador não gera risco de pendências ou multas quando conduzida corretamente. Nosso protocolo de onboarding leva em média 30 dias e garante continuidade total das entregas."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Quanto custa a contabilidade especializada para indústrias?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "O investimento varia de acordo com o porte e a complexidade da operação da empresa. Em 20 anos de atuação, todo cliente que trabalhou conosco recuperou em créditos tributários e economia fiscal muito mais do que investiu em honorários. Começamos sempre pelo diagnóstico gratuito de 30 minutos, onde você já visualiza o retorno potencial antes de qualquer decisão de contratação."
           }
         }
       ]
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://amcabralblindagem.com.br/#crc-mg",
+      "name": "Conselho Regional de Contabilidade de Minas Gerais",
+      "alternateName": "CRC/MG",
+      "url": "https://crcmg.org.br/"
     }
   ]
 }
@@ -3127,205 +3447,113 @@
     <!-- TOC Sidebar -->
     <nav class="toc" id="toc">
         <div class="toc-dot" data-target="hero"><span class="toc-label">Início</span></div>
-        <div class="toc-dot" data-target="dores"><span class="toc-label">Dores</span></div>
         <div class="toc-dot" data-target="servicos"><span class="toc-label">Serviços</span></div>
-        <div class="toc-dot" data-target="processo"><span class="toc-label">Processo</span></div>
-        <div class="toc-dot" data-target="clientes"><span class="toc-label">Clientes</span></div>
         <div class="toc-dot" data-target="depoimentos"><span class="toc-label">Depoimentos</span></div>
         <div class="toc-dot" data-target="sobre"><span class="toc-label">Sobre</span></div>
-        <div class="toc-dot" data-target="contato"><span class="toc-label">Contato</span></div>
-        <div class="toc-dot" data-target="blog"><span class="toc-label">Blog</span></div>
-        <div class="toc-dot" data-target="faq"><span class="toc-label">FAQ</span></div>
-        <div class="toc-dot" data-target="localizacao"><span class="toc-label">Localização</span></div>
+        <div class="toc-dot" data-target="contato"><span class="toc-label">Diagnóstico</span></div>
+        <div class="toc-dot" data-target="onde-estamos"><span class="toc-label">Localização</span></div>
     </nav>
 
-    <!-- ===== HEADER ===== -->
-<header class="site-header" id="siteHeader">
-  <nav class="site-nav" aria-label="Navegação principal">
-    <a href="/" class="nav-logo">AM Cabral</a>
+    <!-- ===== HEADER v2 ===== -->
+<header id="hdr">
+  <div id="hdr-inner">
+    <a href="/" id="hdr-logo">AM Cabral</a>
 
-    <ul class="nav-links" id="navLinks">
-      <!-- Mega-menu: Início -->
-      <li class="nav-item nav-item-dropdown">
-        <button class="nav-trigger" aria-expanded="false" aria-haspopup="true">
-          Início <span class="nav-arrow" aria-hidden="true">▼</span>
-        </button>
-        <div class="nav-dropdown" role="menu">
-          <div class="nav-mega-inner">
-            <a href="/" class="nav-mega-img">
-              <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=280&h=380&fit=crop" alt="Home" loading="lazy">
-              <div class="nav-mega-img-overlay">
-                <div class="nav-mega-img-label">Bem-vindo</div>
-                <div class="nav-mega-img-subtitle">Transformando gestão contábil</div>
-                <a href="/" class="nav-mega-cta">Voltar →</a>
-              </div>
-            </a>
-            <div class="nav-mega-links">
-              <a href="/" class="nav-mega-link" role="menuitem">
-                <span class="nav-mega-link-title">Home Principal</span>
-                <span class="nav-mega-link-sub">Página inicial</span>
-              </a>
-              <a href="/diagnostico-gratuito/" class="nav-mega-link" role="menuitem">
-                <span class="nav-mega-link-title">Diagnóstico Gratuito</span>
-                <span class="nav-mega-link-sub">Avaliação completa da sua empresa</span>
-              </a>
-            </div>
-          </div>
-        </div>
+    <ul id="hdr-nav">
+      <li class="hdr-item">
+        <a href="/" class="hdr-btn">Início</a>
       </li>
-
-      <!-- Mega-menu: Sobre a AM Cabral -->
-      <li class="nav-item nav-item-dropdown">
-        <button class="nav-trigger" aria-expanded="false" aria-haspopup="true">
-          Sobre a AM Cabral <span class="nav-arrow" aria-hidden="true">▼</span>
-        </button>
-        <div class="nav-dropdown" role="menu">
-          <div class="nav-mega-inner">
-            <a href="/sobre/" class="nav-mega-img">
-              <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=280&h=380&fit=crop" alt="Amanda Cabral - Contadora" loading="lazy">
-              <div class="nav-mega-img-overlay">
-                <div class="nav-mega-img-label">Conhecer Amanda</div>
-                <div class="nav-mega-img-subtitle">20 anos de expertise em contabilidade</div>
-                <a href="/sobre/" class="nav-mega-cta">Saiba mais →</a>
-              </div>
-            </a>
-            <div class="nav-mega-links">
-              <a href="/sobre/" class="nav-mega-link" role="menuitem">
-                <span class="nav-mega-link-title">Amanda Silva</span>
-                <span class="nav-mega-link-sub">Trajetória e formação profissional</span>
-              </a>
-              <a href="/casos-de-sucesso/" class="nav-mega-link" role="menuitem">
-                <span class="nav-mega-link-title">Casos de Sucesso</span>
-                <span class="nav-mega-link-sub">Empresas que transformamos</span>
-              </a>
-              <a href="/depoimentos/" class="nav-mega-link" role="menuitem">
-                <span class="nav-mega-link-title">Depoimentos</span>
-                <span class="nav-mega-link-sub">Vozes de clientes satisfeitos</span>
-              </a>
-              <a href="/sobre/" class="nav-mega-link nav-mega-all" role="menuitem">
-                <span class="nav-mega-link-title">Ver tudo</span>
-                <span class="nav-mega-link-sub">História completa →</span>
-              </a>
-            </div>
-          </div>
-        </div>
+      <li class="hdr-item" data-menu="sobre">
+        <button class="hdr-btn">Sobre a AM Cabral <span class="hdr-arrow">▾</span></button>
       </li>
-
-      <!-- Mega-menu: Serviços -->
-      <li class="nav-item nav-item-dropdown">
-        <button class="nav-trigger" aria-expanded="false" aria-haspopup="true">
-          Serviços <span class="nav-arrow" aria-hidden="true">▼</span>
-        </button>
-        <div class="nav-dropdown" role="menu">
-          <div class="nav-mega-inner">
-            <a href="/servicos/" class="nav-mega-img">
-              <img src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=280&h=380&fit=crop" alt="Gestão Contábil Estratégica" loading="lazy">
-              <div class="nav-mega-img-overlay">
-                <div class="nav-mega-img-label">Serviços Contábeis</div>
-                <div class="nav-mega-img-subtitle">Soluções integradas para sua empresa</div>
-                <a href="/servicos/" class="nav-mega-cta">Explorar →</a>
-              </div>
-            </a>
-            <div class="nav-mega-links">
-              <a href="/gestao-contabil-para-empresas/" class="nav-mega-link" role="menuitem">
-                <span class="nav-mega-link-title">Gestão Contábil Estratégica</span>
-                <span class="nav-mega-link-sub">Controle financeiro e fiscal</span>
-              </a>
-              <a href="/recuperacao-de-creditos-tributarios/" class="nav-mega-link" role="menuitem">
-                <span class="nav-mega-link-title">Recuperação de Créditos</span>
-                <span class="nav-mega-link-sub">Até R$ 12,3M em créditos invisíveis</span>
-              </a>
-              <a href="/holding-patrimonial-e-familiar/" class="nav-mega-link" role="menuitem">
-                <span class="nav-mega-link-title">Holding Patrimonial</span>
-                <span class="nav-mega-link-sub">Blindagem patrimonial familiar</span>
-              </a>
-              <a href="/planejamento-tributario/" class="nav-mega-link" role="menuitem">
-                <span class="nav-mega-link-title">Planejamento Tributário</span>
-                <span class="nav-mega-link-sub">Redução legal de impostos</span>
-              </a>
-              <a href="/consultoria-tributaria/" class="nav-mega-link" role="menuitem">
-                <span class="nav-mega-link-title">Consultoria Tributária</span>
-                <span class="nav-mega-link-sub">Decisões baseadas em inteligência</span>
-              </a>
-              <a href="/servicos/" class="nav-mega-link nav-mega-all" role="menuitem">
-                <span class="nav-mega-link-title">Ver todos os serviços</span>
-                <span class="nav-mega-link-sub">Portfólio completo →</span>
-              </a>
-            </div>
-          </div>
-        </div>
+      <li class="hdr-item" data-menu="servicos">
+        <button class="hdr-btn">Serviços <span class="hdr-arrow">▾</span></button>
       </li>
-
-      <!-- Mega-menu: Blog -->
-      <li class="nav-item nav-item-dropdown">
-        <button class="nav-trigger" aria-expanded="false" aria-haspopup="true">
-          Blog <span class="nav-arrow" aria-hidden="true">▼</span>
-        </button>
-        <div class="nav-dropdown" role="menu">
-          <div class="nav-mega-inner">
-            <a href="/blog/" class="nav-mega-img">
-              <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=280&h=380&fit=crop" alt="Blog" loading="lazy">
-              <div class="nav-mega-img-overlay">
-                <div class="nav-mega-img-label">Artigos e Insights</div>
-                <div class="nav-mega-img-subtitle">Conhecimento contábil e tributário</div>
-                <a href="/blog/" class="nav-mega-cta">Explorar →</a>
-              </div>
-            </a>
-            <div class="nav-mega-links">
-              <a href="/blog/" class="nav-mega-link" role="menuitem">
-                <span class="nav-mega-link-title">Todos os Artigos</span>
-                <span class="nav-mega-link-sub">Base de conhecimento completa</span>
-              </a>
-              <a href="/blog/" class="nav-mega-link" role="menuitem">
-                <span class="nav-mega-link-title">Dicas e Estratégias</span>
-                <span class="nav-mega-link-sub">Insights para seu negócio</span>
-              </a>
-              <a href="/blog/" class="nav-mega-link" role="menuitem">
-                <span class="nav-mega-link-title">Notícias Fiscais</span>
-                <span class="nav-mega-link-sub">Atualizações do mercado</span>
-              </a>
-              <a href="/blog/" class="nav-mega-link nav-mega-all" role="menuitem">
-                <span class="nav-mega-link-title">Ir para o Blog</span>
-                <span class="nav-mega-link-sub">Central de conteúdo →</span>
-              </a>
-            </div>
-          </div>
-        </div>
+      <li class="hdr-item" data-menu="blog">
+        <button class="hdr-btn">Blog <span class="hdr-arrow">▾</span></button>
       </li>
     </ul>
 
-    <!-- CTA -->
-    <a href="/diagnostico-gratuito/" class="nav-cta">Diagnóstico Gratuito</a>
-
-    <!-- Hamburger mobile -->
-    <button class="nav-hamburger" id="navHamburger" aria-label="Abrir menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </nav>
+    <a href="/diagnostico-gratuito/" class="hdr-cta">Diagnóstico Gratuito</a>
+    <button id="hdr-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
 </header>
 
-<!-- Mobile overlay -->
-<div class="mobile-nav" id="mobileNav" aria-hidden="true">
-  <button class="mobile-nav-close" id="mobileNavClose" aria-label="Fechar menu">✕</button>
-  <a href="/gestao-contabil-para-empresas/">Gestão Contábil Estratégica</a>
-  <a href="/recuperacao-de-creditos-tributarios/">Recuperação de Créditos</a>
-  <a href="/holding-patrimonial-e-familiar/">Holding Patrimonial e Familiar</a>
-  <a href="/planejamento-tributario/">Planejamento Tributário</a>
-  <a href="/consultoria-tributaria/">Consultoria Tributária</a>
-  <a href="/servicos/">Ver todos os serviços</a>
-  <a href="/reforma-tributaria/">Reforma Tributária</a>
-  <a href="/blog/">Blog</a>
-  <a href="/sobre/">Amanda Silva</a>
-  <a href="/casos-de-sucesso/">Casos de Sucesso</a>
-  <a href="/depoimentos/">Depoimentos</a>
-  <a href="/contato/">Contato</a>
-  <a href="/diagnostico-gratuito/" style="color: var(--accent-gold); margin-top: 20px; font-weight: 600;">Diagnóstico Gratuito</a>
+<!-- Mega-menus fora do header (evita backdrop-filter stacking context) -->
+<div class="hdr-mega" id="mega-sobre">
+  <div class="hdr-mega-inner">
+    <a href="/sobre/" class="hdr-mega-img">
+      <img src="amanda-sobre.jpg" alt="Amanda Cabral Contadora" loading="lazy" width="600" height="800" style="object-position:top center;">
+    </a>
+    <div class="hdr-mega-col">
+      <div class="hdr-mega-col-title">Sobre a AM Cabral</div>
+      <div class="hdr-mega-links">
+        <a href="/sobre/" class="hdr-mega-link"><strong>Amanda Cabral</strong><span>Trajetória e formação profissional</span></a>
+        <a href="/casos-de-sucesso/" class="hdr-mega-link"><strong>Casos de Sucesso</strong><span>Empresas que transformamos</span></a>
+        <a href="/depoimentos/" class="hdr-mega-link"><strong>Depoimentos</strong><span>Vozes de clientes satisfeitos</span></a>
+        <a href="/cidades-atendidas/" class="hdr-mega-link"><strong>Cidades Atendidas</strong><span>MG e Brasil — atendimento remoto</span></a>
+      </div>
+      <a href="/sobre/" class="hdr-mega-col-cta">Conhecer Amanda →</a>
+    </div>
+  </div>
 </div>
 
+<div class="hdr-mega" id="mega-servicos">
+  <div class="hdr-mega-inner">
+    <a href="/servicos/" class="hdr-mega-img">
+      <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=450&fit=crop" alt="Serviços Contábeis" loading="lazy" width="600" height="450">
+    </a>
+    <div class="hdr-mega-col">
+      <div class="hdr-mega-col-title">Nossos Serviços</div>
+      <div class="hdr-mega-links">
+        <a href="/gestao-contabil-para-empresas/" class="hdr-mega-link"><strong>Gestão Contábil Estratégica</strong><span>Controle financeiro e fiscal</span></a>
+        <a href="/recuperacao-de-creditos-tributarios/" class="hdr-mega-link"><strong>Recuperação de Créditos</strong><span>Até R$ 12,3M recuperados</span></a>
+        <a href="/holding-patrimonial-e-familiar/" class="hdr-mega-link"><strong>Holding Patrimonial</strong><span>Blindagem patrimonial familiar</span></a>
+        <a href="/planejamento-tributario/" class="hdr-mega-link"><strong>Planejamento Tributário</strong><span>Redução legal de impostos</span></a>
+        <a href="/consultoria-tributaria/" class="hdr-mega-link"><strong>Consultoria Tributária</strong><span>Decisões baseadas em dados</span></a>
+      </div>
+      <a href="/servicos/" class="hdr-mega-col-cta">Ver todos os serviços →</a>
+    </div>
+  </div>
+</div>
+
+<div class="hdr-mega" id="mega-blog">
+  <div class="hdr-mega-inner">
+    <a href="/blog/" class="hdr-mega-img">
+      <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&h=450&fit=crop" alt="Blog" loading="lazy" width="600" height="450">
+    </a>
+    <div class="hdr-mega-col">
+      <div class="hdr-mega-col-title">Conteúdo e Artigos</div>
+      <div class="hdr-mega-links">
+        <a href="/holding-patrimonial-e-familiar/" class="hdr-mega-link"><strong>Holding Patrimonial</strong><span>Hub completo sobre proteção e sucessão</span></a>
+        <a href="/reforma-tributaria-para-industrias/" class="hdr-mega-link"><strong>Reforma Tributária</strong><span>Guia 2026 para indústrias</span></a>
+        <a href="/holding-imobiliaria-reforma-tributaria/" class="hdr-mega-link"><strong>Aluguel com 8,4% em vez de 27,5%</strong><span>Holding imobiliária na reforma</span></a>
+        <a href="/planejamento-tributario-industrial/" class="hdr-mega-link"><strong>Planejamento Tributário Industrial</strong><span>7 estratégias legais para 2026</span></a>
+        <a href="/como-recuperar-creditos-tributarios/" class="hdr-mega-link"><strong>Recuperação de Créditos</strong><span>Passo a passo completo</span></a>
+        <a href="/empresa-familiar-sucessao/" class="hdr-mega-link"><strong>Empresa Familiar e Sucessão</strong><span>Como evitar conflitos na 2ª geração</span></a>
+      </div>
+      <a href="/blog/" class="hdr-mega-col-cta">Ver todos os artigos →</a>
+    </div>
+  </div>
+</div>
+
+<!-- Mobile nav -->
+<div id="hdr-mob">
+  <button id="hdr-mob-close">✕</button>
+  <a href="/">Início</a>
+  <a href="/sobre/">Sobre Amanda</a>
+  <a href="/servicos/">Serviços</a>
+  <a href="/gestao-contabil-para-empresas/">Gestão Contábil</a>
+  <a href="/recuperacao-de-creditos-tributarios/">Recuperação de Créditos</a>
+  <a href="/holding-patrimonial-e-familiar/">Holding Patrimonial</a>
+  <a href="/planejamento-tributario/">Planejamento Tributário</a>
+  <a href="/blog/">Blog</a>
+  <a href="/diagnostico-gratuito/" style="color:var(--accent-gold);margin-top:16px;font-weight:700;">Diagnóstico Gratuito</a>
+</div>
+
+    <main>
     <!-- ===== HERO ===== -->
     <section class="hero" id="hero">
-        <div class="hero-grid-bg"></div>
-        <div class="hero-bg-image"></div>
         <div class="hero-orb hero-orb-1"></div>
         <div class="hero-orb hero-orb-2"></div>
         <div class="container">
@@ -3333,10 +3561,10 @@
                 <div class="hero-content">
                     <div class="hero-tag">
                         <span class="dot"></span>
-                        Intelig&ecirc;ncia Tribut&aacute;ria &middot; H&aacute; 20 anos &middot; BH
+                        Intelig&ecirc;ncia Tribut&aacute;ria &middot; H&aacute; 20 anos &middot; Par&aacute; de Minas, MG
                     </div>
-                    <h1>Sua empresa paga imposto demais. <em>E n&oacute;s sabemos exatamente quanto.</em></h1>
-                    <p class="hero-sub">Especialistas em tributa&ccedil;&atilde;o para empresas h&aacute; 20 anos. R$ 12 milh&otilde;es recuperados em cr&eacute;ditos que estavam invis&iacute;veis para outros contadores.</p>
+                    <h1>Amanda Cabral, <em><span style="color:var(--gold)">Contabilidade Estrat&eacute;gica</span><br><span style="color:var(--white)">&amp; Holding Patrimonial</span></em></h1>
+                    <p class="hero-sub">Sua empresa paga imposto demais, e n&oacute;s sabemos exatamente quanto. Especialistas em tributa&ccedil;&atilde;o para empresas h&aacute; 20 anos. R$ 12 milh&otilde;es recuperados em cr&eacute;ditos que estavam invis&iacute;veis para outros contadores.</p>
                     <div class="hero-buttons">
                         <a href="#contato" class="btn btn-primary">
                             Solicitar an&aacute;lise tribut&aacute;ria
@@ -3345,11 +3573,42 @@
                         <a href="#contato" class="btn btn-ghost">Ver o que recuperamos</a>
                     </div>
                 </div>
+                <div class="hero-photo">
+                    <img src="amanda-hero.jpg" alt="Amanda Cabral - Contadora Especialista em Tributa&ccedil;&atilde;o para Empresas" loading="eager" width="420" height="560">
+                </div>
             </div>
         </div>
-        <div class="scroll-hint">
-            <span>Scroll</span>
-            <div class="scroll-line"></div>
+    </section>
+
+    <!-- Scroll hint — fixed overlay, fora do hero para evitar overflow:hidden do parent -->
+    <div class="scroll-hint">
+        <span>Scroll</span>
+        <div class="scroll-line"></div>
+    </div>
+
+    <!-- ===== MARQUEE ===== -->
+    <section class="marquee-section" aria-hidden="true">
+        <div class="marquee-track">
+            <span class="marquee-item">CRC/MG Ativo<span class="sep"></span></span>
+            <span class="marquee-item">20 Anos de Experi&ecirc;ncia<span class="sep"></span></span>
+            <span class="marquee-item">Especialista ICMS/IPI<span class="sep"></span></span>
+            <span class="marquee-item">P&oacute;s em Direito Tribut&aacute;rio<span class="sep"></span></span>
+            <span class="marquee-item">Membro IBPT<span class="sep"></span></span>
+            <span class="marquee-item">120+ Empresas Atendidas<span class="sep"></span></span>
+            <span class="marquee-item">R$ 12M+ Recuperados<span class="sep"></span></span>
+            <span class="marquee-item">Par&aacute; de Minas, MG<span class="sep"></span></span>
+            <span class="marquee-item">Holding Patrimonial<span class="sep"></span></span>
+            <span class="marquee-item">Planejamento Tribut&aacute;rio<span class="sep"></span></span>
+            <span class="marquee-item">CRC/MG Ativo<span class="sep"></span></span>
+            <span class="marquee-item">20 Anos de Experi&ecirc;ncia<span class="sep"></span></span>
+            <span class="marquee-item">Especialista ICMS/IPI<span class="sep"></span></span>
+            <span class="marquee-item">P&oacute;s em Direito Tribut&aacute;rio<span class="sep"></span></span>
+            <span class="marquee-item">Membro IBPT<span class="sep"></span></span>
+            <span class="marquee-item">120+ Empresas Atendidas<span class="sep"></span></span>
+            <span class="marquee-item">R$ 12M+ Recuperados<span class="sep"></span></span>
+            <span class="marquee-item">Par&aacute; de Minas, MG<span class="sep"></span></span>
+            <span class="marquee-item">Holding Patrimonial<span class="sep"></span></span>
+            <span class="marquee-item">Planejamento Tribut&aacute;rio<span class="sep"></span></span>
         </div>
     </section>
 
@@ -3358,20 +3617,20 @@
     <section class="pains" id="dores">
         <div class="container">
             <div class="pains-header reveal">
-                <div class="section-tag">Sua empresa pode estar perdendo dinheiro</div>
-                <h2 class="heading">8 de cada 10 empresas em MG pagam <em>mais tributo do que deveriam</em></h2>
-                <p class="heading-sub">Esses s&atilde;o os 3 sinais mais comuns. Se voc&ecirc; se reconhece em pelo menos um, sua contabilidade atual pode estar custando caro.</p>
+                <div class="section-tag">Sua empresa pode estar pagando tributo demais</div>
+                <h2 class="heading"><span style="color:var(--text)">8 de cada 10 empresas em MG</span> têm <em style="color:var(--gold)">carga tributária acima do necessário</em></h2>
+                <p class="heading-sub">Esses são os 3 sinais mais comuns. Se você se identifica com pelo menos um, sua contabilidade atual pode estar custando caro.</p>
             </div>
             <div class="pains-grid stagger">
                 <div class="pain-card">
                     <div class="pain-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
-                    <h3>Voc&ecirc; sente que paga imposto demais &mdash; mas ningu&eacute;m mostra quanto.</h3>
-                    <p>A carga tribut&aacute;ria parece desproporcional ao lucro e seu contador nunca apresentou um plano concreto de redu&ccedil;&atilde;o. Enquanto isso, cr&eacute;ditos de ICMS e IPI ficam na mesa &mdash; invis&iacute;veis.</p>
+                    <h3>Voc&ecirc; sente que paga imposto demais, mas ningu&eacute;m mostra quanto.</h3>
+                    <p>A carga tribut&aacute;ria parece desproporcional ao lucro e seu contador nunca apresentou um plano concreto de redu&ccedil;&atilde;o. Enquanto isso, cr&eacute;ditos de ICMS e IPI ficam na mesa, invis&iacute;veis.</p>
                 </div>
                 <div class="pain-card">
                     <div class="pain-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
                     <h3>Voc&ecirc; n&atilde;o sabe o que uma fiscaliza&ccedil;&atilde;o encontraria hoje.</h3>
-                    <p>SPED, EFD, Bloco K &mdash; s&atilde;o obriga&ccedil;&otilde;es que s&oacute; a ind&uacute;stria tem. Um &uacute;nico erro pode gerar multas de at&eacute; 150% do tributo. E a responsabilidade &eacute; sua, n&atilde;o do contador.</p>
+                    <p>SPED, EFD, Bloco K: obriga&ccedil;&otilde;es que s&oacute; a ind&uacute;stria tem. Um &uacute;nico erro pode gerar multas de at&eacute; 150% do tributo. E a responsabilidade &eacute; sua, n&atilde;o do contador.</p>
                 </div>
                 <div class="pain-card">
                     <div class="pain-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
@@ -3387,8 +3646,8 @@
         <div class="services-inner">
             <div class="container">
                 <div class="services-header reveal">
-                    <div class="section-tag" style="color:var(--accent)">Especialidades</div>
-                    <h2 class="heading">6 especialidades que s&oacute; quem vive ind&uacute;stria <em>h&aacute; 20 anos</em> domina</h2>
+                    <div class="section-tag" style="color:var(--accent)">Serviços</div>
+                    <h2 class="heading">6 especialidades que protegem seu lucro e <em style="color:var(--gold)">patrimônio</em></h2>
                     <p class="heading-sub">Cada servi&ccedil;o desenhado para dores reais de ind&uacute;strias. Nada gen&eacute;rico.</p>
                 </div>
             </div>
@@ -3413,7 +3672,7 @@
                     <div class="service-card">
                         <div class="service-num">03</div>
                         <h3>Compliance para Empresas</h3>
-                        <p>SPED Fiscal, EFD, Bloco K, REINF. Blindagem fiscal completa &mdash; sua ind&uacute;stria 100% protegida contra fiscaliza&ccedil;&otilde;es.</p>
+                        <p>SPED Fiscal, EFD, Bloco K, REINF. Blindagem fiscal completa para sua ind&uacute;stria 100% protegida contra fiscaliza&ccedil;&otilde;es.</p>
                         <span class="service-badge">Risco zero</span>
                     </div>
                     <div class="service-card">
@@ -3447,29 +3706,55 @@
         </div>
     </section>
 
+    <!-- ===== MARQUEE DOURADO ===== -->
+    <section class="marquee-section marquee-section--gold" aria-hidden="true">
+        <div class="marquee-track marquee-track--gold">
+            <span class="marquee-item">Planejamento Tribut&aacute;rio<span class="sep"></span></span>
+            <span class="marquee-item">Recupera&ccedil;&atilde;o de Cr&eacute;ditos<span class="sep"></span></span>
+            <span class="marquee-item">Compliance Fiscal<span class="sep"></span></span>
+            <span class="marquee-item">Holding Patrimonial<span class="sep"></span></span>
+            <span class="marquee-item">ICMS &middot; IPI &middot; PIS/COFINS<span class="sep"></span></span>
+            <span class="marquee-item">Contabilidade Industrial<span class="sep"></span></span>
+            <span class="marquee-item">Reforma Tribut&aacute;ria<span class="sep"></span></span>
+            <span class="marquee-item">Blindagem Fiscal<span class="sep"></span></span>
+            <span class="marquee-item">Planejamento Tribut&aacute;rio<span class="sep"></span></span>
+            <span class="marquee-item">Recupera&ccedil;&atilde;o de Cr&eacute;ditos<span class="sep"></span></span>
+            <span class="marquee-item">Compliance Fiscal<span class="sep"></span></span>
+            <span class="marquee-item">Holding Patrimonial<span class="sep"></span></span>
+            <span class="marquee-item">ICMS &middot; IPI &middot; PIS/COFINS<span class="sep"></span></span>
+            <span class="marquee-item">Contabilidade Industrial<span class="sep"></span></span>
+            <span class="marquee-item">Reforma Tribut&aacute;ria<span class="sep"></span></span>
+            <span class="marquee-item">Blindagem Fiscal<span class="sep"></span></span>
+        </div>
+    </section>
+
     <!-- ===== PROCESS ===== -->
     <section class="process" id="processo">
         <div class="container">
             <div class="process-header reveal">
-                <div class="section-tag">Como funciona</div>
-                <h2 class="heading">3 passos. <em>Sem burocracia. Sem risco.</em></h2>
-                <p class="heading-sub">Voc&ecirc; s&oacute; avan&ccedil;a se fizer sentido para sua ind&uacute;stria.</p>
+                <div class="section-tag" style="color:var(--accent)">Como funciona</div>
+                <h2 class="heading">Como funciona o planejamento tributário <em style="color:var(--gold)">com a Amanda Cabral</em></h2>
             </div>
             <div class="process-steps stagger">
                 <div class="step">
-                    <div class="step-circle">1</div>
-                    <h3>Diagn&oacute;stico Gratuito</h3>
-                    <p>30 minutos para analisar sua situa&ccedil;&atilde;o fiscal e identificar onde est&aacute; perdendo dinheiro.</p>
+                    <div class="step-circle">01</div>
+                    <h3>Diagn&oacute;stico</h3>
+                    <p>An&aacute;lise gratuita de 30 minutos. Mapeamos cr&eacute;ditos, riscos e oportunidades.</p>
                 </div>
                 <div class="step">
-                    <div class="step-circle">2</div>
-                    <h3>Proposta Personalizada</h3>
-                    <p>Plano claro com estimativa de economia, escopo e investimento. Tudo transparente.</p>
+                    <div class="step-circle">02</div>
+                    <h3>Mapeamento</h3>
+                    <p>Radiografia completa: regime, obriga&ccedil;&otilde;es, cr&eacute;ditos acumulados, patrim&ocirc;nio.</p>
                 </div>
                 <div class="step">
-                    <div class="step-circle">3</div>
-                    <h3>Gest&atilde;o Cont&iacute;nua</h3>
-                    <p>Contabilidade com foco em resultado. Relat&oacute;rios mensais e acesso direto pelo WhatsApp.</p>
+                    <div class="step-circle">03</div>
+                    <h3>Implementa&ccedil;&atilde;o</h3>
+                    <p>Recupera&ccedil;&atilde;o de cr&eacute;ditos, ajuste de regime, constitui&ccedil;&atilde;o de holding. Resultado mensur&aacute;vel.</p>
+                </div>
+                <div class="step">
+                    <div class="step-circle">04</div>
+                    <h3>Acompanhamento</h3>
+                    <p>Gest&atilde;o cont&iacute;nua com relat&oacute;rios claros, alertas proativos e acesso direto &agrave; Amanda.</p>
                 </div>
             </div>
         </div>
@@ -3481,31 +3766,31 @@
         <div class="container">
             <div class="testimonials-header reveal">
                 <div class="section-tag" style="color:var(--accent)">Depoimentos</div>
-                <h2 class="heading">127 ind&uacute;strias. <em>Alguns resultados.</em></h2>
+                <h2 class="heading">O que muda na sua empresa com um <em style="color:var(--gold)">planejamento tributário bem feito</em></h2>
             </div>
             <div class="testimonials-grid stagger">
                 <div class="test-card">
                     <div class="test-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
                     <blockquote>&ldquo;A equipe da Amanda Cabral recuperou R$ 340 mil em cr&eacute;ditos de ICMS que nosso antigo contador nunca mencionou. Em 20 anos de ind&uacute;stria, nunca tive um escrit&oacute;rio que entendesse t&atilde;o bem nosso setor.&rdquo;</blockquote>
                     <div class="test-author">
-                        <div class="test-avatar"><img src="https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Ricardo Moreira" loading="lazy"></div>
-                        <div><div class="test-name">Ricardo Moreira</div><div class="test-role">Diretor &mdash; Metal&uacute;rgica Horizonte</div></div>
+                        <div class="test-avatar"><img src="https://images.pexels.com/photos/2182970/pexels-photo-2182970.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Ricardo Moreira" loading="lazy" width="100" height="100"></div>
+                        <div><div class="test-name">Ricardo Moreira</div><div class="test-role">Diretor, Metal&uacute;rgica Horizonte</div></div>
                     </div>
                 </div>
                 <div class="test-card">
                     <div class="test-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
                     <blockquote>&ldquo;Passamos pelo Regime Especial de MG gra&ccedil;as &agrave; Amanda Cabral. Economia anual de quase R$ 500 mil. N&atilde;o s&atilde;o contadores, s&atilde;o estrategistas tribut&aacute;rios.&rdquo;</blockquote>
                     <div class="test-author">
-                        <div class="test-avatar"><img src="https://images.pexels.com/photos/2381069/pexels-photo-2381069.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Patrícia Lima" loading="lazy"></div>
-                        <div><div class="test-name">Patr&iacute;cia Lima</div><div class="test-role">CEO &mdash; PL Pl&aacute;sticos Ind.</div></div>
+                        <div class="test-avatar"><img src="https://images.pexels.com/photos/2381069/pexels-photo-2381069.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Patrícia Lima" loading="lazy" width="100" height="100"></div>
+                        <div><div class="test-name">Patr&iacute;cia Lima</div><div class="test-role">CEO, PL Pl&aacute;sticos Ind.</div></div>
                     </div>
                 </div>
                 <div class="test-card">
                     <div class="test-stars"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
                     <blockquote>&ldquo;Antes da Amanda Cabral, eu perdia 2 dias por m&ecirc;s com problemas cont&aacute;beis. Hoje n&atilde;o penso mais nisso. Cuidam de tudo e me avisam de oportunidades que eu nem sabia que existiam.&rdquo;</blockquote>
                     <div class="test-author">
-                        <div class="test-avatar"><img src="https://images.pexels.com/photos/834863/pexels-photo-834863.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Carlos Ferreira" loading="lazy"></div>
-                        <div><div class="test-name">Carlos Ferreira</div><div class="test-role">S&oacute;cio &mdash; Ferreira Alimentos</div></div>
+                        <div class="test-avatar"><img src="https://images.pexels.com/photos/834863/pexels-photo-834863.jpeg?auto=compress&cs=tinysrgb&w=100" alt="Carlos Ferreira" loading="lazy" width="100" height="100"></div>
+                        <div><div class="test-name">Carlos Ferreira</div><div class="test-role">S&oacute;cio, Ferreira Alimentos</div></div>
                     </div>
                 </div>
             </div>
@@ -3518,14 +3803,14 @@
             <div class="about-layout">
                 <div class="reveal">
                     <div class="about-photo">
-                        <img src="amanda-cabral.jpg" alt="Amanda Cabral - Contadora Especialista em Empresas" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top center;border-radius:24px;">
+                        <img src="amanda-sobre.jpg" alt="Amanda Cabral - Contadora Especialista em Empresas" loading="lazy" style="width:100%;height:100%;object-fit:cover;object-position:top center;border-radius:24px;">
                     </div>
                 </div>
                 <div class="about-content reveal">
-                    <div class="section-tag">Sobre</div>
-                    <h2>Amanda Cabral. <em>H&aacute; mais de 20 anos dedicada a decifrar a tributa&ccedil;&atilde;o empresarial.</em></h2>
+                    <div class="section-tag" style="color:var(--accent)">Sobre</div>
+                    <h2>Amanda Cabral, <em style="color:var(--gold)">contadora tributária há mais de 20 anos em Minas Gerais.</em></h2>
                     <p class="about-text">Nosso primeiro escrit&oacute;rio foi dentro de uma metal&uacute;rgica em Contagem. Entre o barulho das prensas e o calor do forno, aprendemos o que nenhuma p&oacute;s-gradua&ccedil;&atilde;o ensina: que ICMS n&atilde;o se resolve com planilha gen&eacute;rica, independente do segmento.</p>
-                    <p class="about-text">Duas d&eacute;cadas depois, atendemos exclusivamente empresas. Nunca fomos gen&eacute;ralistas. Essa escolha nos custou clientes &mdash; e nos deu a profundidade que nenhum generalista tem.</p>
+                    <p class="about-text">Duas d&eacute;cadas depois, atendemos exclusivamente empresas. Nunca fomos gen&eacute;ralistas. Essa escolha nos custou clientes. E nos deu a profundidade que nenhum generalista tem.</p>
                     <div class="about-tags">
                         <span class="about-tag">CRC/MG Ativo</span>
                         <span class="about-tag">P&oacute;s em Direito Tribut&aacute;rio</span>
@@ -3544,101 +3829,78 @@
             <div class="cta-form-grid">
                 <div class="cta-form-info reveal">
                     <div class="section-tag" style="color:var(--accent)">Pronta para come&ccedil;ar?</div>
-                    <h2 class="heading" style="color:var(--white);">Diagn&oacute;stico tribut&aacute;rio completo. <em>Gratuito para ind&uacute;strias selecionadas.</em></h2>
-                    <p class="heading-sub" style="color:var(--silver);">Em 30 minutos, mapeamos cr&eacute;ditos perdidos, riscos fiscais e oportunidades. Encontramos oportunidades em 8 de cada 10 empresas.</p>
-                    <div class="cta-form-features">
-                        <div class="cta-form-feat">
-                            <div class="cta-form-feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-                            Diagn&oacute;stico gratuito de 30 minutos
-                        </div>
-                        <div class="cta-form-feat">
-                            <div class="cta-form-feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-                            Raio-X completo da situa&ccedil;&atilde;o fiscal
-                        </div>
-                        <div class="cta-form-feat">
-                            <div class="cta-form-feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-                            Sem compromisso e sem custo
-                        </div>
-                        <div class="cta-form-feat">
-                            <div class="cta-form-feat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
-                            Resposta em at&eacute; 24h
-                        </div>
-                    </div>
-                    <span class="cta-limit" style="margin-top:28px;">M&aacute;ximo 50 ind&uacute;strias &mdash; cada cliente tem acesso direto &agrave; Amanda, e isso n&atilde;o escala.</span>
+                    <h2 class="heading" style="color:var(--white);">Diagn&oacute;stico tribut&aacute;rio gratuito para sua empresa</h2>
+                    <p class="heading-sub" style="color:var(--silver);">Em 30 minutos, mapeamos cr&eacute;ditos perdidos, riscos fiscais e oportunidades. Presencialmente em Par&aacute; de Minas ou por videoconfer&ecirc;ncia.</p>
+                    <ul class="form-checks">
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Sem custo e sem compromisso</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Resposta em at&eacute; 24 horas</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>An&aacute;lise personalizada com Amanda Cabral</li>
+                        <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>Relat&oacute;rio com valores em R$</li>
+                    </ul>
                 </div>
                 <div class="reveal">
                     <div class="form-card">
                         <div class="form-steps-dots">
-                            <div class="form-dot active" data-step="0"></div>
-                            <div class="form-dot" data-step="1"></div>
+                            <div class="form-dot active" data-step="1"></div>
                             <div class="form-dot" data-step="2"></div>
                             <div class="form-dot" data-step="3"></div>
+                            <div class="form-dot" data-step="4"></div>
                         </div>
-
-                        <!-- Step 1: Segmento -->
-                        <div class="form-panel active" data-panel="0">
-                            <h4>Qual o segmento da sua ind&uacute;stria?</h4>
-                            <p class="form-hint">Selecione o que melhor descreve sua opera&ccedil;&atilde;o</p>
-                            <div class="form-options" id="frmSegment">
-                                <button type="button" class="form-opt" data-value="Metalurgia" onclick="selOpt(this)">Metalurgia</button>
-                                <button type="button" class="form-opt" data-value="Alimentos" onclick="selOpt(this)">Alimentos</button>
-                                <button type="button" class="form-opt" data-value="Plásticos" onclick="selOpt(this)">Pl&aacute;sticos</button>
-                                <button type="button" class="form-opt" data-value="Autopeças" onclick="selOpt(this)">Autope&ccedil;as</button>
-                                <button type="button" class="form-opt" data-value="Têxtil" onclick="selOpt(this)">T&ecirc;xtil</button>
-                                <button type="button" class="form-opt" data-value="Outro segmento" onclick="selOpt(this)">Outro</button>
+                        <form id="diagForm" novalidate>
+                            <!-- Step 1: Tipo de empresa -->
+                            <div class="form-step active" data-step="1">
+                                <div class="form-step-title">Qual o tipo da sua empresa?</div>
+                                <div class="cta-opts">
+                                    <button type="button" class="cta-opt" data-field="setor" data-value="Com&eacute;rcio"><span class="cta-opt-icon">🏪</span>Com&eacute;rcio</button>
+                                    <button type="button" class="cta-opt" data-field="setor" data-value="Ind&uacute;stria"><span class="cta-opt-icon">🏭</span>Ind&uacute;stria</button>
+                                    <button type="button" class="cta-opt" data-field="setor" data-value="Servi&ccedil;os"><span class="cta-opt-icon">💼</span>Servi&ccedil;os</button>
+                                    <button type="button" class="cta-opt" data-field="setor" data-value="Cl&iacute;nica ou Consult&oacute;rio"><span class="cta-opt-icon">🏥</span>Cl&iacute;nica / Consult&oacute;rio</button>
+                                    <button type="button" class="cta-opt" data-field="setor" data-value="Construtora"><span class="cta-opt-icon">🏗️</span>Construtora</button>
+                                    <button type="button" class="cta-opt" data-field="setor" data-value="Profissional Liberal"><span class="cta-opt-icon">👤</span>Profissional Liberal</button>
+                                </div>
                             </div>
-                            <div class="form-nav">
-                                <button type="button" class="btn btn-primary" style="width:100%" onclick="frmNext()">Pr&oacute;ximo &rarr;</button>
+                            <!-- Step 2: Faturamento -->
+                            <div class="form-step" data-step="2">
+                                <div class="form-step-title">Faturamento anual da empresa?</div>
+                                <div class="form-step-sub">Essa informa&ccedil;&atilde;o define o regime tribut&aacute;rio ideal para voc&ecirc;</div>
+                                <div class="cta-opts">
+                                    <button type="button" class="cta-opt" data-field="faturamento" data-value="At&eacute; R$ 4,8M"><span class="cta-opt-icon">📊</span>At&eacute; R$ 4,8M<br><small style="opacity:.6;font-size:11px">Simples Nacional</small></button>
+                                    <button type="button" class="cta-opt" data-field="faturamento" data-value="R$ 4,8M a R$ 20M"><span class="cta-opt-icon">📈</span>R$ 4,8M a R$ 20M<br><small style="opacity:.6;font-size:11px">Lucro Presumido</small></button>
+                                    <button type="button" class="cta-opt" data-field="faturamento" data-value="R$ 20M a R$ 78M"><span class="cta-opt-icon">🏦</span>R$ 20M a R$ 78M<br><small style="opacity:.6;font-size:11px">Lucro Real</small></button>
+                                    <button type="button" class="cta-opt" data-field="faturamento" data-value="Acima de R$ 78M"><span class="cta-opt-icon">🏢</span>Acima de R$ 78M<br><small style="opacity:.6;font-size:11px">Lucro Real</small></button>
+                                </div>
                             </div>
-                        </div>
-
-                        <!-- Step 2: Faturamento -->
-                        <div class="form-panel" data-panel="1">
-                            <h4>Qual o faturamento anual?</h4>
-                            <p class="form-hint">Isso nos ajuda a calibrar o diagn&oacute;stico</p>
-                            <div class="form-options" id="frmRevenue">
-                                <button type="button" class="form-opt" data-value="R$ 500mil - R$ 2M" onclick="selOpt(this)">R$ 500mil - 2M</button>
-                                <button type="button" class="form-opt" data-value="R$ 2M - R$ 5M" onclick="selOpt(this)">R$ 2M - 5M</button>
-                                <button type="button" class="form-opt" data-value="R$ 5M - R$ 10M" onclick="selOpt(this)">R$ 5M - 10M</button>
-                                <button type="button" class="form-opt" data-value="Acima de R$ 10M" onclick="selOpt(this)">Acima de R$ 10M</button>
+                            <!-- Step 3: O que resolver -->
+                            <div class="form-step" data-step="3">
+                                <div class="form-step-title">O que voc&ecirc; quer resolver?</div>
+                                <div class="cta-opts">
+                                    <button type="button" class="cta-opt" data-field="servico" data-value="Diagn&oacute;stico Tribut&aacute;rio"><span class="cta-opt-icon">🔍</span>Saber se pago imposto a mais</button>
+                                    <button type="button" class="cta-opt" data-field="servico" data-value="Recupera&ccedil;&atilde;o de Cr&eacute;ditos"><span class="cta-opt-icon">💰</span>Recuperar cr&eacute;ditos do passado</button>
+                                    <button type="button" class="cta-opt" data-field="servico" data-value="Planejamento Tribut&aacute;rio"><span class="cta-opt-icon">📋</span>Planejar para pagar menos</button>
+                                    <button type="button" class="cta-opt" data-field="servico" data-value="Holding Patrimonial"><span class="cta-opt-icon">🛡️</span>Proteger meu patrim&ocirc;nio</button>
+                                    <button type="button" class="cta-opt" data-field="servico" data-value="Gest&atilde;o Cont&aacute;bil"><span class="cta-opt-icon">📁</span>Trocar de contabilidade</button>
+                                    <button type="button" class="cta-opt" data-field="servico" data-value="Consultoria Tribut&aacute;ria"><span class="cta-opt-icon">💬</span>Tirar d&uacute;vidas com especialista</button>
+                                </div>
                             </div>
-                            <div class="form-nav">
-                                <button type="button" class="btn btn-back" onclick="frmPrev()">&larr; Voltar</button>
-                                <button type="button" class="btn btn-primary" onclick="frmNext()">Pr&oacute;ximo &rarr;</button>
+                            <!-- Step 4: Dados pessoais -->
+                            <div class="form-step" data-step="4">
+                                <div class="form-step-title">&Uacute;ltimo passo</div>
+                                <div class="form-step-sub">Para onde enviamos o diagn&oacute;stico?</div>
+                                <div class="form-group">
+                                    <label for="diagNome">Nome completo</label>
+                                    <input type="text" id="diagNome" name="nome" placeholder="Seu nome" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="diagWhatsapp">WhatsApp</label>
+                                    <input type="tel" id="diagWhatsapp" name="whatsapp" placeholder="(37) 99999-9999" required>
+                                </div>
+                                <div class="form-nav">
+                                    <button type="button" class="form-btn-back" id="diagBtnBack">&#8592; Voltar</button>
+                                    <button type="submit" class="form-btn-next">Solicitar Diagn&oacute;stico &#8594;</button>
+                                </div>
+                                <p class="form-privacy">Seus dados est&atilde;o protegidos. Sem spam.</p>
                             </div>
-                        </div>
-
-                        <!-- Step 3: Dor principal -->
-                        <div class="form-panel" data-panel="2">
-                            <h4>Qual sua maior dor hoje?</h4>
-                            <p class="form-hint">Selecione a que mais incomoda</p>
-                            <div class="form-options" id="frmPain">
-                                <button type="button" class="form-opt" data-value="Pago imposto demais" onclick="selOpt(this)">Pago imposto demais</button>
-                                <button type="button" class="form-opt" data-value="Medo de fiscalização" onclick="selOpt(this)">Medo de fiscaliza&ccedil;&atilde;o</button>
-                                <button type="button" class="form-opt" data-value="Contador não entende meu tipo de empresa" onclick="selOpt(this)">Contador n&atilde;o entende meu tipo de empresa</button>
-                                <button type="button" class="form-opt" data-value="Quero recuperar créditos" onclick="selOpt(this)">Quero recuperar cr&eacute;ditos</button>
-                            </div>
-                            <div class="form-nav">
-                                <button type="button" class="btn btn-back" onclick="frmPrev()">&larr; Voltar</button>
-                                <button type="button" class="btn btn-primary" onclick="frmNext()">Pr&oacute;ximo &rarr;</button>
-                            </div>
-                        </div>
-
-                        <!-- Step 4: Contato -->
-                        <div class="form-panel" data-panel="3">
-                            <h4>Seus dados para contato</h4>
-                            <p class="form-hint">Responderemos em at&eacute; 24 horas</p>
-                            <input class="form-input" type="text" id="frmName" placeholder="Seu nome">
-                            <input class="form-input" type="text" id="frmCompany" placeholder="Nome da ind&uacute;stria">
-                            <input class="form-input" type="tel" id="frmPhone" placeholder="WhatsApp (DDD + n&uacute;mero)">
-                            <input class="form-input" type="text" id="frmCity" placeholder="Cidade">
-                            <textarea class="form-input" id="frmNotes" placeholder="Observa&ccedil;&otilde;es ou detalhes sobre sua opera&ccedil;&atilde;o (opcional)"></textarea>
-                            <div class="form-nav">
-                                <button type="button" class="btn btn-back" onclick="frmPrev()">&larr; Voltar</button>
-                                <button type="button" class="btn btn-submit" onclick="frmSubmit()">Enviar pelo WhatsApp</button>
-                            </div>
-                            <p class="form-privacy">Seus dados s&atilde;o usados exclusivamente para contato comercial.</p>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -3646,66 +3908,223 @@
     </section>
 
 
+    <!-- ===== BLOG ===== -->
+    <section class="blog-section" id="blog">
+        <div class="container">
+            <div class="blog-header-centered reveal">
+                <div class="section-tag" style="color:var(--accent)">Blog</div>
+                <h2 class="heading">Conteúdo sobre tributação e <em style="color:var(--gold)">planejamento fiscal para empresários</em></h2>
+                <p class="heading-sub">Conteúdo direto sobre reforma tributária, créditos fiscais e planejamento para empresas.</p>
+                <a href="/blog/" class="blog-link-all" style="margin-top:8px;display:inline-flex;">Ver todos os artigos <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+            </div>
+            <div class="blog-grid reveal">
+                <article>
+                <a href="/reforma-tributaria-para-industrias/" class="blog-card">
+                    <div class="blog-card-thumb">
+                        <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=640&q=80&auto=format&fit=crop" alt="Reforma tributária para indústrias 2026" loading="lazy" width="640" height="360">
+                        <span class="blog-card-thumb-tag">Reforma Tributária</span>
+                    </div>
+                    <div class="blog-card-body">
+                        <div class="blog-card-title">O que muda para as indústrias com a Reforma Tributária de 2026</div>
+                        <div class="blog-card-desc">IBS, CBS e IS entram em vigor em fases. Saiba o que sua empresa precisa fazer agora para não ser pega de surpresa.</div>
+                        <div class="blog-card-meta">
+                            <time datetime="2026-04-01">Abril 2026</time>
+                            <span class="blog-card-read">Ler artigo →</span>
+                        </div>
+                    </div>
+                </a>
+                </article>
+                <article>
+                <a href="/recuperacao-de-creditos-icms/" class="blog-card">
+                    <div class="blog-card-thumb">
+                        <img src="https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=640&q=80&auto=format&fit=crop" alt="Créditos de ICMS para indústrias" loading="lazy" width="640" height="360">
+                        <span class="blog-card-thumb-tag">Créditos Fiscais</span>
+                    </div>
+                    <div class="blog-card-body">
+                        <div class="blog-card-title">Créditos de ICMS que sua indústria provavelmente está deixando na mesa</div>
+                        <div class="blog-card-desc">A maioria das indústrias perde entre 3% e 8% do faturamento em créditos não aproveitados. Entenda como identificá-los.</div>
+                        <div class="blog-card-meta">
+                            <time datetime="2026-03-15">Março 2026</time>
+                            <span class="blog-card-read">Ler artigo →</span>
+                        </div>
+                    </div>
+                </a>
+                </article>
+                <article>
+                <a href="/holding-patrimonial-para-empresarios/" class="blog-card">
+                    <div class="blog-card-thumb">
+                        <img src="https://images.unsplash.com/photo-1560520653-9e0e4c89eb11?w=640&q=80&auto=format&fit=crop" alt="Holding patrimonial para empresários" loading="lazy" width="640" height="360">
+                        <span class="blog-card-thumb-tag">Holding</span>
+                    </div>
+                    <div class="blog-card-body">
+                        <div class="blog-card-title">Holding patrimonial: quando faz sentido e quanto custa não ter uma</div>
+                        <div class="blog-card-desc">Proteção de patrimônio e sucessão sem burocracia. O guia direto para empresários que estão pensando em estruturar seu legado.</div>
+                        <div class="blog-card-meta">
+                            <time datetime="2026-02-20">Fevereiro 2026</time>
+                            <span class="blog-card-read">Ler artigo →</span>
+                        </div>
+                    </div>
+                </a>
+                </article>
+            </div>
+        </div>
+    </section>
+
     <!-- ===== FAQ ===== -->
     <section class="faq" id="faq">
         <div class="container">
             <div class="faq-header reveal">
-                <div class="section-tag">D&uacute;vidas</div>
-                <h2 class="heading">As perguntas que todo empresário faz <em>antes de decidir</em></h2>
+                <div class="section-tag" style="color:var(--accent)">Dúvidas</div>
+                <h2 class="heading">Perguntas frequentes sobre <em style="color:var(--gold)">planejamento tributário e contabilidade</em></h2>
                 <p class="heading-sub">Se sua d&uacute;vida n&atilde;o est&aacute; aqui, chame no WhatsApp.</p>
             </div>
             <div class="faq-list reveal">
-                <div class="faq-item"><button class="faq-q">Qual a vantagem de uma contadora especializada em ind&uacute;strias?<div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">Especialista conhece ICMS, IPI, cr&eacute;ditos presumidos e incentivos fiscais de MG. Economia real e compliance blindado para fiscaliza&ccedil;&otilde;es.</div></div></div>
-                <div class="faq-item"><button class="faq-q">Qual porte de ind&uacute;stria voc&ecirc; atende?<div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">Pequeno, m&eacute;dio e grande porte em BH e regi&atilde;o metropolitana. Faturamento a partir de R$ 500 mil/ano. Metal&uacute;rgicas, aliment&iacute;cias, pl&aacute;sticos, autope&ccedil;as.</div></div></div>
-                <div class="faq-item"><button class="faq-q">Como funciona o diagn&oacute;stico gratuito?<div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">Reuni&atilde;o de 30 minutos (presencial ou online). Analiso sua situa&ccedil;&atilde;o fiscal, identifico oportunidades e riscos. Sem custo, sem compromisso.</div></div></div>
-                <div class="faq-item"><button class="faq-q">Quanto tempo para ver resultados?<div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">Diagn&oacute;stico completo nos primeiros 90 dias. Recupera&ccedil;&atilde;o de cr&eacute;ditos gera retorno em 60-120 dias. Planejamento tribut&aacute;rio impacta j&aacute; no primeiro trimestre.</div></div></div>
-                <div class="faq-item"><button class="faq-q">Atende fora de Belo Horizonte?<div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">Sim. Regi&atilde;o metropolitana (Contagem, Betim, Santa Luzia) e interior de MG, com reuni&otilde;es presenciais e remotas.</div></div></div>
-                <div class="faq-item"><button class="faq-q">J&aacute; tenho contador. Como &eacute; a transi&ccedil;&atilde;o?<div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">Cuido de todo o processo &mdash; transfer&ecirc;ncia de documentos, certificados digitais, migra&ccedil;&atilde;o sem interrup&ccedil;&otilde;es. Zero preocupa&ccedil;&atilde;o.</div></div></div>
-                <div class="faq-item"><button class="faq-q">Quanto custa a contabilidade especializada para ind&uacute;strias?<div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">O investimento depende do porte e complexidade da sua opera&ccedil;&atilde;o. O que podemos garantir: em 20 anos, cada cliente recuperou em cr&eacute;ditos e economia muito mais do que investiu em honor&aacute;rios. Come&ccedil;amos pelo diagn&oacute;stico gratuito &mdash; ali voc&ecirc; j&aacute; v&ecirc; o retorno potencial antes de decidir.</div></div></div>
+                <div class="faq-item"><button class="faq-q"><h3 class="faq-h3">Qual a vantagem de uma contadora especializada em ind&uacute;strias?</h3><div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">Especialista conhece ICMS, IPI, cr&eacute;ditos presumidos e incentivos fiscais de MG. Economia real e compliance blindado para fiscaliza&ccedil;&otilde;es.</div></div></div>
+                <div class="faq-item"><button class="faq-q"><h3 class="faq-h3">Qual porte de ind&uacute;stria voc&ecirc; atende?</h3><div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">Pequeno, m&eacute;dio e grande porte em BH e regi&atilde;o metropolitana. Faturamento a partir de R$ 500 mil/ano. Metal&uacute;rgicas, aliment&iacute;cias, pl&aacute;sticos, autope&ccedil;as.</div></div></div>
+                <div class="faq-item"><button class="faq-q"><h3 class="faq-h3">Como funciona o diagn&oacute;stico gratuito?</h3><div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">Reuni&atilde;o de 30 minutos (presencial ou online). Analiso sua situa&ccedil;&atilde;o fiscal, identifico oportunidades e riscos. Sem custo, sem compromisso.</div></div></div>
+                <div class="faq-item"><button class="faq-q"><h3 class="faq-h3">Quanto tempo para ver resultados?</h3><div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">Diagn&oacute;stico completo nos primeiros 90 dias. Recupera&ccedil;&atilde;o de cr&eacute;ditos gera retorno em 60-120 dias. Planejamento tribut&aacute;rio impacta j&aacute; no primeiro trimestre.</div></div></div>
+                <div class="faq-item"><button class="faq-q"><h3 class="faq-h3">Atende fora de Belo Horizonte?</h3><div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">Sim. Regi&atilde;o metropolitana (Contagem, Betim, Santa Luzia) e interior de MG, com reuni&otilde;es presenciais e remotas.</div></div></div>
+                <div class="faq-item"><button class="faq-q"><h3 class="faq-h3">J&aacute; tenho contador. Como &eacute; a transi&ccedil;&atilde;o?</h3><div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">Cuido de todo o processo. Transfer&ecirc;ncia de documentos, certificados digitais, migra&ccedil;&atilde;o sem interrup&ccedil;&otilde;es. Zero preocupa&ccedil;&atilde;o.</div></div></div>
+                <div class="faq-item"><button class="faq-q"><h3 class="faq-h3">Quanto custa a contabilidade especializada para ind&uacute;strias?</h3><div class="faq-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></div></button><div class="faq-a"><div class="faq-a-inner">O investimento depende do porte e complexidade da sua opera&ccedil;&atilde;o. O que podemos garantir: em 20 anos, cada cliente recuperou em cr&eacute;ditos e economia muito mais do que investiu em honor&aacute;rios. Come&ccedil;amos pelo diagn&oacute;stico gratuito. Ali voc&ecirc; j&aacute; v&ecirc; o retorno potencial antes de decidir.</div></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ONDE ESTAMOS ===== -->
+    <section class="location" id="onde-estamos">
+        <div class="container">
+            <div class="location-header reveal">
+                <div class="section-tag" style="color:var(--accent)">Localização</div>
+                <h2 class="heading">Pará de Minas. <em style="color:var(--gold)">Atendimento em todo o estado de MG.</em></h2>
+                <p class="heading-sub">Escritório na região central, reuniões presenciais e remotas para clientes de todo Minas Gerais.</p>
+            </div>
+            <div class="location-grid">
+                <!-- Coluna esquerda: mapa -->
+                <div class="location-map reveal">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3762.123!2d-44.6126!3d-19.8607!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTnCsDUxJzM4LjUiUyA0NMKwMzYnNDUuNCJX!5e0!3m2!1spt-BR!2sbr!4v1700000000000!5m2!1spt-BR!2sbr"
+                        allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"
+                        title="Localização AM Cabral Contabilidade">
+                    </iframe>
+                </div>
+                <!-- Coluna direita: todos os cards -->
+                <div class="location-info reveal">
+                    <div class="location-card">
+                        <div class="location-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+                        </div>
+                        <div>
+                            <div class="location-card-label">Endereço</div>
+                            <div class="location-card-value">Rua Major Fidelis, 244, Centro<br>Pará de Minas, MG 35660-109</div>
+                        </div>
+                    </div>
+                    <div class="location-card">
+                        <div class="location-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 12 19.79 19.79 0 0 1 1.09 3.4 2 2 0 0 1 3.07 1.24h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.71 2.81a2 2 0 0 1-.45 2.11L7.09 8.91a16 16 0 0 0 5.93 5.93l1.23-1.23a2 2 0 0 1 2.11-.45c.91.35 1.85.59 2.81.71A2 2 0 0 1 21.08 16z"/></svg>
+                        </div>
+                        <div>
+                            <div class="location-card-label">Telefone</div>
+                            <div class="location-card-value"><a href="tel:+5537999967558">(37) 99996-7558</a></div>
+                        </div>
+                    </div>
+                    <div class="location-card">
+                        <div class="location-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <div>
+                            <div class="location-card-label">Horário</div>
+                            <div class="location-card-value">Seg a Sex, das 8h às 18h<br>Atendimento remoto disponível</div>
+                        </div>
+                    </div>
+                    <div class="location-card">
+                        <div class="location-card-icon">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        </div>
+                        <div>
+                            <div class="location-card-label">Cidades Atendidas</div>
+                            <div class="location-cities">
+                                <span class="location-city-tag">Pará de Minas</span>
+                                <span class="location-city-tag">Belo Horizonte</span>
+                                <span class="location-city-tag">Contagem</span>
+                                <span class="location-city-tag">Betim</span>
+                                <span class="location-city-tag">Divinópolis</span>
+                                <span class="location-city-tag">Sete Lagoas</span>
+                                <span class="location-city-tag">Todo MG</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
 <!-- ===== BOTTOM BAR ===== -->
     <div class="bottom-bar" id="bottomBar">
-        <div class="container">
-            <div class="bottom-bar-text">Intelig&ecirc;ncia tribut&aacute;ria para sua <em>ind&uacute;stria</em></div>
-            <a href="#contato" class="btn btn-primary">
-                Diagn&oacute;stico Gratuito
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <div class="bb-inner">
+            <span class="bb-info"><span class="bb-stars">★★★★★</span> Nota 4.9</span>
+            <div class="bb-sep"></div>
+            <span class="bb-info">120+ empresas atendidas</span>
+            <div class="bb-sep"></div>
+            <span class="bb-info">R$ 12M recuperados em créditos</span>
+            <div class="bb-sep"></div>
+            <a href="#contato" class="bb-cta">
+                Diagnóstico Gratuito
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
             </a>
         </div>
     </div>
 
+    </main>
+
     <!-- ===== FOOTER ===== -->
 <footer class="site-footer">
   <div class="footer-inner">
+
+    <!-- Prova social -->
+
     <div class="footer-grid">
-      <!-- Col 1: A Empresa -->
+
+      <!-- Col 1: Brand + NAP -->
+      <div class="footer-brand-col">
+        <a href="/" class="footer-logo"><em>AM Cabral</em></a>
+        <p class="footer-tagline">Inteligência tributária para empresas que competem para vencer.</p>
+        <address class="footer-nap">
+          <a href="tel:+5537999967558" class="footer-nap-row">(37) 99996-7558</a>
+          <a href="mailto:contato@amcabralblindagem.com.br" class="footer-nap-row">contato@amcabralblindagem.com.br</a>
+          <span class="footer-nap-row">Rua Major Fidelis, 244, Centro<br>Pará de Minas, MG 35660-109</span>
+        </address>
+        <div class="footer-social">
+          <a href="https://www.instagram.com/amandacabral28/" target="_blank" rel="noopener">Instagram</a>
+          <a href="https://www.linkedin.com/in/amanda-cabral-de-oliveira-82183a179/" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
+      </div>
+
+      <!-- Col 2: A Empresa -->
       <div class="footer-col">
         <h3 class="footer-heading">A Empresa</h3>
         <ul>
-          <li><a href="/sobre/">Sobre Amanda Silva</a></li>
+          <li><a href="/sobre/">Sobre</a></li>
           <li><a href="/casos-de-sucesso/">Casos de Sucesso</a></li>
           <li><a href="/depoimentos/">Depoimentos</a></li>
-          <li><a href="/faq/">FAQ</a></li>
           <li><a href="/contato/">Contato</a></li>
+          <li><a href="/blog/">Blog</a></li>
         </ul>
       </div>
 
-      <!-- Col 2: Serviços -->
+      <!-- Col 3: Serviços -->
       <div class="footer-col">
         <h3 class="footer-heading">Serviços</h3>
         <ul>
-          <li><a href="/gestao-contabil-para-empresas/">Gestão Contábil Estratégica</a></li>
+          <li><a href="/gestao-contabil-para-empresas/">Gestão Contábil</a></li>
           <li><a href="/recuperacao-de-creditos-tributarios/">Recuperação de Créditos</a></li>
-          <li><a href="/holding-patrimonial-e-familiar/">Holding Patrimonial e Familiar</a></li>
+          <li><a href="/holding-patrimonial-e-familiar/">Holding</a></li>
           <li><a href="/planejamento-tributario/">Planejamento Tributário</a></li>
           <li><a href="/consultoria-tributaria/">Consultoria Tributária</a></li>
         </ul>
       </div>
 
-      <!-- Col 3: Conteúdo -->
+      <!-- Col 4: Conteúdo -->
       <div class="footer-col">
         <h3 class="footer-heading">Conteúdo</h3>
         <ul>
@@ -3715,28 +4134,25 @@
         </ul>
       </div>
 
-      <!-- Col 4: Regiões -->
+      <!-- Col 5: Regiões -->
       <div class="footer-col">
-        <h3 class="footer-heading">Regiões Atendidas</h3>
+        <h3 class="footer-heading">Regiões</h3>
         <ul>
+          <li><a href="/contabilidade-para-de-minas/">Pará de Minas</a></li>
           <li><a href="/contabilidade-industrial-belo-horizonte/">Belo Horizonte</a></li>
-          <li><a href="/contabilidade-industrial-sao-paulo/">São Paulo</a></li>
-          <li><a href="/contabilidade-industrial-rio-de-janeiro/">Rio de Janeiro</a></li>
-          <li><a href="/contabilidade-industrial-vale-do-aco/">Vale do Aço</a></li>
+          <li><a href="/contabilidade-industrial-contagem/">Contagem</a></li>
+          <li><a href="/contabilidade-industrial-betim/">Betim</a></li>
           <li><a href="/regioes-atendidas/">Ver todas →</a></li>
         </ul>
       </div>
+
     </div>
 
-    <!-- Separador + Logo + CTA -->
-    <div class="footer-brand">
-      <a href="/" class="footer-logo">AM Cabral</a>
-      <a href="/diagnostico-gratuito/" class="footer-cta">Diagnóstico Gratuito</a>
-    </div>
+    <div class="footer-wordmark">AM Cabral Contabilidade</div>
 
     <!-- Barra legal -->
     <div class="footer-legal">
-      <p>© 2026 Amanda Silva Cabral Contabilidade. CRC/MG ativo.</p>
+      <p>© 2026 Amanda Silva Cabral Contabilidade. CNPJ 34.733.620/0001-51. CRC/MG ativo.</p>
       <div class="footer-legal-links">
         <a href="/politica-de-privacidade/">Política de Privacidade</a>
         <a href="/politica-de-cookies/">Política de Cookies</a>
@@ -3764,7 +4180,7 @@
 
         // ---- LENIS SMOOTH SCROLL ----
         const lenis = new Lenis({
-            duration: 1.2,
+            duration: 0.8,
             easing: t => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
             smooth: true
         });
@@ -3789,13 +4205,10 @@
             scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 0.5 }
         });
 
-        gsap.to('.hero-content', {
-            y: 80, opacity: 0,
-            scrollTrigger: { trigger: '.hero', start: '60% top', end: 'bottom top', scrub: 0.5 }
-        });
+        // hero-content fade removed — evita scroll "engolido"
 
         // Manifesto Apple-style sticky pin (3 phases)
-        ScrollTrigger.create({
+        if (document.getElementById('manifestoWrapper')) ScrollTrigger.create({
             trigger: '#manifestoWrapper',
             start: 'top top',
             end: 'bottom bottom',
@@ -3836,7 +4249,7 @@
                     if (attr) attr.style.opacity = String(Math.max(0, (t - 0.5) / 0.5));
                 }
             }
-        });
+        });  // end ScrollTrigger.create (or end if-guard)
 
         // ---- CUSTOM CURSOR ----
         const cursor = document.getElementById('cursor');
@@ -3862,10 +4275,12 @@
         });
 
         // ---- HEADER ----
-        const header = document.getElementById('header');
-        window.addEventListener('scroll', () => {
-            header.classList.toggle('scrolled', window.scrollY > 60);
-        }, { passive: true });
+        const header = document.getElementById('siteHeader');
+        if (header) {
+            window.addEventListener('scroll', () => {
+                header.classList.toggle('scrolled', window.scrollY > 60);
+            }, { passive: true });
+        }
 
         // ---- SCROLL PROGRESS ----
         const progressBar = document.getElementById('scrollProgress');
@@ -3877,7 +4292,7 @@
         // ---- TOC SIDEBAR ----
         const toc = document.getElementById('toc');
         const tocDots = toc.querySelectorAll('.toc-dot');
-        const sections = ['hero','dores','servicos','processo','clientes','depoimentos','sobre','contato','blog','faq','localizacao'];
+        const sections = ['hero','servicos','depoimentos','sobre','contato','onde-estamos'];
         const darkSections = ['hero','servicos','depoimentos','manifesto','contato','video','faq'];
 
         function updateToc() {
@@ -3916,29 +4331,29 @@
             });
         });
 
+        // ---- SCROLL HINT ----
+        const scrollHintEl = document.querySelector('.scroll-hint');
+        if (scrollHintEl) {
+            window.addEventListener('scroll', () => {
+                scrollHintEl.classList.toggle('hidden', window.scrollY > 80);
+            }, { passive: true });
+        }
+
         // ---- BOTTOM BAR ----
         const bottomBar = document.getElementById('bottomBar');
-        const heroEl = document.getElementById('hero');
         const ctaEl = document.getElementById('contato');
+        const doresEl = document.getElementById('dores');
 
         function checkBottomBar() {
-            const heroBottom = heroEl.getBoundingClientRect().bottom;
-            const ctaTop = ctaEl.getBoundingClientRect().top;
-            const show = heroBottom < 0 && ctaTop > window.innerHeight;
-            bottomBar.classList.toggle('visible', show);
+            const pastSecond = doresEl ? doresEl.getBoundingClientRect().bottom < 0 : false;
+            const ctaTop = ctaEl ? ctaEl.getBoundingClientRect().top : Infinity;
+            const ctaReached = ctaEl ? window.scrollY + window.innerHeight >= (ctaEl.offsetTop) : false;
+            bottomBar.classList.toggle('visible', pastSecond && !ctaReached);
         }
         window.addEventListener('scroll', checkBottomBar, { passive: true });
+        checkBottomBar();
 
-        // ---- MOBILE MENU ----
-        document.getElementById('mobileToggle').addEventListener('click', () => {
-            document.getElementById('nav').classList.toggle('open');
-        });
-        document.getElementById('navClose').addEventListener('click', () => {
-            document.getElementById('nav').classList.remove('open');
-        });
-        document.querySelectorAll('.nav a').forEach(a => {
-            a.addEventListener('click', () => document.getElementById('nav').classList.remove('open'));
-        });
+        // ---- MOBILE MENU (handled separately below) ----
 
         // ---- REVEAL (IntersectionObserver) ----
         const revealEls = document.querySelectorAll('.reveal, .stagger');
@@ -3987,6 +4402,7 @@
 
         // ---- FAQ ----
         document.querySelectorAll('.faq-q').forEach(btn => {
+            btn.setAttribute('aria-expanded', 'false');
             btn.addEventListener('click', () => {
                 const item = btn.parentElement;
                 const answer = item.querySelector('.faq-a');
@@ -3994,10 +4410,12 @@
                 document.querySelectorAll('.faq-item').forEach(i => {
                     i.classList.remove('open');
                     i.querySelector('.faq-a').style.maxHeight = null;
+                    i.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
                 });
                 if (!isOpen) {
                     item.classList.add('open');
                     answer.style.maxHeight = answer.scrollHeight + 'px';
+                    btn.setAttribute('aria-expanded', 'true');
                 }
             });
         });
@@ -4040,145 +4458,118 @@
         };
 
         // ---- MULTI-STEP FORM ----
-        let fStep = 0;
-        const fData = { segment:'', revenue:'', pain:'', name:'', company:'', phone:'', city:'' };
+        (function() {
+            var formData = { setor: '', faturamento: '', servico: '' };
 
-        window.selOpt = function(btn) {
-            const parent = btn.parentElement;
-            parent.querySelectorAll('.form-opt').forEach(o => o.classList.remove('selected'));
-            btn.classList.add('selected');
-            if (parent.id === 'frmSegment') fData.segment = btn.dataset.value;
-            if (parent.id === 'frmRevenue') fData.revenue = btn.dataset.value;
-            if (parent.id === 'frmPain') fData.pain = btn.dataset.value;
-        };
+            function goToStep(step) {
+                document.querySelectorAll('.form-step').forEach(function(s) { s.classList.remove('active'); });
+                var target = document.querySelector('.form-step[data-step="' + step + '"]');
+                if (target) target.classList.add('active');
+                document.querySelectorAll('.form-dot').forEach(function(d) {
+                    var ds = parseInt(d.getAttribute('data-step'));
+                    d.classList.remove('active', 'done');
+                    if (ds < step) d.classList.add('done');
+                    if (ds === step) d.classList.add('active');
+                });
+            }
 
-        function updateFrm() {
-            document.querySelectorAll('.form-panel').forEach((p,i) => p.classList.toggle('active', i===fStep));
-            document.querySelectorAll('.form-dot').forEach((d,i) => {
-                d.classList.remove('active','done');
-                if (i === fStep) d.classList.add('active');
-                if (i < fStep) d.classList.add('done');
+            var form = document.getElementById('diagForm');
+            if (!form) return;
+
+            form.querySelectorAll('.cta-opt').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    var field = btn.dataset.field;
+                    var val = btn.dataset.value;
+                    formData[field] = val;
+                    form.querySelectorAll('.cta-opt[data-field="' + field + '"]').forEach(function(b) { b.classList.remove('selected'); });
+                    btn.classList.add('selected');
+                    var currentStep = parseInt(btn.closest('.form-step').getAttribute('data-step'));
+                    setTimeout(function() { goToStep(currentStep + 1); }, 260);
+                });
             });
-        }
 
-        window.frmNext = function() { if (fStep < 3) { fStep++; updateFrm(); } };
-        window.frmPrev = function() { if (fStep > 0) { fStep--; updateFrm(); } };
+            var backBtn = document.getElementById('diagBtnBack');
+            if (backBtn) backBtn.addEventListener('click', function() { goToStep(3); });
 
-        window.frmSubmit = function() {
-            fData.name = document.getElementById('frmName').value;
-            fData.company = document.getElementById('frmCompany').value;
-            fData.phone = document.getElementById('frmPhone').value;
-            fData.city = document.getElementById('frmCity').value;
-            fData.notes = document.getElementById('frmNotes').value;
-            const msg = `Olá Amanda Cabral! Solicito um diagnóstico tributário.\n\n` +
-                `*Segmento:* ${fData.segment || 'Não especificado'}\n` +
-                `*Faturamento:* ${fData.revenue || 'Não especificado'}\n` +
-                `*Maior dor:* ${fData.pain || 'Não especificado'}\n` +
-                `*Nome:* ${fData.name}\n` +
-                `*Empresa:* ${fData.company}\n` +
-                `*WhatsApp:* ${fData.phone}\n` +
-                `*Cidade:* ${fData.city}` +
-                (fData.notes ? `\n*Observações:* ${fData.notes}` : '');
-            window.open('https://wa.me/5531999999999?text=' + encodeURIComponent(msg), '_blank');
-        };
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                var nome = (document.getElementById('diagNome').value || '').trim();
+                var whatsapp = (document.getElementById('diagWhatsapp').value || '').trim();
+                if (!nome || !whatsapp) {
+                    alert('Por favor, preencha seu nome e WhatsApp.');
+                    return;
+                }
+                var text = 'Olá! Solicito um diagnóstico tributário gratuito.\n\n';
+                text += 'Setor: ' + (formData.setor || 'Não informado') + '\n';
+                text += 'Faturamento: ' + (formData.faturamento || 'Não informado') + '\n';
+                text += 'Interesse: ' + (formData.servico || 'Não informado') + '\n';
+                text += 'Nome: ' + nome + '\n';
+                text += 'WhatsApp: ' + whatsapp + '\n';
+                var url = 'https://wa.me/5537999967558?text=' + encodeURIComponent(text);
+                window.open(url, '_blank');
+            });
+        })();
 
     })();
+    </script>
 
-    // ---- MEGA-MENU DROPDOWN WITH HOVER DELAY ----
-    let closeTimer = null;
+    <script>
+    // ---- MEGA-MENU — painéis fora do header ----
+    let hdrTimer = null;
+    let currentMega = null;
+    let currentItem = null;
 
-    document.querySelectorAll('.nav-item-dropdown').forEach(item => {
-        const trigger = item.querySelector('.nav-trigger');
-        const dropdown = item.querySelector('.nav-dropdown');
+    const closeAll = () => {
+        document.querySelectorAll('.hdr-mega.open').forEach(m => m.classList.remove('open'));
+        document.querySelectorAll('.hdr-item.open').forEach(i => i.classList.remove('open'));
+        currentMega = null;
+        currentItem = null;
+    };
 
-        // Mouse enter trigger
-        trigger.addEventListener('mouseenter', () => {
-            clearTimeout(closeTimer);
-            // Close all other dropdowns
-            document.querySelectorAll('.nav-item-dropdown.is-open').forEach(other => {
-                if (other !== item) {
-                    other.classList.remove('is-open');
-                    other.querySelector('.nav-trigger').setAttribute('aria-expanded', 'false');
-                }
-            });
-            // Open this dropdown
-            item.classList.add('is-open');
-            trigger.setAttribute('aria-expanded', 'true');
-        });
+    document.querySelectorAll('.hdr-item[data-menu]').forEach(item => {
+        const btn = item.querySelector('.hdr-btn');
+        const mega = document.getElementById('mega-' + item.dataset.menu);
+        if (!btn || !mega) return;
 
-        // Mouse leave trigger with delay
-        trigger.addEventListener('mouseleave', () => {
-            closeTimer = setTimeout(() => {
-                item.classList.remove('is-open');
-                trigger.setAttribute('aria-expanded', 'false');
-            }, 150);
-        });
+        const open = () => {
+            clearTimeout(hdrTimer);
+            if (currentMega && currentMega !== mega) {
+                currentMega.classList.remove('open');
+                currentItem && currentItem.classList.remove('open');
+            }
+            mega.classList.add('open');
+            item.classList.add('open');
+            currentMega = mega;
+            currentItem = item;
+        };
 
-        // Keep dropdown open on hover
-        dropdown.addEventListener('mouseenter', () => {
-            clearTimeout(closeTimer);
-            item.classList.add('is-open');
-            trigger.setAttribute('aria-expanded', 'true');
-        });
+        const scheduleClose = () => {
+            hdrTimer = setTimeout(closeAll, 150);
+        };
 
-        // Close dropdown when leaving
-        dropdown.addEventListener('mouseleave', () => {
-            closeTimer = setTimeout(() => {
-                item.classList.remove('is-open');
-                trigger.setAttribute('aria-expanded', 'false');
-            }, 150);
-        });
+        btn.addEventListener('mouseenter', open);
+        btn.addEventListener('mouseleave', scheduleClose);
+        mega.addEventListener('mouseenter', () => { clearTimeout(hdrTimer); });
+        mega.addEventListener('mouseleave', scheduleClose);
 
-        // Click to toggle (for accessibility)
-        trigger.addEventListener('click', (e) => {
+        btn.addEventListener('click', e => {
             e.preventDefault();
-            const isOpen = item.classList.toggle('is-open');
-            trigger.setAttribute('aria-expanded', isOpen);
-            // Close others
-            document.querySelectorAll('.nav-item-dropdown').forEach(other => {
-                if (other !== item) {
-                    other.classList.remove('is-open');
-                    other.querySelector('.nav-trigger').setAttribute('aria-expanded', 'false');
-                }
-            });
+            mega.classList.contains('open') ? closeAll() : open();
         });
     });
 
-    // Close dropdowns when clicking outside
     document.addEventListener('click', e => {
-        if (!e.target.closest('.nav-item-dropdown')) {
-            document.querySelectorAll('.nav-item-dropdown.is-open').forEach(item => {
-                item.classList.remove('is-open');
-                item.querySelector('.nav-trigger').setAttribute('aria-expanded', 'false');
-            });
-        }
+        if (!e.target.closest('.hdr-item') && !e.target.closest('.hdr-mega')) closeAll();
     });
 
-    // ---- MOBILE OVERLAY ----
-    const hamburger = document.getElementById('navHamburger');
-    const mobileNav = document.getElementById('mobileNav');
-    const mobileNavClose = document.getElementById('mobileNavClose');
-
-    if(hamburger && mobileNav && mobileNavClose){
-        hamburger.addEventListener('click', () => {
-            mobileNav.classList.toggle('is-open');
-            mobileNav.setAttribute('aria-hidden', !mobileNav.classList.contains('is-open'));
-            hamburger.setAttribute('aria-expanded', mobileNav.classList.contains('is-open'));
-        });
-
-        mobileNavClose.addEventListener('click', () => {
-            mobileNav.classList.remove('is-open');
-            mobileNav.setAttribute('aria-hidden', 'true');
-            hamburger.setAttribute('aria-expanded', 'false');
-        });
-
-        document.querySelectorAll('.mobile-nav a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileNav.classList.remove('is-open');
-                mobileNav.setAttribute('aria-hidden', 'true');
-                hamburger.setAttribute('aria-expanded', 'false');
-            });
-        });
+    // ---- MOBILE ----
+    const hdrHamburger = document.getElementById('hdr-hamburger');
+    const hdrMob = document.getElementById('hdr-mob');
+    const hdrMobClose = document.getElementById('hdr-mob-close');
+    if (hdrHamburger && hdrMob && hdrMobClose) {
+        hdrHamburger.addEventListener('click', () => hdrMob.classList.toggle('open'));
+        hdrMobClose.addEventListener('click', () => hdrMob.classList.remove('open'));
+        hdrMob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => hdrMob.classList.remove('open')));
     }
     </script>
 </body>
