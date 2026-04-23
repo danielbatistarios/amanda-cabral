@@ -52,69 +52,6 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-/* === LOADER === */
-.loader {
-  position: fixed;
-  inset: 0;
-  background: var(--z0, #060E1A);
-  z-index: 99999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 32px;
-}
-.loader-phrase {
-  font-family: 'Instrument Serif', Georgia, serif;
-  font-size: clamp(22px, 4.5vw, 42px);
-  font-style: italic;
-  color: rgba(255,255,255,.9);
-  letter-spacing: .01em;
-  text-align: center;
-  max-width: 600px;
-  padding: 0 24px;
-  overflow: hidden;
-}
-.loader-phrase span {
-  display: inline-block;
-  opacity: 0;
-  transform: translateY(12px);
-  transition: opacity .4s ease, transform .4s ease;
-}
-.loader-phrase span.visible { opacity: 1; transform: none; }
-.loader-brand {
-  font-family: 'Inter', system-ui, sans-serif;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: var(--dourado, #C9A84C);
-  opacity: 0;
-  transition: opacity .6s ease .3s;
-}
-.loader-brand.visible { opacity: 1; }
-.loader-line {
-  width: 48px;
-  height: 1px;
-  background: rgba(255,255,255,.12);
-  position: relative;
-  overflow: hidden;
-}
-.loader-line::after {
-  content: '';
-  position: absolute;
-  left: 0; top: 0;
-  height: 100%;
-  width: 0%;
-  background: var(--dourado, #C9A84C);
-  transition: width 1.8s cubic-bezier(.16,1,.3,1);
-}
-.loader-line.active::after { width: 100%; }
-.loader.done {
-  opacity: 0;
-  transition: opacity .6s ease;
-  pointer-events: none;
-}
 
 /* === VARIABLES === */
 :root {
@@ -732,95 +669,6 @@ img { display: block; max-width: 100%; }
             transform: translate(-50%, -50%);
         }
 
-        /* ============================
-           LOADER
-        ============================ */
-        .loader {
-            position: fixed;
-            inset: 0;
-            background: var(--blue-900);
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 32px;
-            transition: opacity 0.6s ease, visibility 0.6s;
-        }
-
-        .loader.done { opacity: 0; visibility: hidden; pointer-events: none; }
-
-        .loader-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 28px;
-            max-width: 700px;
-            padding: 0 24px;
-        }
-
-        .loader-phrase {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 6px 10px;
-            overflow: hidden;
-            text-align: center;
-        }
-
-        .loader-word {
-            font-family: var(--font-display);
-            font-size: clamp(1.3rem, 3.5vw, 2.2rem);
-            color: var(--white);
-            opacity: 0;
-            transform: translateY(100%);
-            animation: loaderWordIn 0.6s var(--ease) forwards;
-            line-height: 1.3;
-        }
-
-        .loader-word.accent { color: var(--gold); }
-        .loader-word.italic { font-style: italic; }
-
-        .loader-name {
-            display: flex;
-            gap: 10px;
-            overflow: hidden;
-            margin-top: 4px;
-        }
-
-        .loader-name .loader-word {
-            font-size: clamp(1rem, 2.5vw, 1.4rem);
-            font-family: var(--font-body);
-            font-weight: 600;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: var(--gold);
-        }
-
-        @keyframes loaderWordIn {
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .loader-line {
-            width: 120px;
-            height: 2px;
-            background: var(--blue-700);
-            border-radius: 2px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .loader-line::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: var(--gold);
-            animation: loaderFill 1.4s 1.6s var(--ease) forwards;
-            transform-origin: left;
-            transform: scaleX(0);
-        }
-
-        @keyframes loaderFill { to { transform: scaleX(1); } }
 
         /* ============================
            SCROLL PROGRESS
@@ -1522,9 +1370,6 @@ img { display: block; max-width: 100%; }
             h2.heading { font-size: clamp(1.3rem, 5vw, 1.7rem); }
             .heading-sub { font-size: 1rem; }
 
-            /* Loader */
-            .loader-phrase { gap: 4px 8px; }
-            .loader-word { font-size: clamp(1rem, 4vw, 1.5rem); }
         }
 
         @media (max-width: 480px) {
@@ -1557,15 +1402,15 @@ body { padding-top: clamp(60px, 14vw, 72px); }
 .cities-hero-sub { font-size: 1rem; color: rgba(255,255,255,.65); max-width: 600px; }
 
 /* services section */
-.services-sec { background: var(--blue-900,#060E1A); padding: clamp(60px,7vw,88px) 0; }
+.services-sec { background: #fff; padding: clamp(60px,7vw,88px) 0; }
 .services-header { display: flex; flex-direction: column; gap: 0; }
 .services-header-top { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 32px; }
-.services-header-top .sec-label { color: rgba(255,255,255,.4); }
-.services-header-top .sec-h { color: #fff; }
+.services-sec .sec-label { color: var(--accent,#3B82F6); font-size: .78rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; }
+.services-sec .sec-h { font-family: var(--font-display,'Instrument Serif',Georgia,serif); font-size: clamp(1.6rem,2.8vw,2.2rem); color: var(--ink,#060E1A); line-height: 1.15; margin-bottom: 0; }
 .carousel-arrows { display: flex; gap: 8px; }
 .carousel-arrow {
-  width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(255,255,255,.15);
-  background: rgba(255,255,255,.06); color: rgba(255,255,255,.6);
+  width: 40px; height: 40px; border-radius: 50%; border: 1px solid rgba(0,0,0,.1);
+  background: #fff; color: rgba(0,0,0,.5);
   display: flex; align-items: center; justify-content: center;
   cursor: pointer; transition: all .2s;
 }
@@ -1575,7 +1420,7 @@ body { padding-top: clamp(60px, 14vw, 72px); }
 .services-track-wrapper { overflow: hidden; }
 .services-track {
   display: flex; gap: 20px;
-  padding: 20px 160px 20px 24px;
+  padding: 20px 160px 20px 0;
   overflow-x: auto; scroll-snap-type: x mandatory;
   -ms-overflow-style: none; scrollbar-width: none;
 }
@@ -1583,20 +1428,19 @@ body { padding-top: clamp(60px, 14vw, 72px); }
 a.svc-card {
   min-width: 300px; max-width: 300px; flex-shrink: 0;
   scroll-snap-align: start;
-  background: rgba(255,255,255,0.03);
-  border: 1px solid rgba(255,255,255,0.07);
+  background: var(--ice,#F1F5F9);
+  border: 1px solid #E2E8F0;
   border-radius: 20px; padding: 36px 28px;
   text-decoration: none; color: inherit;
   display: flex; flex-direction: column;
   position: relative; overflow: hidden;
-  transition: background .3s ease, border-color .3s ease;
+  transition: background .3s ease, border-color .3s ease, transform .3s ease, box-shadow .3s ease;
 }
-a.svc-card:hover { background: rgba(255,255,255,0.06); border-color: rgba(196,165,116,.25); }
+a.svc-card:hover { background: #fff; border-color: rgba(196,165,116,.4); transform: translateY(-4px); box-shadow: 0 16px 40px rgba(6,14,26,.07); }
 .svc-num {
   font-family: var(--font-display,'Instrument Serif',Georgia,serif);
-  font-size: 3rem; font-weight: 700; line-height: 1;
-  background: linear-gradient(135deg,rgba(196,165,116,.45),rgba(196,165,116,.12));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  font-size: 3rem; font-weight: 400; line-height: 1; font-style: italic;
+  color: var(--accent-gold,#C4A574);
   margin-bottom: 20px;
 }
 .svc-badge {
@@ -1607,12 +1451,12 @@ a.svc-card:hover { background: rgba(255,255,255,0.06); border-color: rgba(196,16
 }
 .svc-card h3 {
   font-family: var(--font-display,'Instrument Serif',Georgia,serif);
-  font-size: 1.2rem; font-weight: 400; color: #fff; margin-bottom: 10px;
+  font-size: 1.2rem; font-weight: 400; color: var(--ink,#060E1A); margin-bottom: 10px;
 }
-.svc-card p { font-size: .88rem; color: rgba(255,255,255,.5); line-height: 1.7; flex: 1; }
+.svc-card p { font-size: .88rem; color: var(--text-muted,#64748B); line-height: 1.7; flex: 1; }
 .svc-link {
   display: inline-flex; align-items: center; gap: 6px;
-  margin-top: 20px; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.06);
+  margin-top: 20px; padding-top: 16px; border-top: 1px solid #E2E8F0;
   font-size: .72rem; font-weight: 600; letter-spacing: .5px; text-transform: uppercase;
   color: var(--accent-gold,#C4A574); opacity: 0; transform: translateX(-4px);
   transition: opacity .25s ease, transform .25s ease;
@@ -1705,8 +1549,15 @@ a.svc-card:hover .svc-link { opacity: 1; transform: translateX(0); }
 .pop-cta-h { font-family: var(--font-display,'Instrument Serif',Georgia,serif); font-size: clamp(1.8rem,3vw,2.5rem); font-weight: 400; color: #fff; margin-bottom: 12px; }
 .pop-cta-btn {
   display: inline-flex; align-items: center; gap: 10px;
-  background: #25D366; color: #fff; font-size: .9rem; font-weight: 700;
-  padding: 14px 28px; border-radius: 6px; text-decoration: none; margin-top: 16px;
+  background: transparent; color: var(--accent-gold,#C4A574);
+  border: 1.5px solid var(--accent-gold,#C4A574);
+  font-size: .9rem; font-weight: 600; letter-spacing: .04em;
+  padding: 14px 32px; border-radius: 60px; text-decoration: none; margin-top: 16px;
+  transition: background .25s ease, color .25s ease, box-shadow .25s ease;
+}
+.pop-cta-btn:hover {
+  background: var(--accent-gold,#C4A574); color: #060E1A;
+  box-shadow: 0 8px 24px rgba(196,165,116,.2);
 }
 .pop-cta-sub { font-size: .78rem; color: rgba(255,255,255,.35); margin-top: 12px; }
 
@@ -1876,13 +1727,6 @@ a.svc-card:hover .svc-link { opacity: 1; transform: translateX(0); }
   <a href="/fale-com-especialista/" id="hdrMobCta" style="color:var(--accent-gold);margin-top:16px;font-weight:700;">Diagnóstico Gratuito</a>
 </div>
 
-
-<!-- 1. LOADER -->
-<div class="loader" id="loader">
-  <div class="loader-phrase" id="loaderPhrase"></div>
-  <div class="loader-line" id="loaderLine"></div>
-  <div class="loader-brand" id="loaderBrand">AM Cabral</div>
-</div>
 
 <!-- 4. HERO (--z2, noise, glows) -->
 <section class="cities-hero noise" id="main-content">
@@ -2282,9 +2126,9 @@ a.svc-card:hover .svc-link { opacity: 1; transform: translateX(0); }
       <div class="pop-label reveal">Atendimento Nacional</div>
       <h2 class="pop-cta-h reveal d1">N&#227;o encontrou sua cidade?<br>Atendemos <em style="font-style:italic;color:var(--accent-gold,#C4A574);">qualquer empresa</em> no Brasil.</h2>
       <p class="pop-cta-desc reveal d2">Atendimento 100% digital para empresas no Lucro Real ou Presumido. Protegemos seu lucro de qualquer lugar do pa&#237;s, com a mesma dedica&#231;&#227;o de quem est&#225; ao lado.</p>
-      <a href="https://wa.me/5537999999999?text=Ol%C3%A1%2C%20gostaria%20de%20um%20diagn%C3%B3stico%20tribut%C3%A1rio%20gratuito" class="pop-cta-btn reveal d3" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      <a href="/fale-com-especialista/" class="pop-cta-btn reveal d3">
         Solicitar Diagn&#243;stico Gratuito
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
       </a>
       <p class="pop-cta-sub reveal d4">Resposta em at&#233; 4 horas &#183; Sem compromisso</p>
     </div>
@@ -2296,29 +2140,6 @@ a.svc-card:hover .svc-link { opacity: 1; transform: translateX(0); }
 
 
 <script>
-/* === LOADER === */
-(function() {
-  var loader = document.getElementById('loader');
-  var phrase = document.getElementById('loaderPhrase');
-  var line = document.getElementById('loaderLine');
-  var brand = document.getElementById('loaderBrand');
-  if (!loader || !phrase) return;
-  var words = 'Intelig\u00eancia tribut\u00e1ria para ind\u00fastrias que competem para vencer'.split(' ');
-  phrase.innerHTML = words.map(function(w) { return '<span>' + w + '</span>'; }).join(' ');
-  var spans = phrase.querySelectorAll('span');
-  document.body.style.overflow = 'hidden';
-  requestAnimationFrame(function() { if (line) line.classList.add('active'); });
-  spans.forEach(function(s, i) {
-    setTimeout(function() { s.classList.add('visible'); }, 200 + i * 200);
-  });
-  setTimeout(function() { if (brand) brand.classList.add('visible'); }, 200 + words.length * 200 + 200);
-  setTimeout(function() {
-    loader.classList.add('done');
-    document.body.style.overflow = '';
-    setTimeout(function() { loader.style.display = 'none'; }, 700);
-  }, 200 + words.length * 200 + 800);
-})();
-
 var bottomBar = document.getElementById('bottomBar');
 window.addEventListener('scroll', function() {
   if (bottomBar) bottomBar.classList.toggle('visible', window.scrollY > window.innerHeight * 0.5);
