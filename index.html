@@ -1494,6 +1494,24 @@
           * { transition-duration: 0.01ms !important; }
         }
 
+        /* Blog: coluna única centralizada no mobile */
+        @media (max-width: 768px) {
+          .blog-section .container { padding: 0 20px !important; }
+          .blog-grid {
+            grid-template-columns: 1fr !important;
+            width: 100% !important;
+          }
+          .blog-card {
+            width: 100% !important;
+            max-width: 100% !important;
+          }
+          .blog-header-centered {
+            text-align: center !important;
+            margin-left: auto !important;
+            margin-right: auto !important;
+          }
+        }
+
         /* Scroll padding âncoras */
         html { scroll-padding-top: 72px; }
 
