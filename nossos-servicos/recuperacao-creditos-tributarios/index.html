@@ -922,17 +922,6 @@ a.footer-nap-row:hover svg { color: var(--gold); }
 <!-- TOP BAR -->
 <div class="top-bar" style="margin-top:clamp(60px,14vw,72px)">8 em 10 empresas têm crédito esquecido na Receita. <a href="#form">Descubra o seu em 48h.</a></div>
 
-<!-- BREADCRUMB -->
-<nav class="breadcrumb" aria-label="Breadcrumb">
-  <div class="breadcrumb-inner">
-    <a href="/">Início</a>
-    <span class="breadcrumb-sep">›</span>
-    <a href="/nossos-servicos/">Nossos Serviços</a>
-    <span class="breadcrumb-sep">›</span>
-    <span class="breadcrumb-current">Recuperação de Créditos Tributários</span>
-  </div>
-</nav>
-
 <!-- HERO -->
 <section class="hero">
   <div class="hero-bg"></div>
@@ -978,7 +967,7 @@ a.footer-nap-row:hover svg { color: var(--gold); }
 </section>
 
 <!-- CREDENTIALS MARQUEE -->
-<div class="marquee-section">
+<div class="marquee-section" style="margin-bottom:0">
   <div class="marquee-track">
     <div class="marquee-item"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg> CRC/MG Ativo</div>
     <div class="marquee-dot"></div>
@@ -1012,32 +1001,16 @@ a.footer-nap-row:hover svg { color: var(--gold); }
   </div>
 </div>
 
-<!-- AUTHORITY INTRO -->
-<section class="authority">
-  <div class="container">
-    <div class="authority-grid">
-      <div class="authority-copy reveal">
-        <p class="section-label">O problema</p>
-        <h2 class="section-title">Empresas perdem <em style="font-style:italic;color:var(--dourado)">meses de faturamento</em> por não conhecerem seus créditos</h2>
-        <p>A legislação tributária brasileira cria mecanismos de crédito para evitar a tributação em cascata, mas a complexidade do sistema faz com que a maioria das empresas simplesmente não utilize esses créditos disponíveis.</p>
-        <p>ICMS acumulado em exportações, IPI de insumos não creditado, PIS/COFINS no regime não-cumulativo com créditos de energia e depreciação omitidos. Em 20 anos de auditoria, raramente vemos uma empresa que já aproveitou <strong>100% do crédito a que tem direito</strong>.</p>
-        <p>A prescrição é de 5 anos. Cada mês sem diagnóstico é um mês de crédito que some definitivamente.</p>
-        <div class="authority-highlight">
-          <p>"Nossa auditoria media identifica R$ 180 mil em créditos por cliente. O maior caso foi de R$ 1,2 milhão em créditos de ICMS acumulados em exportações, todos dentro do prazo prescricional."</p>
-        </div>
-      </div>
-      <div class="authority-img reveal reveal-delay-2">
-        <div class="authority-img-wrap">
-          <img src="../../para-de-minas-mg/escritorio-de-contabilidade/assets/amanda-cabral-contadora-autoridade.jpg" alt="Amanda Cabral em reunião de consultoria tributária" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;object-position:top center">
-        </div>
-        <div class="authority-badge">
-          <strong>R$180k</strong>
-          média por cliente
-        </div>
-      </div>
-    </div>
+<!-- BREADCRUMB -->
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="/">Início</a>
+    <span class="breadcrumb-sep">›</span>
+    <a href="/nossos-servicos/">Nossos Serviços</a>
+    <span class="breadcrumb-sep">›</span>
+    <span class="breadcrumb-current">Recuperação de Créditos Tributários</span>
   </div>
-</section>
+</nav>
 
 <!-- NUMBERS -->
 <section class="numbers">
@@ -1062,6 +1035,33 @@ a.footer-nap-row:hover svg { color: var(--gold); }
       <div class="numbers-item reveal reveal-delay-3">
         <div class="numbers-num">0</div>
         <div class="numbers-label">autuações fiscais<br>em 20 anos de atuação</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- AUTHORITY INTRO -->
+<section class="authority">
+  <div class="container">
+    <div class="authority-grid">
+      <div class="authority-copy reveal">
+        <p class="section-label">O problema</p>
+        <h2 class="section-title">Empresas perdem <em style="font-style:italic;color:var(--gold)">meses de faturamento</em> por não conhecerem seus créditos</h2>
+        <p>A legislação tributária brasileira cria mecanismos de crédito para evitar a tributação em cascata, mas a complexidade do sistema faz com que a maioria das empresas simplesmente não utilize esses créditos disponíveis.</p>
+        <p>ICMS acumulado em exportações, IPI de insumos não creditado, PIS/COFINS no regime não-cumulativo com créditos de energia e depreciação omitidos. Em 20 anos de auditoria, raramente vemos uma empresa que já aproveitou <strong>100% do crédito a que tem direito</strong>.</p>
+        <p>A prescrição é de 5 anos. Cada mês sem diagnóstico é um mês de crédito que some definitivamente.</p>
+        <div class="authority-highlight">
+          <p>"Nossa auditoria media identifica R$ 180 mil em créditos por cliente. O maior caso foi de R$ 1,2 milhão em créditos de ICMS acumulados em exportações, todos dentro do prazo prescricional."</p>
+        </div>
+      </div>
+      <div class="authority-img reveal reveal-delay-2">
+        <div class="authority-img-wrap">
+          <img src="https://images.unsplash.com/photo-1554224154-26032ffc0d07?w=600&h=750&fit=crop&q=80" alt="Documentos fiscais e relatório tributário sobre mesa de trabalho" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;object-position:center">
+        </div>
+        <div class="authority-badge">
+          <strong>R$180k</strong>
+          média por cliente
+        </div>
       </div>
     </div>
   </div>
@@ -1547,32 +1547,6 @@ a.footer-nap-row:hover svg { color: var(--gold); }
 <!-- FOOTER (idêntico à home) -->
 <footer class="site-footer">
   <div class="footer-inner">
-
-    <div class="footer-proof">
-      <div class="footer-proof-item">
-        <div class="footer-proof-stars">★★★★★</div>
-        <div class="footer-proof-value">R$12M+</div>
-        <div class="footer-proof-label">em créditos recuperados</div>
-      </div>
-      <div class="footer-proof-divider"></div>
-      <div class="footer-proof-item">
-        <div class="footer-proof-stars">★★★★★</div>
-        <div class="footer-proof-value">120+</div>
-        <div class="footer-proof-label">processos concluídos</div>
-      </div>
-      <div class="footer-proof-divider"></div>
-      <div class="footer-proof-item">
-        <div class="footer-proof-stars">★★★★★</div>
-        <div class="footer-proof-value">20 anos</div>
-        <div class="footer-proof-label">de especialização tributária</div>
-      </div>
-      <div class="footer-proof-divider"></div>
-      <div class="footer-proof-item">
-        <div class="footer-proof-stars">★★★★★</div>
-        <div class="footer-proof-value">0</div>
-        <div class="footer-proof-label">autuações fiscais</div>
-      </div>
-    </div>
 
     <div class="footer-grid">
 
