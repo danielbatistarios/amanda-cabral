@@ -82,8 +82,21 @@ html { scroll-behavior: smooth; }
   --z0: #060E1A;
   --z1: #0A1628;
   --z2: #0F2137;
+  --z3: #132D4A;
+  --z4: #1A3A5C;
   --border-z1: rgba(255,255,255,.055);
   --border-z2: rgba(255,255,255,.08);
+  --glow-accent: rgba(59,130,246,.15);
+  --toplight: rgba(255,255,255,.04);
+  --toplight-strong: rgba(255,255,255,.07);
+  --shadow-2: 0 2px 8px rgba(0,0,0,.35);
+  --shadow-3: 0 4px 16px rgba(0,0,0,.4);
+  --shadow-5: 0 8px 32px rgba(0,0,0,.5);
+  --t-fast: 0.15s;
+  --t-normal: 0.3s;
+  --t-slow: 0.6s;
+  --t-slower: 0.9s;
+  --zi-bar: 600;
   --max-w: 1200px;
 }
 
@@ -96,8 +109,12 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   padding-top: 60px;
+  cursor: none;
 }
-a { text-decoration: none; color: inherit; }
+@media (max-width: 768px) { body { cursor: auto; } }
+a { text-decoration: none; color: inherit; cursor: none; }
+button { cursor: none; }
+@media (max-width: 768px) { a, button { cursor: pointer; } }
 img { display: block; max-width: 100%; }
 ul { list-style: none; }
 
@@ -202,10 +219,34 @@ ul { list-style: none; }
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  gap: 28px;
+  gap: 20px;
   transition: opacity .6s ease, visibility .6s;
 }
 .loader.done { opacity: 0; visibility: hidden; pointer-events: none; }
+.loader-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  overflow: hidden;
+}
+.loader-brand-name {
+  font-family: var(--serif);
+  font-size: clamp(1.6rem, 4vw, 2.4rem);
+  font-style: italic;
+  color: var(--gold);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: loaderWordIn .8s .1s var(--spring) forwards;
+  letter-spacing: -0.01em;
+}
+.loader-brand-sep {
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,0.5), transparent);
+  animation: loaderSepExpand .8s .7s ease forwards;
+}
+@keyframes loaderSepExpand { to { width: 180px; } }
 .loader-phrase {
   display: flex;
   flex-wrap: wrap;
@@ -217,8 +258,8 @@ ul { list-style: none; }
 }
 .loader-word {
   font-family: var(--serif);
-  font-size: clamp(1.3rem, 3.5vw, 2.2rem);
-  color: #fff;
+  font-size: clamp(1.1rem, 2.8vw, 1.7rem);
+  color: rgba(255,255,255,0.65);
   opacity: 0;
   transform: translateY(100%);
   animation: loaderWordIn .6s var(--spring) forwards;
@@ -286,10 +327,17 @@ ul { list-style: none; }
 }
 #hdr-logo {
   font-family: var(--serif);
-  font-size: 17px; font-weight: 700;
-  color: #fff; white-space: nowrap;
+  font-size: clamp(1.15rem, 5vw, 1.45rem);
+  font-style: italic;
+  font-weight: 400;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(201,168,76,0.55);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
   text-decoration: none;
+  transition: -webkit-text-stroke-color var(--t-fast);
 }
+#hdr-logo:hover { -webkit-text-stroke-color: rgba(201,168,76,0.9); }
 #hdr-nav { display: flex; align-items: center; gap: 4px; list-style: none; position: absolute; left: 50%; transform: translateX(-50%); }
 .hdr-item { position: relative; }
 .hdr-btn {
@@ -359,14 +407,43 @@ ul { list-style: none; }
 #hdr-mob {
   display: none; position: fixed; inset: 0;
   background: #0a0e14; z-index: 600;
-  flex-direction: column; padding: 72px 24px 24px;
+  flex-direction: column; padding: 80px 24px 24px;
   overflow-y: auto;
 }
 #hdr-mob.open { display: flex; }
 #hdr-mob-close {
   position: absolute; top: 16px; right: 20px;
-  background: none; border: none; color: #fff;
-  font-size: 28px; cursor: pointer; line-height: 1;
+  background: none;
+  border: 1px solid rgba(201,168,76,0.25);
+  border-radius: 50%;
+  width: 36px; height: 36px;
+  color: rgba(201,168,76,0.7);
+  font-size: 16px;
+  display: flex; align-items: center; justify-content: center;
+  transition: border-color var(--t-fast), color var(--t-fast);
+}
+#hdr-mob-close:hover { border-color: rgba(201,168,76,0.6); color: var(--dourado); }
+.mob-brand {
+  margin-bottom: 32px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.mob-brand-name {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 9vw, 2.8rem);
+  font-style: italic;
+  font-weight: 400;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(201,168,76,0.45);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  display: block;
+  margin-bottom: 6px;
+}
+.mob-brand-sub {
+  font-size: 12px;
+  color: var(--dim);
+  letter-spacing: .06em;
 }
 #hdr-mob a { color: rgba(255,255,255,0.75); font-size: 16px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.06); text-decoration: none; display: block; }
 #hdr-mob a:hover { color: #fff; }
@@ -398,12 +475,65 @@ ul { list-style: none; }
 .lp-breadcrumb ol a:hover { color: #fff; }
 .lp-breadcrumb ol li[aria-current] { color: var(--dourado); }
 
-/* ── Hero (dark / cross-pattern) ── */
+/* ── Hero (dark / grid-bg + orbs) ── */
 .page-hero {
   background: var(--z0);
   padding: clamp(80px, 10vw, 128px) 0 clamp(64px, 8vw, 96px);
+  position: relative;
+  overflow: hidden;
 }
-.page-hero-inner { max-width: 760px; }
+.page-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(59,130,246,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(59,130,246,.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
+  mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 20%, transparent 100%);
+  pointer-events: none;
+}
+.hero-orb-1 {
+  position: absolute;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(59,130,246,.12) 0%, transparent 70%);
+  top: -100px; left: -100px;
+  pointer-events: none;
+}
+.hero-orb-2 {
+  position: absolute;
+  width: 500px; height: 500px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,168,76,.06) 0%, transparent 70%);
+  bottom: -80px; right: -80px;
+  pointer-events: none;
+}
+.hero-layout {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 64px;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+.hero-content {}
+.hero-img-col {
+  border-radius: 20px;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  max-height: 440px;
+  position: relative;
+}
+.hero-img-col::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 50%, rgba(6,14,26,.7) 100%);
+  z-index: 1;
+}
+.hero-img-col img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
 .hero-tag {
   display: inline-flex;
   align-items: center;
@@ -442,14 +572,17 @@ ul { list-style: none; }
   font-size: 1.05rem;
   color: rgba(255,255,255,.65);
   line-height: 1.8;
-  max-width: 600px;
+  max-width: 560px;
+}
+@media (max-width: 860px) {
+  .hero-layout { grid-template-columns: 1fr; }
+  .hero-img-col { display: none; }
 }
 
-/* ── Numbers strip (paper / dot-grid) ── */
+/* ── Numbers strip (dark / z2) ── */
 .numbers-sec {
-  background: var(--paper);
-  padding: 0;
-  border-bottom: 1px solid var(--paper2);
+  background: var(--z2);
+  padding: 80px 0;
 }
 .numbers-grid {
   display: flex;
@@ -460,26 +593,25 @@ ul { list-style: none; }
 }
 .numbers-item {
   text-align: center;
-  padding: clamp(28px, 4vw, 48px) clamp(24px, 4vw, 56px);
+  padding: clamp(16px, 3vw, 28px) clamp(24px, 4vw, 56px);
   flex-shrink: 0;
 }
 .numbers-sep {
   width: 1px;
   height: 56px;
-  background: var(--paper2);
+  background: var(--border-z2);
   flex-shrink: 0;
 }
 .numbers-val {
   font-family: var(--serif);
   font-style: italic;
-  font-size: clamp(32px, 4.5vw, 48px);
-  color: var(--ink);
+  font-size: clamp(36px, 5vw, 52px);
+  color: var(--dourado);
   line-height: 1.1;
 }
-.numbers-val em { color: var(--dourado); font-style: italic; }
 .numbers-label {
-  font-size: 13px;
-  color: #64748B;
+  font-size: 14px;
+  color: var(--dim);
   margin-top: 6px;
 }
 @media (max-width: 640px) { .numbers-sep { display: none; } .numbers-item { width: 50%; } }
@@ -854,6 +986,18 @@ ul { list-style: none; }
   box-shadow: 0 4px 20px rgba(37,211,102,.3);
   transition: transform .4s var(--spring), box-shadow .4s;
 }
+.wa-float::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 2px solid rgba(37,211,102,.4);
+  animation: waPulse 2.5s ease-out infinite;
+}
+@keyframes waPulse {
+  0% { transform: scale(1); opacity: 1; }
+  100% { transform: scale(1.6); opacity: 0; }
+}
 .wa-float:hover { transform: scale(1.1) translateY(-2px); box-shadow: 0 8px 32px rgba(37,211,102,.4); }
 .wa-float svg { width: 26px; height: 26px; fill: white; }
 
@@ -941,8 +1085,6 @@ a.footer-nap-row:hover svg { color: var(--gold); }
 /* ── Mobile cursor off ── */
 @media (max-width: 768px) {
   .cursor, .cursor-dot { display: none; }
-  body { cursor: auto; }
-  a, button { cursor: pointer; }
 }
 </style>
 </head>
@@ -950,11 +1092,15 @@ a.footer-nap-row:hover svg { color: var(--gold); }
 
 <!-- LOADER -->
 <div class="loader" id="loader">
+  <div class="loader-brand">
+    <span class="loader-brand-name">AM Cabral</span>
+    <div class="loader-brand-sep"></div>
+  </div>
   <div class="loader-phrase">
-    <span class="loader-word" style="animation-delay:.1s">Resultados</span>
-    <span class="loader-word italic accent" style="animation-delay:.25s">reais.</span>
-    <span class="loader-word" style="animation-delay:.4s">Empresas</span>
-    <span class="loader-word italic" style="animation-delay:.55s">que transformamos.</span>
+    <span class="loader-word" style="animation-delay:.9s">Resultados</span>
+    <span class="loader-word italic accent" style="animation-delay:1.05s">reais.</span>
+    <span class="loader-word" style="animation-delay:1.2s">Empresas</span>
+    <span class="loader-word italic" style="animation-delay:1.35s">que transformamos.</span>
   </div>
   <div class="loader-line"></div>
 </div>
@@ -1041,7 +1187,11 @@ a.footer-nap-row:hover svg { color: var(--gold); }
 </div>
 
 <div id="hdr-mob">
-  <button id="hdr-mob-close">✕</button>
+  <button id="hdr-mob-close" aria-label="Fechar menu">✕</button>
+  <div class="mob-brand">
+    <span class="mob-brand-name">AM Cabral</span>
+    <span class="mob-brand-sub">Contabilidade Estratégica</span>
+  </div>
   <a href="/">Início</a>
   <a href="/sobre-amcabral-blindagem/">Sobre Amanda</a>
   <a href="/nossos-servicos/">Serviços</a>
@@ -1061,41 +1211,48 @@ a.footer-nap-row:hover svg { color: var(--gold); }
   </ol>
 </nav>
 
-<!-- HERO — dark / cross-pattern -->
-<section class="page-hero cross-pattern">
+<!-- HERO — dark / grid-bg + orbs -->
+<section class="page-hero">
+  <div class="hero-orb-1"></div>
+  <div class="hero-orb-2"></div>
   <div class="container">
-    <div class="page-hero-inner">
-      <div class="hero-tag reveal">
-        <span class="dot"></span>
-        Resultados Comprovados
+    <div class="hero-layout">
+      <div class="hero-content">
+        <div class="hero-tag reveal">
+          <span class="dot"></span>
+          Resultados Comprovados
+        </div>
+        <h1 class="sec-h lt reveal d1">Empresas que <em>transformaram</em> sua relação com os impostos</h1>
+        <p class="page-hero-desc reveal d2">Cada caso abaixo representa uma empresa que pagava mais do que devia ou tinha patrimônio desprotegido. Os números são reais, auditados e documentados.</p>
       </div>
-      <h1 class="sec-h lt reveal d1">Empresas que <em>transformaram</em> sua relação com os impostos</h1>
-      <p class="page-hero-desc reveal d2">Cada caso abaixo representa uma empresa que pagava mais do que devia ou tinha patrimônio desprotegido. Os números são reais, auditados e documentados.</p>
+      <div class="hero-img-col reveal d3">
+        <img src="/amanda-sobre.webp" alt="Amanda Cabral Contadora" width="340" height="453" loading="eager">
+      </div>
     </div>
   </div>
 </section>
 
-<!-- NUMBERS — paper / dot-grid -->
-<div class="numbers-sec dot-grid">
+<!-- NUMBERS — dark / z2 -->
+<div class="numbers-sec">
   <div class="container">
     <div class="numbers-grid">
       <div class="numbers-item reveal">
-        <div class="numbers-val"><em>R$ 12M+</em></div>
+        <div class="numbers-val">R$ 12M+</div>
         <div class="numbers-label">créditos recuperados no total</div>
       </div>
       <div class="numbers-sep"></div>
       <div class="numbers-item reveal d1">
-        <div class="numbers-val"><em>120+</em></div>
+        <div class="numbers-val">120+</div>
         <div class="numbers-label">empresas atendidas</div>
       </div>
       <div class="numbers-sep"></div>
       <div class="numbers-item reveal d2">
-        <div class="numbers-val"><em>0%</em></div>
+        <div class="numbers-val">0%</div>
         <div class="numbers-label">de autuações fiscais em clientes ativos</div>
       </div>
       <div class="numbers-sep"></div>
       <div class="numbers-item reveal d3">
-        <div class="numbers-val"><em>28%</em></div>
+        <div class="numbers-val">28%</div>
         <div class="numbers-label">de redução média na carga tributária</div>
       </div>
     </div>
