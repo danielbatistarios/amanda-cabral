@@ -62,3 +62,17 @@
 /constituicao-de-holding-patrimonial-e-familiar        /nossos-servicos/holding-patrimonial/                 301
 /consultoria-tributaria/                               /nossos-servicos/consultoria-tributaria/              301
 /consultoria-tributaria                                /nossos-servicos/consultoria-tributaria/              301
+
+# Bio page redirect
+/bio/                                  /sobre-amcabral-blindagem/                             301
+/bio                                   /sobre-amcabral-blindagem/                             301
+
+# Blog posts sem página ainda
+/blog/revisao-creditos-icms/           /nossos-servicos/recuperacao-creditos-tributarios/     302
+/blog/revisao-creditos-icms            /nossos-servicos/recuperacao-creditos-tributarios/     302
+
+# LPs sem página ainda
+/incentivos-fiscais-minas-gerais/      /nossos-servicos/planejamento-tributario/              302
+/incentivos-fiscais-minas-gerais       /nossos-servicos/planejamento-tributario/              302
+/contador-belo-horizonte/              /nossos-servicos/                                      302
+/contador-belo-horizonte               /nossos-servicos/                                      302
