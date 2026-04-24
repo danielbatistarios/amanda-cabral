@@ -24,20 +24,31 @@
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
+            --z0: #060E1A;
+            --z1: #0A1628;
+            --z2: #0F2137;
+            --z3: #1E3A5F;
+            --accent: #3B82F6;
+            --accent-light: #60A5FA;
+            --silver: #94A3B8;
+            --paper: #F1F5F9;
+            --paper2: #E2E8F0;
+            --ink: #060E1A;
+            --dourado: #C9A84C;
+            --accent-gold: #C4A574;
+            --serif: 'Instrument Serif', Georgia, serif;
+            --sans: 'Inter', system-ui, sans-serif;
+            --max-w: 1200px;
+            --sec-pad: 80px;
+            --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+            /* aliases para retrocompatibilidade */
             --blue-900: #060E1A;
             --blue-800: #0A1628;
             --blue-700: #0F2137;
             --blue-600: #1E3A5F;
-            --accent: #3B82F6;
-            --accent-light: #60A5FA;
-            --silver: #94A3B8;
-            --white: #FFFFFF;
             --gold: #C9A84C;
-            --accent-gold: #C4A574;
-            --dark-hero: #0F1419;
             --font-body: 'Inter', system-ui, sans-serif;
             --font-display: 'Instrument Serif', Georgia, serif;
-            --max-w: 1200px;
             --ease: cubic-bezier(0.16, 1, 0.3, 1);
             --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
         }
@@ -79,7 +90,7 @@
            REVEAL
         ============================ */
         .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
-        .reveal.is-visible { opacity: 1; transform: translateY(0); }
+        .reveal.in { opacity: 1; transform: translateY(0); }
 
         /* ============================
            HEADER / MEGA-MENU v2
@@ -280,6 +291,32 @@
         @media (max-width: 600px) { .site-footer { padding: 48px 0 0; } .footer-inner { padding: 0 20px; } .footer-grid { grid-template-columns: 1fr; gap: 32px; } .footer-legal { flex-direction: column; gap: 12px; text-align: center; } .footer-legal-links { flex-wrap: wrap; justify-content: center; } }
 
         /* ============================
+           BREADCRUMB (design system)
+        ============================ */
+        .breadcrumb { padding: 12px 24px; background: var(--z1); border-bottom: 1px solid rgba(255,255,255,.06); }
+        .breadcrumb-inner { max-width: var(--max-w); margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 13px; color: rgba(255,255,255,.45); flex-wrap: wrap; }
+        .breadcrumb-inner a { color: rgba(255,255,255,.45); text-decoration: none; transition: color .2s; }
+        .breadcrumb-inner a:hover { color: var(--dourado); }
+        .bc-sep { opacity: .4; }
+
+        /* ============================
+           MARQUEE STRIPS
+        ============================ */
+        .marquee-section { background: var(--z1); border-top: 1px solid rgba(255,255,255,.03); border-bottom: 1px solid rgba(255,255,255,.03); padding: 18px 0; overflow: hidden; position: relative; }
+        .marquee-section::before, .marquee-section::after { content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2; pointer-events: none; }
+        .marquee-section::before { left: 0; background: linear-gradient(90deg, var(--z1), transparent); }
+        .marquee-section::after { right: 0; background: linear-gradient(-90deg, var(--z1), transparent); }
+        .marquee-section--gold { background: var(--dourado); }
+        .marquee-section--gold::before { background: linear-gradient(90deg, var(--dourado), transparent); }
+        .marquee-section--gold::after { background: linear-gradient(-90deg, var(--dourado), transparent); }
+        .marquee-section--gold .marquee-item { color: #0A0E14; font-weight: 700; }
+        .marquee-track { display: flex; gap: 48px; animation: marquee-mc 30s linear infinite; width: max-content; }
+        @keyframes marquee-mc { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .marquee-item { font-size: .78rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,.85); white-space: nowrap; }
+        .marquee-item .sep { display: inline-block; width: 4px; height: 4px; background: var(--dourado); border-radius: 50%; opacity: .6; margin-left: 48px; vertical-align: middle; }
+        .marquee-section--gold .marquee-item .sep { background: rgba(10,14,20,.35); }
+
+        /* ============================
            MOBILE TWEAKS
         ============================ */
         @media (max-width: 600px) {
@@ -466,17 +503,6 @@
 
 <main>
 
-<!-- ===== BREADCRUMB ===== -->
-<div class="breadcrumb">
-    <nav aria-label="Breadcrumb">
-        <a href="/">Início</a>
-        <span>›</span>
-        <a href="/casos-de-sucesso/">Casos de Sucesso</a>
-        <span>›</span>
-        <span aria-current="page">Metalúrgica de Contagem</span>
-    </nav>
-</div>
-
 <!-- ===== CASE HERO ===== -->
 <section class="case-hero">
     <div class="case-hero-grid-bg" aria-hidden="true"></div>
@@ -494,6 +520,41 @@
             <span class="case-meta-item"><span class="case-meta-dot"></span>Faturamento: R$ 8M/ano</span>
             <span class="case-meta-item"><span class="case-meta-dot"></span>Duração: 18 meses</span>
         </div>
+    </div>
+</section>
+
+<!-- ===== BREADCRUMB ===== -->
+<nav class="breadcrumb" aria-label="Breadcrumb">
+    <div class="breadcrumb-inner">
+        <a href="/">Início</a><span class="bc-sep">›</span>
+        <a href="/casos-de-sucesso/">Casos de Sucesso</a><span class="bc-sep">›</span>
+        <span aria-current="page">Metalúrgica de Contagem</span>
+    </div>
+</nav>
+
+<!-- ===== MARQUEE AZUL ===== -->
+<section class="marquee-section" aria-hidden="true">
+    <div class="marquee-track">
+        <span class="marquee-item">CRC/MG Ativo<span class="sep"></span></span>
+        <span class="marquee-item">20 Anos de Experiência<span class="sep"></span></span>
+        <span class="marquee-item">R$ 12M+ Recuperados<span class="sep"></span></span>
+        <span class="marquee-item">Lucro Real e Presumido<span class="sep"></span></span>
+        <span class="marquee-item">ICMS · IPI · PIS/COFINS<span class="sep"></span></span>
+        <span class="marquee-item">Holding Patrimonial<span class="sep"></span></span>
+        <span class="marquee-item">Reforma Tributária 2026<span class="sep"></span></span>
+        <span class="marquee-item">Indústrias · Distribuidoras<span class="sep"></span></span>
+        <span class="marquee-item">Diagnóstico Gratuito<span class="sep"></span></span>
+        <span class="marquee-item">Pará de Minas · BH · MG<span class="sep"></span></span>
+        <span class="marquee-item">CRC/MG Ativo<span class="sep"></span></span>
+        <span class="marquee-item">20 Anos de Experiência<span class="sep"></span></span>
+        <span class="marquee-item">R$ 12M+ Recuperados<span class="sep"></span></span>
+        <span class="marquee-item">Lucro Real e Presumido<span class="sep"></span></span>
+        <span class="marquee-item">ICMS · IPI · PIS/COFINS<span class="sep"></span></span>
+        <span class="marquee-item">Holding Patrimonial<span class="sep"></span></span>
+        <span class="marquee-item">Reforma Tributária 2026<span class="sep"></span></span>
+        <span class="marquee-item">Indústrias · Distribuidoras<span class="sep"></span></span>
+        <span class="marquee-item">Diagnóstico Gratuito<span class="sep"></span></span>
+        <span class="marquee-item">Pará de Minas · BH · MG<span class="sep"></span></span>
     </div>
 </section>
 
@@ -670,6 +731,28 @@
     </div>
 </section>
 
+<!-- ===== MARQUEE DOURADO ===== -->
+<section class="marquee-section marquee-section--gold" aria-hidden="true">
+    <div class="marquee-track">
+        <span class="marquee-item">Planejamento Tributário<span class="sep"></span></span>
+        <span class="marquee-item">Recuperação de Créditos<span class="sep"></span></span>
+        <span class="marquee-item">Holding Patrimonial<span class="sep"></span></span>
+        <span class="marquee-item">Gestão Contábil<span class="sep"></span></span>
+        <span class="marquee-item">Reforma Tributária<span class="sep"></span></span>
+        <span class="marquee-item">Contabilidade Industrial<span class="sep"></span></span>
+        <span class="marquee-item">Abertura de Empresa<span class="sep"></span></span>
+        <span class="marquee-item">Consultoria Fiscal<span class="sep"></span></span>
+        <span class="marquee-item">Planejamento Tributário<span class="sep"></span></span>
+        <span class="marquee-item">Recuperação de Créditos<span class="sep"></span></span>
+        <span class="marquee-item">Holding Patrimonial<span class="sep"></span></span>
+        <span class="marquee-item">Gestão Contábil<span class="sep"></span></span>
+        <span class="marquee-item">Reforma Tributária<span class="sep"></span></span>
+        <span class="marquee-item">Contabilidade Industrial<span class="sep"></span></span>
+        <span class="marquee-item">Abertura de Empresa<span class="sep"></span></span>
+        <span class="marquee-item">Consultoria Fiscal<span class="sep"></span></span>
+    </div>
+</section>
+
 <!-- ===== CTA ===== -->
 <section class="cta-final">
     <div class="cta-final-inner reveal">
@@ -814,12 +897,10 @@
     if (revealEls.length) {
         const io = new IntersectionObserver((entries) => {
             entries.forEach(e => {
-                if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
+                if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
             });
         }, { threshold: 0.12 });
- else {
-            revealEls.forEach(el => io.observe(el));
-        }
+        revealEls.forEach(el => io.observe(el));
     }
 
     // ---- MEGA-MENU v2 ----
