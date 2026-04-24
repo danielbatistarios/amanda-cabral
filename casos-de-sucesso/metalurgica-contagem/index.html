@@ -144,18 +144,9 @@
         @keyframes dotPulse { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
 
         /* ============================
-           BREADCRUMB
-        ============================ */
-        .breadcrumb { padding: 80px 24px 0; max-width: var(--max-w); margin: 0 auto; }
-        .breadcrumb nav { display: flex; align-items: center; gap: 8px; font-size: 12px; color: rgba(255,255,255,0.4); flex-wrap: wrap; }
-        .breadcrumb a { color: rgba(255,255,255,0.4); transition: color 0.2s; }
-        .breadcrumb a:hover { color: rgba(255,255,255,0.8); }
-        .breadcrumb span { color: rgba(255,255,255,0.25); }
-
-        /* ============================
            CASE HERO
         ============================ */
-        .case-hero { padding: 48px 24px 80px; background: var(--blue-900); position: relative; overflow: hidden; }
+        .case-hero { padding: 108px 24px 80px; background: var(--blue-900); position: relative; overflow: hidden; }
         .case-hero-grid-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px); background-size: 80px 80px; mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 0%, transparent 100%); -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 0%, transparent 100%); }
         .case-hero-orb { position: absolute; border-radius: 50%; pointer-events: none; }
         .case-hero-orb-1 { width: 700px; height: 700px; background: radial-gradient(circle, rgba(59,130,246,0.07) 0%, transparent 70%); top: -250px; right: -150px; }
@@ -293,7 +284,7 @@
         /* ============================
            BREADCRUMB (design system)
         ============================ */
-        .breadcrumb { padding: 12px 24px; background: var(--z1); border-bottom: 1px solid rgba(255,255,255,.06); }
+        .breadcrumb { padding: 12px 24px; background: var(--z1); border-bottom: 1px solid rgba(255,255,255,.06); width: 100%; display: block; }
         .breadcrumb-inner { max-width: var(--max-w); margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 13px; color: rgba(255,255,255,.45); flex-wrap: wrap; }
         .breadcrumb-inner a { color: rgba(255,255,255,.45); text-decoration: none; transition: color .2s; }
         .breadcrumb-inner a:hover { color: var(--dourado); }
@@ -320,7 +311,7 @@
            MOBILE TWEAKS
         ============================ */
         @media (max-width: 600px) {
-            .case-hero { padding: 32px 16px 48px; }
+            .case-hero { padding: 92px 16px 48px; }
             .case-hero h1 { font-size: clamp(1.5rem, 6vw, 1.8rem); margin-bottom: 20px; }
             .case-seg-tag { margin-bottom: 14px; }
 
