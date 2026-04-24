@@ -217,7 +217,7 @@ ul { list-style: none; }
 .author-hero-orb { position: absolute; border-radius: 50%; pointer-events: none; }
 .author-hero-orb-1 { width: 600px; height: 600px; background: radial-gradient(circle, rgba(59,130,246,0.07) 0%, transparent 70%); top: -200px; right: -100px; }
 .author-hero-orb-2 { width: 400px; height: 400px; background: radial-gradient(circle, rgba(201,168,76,0.04) 0%, transparent 70%); bottom: -100px; left: -80px; }
-.author-hero-inner { position: relative; z-index: 2; display: grid; grid-template-columns: 260px 1fr; gap: 60px; align-items: center; }
+.author-hero-inner { position: relative; z-index: 2; display: grid; grid-template-columns: 1fr 260px; gap: 60px; align-items: center; }
 
 .author-photo-wrap { position: relative; }
 .author-photo { width: 260px; height: 340px; border-radius: 16px; overflow: hidden; border: 1px solid rgba(201,168,76,0.15); flex-shrink: 0; }
@@ -556,18 +556,11 @@ a.footer-nap-row:hover svg { color: var(--gold); }
   <div class="container">
     <div class="author-hero-inner">
 
-      <div class="author-photo-wrap reveal-left">
-        <div class="author-photo">
-          <img src="/amanda-hero.webp" alt="Amanda Cabral, contadora tributária especialista em indústrias em Minas Gerais" width="260" height="340" fetchpriority="high">
-        </div>
-        <div class="author-photo-badge">CRC/MG Ativo</div>
-      </div>
-
-      <div class="author-meta reveal-right">
+      <div class="author-meta reveal-left">
         <div style="margin-bottom:4px">
           <span class="section-tag"><span class="dot"></span>Fundadora · AM Cabral Blindagem Fiscal</span>
         </div>
-        <h1 class="author-name">Amanda<br><em>Cabral</em></h1>
+        <h1 class="author-name">Amanda <em>Cabral</em></h1>
         <p class="author-title">Contadora Tributária, especialista em Indústrias e Reforma Tributária</p>
         <p class="author-bio-short">20 anos protegendo empresas de Minas Gerais de impostos mal calculados. Fundadora da AM Cabral Blindagem Fiscal, referência em recuperação de créditos tributários, holding patrimonial e planejamento fiscal para o setor industrial.</p>
         <div class="author-creds">
@@ -602,6 +595,13 @@ a.footer-nap-row:hover svg { color: var(--gold); }
             Falar no WhatsApp
           </a>
         </div>
+      </div>
+
+      <div class="author-photo-wrap reveal-right">
+        <div class="author-photo">
+          <img src="/amanda-hero.webp" alt="Amanda Cabral, contadora tributária especialista em indústrias em Minas Gerais" width="260" height="340" fetchpriority="high">
+        </div>
+        <div class="author-photo-badge">CRC/MG Ativo</div>
       </div>
 
     </div>
