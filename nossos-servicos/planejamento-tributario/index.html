@@ -1261,7 +1261,7 @@
         }
     
 /* ============================================================
-   CONTENT CSS , Serviço Pages (gestao-contabil, consultoria,
+   CONTENT CSS , Servico Pages (gestao-contabil, consultoria,
    holding, planejamento, recuperacao)
    ============================================================ */
 
@@ -1277,7 +1277,7 @@ body { padding-top: 60px; }
   z-index: 499; width: 0%; transition: width .1s linear;
 }
 
-/* ── Hero ── */
+/* -- Hero -- */
 .hero-section {
   position: relative; overflow: hidden;
   background: var(--blue-900);
@@ -1342,7 +1342,7 @@ body { padding-top: 60px; }
 }
 .marquee-item::after { content: '·'; color: var(--accent-gold); }
 
-/* ── Section utilities ── */
+/* -- Section utilities -- */
 .sec-pad { padding: clamp(64px,8vw,96px) 0; }
 .container { max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px,4vw,40px); }
 .sec-label {
@@ -1382,7 +1382,7 @@ section.light .sec-label.lt { color: #64748B; }
 .d5 { transition-delay: .33s; }
 .d6 { transition-delay: .40s; }
 
-/* ── Problem/Pain cards ── */
+/* -- Problem/Pain cards -- */
 .pain-grid, .problem-grid {
   display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 40px;
 }
@@ -1409,7 +1409,7 @@ section.light .pain-title, section.light .problem-title { color: var(--blue-900)
 section.dark .pain-desc, section.dark .problem-desc { color: rgba(255,255,255,.55); }
 section.light .pain-desc, section.light .problem-desc { color: #64748B; }
 
-/* ── Service/Include cards ── */
+/* -- Service/Include cards -- */
 .svc-grid, .include-grid {
   display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 40px;
 }
@@ -1449,7 +1449,7 @@ section.light .svc-card, section.light .include-card {
 section.light .svc-card-title, section.light .include-title { color: var(--blue-900); }
 section.light .svc-card-desc, section.light .include-desc { color: #64748B; }
 
-/* ── Diff section (list format) ── */
+/* -- Diff section (list format) -- */
 .diff-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 40px; align-items: start; }
 .diff-text { font-size: 1rem; line-height: 1.7; }
 section.light .diff-text { color: #475569; }
@@ -1465,7 +1465,7 @@ section.light .diff-text { color: #475569; }
 section.light .diff-item-title { color: var(--blue-900); }
 .diff-item-desc { font-size: .875rem; line-height: 1.6; color: #64748B; }
 
-/* ── Metrics strip ── */
+/* -- Metrics strip -- */
 .metrics-strip {
   display: flex; justify-content: center; flex-wrap: wrap;
   gap: 0; margin-top: 48px;
@@ -1483,7 +1483,7 @@ section.light .diff-item-title { color: var(--blue-900); }
 }
 .metric-label { font-size: .8rem; color: rgba(255,255,255,.4); margin-top: 6px; }
 
-/* ── Internal links ── */
+/* -- Internal links -- */
 .internal-links { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
 .internal-link {
   display: inline-flex; align-items: center; gap: 6px;
@@ -1495,7 +1495,7 @@ section.light .diff-item-title { color: var(--blue-900); }
 .internal-link:hover { color: #fff; border-color: rgba(255,255,255,.3); }
 .internal-link svg { opacity: .5; }
 
-/* ── Cross-links (xlink) ── */
+/* -- Cross-links (xlink) -- */
 .xlink-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; margin-top: 40px; }
 .xlink-card {
   display: flex; flex-direction: column; gap: 6px;
@@ -1508,7 +1508,7 @@ section.light .diff-item-title { color: var(--blue-900); }
 .xlink-desc { font-size: .82rem; color: #64748B; }
 .xlink-arrow { font-size: 1rem; font-weight: 700; margin-top: 4px; align-self: flex-end; }
 
-/* ── FAQ ── */
+/* -- FAQ -- */
 .faq-list { display: flex; flex-direction: column; gap: 0; margin-top: 40px; text-align: left; }
 .faq-item { border-bottom: 1px solid rgba(0,0,0,.08); }
 section.dark .faq-item { border-color: rgba(255,255,255,.07); }
@@ -1529,7 +1529,7 @@ section.light .faq-a-inner { color: #475569; }
 section.dark .faq-a-inner { color: rgba(255,255,255,.6); }
 .faq-a-inner a { color: var(--accent-gold); text-decoration: underline; }
 
-/* ── CTA Final ── */
+/* -- CTA Final -- */
 .cta-final {
   background: linear-gradient(135deg, var(--blue-900) 0%, #0a1628 100%);
   padding: clamp(64px,8vw,96px) 0;
@@ -1558,7 +1558,7 @@ section.dark .faq-a-inner { color: rgba(255,255,255,.6); }
 .cta-btn-wa:hover { opacity: .9; }
 .cta-sub { font-size: .78rem; color: rgba(255,255,255,.35); margin-top: 16px; }
 
-/* ── Reform / Inc grid (planejamento) ── */
+/* -- Reform / Inc grid (planejamento) -- */
 .reforma-grid, .inc-grid {
   display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 40px;
 }
@@ -1583,7 +1583,7 @@ section.light .reforma-card, section.light .inc-card {
 section.light .reforma-title, section.light .inc-title { color: var(--blue-900); }
 section.light .reforma-desc, section.light .inc-desc { color: #64748B; }
 
-/* ── Cases ── */
+/* -- Cases -- */
 .cases-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; margin-top: 40px; }
 .case-card {
   background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07);
@@ -1599,7 +1599,7 @@ section.light .reforma-desc, section.light .inc-desc { color: #64748B; }
 .case-n { font-family: var(--font-display); font-size: 1.6rem; font-style: italic; color: var(--accent-gold); }
 .case-l { font-size: .75rem; color: rgba(255,255,255,.4); margin-top: 4px; }
 
-/* ── Urgency cards ── */
+/* -- Urgency cards -- */
 .urgency-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 40px; }
 .urgency-card {
   background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07);
@@ -1625,7 +1625,7 @@ section.light .reforma-desc, section.light .inc-desc { color: #64748B; }
   border-radius: 4px; text-decoration: none;
 }
 
-/* ── Process steps ── */
+/* -- Process steps -- */
 .process-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; margin-top: 40px; }
 .process-step {
   background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07);
@@ -1638,7 +1638,7 @@ section.light .reforma-desc, section.light .inc-desc { color: #64748B; }
 .process-title { font-size: .95rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
 .process-desc { font-size: .85rem; color: rgba(255,255,255,.55); line-height: 1.6; }
 
-/* ── Holding table ── */
+/* -- Holding table -- */
 .sim-wrap { margin-top: 40px; overflow-x: auto; }
 .sim-wrap table, .sim-header, .sim-header-cell { font-size: .9rem; }
 .sim-header { display: grid; grid-template-columns: 2fr 1fr 1fr; border-bottom: 1px solid rgba(255,255,255,.1); padding-bottom: 10px; }
@@ -1659,7 +1659,7 @@ section.light .reforma-desc, section.light .inc-desc { color: #64748B; }
 .type-desc { font-size: .875rem; color: rgba(255,255,255,.55); line-height: 1.6; }
 .type-when { font-size: .78rem; color: var(--accent-gold); margin-top: 12px; font-style: italic; }
 
-/* ── Recover cards ── */
+/* -- Recover cards -- */
 .recover-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 40px; }
 .recover-card {
   background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07);
@@ -1672,17 +1672,17 @@ section.light .reforma-desc, section.light .inc-desc { color: #64748B; }
 .recover-title { font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 10px; }
 .recover-desc { font-size: .875rem; color: rgba(255,255,255,.6); line-height: 1.65; }
 
-/* ── Persona cards ── */
+/* -- Persona cards -- */
 .persona-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 40px; }
 .persona-card { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07); border-radius: 14px; padding: 24px; }
 .persona-icon { font-size: 1.5rem; margin-bottom: 12px; }
 .persona-title { font-size: .95rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
 .persona-desc { font-size: .85rem; color: rgba(255,255,255,.55); line-height: 1.6; }
 
-/* ── svc-head (consultoria, planejamento) ── */
+/* -- svc-head (consultoria, planejamento) -- */
 .svc-head { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px; }
 
-/* ── Responsive ── */
+/* -- Responsive -- */
 @media (max-width: 900px) {
   .pain-grid, .problem-grid, .svc-grid, .include-grid,
   .reforma-grid, .inc-grid, .urgency-grid, .persona-grid,

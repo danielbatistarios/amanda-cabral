@@ -1,2525 +1,902 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#0F1419">
-  <title>Contadora Especializada em Holding Patrimonial | AM Cabral</title>
-  <meta name="description" content="Proteja seu patrimônio e pague menos impostos na sucessão. Constituição de holding familiar e empresarial com segurança jurídica. Atendimento para empresas em MG.">
-  <link rel="canonical" href="https://amcabralblindagem.com.br/nossos-servicos/holding-patrimonial/">
-  <meta property="og:title" content="AM Cabral — Contabilidade Estratégica e Blindagem Patrimonial">
-  <meta property="og:description" content="30 anos protegendo o lucro e o patrimônio de empresas em Minas Gerais. R$ 12M recuperados em créditos tributários. Diagnóstico gratuito.">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="pt_BR">
-      <meta property="og:image" content="https://amcabralblindagem.com.br/assets/og-image.webp">
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:opsz,wght@14..32,400;14..32,500;14..32,700&display=swap" rel="stylesheet">
-
-<style>
-    /* === COLOR TOKENS === */
-    :root {
-      --dark-hero: #0F1419;
-      --accent-gold: #C4A574;
-      --text-light: #FFFFFF;
-      --text-secondary: #A8B5C6;
-      --surface-dark: #1A2535;
-      --shadow-soft: 0 8px 24px rgba(0,0,0,0.15);
-      --easing-spring: cubic-bezier(0.16, 1, 0.3, 1);
-    
-  /* legacy template vars */
-  --blue-900: #060E1A;
-  --blue-700: #0F2137;
-  --white: #FFFFFF;
-  --gold: #C9A84C;
-  --accent-gold: #C4A574;
-  --accent-light: #60A5FA;
-  --silver: #94A3B8;
-  --dark-hero: #0F1419;
-  --text: #1E293B;
-  --text-muted: #64748B;
-  --border: #E2E8F0;
-  --font-body: 'Inter', system-ui, sans-serif;
-  --font-display: 'Instrument Serif', Georgia, serif;
-  --ease: cubic-bezier(0.16, 1, 0.3, 1);
-  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-    /* === RESET === */
-    *, *::before, *::after {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    /* === GLOBAL === */
-    body {
-      background: var(--dark-hero);
-      color: var(--text-light);
-      font-family: 'Inter', system-ui, -apple-system, sans-serif;
-      font-size: 16px;
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    img {
-      display: block;
-      max-width: 100%;
-      height: auto;
-    }
-
-/* ============================
-           HEADER / MEGA-MENU , v2 clean
-        ============================ */
-        #hdr {
-            position: fixed; top: 0; left: 0; width: 100%;
-            background: rgba(10,14,20,0.96);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid rgba(255,255,255,0.07);
-            z-index: 500;
-            height: 60px;
-        }
-        #hdr-inner {
-            max-width: 1200px; margin: 0 auto;
-            padding: 0 24px; height: 100%;
-            display: flex; align-items: center;
-            justify-content: space-between;
-            position: relative;
-        }
-        #hdr-logo {
-            font-family: var(--font-display);
-            font-size: 17px; font-weight: 700;
-            color: #fff; white-space: nowrap;
-            text-decoration: none;
-        }
-        #hdr-nav { display: flex; align-items: center; gap: 4px; list-style: none; position: absolute; left: 50%; transform: translateX(-50%); }
-        .hdr-item { position: relative; }
-        .hdr-btn {
-            background: none; border: none; cursor: pointer;
-            font-size: 13px; font-weight: 500;
-            color: rgba(255,255,255,0.7);
-            padding: 8px 14px; display: flex; align-items: center; gap: 5px;
-            transition: color 0.2s;
-        }
-        .hdr-btn:hover { color: #fff; }
-        .hdr-item.open .hdr-btn { color: var(--accent-gold); }
-        .hdr-arrow { font-size: 9px; transition: transform 0.25s; }
-        .hdr-item.open .hdr-arrow { transform: rotate(180deg); }
-        .hdr-cta {
-            display: inline-block; padding: 9px 22px;
-            background: var(--accent-gold); color: #0a0e14;
-            font-size: 12px; font-weight: 700;
-            letter-spacing: 0.05em; text-transform: uppercase;
-            border-radius: 4px; text-decoration: none;
-            transition: opacity 0.2s;
-        }
-        .hdr-cta:hover { opacity: 0.88; }
-
-        /* Mega panel */
-        .hdr-mega {
-            display: none;
-            position: fixed; top: 60px; left: 0; right: 0;
-            background: rgba(10,14,20,0.97);
-            border-bottom: 1px solid rgba(255,255,255,0.08);
-            backdrop-filter: blur(20px);
-            z-index: 499;
-        }
-        .hdr-mega.open { display: block; }
-        .hdr-mega-inner {
-            max-width: 1400px; margin: 0 auto;
-            padding: 36px 48px;
-            display: grid; grid-template-columns: 300px 1fr; gap: 64px;
-            align-items: start;
-        }
-        .hdr-mega-img {
-            display: block; position: relative;
-            border-radius: 10px; overflow: hidden;
-            aspect-ratio: 3/4;
-        }
-        .hdr-mega-img img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
-        .hdr-mega-img-overlay { display: none; }
-        .hdr-mega-img-cta { display: none; }
-        .hdr-mega-col { display: flex; flex-direction: column; }
-        .hdr-mega-col-title { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.35); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
-        .hdr-mega-col-cta {
-            display: inline-block; margin-top: 16px; padding: 7px 14px;
-            background: var(--accent-gold); color: #0a0e14;
-            font-size: 11px; font-weight: 700; border-radius: 3px;
-            text-decoration: none; width: fit-content;
-        }
-        .hdr-mega-col-secondary {
-            display: inline-block; margin-top: 8px; margin-left: 12px;
-            font-size: 11px; color: rgba(255,255,255,0.45);
-            text-decoration: none;
-        }
-        .hdr-mega-col-secondary:hover { color: rgba(255,255,255,0.75); }
-        .hdr-mega-links { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 64px; }
-        .hdr-mega-link {
-            display: block; padding: 12px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.05);
-            text-decoration: none; transition: color 0.15s;
-        }
-        .hdr-mega-link strong { display: block; font-size: 14px; color: #fff; margin-bottom: 3px; transition: color 0.15s; }
-        .hdr-mega-link span { font-size: 12px; color: rgba(255,255,255,0.5); transition: color 0.15s; }
-        .hdr-mega-link:hover strong { color: var(--accent-gold); }
-        .hdr-mega-link:hover span { color: rgba(255,255,255,0.75); }
-        .hdr-mega-all {
-            grid-column: 1/-1;
-            border-top: 1px solid rgba(255,255,255,0.08);
-            margin-top: 8px; padding-top: 12px;
-        }
-        .hdr-mega-all strong { color: var(--accent-gold) !important; }
-
-        /* Mobile */
-        #hdr-hamburger {
-            display: none; background: none; border: none;
-            cursor: pointer; flex-direction: column; gap: 5px; padding: 8px;
-        }
-        #hdr-hamburger span { width: 20px; height: 2px; background: #fff; border-radius: 2px; display: block; }
-        #hdr-mob {
-            display: none; position: fixed; inset: 0;
-            background: #0a0e14; z-index: 600;
-            flex-direction: column; padding: 72px 24px 24px;
-            overflow-y: auto;
-        }
-        #hdr-mob.open { display: flex; }
-        #hdr-mob-close {
-            position: absolute; top: 16px; right: 20px;
-            background: none; border: none; color: #fff;
-            font-size: 28px; cursor: pointer; line-height: 1;
-        }
-        #hdr-mob a { color: rgba(255,255,255,0.75); font-size: 16px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.06); text-decoration: none; display: block; }
-        #hdr-mob a:hover { color: #fff; }
-
-        @media (max-width: 900px) {
-            #hdr-nav, .hdr-cta { display: none; }
-            #hdr-hamburger { display: flex; }
-        }
-        @media (max-width: 600px) {
-            #hdr-inner { padding: 0 16px; }
-        }
-
-        /* Keep old classes that page body uses */
-        .nav-cta { display: inline-block; padding: 10px 24px; background: var(--accent-gold); color: var(--dark-hero); font-weight: 600; font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase; transition: all 0.3s; border: none; cursor: pointer; border-radius: 4px; white-space: nowrap; }
-
-        /* === FOOTER === */
-        .site-footer {
-            background: #040A14;
-            border-top: 1px solid #0A1628;
-            padding: 64px 0 0;
-        }
-
-        .footer-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 40px;
-        }
-
-        .footer-proof {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: 40px;
-            padding: 32px 0;
-            border-bottom: 1px solid #0A1628;
-            margin-bottom: 56px;
-        }
-        .footer-proof-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 5px;
-        }
-        .footer-proof-stars {
-            color: var(--gold);
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-            line-height: 1;
-        }
-        .footer-proof-value {
-            font-family: var(--font-display);
-            font-size: 1.6rem;
-            font-style: italic;
-            color: var(--white);
-            line-height: 1;
-        }
-        .footer-proof-label {
-            font-size: 0.75rem;
-            color: #4a5568;
-            letter-spacing: 0.04em;
-        }
-        .footer-proof-divider {
-            width: 1px;
-            height: 40px;
-            background: #0A1628;
-        }
-
-        .footer-grid {
-            display: grid;
-            grid-template-columns: 2fr 1fr 1fr 1fr;
-            gap: 48px;
-            margin-bottom: 64px;
-        }
-
-        /* Col 0: brand */
-        .footer-brand-col { display: flex; flex-direction: column; }
-        /* Fale Conosco */
-        .footer-contact-title {
-            font-size: 0.8125rem;
-            font-weight: 700;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 14px;
-        }
-        .footer-nap { display: flex; flex-direction: column; gap: 10px; font-style: normal; }
-        .footer-nap-row {
-            display: flex; align-items: flex-start; gap: 10px;
-            font-size: 0.8125rem; color: #4a5568;
-            text-decoration: none; transition: color 0.2s;
-            line-height: 1.6;
-        }
-        a.footer-nap-row:hover { color: rgba(255,255,255,0.75); }
-        a.footer-nap-row:hover svg { color: var(--gold); }
-        .footer-nap-row svg { flex-shrink: 0; margin-top: 2px; color: var(--gold); transition: color 0.2s; }
-
-        /* Cols 1-4 */
-        .footer-col { display: flex; flex-direction: column; }
-
-        .footer-heading {
-            font-size: 0.8125rem;
-            font-weight: 700;
-            letter-spacing: 0.18em;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 16px;
-        }
-
-        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
-
-        .footer-col a {
-            display: block;
-            font-size: 0.875rem;
-            font-weight: 300;
-            color: #4a5568;
-            transition: color 0.2s;
-            text-decoration: none;
-        }
-
-        .footer-col a:hover { color: var(--white); }
-
-        .footer-wordmark-tagline {
-            text-align: center;
-            font-family: var(--font-display);
-            font-size: clamp(0.95rem, 1.5vw, 1.15rem);
-            color: rgba(255,255,255,0.55);
-            margin-bottom: 8px;
-            font-weight: 300;
-            letter-spacing: 0.01em;
-        }
-        .footer-wordmark {
-            font-family: var(--font-display);
-            font-size: clamp(3.5rem, 8vw, 7rem);
-            font-style: italic;
-            font-weight: 400;
-            color: transparent;
-            -webkit-text-stroke: 1px rgba(201,168,76,0.2);
-            letter-spacing: -0.02em;
-            line-height: 1;
-            margin-bottom: 0;
-            user-select: none;
-            text-align: center;
-        }
-
-        .footer-legal {
-            border-top: 1px solid #0A1628;
-            padding: 24px 0;
-            margin-top: 0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 16px;
-        }
-
-        .footer-legal p {
-            font-size: 0.8125rem;
-            color: #2d3748;
-        }
-
-        .footer-legal-links {
-            display: flex;
-            gap: 24px;
-        }
-
-        .footer-legal-links a {
-            font-size: 0.8125rem;
-            color: #2d3748;
-            text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        .footer-legal-links a:hover { color: var(--white); }
-
-        .footer-social-icons {
-            display: flex;
-            gap: 16px;
-            align-items: center;
-        }
-        .footer-social-icons a {
-            color: #4a5568;
-            transition: color 0.2s;
-            display: flex;
-            align-items: center;
-        }
-        .footer-social-icons a:hover { color: var(--gold); }
-
-        @media (max-width: 1024px) {
-            .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
-        }
-
-
-
-        @media (max-width: 600px) {
-            .site-footer { padding: 48px 0 0; }
-            .footer-inner { padding: 0 20px; }
-            .footer-proof { gap: 20px; }
-            .footer-proof-divider { display: none; }
-            .footer-grid { grid-template-columns: 1fr; gap: 32px; }
-            .footer-legal {
-                flex-direction: column;
-                gap: 12px;
-                text-align: center;
-            }
-
-            .footer-legal-links {
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-        }
-
-        /* ============================
-           NOISE TEXTURE
-        ============================ */
-        .noise {
-            position: fixed;
-            inset: 0;
-            pointer-events: none;
-            z-index: 9998;
-            opacity: 0.03;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-            background-size: 200px;
-        }
-
-        /* ============================
-           CUSTOM CURSOR
-        ============================ */
-        .cursor {
-            position: fixed;
-            width: 20px;
-            height: 20px;
-            border: 1.5px solid var(--gold);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 10000;
-            mix-blend-mode: difference;
-            transition: width 0.3s var(--ease), height 0.3s var(--ease), background 0.3s, border-color 0.3s;
-            transform: translate(-50%, -50%);
-        }
-
-        .cursor.hover {
-            width: 56px;
-            height: 56px;
-            background: rgba(59, 130, 246, 0.1);
-            border-color: var(--accent-light);
-        }
-
-        .cursor-dot {
-            position: fixed;
-            width: 4px;
-            height: 4px;
-            background: var(--gold);
-            border-radius: 50%;
-            pointer-events: none;
-            z-index: 10001;
-            transform: translate(-50%, -50%);
-        }
-
-        /* ============================
-           LOADER
-        ============================ */
-        .loader {
-            position: fixed;
-            inset: 0;
-            background: var(--blue-900);
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 32px;
-            transition: opacity 0.6s ease, visibility 0.6s;
-        }
-
-        .loader.done { opacity: 0; visibility: hidden; pointer-events: none; }
-
-        .loader-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 28px;
-            max-width: 700px;
-            padding: 0 24px;
-        }
-
-        .loader-phrase {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 6px 10px;
-            overflow: hidden;
-            text-align: center;
-        }
-
-        .loader-word {
-            font-family: var(--font-display);
-            font-size: clamp(1.3rem, 3.5vw, 2.2rem);
-            color: var(--white);
-            opacity: 0;
-            transform: translateY(100%);
-            animation: loaderWordIn 0.6s var(--ease) forwards;
-            line-height: 1.3;
-        }
-
-        .loader-word.accent { color: var(--gold); }
-        .loader-word.italic { font-style: italic; }
-
-        .loader-name {
-            display: flex;
-            gap: 10px;
-            overflow: hidden;
-            margin-top: 4px;
-        }
-
-        .loader-name .loader-word {
-            font-size: clamp(1rem, 2.5vw, 1.4rem);
-            font-family: var(--font-body);
-            font-weight: 600;
-            letter-spacing: 4px;
-            text-transform: uppercase;
-            color: var(--gold);
-        }
-
-        @keyframes loaderWordIn {
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .loader-line {
-            width: 120px;
-            height: 2px;
-            background: var(--blue-700);
-            border-radius: 2px;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .loader-line::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: var(--gold);
-            animation: loaderFill 1.4s 1.6s var(--ease) forwards;
-            transform-origin: left;
-            transform: scaleX(0);
-        }
-
-        @keyframes loaderFill { to { transform: scaleX(1); } }
-
-        /* ============================
-           SCROLL PROGRESS
-        ============================ */
-        .scroll-progress {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 2px;
-            background: linear-gradient(90deg, var(--gold), #D4B86A);
-            z-index: 10001;
-            width: 0%;
-        }
-
-        /* ============================
-           TOC SIDEBAR
-        ============================ */
-        .toc {
-            position: fixed;
-            left: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 100;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            opacity: 0;
-            transition: opacity 0.5s;
-        }
-
-        .toc.visible { opacity: 1; }
-
-        .toc-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.2);
-            transition: all 0.4s var(--ease);
-            position: relative;
-            cursor: none;
-        }
-
-        .toc-dot.active {
-            background: var(--gold);
-            transform: scale(1.4);
-        }
-
-        .toc-dot:hover { transform: scale(1.5); }
-
-        .toc-label {
-            position: absolute;
-            left: 24px;
-            top: 50%;
-            transform: translateY(-50%);
-            font-size: 0.62rem;
-            font-weight: 600;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.35);
-            white-space: nowrap;
-            opacity: 1;
-            transition: color 0.3s;
-            pointer-events: none;
-        }
-
-        .toc-dot:hover .toc-label { color: rgba(255,255,255,0.6); }
-        .toc-dot.active .toc-label { color: var(--gold); }
-
-        .toc.on-light .toc-dot { background: rgba(0,0,0,0.15); }
-        .toc.on-light .toc-dot.active { background: var(--gold); }
-        .toc.on-light .toc-label { color: rgba(0,0,0,0.35); }
-        .toc.on-light .toc-dot.active .toc-label { color: var(--gold); }
-
-        /* ============================
-           HEADER
-        ============================ */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 1000;
-            padding: 24px 0;
-            transition: all 0.5s var(--ease);
-        }
-
-        .header.scrolled {
-            padding: 14px 0;
-            background: rgba(10, 22, 40, 0.85);
-            backdrop-filter: blur(30px) saturate(180%);
-            -webkit-backdrop-filter: blur(30px) saturate(180%);
-            border-bottom: 1px solid rgba(255,255,255,0.04);
-        }
-
-        .header .container { display: flex; align-items: center; justify-content: space-between; }
-
-        .logo { display: flex; align-items: center; gap: 10px; }
-        .logo-symbol {
-            width: 36px;
-            height: 36px;
-        }
-        .logo-symbol svg { width: 100%; height: 100%; }
-        .logo-text { display: flex; flex-direction: column; }
-        .logo-name {
-            font-family: var(--font-body);
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--white);
-            letter-spacing: 0.5px;
-        }
-        .logo-tag {
-            font-size: 0.55rem;
-            font-weight: 600;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-top: -1px;
-        }
-
-        .nav { display: flex; align-items: center; gap: 36px; }
-        .nav a {
-            font-size: 0.85rem;
-            font-weight: 500;
-            color: rgba(255,255,255,0.45);
-            transition: color 0.3s;
-            letter-spacing: 0.02em;
-        }
-        .nav a:hover { color: var(--white); }
-        .nav-cta {
-            padding: 10px 24px !important;
-            background: var(--accent);
-            color: var(--white) !important;
-            border-radius: 60px;
-            font-weight: 600 !important;
-            font-size: 0.82rem !important;
-            transition: all 0.4s var(--ease) !important;
-            position: relative;
-            overflow: hidden;
-        }
-        .nav-cta:hover { box-shadow: 0 8px 32px rgba(59,130,246,0.35); border: 1px solid var(--accent); }
-        .nav-cta::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 60%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-            animation: btn-shimmer 3s 2s infinite;
-        }
-        @keyframes btn-shimmer { 0% { left: -100%; } 40%, 100% { left: 150%; } }
-
-        .mobile-toggle {
-            display: none; flex-direction: column; gap: 5px;
-            background: none; border: none; padding: 8px;
-        }
-        .mobile-toggle span { width: 22px; height: 1.5px; background: var(--white); border-radius: 2px; transition: all 0.3s; }
-
-        /* ============================
-           HERO
-        ============================ */
-        .hero {
-            min-height: auto;
-            background: var(--blue-900);
-            display: flex;
-            align-items: center;
-            position: relative;
-            overflow: hidden;
-            padding: 110px 0 132px;
-        }
-
-        .hero-grid-bg {
-            position: absolute;
-            inset: 0;
-            background-image:
-                linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
-            background-size: 80px 80px;
-            mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 0%, transparent 100%);
-            -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 0%, transparent 100%);
-        }
-
-        .hero-bg-image {
-            position: absolute;
-            inset: 0;
-            background: url('https://images.pexels.com/photos/1267338/pexels-photo-1267338.jpeg?auto=compress&cs=tinysrgb&w=1260') center/cover no-repeat;
-            opacity: 0.04;
-            mix-blend-mode: luminosity;
-        }
-
-        .hero-orb {
-            position: absolute;
-            border-radius: 50%;
-            pointer-events: none;
-        }
-
-        .hero-orb-1 {
-            width: 700px; height: 700px;
-            background: radial-gradient(circle, rgba(59,130,246,0.07) 0%, transparent 70%);
-            top: -250px; right: -150px;
-        }
-
-        .hero-orb-2 {
-            width: 500px; height: 500px;
-            background: radial-gradient(circle, rgba(96,165,250,0.05) 0%, transparent 70%);
-            bottom: -150px; left: -100px;
-        }
-
-        .hero .container { position: relative; z-index: 2; }
-
-        .hero-layout {
-            display: grid;
-            grid-template-columns: 1fr 340px;
-            gap: 48px;
-            align-items: center;
-        }
-        .hero-photo {
-            position: relative;
-            border-radius: 24px;
-            overflow: hidden;
-            aspect-ratio: 3/4;
-            max-height: 440px;
-        }
-        .hero-photo img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            object-position: top center;
-            display: block;
-        }
-        .hero-photo::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(6,14,26,0.6) 0%, transparent 50%);
-        }
-
-        .hero-tag {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            background: rgba(201,168,76,0.08);
-            border: 1px solid rgba(201,168,76,0.15);
-            padding: 6px 16px;
-            border-radius: 60px;
-            font-size: 0.68rem;
-            font-weight: 700;
-            color: rgba(255,255,255,0.45);
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            backdrop-filter: blur(10px);
-        }
-
-        .hero-tag .dot {
-            width: 6px; height: 6px; background: var(--gold);
-            border-radius: 50%; position: relative;
-        }
-        .hero-tag .dot::after {
-            content: '';
-            position: absolute;
-            inset: -4px;
-            border-radius: 50%;
-            border: 1px solid var(--gold);
-            animation: dotPulse 2s ease-out infinite;
-        }
-        @keyframes dotPulse {
-            0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(2.5); opacity: 0; }
-        }
-
-        .hero h1 {
-            font-family: var(--font-display);
-            font-size: clamp(1.9rem, 3.6vw, 3rem);
-            color: var(--white);
-            line-height: 1.1;
-            margin-bottom: 16px;
-        }
-
-        .hero h1 em {
-            font-style: italic;
-            color: var(--accent-light);
-        }
-
-        .hero-sub {
-            font-size: 0.95rem;
-            color: rgba(255,255,255,0.75);
-            line-height: 1.7;
-            max-width: 520px;
-            margin: 0 0 28px;
-        }
-
-        .hero-buttons { display: flex; gap: 16px; flex-wrap: wrap; justify-content: flex-start; }
-
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 14px 32px;
-            border-radius: 60px;
-            font-family: var(--font-body);
-            font-size: 0.88rem;
-            font-weight: 600;
-            border: none;
-            transition: all 0.5s var(--ease);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-primary {
-            background: var(--accent);
-            color: var(--white);
-            box-shadow: 0 4px 24px rgba(59,130,246,0.2);
-        }
-        .btn-primary:hover {
-            box-shadow: 0 12px 48px rgba(59,130,246,0.35);
-            transform: translateY(-2px);
-        }
-        .btn-primary::after {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%; width: 60%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
-            animation: btn-shimmer 3s 2s infinite;
-        }
-
-        .btn-ghost {
-            background: transparent;
-            color: var(--silver);
-            border: 1.5px solid rgba(255,255,255,0.1);
-        }
-        .btn-ghost:hover { border-color: var(--accent); color: var(--accent-light); }
-
-        .btn-outline-dark {
-            background: transparent;
-            color: var(--text);
-            border: 1.5px solid var(--border);
-        }
-        .btn-outline-dark:hover { border-color: var(--accent); color: var(--accent); }
-
-        /* Hero metrics */
-        .hero-metrics {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
-
-        .metric-card {
-            background: rgba(255,255,255,0.02);
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 20px;
-            padding: 32px 24px;
-            text-align: center;
-            transition: all 0.5s var(--ease);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .metric-card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 20px;
-            padding: 1px;
-            background: linear-gradient(135deg, rgba(59,130,246,0.15), transparent 50%, rgba(59,130,246,0.08));
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask-composite: exclude; -webkit-mask-composite: xor;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.5s;
-        }
-        .metric-card:hover::before { opacity: 1; }
-        .metric-card:hover { background: rgba(255,255,255,0.04); transform: translateY(-3px); }
-
-        .metric-number {
-            font-family: var(--font-display);
-            font-size: 2.8rem;
-            color: var(--white);
-            line-height: 1;
-        }
-
-        .metric-number span { color: var(--gold); }
-
-        .metric-label {
-            font-size: 0.78rem;
-            color: var(--silver);
-            margin-top: 8px;
-        }
-
-        /* Hero scroll indicator */
-        .scroll-hint {
-            position: fixed;
-            bottom: 120px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 8px;
-            z-index: 2;
-            pointer-events: none;
-            opacity: 1;
-            transition: opacity 0.4s ease;
-        }
-        .scroll-hint.hidden { opacity: 0; }
-
-        .scroll-hint span {
-            font-size: 0.65rem;
-            font-weight: 600;
-            letter-spacing: 3px;
-            text-transform: uppercase;
-            color: rgba(255,255,255,0.2);
-        }
-
-        @keyframes scrollAnim {
-            0%, 100% { transform: translateY(0); opacity: 0.7; }
-            50% { transform: translateY(6px); opacity: 1; }
-        }
-
-        /* ============================
-           BOTTOM BAR (Sticky CTA)
-        ============================ */
-        .bottom-bar {
-            position: fixed;
-            bottom: 0; left: 0; right: 0;
-            z-index: 998;
-            background: rgba(241, 245, 249, 0.94);
-            backdrop-filter: blur(24px);
-            -webkit-backdrop-filter: blur(24px);
-            box-shadow: 0 -1px 0 rgba(0,0,0,0.06);
-            transform: translateY(100%);
-            transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-        .bottom-bar.visible { transform: translateY(0); }
-
-        .bb-inner {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 24px;
-            padding: 14px 40px;
-        }
-        .bb-info {
-            font-size: 0.875rem;
-            font-weight: 500;
-            color: var(--text-muted);
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .bb-stars { color: #F59E0B; font-size: 0.875rem; letter-spacing: 1px; }
-        .bb-sep { width: 1px; height: 20px; background: var(--border); }
-        .bb-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-            padding: 10px 28px;
-            border-radius: 50px;
-            background: var(--accent);
-            color: #fff;
-            font-size: 0.875rem;
-            font-weight: 600;
-            text-decoration: none;
-            transition: background 0.2s;
-        }
-        .bb-cta:hover { background: #2563EB; }
-        .bb-cta svg { width: 15px; height: 15px; }
-
-        /* ============================
-           WHATSAPP
-        ============================ */
-        .wa-float {
-            position: fixed;
-            bottom: 80px; right: 24px;
-            z-index: 997;
-            width: 56px; height: 56px;
-            background: #25D366;
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            box-shadow: 0 4px 20px rgba(37,211,102,0.3);
-            transition: all 0.4s var(--ease-spring);
-        }
-        .wa-float:hover { transform: scale(1.1) translateY(-2px); box-shadow: 0 8px 32px rgba(37,211,102,0.4); }
-        .wa-float svg { width: 26px; height: 26px; fill: white; }
-        .wa-float::before {
-            content: '';
-            position: absolute; inset: -4px;
-            border-radius: 50%;
-            border: 2px solid #25D366;
-            opacity: 0;
-            animation: waPulse 2s 1s ease-out 3;
-        }
-        @keyframes waPulse {
-            0% { transform: scale(1); opacity: 0.5; }
-            100% { transform: scale(1.5); opacity: 0; }
-        }
-
-        /* ============================
-           REVEAL SYSTEM
-        ============================ */
-        .reveal {
-            opacity: 0;
-            transform: translateY(32px);
-            transition: opacity 0.8s var(--ease), transform 0.8s var(--ease);
-        }
-        .reveal.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-            
-        }
-
-        .stagger > * {
-            opacity: 0;
-            transform: translateY(24px);
-            transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
-        }
-        .stagger.is-visible > * { opacity: 1; transform: translateY(0);  }
-        .stagger.is-visible > *:nth-child(1) { transition-delay: 0ms; }
-        .stagger.is-visible > *:nth-child(2) { transition-delay: 80ms; }
-        .stagger.is-visible > *:nth-child(3) { transition-delay: 160ms; }
-        .stagger.is-visible > *:nth-child(4) { transition-delay: 240ms; }
-        .stagger.is-visible > *:nth-child(5) { transition-delay: 320ms; }
-        .stagger.is-visible > *:nth-child(6) { transition-delay: 400ms; }
-
-        /* ============================
-           RESPONSIVE
-        ============================ */
-        @media (max-width: 1024px) {
-            .hero-layout { grid-template-columns: 1fr; gap: 48px; }
-            .hero-photo { max-width: 360px; margin: 0 auto; }
-            .hero-metrics { max-width: 420px; }
-            .process-steps { grid-template-columns: 1fr 1fr; gap: 24px; }
-            .pains-grid { grid-template-columns: 1fr 1fr; }
-            .about-layout { grid-template-columns: 1fr; gap: 60px; }
-            .about-photo { max-width: 340px; }
-            .testimonials-grid { grid-template-columns: 1fr 1fr; }
-            .footer-grid { grid-template-columns: 1fr 1fr 1fr; gap: 32px; }
-            .toc { display: none; }
-            .location-layout { grid-template-columns: 1fr; gap: 48px; }
-        }
-
-        @media (max-width: 768px) {
-            /* Cursor off */
-            .cursor, .cursor-dot { display: none; }
-            body { cursor: auto; }
-            a, button { cursor: pointer; }
-
-            /* Nav */
-            .nav { display: none; }
-            .mobile-toggle { display: flex; }
-            .nav.open {
-                display: flex;
-                flex-direction: column;
-                position: fixed;
-                inset: 0;
-                background: var(--blue-900);
-                z-index: 999;
-                justify-content: center;
-                align-items: center;
-                gap: 28px;
-            }
-            .nav.open a { font-size: 1.2rem; color: var(--white); }
-            .nav-close {
-                display: none;
-            }
-            .nav.open .nav-close {
-                display: flex;
-                position: absolute;
-                top: 24px;
-                right: 24px;
-                width: 44px;
-                height: 44px;
-                align-items: center;
-                justify-content: center;
-                background: rgba(255,255,255,0.06);
-                border: 1px solid rgba(255,255,255,0.1);
-                border-radius: 50%;
-                cursor: pointer;
-            }
-            .nav-close svg { width: 20px; height: 20px; color: var(--white); }
-
-            /* Hero , compact */
-            .hero { padding: 100px 0 50px; min-height: auto; }
-            .hero h1 { font-size: clamp(1.8rem, 7vw, 2.4rem); }
-            .hero-sub { font-size: 0.95rem; margin-bottom: 32px; }
-            .hero-buttons { flex-direction: column; }
-            .hero-buttons .btn { width: 100%; justify-content: center; padding: 14px 20px; font-size: 0.82rem; }
-            .scroll-hint { display: none; }
-
-            /* Hero tag , single line */
-            .hero-tag { font-size: 0.55rem; letter-spacing: 1.5px; padding: 6px 14px; gap: 6px; }
-            .hero-tag .dot { width: 4px; height: 4px; }
-
-            /* Stats bar */
-            .stats-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
-            .stat-item { padding: 16px 8px; }
-            .stat-number { font-size: clamp(2rem, 10vw, 3rem); }
-
-            /* Pains */
-            .pains { padding: 80px 0; }
-            .pains-grid { grid-template-columns: 1fr; }
-            .pains-header { margin-bottom: 48px; }
-
-            /* Services */
-            .services-inner { padding: 80px 0; min-height: auto; }
-            .services-header { margin-bottom: 40px; }
-            .service-card { min-width: 280px; max-width: 280px; padding: 32px 24px; }
-
-            /* Services , first card visible + smaller hint */
-            .services-track { padding: 20px 80px 20px 24px; }
-            .services-track-wrapper::after { width: 80px; }
-            .services-scroll-hint { right: 12px; }
-            .services-scroll-hint span { font-size: 0.55rem; }
-
-            /* Clients */
-            .clients { padding: 60px 0; }
-
-            /* Testimonials , horizontal scroll instead of stack */
-            .testimonials { padding: 80px 0; }
-            .testimonials-grid {
-                grid-template-columns: none;
-                display: flex;
-                gap: 16px;
-                overflow-x: auto;
-                scroll-snap-type: x mandatory;
-                -webkit-overflow-scrolling: touch;
-                scrollbar-width: none;
-                padding: 0 24px 20px;
-            }
-            .testimonials-grid::-webkit-scrollbar { display: none; }
-            .test-card {
-                min-width: 300px;
-                max-width: 300px;
-                flex-shrink: 0;
-                scroll-snap-align: start;
-                padding: 32px 24px;
-            }
-
-            /* Manifesto , reduce scroll height on mobile */
-            .manifesto-wrapper { height: 200vh; }
-            .m-line-1, .m-line-2 { font-size: clamp(1.3rem, 5vw, 1.8rem); }
-            .m-line-3 { font-size: clamp(1.5rem, 6vw, 2rem); }
-
-            /* About */
-            .about { padding: 80px 0; }
-            .about-layout { grid-template-columns: 1fr; gap: 40px; }
-            .about-photo { max-width: 100%; aspect-ratio: 4/3; }
-
-            /* Video */
-            .video-layout { grid-template-columns: 1fr; gap: 32px; }
-            .video-section { padding: 80px 0; }
-
-            /* Blog , first card visible */
-            .blog { padding: 80px 0; }
-            .blog-track { padding: 16px 60px 16px 24px !important; }
-            .blog-card { min-width: 260px; max-width: 260px; }
-
-            /* Process */
-            .process { padding: 80px 0; }
-            .process-steps { grid-template-columns: 1fr; gap: 40px; }
-            .process-steps::before { display: none; }
-            .step-circle { width: 80px; height: 80px; font-size: 1.4rem; }
-
-            /* FAQ */
-            .faq { padding: 80px 0; }
-            .faq-q { font-size: 0.95rem; padding: 22px 0; }
-
-            /* Location */
-            .location { padding: 80px 0; }
-            .location-layout { grid-template-columns: 1fr; gap: 40px; }
-
-            /* CTA Form */
-            .cta-final { padding: 60px 0; }
-            .cta-form-grid { grid-template-columns: 1fr; gap: 32px; }
-            .cta-form-info .heading, .cta-form-info .heading-sub { text-align: center; }
-            .cta-form-info .heading { font-size: clamp(1.4rem, 5.5vw, 1.8rem); }
-            .cta-form-features { align-items: flex-start; }
-            .cta-limit { text-align: center; }
-            .form-card { padding: 24px 16px; }
-            .form-panel h4 { font-size: 1.1rem; }
-            .form-opt { padding: 12px 14px; font-size: 0.8rem; }
-            .form-options { grid-template-columns: 1fr; }
-
-            /* Manifesto smaller on mobile */
-            .manifesto-content { padding: 0 20px; }
-
-            /* Footer */
-            .footer-grid { grid-template-columns: 1fr; gap: 32px; }
-            .footer-bottom { flex-direction: column; gap: 12px; text-align: center; }
-
-            /* Bottom bar mobile */
-            .bb-inner { gap: 12px; padding: 12px 20px; flex-wrap: wrap; justify-content: center; }
-            .bb-sep { display: none; }
-            .bb-info { font-size: 0.8rem; }
-            .bb-cta { padding: 9px 22px; font-size: 0.8rem; }
-
-            /* Section padding reduction */
-            .section-tag { font-size: 0.68rem; letter-spacing: 2.5px; }
-            h2.heading { font-size: clamp(1.3rem, 5vw, 1.7rem); }
-            .heading-sub { font-size: 1rem; }
-
-            /* Loader */
-            .loader-phrase { gap: 4px 8px; }
-            .loader-word { font-size: clamp(1rem, 4vw, 1.5rem); }
-        }
-
-        @media (max-width: 480px) {
-            .stats-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
-            .stat-number { font-size: clamp(1.8rem, 12vw, 2.5rem); }
-            .hero h1 { font-size: 1.7rem; }
-            .m-line-1, .m-line-2 { font-size: 1.2rem; }
-            .m-line-3 { font-size: 1.35rem; }
-            .form-panel h4 { font-size: 1.1rem; }
-        }
-    
-/* ============================================================
-   CONTENT CSS , Serviço Pages (gestao-contabil, consultoria,
-   holding, planejamento, recuperacao)
-   ============================================================ */
-
-body { padding-top: 60px; }
-
-.skip-link { position: absolute; left: -9999px; }
-.skip-link:focus { left: 8px; top: 8px; z-index: 9999; background: #fff; padding: 8px 16px; }
-
-/* Reading progress bar */
-.reading-prog {
-  position: fixed; top: 60px; left: 0; height: 2px;
-  background: linear-gradient(90deg, var(--gold), var(--accent-gold));
-  z-index: 499; width: 0%; transition: width .1s linear;
-}
-
-/* ── Hero ── */
-.hero-section {
-  position: relative; overflow: hidden;
-  background: var(--blue-900);
-  padding: clamp(80px,10vw,120px) 0 clamp(64px,8vw,100px);
-}
-.hero-glow, .hero-glow-2 {
-  position: absolute; border-radius: 50%; pointer-events: none;
-}
-.hero-glow {
-  width: 800px; height: 800px;
-  background: radial-gradient(circle, rgba(59,130,246,.08) 0%, transparent 65%);
-  top: -300px; right: -200px;
-}
-.hero-glow-2 {
-  width: 500px; height: 500px;
-  background: radial-gradient(circle, rgba(196,165,116,.06) 0%, transparent 65%);
-  bottom: -150px; left: -100px;
-}
-.hero-kicker {
-  font-size: 11px; font-weight: 700; letter-spacing: .18em;
-  text-transform: uppercase; color: var(--accent-gold); margin-bottom: 16px;
-}
-.hero-h1 {
-  font-family: var(--font-display);
-  font-size: clamp(2rem, 4vw, 3rem);
-  font-weight: 400; line-height: 1.2; color: #fff; margin-bottom: 20px;
-}
-.hero-h1 em { font-style: italic; color: var(--accent-gold); }
-.hero-cta {
-  display: inline-flex; align-items: center; gap: 10px;
-  background: var(--accent-gold); color: #0a0e14;
-  font-size: 14px; font-weight: 700; padding: 14px 28px;
-  border-radius: 4px; text-decoration: none; margin-top: 8px;
-  transition: opacity .2s;
-}
-.hero-cta:hover { opacity: .88; }
-.hero-breadcrumb {
-  margin-top: 24px; display: flex; align-items: center; gap: 6px;
-  font-size: 12px; color: rgba(255,255,255,.4);
-  list-style: none; flex-wrap: wrap;
-}
-.hero-breadcrumb a { color: rgba(255,255,255,.4); text-decoration: none; }
-.hero-breadcrumb a:hover { color: rgba(255,255,255,.75); }
-.hero-breadcrumb li + li::before { content: '/'; margin-right: 6px; }
-
-/* marquee strip */
-.marquee-section {
-  background: rgba(255,255,255,.03);
-  border-top: 1px solid rgba(255,255,255,.06);
-  border-bottom: 1px solid rgba(255,255,255,.06);
-  padding: 16px 0; overflow: hidden;
-}
-.marquee-track {
-  display: flex; gap: 48px; width: max-content;
-  animation: marquee 30s linear infinite;
-}
-@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-.marquee-item {
-  font-size: 12px; font-weight: 600; letter-spacing: .12em;
-  text-transform: uppercase; color: rgba(255,255,255,.4);
-  white-space: nowrap; display: flex; align-items: center; gap: 12px;
-}
-.marquee-item::after { content: '·'; color: var(--accent-gold); }
-
-/* ── Section utilities ── */
-.sec-pad { padding: clamp(64px,8vw,96px) 0; }
-.container { max-width: 1200px; margin: 0 auto; padding: 0 clamp(20px,4vw,40px); }
-.sec-label {
-  font-size: 11px; font-weight: 700; letter-spacing: .18em;
-  text-transform: uppercase; color: var(--accent-gold); margin-bottom: 14px;
-}
-.sec-label.lt { color: rgba(255,255,255,.4); }
-.sec-h {
-  font-family: var(--font-display);
-  font-size: clamp(1.6rem, 3vw, 2.25rem);
-  font-weight: 400; line-height: 1.25; margin-bottom: 12px;
-}
-.sec-h em { font-style: italic; color: var(--accent-gold); }
-.dark .sec-h { color: #fff; }
-.light .sec-h { color: var(--blue-900); }
-.sec-desc { font-size: 1rem; line-height: 1.65; max-width: 680px; }
-.dark .sec-desc { color: rgba(255,255,255,.65); }
-.light .sec-desc { color: var(--text-muted,#64748B); }
-
-.section-bg-dark { background: var(--blue-900); }
-section.dark { background: #0a0e14; }
-section.light { background: #F1F5F9; }
-section.dark .sec-h { color: #fff; }
-section.dark .sec-desc { color: rgba(255,255,255,.6); }
-section.dark .sec-label.lt { color: rgba(255,255,255,.35); }
-section.light .sec-h { color: var(--blue-900,#060E1A); }
-section.light .sec-desc { color: var(--text-muted,#64748B); }
-section.light .sec-label.lt { color: #64748B; }
-
-/* reveal animation */
-.reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s var(--ease), transform .6s var(--ease); }
-.reveal.in { opacity: 1; transform: none; }
-.d1 { transition-delay: .05s; }
-.d2 { transition-delay: .12s; }
-.d3 { transition-delay: .19s; }
-.d4 { transition-delay: .26s; }
-.d5 { transition-delay: .33s; }
-.d6 { transition-delay: .40s; }
-
-/* ── Problem/Pain cards ── */
-.pain-grid, .problem-grid {
-  display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 40px;
-}
-.pain-card, .problem-card {
-  background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07);
-  border-radius: 14px; padding: 28px 24px;
-}
-section.light .pain-card, section.light .problem-card {
-  background: #fff; border-color: rgba(0,0,0,.06);
-  box-shadow: 0 2px 12px rgba(0,0,0,.06);
-}
-.pain-icon, .problem-icon {
-  width: 44px; height: 44px; border-radius: 10px;
-  background: rgba(59,130,246,.12); display: flex;
-  align-items: center; justify-content: center; margin-bottom: 16px;
-}
-.pain-icon svg, .problem-icon svg { width: 22px; height: 22px; }
-.pain-title, .problem-title {
-  font-size: 1rem; font-weight: 700; margin-bottom: 10px;
-}
-section.dark .pain-title, section.dark .problem-title { color: #fff; }
-section.light .pain-title, section.light .problem-title { color: var(--blue-900); }
-.pain-desc, .problem-desc { font-size: .9rem; line-height: 1.6; }
-section.dark .pain-desc, section.dark .problem-desc { color: rgba(255,255,255,.55); }
-section.light .pain-desc, section.light .problem-desc { color: #64748B; }
-
-/* ── Service/Include cards ── */
-.svc-grid, .include-grid {
-  display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 40px;
-}
-.svc-card, .include-card {
-  background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07);
-  border-radius: 14px; padding: 28px 24px;
-}
-.svc-head { display: flex; align-items: flex-start; gap: 12px; margin-bottom: 14px; }
-.svc-icon, .include-icon {
-  width: 44px; height: 44px; flex-shrink: 0; border-radius: 10px;
-  background: rgba(59,130,246,.12); display: flex;
-  align-items: center; justify-content: center;
-}
-.svc-icon svg, .include-icon svg { width: 22px; height: 22px; }
-.svc-card-tag, .include-tag {
-  display: inline-block; font-size: 10px; font-weight: 700;
-  letter-spacing: .1em; text-transform: uppercase;
-  background: rgba(196,165,116,.1); color: var(--accent-gold);
-  padding: 3px 10px; border-radius: 99px; margin-bottom: 8px;
-}
-.svc-card-title, .include-title {
-  font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 10px;
-}
-.svc-card-desc, .include-desc {
-  font-size: .875rem; line-height: 1.65; color: rgba(255,255,255,.6);
-}
-.svc-bullets { list-style: none; margin-top: 14px; display: flex; flex-direction: column; gap: 6px; }
-.svc-bullets li { font-size: .82rem; color: rgba(255,255,255,.5); padding-left: 14px; position: relative; }
-.svc-bullets li::before { content: '→'; position: absolute; left: 0; color: var(--accent-gold); }
-.full-width { grid-column: 1 / -1; }
-
-/* light section cards */
-section.light .svc-card, section.light .include-card {
-  background: #fff; border-color: rgba(0,0,0,.07);
-  box-shadow: 0 2px 12px rgba(0,0,0,.06);
-}
-section.light .svc-card-title, section.light .include-title { color: var(--blue-900); }
-section.light .svc-card-desc, section.light .include-desc { color: #64748B; }
-
-/* ── Diff section (list format) ── */
-.diff-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 40px; align-items: start; }
-.diff-text { font-size: 1rem; line-height: 1.7; }
-section.light .diff-text { color: #475569; }
-.diff-list { display: flex; flex-direction: column; gap: 20px; }
-.diff-item { display: flex; align-items: flex-start; gap: 14px; }
-.diff-check {
-  width: 28px; height: 28px; flex-shrink: 0;
-  background: rgba(59,130,246,.1); border-radius: 50%;
-  display: flex; align-items: center; justify-content: center;
-}
-.diff-check svg { width: 14px; height: 14px; }
-.diff-item-title { font-size: .95rem; font-weight: 700; margin-bottom: 4px; }
-section.light .diff-item-title { color: var(--blue-900); }
-.diff-item-desc { font-size: .875rem; line-height: 1.6; color: #64748B; }
-
-/* ── Metrics strip ── */
-.metrics-strip {
-  display: flex; justify-content: center; flex-wrap: wrap;
-  gap: 0; margin-top: 48px;
-  border: 1px solid rgba(255,255,255,.08); border-radius: 16px;
-  overflow: hidden;
-}
-.metric-item {
-  flex: 1; min-width: 160px; padding: 32px 24px;
-  text-align: center; border-right: 1px solid rgba(255,255,255,.06);
-}
-.metric-item:last-child { border-right: none; }
-.metric-num {
-  font-family: var(--font-display); font-size: clamp(2rem,4vw,2.75rem);
-  font-style: italic; color: var(--accent-gold); line-height: 1;
-}
-.metric-label { font-size: .8rem; color: rgba(255,255,255,.4); margin-top: 6px; }
-
-/* ── Internal links ── */
-.internal-links { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; }
-.internal-link {
-  display: inline-flex; align-items: center; gap: 6px;
-  font-size: .8rem; font-weight: 600; letter-spacing: .02em;
-  color: rgba(255,255,255,.5); border: 1px solid rgba(255,255,255,.1);
-  border-radius: 99px; padding: 6px 16px; text-decoration: none;
-  transition: all .2s;
-}
-.internal-link:hover { color: #fff; border-color: rgba(255,255,255,.3); }
-.internal-link svg { opacity: .5; }
-
-/* ── Cross-links (xlink) ── */
-.xlink-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; margin-top: 40px; }
-.xlink-card {
-  display: flex; flex-direction: column; gap: 6px;
-  background: #fff; border-radius: 12px; padding: 20px 20px 20px 24px;
-  border-left: 3px solid var(--accent-gold); text-decoration: none;
-  transition: box-shadow .2s; box-shadow: 0 2px 8px rgba(0,0,0,.06);
-}
-.xlink-card:hover { box-shadow: 0 6px 24px rgba(0,0,0,.1); }
-.xlink-title { font-size: .95rem; font-weight: 700; color: var(--blue-900); }
-.xlink-desc { font-size: .82rem; color: #64748B; }
-.xlink-arrow { font-size: 1rem; font-weight: 700; margin-top: 4px; align-self: flex-end; }
-
-/* ── FAQ ── */
-.faq-list { display: flex; flex-direction: column; gap: 0; margin-top: 40px; text-align: left; }
-.faq-item { border-bottom: 1px solid rgba(0,0,0,.08); }
-section.dark .faq-item { border-color: rgba(255,255,255,.07); }
-.faq-q {
-  width: 100%; display: flex; justify-content: space-between;
-  align-items: center; gap: 16px; background: none; border: none;
-  padding: 20px 0; cursor: pointer; font-size: .95rem; font-weight: 600;
-  text-align: left; transition: color .2s;
-}
-section.light .faq-q { color: var(--blue-900); }
-section.dark .faq-q { color: #fff; }
-.faq-q svg { flex-shrink: 0; transition: transform .25s; color: var(--accent-gold); }
-.faq-q[aria-expanded="true"] svg { transform: rotate(45deg); }
-.faq-a { max-height: 0; overflow: hidden; transition: max-height .35s ease; }
-.faq-a.open { max-height: 600px; }
-.faq-a-inner { padding: 0 0 20px; font-size: .9rem; line-height: 1.7; }
-section.light .faq-a-inner { color: #475569; }
-section.dark .faq-a-inner { color: rgba(255,255,255,.6); }
-.faq-a-inner a { color: var(--accent-gold); text-decoration: underline; }
-
-/* ── CTA Final ── */
-.cta-final {
-  background: linear-gradient(135deg, var(--blue-900) 0%, #0a1628 100%);
-  padding: clamp(64px,8vw,96px) 0;
-  border-top: 1px solid rgba(255,255,255,.07);
-}
-.cta-inner { max-width: 720px; margin: 0 auto; text-align: center; }
-.cta-tag {
-  display: inline-block; font-size: 10px; font-weight: 700;
-  letter-spacing: .18em; text-transform: uppercase;
-  color: var(--accent-gold); border: 1px solid rgba(196,165,116,.2);
-  border-radius: 99px; padding: 5px 16px; margin-bottom: 20px;
-}
-.cta-h {
-  font-family: var(--font-display); font-size: clamp(1.8rem,3.5vw,2.5rem);
-  font-weight: 400; color: #fff; line-height: 1.2; margin-bottom: 16px;
-}
-.cta-h em { font-style: italic; color: var(--accent-gold); }
-.cta-desc { font-size: 1rem; color: rgba(255,255,255,.65); line-height: 1.7; margin-bottom: 32px; }
-.cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-.cta-btn-wa {
-  display: inline-flex; align-items: center; gap: 10px;
-  background: #25D366; color: #fff; font-size: .9rem; font-weight: 700;
-  padding: 14px 28px; border-radius: 6px; text-decoration: none;
-  transition: opacity .2s;
-}
-.cta-btn-wa:hover { opacity: .9; }
-.cta-sub { font-size: .78rem; color: rgba(255,255,255,.35); margin-top: 16px; }
-
-/* ── Reform / Inc grid (planejamento) ── */
-.reforma-grid, .inc-grid {
-  display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 40px;
-}
-.reforma-card, .inc-card {
-  background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07);
-  border-radius: 14px; padding: 28px 24px;
-}
-section.light .reforma-card, section.light .inc-card {
-  background: #fff; border-color: rgba(0,0,0,.07);
-}
-.reforma-icon, .inc-icon {
-  width: 40px; height: 40px; border-radius: 10px;
-  background: rgba(196,165,116,.12); display: flex;
-  align-items: center; justify-content: center; margin-bottom: 14px;
-}
-.reforma-tag, .inc-tag {
-  font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-  color: var(--accent-gold); display: block; margin-bottom: 8px;
-}
-.reforma-title, .inc-title { font-size: 1rem; font-weight: 700; margin-bottom: 8px; color: #fff; }
-.reforma-desc, .inc-desc { font-size: .875rem; color: rgba(255,255,255,.55); line-height: 1.6; }
-section.light .reforma-title, section.light .inc-title { color: var(--blue-900); }
-section.light .reforma-desc, section.light .inc-desc { color: #64748B; }
-
-/* ── Cases ── */
-.cases-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; margin-top: 40px; }
-.case-card {
-  background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07);
-  border-radius: 14px; padding: 28px 24px;
-}
-.case-tag {
-  font-size: 10px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
-  color: var(--accent-gold); display: block; margin-bottom: 8px;
-}
-.case-name { font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 10px; }
-.case-text { font-size: .875rem; color: rgba(255,255,255,.6); line-height: 1.65; margin-bottom: 16px; }
-.case-nums { display: flex; gap: 24px; }
-.case-n { font-family: var(--font-display); font-size: 1.6rem; font-style: italic; color: var(--accent-gold); }
-.case-l { font-size: .75rem; color: rgba(255,255,255,.4); margin-top: 4px; }
-
-/* ── Urgency cards ── */
-.urgency-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 40px; }
-.urgency-card {
-  background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07);
-  border-radius: 14px; padding: 28px 24px;
-}
-.urgency-badge {
-  display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: .1em;
-  text-transform: uppercase; background: rgba(239,68,68,.1); color: #F87171;
-  border-radius: 99px; padding: 4px 12px; margin-bottom: 14px;
-}
-.urgency-title { font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
-.urgency-desc { font-size: .875rem; color: rgba(255,255,255,.55); line-height: 1.6; }
-.urgency-box {
-  background: rgba(239,68,68,.07); border: 1px solid rgba(239,68,68,.15);
-  border-radius: 14px; padding: 32px; margin-top: 32px; text-align: center;
-}
-.urgency-num { font-family: var(--font-display); font-size: 3rem; font-style: italic; color: #F87171; }
-.urgency-title { color: #fff; }
-.urgency-cta {
-  display: inline-flex; align-items: center; gap: 8px; margin-top: 20px;
-  background: var(--accent-gold); color: #0a0e14;
-  font-size: .85rem; font-weight: 700; padding: 12px 24px;
-  border-radius: 4px; text-decoration: none;
-}
-
-/* ── Process steps ── */
-.process-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 24px; margin-top: 40px; }
-.process-step {
-  background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07);
-  border-radius: 14px; padding: 24px 20px;
-}
-.process-num {
-  font-family: var(--font-display); font-size: 2rem; font-style: italic;
-  color: var(--accent-gold); line-height: 1; margin-bottom: 12px;
-}
-.process-title { font-size: .95rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
-.process-desc { font-size: .85rem; color: rgba(255,255,255,.55); line-height: 1.6; }
-
-/* ── Holding table ── */
-.sim-wrap { margin-top: 40px; overflow-x: auto; }
-.sim-wrap table, .sim-header, .sim-header-cell { font-size: .9rem; }
-.sim-header { display: grid; grid-template-columns: 2fr 1fr 1fr; border-bottom: 1px solid rgba(255,255,255,.1); padding-bottom: 10px; }
-.sim-header-cell { font-weight: 700; font-size: .8rem; letter-spacing: .04em; color: rgba(255,255,255,.5); padding: 0 16px; }
-.sim-header-cell.pf { color: rgba(239,68,68,.7); }
-.sim-header-cell.hold { color: var(--accent-gold); }
-.sim-row { display: grid; grid-template-columns: 2fr 1fr 1fr; border-bottom: 1px solid rgba(255,255,255,.04); }
-.sim-cell { padding: 14px 16px; font-size: .875rem; color: rgba(255,255,255,.7); }
-.sim-result { display: grid; grid-template-columns: 2fr 1fr 1fr; background: rgba(196,165,116,.06); border-radius: 8px; margin-top: 8px; }
-.sim-result-cell { padding: 16px; }
-.sim-result-label { font-size: .78rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: rgba(255,255,255,.4); margin-bottom: 4px; }
-.sim-result-num { font-family: var(--font-display); font-size: 1.5rem; font-style: italic; color: var(--accent-gold); }
-.sim-caption { font-size: .75rem; color: rgba(255,255,255,.3); margin-top: 10px; }
-.types-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 20px; margin-top: 40px; }
-.type-card { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07); border-radius: 14px; padding: 24px; }
-.type-tag { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--accent-gold); margin-bottom: 10px; display: block; }
-.type-title { font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
-.type-desc { font-size: .875rem; color: rgba(255,255,255,.55); line-height: 1.6; }
-.type-when { font-size: .78rem; color: var(--accent-gold); margin-top: 12px; font-style: italic; }
-
-/* ── Recover cards ── */
-.recover-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 40px; }
-.recover-card {
-  background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07);
-  border-radius: 14px; padding: 28px 24px;
-}
-.recover-card.wide { grid-column: span 2; }
-.recover-icon { width: 44px; height: 44px; border-radius: 10px; background: rgba(59,130,246,.12); display: flex; align-items: center; justify-content: center; margin-bottom: 16px; }
-.recover-icon svg { width: 22px; height: 22px; }
-.recover-tag { font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--accent-gold); margin-bottom: 10px; display: block; }
-.recover-title { font-size: 1.05rem; font-weight: 700; color: #fff; margin-bottom: 10px; }
-.recover-desc { font-size: .875rem; color: rgba(255,255,255,.6); line-height: 1.65; }
-
-/* ── Persona cards ── */
-.persona-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 40px; }
-.persona-card { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.07); border-radius: 14px; padding: 24px; }
-.persona-icon { font-size: 1.5rem; margin-bottom: 12px; }
-.persona-title { font-size: .95rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
-.persona-desc { font-size: .85rem; color: rgba(255,255,255,.55); line-height: 1.6; }
-
-/* ── svc-head (consultoria, planejamento) ── */
-.svc-head { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 14px; }
-
-/* ── Responsive ── */
-@media (max-width: 900px) {
-  .pain-grid, .problem-grid, .svc-grid, .include-grid,
-  .reforma-grid, .inc-grid, .urgency-grid, .persona-grid,
-  .recover-grid { grid-template-columns: repeat(2,1fr); }
-  .process-grid { grid-template-columns: repeat(2,1fr); }
-  .diff-grid { grid-template-columns: 1fr; }
-  .cases-grid, .types-grid, .xlink-grid { grid-template-columns: 1fr; }
-  .metric-item { min-width: 120px; padding: 24px 16px; }
-}
-@media (max-width: 600px) {
-  .pain-grid, .problem-grid, .svc-grid, .include-grid,
-  .reforma-grid, .inc-grid, .urgency-grid, .persona-grid,
-  .recover-grid, .process-grid { grid-template-columns: 1fr; }
-  .recover-card.wide { grid-column: span 1; }
-  .hero-h1 { font-size: 1.7rem; }
-  .metrics-strip { flex-direction: column; }
-  .metric-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,.06); }
-  .metric-item:last-child { border-bottom: none; }
-}
-
-</style>
-
-    <!-- Schema Markup — JSON-LD @graph -->
-    <script type="application/ld+json">
-    {
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contadora Especializada em Holding Patrimonial | AM Cabral</title>
+<meta name="description" content="Reduza até 70% da tributação sobre seu patrimônio com holding patrimonial. Amanda Cabral, contadora especializada em BH e região. Simulação gratuita.">
+<link rel="canonical" href="https://amcabralblindagem.com.br/nossos-servicos/holding-patrimonial/">
+<meta property="og:title" content="Holding Patrimonial | AM Cabral Contabilidade">
+<meta property="og:description" content="Proteja e transfira seu patrimônio com muito menos imposto. Simulação gratuita com Amanda Cabral.">
+<meta property="og:url" content="https://amcabralblindagem.com.br/nossos-servicos/holding-patrimonial/">
+<meta property="og:type" content="website">
+<link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/instrument-serif-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/instrument-serif-italic.woff2" as="font" type="font/woff2" crossorigin>
+
+<script type="application/ld+json">
+{
   "@context": "https://schema.org",
   "@graph": [
     {
-      "@type": "Service",
-      "@id": "https://amcabralblindagem.com.br/nossos-servicos/holding-patrimonial/#service",
-      "name": "Holding Patrimonial e Familiar",
-      "serviceType": "Planejamento Patrimonial",
-      "provider": {
-        "@id": "https://amcabralblindagem.com.br/#organization"
+      "@type": "AccountingService",
+      "@id": "https://amcabralblindagem.com.br/#org",
+      "name": "AM Cabral Contabilidade",
+      "url": "https://amcabralblindagem.com.br/",
+      "telephone": "+553191274-5462",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Belo Horizonte",
+        "addressRegion": "MG",
+        "addressCountry": "BR"
       },
-      "url": "https://amcabralblindagem.com.br/nossos-servicos/holding-patrimonial/",
-      "description": "Estruturação de holdings patrimoniais e familiares em MG. Proteção de bens, redução de impostos sobre aluguéis, planejamento sucessório sem inventário judicial.",
-      "areaServed": [
-        {
-          "@type": "City",
-          "name": "Para de Minas",
-          "sameAs": "https://www.wikidata.org/wiki/Q2913906"
-        },
-        {
-          "@type": "City",
-          "name": "Belo Horizonte",
-          "sameAs": "https://www.wikidata.org/wiki/Q601"
-        },
-        {
-          "@type": "State",
-          "name": "Minas Gerais",
-          "sameAs": "https://www.wikidata.org/wiki/Q1061"
-        }
-      ],
-      "availableLanguage": {
-        "@language": "pt-BR"
-      }
+      "employee": { "@id": "https://amcabralblindagem.com.br/#amanda" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://amcabralblindagem.com.br/#amanda",
+      "name": "Amanda Cabral",
+      "jobTitle": "Contadora",
+      "worksFor": { "@id": "https://amcabralblindagem.com.br/#org" }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://amcabralblindagem.com.br/#website",
+      "url": "https://amcabralblindagem.com.br/",
+      "name": "AM Cabral Contabilidade",
+      "publisher": { "@id": "https://amcabralblindagem.com.br/#org" }
     },
     {
       "@type": "WebPage",
       "@id": "https://amcabralblindagem.com.br/nossos-servicos/holding-patrimonial/#webpage",
       "url": "https://amcabralblindagem.com.br/nossos-servicos/holding-patrimonial/",
-      "name": "Constituição de Holding Patrimonial e Familiar — Proteja Seu Patrimônio",
-      "description": "Estruturação de holdings patrimoniais e familiares em MG. Proteção de bens, redução de impostos sobre aluguéis, planejamento sucessório sem inventário judicial.",
-      "isPartOf": {
-        "@id": "https://amcabralblindagem.com.br/#website"
-      },
-      "publisher": {
-        "@id": "https://amcabralblindagem.com.br/#organization"
-      },
-      "breadcrumb": {
-        "@id": "https://amcabralblindagem.com.br/nossos-servicos/holding-patrimonial/#breadcrumb"
-      },
-      "mainEntity": {
-        "@id": "https://amcabralblindagem.com.br/nossos-servicos/holding-patrimonial/#service"
-      },
-      "inLanguage": "pt-BR"
+      "name": "Contadora Especializada em Holding Patrimonial | AM Cabral",
+      "isPartOf": { "@id": "https://amcabralblindagem.com.br/#website" },
+      "mainEntity": { "@id": "https://amcabralblindagem.com.br/nossos-servicos/holding-patrimonial/#service" }
     },
     {
       "@type": "BreadcrumbList",
-      "@id": "https://amcabralblindagem.com.br/nossos-servicos/holding-patrimonial/#breadcrumb",
       "itemListElement": [
-        {
-          "@type": "ListItem",
-          "position": 1,
-          "name": "Início",
-          "item": "https://amcabralblindagem.com.br/"
-        },
-        {
-          "@type": "ListItem",
-          "position": 2,
-          "name": "Holding Patrimonial",
-          "item": "https://amcabralblindagem.com.br/nossos-servicos/holding-patrimonial/"
-        }
+        { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://amcabralblindagem.com.br/" },
+        { "@type": "ListItem", "position": 2, "name": "Nossos Serviços", "item": "https://amcabralblindagem.com.br/nossos-servicos/" },
+        { "@type": "ListItem", "position": 3, "name": "Holding Patrimonial", "item": "https://amcabralblindagem.com.br/nossos-servicos/holding-patrimonial/" }
+      ]
+    },
+    {
+      "@type": "Service",
+      "@id": "https://amcabralblindagem.com.br/nossos-servicos/holding-patrimonial/#service",
+      "name": "Holding Patrimonial",
+      "description": "Estruturação de holding patrimonial para proteção, sucessão e redução tributária sobre bens imóveis e participações societárias.",
+      "provider": { "@id": "https://amcabralblindagem.com.br/#org" },
+      "sameAs": "https://www.wikidata.org/wiki/Q219577",
+      "areaServed": { "@type": "State", "name": "Minas Gerais" }
+    },
+    {
+      "@type": "HowTo",
+      "name": "Como estruturar uma holding patrimonial",
+      "step": [
+        { "@type": "HowToStep", "position": 1, "name": "Diagnóstico Patrimonial", "text": "Levantamento completo de bens, rendas e estrutura familiar para identificar o melhor modelo." },
+        { "@type": "HowToStep", "position": 2, "name": "Modelagem Jurídico-Contábil", "text": "Definição do tipo de holding (pura, mista ou operacional) e constituição do CNPJ." },
+        { "@type": "HowToStep", "position": 3, "name": "Integralização dos Bens", "text": "Transferência dos imóveis e participações para a pessoa jurídica com planejamento tributário." },
+        { "@type": "HowToStep", "position": 4, "name": "Gestão e Distribuição", "text": "Protocolo de distribuição de lucros, governança e sucessão para herdeiros." }
       ]
     },
     {
       "@type": "FAQPage",
-      "@id": "https://amcabralblindagem.com.br/nossos-servicos/holding-patrimonial/#faqpage",
-      "about": {
-        "@id": "https://amcabralblindagem.com.br/nossos-servicos/holding-patrimonial/#service"
-      },
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "O que é holding patrimonial?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Holding patrimonial é uma empresa criada exclusivamente para administrar bens — imóveis, investimentos, participações societárias. Os bens saem do CPF do dono e passam para o CNPJ da holding, reduzindo impostos e protegendo o patrimônio."
-          }
+          "name": "Qualquer pessoa pode abrir uma holding patrimonial?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Sim. Pessoa física com imóveis, investimentos ou participações societárias pode se beneficiar. O ideal é ter patrimônio acima de R$ 500 mil para que a economia tributária justifique os custos de estruturação." }
         },
         {
           "@type": "Question",
-          "name": "Holding é só para quem é rico?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "Não. Qualquer pessoa física com imóveis, aluguéis ou bens que queira reduzir impostos (de 27,5% para ~8,4% sobre aluguéis) e simplificar a sucessão pode se beneficiar de uma holding."
-          }
+          "name": "Quanto custa abrir uma holding?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Os custos variam conforme o patrimônio e a complexidade da estrutura. Em média, entre R$ 3.000 e R$ 8.000 incluindo honorários contábeis, custas cartoriais e registro. A economia gerada costuma superar esse valor no primeiro ano." }
         },
         {
           "@type": "Question",
-          "name": "Qual a diferença entre holding e testamento?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "O testamento é um documento de vontade que passa pelo inventário judicial, podendo durar anos. A holding transfere o patrimônio via contrato social, sem inventário, de forma mais rápida e barata."
-          }
+          "name": "A holding substitui o testamento?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Não substitui, mas é complementar. A holding transfere cotas ainda em vida, evitando inventário (que pode levar anos e custar 8 a 10% do patrimônio). O testamento trata de outros aspectos da herança." }
         },
         {
           "@type": "Question",
-          "name": "Quanto custa constituir uma holding?",
-          "acceptedAnswer": {
-            "@type": "Answer",
-            "text": "O custo envolve honorários do contador, do advogado e eventuais taxas cartoriais. A AM Cabral faz a análise de viabilidade gratuita para verificar se a economia tributária justifica o investimento."
-          }
+          "name": "Holding reduz mesmo o imposto sobre aluguel?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Sim. Pessoa física paga até 27,5% de IR sobre aluguéis. Com a holding no Lucro Presumido, a carga tributária fica entre 11,33% e 14,53%, dependendo do faturamento. A economia pode ultrapassar R$ 20 mil por ano." }
+        },
+        {
+          "@type": "Question",
+          "name": "É possível proteger os bens de credores?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Sim, dentro dos limites legais. Bens integralizados antes de dívidas existentes ficam protegidos de futuras ações de credores pessoais, pois pertencem à pessoa jurídica, não ao sócio." }
+        },
+        {
+          "@type": "Question",
+          "name": "A reforma tributária vai mudar as regras?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Sim. As mudanças previstas para 2025 a 2027 podem alterar a tributação de dividendos e a base de cálculo do ITCMD (imposto de herança). Quem estrutura agora garante as regras atuais, mais favoráveis." }
         }
       ]
     }
   ]
 }
-    
 </script>
 
-<script>
-/* FAQ accordion */
-document.querySelectorAll('.faq-q').forEach(function(btn) {
-  btn.addEventListener('click', function() {
-    var item = btn.closest('.faq-item');
-    var ans  = item.querySelector('.faq-a');
-    var open = btn.getAttribute('aria-expanded') === 'true';
-    document.querySelectorAll('.faq-q').forEach(function(b) {
-      b.setAttribute('aria-expanded','false');
-      var a = b.closest('.faq-item').querySelector('.faq-a');
-      if(a) a.classList.remove('open');
-    });
-    if(!open) { btn.setAttribute('aria-expanded','true'); if(ans) ans.classList.add('open'); }
-  });
-});
+<style>
+/* -- Reset + Tokens ------------------------------------------- */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --z0:#060E1A;--z1:#0A1628;--z2:#0F2137;--z3:#132D4A;--z4:#1A3A5C;
+  --paper:#F1F5F9;--dim:#94A3B8;
+  --dourado:#C9A84C;--dourado-dim:rgba(201,168,76,.15);--dourado-mid:rgba(201,168,76,.35);
+  --border-z1:rgba(255,255,255,.055);--border-z2:rgba(255,255,255,.08);--border-z3:rgba(255,255,255,.11);
+  --hdr-h:60px;
+  --serif:'Instrument Serif',Georgia,serif;
+  --sans:'Inter',system-ui,sans-serif;
+}
+html{scroll-behavior:smooth;font-size:16px}
+body{background:var(--z0);color:var(--paper);font-family:var(--sans);line-height:1.6;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+a{color:inherit;text-decoration:none}
 
-/* Reveal on scroll */
-(function() {
-  var els = document.querySelectorAll('.reveal');
-  if(!els.length) return;
-  var io = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e) { if(e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
-  }, { threshold: 0.1 });
-  els.forEach(function(el) { io.observe(el); });
-})();
-</script>
+/* -- Fonts ---------------------------------------------------- */
+@font-face{font-family:'Inter';src:url('/assets/fonts/inter-latin.woff2') format('woff2');font-weight:100 900;font-style:normal;font-display:swap}
+@font-face{font-family:'Instrument Serif';src:url('/assets/fonts/instrument-serif-normal.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'Instrument Serif';src:url('/assets/fonts/instrument-serif-italic.woff2') format('woff2');font-weight:400;font-style:italic;font-display:swap}
 
+/* -- Loader --------------------------------------------------- */
+#loader{position:fixed;inset:0;z-index:9999;background:var(--z0);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:24px}
+#loader-words{display:flex;gap:12px}
+#loader-words span{font-family:var(--serif);font-size:clamp(1.1rem,2.5vw,1.5rem);color:var(--paper);opacity:0;transform:translateY(10px);transition:opacity .4s,transform .4s}
+#loader-words span.show{opacity:1;transform:translateY(0)}
+#loader-bar{width:180px;height:2px;background:rgba(255,255,255,.1);border-radius:2px;overflow:hidden}
+#loader-bar-fill{height:100%;width:0;background:var(--dourado);transition:width .6s ease}
+#loader.done{opacity:0;pointer-events:none;transition:opacity .5s .1s}
+
+/* -- Cursor --------------------------------------------------- */
+#cur{position:fixed;width:36px;height:36px;border:1.5px solid var(--dourado);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform .15s,width .2s,height .2s,border-color .2s;mix-blend-mode:difference}
+body:not(.cursor-ready) #cur{opacity:0}
+@media(hover:none){#cur{display:none}}
+
+/* -- Scroll progress ------------------------------------------ */
+#prog{position:fixed;top:0;left:0;height:2px;background:var(--dourado);z-index:9997;width:0;transition:width .1s}
+
+/* -- Header --------------------------------------------------- */
+#hdr{position:fixed;top:0;left:0;right:0;height:var(--hdr-h);z-index:900;background:rgba(6,14,26,.85);backdrop-filter:blur(18px);border-bottom:1px solid var(--border-z1);display:flex;align-items:center;padding:0 clamp(16px,4vw,48px)}
+.hdr-inner{width:100%;max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between}
+.hdr-logo{font-family:var(--serif);font-size:1.1rem;letter-spacing:.02em;color:var(--paper)}
+.hdr-logo span{color:var(--dourado)}
+.hdr-nav{display:flex;align-items:center;gap:8px}
+.hdr-nav a,.hdr-nav button{background:none;border:none;cursor:pointer;font-family:var(--sans);font-size:.875rem;color:var(--dim);padding:6px 12px;border-radius:6px;transition:color .2s,background .2s;display:flex;align-items:center;gap:4px}
+.hdr-nav a:hover,.hdr-nav button:hover,.hdr-nav button[aria-expanded="true"]{color:var(--paper);background:var(--border-z2)}
+.hdr-cta{background:var(--dourado)!important;color:var(--z0)!important;font-weight:600;border-radius:8px!important;padding:7px 16px!important}
+.hdr-cta:hover{background:#e0b94e!important}
+/* mega */
+.mega-wrap{position:relative}
+.mega-panel{display:none;position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--z1);border:1px solid var(--border-z2);border-radius:14px;padding:20px;min-width:640px;gap:16px;grid-template-columns:repeat(3,1fr)}
+.mega-panel.open{display:grid}
+.mega-col h4{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--dourado);margin-bottom:10px;font-weight:600}
+.mega-col a{display:flex;align-items:flex-start;gap:8px;padding:8px;border-radius:8px;transition:background .2s}
+.mega-col a:hover{background:var(--border-z1)}
+.mega-col a span:first-child{font-size:1rem;flex-shrink:0;margin-top:1px}
+.mega-col a strong{font-size:.85rem;color:var(--paper);display:block;line-height:1.3}
+.mega-col a em{font-size:.75rem;color:var(--dim);font-style:normal;margin-top:1px;display:block}
+/* hamburger */
+.hdr-burger{display:none;background:none;border:none;cursor:pointer;flex-direction:column;gap:5px;padding:6px}
+.hdr-burger span{width:22px;height:2px;background:var(--paper);border-radius:2px;transition:transform .3s,opacity .3s}
+/* mobile overlay */
+#mob-nav{display:none;position:fixed;inset:0;z-index:890;background:var(--z0);flex-direction:column;padding:80px 24px 40px;overflow-y:auto}
+#mob-nav.open{display:flex}
+#mob-nav a{font-size:1.1rem;padding:14px 0;border-bottom:1px solid var(--border-z1);color:var(--paper)}
+#mob-nav .mob-cta{margin-top:24px;background:var(--dourado);color:var(--z0);font-weight:700;text-align:center;padding:16px;border-radius:12px;font-size:1rem;border-bottom:none}
+.mob-close{position:fixed;top:14px;right:16px;width:36px;height:36px;border:1.5px solid var(--dourado);border-radius:50%;display:none;align-items:center;justify-content:center;cursor:pointer;background:none;color:var(--paper);font-size:1.1rem}
+#mob-nav.open ~ .mob-close,.mob-close.open{display:flex}
+
+/* -- Reveal --------------------------------------------------- */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .55s ease,transform .55s ease}
+.reveal.in{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.08s}.d2{transition-delay:.16s}.d3{transition-delay:.24s}.d4{transition-delay:.32s}.d5{transition-delay:.40s}.d6{transition-delay:.48s}
+
+/* -- Section helpers ------------------------------------------ */
+.sec{padding:clamp(56px,8vw,96px) clamp(16px,5vw,48px)}
+.inner{max-width:1120px;margin:0 auto}
+.sec-tag{font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;color:var(--dourado);font-weight:600;margin-bottom:12px}
+.sec-h{font-family:var(--serif);font-size:clamp(1.8rem,4vw,3rem);line-height:1.2;color:var(--paper)}
+.sec-h em{font-style:italic;color:var(--dourado)}
+.sec-sub{font-size:clamp(.9rem,1.5vw,1.05rem);color:var(--dim);max-width:560px;margin-top:12px;line-height:1.7}
+
+/* -- Hero ----------------------------------------------------- */
+.hero{min-height:100svh;display:flex;align-items:center;padding-top:var(--hdr-h);background:radial-gradient(ellipse 80% 60% at 60% 30%,rgba(201,168,76,.08) 0%,transparent 70%),var(--z0);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23C9A84C' fill-opacity='0.03'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")}
+.hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--dourado-mid);background:var(--dourado-dim);padding:6px 14px;border-radius:999px;font-size:.8rem;color:var(--dourado);margin-bottom:20px}
+.hero-h{font-family:var(--serif);font-size:clamp(2rem,5vw,3.8rem);line-height:1.15;color:var(--paper);margin-bottom:20px}
+.hero-h em{font-style:italic;color:var(--dourado)}
+.hero-sub{font-size:clamp(.9rem,1.4vw,1.05rem);color:var(--dim);max-width:480px;line-height:1.75;margin-bottom:32px}
+.hero-ctas{display:flex;gap:12px;flex-wrap:wrap}
+.btn-gold{background:var(--dourado);color:var(--z0);font-weight:700;padding:14px 28px;border-radius:10px;font-size:.95rem;transition:background .2s,transform .15s;display:inline-block}
+.btn-gold:hover{background:#e0b94e;transform:translateY(-1px)}
+.btn-ghost{border:1px solid var(--border-z3);color:var(--paper);padding:13px 24px;border-radius:10px;font-size:.95rem;transition:background .2s;display:inline-block}
+.btn-ghost:hover{background:var(--border-z1)}
+.hero-card{background:var(--z1);border:1px solid var(--border-z2);border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:20px}
+.hero-metric{text-align:center;padding:16px 0;border-bottom:1px solid var(--border-z1)}
+.hero-metric:last-child{border:none;padding-bottom:0}
+.hero-metric strong{display:block;font-family:var(--serif);font-size:2rem;color:var(--dourado)}
+.hero-metric span{font-size:.85rem;color:var(--dim)}
+
+/* -- Marquee -------------------------------------------------- */
+.marquee-sec{padding:18px 0;background:var(--z1);border-top:1px solid var(--border-z1);border-bottom:1px solid var(--border-z1);overflow:hidden}
+.marquee-track{display:flex;gap:48px;width:max-content;animation:marquee 28s linear infinite}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee-track span{font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:var(--dim);white-space:nowrap}
+.marquee-track span b{color:var(--dourado)}
+
+/* -- Metrics strip -------------------------------------------- */
+.metrics-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border-z1)}
+.metric-cell{background:var(--z1);padding:32px 24px;text-align:center}
+.metric-cell strong{display:block;font-family:var(--serif);font-size:clamp(2rem,3.5vw,2.8rem);color:var(--dourado);line-height:1}
+.metric-cell span{font-size:.8rem;color:var(--dim);text-transform:uppercase;letter-spacing:.06em;margin-top:6px;display:block}
+
+/* -- Pain grid ------------------------------------------------ */
+.pain-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.pain-card{background:var(--z1);border:1px solid var(--border-z1);border-radius:16px;padding:24px;display:flex;gap:16px;align-items:flex-start}
+.pain-icon{width:44px;height:44px;background:rgba(201,168,76,.12);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.3rem;flex-shrink:0}
+.pain-card h3{font-size:.95rem;font-weight:600;color:var(--paper);margin-bottom:6px}
+.pain-card p{font-size:.85rem;color:var(--dim);line-height:1.6}
+
+/* -- Hold cards ----------------------------------------------- */
+.hold-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.hold-card{background:var(--z1);border:1px solid var(--border-z2);border-radius:18px;padding:28px;position:relative;overflow:hidden;transition:border-color .2s,transform .2s}
+.hold-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--dourado),transparent)}
+.hold-card:hover{border-color:var(--dourado-mid);transform:translateY(-3px)}
+.hold-card .tag{font-size:.7rem;text-transform:uppercase;letter-spacing:.1em;color:var(--dourado);font-weight:600;margin-bottom:8px}
+.hold-card h3{font-size:1.05rem;font-weight:600;color:var(--paper);margin-bottom:10px}
+.hold-card p{font-size:.85rem;color:var(--dim);line-height:1.65}
+
+/* -- Simulation ----------------------------------------------- */
+.sim-wrap{background:var(--z1);border:1px solid var(--border-z2);border-radius:20px;padding:40px;overflow-x:auto}
+.sim-intro{margin-bottom:32px}
+.sim-table{width:100%;border-collapse:collapse;min-width:520px}
+.sim-table th{font-size:.75rem;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);font-weight:500;padding:10px 16px;text-align:left;border-bottom:1px solid var(--border-z1)}
+.sim-table td{padding:14px 16px;font-size:.9rem;border-bottom:1px solid var(--border-z1)}
+.sim-table td:first-child{color:var(--paper);font-weight:500}
+.sim-table td:nth-child(2){color:var(--dim)}
+.sim-table td:nth-child(3){color:#4ade80;font-weight:600}
+.sim-table tr.highlight td{background:rgba(201,168,76,.06)}
+.sim-note{margin-top:20px;font-size:.8rem;color:var(--dim);font-style:italic}
+
+/* -- Types grid ----------------------------------------------- */
+.types-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.type-card{background:var(--z1);border:1px solid var(--border-z2);border-radius:18px;padding:28px;text-align:center}
+.type-card .type-icon{font-size:2.2rem;margin-bottom:14px}
+.type-card h3{font-family:var(--serif);font-size:1.1rem;color:var(--paper);margin-bottom:10px}
+.type-card p{font-size:.85rem;color:var(--dim);line-height:1.65}
+
+/* -- Process -------------------------------------------------- */
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;position:relative}
+.process-grid::before{content:'';position:absolute;top:44px;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,var(--dourado-mid),transparent);z-index:0}
+.proc-step{position:relative;z-index:1;text-align:center}
+.proc-num{width:52px;height:52px;border:2px solid var(--dourado);border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:var(--serif);font-size:1.2rem;color:var(--dourado);margin:0 auto 16px;background:var(--z0)}
+.proc-step h3{font-size:.95rem;font-weight:600;color:var(--paper);margin-bottom:8px}
+.proc-step p{font-size:.82rem;color:var(--dim);line-height:1.6}
+
+/* -- Urgency -------------------------------------------------- */
+.urgency-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.urgency-card{background:linear-gradient(135deg,var(--z2),var(--z1));border:1px solid var(--dourado-mid);border-radius:18px;padding:28px;position:relative;overflow:hidden}
+.urgency-card::after{content:'';position:absolute;bottom:-30px;right:-30px;width:100px;height:100px;background:var(--dourado-dim);border-radius:50%}
+.urgency-date{font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--dourado);font-weight:700;margin-bottom:10px}
+.urgency-card h3{font-size:1rem;font-weight:600;color:var(--paper);margin-bottom:10px}
+.urgency-card p{font-size:.85rem;color:var(--dim);line-height:1.6}
+
+/* -- Outros servicos ------------------------------------------ */
+.outros-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.outro-link{background:var(--z1);border:1px solid var(--border-z2);border-radius:14px;padding:22px;display:flex;align-items:center;gap:12px;transition:border-color .2s,background .2s}
+.outro-link:hover{border-color:var(--dourado-mid);background:var(--z2)}
+.outro-link .ico{font-size:1.4rem}
+.outro-link strong{font-size:.9rem;color:var(--paper);display:block;margin-bottom:2px}
+.outro-link em{font-size:.78rem;color:var(--dim);font-style:normal}
+
+/* -- FAQ ------------------------------------------------------ */
+.faq-list{display:flex;flex-direction:column;gap:8px}
+.faq-item{background:var(--z1);border:1px solid var(--border-z1);border-radius:14px;overflow:hidden}
+.faq-q{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 24px;cursor:pointer;font-size:.95rem;font-weight:600;color:var(--paper);user-select:none}
+.faq-q svg{flex-shrink:0;transition:transform .3s;color:var(--dourado)}
+.faq-item.open .faq-q svg{transform:rotate(45deg)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding .3s}
+.faq-item.open .faq-a{max-height:300px}
+.faq-a p{padding:0 24px 20px;font-size:.88rem;color:var(--dim);line-height:1.75}
+
+/* -- CTA Final ------------------------------------------------ */
+.cta-final{background:linear-gradient(135deg,var(--z1) 0%,var(--z2) 100%);border-top:1px solid var(--border-z2);border-bottom:1px solid var(--border-z2);text-align:center;padding:clamp(64px,10vw,112px) clamp(16px,5vw,48px)}
+.cta-final .sec-h{margin:0 auto 16px}
+.cta-final .sec-sub{margin:0 auto 36px}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+
+/* -- Footer --------------------------------------------------- */
+footer{background:var(--z1);border-top:1px solid var(--border-z1);padding:clamp(40px,6vw,64px) clamp(16px,5vw,48px) 24px}
+.ft-inner{max-width:1120px;margin:0 auto}
+.ft-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;margin-bottom:40px}
+.ft-brand{font-family:var(--serif);font-size:1.2rem;color:var(--paper);margin-bottom:10px}
+.ft-brand span{color:var(--dourado)}
+.ft-desc{font-size:.85rem;color:var(--dim);line-height:1.7}
+.ft-col h4{font-size:.75rem;text-transform:uppercase;letter-spacing:.1em;color:var(--dourado);font-weight:600;margin-bottom:14px}
+.ft-col a{display:block;font-size:.85rem;color:var(--dim);margin-bottom:8px;transition:color .2s}
+.ft-col a:hover{color:var(--paper)}
+.ft-bottom{border-top:1px solid var(--border-z1);padding-top:20px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.ft-copy{font-size:.78rem;color:var(--dim)}
+
+/* -- WA Float ------------------------------------------------- */
+.wa-float{position:fixed;bottom:24px;right:24px;z-index:800;display:flex;align-items:center;gap:10px;background:#25d366;color:#fff;padding:12px 20px;border-radius:999px;font-weight:600;font-size:.9rem;box-shadow:0 4px 24px rgba(37,211,102,.35);transition:transform .2s}
+.wa-float:hover{transform:scale(1.05)}
+
+/* -- Responsive ----------------------------------------------- */
+@media(max-width:900px){
+  .hero-grid{grid-template-columns:1fr}
+  .hero-card{display:grid;grid-template-columns:repeat(3,1fr);gap:0}
+  .hero-metric{border-bottom:none;border-right:1px solid var(--border-z1)}
+  .hero-metric:last-child{border-right:none}
+  .metrics-strip{grid-template-columns:repeat(2,1fr)}
+  .pain-grid,.hold-grid{grid-template-columns:1fr}
+  .process-grid{grid-template-columns:repeat(2,1fr)}
+  .process-grid::before{display:none}
+  .types-grid,.urgency-grid{grid-template-columns:1fr}
+  .outros-grid{grid-template-columns:1fr 1fr}
+  .ft-grid{grid-template-columns:1fr 1fr}
+  .hdr-nav{display:none}
+  .hdr-burger{display:flex}
+}
+@media(max-width:560px){
+  .hero-card{grid-template-columns:1fr}
+  .hero-metric{border-right:none;border-bottom:1px solid var(--border-z1)}
+  .hero-metric:last-child{border-bottom:none}
+  .outros-grid{grid-template-columns:1fr}
+  .ft-grid{grid-template-columns:1fr}
+  .cta-btns{flex-direction:column;align-items:center}
+}
+</style>
 </head>
 <body>
 
+<!-- Loader -->
+<div id="loader">
+  <div id="loader-words">
+    <span>Holding</span><span>Patrimonial</span>
+  </div>
+  <div id="loader-bar"><div id="loader-bar-fill"></div></div>
+</div>
+
+<!-- Cursor -->
+<div id="cur"></div>
+
+<!-- Scroll progress -->
+<div id="prog"></div>
+
+<!-- Header -->
 <header id="hdr">
-  <div id="hdr-inner">
-    <a href="/" id="hdr-logo">AM Cabral</a>
-
-    <ul id="hdr-nav">
-      <li class="hdr-item">
-        <a href="/" class="hdr-btn">Início</a>
-      </li>
-      <li class="hdr-item" data-menu="sobre">
-        <button class="hdr-btn">Sobre a AM Cabral <span class="hdr-arrow">▾</span></button>
-      </li>
-      <li class="hdr-item" data-menu="servicos">
-        <button class="hdr-btn">Serviços <span class="hdr-arrow">▾</span></button>
-      </li>
-      <li class="hdr-item" data-menu="blog">
-        <button class="hdr-btn">Blog <span class="hdr-arrow">▾</span></button>
-      </li>
-    </ul>
-
-    <a href="/fale-com-especialista/" class="hdr-cta" id="hdrCta">Diagnóstico Gratuito</a>
-    <button id="hdr-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  <div class="hdr-inner">
+    <a href="/" class="hdr-logo">AM <span>Cabral</span></a>
+    <nav class="hdr-nav">
+      <a href="/">Início</a>
+      <div class="mega-wrap">
+        <button class="mega-trigger" aria-expanded="false">Sobre nós <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+        <div class="mega-panel" id="mega-sobre">
+          <div class="mega-col">
+            <h4>A Contadora</h4>
+            <a href="/sobre-amanda-cabral/"><span>👤</span><div><strong>Amanda Cabral</strong><em>CRC e trajetória profissional</em></div></a>
+            <a href="/nossa-metodologia/"><span>🔬</span><div><strong>Nossa Metodologia</strong><em>Como trabalhamos</em></div></a>
+          </div>
+          <div class="mega-col">
+            <h4>Empresa</h4>
+            <a href="/sobre-nos/"><span>🏢</span><div><strong>Sobre Nós</strong><em>Missão e valores</em></div></a>
+            <a href="/cases-de-sucesso/"><span>⭐</span><div><strong>Cases de Sucesso</strong><em>Resultados reais</em></div></a>
+          </div>
+        </div>
+      </div>
+      <div class="mega-wrap">
+        <button class="mega-trigger" aria-expanded="false">Serviços <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+        <div class="mega-panel" id="mega-servicos">
+          <div class="mega-col">
+            <h4>Contabilidade</h4>
+            <a href="/nossos-servicos/gestao-contabil/"><span>📊</span><div><strong>Gestão Contábil</strong><em>BPO financeiro completo</em></div></a>
+            <a href="/nossos-servicos/abertura-de-empresa/"><span>🚀</span><div><strong>Abertura de Empresa</strong><em>Constituição societária</em></div></a>
+          </div>
+          <div class="mega-col">
+            <h4>Tributário</h4>
+            <a href="/nossos-servicos/planejamento-tributario/"><span>📉</span><div><strong>Planejamento Tributário</strong><em>Redução legal de impostos</em></div></a>
+            <a href="/nossos-servicos/holding-patrimonial/"><span>🏛️</span><div><strong>Holding Patrimonial</strong><em>Proteção e sucessão</em></div></a>
+          </div>
+          <div class="mega-col">
+            <h4>Especialidades</h4>
+            <a href="/nossos-servicos/gestao-financeira/"><span>💰</span><div><strong>Gestão Financeira</strong><em>Fluxo de caixa e DRE</em></div></a>
+            <a href="/nossos-servicos/consultoria-empresarial/"><span>🎯</span><div><strong>Consultoria Empresarial</strong><em>Estratégia e crescimento</em></div></a>
+          </div>
+        </div>
+      </div>
+      <a href="/blog/">Blog</a>
+      <a href="https://wa.me/5531912745462" class="hdr-cta" target="_blank" rel="noopener">Falar com Amanda</a>
+    </nav>
+    <button class="hdr-burger" id="burger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 
-
-
-<!-- Mega-menus fora do header (evita backdrop-filter stacking context) -->
-<div class="hdr-mega" id="mega-sobre">
-  <div class="hdr-mega-inner">
-    <a href="/sobre-amcabral-blindagem/" class="hdr-mega-img">
-      <img src="/amanda-sobre.webp" alt="Amanda Cabral Contadora" loading="lazy" width="600" height="800" style="object-position:top center;">
-    </a>
-    <div class="hdr-mega-col">
-      <div class="hdr-mega-col-title">Sobre a AM Cabral</div>
-      <div class="hdr-mega-links">
-        <a href="/sobre-amcabral-blindagem/" class="hdr-mega-link"><strong>Amanda Cabral</strong><span>Trajetória e formação profissional</span></a>
-        <a href="/bio/" class="hdr-mega-link"><strong>Currículo Profissional</strong><span>CRC/MG, pós-graduações e especializações</span></a>
-        <a href="/casos-de-sucesso/" class="hdr-mega-link"><strong>Casos de Sucesso</strong><span>Empresas que transformamos</span></a>
-        <a href="/faq-amcabralblindagem/" class="hdr-mega-link"><strong>Perguntas Frequentes</strong><span>Dúvidas sobre contabilidade e holding</span></a>
-      </div>
-      <a href="/fale-com-especialista/" class="hdr-mega-col-cta">Falar com especialista →</a>
-    </div>
-  </div>
-</div>
-
-<div class="hdr-mega" id="mega-servicos">
-  <div class="hdr-mega-inner">
-    <a href="/nossos-servicos/" class="hdr-mega-img">
-      <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=450&fit=crop" alt="Serviços Contábeis" loading="lazy" width="600" height="450">
-    </a>
-    <div class="hdr-mega-col">
-      <div class="hdr-mega-col-title">Nossos Serviços</div>
-      <div class="hdr-mega-links">
-        <a href="/nossos-servicos/gestao-contabil/" class="hdr-mega-link"><strong>Gestão Contábil Estratégica</strong><span>Balanços, DRE, fluxo de caixa e SPED</span></a>
-        <a href="/nossos-servicos/recuperacao-creditos-tributarios/" class="hdr-mega-link"><strong>Recuperação de Créditos</strong><span>Até R$ 12,3M recuperados em ICMS, IPI e PIS/COFINS</span></a>
-        <a href="/nossos-servicos/holding-patrimonial/" class="hdr-mega-link"><strong>Holding Patrimonial</strong><span>Blindagem fiscal e planejamento sucessório</span></a>
-        <a href="/nossos-servicos/planejamento-tributario/" class="hdr-mega-link"><strong>Planejamento Tributário</strong><span>Regime ideal e redução legal de impostos</span></a>
-        <a href="/nossos-servicos/consultoria-tributaria/" class="hdr-mega-link"><strong>Consultoria Tributária</strong><span>Decisões estratégicas com base em dados</span></a>
-        <a href="/cidades-atendidas/" class="hdr-mega-link"><strong>Cidades Atendidas</strong><span>Pará de Minas, BH, Betim e todo MG</span></a>
-      </div>
-      <a href="/nossos-servicos/" class="hdr-mega-col-cta">Ver todos os serviços →</a>
-    </div>
-  </div>
-</div>
-
-<div class="hdr-mega" id="mega-blog">
-  <div class="hdr-mega-inner">
-    <a href="/blog/" class="hdr-mega-img">
-      <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&h=450&fit=crop" alt="Blog" loading="lazy" width="600" height="450">
-    </a>
-    <div class="hdr-mega-col">
-      <div class="hdr-mega-col-title">Conteúdo e Artigos</div>
-      <div class="hdr-mega-links">
-        <a href="/nossos-servicos/holding-patrimonial/" class="hdr-mega-link"><strong>Holding Patrimonial e Familiar</strong><span>Proteja patrimônio e organize a sucessão</span></a>
-        <a href="/contabilidade-para-de-minas/" class="hdr-mega-link"><strong>Contabilidade em Pará de Minas</strong><span>Escritório local, atendimento em todo MG</span></a>
-        <a href="/nossos-servicos/recuperacao-creditos-tributarios/" class="hdr-mega-link"><strong>Recuperação de Créditos Tributários</strong><span>Como recuperar o que sua empresa pagou a mais</span></a>
-        <a href="/nossos-servicos/planejamento-tributario/" class="hdr-mega-link"><strong>Planejamento Tributário 2026</strong><span>Estratégias antes da reforma tributária</span></a>
-        <a href="/faq-amcabralblindagem/" class="hdr-mega-link"><strong>Perguntas Frequentes</strong><span>Tudo sobre contabilidade para empresas</span></a>
-        <a href="/cidades-atendidas/" class="hdr-mega-link"><strong>Cidades Atendidas</strong><span>Veja se atendemos sua região</span></a>
-      </div>
-      <a href="/blog/" class="hdr-mega-col-cta">Ver todos os artigos →</a>
-    </div>
-  </div>
-</div>
-
 <!-- Mobile nav -->
-
-
-<div id="hdr-mob">
-  <button id="hdr-mob-close">✕</button>
+<nav id="mob-nav">
   <a href="/">Início</a>
-  <a href="/sobre-amcabral-blindagem/">Sobre Amanda</a>
-  <a href="/nossos-servicos/">Serviços</a>
-  <a href="/nossos-servicos/gestao-contabil/">Contabilidade Estratégica</a>
-  <a href="/nossos-servicos/recuperacao-creditos-tributarios/">Recuperação de Créditos</a>
+  <a href="/sobre-nos/">Sobre Nós</a>
+  <a href="/nossos-servicos/">Nossos Serviços</a>
+  <a href="/nossos-servicos/gestao-contabil/">Gestão Contábil</a>
   <a href="/nossos-servicos/holding-patrimonial/">Holding Patrimonial</a>
-  <a href="/nossos-servicos/planejamento-tributario/">Planejamento Fiscal</a>
+  <a href="/nossos-servicos/planejamento-tributario/">Planejamento Tributário</a>
   <a href="/blog/">Blog</a>
-  <a href="/fale-com-especialista/" id="hdrMobCta" style="color:var(--accent-gold);margin-top:16px;font-weight:700;">Diagnóstico Gratuito</a>
-</div>
-
-<!-- Mobile overlay -->
-<div class="mobile-nav" id="mobileNav" aria-hidden="true">
-  <button class="mobile-nav-close" id="mobileNavClose" aria-label="Fechar menu">✕</button>
-  <a href="/nossos-servicos/gestao-contabil/">Gestão Contábil Estratégica</a>
-  <a href="/nossos-servicos/recuperacao-creditos-tributarios/">Recuperação de Créditos</a>
-  <a href="/nossos-servicos/holding-patrimonial/">Holding Patrimonial e Familiar</a>
-  <a href="/nossos-servicos/planejamento-tributario/">Planejamento Fiscal</a>
-  <a href="/nossos-servicos/consultoria-tributaria/">Consultoria Tributária</a>
-  <a href="/nossos-servicos/">Ver todos os serviços</a>
-  <a href="/reforma-tributaria-industria/">Reforma Tributária</a>
-  <a href="/blog/">Blog</a>
-  <a href="/sobre-amcabral-blindagem/">Amanda Silva</a>
-  <a href="/casos-de-sucesso/">Casos de Sucesso</a>
-  <a href="/sobre-amcabral-blindagem/">Depoimentos</a>
-  <a href="/fale-com-especialista/">Contato</a>
-  <a href="/fale-com-especialista/" style="color: var(--accent-gold); margin-top: 20px; font-weight: 600;">Diagnóstico Gratuito</a>
-</div>
+  <a href="https://wa.me/5531912745462" class="mob-cta" target="_blank" rel="noopener">Falar com Amanda no WhatsApp</a>
+</nav>
+<button class="mob-close" id="mob-close" aria-label="Fechar menu">✕</button>
 
 <main>
 
-<!-- SKIP LINK -->
-<a href="#holding" class="skip-link">Ir para conteúdo principal</a>
-
-<!-- READING PROGRESS -->
-<div class="reading-prog" id="readingProg"></div>
-
-<!-- NAV --><!-- MOBILE OVERLAY -->
-
-
-<!-- MOBILE MENU -->
-
-
-<!-- ============================================ -->
-<!-- 1. HERO (dark) -->
-<!-- ============================================ -->
-<section class="hero noise" id="holding">
-  <div class="hero-glow"></div>
-  <div class="hero-glow-2"></div>
-  <div class="container">
-    <div class="hero-kicker">Holding Patrimonial e Familiar</div>
-    <h1 class="hero-h1">Constituição de Holding Patrimonial e Familiar — <em>Proteja o Patrimônio que Você Construiu em 30 Anos</em></h1>
-    <p class="hero-sub">Separe seus bens pessoais dos riscos da empresa. Reduza a tributação sobre aluguel de 27,5% para 8,4%. Planeje a sucessão familiar sem inventário, sem conflito, sem surpresas.</p>
-    <a href="https://wa.me/5537999967558?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20holding%20patrimonial" target="_blank" rel="noopener" class="hero-cta">Quero Proteger Meu Patrimônio
-      <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12l5-5-5-5"/></svg>
-    </a>
-    <nav class="hero-breadcrumb" aria-label="Breadcrumb">
-      <a href="/">Home</a>
-      <span aria-hidden="true">›</span>
-      <a href="/servicos">Serviços</a>
-      <span aria-hidden="true">›</span>
-      <strong>Holding Patrimonial e Familiar</strong>
-    </nav>
+<!-- HERO -->
+<section class="hero">
+  <div class="inner hero-grid">
+    <div class="reveal">
+      <div class="hero-badge">🏛️ Especialista em Holdings</div>
+      <h1 class="hero-h">Proteja seu patrimônio e pague <em>muito menos</em> imposto</h1>
+      <p class="hero-sub">Com a estrutura certa de holding patrimonial, você reduz até 70% da carga tributária sobre aluguéis, facilita a sucessão e protege seus bens de credores.</p>
+      <div class="hero-ctas">
+        <a href="https://wa.me/5531912745462?text=Olá%20Amanda%2C%20quero%20uma%20simulação%20de%20holding%20patrimonial" class="btn-gold" target="_blank" rel="noopener">Quero minha simulação gratuita</a>
+        <a href="#simulacao" class="btn-ghost">Ver simulação de economia</a>
+      </div>
+    </div>
+    <div class="hero-card reveal d2">
+      <div class="hero-metric">
+        <strong>até 70%</strong>
+        <span>Redução na tributação</span>
+      </div>
+      <div class="hero-metric">
+        <strong>R$ 20k+</strong>
+        <span>Economia anual média</span>
+      </div>
+      <div class="hero-metric">
+        <strong>0%</strong>
+        <span>ITBI na integralização</span>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ============================================ -->
-<!-- 2. PAIN POINT HOOK (light) — "Empresa Rica, Dono Pobre" -->
-<!-- ============================================ -->
-<section class="light sec-pad" id="problema">
-  <div class="container">
-    <div class="reveal">
-      <div class="sec-label gold">A Realidade</div>
-      <h2 class="sec-h">Empresa rica, <span class="gold">dono pobre</span></h2>
-      <p class="sec-desc" style="margin-top:16px;color:var(--dim)">Você trabalha 30 anos, constrói um patrimônio relevante e descobre que tudo está exposto. Os números não mentem:</p>
-    </div>
-    <div class="pain-grid">
+<!-- MARQUEE -->
+<div class="marquee-sec">
+  <div class="marquee-track">
+    <span><b>Holding Patrimonial</b></span>
+    <span>Proteção de Bens</span>
+    <span><b>Planejamento Sucessório</b></span>
+    <span>Redução Tributária</span>
+    <span><b>Imóveis PJ</b></span>
+    <span>Gestão de Aluguéis</span>
+    <span><b>Sucessão sem Inventário</b></span>
+    <span>Reforma Tributária 2025</span>
+    <span><b>Holding Patrimonial</b></span>
+    <span>Proteção de Bens</span>
+    <span><b>Planejamento Sucessório</b></span>
+    <span>Redução Tributária</span>
+    <span><b>Imóveis PJ</b></span>
+    <span>Gestão de Aluguéis</span>
+    <span><b>Sucessão sem Inventário</b></span>
+    <span>Reforma Tributária 2025</span>
+  </div>
+</div>
 
+<!-- METRICS STRIP -->
+<section class="sec" style="padding-top:0;padding-bottom:0">
+  <div class="metrics-strip reveal">
+    <div class="metric-cell"><strong>+300</strong><span>Holdings estruturadas</span></div>
+    <div class="metric-cell"><strong>8,4%</strong><span>Carga tributária média PJ</span></div>
+    <div class="metric-cell"><strong>0%</strong><span>ITBI na transferência</span></div>
+    <div class="metric-cell"><strong>15 dias</strong><span>Constituição do CNPJ</span></div>
+  </div>
+</section>
+
+<!-- DOR / PROBLEMA -->
+<section class="sec">
+  <div class="inner">
+    <div class="reveal">
+      <p class="sec-tag">O problema</p>
+      <h2 class="sec-h">Você paga mais imposto do que deveria</h2>
+      <p class="sec-sub">Pessoa física com imóveis paga tributação máxima. A holding é o instrumento legal para reverter isso agora, antes que as regras mudem.</p>
+    </div>
+    <div class="pain-grid" style="margin-top:40px">
       <div class="pain-card reveal d1">
-        <div class="pain-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-        </div>
+        <div class="pain-icon">📈</div>
         <div>
-          <div class="pain-title">Patrimônio 100% no seu CPF</div>
-          <div class="pain-desc">Imóveis, veículos e investimentos no nome da pessoa física. Qualquer ação judicial contra a empresa pode atingir seus bens pessoais.</div>
+          <h3>27,5% de IR sobre aluguéis</h3>
+          <p>Pessoa física na tabela progressiva paga a alíquota máxima sobre qualquer aluguel acima de R$ 4.664/mês. A PJ recolhe entre 11,33% e 14,53%.</p>
         </div>
       </div>
-
       <div class="pain-card reveal d2">
-        <div class="pain-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-        </div>
+        <div class="pain-icon">⚖️</div>
         <div>
-          <div class="pain-title">27,5% de IR sobre aluguel</div>
-          <div class="pain-desc">Receber aluguel como pessoa física significa pagar até 27,5% de Imposto de Renda. Via holding, a carga cai para aproximadamente 8,4%.</div>
+          <h3>Inventário custa até 10% do patrimônio</h3>
+          <p>Além de demorar anos, o inventário consome uma parcela significativa dos bens em custas, honorários e ITCMD. A holding transfere cotas em vida.</p>
         </div>
       </div>
-
       <div class="pain-card reveal d3">
-        <div class="pain-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        </div>
+        <div class="pain-icon">🔓</div>
         <div>
-          <div class="pain-title">ITCMD pode consumir 8% do patrimônio</div>
-          <div class="pain-desc">Sem planejamento sucessório, seus herdeiros enfrentam inventário judicial de 2 a 5 anos e ITCMD que pode chegar a 8% sobre todo o patrimônio.</div>
+          <h3>Bens expostos a credores</h3>
+          <p>Imóveis no nome da pessoa física ficam sujeitos a penhora em ações trabalhistas, cíveis e fiscais. Na holding, pertencem ao patrimônio da PJ.</p>
         </div>
       </div>
-
       <div class="pain-card reveal d4">
-        <div class="pain-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#ef4444" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-        </div>
+        <div class="pain-icon">⏰</div>
         <div>
-          <div class="pain-title">Reforma tributária fechando janelas</div>
-          <div class="pain-desc">Dividendos sem imposto adicional, reavaliação de imóveis com alíquota reduzida, CIB cruzando dados. As janelas de oportunidade estão se fechando.</div>
+          <h3>Reforma tributária muda as regras</h3>
+          <p>Mudanças previstas para 2025 a 2027 podem encarecer a criação de holdings. Quem estrutura agora garante as condições fiscais mais favoráveis.</p>
         </div>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ============================================ -->
-<!-- 3. O QUE A HOLDING RESOLVE (dark) — Cards -->
-<!-- ============================================ -->
-<section class="dark sec-pad" id="solucao">
-  <div class="container">
+<!-- BENEFICIOS DA HOLDING -->
+<section class="sec" style="background:var(--z1);border-top:1px solid var(--border-z1);border-bottom:1px solid var(--border-z1)">
+  <div class="inner">
     <div class="reveal">
-      <div class="sec-label gold">A Solução</div>
-      <h2 class="sec-h">O que a holding patrimonial <em>resolve</em></h2>
-      <p class="sec-desc" style="margin-top:16px">Uma holding é uma empresa constituída exclusivamente para administrar e proteger seus bens. Os benefícios são concretos e mensuráveis.</p>
+      <p class="sec-tag">O que a holding resolve</p>
+      <h2 class="sec-h">Quatro pilares de <em>proteção</em> real</h2>
     </div>
-    <div class="hold-grid">
-
+    <div class="hold-grid" style="margin-top:40px">
       <div class="hold-card reveal d1">
-        <div class="hold-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <h3 class="hold-title">Proteção Patrimonial</h3>
-        <p class="hold-desc">Seus bens pessoais saem do CPF e vão para o CNPJ da holding. Dívidas trabalhistas, fiscais ou cíveis da empresa operacional não atingem seu patrimônio pessoal.</p>
+        <div class="tag">Tributário</div>
+        <h3>Redução de imposto sobre aluguéis</h3>
+        <p>De até 27,5% (IR pessoa física) para 8,4% a 14,53% (Lucro Presumido). Em um patrimônio com R$ 120k anuais em aluguéis, a economia pode passar de R$ 22 mil por ano.</p>
       </div>
-
       <div class="hold-card reveal d2">
-        <div class="hold-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-        </div>
-        <h3 class="hold-title">Economia Tributária</h3>
-        <p class="hold-desc">Aluguel na pessoa física: 27,5% de IR. Na holding (Lucro Presumido): aproximadamente 8,4%. Economia de mais de R$ 22 mil por ano em um patrimônio de R$ 2,6M.</p>
+        <div class="tag">Sucessório</div>
+        <h3>Herança sem inventário</h3>
+        <p>As cotas da holding são transferidas ainda em vida via doação com reserva de usufruto, preservando o controle dos pais e evitando o inventário para os herdeiros.</p>
       </div>
-
       <div class="hold-card reveal d3">
-        <div class="hold-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
-        <h3 class="hold-title">Planejamento Sucessório</h3>
-        <p class="hold-desc">Transferência de quotas em vida com cláusulas de usufruto. Evita inventário judicial (2 a 5 anos), reduz ITCMD e elimina conflitos entre herdeiros.</p>
+        <div class="tag">Patrimonial</div>
+        <h3>Blindagem contra credores</h3>
+        <p>Bens integralizados antes de dívidas existentes ficam protegidos de futuras ações de credores pessoais, pois o titular é a pessoa jurídica, não o sócio.</p>
       </div>
-
       <div class="hold-card reveal d4">
-        <div class="hold-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-        </div>
-        <h3 class="hold-title">Blindagem contra Riscos</h3>
-        <p class="hold-desc">Separação jurídica entre empresa operacional e patrimônio pessoal. Ações trabalhistas, fiscais ou de credores não alcançam os bens dentro da holding.</p>
+        <div class="tag">Societário</div>
+        <h3>Governança familiar</h3>
+        <p>Define regras de administração, distribuição de lucros e tomada de decisões entre herdeiros antes que conflitos comecem. Previne litígios e preserva o patrimônio.</p>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ============================================ -->
-<!-- 4. SIMULAÇÃO PF vs HOLDING (light) -->
-<!-- ============================================ -->
-<section class="light sec-pad" id="simulacao">
-  <div class="container" style="text-align:center">
+<!-- SIMULACAO -->
+<section class="sec" id="simulacao">
+  <div class="inner">
     <div class="reveal">
-      <div class="sec-label gold">Simulação Real</div>
-      <h2 class="sec-h">Pessoa Física vs <span class="gold">Holding Patrimonial</span></h2>
-      <p class="sec-desc" style="margin-top:16px;max-width:580px;margin-left:auto;margin-right:auto;color:var(--dim)">Simulação baseada em um cenário real: empresário com 4 imóveis alugados. Os números falam por si.</p>
+      <p class="sec-tag">Simulação real</p>
+      <h2 class="sec-h">Pessoa Física vs. <em>Holding</em> com R$ 120k em aluguéis</h2>
+      <p class="sec-sub">Veja quanto seu patrimônio paga hoje e quanto poderia pagar após a reestruturação.</p>
     </div>
-
-    <div class="sim-wrap reveal">
-      <div class="sim-header">
-        <div class="sim-header-cell">Cenário</div>
-        <div class="sim-header-cell pf">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2" style="vertical-align:-2px;margin-right:4px"><path d="M18 6 6 18M6 6l12 12"/></svg>
-          Pessoa Física
-        </div>
-        <div class="sim-header-cell hold">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C9A84C" stroke-width="2.5" style="vertical-align:-2px;margin-right:4px"><path d="M20 6 9 17l-5-5"/></svg>
-          Holding
-        </div>
-      </div>
-
-      <div class="sim-row">
-        <div class="sim-cell">Patrimônio imobiliário</div>
-        <div class="sim-cell pf">4 imóveis (R$ 2,6M)</div>
-        <div class="sim-cell hold">4 imóveis (R$ 2,6M)</div>
-      </div>
-      <div class="sim-row">
-        <div class="sim-cell">Aluguel mensal total</div>
-        <div class="sim-cell pf">R$ 10.000</div>
-        <div class="sim-cell hold">R$ 10.000</div>
-      </div>
-      <div class="sim-row">
-        <div class="sim-cell">Alíquota efetiva</div>
-        <div class="sim-cell pf"><strong>27,5%</strong></div>
-        <div class="sim-cell hold"><strong>~8,4%</strong></div>
-      </div>
-      <div class="sim-row">
-        <div class="sim-cell">Imposto mensal</div>
-        <div class="sim-cell pf"><strong>R$ 2.750</strong></div>
-        <div class="sim-cell hold"><strong>R$ 840</strong></div>
-      </div>
-      <div class="sim-row">
-        <div class="sim-cell">Imposto anual</div>
-        <div class="sim-cell pf"><strong>R$ 33.000</strong></div>
-        <div class="sim-cell hold"><strong>R$ 10.080</strong></div>
-      </div>
-
-      <div class="sim-result">
-        <div class="sim-result-cell">
-          <div class="sim-result-label">Economia</div>
-        </div>
-        <div class="sim-result-cell pf"></div>
-        <div class="sim-result-cell hold">
-          <div class="sim-result-label">Você economiza</div>
-          <div class="sim-result-num">R$ 22.920<span style="font-family:var(--sans);font-size:14px;font-style:normal;color:var(--dim)">/ano</span></div>
-        </div>
-      </div>
-
-      <div class="sim-caption">
-        * Simulação ilustrativa com base em Lucro Presumido (IRPJ 4,8% + CSLL 2,88% + PIS/COFINS 0,65% = ~8,4%). Valores reais dependem da análise individualizada.
-      </div>
+    <div class="sim-wrap reveal d2" style="margin-top:40px">
+      <table class="sim-table">
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Pessoa Física</th>
+            <th>Holding (Lucro Presumido)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Receita anual de aluguéis</td>
+            <td>R$ 120.000</td>
+            <td>R$ 120.000</td>
+          </tr>
+          <tr>
+            <td>Alíquota efetiva de tributação</td>
+            <td>27,5% (IRPF)</td>
+            <td>~8,4% (PIS+COFINS+IRPJ+CSLL)</td>
+          </tr>
+          <tr class="highlight">
+            <td>Imposto pago no ano</td>
+            <td>R$ 33.000</td>
+            <td>R$ 10.080</td>
+          </tr>
+          <tr class="highlight">
+            <td><strong>Economia anual</strong></td>
+            <td></td>
+            <td><strong>R$ 22.920</strong></td>
+          </tr>
+          <tr>
+            <td>ITBI na transferência dos imóveis</td>
+            <td>N/A</td>
+            <td>Isento (integralização ao capital)</td>
+          </tr>
+          <tr>
+            <td>ITCMD na herança (futuramente)</td>
+            <td>8% sobre valor de mercado</td>
+            <td>Calculado sobre cotas (base menor)</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="sim-note">Simulação baseada em alíquotas vigentes em 2024. Valores reais dependem de estrutura patrimonial, regime tributário e legislação estadual. Agende uma análise personalizada.</p>
     </div>
   </div>
 </section>
 
-<!-- ============================================ -->
-<!-- 5. TIPOS DE HOLDING (dark) -->
-<!-- ============================================ -->
-<section class="dark sec-pad" id="tipos">
-  <div class="container">
-    <div class="reveal" style="text-align:center">
-      <div class="sec-label gold">Tipos de Holding</div>
-      <h2 class="sec-h">Cada situação pede uma <em>estrutura diferente</em></h2>
-      <p class="sec-desc" style="margin-top:16px;max-width:580px;margin-left:auto;margin-right:auto">Não existe holding genérica. A AM Cabral avalia seu caso e recomenda a estrutura ideal.</p>
+<!-- TIPOS DE HOLDING -->
+<section class="sec" style="background:var(--z1);border-top:1px solid var(--border-z1);border-bottom:1px solid var(--border-z1)">
+  <div class="inner">
+    <div class="reveal">
+      <p class="sec-tag">Tipos de estrutura</p>
+      <h2 class="sec-h">Qual modelo é certo <em>para você</em></h2>
+      <p class="sec-sub">A escolha depende do seu perfil patrimonial, objetivos sucessórios e composição familiar. A Amanda avalia qual estrutura gera mais resultado.</p>
     </div>
-    <div class="types-grid">
-
+    <div class="types-grid" style="margin-top:40px">
       <div class="type-card reveal d1">
-        <div class="type-tag">Mais comum</div>
-        <h3 class="type-title">Holding Patrimonial</h3>
-        <p class="type-desc">Empresa constituída para administrar bens do sócio: imóveis, veículos, investimentos, participações societárias. Separa patrimônio pessoal da operação.</p>
-        <div class="type-when"><strong>Quando usar:</strong> empresário com bens relevantes no CPF que quer proteger e reduzir tributação.</div>
+        <div class="type-icon">🏦</div>
+        <h3>Holding Pura</h3>
+        <p>Criada exclusivamente para controlar participações societárias e imóveis. Ideal para quem tem várias empresas ou um portfólio imobiliário relevante. Sem atividade operacional.</p>
       </div>
-
       <div class="type-card reveal d2">
-        <div class="type-tag">Imóveis</div>
-        <h3 class="type-title">Holding Imobiliária</h3>
-        <p class="type-desc">Focada exclusivamente na gestão de imóveis — compra, venda e locação. Tributação otimizada pelo Lucro Presumido com alíquota efetiva de ~8,4% sobre aluguel.</p>
-        <div class="type-when"><strong>Quando usar:</strong> proprietário de 3+ imóveis alugados com renda acima de R$ 5 mil/mês.</div>
+        <div class="type-icon">⚙️</div>
+        <h3>Holding Mista</h3>
+        <p>Combina controle patrimonial com atividade operacional. Adequada para empresários que querem centralizar gestão e proteger o patrimônio sem criar duas empresas separadas.</p>
       </div>
-
       <div class="type-card reveal d3">
-        <div class="type-tag">Sucessão</div>
-        <h3 class="type-title">Holding Familiar</h3>
-        <p class="type-desc">Organiza o patrimônio da família com regras claras de governança. Permite doação de quotas com cláusula de usufruto, inalienabilidade e reversão.</p>
-        <div class="type-when"><strong>Quando usar:</strong> empresário com herdeiros que quer planejar a sucessão em vida, sem inventário.</div>
+        <div class="type-icon">🌳</div>
+        <h3>Holding Familiar</h3>
+        <p>Voltada para planejamento sucessório. Os herdeiros recebem cotas com restrições de alienação, garantindo que o patrimônio se mantenha unido entre gerações.</p>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ============================================ -->
-<!-- 6. PROCESSO — COMO A AM CABRAL FAZ (light) -->
-<!-- ============================================ -->
-<section class="light sec-pad" id="processo">
-  <div class="container" style="text-align:center">
+<!-- PROCESSO -->
+<section class="sec">
+  <div class="inner">
     <div class="reveal">
-      <div class="sec-label gold">Como Funciona</div>
-      <h2 class="sec-h">Do diagnóstico à <span class="gold">holding constituída</span></h2>
-      <p class="sec-desc" style="margin-top:16px;max-width:560px;margin-left:auto;margin-right:auto;color:var(--dim)">Processo claro, prazos definidos, sem surpresas. Da análise inicial à gestão contínua da holding.</p>
+      <p class="sec-tag">Nosso processo</p>
+      <h2 class="sec-h">Da análise à estrutura pronta <em>em 4 etapas</em></h2>
     </div>
-    <div class="process-grid">
-      <div class="process-step reveal d1">
-        <div class="process-num">01</div>
-        <h3 class="process-title">Diagnóstico</h3>
-        <p class="process-desc">Avaliamos se a holding faz sentido para o seu caso. Nem todo patrimônio justifica. Análise gratuita e sem compromisso.</p>
+    <div class="process-grid" style="margin-top:56px">
+      <div class="proc-step reveal d1">
+        <div class="proc-num">01</div>
+        <h3>Diagnóstico Patrimonial</h3>
+        <p>Levantamento completo de bens, rendas e estrutura familiar para identificar o modelo ideal e calcular a economia projetada.</p>
       </div>
-      <div class="process-step reveal d2">
-        <div class="process-num">02</div>
-        <h3 class="process-title">Planejamento</h3>
-        <p class="process-desc">Definição da estrutura societária, regime tributário ideal, cláusulas de proteção e estratégia de transferência dos bens.</p>
+      <div class="proc-step reveal d2">
+        <div class="proc-num">02</div>
+        <h3>Modelagem Jurídico-Contábil</h3>
+        <p>Definição do tipo de holding, contrato social, distribuição de cotas e cláusulas de proteção. Tudo alinhado com o planejamento sucessório.</p>
       </div>
-      <div class="process-step reveal d3">
-        <div class="process-num">03</div>
-        <h3 class="process-title">Constituição</h3>
-        <p class="process-desc">Abertura da holding na Junta Comercial, transferência dos bens por integralização de capital e registro nos cartórios. Prazo: 2 a 4 meses.</p>
+      <div class="proc-step reveal d3">
+        <div class="proc-num">03</div>
+        <h3>Integralização dos Bens</h3>
+        <p>Transferência dos imóveis e participações para a holding com isenção de ITBI e otimização do valor para ITCMD futuro.</p>
       </div>
-      <div class="process-step reveal d4">
-        <div class="process-num">04</div>
-        <h3 class="process-title">Gestão Contínua</h3>
-        <p class="process-desc">Contabilidade mensal da holding, apuração de impostos, obrigações acessórias e acompanhamento tributário. A economia começa imediatamente.</p>
+      <div class="proc-step reveal d4">
+        <div class="proc-num">04</div>
+        <h3>Gestão e Governança</h3>
+        <p>Protocolo de distribuição de lucros, administração, obrigações acessórias e regras para entrada ou saída de sócios herdeiros.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ============================================ -->
-<!-- 7. URGÊNCIA — JANELAS SE FECHANDO (dark) -->
-<!-- ============================================ -->
-<section class="dark sec-pad" id="urgencia">
-  <div class="container">
-    <div class="reveal" style="text-align:center">
-      <div class="sec-label" style="color:#ef4444">Urgência</div>
-      <h2 class="sec-h">As janelas de oportunidade estão <em>se fechando</em></h2>
-      <p class="sec-desc" style="margin-top:16px;max-width:580px;margin-left:auto;margin-right:auto">A reforma tributária de 2025 trouxe mudanças que tornam a constituição de holding mais urgente do que nunca.</p>
+<!-- URGENCIA -->
+<section class="sec" style="background:var(--z1);border-top:1px solid var(--border-z1);border-bottom:1px solid var(--border-z1)">
+  <div class="inner">
+    <div class="reveal">
+      <p class="sec-tag">Por que agir agora</p>
+      <h2 class="sec-h">Janela se fecha com a <em>reforma tributária</em></h2>
+      <p class="sec-sub">Três mudanças no horizonte que tornam a estruturação hoje muito mais vantajosa do que esperar.</p>
     </div>
-    <div class="urgency-grid">
-
+    <div class="urgency-grid" style="margin-top:40px">
       <div class="urgency-card reveal d1">
-        <div class="urgency-badge">Dez/2025</div>
-        <h3 class="urgency-title">Dividendos sem imposto adicional</h3>
-        <p class="urgency-desc">A isenção sobre dividendos pode ser revogada a qualquer momento. Estruturar holding agora permite distribuir lucros com a tributação atual, antes que a janela feche.</p>
+        <div class="urgency-date">Até dezembro de 2025</div>
+        <h3>ITCMD pode ser majorado pelos estados</h3>
+        <p>Vários estados estão revisando as alíquotas do imposto sobre herança. Estruturar a holding agora garante avaliação das cotas pelas regras atuais.</p>
       </div>
-
       <div class="urgency-card reveal d2">
-        <div class="urgency-badge">Até 2027</div>
-        <h3 class="urgency-title">Reavaliação de imóveis com alíquota reduzida</h3>
-        <p class="urgency-desc">A Lei 14.973/2024 permite atualizar o valor de imóveis para valor de mercado com alíquota reduzida de 4% (PF) ou 6% (PJ). Janela única que não se repetirá.</p>
+        <div class="urgency-date">Até 2027</div>
+        <h3>Tributação de dividendos em debate</h3>
+        <p>O governo federal discute tributar distribuição de lucros de pessoas jurídicas. Se aprovado, a vantagem de receber rendas pela holding diminui significativamente.</p>
       </div>
-
       <div class="urgency-card reveal d3">
-        <div class="urgency-badge">Em vigor</div>
-        <h3 class="urgency-title">CIB vai cruzar dados de aluguel</h3>
-        <p class="urgency-desc">O Cadastro Imobiliário Brasileiro (CIB) já está cruzando dados de aluguéis com a Receita Federal. Quem recebe aluguel no CPF sem declarar corretamente será fiscalizado.</p>
+        <div class="urgency-date">Em vigor</div>
+        <h3>Regras atuais permitem isenção de ITBI</h3>
+        <p>A integralização de imóveis ao capital social é isenta de ITBI pela legislação vigente. Qualquer mudança retroativa é improvável, mas aguardar cria risco desnecessário.</p>
       </div>
-
     </div>
   </div>
 </section>
 
-<!-- ============================================ -->
-<!-- 8. FAQ (light) -->
-<!-- ============================================ -->
-
-<!-- OUTROS SERVIÇOS -->
-<section class="light sec-pad" id="outros-servicos" style="background:var(--paper,#F1F5F9)">
-  <div class="container" style="text-align:center">
+<!-- OUTROS SERVICOS -->
+<section class="sec">
+  <div class="inner">
     <div class="reveal">
-      <div class="sec-label" style="color:#3B82F6;font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;margin-bottom:12px">OUTROS SERVIÇOS</div>
-      <h2 style="font-size:clamp(1.4rem,3vw,1.875rem);font-weight:800;color:#060E1A;line-height:1.25">Conheça também nossos <em style="font-style:italic;color:#3B82F6">outros serviços</em></h2>
+      <p class="sec-tag">Outros serviços</p>
+      <h2 class="sec-h">Contabilidade completa <em>para o seu negócio</em></h2>
     </div>
-    <div class="xlink-grid" style="display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:40px;text-align:left">
-
-      <a href="/gestao-contabil-industrial/" class="xlink-card reveal" style="border-left:3px solid #3B82F6">
-        <div class="xlink-title">Gestão Contábil Estratégica</div>
-        <div class="xlink-desc">Balanços, DRE, custos, folha — visão estratégica</div>
-        <span class="xlink-arrow" style="color:#3B82F6">→</span>
+    <div class="outros-grid" style="margin-top:32px">
+      <a href="/nossos-servicos/gestao-contabil/" class="outro-link reveal d1">
+        <span class="ico">📊</span>
+        <div><strong>Gestão Contábil</strong><em>BPO financeiro e obrigações acessórias</em></div>
       </a>
-      <a href="/nossos-servicos/recuperacao-creditos-tributarios/" class="xlink-card reveal" style="border-left:3px solid #38BDF8">
-        <div class="xlink-title">Recuperação de Créditos Tributários</div>
-        <div class="xlink-desc">PIS/COFINS, ICMS, IPI — até 5 anos retroativos</div>
-        <span class="xlink-arrow" style="color:#38BDF8">→</span>
+      <a href="/nossos-servicos/planejamento-tributario/" class="outro-link reveal d2">
+        <span class="ico">📉</span>
+        <div><strong>Planejamento Tributário</strong><em>Redução legal da carga de impostos</em></div>
       </a>
-      <a href="/planejamento-tributario-industrial/" class="xlink-card reveal" style="border-left:3px solid #60A5FA">
-        <div class="xlink-title">Planejamento Tributário</div>
-        <div class="xlink-desc">Regime ideal, incentivos MG, elisão fiscal</div>
-        <span class="xlink-arrow" style="color:#60A5FA">→</span>
+      <a href="/nossos-servicos/abertura-de-empresa/" class="outro-link reveal d3">
+        <span class="ico">🚀</span>
+        <div><strong>Abertura de Empresa</strong><em>Constituição e enquadramento</em></div>
       </a>
-      <a href="/nossos-servicos/consultoria-tributaria/" class="xlink-card reveal" style="border-left:3px solid #94A3B8">
-        <div class="xlink-title">Consultoria Tributária</div>
-        <div class="xlink-desc">Compliance fiscal e preparação reforma 2026</div>
-        <span class="xlink-arrow" style="color:#94A3B8">→</span>
+      <a href="/nossos-servicos/gestao-financeira/" class="outro-link reveal d4">
+        <span class="ico">💰</span>
+        <div><strong>Gestão Financeira</strong><em>Fluxo de caixa, DRE e indicadores</em></div>
+      </a>
+      <a href="/nossos-servicos/consultoria-empresarial/" class="outro-link reveal d5">
+        <span class="ico">🎯</span>
+        <div><strong>Consultoria Empresarial</strong><em>Estratégia e crescimento</em></div>
+      </a>
+      <a href="/lps/" class="outro-link reveal d6">
+        <span class="ico">📍</span>
+        <div><strong>Atendimento Regional</strong><em>BH e cidades do interior de MG</em></div>
       </a>
     </div>
   </div>
 </section>
 
-<section class="light sec-pad" id="faq">
-  <div class="container" style="text-align:center">
+<!-- FAQ -->
+<section class="sec" style="background:var(--z1);border-top:1px solid var(--border-z1);border-bottom:1px solid var(--border-z1)">
+  <div class="inner">
     <div class="reveal">
-      <div class="sec-label gold">Perguntas Frequentes</div>
-      <h2 class="sec-h">Dúvidas sobre <span class="gold">holding patrimonial</span></h2>
+      <p class="sec-tag">Dúvidas frequentes</p>
+      <h2 class="sec-h">Perguntas sobre <em>holding patrimonial</em></h2>
     </div>
-    <div class="faq-list">
-
-      <div class="faq-item reveal d1">
-        <button class="faq-q" aria-expanded="false">
-          O que é holding patrimonial?
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner">A holding patrimonial é uma empresa constituída exclusivamente para administrar bens — imóveis, investimentos, veículos, participações societárias. Os bens deixam de estar no CPF do dono e passam para o CNPJ da holding, o que reduz a tributação sobre aluguéis de 27,5% para aproximadamente 8,4% e facilita a sucessão familiar sem inventário judicial.</div></div>
+    <div class="faq-list reveal d2" style="margin-top:40px">
+      <div class="faq-item">
+        <div class="faq-q">Qualquer pessoa pode abrir uma holding patrimonial? <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <div class="faq-a"><p>Sim. Pessoa física com imóveis, investimentos ou participações societárias pode se beneficiar. O ideal é ter patrimônio acima de R$ 500 mil para que a economia tributária justifique os custos de estruturação.</p></div>
       </div>
-
-      <div class="faq-item reveal d2">
-        <button class="faq-q" aria-expanded="false">
-          Holding é só para quem é rico?
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner">Não. A holding faz sentido para qualquer empresário com patrimônio a partir de R$ 1 milhão ou que receba aluguéis acima de R$ 5 mil/mês. A partir desse patamar, a economia tributária e a proteção patrimonial já compensam os custos de constituição e manutenção.</div></div>
+      <div class="faq-item">
+        <div class="faq-q">Quanto custa abrir uma holding? <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <div class="faq-a"><p>Os custos variam conforme o patrimônio e a complexidade da estrutura. Em média, entre R$ 3.000 e R$ 8.000 incluindo honorários contábeis, custas cartoriais e registro. A economia gerada costuma superar esse valor no primeiro ano.</p></div>
       </div>
-
-      <div class="faq-item reveal d3">
-        <button class="faq-q" aria-expanded="false">
-          Qual a diferença entre holding e testamento?
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner">O testamento define quem herda, mas os bens ainda passam por inventário judicial — processo caro (custas + ITCMD + honorários podem chegar a 15-20% do patrimônio) e demorado (2 a 5 anos). A holding permite transferir quotas em vida, com cláusulas de usufruto, inalienabilidade e reversão, evitando o inventário e garantindo que o patrimônio chegue aos herdeiros de forma rápida e com menor custo tributário.</div></div>
+      <div class="faq-item">
+        <div class="faq-q">A holding substitui o testamento? <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <div class="faq-a"><p>Não substitui, mas é complementar. A holding transfere cotas ainda em vida, evitando inventário (que pode levar anos e custar 8 a 10% do patrimônio). O testamento trata de outros aspectos da herança.</p></div>
       </div>
-
-      <div class="faq-item reveal d4">
-        <button class="faq-q" aria-expanded="false">
-          Quanto custa constituir uma holding?
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner">O custo de constituição varia de R$ 8.000 a R$ 25.000, dependendo da quantidade de bens, complexidade da estrutura societária e estado de registro. Inclui honorários contábeis, taxas de Junta Comercial, custos de cartório e ITBI. A manutenção mensal fica entre R$ 500 e R$ 2.000. Em geral, a economia tributária paga o investimento em 6 a 12 meses.</div></div>
+      <div class="faq-item">
+        <div class="faq-q">Holding reduz mesmo o imposto sobre aluguel? <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <div class="faq-a"><p>Sim. Pessoa física paga até 27,5% de IR sobre aluguéis. Com a holding no Lucro Presumido, a carga tributária fica entre 11,33% e 14,53%, dependendo do faturamento. A economia pode ultrapassar R$ 20 mil por ano.</p></div>
       </div>
-
-      <div class="faq-item reveal d5">
-        <button class="faq-q" aria-expanded="false">
-          Como a reforma tributária afeta holdings?
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner">A reforma trouxe mudanças importantes: possibilidade de tributação adicional sobre dividendos, reavaliação de imóveis com alíquota reduzida até 2027 (janela única) e o CIB cruzando dados de aluguel com a Receita. Quem não estruturar a holding agora pode perder essas janelas de oportunidade e enfrentar uma carga tributária maior no futuro.</div></div>
+      <div class="faq-item">
+        <div class="faq-q">É possível proteger os bens de credores? <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <div class="faq-a"><p>Sim, dentro dos limites legais. Bens integralizados antes de dívidas existentes ficam protegidos de futuras ações de credores pessoais, pois pertencem à pessoa jurídica, não ao sócio.</p></div>
       </div>
-
-      <div class="faq-item reveal d6">
-        <button class="faq-q" aria-expanded="false">
-          Preciso de advogado ou contadora para holding?
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
-        </button>
-        <div class="faq-a"><div class="faq-a-inner">Idealmente, os dois trabalham juntos. A contadora cuida da estrutura tributária — regime de tributação, apuração de impostos, obrigações acessórias e contabilidade mensal. O advogado cuida do contrato social, cláusulas de proteção e aspectos jurídicos da sucessão. Na AM Cabral, trabalhamos em parceria com escritórios de advocacia especializados para entregar uma solução completa.</div></div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ============================================ -->
-<!-- 9. CTA FINAL -->
-<!-- ============================================ -->
-<section class="cta-final" id="cta-final">
-  <div class="container">
-    <div class="cta-inner reveal">
-      <div class="cta-tag">Próximo passo</div>
-      <h2 class="cta-h">Seu patrimônio merece a <em>mesma proteção</em> que a sua empresa</h2>
-      <p class="cta-desc">A AM Cabral constitui holdings para empresários industriais há 30 anos. Diagnóstico gratuito para avaliar se a holding faz sentido no seu caso. Sem compromisso.</p>
-      <div class="cta-btns">
-        <a href="https://wa.me/5537999967558?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20constitui%C3%A7%C3%A3o%20de%20holding%20patrimonial" target="_blank" rel="noopener" class="cta-btn-wa">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          Quero Avaliar Meu Caso
-        </a>
-      </div>
-      <div class="cta-sub">Sem compromisso · Resposta em até 24h · Diagnóstico gratuito</div>
-
-      <div class="internal-links" style="margin-top:36px">
-        <a href="/gestao-contabil-industrial/" class="internal-link">Gestão Contábil Industrial</a>
-        <a href="/nossos-servicos/recuperacao-creditos-tributarios/" class="internal-link">Recuperação de Créditos</a>
-        <a href="/planejamento-tributario-industrial/" class="internal-link">Planejamento Tributário</a>
-        <a href="/nossos-servicos/consultoria-tributaria/" class="internal-link">Consultoria Tributária</a>
+      <div class="faq-item">
+        <div class="faq-q">A reforma tributária vai mudar as regras? <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 6l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></div>
+        <div class="faq-a"><p>Sim. As mudanças previstas para 2025 a 2027 podem alterar a tributação de dividendos e a base de cálculo do ITCMD (imposto de herança). Quem estrutura agora garante as regras atuais, mais favoráveis.</p></div>
       </div>
     </div>
   </div>
 </section>
 
-<footer class="site-footer">
-  <div class="footer-inner">
-
-    <!-- Prova social -->
-
-    <div class="footer-grid">
-
-      <!-- Col 1: Brand + Social + Fale Conosco -->
-      <div class="footer-brand-col">
-
-        <p class="footer-contact-title">Fale Conosco</p>
-        <address class="footer-nap">
-          <a href="tel:+5537999967558" class="footer-nap-row">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.83a16 16 0 0 0 5.38 5.38l1.92-1.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-            (37) 99996-7558
-          </a>
-          <a href="mailto:contato@amcabralblindagem.com.br" class="footer-nap-row">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-            contato@amcabralblindagem.com.br
-          </a>
-          <span class="footer-nap-row">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            Rua Major Fidelis, 244, Centro<br>Pará de Minas, MG 35660-109
-          </span>
-          <span class="footer-nap-row">
-            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-            CNPJ 34.733.620/0001-51
-          </span>
-        </address>
-      </div>
-
-      <!-- Col 2: A Empresa -->
-      <div class="footer-col">
-        <h3 class="footer-heading">A Empresa</h3>
-        <ul>
-          <li><a href="/sobre-amcabral-blindagem/">Sobre</a></li>
-          <li><a href="/casos-de-sucesso/">Casos de Sucesso</a></li>
-          <li><a href="/faq-amcabralblindagem/">Duvidas Frequentes</a></li>
-          <li><a href="/fale-com-especialista/">Contato</a></li>
-          <li><a href="/blog/">Blog</a></li>
-        </ul>
-      </div>
-
-      <!-- Col 3: Serviços -->
-      <div class="footer-col">
-        <h3 class="footer-heading">Serviços</h3>
-        <ul>
-          <li><a href="/nossos-servicos/gestao-contabil/">Contabilidade Estratégica</a></li>
-          <li><a href="/nossos-servicos/recuperacao-creditos-tributarios/">Recuperação de Créditos</a></li>
-          <li><a href="/nossos-servicos/holding-patrimonial/">Holding</a></li>
-          <li><a href="/nossos-servicos/planejamento-tributario/">Planejamento Fiscal</a></li>
-          <li><a href="/nossos-servicos/consultoria-tributaria/">Consultoria Tributária</a></li>
-        </ul>
-      </div>
-
-      <!-- Col 4: Cidades Atendidas -->
-      <div class="footer-col">
-        <h3 class="footer-heading">Cidades Atendidas</h3>
-        <ul>
-          <li><a href="/contabilidade-para-de-minas/">Pará de Minas</a></li>
-          <li><a href="/contabilidade-sete-lagoas/">Sete Lagoas</a></li>
-          <li><a href="/contador-betim/">Betim</a></li>
-          <li><a href="/contador-belo-horizonte/">Belo Horizonte</a></li>
-          <li><a href="/cidades-atendidas/">Ver todas as cidades →</a></li>
-        </ul>
-      </div>
-
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <div class="inner">
+    <p class="sec-tag reveal">Próximo passo</p>
+    <h2 class="sec-h reveal d1">Agende sua simulação <em>gratuita</em> de holding</h2>
+    <p class="sec-sub reveal d2">Em 30 minutos a Amanda analisa seu patrimônio e projeta exatamente quanto você pode economizar por ano com a estrutura correta.</p>
+    <div class="cta-btns reveal d3">
+      <a href="https://wa.me/5531912745462?text=Olá%20Amanda%2C%20quero%20uma%20simulação%20de%20holding%20patrimonial" class="btn-gold" target="_blank" rel="noopener">Falar com Amanda agora</a>
+      <a href="/nossos-servicos/" class="btn-ghost">Ver todos os serviços</a>
     </div>
+  </div>
+</section>
 
+</main>
 
-    <p class="footer-wordmark-tagline"><em>Inteligência tributária para empresas que competem para vencer.</em></p>
-    <div class="footer-wordmark">AM Cabral Contabilidade</div>
-
-    <!-- Barra legal -->
-    <div class="footer-legal">
-      <p>© 2026 Amanda Silva Cabral Contabilidade. CNPJ 34.733.620/0001-51. CRC/MG ativo.</p>
-      <div class="footer-social-icons">
-        <a href="https://www.instagram.com/amandacabral28/" target="_blank" rel="noopener" aria-label="Instagram">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg>
-        </a>
-        <a href="https://www.linkedin.com/in/amanda-cabral-de-oliveira-82183a179/" target="_blank" rel="noopener" aria-label="LinkedIn">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-        </a>
+<!-- Footer -->
+<footer>
+  <div class="ft-inner">
+    <div class="ft-grid">
+      <div>
+        <div class="ft-brand">AM <span>Cabral</span></div>
+        <p class="ft-desc">Contabilidade estratégica para empresários e proprietários que querem pagar menos imposto, crescer com segurança e proteger o patrimônio.</p>
       </div>
-      <div class="footer-legal-links">
-        <a href="/politica-de-privacidade/">Política de Privacidade</a>
-        <a href="/politica-de-cookies/">Política de Cookies</a>
-        <a href="/termos-de-uso/">Termos de Uso</a>
+      <div class="ft-col">
+        <h4>Serviços</h4>
+        <a href="/nossos-servicos/gestao-contabil/">Gestão Contábil</a>
+        <a href="/nossos-servicos/holding-patrimonial/">Holding Patrimonial</a>
+        <a href="/nossos-servicos/planejamento-tributario/">Planejamento Tributário</a>
+        <a href="/nossos-servicos/abertura-de-empresa/">Abertura de Empresa</a>
       </div>
+      <div class="ft-col">
+        <h4>Empresa</h4>
+        <a href="/sobre-nos/">Sobre Nós</a>
+        <a href="/blog/">Blog</a>
+        <a href="https://wa.me/5531912745462" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+    <div class="ft-bottom">
+      <p class="ft-copy">© 2024 AM Cabral Contabilidade. Todos os direitos reservados.</p>
+      <p class="ft-copy">CRC/MG — Belo Horizonte, MG</p>
     </div>
   </div>
 </footer>
 
-
-
-<!-- WHATSAPP FLOAT -->
-<a href="https://wa.me/5537999967558?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20holding%20patrimonial" target="_blank" rel="noopener" aria-label="Fale pelo WhatsApp" style="position:fixed;bottom:24px;right:24px;width:56px;height:56px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(0,0,0,.25);z-index:9999;transition:transform .2s;">
-  <svg width="28" height="28" viewBox="0 0 24 24" fill="#fff"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+<!-- WhatsApp Float -->
+<a href="https://wa.me/5531912745462?text=Olá%20Amanda%2C%20quero%20informações%20sobre%20holding%20patrimonial" class="wa-float" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+  <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"/></svg>
+  Falar no WhatsApp
 </a>
 
 <script>
-/* === READING PROGRESS === */
-window.addEventListener('scroll', function() {
-  var h = document.documentElement.scrollHeight - window.innerHeight;
-  var prog = document.getElementById('readingProg');
-  if (prog && h > 0) prog.style.width = (window.scrollY / h * 100) + '%';
-}, {passive: true});
+(function(){
+  // Loader
+  const loader = document.getElementById('loader');
+  const words = document.querySelectorAll('#loader-words span');
+  const fill = document.getElementById('loader-bar-fill');
+  let wi = 0;
+  function showWord(){
+    if(wi < words.length){ words[wi].classList.add('show'); wi++; setTimeout(showWord,320); }
+    else { fill.style.width='100%'; setTimeout(()=>{ loader.classList.add('done'); document.body.classList.add('cursor-ready'); initReveal(); },600); }
+  }
+  showWord();
+
+  // Cursor
+  const cur = document.getElementById('cur');
+  if(window.matchMedia('(hover:hover)').matches){
+    document.addEventListener('mousemove',e=>{ cur.style.left=e.clientX+'px'; cur.style.top=e.clientY+'px'; });
+    document.querySelectorAll('a,button').forEach(el=>{
+      el.addEventListener('mouseenter',()=>{ cur.style.width='56px'; cur.style.height='56px'; });
+      el.addEventListener('mouseleave',()=>{ cur.style.width='36px'; cur.style.height='36px'; });
+    });
+  }
+
+  // Scroll progress
+  const prog = document.getElementById('prog');
+  window.addEventListener('scroll',()=>{
+    const s = document.documentElement;
+    const p = s.scrollTop / (s.scrollHeight - s.clientHeight) * 100;
+    prog.style.width = p + '%';
+  },{ passive: true });
+
+  // Mega menus
+  document.querySelectorAll('.mega-wrap').forEach(wrap=>{
+    const btn = wrap.querySelector('.mega-trigger');
+    const panel = wrap.querySelector('.mega-panel');
+    if(!btn || !panel) return;
+    btn.addEventListener('mouseenter',()=>{ panel.classList.add('open'); btn.setAttribute('aria-expanded','true'); });
+    wrap.addEventListener('mouseleave',()=>{ panel.classList.remove('open'); btn.setAttribute('aria-expanded','false'); });
+  });
+
+  // Mobile nav
+  const burger = document.getElementById('burger');
+  const mobNav = document.getElementById('mob-nav');
+  const mobClose = document.getElementById('mob-close');
+  burger.addEventListener('click',()=>{ mobNav.classList.add('open'); mobClose.classList.add('open'); document.body.style.overflow='hidden'; });
+  mobClose.addEventListener('click',()=>{ mobNav.classList.remove('open'); mobClose.classList.remove('open'); document.body.style.overflow=''; });
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-item').forEach(item=>{
+    item.querySelector('.faq-q').addEventListener('click',()=>{
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item').forEach(i=>i.classList.remove('open'));
+      if(!isOpen) item.classList.add('open');
+    });
+  });
+
+  // Reveal
+  function initReveal(){
+    const io = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    },{ threshold:.12 });
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  }
+})();
 </script>
 </body>
 </html>
