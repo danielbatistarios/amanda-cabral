@@ -101,8 +101,8 @@ html { scroll-behavior: smooth; }
 }
 
 body {
-  background: var(--paper);
-  color: var(--ink);
+  background: var(--z0);
+  color: var(--paper);
   font-family: var(--sans);
   font-size: 16px;
   line-height: 1.75;
@@ -377,31 +377,16 @@ ul { list-style: none; }
 @media (max-width: 600px) { #hdr-inner { padding: 0 16px; } }
 
 /* ── Breadcrumb ── */
-.lp-breadcrumb {
-  background: #1E293B;
-  border-bottom: 1px solid #334155;
-  padding: 10px 0;
-}
-.lp-breadcrumb ol {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  font-size: 11px;
-  font-weight: 600;
-  letter-spacing: .06em;
-  text-transform: uppercase;
-  color: #94A3B8;
-}
-.lp-breadcrumb ol li:not(:last-child)::after { content: '›'; margin-left: 6px; color: #475569; }
-.lp-breadcrumb ol a { color: #94A3B8; text-decoration: none; transition: color .2s; }
-.lp-breadcrumb ol a:hover { color: #fff; }
-.lp-breadcrumb ol li[aria-current] { color: var(--dourado); }
+.breadcrumb { padding: 12px 24px; background: var(--z1); border-bottom: 1px solid rgba(255,255,255,.06); }
+.breadcrumb-inner { max-width: 1200px; margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 13px; color: rgba(255,255,255,.45); }
+.breadcrumb-inner a { color: rgba(255,255,255,.45); text-decoration: none; transition: color .2s; }
+.breadcrumb-inner a:hover { color: var(--dourado); }
+.bc-sep { opacity: .4; }
 
 /* ── Hero (dark / grid-bg + orbs) ── */
 .page-hero {
   background: var(--z0);
-  padding: clamp(80px, 10vw, 128px) 0 clamp(64px, 8vw, 96px);
+  padding: clamp(72px, 10vw, 120px) 0 clamp(56px, 7vw, 80px);
   position: relative;
   overflow: hidden;
 }
@@ -435,7 +420,7 @@ ul { list-style: none; }
 }
 .hero-layout {
   display: grid;
-  grid-template-columns: 1fr 340px;
+  grid-template-columns: 1fr 300px;
   gap: 64px;
   align-items: center;
   position: relative;
@@ -446,7 +431,7 @@ ul { list-style: none; }
   border-radius: 20px;
   overflow: hidden;
   aspect-ratio: 3/4;
-  max-height: 440px;
+  max-height: 400px;
   position: relative;
 }
 .hero-img-col::before {
@@ -495,11 +480,45 @@ ul { list-style: none; }
   font-size: 1.05rem;
   color: rgba(255,255,255,.65);
   line-height: 1.8;
-  max-width: 560px;
+  max-width: 520px;
+  margin-bottom: 36px;
+}
+/* Hero trust strip */
+.hero-trust {
+  display: flex;
+  gap: 0;
+  flex-wrap: wrap;
+  border: 1px solid rgba(255,255,255,.07);
+  border-radius: 12px;
+  overflow: hidden;
+  max-width: 520px;
+}
+.hero-trust-item {
+  flex: 1;
+  min-width: 120px;
+  padding: 16px 20px;
+  border-right: 1px solid rgba(255,255,255,.07);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.hero-trust-item:last-child { border-right: none; }
+.hero-trust-val {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.35rem;
+  color: var(--dourado);
+  line-height: 1;
+}
+.hero-trust-label {
+  font-size: 11px;
+  color: rgba(255,255,255,.4);
+  line-height: 1.3;
 }
 @media (max-width: 860px) {
   .hero-layout { grid-template-columns: 1fr; }
   .hero-img-col { display: none; }
+  .hero-trust { max-width: 100%; }
 }
 
 /* ── Numbers strip (dark / z1 → metric cards) ── */
@@ -668,11 +687,22 @@ ul { list-style: none; }
 .caso-quote cite { font-size: 11px; color: rgba(255,255,255,.3); font-style: normal; }
 @media (max-width: 860px) { .caso-destaque { grid-template-columns: 1fr; } }
 
-/* ── Cards grid (paper / dot-grid) ── */
+/* ── Cards grid (dark / cross-pattern) ── */
 .casos-grid-sec {
-  background: var(--paper);
+  background: var(--z1);
   padding: var(--sec-pad) 0;
+  position: relative;
+  overflow: hidden;
 }
+.casos-grid-sec::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0v40M0 20h40' stroke='%23ffffff' stroke-width='.3' opacity='.04'/%3E%3C/svg%3E");
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+.casos-grid-sec > * { position: relative; z-index: 1; }
 .casos-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -680,31 +710,31 @@ ul { list-style: none; }
   margin-top: 40px;
 }
 .caso-card {
-  background: #fff;
-  border: 1px solid var(--paper2);
+  background: rgba(255,255,255,.025);
+  border: 1px solid rgba(255,255,255,.06);
   border-radius: var(--r-card);
   padding: 28px 24px;
-  transition: transform .3s var(--spring), box-shadow .3s, border-color .3s;
+  transition: transform .3s var(--spring), box-shadow .3s, border-color .3s, background .3s;
 }
-.caso-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,.08); border-color: var(--paper3); }
+.caso-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,.4); background: rgba(255,255,255,.05); border-color: rgba(201,168,76,.2); }
 .caso-card-seg {
   display: block;
   font-size: 10px; font-weight: 700;
   text-transform: uppercase; letter-spacing: .12em;
-  color: var(--accent);
+  color: var(--accent2);
   margin-bottom: 12px;
 }
 .caso-card h3 {
   font-family: var(--serif);
   font-size: 1.1rem;
-  color: var(--ink);
+  color: var(--paper);
   line-height: 1.3;
   margin-bottom: 12px;
 }
 .caso-card > p {
   font-size: 14px;
   line-height: 1.7;
-  color: #64748B;
+  color: rgba(255,255,255,.5);
   margin-bottom: 16px;
 }
 .caso-card-results {
@@ -716,19 +746,19 @@ ul { list-style: none; }
 .caso-card-result span {
   display: block;
   font-size: 11px;
-  color: #94A3B8;
+  color: rgba(255,255,255,.35);
   margin-bottom: 3px;
 }
 .caso-card-result strong {
   font-family: var(--serif);
   font-style: italic;
   font-size: 1.25rem;
-  color: var(--ink);
+  color: var(--dourado);
 }
 .caso-card-link {
   font-size: 13px;
   font-weight: 600;
-  color: var(--accent);
+  color: var(--accent2);
   display: inline-flex;
   align-items: center;
   gap: 4px;
@@ -738,7 +768,8 @@ ul { list-style: none; }
 
 /* ── Segmentos (dark / cross-pattern) ── */
 .segmentos-sec {
-  background: var(--z0);
+  background: var(--paper2);
+  color: var(--ink);
   padding: var(--sec-pad) 0;
 }
 .segmentos-grid {
@@ -748,15 +779,15 @@ ul { list-style: none; }
   margin-top: 40px;
 }
 .seg-card {
-  background: rgba(255,255,255,.02);
-  border: 1px solid var(--border-z1);
+  background: #fff;
+  border: 1px solid rgba(15,33,55,.08);
   border-radius: 16px;
   padding: 28px 24px 24px;
   display: flex;
   flex-direction: column;
   position: relative;
   overflow: hidden;
-  transition: border-color .4s, background .4s, transform .4s var(--spring);
+  transition: border-color .4s, box-shadow .4s, transform .4s var(--spring);
 }
 .seg-card::after {
   content: '';
@@ -767,35 +798,35 @@ ul { list-style: none; }
   opacity: 0;
   transition: opacity .4s;
 }
-.seg-card:hover { border-color: rgba(59,130,246,.2); background: rgba(255,255,255,.04); transform: translateY(-4px); }
+.seg-card:hover { border-color: rgba(59,130,246,.2); box-shadow: 0 8px 32px rgba(6,14,26,.1); transform: translateY(-4px); }
 .seg-card:hover::after { opacity: 1; }
 .seg-num {
   font-family: var(--serif);
   font-size: .75rem;
   font-style: italic;
-  color: rgba(201,168,76,.4);
+  color: rgba(201,168,76,.6);
   letter-spacing: .05em;
   margin-bottom: 16px;
 }
 .seg-icon {
   width: 48px; height: 48px;
   border-radius: 12px;
-  background: rgba(59,130,246,.08);
-  border: 1px solid rgba(59,130,246,.12);
+  background: rgba(59,130,246,.07);
+  border: 1px solid rgba(59,130,246,.14);
   display: flex; align-items: center; justify-content: center;
   margin-bottom: 18px;
   transition: background .3s, border-color .3s;
 }
-.seg-card:hover .seg-icon { background: rgba(59,130,246,.14); border-color: rgba(59,130,246,.22); }
+.seg-card:hover .seg-icon { background: rgba(59,130,246,.12); border-color: rgba(59,130,246,.24); }
 .seg-icon svg { width: 22px; height: 22px; color: var(--accent); }
 .seg-card h3 {
   font-family: var(--serif);
   font-size: 1.1rem;
-  color: var(--paper);
+  color: var(--ink);
   margin-bottom: 10px;
   line-height: 1.2;
 }
-.seg-card p { font-size: 13.5px; color: var(--dim); line-height: 1.65; flex: 1; }
+.seg-card p { font-size: 13.5px; color: #475569; line-height: 1.65; flex: 1; }
 .seg-badge {
   display: inline-block;
   margin-top: 16px;
@@ -804,8 +835,8 @@ ul { list-style: none; }
   letter-spacing: .1em;
   text-transform: uppercase;
   color: var(--accent);
-  background: rgba(59,130,246,.08);
-  border: 1px solid rgba(59,130,246,.12);
+  background: rgba(59,130,246,.07);
+  border: 1px solid rgba(59,130,246,.14);
   border-radius: 4px;
   padding: 4px 10px;
   width: fit-content;
@@ -813,11 +844,25 @@ ul { list-style: none; }
 @media (max-width: 860px) { .segmentos-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 480px) { .segmentos-grid { grid-template-columns: 1fr; } }
 
-/* ── Depoimentos (paper / dot-grid) ── */
+/* ── Depoimentos (dark / noise) ── */
 .depo-sec {
-  background: var(--paper);
+  background: var(--z0);
   padding: var(--sec-pad) 0;
+  position: relative;
+  overflow: hidden;
 }
+.depo-sec::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.045'/%3E%3C/svg%3E");
+  background-size: 200px 200px;
+  mix-blend-mode: screen;
+  opacity: .4;
+}
+.depo-sec > * { position: relative; z-index: 1; }
 .depo-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -825,18 +870,20 @@ ul { list-style: none; }
   margin-top: 40px;
 }
 .depo-card {
-  background: #fff;
-  border: 1px solid var(--paper2);
+  background: rgba(255,255,255,.03);
+  border: 1px solid rgba(255,255,255,.07);
   border-radius: var(--r-card);
   padding: 28px 24px;
   display: flex;
   flex-direction: column;
   gap: 16px;
+  transition: background .3s, border-color .3s;
 }
+.depo-card:hover { background: rgba(255,255,255,.06); border-color: rgba(201,168,76,.18); }
 .depo-stars { color: #F59E0B; font-size: 14px; letter-spacing: 2px; }
 .depo-card blockquote {
   font-size: 15px;
-  color: #334155;
+  color: rgba(255,255,255,.6);
   line-height: 1.75;
   font-style: italic;
   flex: 1;
@@ -844,24 +891,46 @@ ul { list-style: none; }
 .depo-author {
   font-size: 13px;
   font-weight: 700;
-  color: var(--ink);
+  color: var(--paper);
 }
 .depo-author span {
   display: block;
   font-weight: 400;
-  color: #64748B;
+  color: rgba(255,255,255,.4);
   font-size: 12px;
   margin-top: 2px;
 }
 @media (max-width: 860px) { .depo-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 540px) { .depo-grid { grid-template-columns: 1fr; } }
 
-/* ── CTA final (dark / noise) ── */
+/* ── CTA final (dark / radial glow) ── */
 .cta-sec {
-  background: var(--z2);
+  background: var(--z0);
   padding: var(--sec-pad) 0;
   text-align: center;
+  position: relative;
+  overflow: hidden;
 }
+.cta-sec::before {
+  content: '';
+  position: absolute;
+  width: 800px; height: 800px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(59,130,246,.08) 0%, transparent 65%);
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+.cta-sec::after {
+  content: '';
+  position: absolute;
+  width: 600px; height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(201,168,76,.05) 0%, transparent 65%);
+  bottom: -200px; right: -100px;
+  pointer-events: none;
+}
+.cta-sec > * { position: relative; z-index: 1; }
 .cta-inner { max-width: 680px; margin: 0 auto; }
 .cta-sec .sec-h { margin-bottom: 16px; }
 .cta-sec p {
@@ -1009,9 +1078,235 @@ a.footer-nap-row:hover svg { color: var(--gold); }
   .footer-legal-links { flex-wrap: wrap; justify-content: center; }
 }
 
+/* ── Metodologia ── */
+.metod-sec {
+  background: var(--paper);
+  color: var(--ink);
+  padding: var(--sec-pad) 0;
+  position: relative;
+  overflow: hidden;
+}
+.metod-sec > * { position: relative; z-index: 1; }
+.metod-steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-top: 48px;
+  position: relative;
+}
+.metod-steps::before {
+  content: '';
+  position: absolute;
+  top: 32px;
+  left: calc(12.5% + 8px);
+  right: calc(12.5% + 8px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,.4), rgba(201,168,76,.4), transparent);
+  pointer-events: none;
+}
+.metod-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 20px 0;
+  position: relative;
+}
+.metod-step-num {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(201,168,76,.1);
+  border: 1px solid rgba(201,168,76,.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.4rem;
+  color: #9a7a2e;
+  margin-bottom: 24px;
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+.metod-step h3 {
+  font-family: var(--serif);
+  font-size: 1rem;
+  color: var(--z0);
+  margin-bottom: 10px;
+  line-height: 1.3;
+}
+.metod-step p {
+  font-size: 13px;
+  color: #475569;
+  line-height: 1.65;
+}
+@media (max-width: 860px) {
+  .metod-steps { grid-template-columns: repeat(2, 1fr); gap: 40px 24px; }
+  .metod-steps::before { display: none; }
+}
+@media (max-width: 480px) {
+  .metod-steps { grid-template-columns: 1fr; gap: 32px; }
+}
+
+/* ── Caso-card expandido ── */
+.caso-card-problem {
+  font-size: 12px;
+  color: rgba(255,255,255,.35);
+  background: rgba(255,255,255,.03);
+  border-left: 2px solid rgba(201,168,76,.25);
+  padding: 10px 12px;
+  border-radius: 0 6px 6px 0;
+  margin-bottom: 16px;
+  line-height: 1.55;
+}
+.caso-card-problem strong {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: rgba(201,168,76,.5);
+  margin-bottom: 4px;
+}
+
+/* ── Depo com avatar ── */
+.depo-avatar-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+.depo-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--z3), var(--z4));
+  border: 1px solid rgba(201,168,76,.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: .9rem;
+  color: var(--dourado);
+  flex-shrink: 0;
+}
+.depo-result-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(201,168,76,.07);
+  border: 1px solid rgba(201,168,76,.15);
+  border-radius: 4px;
+  padding: 5px 10px;
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--dourado);
+  letter-spacing: .04em;
+  margin-bottom: 12px;
+  width: fit-content;
+}
+
+/* ── CTA social proof strip ── */
+.cta-proof {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+  padding-top: 32px;
+  border-top: 1px solid rgba(255,255,255,.06);
+}
+.cta-proof-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+.cta-proof-val {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.5rem;
+  color: var(--dourado);
+  line-height: 1;
+}
+.cta-proof-label {
+  font-size: 11px;
+  color: rgba(255,255,255,.35);
+}
+.cta-proof-divider {
+  width: 1px;
+  height: 40px;
+  background: rgba(255,255,255,.07);
+}
+
 /* ── Mobile cursor off ── */
 @media (max-width: 768px) {
   .cursor, .cursor-dot { display: none; }
+}
+
+/* ── Marquees ── */
+.marquee-section {
+  background: var(--z1);
+  border-top: 1px solid rgba(255,255,255,.03);
+  border-bottom: 1px solid rgba(255,255,255,.03);
+  padding: 18px 0;
+  overflow: hidden;
+  position: relative;
+}
+.marquee-section::before, .marquee-section::after {
+  content: '';
+  position: absolute;
+  top: 0; bottom: 0;
+  width: 120px;
+  z-index: 2;
+}
+.marquee-section::before { left: 0; background: linear-gradient(90deg, var(--z1), transparent); }
+.marquee-section::after  { right: 0; background: linear-gradient(-90deg, var(--z1), transparent); }
+
+.marquee-section--gold {
+  background: var(--dourado);
+  border-top: none;
+  border-bottom: none;
+}
+.marquee-section--gold::before { background: linear-gradient(90deg, var(--dourado), transparent); }
+.marquee-section--gold::after  { background: linear-gradient(-90deg, var(--dourado), transparent); }
+.marquee-section--gold .marquee-item { color: #0A0E14; font-weight: 700; }
+.marquee-section--gold .sep { background: rgba(0,0,0,.35) !important; }
+
+.marquee-track {
+  display: flex;
+  gap: 48px;
+  animation: marquee-cs 30s linear infinite;
+  width: max-content;
+}
+.marquee-track:hover { animation-play-state: paused; }
+
+@keyframes marquee-cs {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.marquee-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: .78rem;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.85);
+  white-space: nowrap;
+}
+.marquee-item .sep {
+  display: inline-block;
+  width: 4px; height: 4px;
+  background: var(--dourado);
+  border-radius: 50%;
+  opacity: .6;
+  flex-shrink: 0;
 }
 </style>
 </head>
@@ -1116,14 +1411,6 @@ a.footer-nap-row:hover svg { color: var(--gold); }
   <a href="/fale-com-especialista/" style="color:var(--accent-gold);margin-top:16px;font-weight:700;">Diagnóstico Gratuito</a>
 </div>
 
-<!-- BREADCRUMB -->
-<nav class="lp-breadcrumb" aria-label="Breadcrumb">
-  <ol class="container">
-    <li><a href="/">Início</a></li>
-    <li aria-current="page">Casos de Sucesso</li>
-  </ol>
-</nav>
-
 <!-- HERO — dark / grid-bg + orbs -->
 <section class="page-hero">
   <div class="hero-orb-1"></div>
@@ -1137,37 +1424,91 @@ a.footer-nap-row:hover svg { color: var(--gold); }
         </div>
         <h1 class="sec-h lt reveal d1">Empresas que <em>transformaram</em> sua relação com os impostos</h1>
         <p class="page-hero-desc reveal d2">Cada caso abaixo representa uma empresa que pagava mais do que devia ou tinha patrimônio desprotegido. Os números são reais, auditados e documentados.</p>
+        <div class="hero-trust reveal d3">
+          <div class="hero-trust-item">
+            <span class="hero-trust-val">R$ 12M+</span>
+            <span class="hero-trust-label">Créditos recuperados</span>
+          </div>
+          <div class="hero-trust-item">
+            <span class="hero-trust-val">120+</span>
+            <span class="hero-trust-label">Empresas atendidas</span>
+          </div>
+          <div class="hero-trust-item">
+            <span class="hero-trust-val">0</span>
+            <span class="hero-trust-label">Autuações em clientes ativos</span>
+          </div>
+        </div>
       </div>
-      <div class="hero-img-col reveal d3">
+      <div class="hero-img-col reveal d4">
         <img src="/amanda-sobre.webp" alt="Amanda Cabral Contadora" width="340" height="453" loading="eager">
       </div>
     </div>
   </div>
 </section>
 
-<!-- NUMBERS — dark / z1 metric cards -->
-<div class="numbers-sec">
+<!-- BREADCRUMB -->
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <div class="breadcrumb-inner">
+    <a href="/">Início</a><span class="bc-sep">›</span>
+    <span>Casos de Sucesso</span>
+  </div>
+</nav>
+
+<!-- MARQUEE AZUL — após hero -->
+<section class="marquee-section" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item">CRC/MG Ativo<span class="sep"></span></span>
+    <span class="marquee-item">20 Anos de Experi&ecirc;ncia<span class="sep"></span></span>
+    <span class="marquee-item">R$ 12M+ Recuperados<span class="sep"></span></span>
+    <span class="marquee-item">120+ Empresas Atendidas<span class="sep"></span></span>
+    <span class="marquee-item">Especialista ICMS/IPI<span class="sep"></span></span>
+    <span class="marquee-item">P&oacute;s em Direito Tribut&aacute;rio<span class="sep"></span></span>
+    <span class="marquee-item">0 Autu&aacute;es em Clientes Ativos<span class="sep"></span></span>
+    <span class="marquee-item">Membro IBPT<span class="sep"></span></span>
+    <span class="marquee-item">Par&aacute; de Minas, MG<span class="sep"></span></span>
+    <span class="marquee-item">Blindagem Fiscal<span class="sep"></span></span>
+    <span class="marquee-item">CRC/MG Ativo<span class="sep"></span></span>
+    <span class="marquee-item">20 Anos de Experi&ecirc;ncia<span class="sep"></span></span>
+    <span class="marquee-item">R$ 12M+ Recuperados<span class="sep"></span></span>
+    <span class="marquee-item">120+ Empresas Atendidas<span class="sep"></span></span>
+    <span class="marquee-item">Especialista ICMS/IPI<span class="sep"></span></span>
+    <span class="marquee-item">P&oacute;s em Direito Tribut&aacute;rio<span class="sep"></span></span>
+    <span class="marquee-item">0 Autu&aacute;es em Clientes Ativos<span class="sep"></span></span>
+    <span class="marquee-item">Membro IBPT<span class="sep"></span></span>
+    <span class="marquee-item">Par&aacute; de Minas, MG<span class="sep"></span></span>
+    <span class="marquee-item">Blindagem Fiscal<span class="sep"></span></span>
+  </div>
+</section>
+
+<!-- METODOLOGIA — dark / cross-pattern -->
+<section class="metod-sec">
   <div class="container">
-    <div class="numbers-grid">
-      <div class="numbers-item reveal">
-        <div class="numbers-val">R$ 12M+</div>
-        <div class="numbers-label">créditos tributários recuperados para clientes</div>
+    <span class="sec-label dk reveal">Como chegamos aos resultados</span>
+    <h2 class="sec-h dk reveal d1">Um processo de <em>4 etapas</em> que não deixa dinheiro na mesa</h2>
+    <div class="metod-steps">
+      <div class="metod-step reveal d1">
+        <div class="metod-step-num">01</div>
+        <h3>Diagnóstico Tributário</h3>
+        <p>Análise de 5 anos de apurações fiscais, SPED, DCTF e declarações. Identificamos o que foi pago a mais e o que pode ser recuperado.</p>
       </div>
-      <div class="numbers-item reveal d1">
-        <div class="numbers-val">120+</div>
-        <div class="numbers-label">empresas atendidas em MG e no Brasil</div>
+      <div class="metod-step reveal d2">
+        <div class="metod-step-num">02</div>
+        <h3>Mapa de Oportunidades</h3>
+        <p>Cruzamento entre regime tributário, atividade real e benefícios legais disponíveis. Cada centavo de economia tem amparo na legislação.</p>
       </div>
-      <div class="numbers-item reveal d2">
-        <div class="numbers-val">20 anos</div>
-        <div class="numbers-label">de atuação no mercado contábil</div>
+      <div class="metod-step reveal d3">
+        <div class="metod-step-num">03</div>
+        <h3>Execução e Acompanhamento</h3>
+        <p>Protocolo junto à Receita, defesas e acompanhamento de cada processo até o crédito efetivamente depositado ou compensado.</p>
       </div>
-      <div class="numbers-item reveal d3">
-        <div class="numbers-val">0</div>
-        <div class="numbers-label">autuações fiscais em clientes ativos</div>
+      <div class="metod-step reveal d4">
+        <div class="metod-step-num">04</div>
+        <h3>Blindagem Contínua</h3>
+        <p>Monitoramento mensal para garantir que nenhum novo crédito seja perdido e que a empresa esteja protegida para o próximo ciclo.</p>
       </div>
     </div>
   </div>
-</div>
+</section>
 
 <!-- DESTAQUE — dark / noise -->
 <section class="destaque-sec noise" id="caso-destaque">
@@ -1227,16 +1568,19 @@ a.footer-nap-row:hover svg { color: var(--gold); }
   </div>
 </section>
 
-<!-- OUTROS CASOS — paper / dot-grid -->
-<section class="casos-grid-sec dot-grid">
+<!-- OUTROS CASOS — dark / cross-pattern -->
+<section class="casos-grid-sec">
   <div class="container">
     <span class="sec-label lt reveal">Outros Resultados</span>
-    <h2 class="sec-h dk reveal d1">Histórias de empresas que pararam de <em>pagar impostos a mais</em></h2>
+    <h2 class="sec-h lt reveal d1">Histórias de empresas que pararam de <em>pagar impostos a mais</em></h2>
     <div class="casos-grid">
       <div class="caso-card reveal d1">
         <span class="caso-card-seg">Distribuição</span>
         <h3>Distribuidora de insumos em BH recupera R$ 340K em PIS/COFINS</h3>
-        <p>Empresa enquadrada no Lucro Real com aproveitamento incorreto de créditos de PIS e COFINS por 5 anos consecutivos.</p>
+        <div class="caso-card-problem">
+          <strong>Problema raiz</strong>
+          Empresa no Lucro Real creditava apenas as entradas diretas, ignorando os insumos indiretos elegíveis por 5 anos. O contador anterior nunca fez a revisão retroativa.
+        </div>
         <div class="caso-card-results">
           <div class="caso-card-result"><span>Créditos recuperados</span><strong>R$ 340K</strong></div>
           <div class="caso-card-result"><span>Prazo</span><strong>12 meses</strong></div>
@@ -1247,7 +1591,10 @@ a.footer-nap-row:hover svg { color: var(--gold); }
       <div class="caso-card reveal d2">
         <span class="caso-card-seg">Holding Familiar</span>
         <h3>Família empresária protege R$ 4,2M em imóveis via holding patrimonial</h3>
-        <p>Três gerações de patrimônio imobiliário sem estrutura jurídica de proteção. Holding constituída em 90 dias com economia imediata em ITCMD.</p>
+        <div class="caso-card-problem">
+          <strong>Problema raiz</strong>
+          Imóveis registrados em pessoa física expunham o patrimônio familiar a dívidas empresariais e criavam uma alíquota de ITCMD de até 8% na sucessão. Sem blindagem nenhuma.
+        </div>
         <div class="caso-card-results">
           <div class="caso-card-result"><span>Patrimônio protegido</span><strong>R$ 4,2M</strong></div>
           <div class="caso-card-result"><span>Economia ITCMD</span><strong>R$ 210K</strong></div>
@@ -1258,7 +1605,10 @@ a.footer-nap-row:hover svg { color: var(--gold); }
       <div class="caso-card reveal d3">
         <span class="caso-card-seg">Indústria Têxtil</span>
         <h3>Confecção de Nova Lima migra regime e economiza R$ 190K ao ano</h3>
-        <p>Empresa no Lucro Presumido com faturamento que justificava Lucro Real. Migração e reestruturação geraram economia consistente a partir do primeiro ano.</p>
+        <div class="caso-card-problem">
+          <strong>Problema raiz</strong>
+          Faturamento de R$ 6,8M no Lucro Presumido gerava base de cálculo inflada. A empresa nunca foi orientada a simular o Lucro Real, que permitiria abater despesas reais.
+        </div>
         <div class="caso-card-results">
           <div class="caso-card-result"><span>Economia anual</span><strong>R$ 190K</strong></div>
           <div class="caso-card-result"><span>Redução carga</span><strong>31%</strong></div>
@@ -1270,11 +1620,79 @@ a.footer-nap-row:hover svg { color: var(--gold); }
   </div>
 </section>
 
+<!-- DEPOIMENTOS — dark / noise -->
+<section class="depo-sec">
+  <div class="container">
+    <span class="sec-label lt reveal">O que nossos clientes dizem</span>
+    <h2 class="sec-h lt reveal d1">Transparência e resultado <em>em cada relação</em></h2>
+    <div class="depo-grid">
+      <div class="depo-card reveal d1">
+        <div class="depo-result-badge">R$ 340K recuperados</div>
+        <div class="depo-stars">★★★★★</div>
+        <blockquote>"Eu tinha medo de mexer no regime tributário da empresa. A Amanda me mostrou, com números, que ficar parado era o risco maior. Em 12 meses recuperamos R$ 340 mil que eram nossos e estavam presos na Receita."</blockquote>
+        <div class="depo-avatar-row">
+          <div class="depo-avatar">M</div>
+          <div class="depo-author">
+            Márcio Santos
+            <span>Diretor Financeiro, distribuidora em BH</span>
+          </div>
+        </div>
+      </div>
+      <div class="depo-card reveal d2">
+        <div class="depo-result-badge">R$ 4,2M protegidos</div>
+        <div class="depo-stars">★★★★★</div>
+        <blockquote>"A holding que a Amanda estruturou protegeu o patrimônio que meu pai levou 30 anos para construir. Ainda economizamos R$ 210 mil que pagaríamos de imposto na sucessão. Não tem preço."</blockquote>
+        <div class="depo-avatar-row">
+          <div class="depo-avatar">C</div>
+          <div class="depo-author">
+            Carla Ferreira
+            <span>Empresária, setor imobiliário em Contagem/MG</span>
+          </div>
+        </div>
+      </div>
+      <div class="depo-card reveal d3">
+        <div class="depo-result-badge">31% de redução tributária</div>
+        <div class="depo-stars">★★★★★</div>
+        <blockquote>"Antes eu assinava o que o contador colocava na minha frente. Com a Amanda, pela primeira vez entendi cada linha da apuração. E descobrimos que eu estava no regime errado há anos. Transparência total."</blockquote>
+        <div class="depo-avatar-row">
+          <div class="depo-avatar">L</div>
+          <div class="depo-author">
+            Lucas Teixeira
+            <span>Sócio, confecção em Nova Lima/MG</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE DOURADO — após depoimentos -->
+<section class="marquee-section marquee-section--gold" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item">Planejamento Tribut&aacute;rio<span class="sep"></span></span>
+    <span class="marquee-item">Recupera&ccedil;&atilde;o de Cr&eacute;ditos<span class="sep"></span></span>
+    <span class="marquee-item">Compliance Fiscal<span class="sep"></span></span>
+    <span class="marquee-item">Holding Patrimonial<span class="sep"></span></span>
+    <span class="marquee-item">ICMS &middot; IPI &middot; PIS/COFINS<span class="sep"></span></span>
+    <span class="marquee-item">Contabilidade Industrial<span class="sep"></span></span>
+    <span class="marquee-item">Reforma Tribut&aacute;ria<span class="sep"></span></span>
+    <span class="marquee-item">Blindagem Fiscal<span class="sep"></span></span>
+    <span class="marquee-item">Planejamento Tribut&aacute;rio<span class="sep"></span></span>
+    <span class="marquee-item">Recupera&ccedil;&atilde;o de Cr&eacute;ditos<span class="sep"></span></span>
+    <span class="marquee-item">Compliance Fiscal<span class="sep"></span></span>
+    <span class="marquee-item">Holding Patrimonial<span class="sep"></span></span>
+    <span class="marquee-item">ICMS &middot; IPI &middot; PIS/COFINS<span class="sep"></span></span>
+    <span class="marquee-item">Contabilidade Industrial<span class="sep"></span></span>
+    <span class="marquee-item">Reforma Tribut&aacute;ria<span class="sep"></span></span>
+    <span class="marquee-item">Blindagem Fiscal<span class="sep"></span></span>
+  </div>
+</section>
+
 <!-- SEGMENTOS — dark / cross-pattern -->
-<section class="segmentos-sec cross-pattern">
+<section class="segmentos-sec">
   <div class="container">
     <span class="sec-label dk reveal">Segmentos de Atuação</span>
-    <h2 class="sec-h lt reveal d1">Onde nossa experiência <em>gera mais resultado</em></h2>
+    <h2 class="sec-h dk reveal d1">Onde nossa experiência <em>gera mais resultado</em></h2>
     <div class="segmentos-grid">
       <div class="seg-card reveal d1">
         <span class="seg-num">01</span>
@@ -1316,49 +1734,37 @@ a.footer-nap-row:hover svg { color: var(--gold); }
   </div>
 </section>
 
-<!-- DEPOIMENTOS — paper / dot-grid -->
-<section class="depo-sec dot-grid">
-  <div class="container">
-    <span class="sec-label lt reveal">O que nossos clientes dizem</span>
-    <h2 class="sec-h dk reveal d1">Transparência e resultado <em>em cada relação</em></h2>
-    <div class="depo-grid">
-      <div class="depo-card reveal d1">
-        <div class="depo-stars">★★★★★</div>
-        <blockquote>"Eu tinha medo de mexer no regime tributário da empresa. A Amanda me mostrou, com números, que ficar parado era o risco maior. Em 12 meses a empresa recuperou R$ 340 mil."</blockquote>
-        <div class="depo-author">
-          Márcio Santos
-          <span>Diretor Financeiro, distribuidora de insumos em BH</span>
-        </div>
-      </div>
-      <div class="depo-card reveal d2">
-        <div class="depo-stars">★★★★★</div>
-        <blockquote>"A holding que a Amanda estruturou protegeu o patrimônio que meu pai levou 30 anos para construir. Ainda economizamos R$ 210 mil que pagaríamos de imposto na sucessão."</blockquote>
-        <div class="depo-author">
-          Carla Ferreira
-          <span>Empresária, setor imobiliário em Contagem/MG</span>
-        </div>
-      </div>
-      <div class="depo-card reveal d3">
-        <div class="depo-stars">★★★★★</div>
-        <blockquote>"Antes eu assinava o que o contador colocava na minha frente. Com a Amanda, pela primeira vez entendi cada linha da apuração de impostos. Transparência total."</blockquote>
-        <div class="depo-author">
-          Lucas Teixeira
-          <span>Sócio, indústria têxtil em Nova Lima/MG</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA FINAL — dark / noise -->
-<section class="cta-sec noise">
+<!-- CTA FINAL — dark / radial glow -->
+<section class="cta-sec">
   <div class="container">
     <div class="cta-inner">
-      <h2 class="sec-h lt reveal">Sua empresa pode ser <em>o próximo caso</em></h2>
-      <p class="reveal d1">O diagnóstico gratuito identifica em 45 minutos os principais pontos de economia tributária para a sua realidade.</p>
-      <div class="cta-btns reveal d2">
+      <span class="sec-label lt reveal" style="display:block;text-align:center;">Próximo passo</span>
+      <h2 class="sec-h lt reveal d1">Sua empresa pode ser <em>o próximo caso</em></h2>
+      <p class="reveal d2">Em 45 minutos de diagnóstico gratuito, a Amanda identifica os principais pontos de economia para a sua realidade. Sem compromisso, sem venda de curso, sem enrolação.</p>
+      <div class="cta-btns reveal d3">
         <a href="/fale-com-especialista/" class="btn-p">Agendar Diagnóstico Gratuito</a>
         <a href="/sobre-amcabral-blindagem/" class="btn-outline">Conhecer a Amanda</a>
+      </div>
+      <div class="cta-proof reveal d4">
+        <div class="cta-proof-item">
+          <span class="cta-proof-val">120+</span>
+          <span class="cta-proof-label">empresas atendidas</span>
+        </div>
+        <div class="cta-proof-divider"></div>
+        <div class="cta-proof-item">
+          <span class="cta-proof-val">R$ 12M+</span>
+          <span class="cta-proof-label">recuperados</span>
+        </div>
+        <div class="cta-proof-divider"></div>
+        <div class="cta-proof-item">
+          <span class="cta-proof-val">20 anos</span>
+          <span class="cta-proof-label">de experiência</span>
+        </div>
+        <div class="cta-proof-divider"></div>
+        <div class="cta-proof-item">
+          <span class="cta-proof-val">0</span>
+          <span class="cta-proof-label">autuações fiscais</span>
+        </div>
       </div>
     </div>
   </div>
