@@ -254,11 +254,11 @@
     .btn-ghost { display: inline-flex; align-items: center; gap: 8px; padding: 14px 28px; background: transparent; color: var(--white); font-weight: 600; font-size: 15px; border-radius: var(--radius); border: 1px solid rgba(255,255,255,.2); cursor: pointer; transition: var(--t); text-decoration: none; }
     .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
 
-    /* CRED STRIP */
-    .cred-strip { background: var(--blue-800); border-top: 1px solid rgba(201,168,76,.15); border-bottom: 1px solid rgba(201,168,76,.15); padding: 20px 24px; }
-    .cred-inner { max-width: var(--max-w); margin: 0 auto; display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; }
+    /* CRED STRIP MARQUEE */
+    .cred-strip { background: var(--blue-800); border-top: 1px solid rgba(201,168,76,.15); border-bottom: 1px solid rgba(201,168,76,.15); padding: 18px 0; overflow: hidden; }
+    .cred-track { display: flex; gap: 48px; width: max-content; animation: marquee 22s linear infinite; white-space: nowrap; }
     .cred-item { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 500; color: var(--text); }
-    .cred-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+    .cred-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
     .cred-item strong { color: var(--white); }
 
     /* BREADCRUMB */
@@ -605,9 +605,14 @@
     </div>
   </section>
 
-  <!-- CRED STRIP -->
-  <div class="cred-strip">
-    <div class="cred-inner">
+  <!-- CRED STRIP MARQUEE -->
+  <div class="cred-strip" aria-hidden="true">
+    <div class="cred-track">
+      <div class="cred-item"><div class="cred-dot"></div><strong>20 anos</strong> atendendo empresas em MG</div>
+      <div class="cred-item"><div class="cred-dot"></div><strong>DRE mensal</strong> com visão de resultado</div>
+      <div class="cred-item"><div class="cred-dot"></div><strong>SPED completo</strong> ECD, EFD e ECF</div>
+      <div class="cred-item"><div class="cred-dot"></div><strong>Reforma tributária</strong> IBS/CBS acompanhada</div>
+      <div class="cred-item"><div class="cred-dot"></div><strong>CRC/MG</strong> ativo</div>
       <div class="cred-item"><div class="cred-dot"></div><strong>20 anos</strong> atendendo empresas em MG</div>
       <div class="cred-item"><div class="cred-dot"></div><strong>DRE mensal</strong> com visão de resultado</div>
       <div class="cred-item"><div class="cred-dot"></div><strong>SPED completo</strong> ECD, EFD e ECF</div>
