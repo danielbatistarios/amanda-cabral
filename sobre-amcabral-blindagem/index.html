@@ -2260,40 +2260,52 @@ body { padding-top: 60px; }
         revealEls.forEach(el => io.observe(el));
     }
 
-    // ---- COUNTER ANIMATION — observa o bloco .stats-bar, não os spans ----
+    // ---- COUNTER ANIMATION ----
+    // O loader dura 2.4s — a stats bar já está no viewport quando ele some.
+    // Por isso registramos o observer só APÓS o loader terminar + scroll > 0.
     const statsBar = document.querySelector('.stats-bar');
     if (statsBar) {
         let fired = false;
+
         const runCounters = () => {
             if (fired) return;
             fired = true;
-            const counters = statsBar.querySelectorAll('.stat-num[data-count]');
-            counters.forEach((el, i) => {
-                const entry = el.closest('.stat-entry');
+            statsBar.querySelectorAll('.stat-num[data-count]').forEach((el, i) => {
+                const entry  = el.closest('.stat-entry');
                 const target = parseFloat(el.dataset.count);
-                const from   = parseFloat(el.dataset.from  || el.textContent) || 0;
+                const from   = parseFloat(el.dataset.from) || 0;
                 const suffix = el.dataset.suffix || '';
-                const delay  = i * 120;
                 setTimeout(() => {
                     if (entry) entry.classList.add('counted');
                     const duration = 1800;
-                    const start = performance.now();
+                    const t0 = performance.now();
                     const step = (now) => {
-                        const p = Math.min((now - start) / duration, 1);
+                        const p     = Math.min((now - t0) / duration, 1);
                         const eased = 1 - Math.pow(1 - p, 3);
-                        const cur = from + (target - from) * eased;
-                        el.textContent = Math.round(cur) + suffix;
+                        el.textContent = Math.round(from + (target - from) * eased) + suffix;
                         if (p < 1) requestAnimationFrame(step);
                     };
                     requestAnimationFrame(step);
-                }, delay);
+                }, i * 140);
             });
         };
 
-        const barIO = new IntersectionObserver((entries) => {
-            entries.forEach(e => { if (e.isIntersecting) { runCounters(); barIO.disconnect(); } });
-        }, { threshold: 0, rootMargin: '-120px 0px 0px 0px' });
-        barIO.observe(statsBar);
+        const attachObserver = () => {
+            // Se o usuário já scrollou além da stats bar, não anima (ela já está fora do viewport)
+            const barIO = new IntersectionObserver((entries) => {
+                entries.forEach(e => { if (e.isIntersecting) { runCounters(); barIO.disconnect(); } });
+            }, { threshold: 0.2 });
+            barIO.observe(statsBar);
+        };
+
+        // Aguarda o loader sumir (2400ms) + 200ms de margem, depois registra o observer
+        // Nesse ponto o usuário ainda está no topo — precisa scrollar para disparar
+        const loaderDelay = 2400 + 200;
+        if (document.readyState === 'complete') {
+            setTimeout(attachObserver, loaderDelay);
+        } else {
+            window.addEventListener('load', () => setTimeout(attachObserver, loaderDelay));
+        }
     }
 
     // ---- MEGA-MENU — painéis fora do header ----
