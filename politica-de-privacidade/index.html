@@ -1628,11 +1628,6 @@
   btns.forEach(btn => { btn.addEventListener('mouseenter', () => { const id = 'mega-' + btn.dataset.menu; megas.forEach(m => m.classList.remove('active')); document.getElementById(id)?.classList.add('active'); }); });
   document.getElementById('hdr')?.addEventListener('mouseleave', () => megas.forEach(m => m.classList.remove('active')));
   megas.forEach(m => m.addEventListener('mouseleave', () => megas.forEach(x => x.classList.remove('active'))));
-  const hamburger = document.getElementById('hdr-hamburger');
-  const mob = document.getElementById('hdr-mob');
-  const mobClose = document.getElementById('hdr-mob-close');
-  hamburger?.addEventListener('click', () => mob?.classList.add('open'));
-  mobClose?.addEventListener('click', () => mob?.classList.remove('open'));
 })();
 </script>
 
