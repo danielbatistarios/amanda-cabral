@@ -298,6 +298,53 @@ img { display: block; max-width: 100%; }
 }
 .btn-p:active { transform: translateY(0) scale(.98); transition-duration: .1s; }
 
+.btn-gold {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--dourado);
+  border: 1.5px solid var(--dourado);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  padding: 14px 32px;
+  cursor: pointer;
+  border-radius: var(--r-subtle);
+  font-family: var(--sans);
+  position: relative;
+  overflow: hidden;
+  transition: background .2s, color .2s, transform .2s, box-shadow .2s;
+}
+.btn-gold::after {
+  content: '';
+  position: absolute;
+  top: -2px; left: -100%;
+  width: 100%;
+  height: calc(100% + 4px);
+  background: linear-gradient(90deg, transparent 0%, rgba(201,168,76,.35) 50%, transparent 100%);
+  animation: btn-travel 4s linear infinite;
+  pointer-events: none;
+}
+@keyframes btn-travel { 0% { left: -100%; } 100% { left: 100%; } }
+.btn-gold:hover { background: var(--dourado); color: #060E1A; box-shadow: 0 8px 24px rgba(201,168,76,.2); transform: translateY(-2px); }
+.btn-gold:hover::after { animation-play-state: paused; }
+
+.hero-scroll-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.55);
+  transition: color .2s, gap .2s;
+  font-family: var(--sans);
+}
+.hero-scroll-link:hover { color: #fff; gap: 12px; }
+
 .btn-wa {
   display: inline-flex;
   align-items: center;
@@ -976,9 +1023,11 @@ img { display: block; max-width: 100%; }
 
 /* === NUMBERS IMPACT === */
 .numbers-sec {
-  background: var(--z2);
+  background: var(--paper);
   padding: 80px 0;
 }
+.numbers-sec .numbers-label { color: var(--ink); opacity: .6; }
+.numbers-sec .numbers-sep { background: rgba(0,0,0,.12); }
 .numbers-grid {
   display: flex;
   justify-content: center;
@@ -1013,9 +1062,8 @@ img { display: block; max-width: 100%; }
 
 /* === PROCESS === */
 .process-sec {
-  background: var(--paper);
+  background: var(--z1);
   padding: var(--sec-pad) 0;
-  color: var(--ink);
 }
 .process-grid {
   display: grid;
@@ -1078,15 +1126,16 @@ img { display: block; max-width: 100%; }
 
 /* === FAQ === */
 .faq-sec {
-  background: var(--z1);
+  background: var(--paper);
   padding: var(--sec-pad) 0;
+  color: var(--ink);
 }
 .faq-list {
   max-width: 800px;
   margin: 48px auto 0;
 }
 .faq-item {
-  border-bottom: 1px solid var(--border-z1);
+  border-bottom: 1px solid #CBD5E1;
 }
 .faq-q {
   display: flex;
@@ -1099,7 +1148,7 @@ img { display: block; max-width: 100%; }
   font-family: var(--sans);
   font-size: 16px;
   font-weight: 600;
-  color: var(--paper);
+  color: var(--ink);
   text-align: left;
   cursor: pointer;
   gap: 16px;
@@ -1110,7 +1159,7 @@ img { display: block; max-width: 100%; }
   width: 20px;
   height: 20px;
   flex-shrink: 0;
-  color: var(--dim);
+  color: #94A3B8;
   transition: transform .3s var(--spring);
 }
 .faq-item.open .faq-q svg { transform: rotate(45deg); }
@@ -1126,7 +1175,7 @@ img { display: block; max-width: 100%; }
 .faq-a p {
   font-size: 16px;
   line-height: 1.8;
-  color: var(--dim);
+  color: #475569;
 }
 
 /* === FOOTER === */
@@ -1381,8 +1430,9 @@ p, .hero-sub { text-wrap: pretty; }
 
 /* === COMPARATIVO === */
 .comparativo-sec {
-  background: var(--z2);
+  background: var(--paper);
   padding: var(--sec-pad) 0;
+  color: var(--ink);
 }
 .comparativo-wrap {
   max-width: 800px;
@@ -1399,7 +1449,7 @@ p, .hero-sub { text-wrap: pretty; }
   border-collapse: collapse;
 }
 .comparativo-table thead th {
-  background: var(--z3);
+  background: var(--z1);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: .15em;
@@ -1414,19 +1464,18 @@ p, .hero-sub { text-wrap: pretty; }
   padding: 16px 20px;
   font-size: 15px;
   line-height: 1.6;
-  border-bottom: 1px solid var(--border-z2);
+  border-bottom: 1px solid #E2E8F0;
   vertical-align: top;
 }
-.comparativo-table tbody td:first-child { font-weight: 600; color: var(--paper); }
-.comparativo-table tbody td:nth-child(2) { color: var(--dim); }
+.comparativo-table tbody td:first-child { font-weight: 600; color: var(--ink); }
+.comparativo-table tbody td:nth-child(2) { color: #64748B; }
 .comparativo-table tbody td:nth-child(3) { color: var(--accent2); }
 .comparativo-table tbody tr:last-child td { border-bottom: none; }
 
 /* === CASES === */
 .cases-sec {
-  background: var(--paper);
+  background: var(--z1);
   padding: var(--sec-pad) 0;
-  color: var(--ink);
 }
 .cases-grid {
   display: grid;
@@ -1531,8 +1580,9 @@ p, .hero-sub { text-wrap: pretty; }
 
 /* === DEPOIMENTOS === */
 .depoimentos-sec {
-  background: var(--z1);
+  background: var(--paper);
   padding: var(--sec-pad) 0;
+  color: var(--ink);
 }
 .depoimentos-grid {
   display: grid;
@@ -1570,9 +1620,8 @@ p, .hero-sub { text-wrap: pretty; }
 
 /* === CONTENT HUB === */
 .hub-sec {
-  background: var(--paper);
+  background: var(--z1);
   padding: var(--sec-pad) 0;
-  color: var(--ink);
 }
 .hub-header {
   display: flex;
@@ -2156,13 +2205,13 @@ fieldset legend.form-step-title + * { clear: both; }
       <div class="hero-content">
         <div class="hero-tag"><span class="dot"></span>Servi&#231;os Cont&#225;beis Estrat&#233;gicos &middot; 20 anos &middot; MG e Brasil</div>
 
-        <h1 class="hero-h1">Contabilidade estrat&#233;gica para empresas em <span style="color:var(--dourado)">Minas Gerais</span> que querem pagar menos imposto</h1>
+        <h1 class="hero-h1">Servi&#231;os AM Cabral: do planejamento tribut&#225;rio &#224; <span style="color:var(--dourado)">prote&#231;&#227;o patrimonial</span></h1>
 
         <p class="hero-sub">20 anos reduzindo carga tribut&#225;ria para com&#233;rcio, servi&#231;os e ind&#250;strias em MG. 8 em cada 10 empresas que atendemos encontram cr&#233;ditos que o contador anterior ignorou.</p>
 
         <div class="hero-cta-wrap">
-          <a href="#diagnostico" class="btn-p">Solicitar Diagn&#243;stico Gratuito <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-          <span class="hero-small">Sem custo. Sem compromisso. Resposta em 24h.</span>
+          <a href="#diagnostico" class="btn-gold">Solicitar an&#225;lise tribut&#225;ria <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
+          <a href="#servicos" class="hero-scroll-link">Conhe&#231;a nossos servi&#231;os <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M12 5v14"/><path d="m5 12 7 7 7-7"/></svg></a>
         </div>
       </div>
 
@@ -2218,7 +2267,7 @@ fieldset legend.form-step-title + * { clear: both; }
 
 
 <!-- SERVICES GRID -->
-<section class="services-sec">
+<section class="services-sec" id="servicos">
   <div class="container">
     <div class="services-intro">
       <div class="sec-label lt reveal">6 servi&#231;os especializados</div>
