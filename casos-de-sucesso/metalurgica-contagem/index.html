@@ -15,6 +15,7 @@
     <meta name="robots" content="index, follow">
     <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="preload" href="/assets/fonts/instrument-serif-normal.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="/assets/fonts/instrument-serif-italic.woff2" as="font" type="font/woff2" crossorigin>
     <style>
         @font-face { font-family: 'Inter'; font-style: normal; font-weight: 100 900; font-display: swap; src: url('/assets/fonts/inter-latin.woff2') format('woff2'); }
         @font-face { font-family: 'Instrument Serif'; font-style: normal; font-weight: 400; font-display: swap; src: url('/assets/fonts/instrument-serif-normal.woff2') format('woff2'); }
@@ -23,45 +24,94 @@
         *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
         :root {
-            --blue-900: #060E1A; --blue-800: #0A1628; --blue-700: #0F2137;
-            --accent: #3B82F6; --accent-light: #60A5FA;
-            --silver: #94A3B8; --white: #FFFFFF;
-            --gold: #C9A84C; --accent-gold: #C4A574;
-            --font-body: 'Inter', system-ui, sans-serif;
-            --font-display: 'Instrument Serif', Georgia, serif;
-            --max-w: 1200px;
-            /* legacy template vars */
             --blue-900: #060E1A;
+            --blue-800: #0A1628;
             --blue-700: #0F2137;
+            --blue-600: #1E3A5F;
+            --accent: #3B82F6;
+            --accent-light: #60A5FA;
+            --silver: #94A3B8;
             --white: #FFFFFF;
             --gold: #C9A84C;
             --accent-gold: #C4A574;
-            --accent-light: #60A5FA;
-            --silver: #94A3B8;
             --dark-hero: #0F1419;
-            --text: #1E293B;
-            --text-muted: #64748B;
-            --border: #E2E8F0;
             --font-body: 'Inter', system-ui, sans-serif;
             --font-display: 'Instrument Serif', Georgia, serif;
+            --max-w: 1200px;
             --ease: cubic-bezier(0.16, 1, 0.3, 1);
             --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        html { font-size: 16px; }
-        body { font-family: var(--font-body); color: var(--white); background: var(--blue-900); line-height: 1.7; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+        html { scroll-behavior: auto; font-size: 16px; }
+        body { font-family: var(--font-body); color: var(--white); background: var(--blue-900); line-height: 1.7; -webkit-font-smoothing: antialiased; overflow-x: hidden; cursor: none; }
+        ::selection { background: var(--gold); color: #1E293B; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: var(--blue-900); }
+        ::-webkit-scrollbar-thumb { background: var(--blue-700); border-radius: 3px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--gold); }
         img { max-width: 100%; display: block; }
-        a { text-decoration: none; color: inherit; }
+        a { text-decoration: none; color: inherit; cursor: none; }
+        button { cursor: none; }
         ul { list-style: none; }
 
-        /* === HEADER === */
+        /* ============================
+           NOISE TEXTURE
+        ============================ */
+        .noise {
+            position: fixed; inset: 0; pointer-events: none; z-index: 9998; opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+            background-size: 200px;
+        }
+
+        /* ============================
+           CUSTOM CURSOR
+        ============================ */
+        .cursor { position: fixed; width: 20px; height: 20px; border: 1.5px solid var(--gold); border-radius: 50%; pointer-events: none; z-index: 10000; mix-blend-mode: difference; transition: width 0.3s var(--ease), height 0.3s var(--ease), background 0.3s, border-color 0.3s; transform: translate(-50%, -50%); }
+        .cursor.hover { width: 56px; height: 56px; background: rgba(59,130,246,0.1); border-color: var(--accent-light); }
+        .cursor-dot { position: fixed; width: 4px; height: 4px; background: var(--gold); border-radius: 50%; pointer-events: none; z-index: 10001; transform: translate(-50%, -50%); }
+
+        /* ============================
+           LOADER
+        ============================ */
+        .loader { position: fixed; inset: 0; background: var(--blue-900); z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 32px; transition: opacity 0.6s ease, visibility 0.6s; }
+        .loader.done { opacity: 0; visibility: hidden; pointer-events: none; }
+        .loader-content { display: flex; flex-direction: column; align-items: center; gap: 28px; max-width: 700px; padding: 0 24px; }
+        .loader-brand { display: flex; flex-direction: column; align-items: center; gap: 2px; overflow: hidden; margin-bottom: 8px; }
+        .loader-brand-name { font-family: var(--font-display); font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 400; color: var(--gold); opacity: 0; transform: translateY(16px); animation: loaderWordIn 0.8s 0.1s cubic-bezier(0.22,1,0.36,1) forwards; letter-spacing: 0.02em; line-height: 1.2; }
+        .loader-brand-sep { width: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(201,168,76,0.5), transparent); animation: loaderSepExpand 0.8s 0.7s ease forwards; margin: 6px 0; }
+        @keyframes loaderSepExpand { to { width: 180px; } }
+        .loader-phrase { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 7px; overflow: visible; text-align: center; }
+        .loader-word { font-family: var(--font-display); font-size: clamp(1.3rem, 3.5vw, 2.2rem); color: var(--white); opacity: 0; transform: translateY(100%); animation: loaderWordIn 0.6s var(--ease) forwards; line-height: 1.3; }
+        .loader-word.accent { color: var(--gold); }
+        .loader-word.italic { font-style: italic; color: rgba(255,255,255,0.95); }
+        @keyframes loaderWordIn { to { opacity: 1; transform: translateY(0); } }
+        .loader-line { width: 48px; height: 1px; background: var(--blue-700); overflow: hidden; position: relative; margin-top: 12px; }
+        .loader-line::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, var(--gold), transparent); animation: loaderFill 1.2s 1.8s ease forwards; transform-origin: left; transform: scaleX(0); }
+        @keyframes loaderFill { to { transform: scaleX(1); } }
+
+        /* ============================
+           SCROLL PROGRESS
+        ============================ */
+        .scroll-progress { position: fixed; top: 0; left: 0; height: 2px; background: linear-gradient(90deg, var(--gold), #D4B86A); z-index: 10001; width: 0%; }
+
+        /* ============================
+           REVEAL
+        ============================ */
+        .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+        .reveal.is-visible { opacity: 1; transform: translateY(0); }
+
+        /* ============================
+           HEADER / MEGA-MENU v2
+        ============================ */
         #hdr { position: fixed; top: 0; left: 0; width: 100%; background: rgba(10,14,20,0.96); backdrop-filter: blur(10px); border-bottom: 1px solid rgba(255,255,255,0.07); z-index: 500; height: 60px; }
         #hdr-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; justify-content: space-between; position: relative; }
-        #hdr-logo { font-family: var(--font-display); font-size: 17px; font-weight: 700; color: #fff; text-decoration: none; }
+        #hdr-logo { font-family: var(--font-display); font-size: clamp(1.15rem, 5vw, 1.45rem); font-style: italic; font-weight: 400; color: transparent; -webkit-text-stroke: 1px rgba(201,168,76,0.55); letter-spacing: -0.01em; white-space: nowrap; text-decoration: none; transition: -webkit-text-stroke-color 0.2s; }
+        #hdr-logo:hover { -webkit-text-stroke-color: rgba(201,168,76,0.9); }
         #hdr-nav { display: flex; align-items: center; gap: 4px; list-style: none; position: absolute; left: 50%; transform: translateX(-50%); }
         .hdr-item { position: relative; }
         .hdr-btn { background: none; border: none; cursor: pointer; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.7); padding: 8px 14px; display: flex; align-items: center; gap: 5px; transition: color 0.2s; font-family: var(--font-body); }
         .hdr-btn:hover { color: #fff; }
+        .hdr-item.open .hdr-btn { color: var(--accent-gold); }
         .hdr-arrow { font-size: 9px; transition: transform 0.25s; }
         .hdr-item.open .hdr-arrow { transform: rotate(180deg); }
         .hdr-cta { display: inline-block; padding: 9px 22px; background: var(--accent-gold); color: #0a0e14; font-size: 12px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; border-radius: 4px; text-decoration: none; transition: opacity 0.2s; }
@@ -78,34 +128,57 @@
         .hdr-mega-link strong { display: block; font-size: 14px; color: #fff; margin-bottom: 3px; transition: color 0.15s; }
         .hdr-mega-link span { font-size: 12px; color: rgba(255,255,255,0.5); }
         .hdr-mega-link:hover strong { color: var(--accent-gold); }
-        #hdr-hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 5px; padding: 8px; }
-        #hdr-hamburger span { width: 20px; height: 2px; background: #fff; border-radius: 2px; display: block; }
-        #hdr-mob { display: none; position: fixed; inset: 0; background: #0a0e14; z-index: 600; flex-direction: column; padding: 72px 24px 24px; overflow-y: auto; }
+        #hdr-hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 6px; padding: 8px; }
+        #hdr-hamburger span { width: 22px; height: 2px; background: #E2DAC8; border-radius: 2px; display: block; transition: background 0.2s; }
+        #hdr-hamburger:hover span { background: #fff; }
+        #hdr-mob { display: none; position: fixed; inset: 0; background: #060E1A; z-index: 600; flex-direction: column; padding: 80px 28px 32px; overflow-y: auto; }
         #hdr-mob.open { display: flex; }
-        #hdr-mob-close { position: absolute; top: 16px; right: 20px; background: none; border: none; color: #fff; font-size: 28px; cursor: pointer; line-height: 1; }
+        #hdr-mob-close { position: absolute; top: 18px; right: 20px; background: none; border: 1px solid rgba(201,168,76,0.25); border-radius: 50%; width: 36px; height: 36px; color: rgba(201,168,76,0.7); font-size: 16px; cursor: pointer; line-height: 1; display: flex; align-items: center; justify-content: center; transition: border-color 0.2s, color 0.2s; }
+        #hdr-mob-close:hover { border-color: var(--gold); color: var(--gold); }
+        .mob-brand { margin-bottom: 28px; padding-bottom: 20px; border-bottom: 1px solid rgba(201,168,76,0.12); }
+        .mob-brand-name { font-family: var(--font-display); font-size: clamp(2rem, 9vw, 2.8rem); font-style: italic; font-weight: 400; color: transparent; -webkit-text-stroke: 1px rgba(201,168,76,0.45); letter-spacing: -0.02em; line-height: 1.1; display: block; }
+        .mob-brand-sub { font-family: var(--font-body); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(201,168,76,0.5); margin-top: 6px; display: block; }
         #hdr-mob a { color: rgba(255,255,255,0.75); font-size: 16px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.06); text-decoration: none; display: block; }
         #hdr-mob a:hover { color: #fff; }
         @media (max-width: 900px) { #hdr-nav, .hdr-cta { display: none; } #hdr-hamburger { display: flex; } }
         @media (max-width: 600px) { #hdr-inner { padding: 0 16px; } }
 
-        /* === BREADCRUMB === */
+        /* ============================
+           SECTION TAG
+        ============================ */
+        .section-tag { display: inline-flex; align-items: center; gap: 10px; background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.15); padding: 6px 16px; border-radius: 60px; font-size: 0.68rem; font-weight: 700; color: rgba(255,255,255,0.45); letter-spacing: 2px; text-transform: uppercase; backdrop-filter: blur(10px); }
+        .section-tag .dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; position: relative; }
+        .section-tag .dot::after { content: ''; position: absolute; inset: -4px; border-radius: 50%; border: 1px solid var(--gold); animation: dotPulse 2s ease-out infinite; }
+        @keyframes dotPulse { 0% { transform: scale(1); opacity: 1; } 100% { transform: scale(2.5); opacity: 0; } }
+
+        /* ============================
+           BREADCRUMB
+        ============================ */
         .breadcrumb { padding: 80px 24px 0; max-width: var(--max-w); margin: 0 auto; }
         .breadcrumb nav { display: flex; align-items: center; gap: 8px; font-size: 12px; color: rgba(255,255,255,0.4); flex-wrap: wrap; }
         .breadcrumb a { color: rgba(255,255,255,0.4); transition: color 0.2s; }
         .breadcrumb a:hover { color: rgba(255,255,255,0.8); }
         .breadcrumb span { color: rgba(255,255,255,0.25); }
 
-        /* === CASE HERO === */
-        .case-hero { padding: 48px 24px 80px; background: linear-gradient(180deg, #0A1628 0%, var(--blue-900) 100%); }
-        .case-hero-inner { max-width: 840px; margin: 0 auto; }
-        .case-seg-tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2); border-radius: 4px; padding: 4px 10px; margin-bottom: 24px; }
+        /* ============================
+           CASE HERO
+        ============================ */
+        .case-hero { padding: 48px 24px 80px; background: var(--blue-900); position: relative; overflow: hidden; }
+        .case-hero-grid-bg { position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px); background-size: 80px 80px; mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 0%, transparent 100%); -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 0%, transparent 100%); }
+        .case-hero-orb { position: absolute; border-radius: 50%; pointer-events: none; }
+        .case-hero-orb-1 { width: 700px; height: 700px; background: radial-gradient(circle, rgba(59,130,246,0.07) 0%, transparent 70%); top: -250px; right: -150px; }
+        .case-hero-orb-2 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(96,165,250,0.05) 0%, transparent 70%); bottom: -150px; left: -100px; }
+        .case-hero-inner { max-width: 840px; margin: 0 auto; position: relative; z-index: 2; }
+        .case-seg-tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); background: rgba(59,130,246,0.1); border: 1px solid rgba(59,130,246,0.2); border-radius: 4px; padding: 4px 10px; margin-bottom: 20px; }
         .case-hero h1 { font-family: var(--font-display); font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 400; color: #fff; line-height: 1.2; margin-bottom: 24px; }
         .case-hero h1 em { font-style: italic; color: var(--accent-gold); }
         .case-meta { display: flex; flex-wrap: wrap; gap: 24px; font-size: 13px; color: rgba(255,255,255,0.45); margin-bottom: 40px; }
         .case-meta-item { display: flex; align-items: center; gap: 8px; }
         .case-meta-dot { width: 5px; height: 5px; border-radius: 50%; background: var(--accent-gold); flex-shrink: 0; }
 
-        /* === RESULTS OVERVIEW === */
+        /* ============================
+           RESULTS OVERVIEW
+        ============================ */
         .results-overview { background: var(--blue-800); padding: 64px 24px; border-top: 1px solid rgba(255,255,255,0.06); border-bottom: 1px solid rgba(255,255,255,0.06); }
         .results-inner { max-width: 1000px; margin: 0 auto; }
         .results-title { font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(255,255,255,0.35); text-align: center; margin-bottom: 40px; }
@@ -115,10 +188,11 @@
         .result-l { font-size: 12px; color: rgba(255,255,255,0.5); line-height: 1.4; }
         @media (max-width: 768px) { .results-grid { grid-template-columns: repeat(2, 1fr); } }
 
-        /* === CASE BODY === */
+        /* ============================
+           CASE BODY
+        ============================ */
         .case-body { padding: 80px 24px; }
         .case-body-inner { max-width: var(--max-w); margin: 0 auto; display: grid; grid-template-columns: 1fr 340px; gap: 80px; align-items: start; }
-        .case-content { }
         .case-content h2 { font-family: var(--font-display); font-size: 1.6rem; font-weight: 400; color: #fff; margin-bottom: 16px; margin-top: 48px; line-height: 1.3; }
         .case-content h2:first-child { margin-top: 0; }
         .case-content h2 em { font-style: italic; color: var(--accent-gold); }
@@ -127,16 +201,12 @@
         .case-content ul { display: flex; flex-direction: column; gap: 10px; margin-bottom: 24px; }
         .case-content ul li { font-size: 0.9rem; color: rgba(255,255,255,0.6); padding-left: 20px; position: relative; line-height: 1.6; }
         .case-content ul li::before { content: '→'; position: absolute; left: 0; color: var(--accent-gold); }
-
-        /* callout boxes */
         .callout-problem { background: rgba(239,68,68,0.07); border: 1px solid rgba(239,68,68,0.2); border-left: 3px solid #EF4444; border-radius: 0 8px 8px 0; padding: 20px 24px; margin: 28px 0; }
         .callout-problem p { font-size: 0.9rem; color: rgba(255,255,255,0.7); margin: 0; }
         .callout-problem strong { color: #FCA5A5; }
         .callout-result { background: rgba(196,165,116,0.07); border: 1px solid rgba(196,165,116,0.2); border-left: 3px solid var(--accent-gold); border-radius: 0 8px 8px 0; padding: 20px 24px; margin: 28px 0; }
         .callout-result p { font-size: 0.9rem; color: rgba(255,255,255,0.7); margin: 0; }
         .callout-result strong { color: var(--accent-gold); }
-
-        /* timeline steps */
         .steps-list { display: flex; flex-direction: column; gap: 0; margin: 32px 0; }
         .step-item { display: grid; grid-template-columns: 48px 1fr; gap: 20px; padding-bottom: 32px; align-items: start; position: relative; }
         .step-item:last-child { padding-bottom: 0; }
@@ -145,8 +215,6 @@
         .step-num { width: 44px; height: 44px; border-radius: 50%; background: var(--blue-800); border: 2px solid rgba(196,165,116,0.4); display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; color: var(--accent-gold); flex-shrink: 0; }
         .step-content h3 { font-size: 1rem; font-weight: 600; color: #fff; margin-bottom: 8px; }
         .step-content p { font-size: 0.875rem; color: rgba(255,255,255,0.55); line-height: 1.7; margin: 0; }
-
-        /* SIDEBAR */
         .case-sidebar { position: sticky; top: 80px; }
         .sidebar-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 14px; padding: 28px; margin-bottom: 20px; }
         .sidebar-card-title { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.35); margin-bottom: 20px; }
@@ -158,10 +226,11 @@
         .sidebar-cta p { font-size: 13px; color: rgba(10,14,20,0.7); margin-bottom: 14px; line-height: 1.5; }
         .sidebar-cta a { display: block; padding: 12px; background: #0a0e14; color: #fff; font-size: 13px; font-weight: 700; border-radius: 6px; transition: opacity 0.2s; }
         .sidebar-cta a:hover { opacity: 0.85; }
-
         @media (max-width: 900px) { .case-body-inner { grid-template-columns: 1fr; } .case-sidebar { position: static; } }
 
-        /* === QUOTE SECTION === */
+        /* ============================
+           QUOTE
+        ============================ */
         .case-quote { padding: 80px 24px; background: var(--blue-800); }
         .case-quote-inner { max-width: 800px; margin: 0 auto; text-align: center; }
         .quote-text { font-family: var(--font-display); font-size: clamp(1.3rem, 2.5vw, 1.8rem); font-style: italic; color: rgba(255,255,255,0.85); line-height: 1.55; margin-bottom: 28px; position: relative; }
@@ -169,7 +238,9 @@
         .quote-author { font-size: 14px; color: rgba(255,255,255,0.4); }
         .quote-author strong { display: block; color: rgba(255,255,255,0.7); margin-bottom: 4px; }
 
-        /* === RELATED CASOS === */
+        /* ============================
+           RELATED CASOS
+        ============================ */
         .related-casos { padding: 80px 24px; }
         .related-inner { max-width: var(--max-w); margin: 0 auto; }
         .related-title { font-family: var(--font-display); font-size: 1.5rem; font-weight: 400; color: #fff; margin-bottom: 32px; }
@@ -182,33 +253,62 @@
         .related-card p { font-size: 12px; color: rgba(255,255,255,0.45); line-height: 1.6; }
         @media (max-width: 768px) { .related-grid { grid-template-columns: 1fr; } }
 
-        /* === CTA === */
+        /* ============================
+           CTA FINAL
+        ============================ */
         .cta-final { padding: 100px 24px; text-align: center; }
         .cta-final-inner { max-width: 640px; margin: 0 auto; }
         .cta-final h2 { font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.4rem); font-weight: 400; color: #fff; margin-bottom: 16px; }
         .cta-final h2 em { font-style: italic; color: var(--accent-gold); }
         .cta-final p { font-size: 1rem; color: rgba(255,255,255,0.6); margin-bottom: 40px; line-height: 1.7; }
         .cta-btn-group { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-        .btn-primary { display: inline-block; padding: 16px 36px; background: var(--accent-gold); color: #0a0e14; font-size: 14px; font-weight: 700; border-radius: 8px; transition: opacity 0.2s; }
-        .btn-primary:hover { opacity: 0.9; }
-        .btn-ghost { display: inline-block; padding: 16px 36px; background: transparent; color: rgba(255,255,255,0.75); font-size: 14px; border: 1px solid rgba(255,255,255,0.2); border-radius: 8px; transition: all 0.2s; }
+        .btn-primary { display: inline-flex; align-items: center; gap: 8px; background: transparent; color: var(--gold); border: 1.5px solid var(--gold); font-size: .9rem; font-weight: 600; letter-spacing: .04em; padding: 14px 32px; border-radius: 60px; text-decoration: none; transition: background .25s ease, color .25s ease, box-shadow .25s ease; }
+        .btn-primary:hover { background: var(--gold); color: #060E1A; box-shadow: 0 8px 24px rgba(196,165,116,.2); }
+        .btn-ghost { display: inline-block; padding: 14px 32px; background: transparent; color: rgba(255,255,255,0.75); font-size: 14px; border: 1px solid rgba(255,255,255,0.2); border-radius: 60px; transition: all 0.2s; }
         .btn-ghost:hover { color: #fff; border-color: rgba(255,255,255,0.5); }
 
-        /* === FOOTER === */
-        .site-footer { background: #02070F; padding: 64px 24px 0; border-top: 1px solid rgba(255,255,255,0.06); }
-        .footer-inner { max-width: var(--max-w); margin: 0 auto; }
-        .footer-grid { display: grid; grid-template-columns: 280px 1fr 1fr 1fr; gap: 48px; padding-bottom: 64px; border-bottom: 1px solid rgba(255,255,255,0.06); }
-        .footer-brand p { font-size: 13px; color: rgba(255,255,255,0.45); line-height: 1.7; margin-top: 14px; }
-        .footer-wordmark { font-family: var(--font-display); font-size: 20px; color: rgba(255,255,255,0.85); }
-        .footer-col-title { font-size: 11px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.3); margin-bottom: 20px; }
-        .footer-link { display: block; font-size: 13px; color: rgba(255,255,255,0.5); padding: 5px 0; transition: color 0.2s; }
-        .footer-link:hover { color: rgba(255,255,255,0.85); }
-        .footer-legal { display: flex; align-items: center; justify-content: space-between; padding: 24px 0; font-size: 12px; color: rgba(255,255,255,0.25); flex-wrap: wrap; gap: 12px; }
+        /* ============================
+           FOOTER
+        ============================ */
+        .site-footer { background: #040A14; border-top: 1px solid #0A1628; padding: 64px 0 0; }
+        .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+        .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 64px; }
+        .footer-brand-col { display: flex; flex-direction: column; }
+        .footer-contact-title { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+        .footer-nap { display: flex; flex-direction: column; gap: 10px; font-style: normal; }
+        .footer-nap-row { display: flex; align-items: flex-start; gap: 10px; font-size: 0.8125rem; color: #4a5568; text-decoration: none; transition: color 0.2s; line-height: 1.6; }
+        a.footer-nap-row:hover { color: rgba(255,255,255,0.75); }
+        a.footer-nap-row:hover svg { color: var(--gold); }
+        .footer-nap-row svg { flex-shrink: 0; margin-top: 2px; color: var(--gold); transition: color 0.2s; }
+        .footer-col { display: flex; flex-direction: column; }
+        .footer-heading { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+        .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+        .footer-col a { display: block; font-size: 0.875rem; font-weight: 300; color: #4a5568; transition: color 0.2s; text-decoration: none; }
+        .footer-col a:hover { color: var(--white); }
+        .footer-wordmark-tagline { text-align: center; font-family: var(--font-display); font-size: clamp(0.95rem, 1.5vw, 1.15rem); color: rgba(255,255,255,0.55); margin-bottom: 8px; font-weight: 300; letter-spacing: 0.01em; }
+        .footer-wordmark { font-family: var(--font-display); font-size: clamp(3.5rem, 8vw, 7rem); font-style: italic; font-weight: 400; color: transparent; -webkit-text-stroke: 1px rgba(201,168,76,0.2); letter-spacing: -0.02em; line-height: 1; margin-bottom: 0; user-select: none; text-align: center; }
+        .footer-legal { border-top: 1px solid #0A1628; padding: 24px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+        .footer-legal p { font-size: 0.8125rem; color: #2d3748; }
         .footer-legal-links { display: flex; gap: 24px; }
-        .footer-legal a { color: rgba(255,255,255,0.25); transition: color 0.2s; }
-        .footer-legal a:hover { color: rgba(255,255,255,0.6); }
-        @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; } }
-        @media (max-width: 600px) { .footer-grid { grid-template-columns: 1fr; } .footer-legal { flex-direction: column; align-items: flex-start; } }
+        .footer-legal-links a { font-size: 0.8125rem; color: #2d3748; text-decoration: none; transition: color 0.2s; }
+        .footer-legal-links a:hover { color: var(--white); }
+        .footer-social-icons { display: flex; gap: 16px; align-items: center; }
+        .footer-social-icons a { color: #4a5568; transition: color 0.2s; display: flex; align-items: center; }
+        .footer-social-icons a:hover { color: var(--gold); }
+        @media (max-width: 1024px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; } }
+        @media (max-width: 600px) { .site-footer { padding: 48px 0 0; } .footer-inner { padding: 0 20px; } .footer-grid { grid-template-columns: 1fr; gap: 32px; } .footer-legal { flex-direction: column; gap: 12px; text-align: center; } .footer-legal-links { flex-wrap: wrap; justify-content: center; } }
+
+        /* ============================
+           MOBILE TWEAKS
+        ============================ */
+        @media (max-width: 600px) {
+            .case-hero { padding: 36px 16px 60px; }
+            .case-body { padding: 48px 16px; }
+            .results-overview { padding: 44px 16px; }
+            .case-quote { padding: 56px 16px; }
+            .related-casos { padding: 56px 16px; }
+            .cta-final { padding: 64px 16px; }
+        }
     </style>
 
     <script type="application/ld+json">
@@ -258,6 +358,32 @@
     </script>
 </head>
 <body>
+
+<!-- Noise texture -->
+<div class="noise" aria-hidden="true"></div>
+
+<!-- Custom cursor -->
+<div class="cursor" id="cursor" aria-hidden="true"></div>
+<div class="cursor-dot" id="cursorDot" aria-hidden="true"></div>
+
+<!-- Scroll progress -->
+<div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+
+<!-- Loader -->
+<div class="loader" id="loader" aria-hidden="true">
+    <div class="loader-content">
+        <div class="loader-brand">
+            <span class="loader-brand-name">AM Cabral</span>
+            <div class="loader-brand-sep"></div>
+        </div>
+        <div class="loader-phrase">
+            <span class="loader-word italic" style="animation-delay:.3s">Casos</span>
+            <span class="loader-word accent" style="animation-delay:.5s">de</span>
+            <span class="loader-word italic" style="animation-delay:.7s">Sucesso</span>
+        </div>
+        <div class="loader-line"></div>
+    </div>
+</div>
 
 <!-- ===== HEADER ===== -->
 <header id="hdr">
@@ -337,6 +463,10 @@
 <!-- Mobile Nav -->
 <nav id="hdr-mob" aria-label="Menu mobile">
     <button id="hdr-mob-close" aria-label="Fechar menu">&#x2715;</button>
+    <div class="mob-brand">
+        <span class="mob-brand-name">AM Cabral</span>
+        <span class="mob-brand-sub">Contabilidade Tributária</span>
+    </div>
     <a href="/">Início</a>
     <a href="/sobre-amcabral-blindagem/">Sobre a AM Cabral</a>
     <a href="/nossos-servicos/">Serviços</a>
@@ -347,6 +477,8 @@
     <a href="/blog/">Blog</a>
     <a href="/fale-com-especialista/" style="color:var(--accent-gold);font-weight:600">Diagnóstico Gratuito</a>
 </nav>
+
+<main>
 
 <!-- ===== BREADCRUMB ===== -->
 <div class="breadcrumb">
@@ -361,7 +493,13 @@
 
 <!-- ===== CASE HERO ===== -->
 <section class="case-hero">
-    <div class="case-hero-inner">
+    <div class="case-hero-grid-bg" aria-hidden="true"></div>
+    <div class="case-hero-orb case-hero-orb-1" aria-hidden="true"></div>
+    <div class="case-hero-orb case-hero-orb-2" aria-hidden="true"></div>
+    <div class="case-hero-inner reveal">
+        <div style="margin-bottom:16px">
+            <span class="section-tag"><span class="dot"></span>Casos de Sucesso</span>
+        </div>
         <span class="case-seg-tag">Indústria Metalúrgica</span>
         <h1>Metalúrgica de Contagem: <em>R$ 980 mil recuperados</em> em 18 meses</h1>
         <div class="case-meta">
@@ -375,7 +513,7 @@
 
 <!-- ===== RESULTS OVERVIEW ===== -->
 <div class="results-overview">
-    <div class="results-inner">
+    <div class="results-inner reveal">
         <p class="results-title">Resultados Comprovados</p>
         <div class="results-grid">
             <div class="result-card">
@@ -403,7 +541,7 @@
     <div class="case-body-inner">
 
         <!-- CONTENT -->
-        <div class="case-content">
+        <div class="case-content reveal">
 
             <h2>O problema: sete anos pagando <em>mais do que deveria</em></h2>
 
@@ -511,7 +649,7 @@
 
 <!-- ===== QUOTE ===== -->
 <section class="case-quote">
-    <div class="case-quote-inner">
+    <div class="case-quote-inner reveal">
         <blockquote class="quote-text">
             Em 18 meses a Amanda recuperou o equivalente a mais de um ano de lucro líquido da empresa. E o que mais me surpreendeu: não foi uma mágica. Foi tudo dentro da lei, documentado, sem risco nenhum. Só fizemos o que já era nosso direito.
         </blockquote>
@@ -524,7 +662,7 @@
 
 <!-- ===== RELATED ===== -->
 <section class="related-casos">
-    <div class="related-inner">
+    <div class="related-inner reveal">
         <h2 class="related-title">Outros <em>casos semelhantes</em></h2>
         <div class="related-grid">
             <div class="related-card">
@@ -548,7 +686,7 @@
 
 <!-- ===== CTA ===== -->
 <section class="cta-final">
-    <div class="cta-final-inner">
+    <div class="cta-final-inner reveal">
         <h2>Sua empresa também pode ter <em>créditos escondidos</em></h2>
         <p>O diagnóstico tributário gratuito revela em 45 minutos o potencial de recuperação e economia para a sua realidade.</p>
         <div class="cta-btn-group">
@@ -558,64 +696,213 @@
     </div>
 </section>
 
+</main>
+
 <!-- ===== FOOTER ===== -->
 <footer class="site-footer">
-    <div class="footer-inner">
-        <div class="footer-grid">
-            <div class="footer-brand">
-                <div class="footer-wordmark">AM Cabral</div>
-                <p>Blindagem fiscal para indústrias e empresas de médio porte em Minas Gerais. CRC/MG ativo.</p>
-            </div>
-            <div>
-                <p class="footer-col-title">Serviços</p>
-                <a href="/nossos-servicos/planejamento-tributario/" class="footer-link">Planejamento Tributário</a>
-                <a href="/nossos-servicos/recuperacao-creditos-tributarios/" class="footer-link">Recuperação de Créditos</a>
-                <a href="/nossos-servicos/holding-patrimonial/" class="footer-link">Holding Patrimonial</a>
-                <a href="/nossos-servicos/consultoria-reforma-tributaria/" class="footer-link">Reforma Tributária</a>
-                <a href="/nossos-servicos/contabilidade-industrial/" class="footer-link">Contabilidade Industrial</a>
-            </div>
-            <div>
-                <p class="footer-col-title">Empresa</p>
-                <a href="/sobre-amcabral-blindagem/" class="footer-link">Sobre a Amanda</a>
-                <a href="/casos-de-sucesso/" class="footer-link">Casos de Sucesso</a>
-                <a href="/blog/" class="footer-link">Blog</a>
-                <a href="/faq-amcabralblindagem/" class="footer-link">FAQ</a>
-            </div>
-            <div>
-                <p class="footer-col-title">Contato</p>
-                <a href="https://wa.me/5531999999999" class="footer-link" rel="noopener">WhatsApp</a>
-                <a href="mailto:contato@amcabralblindagem.com.br" class="footer-link">E-mail</a>
-                <a href="/fale-com-especialista/" class="footer-link">Diagnóstico Gratuito</a>
-            </div>
-        </div>
-        <div class="footer-legal">
-            <span>© 2025 AM Cabral Contabilidade. Todos os direitos reservados.</span>
-            <div class="footer-legal-links">
-                <a href="/termos-de-uso/">Termos de Uso</a>
-                <a href="/politica-de-privacidade/">Privacidade</a>
-                <a href="/politica-de-cookies/">Cookies</a>
-            </div>
-        </div>
+  <div class="footer-inner">
+
+    <div class="footer-grid">
+
+      <!-- Col 1: Brand + Fale Conosco -->
+      <div class="footer-brand-col">
+        <p class="footer-contact-title">Fale Conosco</p>
+        <address class="footer-nap">
+          <a href="tel:+5537999967558" class="footer-nap-row">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.83a16 16 0 0 0 5.38 5.38l1.92-1.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            (37) 99996-7558
+          </a>
+          <a href="mailto:contato@amcabralblindagem.com.br" class="footer-nap-row">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            contato@amcabralblindagem.com.br
+          </a>
+          <span class="footer-nap-row">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Rua Major Fidelis, 244, Centro<br>Pará de Minas, MG 35660-109
+          </span>
+          <span class="footer-nap-row">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            CNPJ 34.733.620/0001-51
+          </span>
+        </address>
+      </div>
+
+      <!-- Col 2: A Empresa -->
+      <div class="footer-col">
+        <h3 class="footer-heading">A Empresa</h3>
+        <ul>
+          <li><a href="/sobre-amcabral-blindagem/">Sobre</a></li>
+          <li><a href="/casos-de-sucesso/">Casos de Sucesso</a></li>
+          <li><a href="/faq-amcabralblindagem/">Duvidas Frequentes</a></li>
+          <li><a href="/fale-com-especialista/">Contato</a></li>
+          <li><a href="/blog/">Blog</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 3: Serviços -->
+      <div class="footer-col">
+        <h3 class="footer-heading">Serviços</h3>
+        <ul>
+          <li><a href="/nossos-servicos/gestao-contabil/">Contabilidade Estratégica</a></li>
+          <li><a href="/nossos-servicos/recuperacao-creditos-tributarios/">Recuperação de Créditos</a></li>
+          <li><a href="/nossos-servicos/holding-patrimonial/">Holding</a></li>
+          <li><a href="/nossos-servicos/planejamento-tributario/">Planejamento Fiscal</a></li>
+          <li><a href="/nossos-servicos/consultoria-tributaria/">Consultoria Tributária</a></li>
+        </ul>
+      </div>
+
+      <!-- Col 4: Cidades Atendidas -->
+      <div class="footer-col">
+        <h3 class="footer-heading">Cidades Atendidas</h3>
+        <ul>
+          <li><a href="/contabilidade-para-de-minas/">Pará de Minas</a></li>
+          <li><a href="/contabilidade-sete-lagoas/">Sete Lagoas</a></li>
+          <li><a href="/contador-betim/">Betim</a></li>
+          <li><a href="/contador-belo-horizonte/">Belo Horizonte</a></li>
+          <li><a href="/cidades-atendidas/">Ver todas as cidades →</a></li>
+        </ul>
+      </div>
+
     </div>
+
+    <p class="footer-wordmark-tagline"><em>Inteligência tributária para empresas que competem para vencer.</em></p>
+    <div class="footer-wordmark">AM Cabral Contabilidade</div>
+
+    <!-- Barra legal -->
+    <div class="footer-legal">
+      <p>© 2026 Amanda Silva Cabral Contabilidade. CNPJ 34.733.620/0001-51. CRC/MG ativo.</p>
+      <div class="footer-social-icons">
+        <a href="https://www.instagram.com/amandacabral28/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/amanda-cabral-de-oliveira-82183a179/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+      <div class="footer-legal-links">
+        <a href="/politica-de-privacidade/">Política de Privacidade</a>
+        <a href="/politica-de-cookies/">Política de Cookies</a>
+        <a href="/termos-de-uso/">Termos de Uso</a>
+      </div>
+    </div>
+  </div>
 </footer>
 
 <script>
-(function() {
-    const items = document.querySelectorAll('.hdr-item[data-menu]');
-    const megas = document.querySelectorAll('.hdr-mega');
-    function closeAll() { items.forEach(i => i.classList.remove('open')); megas.forEach(m => m.classList.remove('open')); }
-    items.forEach(item => {
-        item.addEventListener('mouseenter', () => {
-            closeAll();
+    // ---- LOADER ----
+    const loader = document.getElementById('loader');
+    if (loader) {
+        const hideLoader = () => { loader.classList.add('done'); };
+        if (document.readyState === 'complete') {
+            setTimeout(hideLoader, 2400);
+        } else {
+            window.addEventListener('load', () => setTimeout(hideLoader, 2400));
+        }
+    }
+
+    // ---- CURSOR ----
+    const cur = document.querySelector('.cursor');
+    const dot = document.querySelector('.cursor-dot');
+    if (cur && dot) {
+        let mx = -200, my = -200, cx = -200, cy = -200;
+        document.addEventListener('mousemove', e => {
+            mx = e.clientX; my = e.clientY;
+            dot.style.transform = `translate(${mx}px,${my}px) translate(-50%,-50%)`;
+        });
+        const animCursor = () => {
+            cx += (mx - cx) * 0.12;
+            cy += (my - cy) * 0.12;
+            cur.style.transform = `translate(${cx}px,${cy}px) translate(-50%,-50%)`;
+            requestAnimationFrame(animCursor);
+        };
+        animCursor();
+        document.querySelectorAll('a,button,[role="button"]').forEach(el => {
+            el.addEventListener('mouseenter', () => cur.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cur.classList.remove('hover'));
+        });
+        document.addEventListener('mouseleave', () => { cur.style.opacity = '0'; dot.style.opacity = '0'; });
+        document.addEventListener('mouseenter', () => { cur.style.opacity = '1'; dot.style.opacity = '1'; });
+    }
+
+    // ---- SCROLL PROGRESS ----
+    const sp = document.getElementById('scrollProgress');
+    if (sp) {
+        window.addEventListener('scroll', () => {
+            const h = document.documentElement;
+            const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+            sp.style.width = pct + '%';
+        }, { passive: true });
+    }
+
+    // ---- REVEAL on scroll ----
+    const revealEls = document.querySelectorAll('.reveal');
+    if (revealEls.length) {
+        const io = new IntersectionObserver((entries) => {
+            entries.forEach(e => {
+                if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
+            });
+        }, { threshold: 0.12 });
+        if (loader) {
+            setTimeout(() => revealEls.forEach(el => io.observe(el)), 2400);
+        } else {
+            revealEls.forEach(el => io.observe(el));
+        }
+    }
+
+    // ---- MEGA-MENU v2 ----
+    let hdrTimer = null;
+    let currentMega = null;
+    let currentItem = null;
+
+    const closeAll = () => {
+        document.querySelectorAll('.hdr-mega.open').forEach(m => m.classList.remove('open'));
+        document.querySelectorAll('.hdr-item.open').forEach(i => i.classList.remove('open'));
+        currentMega = null;
+        currentItem = null;
+    };
+
+    document.querySelectorAll('.hdr-item[data-menu]').forEach(item => {
+        const btn = item.querySelector('.hdr-btn');
+        const mega = document.getElementById('mega-' + item.dataset.menu);
+        if (!btn || !mega) return;
+
+        const open = () => {
+            clearTimeout(hdrTimer);
+            if (currentMega && currentMega !== mega) {
+                currentMega.classList.remove('open');
+                currentItem && currentItem.classList.remove('open');
+            }
+            mega.classList.add('open');
             item.classList.add('open');
-            document.getElementById('mega-' + item.dataset.menu)?.classList.add('open');
+            currentMega = mega;
+            currentItem = item;
+        };
+
+        const scheduleClose = () => { hdrTimer = setTimeout(closeAll, 150); };
+
+        btn.addEventListener('mouseenter', open);
+        btn.addEventListener('mouseleave', scheduleClose);
+        mega.addEventListener('mouseenter', () => { clearTimeout(hdrTimer); });
+        mega.addEventListener('mouseleave', scheduleClose);
+        btn.addEventListener('click', e => {
+            e.preventDefault();
+            mega.classList.contains('open') ? closeAll() : open();
         });
     });
-    document.getElementById('hdr')?.addEventListener('mouseleave', closeAll);
-    megas.forEach(m => m.addEventListener('mouseleave', closeAll));
-    document.getElementById('hdr-hamburger')?.addEventListener('click', () => document.getElementById('hdr-mob')?.classList.add('open'));
-    document.getElementById('hdr-mob-close')?.addEventListener('click', () => document.getElementById('hdr-mob')?.classList.remove('open'));
-})();
+
+    document.addEventListener('click', e => {
+        if (!e.target.closest('.hdr-item') && !e.target.closest('.hdr-mega')) closeAll();
+    });
+
+    // ---- MOBILE ----
+    const hdrHamburger = document.getElementById('hdr-hamburger');
+    const hdrMob = document.getElementById('hdr-mob');
+    const hdrMobClose = document.getElementById('hdr-mob-close');
+    if (hdrHamburger && hdrMob && hdrMobClose) {
+        hdrHamburger.addEventListener('click', () => hdrMob.classList.toggle('open'));
+        hdrMobClose.addEventListener('click', () => hdrMob.classList.remove('open'));
+        hdrMob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => hdrMob.classList.remove('open')));
+    }
 </script>
 </body>
 </html>
