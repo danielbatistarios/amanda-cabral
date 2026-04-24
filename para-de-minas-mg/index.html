@@ -440,8 +440,39 @@ address { font-style: normal; }
 }
 .btn-p { background: var(--accent); color: #fff; }
 .btn-p:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(59,130,246,.35); }
-.btn-gold { background: var(--dourado); color: #060E1A; }
-.btn-gold:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(201,168,76,.35); }
+.btn-gold {
+  background: transparent;
+  color: #C9A84C;
+  border: 1.5px solid #C9A84C !important;
+  box-shadow: none;
+  overflow: hidden;
+  position: relative;
+}
+.btn-gold::after {
+  content: '';
+  position: absolute;
+  top: -2px; left: -100%;
+  width: 100%;
+  height: calc(100% + 4px);
+  background: linear-gradient(90deg, transparent 0%, rgba(201,168,76,0.35) 50%, transparent 100%);
+  animation: border-travel 4s linear infinite;
+  pointer-events: none;
+}
+@keyframes border-travel {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+.btn-gold:hover {
+  background: #C9A84C;
+  color: #060E1A;
+  border: 1.5px solid #C9A84C !important;
+  box-shadow: 0 8px 24px rgba(201,168,76,0.2);
+  transform: translateY(-1px);
+}
+.btn-gold:hover::after { animation-play-state: paused; }
+@media (prefers-reduced-motion: reduce) {
+  .btn-gold::after { animation: none; }
+}
 .btn-wa { background: #25D366; color: #fff; }
 .btn-wa:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(37,211,102,.35); }
 
