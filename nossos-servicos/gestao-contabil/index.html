@@ -263,7 +263,7 @@
 
     /* BREADCRUMB */
     .breadcrumb { padding: 12px 24px; background: var(--blue-800); border-bottom: 1px solid rgba(255,255,255,.06); }
-    .breadcrumb-inner { max-width: var(--max-w); margin: 0 auto; display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-muted); }
+    .breadcrumb-inner { max-width: var(--max-w); margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 13px; color: var(--text-muted); }
     .breadcrumb-inner a { color: var(--text-muted); transition: var(--t); }
     .breadcrumb-inner a:hover { color: var(--gold); }
     .breadcrumb-inner span { color: var(--text); }
@@ -375,7 +375,7 @@
 
     /* SETORES MARQUEE */
     .setores { background: var(--blue-900); padding: 40px 0; overflow: hidden; border-top: 1px solid rgba(255,255,255,.06); border-bottom: 1px solid rgba(255,255,255,.06); }
-    .marquee-track { display: flex; gap: 40px; animation: marquee 28s linear infinite; white-space: nowrap; }
+    .marquee-track { display: flex; gap: 40px; width: max-content; animation: marquee 28s linear infinite; white-space: nowrap; }
     .marquee-item { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 500; color: var(--text-muted); }
     .marquee-item::before { content: '◆'; color: var(--gold); font-size: 8px; }
     @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
