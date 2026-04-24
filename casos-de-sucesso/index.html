@@ -766,12 +766,22 @@ ul { list-style: none; }
 @media (max-width: 860px) { .casos-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 540px) { .casos-grid { grid-template-columns: 1fr; } }
 
-/* ── Segmentos (dark / cross-pattern) ── */
+/* ── Segmentos ── */
 .segmentos-sec {
-  background: var(--paper2);
-  color: var(--ink);
+  background: var(--z0);
   padding: var(--sec-pad) 0;
+  position: relative;
+  overflow: hidden;
 }
+.segmentos-sec::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 0v40M0 20h40' stroke='%23ffffff' stroke-width='.3' opacity='.04'/%3E%3C/svg%3E");
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+.segmentos-sec > * { position: relative; z-index: 1; }
 .segmentos-grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -779,15 +789,15 @@ ul { list-style: none; }
   margin-top: 40px;
 }
 .seg-card {
-  background: #fff;
-  border: 1px solid rgba(15,33,55,.08);
+  background: rgba(255,255,255,.025);
+  border: 1px solid rgba(255,255,255,.07);
   border-radius: 16px;
   padding: 28px 24px 24px;
   display: flex;
   flex-direction: column;
   position: relative;
   overflow: hidden;
-  transition: border-color .4s, box-shadow .4s, transform .4s var(--spring);
+  transition: border-color .4s, box-shadow .4s, transform .4s var(--spring), background .4s;
 }
 .seg-card::after {
   content: '';
@@ -798,13 +808,13 @@ ul { list-style: none; }
   opacity: 0;
   transition: opacity .4s;
 }
-.seg-card:hover { border-color: rgba(59,130,246,.2); box-shadow: 0 8px 32px rgba(6,14,26,.1); transform: translateY(-4px); }
+.seg-card:hover { border-color: rgba(201,168,76,.2); box-shadow: 0 12px 40px rgba(0,0,0,.4); background: rgba(255,255,255,.05); transform: translateY(-4px); }
 .seg-card:hover::after { opacity: 1; }
 .seg-num {
   font-family: var(--serif);
   font-size: .75rem;
   font-style: italic;
-  color: rgba(201,168,76,.6);
+  color: rgba(201,168,76,.5);
   letter-spacing: .05em;
   margin-bottom: 16px;
 }
@@ -822,11 +832,11 @@ ul { list-style: none; }
 .seg-card h3 {
   font-family: var(--serif);
   font-size: 1.1rem;
-  color: var(--ink);
+  color: var(--paper);
   margin-bottom: 10px;
   line-height: 1.2;
 }
-.seg-card p { font-size: 13.5px; color: #475569; line-height: 1.65; flex: 1; }
+.seg-card p { font-size: 13.5px; color: rgba(255,255,255,.5); line-height: 1.65; flex: 1; }
 .seg-badge {
   display: inline-block;
   margin-top: 16px;
@@ -834,7 +844,7 @@ ul { list-style: none; }
   font-weight: 700;
   letter-spacing: .1em;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--accent2);
   background: rgba(59,130,246,.07);
   border: 1px solid rgba(59,130,246,.14);
   border-radius: 4px;
@@ -1080,8 +1090,7 @@ a.footer-nap-row:hover svg { color: var(--gold); }
 
 /* ── Metodologia ── */
 .metod-sec {
-  background: var(--paper);
-  color: var(--ink);
+  background: var(--z1);
   padding: var(--sec-pad) 0;
   position: relative;
   overflow: hidden;
@@ -1101,7 +1110,7 @@ a.footer-nap-row:hover svg { color: var(--gold); }
   left: calc(12.5% + 8px);
   right: calc(12.5% + 8px);
   height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(201,168,76,.4), rgba(201,168,76,.4), transparent);
+  background: linear-gradient(90deg, transparent, rgba(201,168,76,.35), rgba(201,168,76,.35), transparent);
   pointer-events: none;
 }
 .metod-step {
@@ -1116,15 +1125,15 @@ a.footer-nap-row:hover svg { color: var(--gold); }
   width: 64px;
   height: 64px;
   border-radius: 50%;
-  background: rgba(201,168,76,.1);
-  border: 1px solid rgba(201,168,76,.35);
+  background: rgba(201,168,76,.08);
+  border: 1px solid rgba(201,168,76,.3);
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--serif);
   font-style: italic;
   font-size: 1.4rem;
-  color: #9a7a2e;
+  color: var(--dourado);
   margin-bottom: 24px;
   position: relative;
   z-index: 1;
@@ -1133,13 +1142,13 @@ a.footer-nap-row:hover svg { color: var(--gold); }
 .metod-step h3 {
   font-family: var(--serif);
   font-size: 1rem;
-  color: var(--z0);
+  color: var(--paper);
   margin-bottom: 10px;
   line-height: 1.3;
 }
 .metod-step p {
   font-size: 13px;
-  color: #475569;
+  color: rgba(255,255,255,.5);
   line-height: 1.65;
 }
 @media (max-width: 860px) {
@@ -1483,8 +1492,8 @@ a.footer-nap-row:hover svg { color: var(--gold); }
 <!-- METODOLOGIA — dark / cross-pattern -->
 <section class="metod-sec">
   <div class="container">
-    <span class="sec-label dk reveal">Como chegamos aos resultados</span>
-    <h2 class="sec-h dk reveal d1">Um processo de <em>4 etapas</em> que não deixa dinheiro na mesa</h2>
+    <span class="sec-label lt reveal">Como chegamos aos resultados</span>
+    <h2 class="sec-h lt reveal d1">Um processo de <em>4 etapas</em> que não deixa dinheiro na mesa</h2>
     <div class="metod-steps">
       <div class="metod-step reveal d1">
         <div class="metod-step-num">01</div>
@@ -1513,7 +1522,7 @@ a.footer-nap-row:hover svg { color: var(--gold); }
 <!-- DESTAQUE — dark / noise -->
 <section class="destaque-sec noise" id="caso-destaque">
   <div class="container">
-    <span class="sec-label dk reveal">Caso em Destaque</span>
+    <span class="sec-label lt reveal">Caso em Destaque</span>
     <h2 class="sec-h lt reveal d1">Resultados que <em>mudam empresas</em></h2>
 
     <a href="/casos-de-sucesso/metalurgica-contagem/" class="caso-destaque reveal d2">
@@ -1691,8 +1700,8 @@ a.footer-nap-row:hover svg { color: var(--gold); }
 <!-- SEGMENTOS — dark / cross-pattern -->
 <section class="segmentos-sec">
   <div class="container">
-    <span class="sec-label dk reveal">Segmentos de Atuação</span>
-    <h2 class="sec-h dk reveal d1">Onde nossa experiência <em>gera mais resultado</em></h2>
+    <span class="sec-label lt reveal">Segmentos de Atuação</span>
+    <h2 class="sec-h lt reveal d1">Onde nossa experiência <em>gera mais resultado</em></h2>
     <div class="segmentos-grid">
       <div class="seg-card reveal d1">
         <span class="seg-num">01</span>
