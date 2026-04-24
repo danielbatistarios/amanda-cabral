@@ -1,5 +1,13 @@
 {
+  "scripts": {
+    "build": "node minify.mjs"
+  },
   "dependencies": {
     "aws4fetch": "^1.0.20"
+  },
+  "devDependencies": {
+    "cssnano": "^7.1.7",
+    "html-minifier-terser": "^7.2.0",
+    "postcss": "^8.5.10"
   }
 }
