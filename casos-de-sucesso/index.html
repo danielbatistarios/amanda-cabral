@@ -579,42 +579,57 @@ ul { list-style: none; }
   .hero-img-col { display: none; }
 }
 
-/* ── Numbers strip (dark / z2) ── */
+/* ── Numbers strip (dark / z1 → metric cards) ── */
 .numbers-sec {
-  background: var(--z2);
+  background: var(--z1);
   padding: 80px 0;
 }
 .numbers-grid {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
 }
 .numbers-item {
+  background: rgba(255,255,255,.02);
+  border: 1px solid rgba(255,255,255,.05);
+  border-radius: 20px;
+  padding: 32px 24px;
   text-align: center;
-  padding: clamp(16px, 3vw, 28px) clamp(24px, 4vw, 56px);
-  flex-shrink: 0;
+  position: relative;
+  overflow: hidden;
+  transition: all .5s var(--spring);
 }
-.numbers-sep {
-  width: 1px;
-  height: 56px;
-  background: var(--border-z2);
-  flex-shrink: 0;
+.numbers-item::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(59,130,246,.15), transparent 50%, rgba(59,130,246,.08));
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  -webkit-mask-composite: xor;
+  opacity: 0;
+  transition: opacity .5s;
 }
+.numbers-item:hover::before { opacity: 1; }
+.numbers-item:hover { background: rgba(255,255,255,.04); transform: translateY(-3px); }
 .numbers-val {
   font-family: var(--serif);
   font-style: italic;
-  font-size: clamp(36px, 5vw, 52px);
+  font-size: clamp(2.2rem, 4vw, 2.8rem);
   color: var(--dourado);
-  line-height: 1.1;
+  line-height: 1;
 }
 .numbers-label {
-  font-size: 14px;
+  font-size: .78rem;
   color: var(--dim);
-  margin-top: 6px;
+  margin-top: 8px;
+  line-height: 1.4;
 }
-@media (max-width: 640px) { .numbers-sep { display: none; } .numbers-item { width: 50%; } }
+@media (max-width: 860px) { .numbers-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 480px) { .numbers-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; } }
 
 /* ── Caso destaque (dark / noise) ── */
 .destaque-sec {
@@ -810,29 +825,68 @@ ul { list-style: none; }
   margin-top: 40px;
 }
 .seg-card {
-  background: rgba(255,255,255,.03);
+  background: rgba(255,255,255,.02);
   border: 1px solid var(--border-z1);
-  border-radius: var(--r-card);
-  padding: 28px 24px;
-  transition: border-color .3s, background .3s;
+  border-radius: 16px;
+  padding: 28px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  transition: border-color .4s, background .4s, transform .4s var(--spring);
 }
-.seg-card:hover { border-color: var(--border-z2); background: rgba(255,255,255,.05); }
-.seg-icon {
-  width: 44px; height: 44px;
-  border-radius: var(--r-card);
-  background: rgba(59,130,246,.1);
-  display: flex; align-items: center; justify-content: center;
+.seg-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--accent), var(--dourado));
+  opacity: 0;
+  transition: opacity .4s;
+}
+.seg-card:hover { border-color: rgba(59,130,246,.2); background: rgba(255,255,255,.04); transform: translateY(-4px); }
+.seg-card:hover::after { opacity: 1; }
+.seg-num {
+  font-family: var(--serif);
+  font-size: .75rem;
+  font-style: italic;
+  color: rgba(201,168,76,.4);
+  letter-spacing: .05em;
   margin-bottom: 16px;
 }
+.seg-icon {
+  width: 48px; height: 48px;
+  border-radius: 12px;
+  background: rgba(59,130,246,.08);
+  border: 1px solid rgba(59,130,246,.12);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 18px;
+  transition: background .3s, border-color .3s;
+}
+.seg-card:hover .seg-icon { background: rgba(59,130,246,.14); border-color: rgba(59,130,246,.22); }
 .seg-icon svg { width: 22px; height: 22px; color: var(--accent); }
 .seg-card h3 {
   font-family: var(--serif);
-  font-size: 1.05rem;
+  font-size: 1.1rem;
   color: var(--paper);
-  margin-bottom: 8px;
+  margin-bottom: 10px;
   line-height: 1.2;
 }
-.seg-card p { font-size: 14px; color: var(--dim); line-height: 1.6; }
+.seg-card p { font-size: 13.5px; color: var(--dim); line-height: 1.65; flex: 1; }
+.seg-badge {
+  display: inline-block;
+  margin-top: 16px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  background: rgba(59,130,246,.08);
+  border: 1px solid rgba(59,130,246,.12);
+  border-radius: 4px;
+  padding: 4px 10px;
+  width: fit-content;
+}
 @media (max-width: 860px) { .segmentos-grid { grid-template-columns: 1fr 1fr; } }
 @media (max-width: 480px) { .segmentos-grid { grid-template-columns: 1fr; } }
 
@@ -924,60 +978,10 @@ ul { list-style: none; }
 }
 .btn-outline:hover { background: rgba(255,255,255,.06); color: #fff; }
 
-/* ── Bottom bar ── */
-.bottom-bar {
-  position: fixed;
-  bottom: 0; left: 0; right: 0;
-  z-index: 998;
-  background: rgba(241,245,249,.94);
-  backdrop-filter: blur(24px);
-  box-shadow: 0 -1px 0 rgba(0,0,0,.06);
-  transform: translateY(100%);
-  transition: transform .5s var(--spring);
-}
-.bottom-bar.visible { transform: translateY(0); }
-.bb-inner {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 24px;
-  padding: 14px 40px;
-}
-.bb-info {
-  font-size: .875rem;
-  font-weight: 500;
-  color: #64748B;
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-}
-.bb-stars { color: #F59E0B; font-size: .875rem; letter-spacing: 1px; }
-.bb-sep { width: 1px; height: 20px; background: var(--paper2); }
-.bb-cta {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 28px;
-  border-radius: 50px;
-  background: var(--accent);
-  color: #fff;
-  font-size: .875rem;
-  font-weight: 600;
-  text-decoration: none;
-  transition: background .2s;
-}
-.bb-cta:hover { background: #2563EB; }
-@media (max-width: 600px) {
-  .bb-inner { gap: 12px; padding: 12px 20px; flex-wrap: wrap; justify-content: center; }
-  .bb-sep { display: none; }
-  .bb-info { font-size: .8rem; }
-  .bb-cta { padding: 9px 22px; font-size: .8rem; }
-}
-
 /* ── WA float ── */
 .wa-float {
   position: fixed;
-  bottom: 80px; right: 24px;
+  bottom: 24px; right: 24px;
   z-index: 997;
   width: 56px; height: 56px;
   background: #25D366;
@@ -1232,28 +1236,25 @@ a.footer-nap-row:hover svg { color: var(--gold); }
   </div>
 </section>
 
-<!-- NUMBERS — dark / z2 -->
+<!-- NUMBERS — dark / z1 metric cards -->
 <div class="numbers-sec">
   <div class="container">
     <div class="numbers-grid">
       <div class="numbers-item reveal">
         <div class="numbers-val">R$ 12M+</div>
-        <div class="numbers-label">créditos recuperados no total</div>
+        <div class="numbers-label">créditos tributários recuperados para clientes</div>
       </div>
-      <div class="numbers-sep"></div>
       <div class="numbers-item reveal d1">
         <div class="numbers-val">120+</div>
-        <div class="numbers-label">empresas atendidas</div>
+        <div class="numbers-label">empresas atendidas em MG e no Brasil</div>
       </div>
-      <div class="numbers-sep"></div>
       <div class="numbers-item reveal d2">
-        <div class="numbers-val">0%</div>
-        <div class="numbers-label">de autuações fiscais em clientes ativos</div>
+        <div class="numbers-val">20 anos</div>
+        <div class="numbers-label">de atuação no mercado contábil</div>
       </div>
-      <div class="numbers-sep"></div>
       <div class="numbers-item reveal d3">
-        <div class="numbers-val">28%</div>
-        <div class="numbers-label">de redução média na carga tributária</div>
+        <div class="numbers-val">0</div>
+        <div class="numbers-label">autuações fiscais em clientes ativos</div>
       </div>
     </div>
   </div>
@@ -1367,32 +1368,40 @@ a.footer-nap-row:hover svg { color: var(--gold); }
     <h2 class="sec-h lt reveal d1">Onde nossa experiência <em>gera mais resultado</em></h2>
     <div class="segmentos-grid">
       <div class="seg-card reveal d1">
+        <span class="seg-num">01</span>
         <div class="seg-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/><path d="M6 12h.01M12 12h.01"/></svg>
         </div>
         <h3>Indústria</h3>
-        <p>Metalúrgicas, têxteis, alimentos, manufatura em geral. Foco em ICMS e IPI.</p>
+        <p>Metalúrgicas, têxteis, alimentos e manufatura. Recuperação de ICMS e IPI, regime ideal e redução consistente da carga tributária.</p>
+        <span class="seg-badge">ICMS · IPI · Regime</span>
       </div>
       <div class="seg-card reveal d2">
+        <span class="seg-num">02</span>
         <div class="seg-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
         </div>
         <h3>Distribuição</h3>
-        <p>Atacadistas, distribuidoras de insumos e bens de consumo. PIS/COFINS no Lucro Real.</p>
+        <p>Atacadistas e distribuidoras de insumos. Aproveitamento correto de PIS e COFINS no Lucro Real e revisão de entradas não creditadas.</p>
+        <span class="seg-badge">PIS · COFINS · Lucro Real</span>
       </div>
       <div class="seg-card reveal d3">
+        <span class="seg-num">03</span>
         <div class="seg-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 22V8l9-6 9 6v14"/><path d="M9 22V12h6v10"/></svg>
         </div>
         <h3>Construção Civil</h3>
-        <p>Construtoras, incorporadoras e prestadores de serviço. Regime, RET e recuperação.</p>
+        <p>Construtoras e incorporadoras com RET, desonerações e recuperação de créditos de serviços subcontratados.</p>
+        <span class="seg-badge">RET · Regime · Recuperação</span>
       </div>
       <div class="seg-card reveal d4">
+        <span class="seg-num">04</span>
         <div class="seg-icon">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
         </div>
         <h3>Holdings e Família</h3>
-        <p>Proteção patrimonial e planejamento sucessório. Imóveis, quotas e ITCMD.</p>
+        <p>Proteção patrimonial e planejamento sucessório para imóveis, quotas societárias e ativos de família com economia em ITCMD.</p>
+        <span class="seg-badge">Holding · ITCMD · Sucessão</span>
       </div>
     </div>
   </div>
@@ -1525,20 +1534,6 @@ a.footer-nap-row:hover svg { color: var(--gold); }
   </div>
 </footer>
 
-<!-- BOTTOM BAR -->
-<div class="bottom-bar" id="bottomBar">
-  <div class="bb-inner">
-    <span class="bb-info"><span class="bb-stars">★★★★★</span> 4.9 no Google</span>
-    <div class="bb-sep"></div>
-    <span class="bb-info">R$ 12M+ recuperados para clientes</span>
-    <div class="bb-sep"></div>
-    <a href="/fale-com-especialista/" class="bb-cta">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.83a16 16 0 0 0 5.38 5.38l1.92-1.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-      Diagnóstico Gratuito
-    </a>
-  </div>
-</div>
-
 <!-- WA FLOAT -->
 <a href="https://wa.me/5537999967558?text=Olá!%20Quero%20saber%20mais%20sobre%20os%20serviços%20da%20AM%20Cabral." class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">
   <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.124.557 4.12 1.529 5.857L.057 23.997l6.304-1.653A11.954 11.954 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 21.802a9.791 9.791 0 0 1-5.031-1.39l-.361-.214-3.741.981.998-3.648-.235-.374A9.773 9.773 0 0 1 2.198 12C2.198 6.58 6.58 2.198 12 2.198S21.802 6.58 21.802 12 17.42 21.802 12 21.802z"/></svg>
@@ -1555,12 +1550,6 @@ const prog = document.getElementById('scrollProgress');
 window.addEventListener('scroll', () => {
   const h = document.documentElement;
   prog.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
-}, { passive: true });
-
-// ── BOTTOM BAR ──
-const bar = document.getElementById('bottomBar');
-window.addEventListener('scroll', () => {
-  bar.classList.toggle('visible', window.scrollY > window.innerHeight * 0.5);
 }, { passive: true });
 
 // ── CURSOR ──
