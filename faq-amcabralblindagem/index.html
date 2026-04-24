@@ -193,6 +193,7 @@
   --glow-accent: rgba(59, 130, 246, .14);
   --glow-accent-edge: rgba(96, 165, 250, .07);
   --glow-accent2: rgba(96, 165, 250, .06);
+  --glow-gold: rgba(201, 168, 76, .06);
   --border-z1: rgba(255, 255, 255, .055);
   --border-z2: rgba(255, 255, 255, .08);
   --border-z3: rgba(255, 255, 255, .11);
@@ -2124,7 +2125,7 @@ p { text-wrap: pretty; }
 </div>
 
 <!-- 3. HEADER (FIXED) -->
-<a href="#main-content" class="skip-link">Pular para conte&#250;do</a>
+<a href="#faq-content" class="skip-link">Pular para conte&#250;do</a>
 <header id="hdr">
   <div id="hdr-inner">
     <a href="/" id="hdr-logo">AM Cabral</a>
@@ -2879,7 +2880,7 @@ p { text-wrap: pretty; }
 /* === READING PROGRESS === */
 window.addEventListener('scroll', function() {
   var h = document.documentElement.scrollHeight - window.innerHeight;
-  var prog = document.getElementById('readingProg');
+  var prog = document.getElementById('readingProgress');
   if (prog && h > 0) prog.style.width = (window.scrollY / h * 100) + '%';
 }, {passive: true});
 
