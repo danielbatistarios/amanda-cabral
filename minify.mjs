@@ -21,7 +21,7 @@ const minHtml = await minify(html, {
   removeStyleLinkTypeAttributes: true,
   useShortDoctype: true,
   minifyCSS: true,
-  minifyJS: { compress: true, mangle: true },
+  minifyJS: { compress: true, mangle: false },
   decodeEntities: false,
 });
 writeFileSync(join(DIST, 'index.html'), minHtml);
