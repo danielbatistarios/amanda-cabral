@@ -36,20 +36,166 @@
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 }
         html, body { height: 100%; }
-        body { font-family: var(--font-body); color: var(--white); background: var(--blue-900); -webkit-font-smoothing: antialiased; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; text-align: center; padding: 40px 24px; }
-        .logo { font-family: var(--font-display); font-size: 1.25rem; color: rgba(255,255,255,0.6); margin-bottom: 64px; }
-        .err-code { font-family: var(--font-display); font-size: clamp(6rem, 20vw, 12rem); color: rgba(255,255,255,0.06); line-height: 1; margin-bottom: -24px; }
-        .err-title { font-family: var(--font-display); font-size: clamp(1.5rem, 4vw, 2.5rem); color: var(--white); margin-bottom: 16px; }
-        .err-sub { font-size: 1rem; color: var(--silver); max-width: 480px; margin: 0 auto 48px; line-height: 1.7; }
-        .err-links { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
-        .btn-primary { background: var(--accent); color: var(--white); padding: 14px 32px; border-radius: 10px; font-size: 0.9rem; font-weight: 600; text-decoration: none; transition: opacity 0.2s; }
-        .btn-primary:hover { opacity: 0.9; }
-        .btn-ghost { background: transparent; color: rgba(255,255,255,0.7); padding: 14px 32px; border-radius: 10px; font-size: 0.9rem; border: 1px solid rgba(255,255,255,0.15); text-decoration: none; transition: all 0.2s; }
-        .btn-ghost:hover { color: var(--white); border-color: rgba(255,255,255,0.4); }
-        .quick-links { margin-top: 64px; display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
-        .quick-link { font-size: 0.8rem; color: rgba(255,255,255,0.4); border: 1px solid rgba(255,255,255,0.1); padding: 6px 16px; border-radius: 20px; text-decoration: none; transition: all 0.2s; }
-        .quick-link:hover { color: rgba(255,255,255,0.8); border-color: rgba(255,255,255,0.25); }
-    
+        body { font-family: var(--font-body); color: var(--white); background: var(--blue-900); -webkit-font-smoothing: antialiased; display: flex; flex-direction: column; min-height: 100vh; }
+
+        /* 404 main area */
+        .err-main {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 24px 80px;
+            text-align: center;
+            position: relative;
+            overflow-x: clip;
+        }
+
+        /* subtle grid bg */
+        .err-main::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(255,255,255,0.015) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.015) 1px, transparent 1px);
+            background-size: 60px 60px;
+            mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 0%, transparent 100%);
+            -webkit-mask-image: radial-gradient(ellipse 70% 70% at 50% 50%, black 0%, transparent 100%);
+            pointer-events: none;
+        }
+
+        /* gold orb behind 404 */
+        .err-main::after {
+            content: '';
+            position: absolute;
+            width: 600px; height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(201,168,76,0.04) 0%, transparent 70%);
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        .err-inner { position: relative; z-index: 1; max-width: 600px; }
+
+        .err-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 24px;
+            opacity: 0.8;
+        }
+        .err-eyebrow::before,
+        .err-eyebrow::after {
+            content: '';
+            display: block;
+            width: 32px; height: 1px;
+            background: var(--gold);
+            opacity: 0.4;
+        }
+
+        .err-code {
+            font-family: var(--font-display);
+            font-size: clamp(7rem, 22vw, 13rem);
+            color: transparent;
+            -webkit-text-stroke: 1px rgba(201,168,76,0.15);
+            line-height: 1;
+            margin-bottom: -12px;
+            letter-spacing: -0.04em;
+            user-select: none;
+        }
+        .err-title {
+            font-family: var(--font-display);
+            font-size: clamp(1.6rem, 4vw, 2.6rem);
+            color: var(--white);
+            margin-bottom: 16px;
+            line-height: 1.15;
+        }
+        .err-sub {
+            font-size: 0.9625rem;
+            color: var(--silver);
+            max-width: 440px;
+            margin: 0 auto 40px;
+            line-height: 1.75;
+        }
+        .err-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 48px;
+        }
+        .btn-primary {
+            background: var(--accent);
+            color: var(--white);
+            padding: 13px 30px;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: opacity 0.2s, transform 0.2s;
+            display: inline-flex; align-items: center; gap: 8px;
+        }
+        .btn-primary:hover { opacity: 0.9; transform: translateY(-1px); }
+        .btn-ghost {
+            background: transparent;
+            color: rgba(255,255,255,0.65);
+            padding: 13px 30px;
+            border-radius: 8px;
+            font-size: 0.875rem;
+            border: 1px solid rgba(255,255,255,0.12);
+            text-decoration: none;
+            transition: all 0.2s;
+            display: inline-flex; align-items: center; gap: 8px;
+        }
+        .btn-ghost:hover { color: var(--white); border-color: rgba(255,255,255,0.35); }
+
+        .err-divider {
+            width: 40px; height: 1px;
+            background: rgba(255,255,255,0.08);
+            margin: 0 auto 32px;
+        }
+        .err-links-label {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.25);
+            margin-bottom: 14px;
+        }
+        .quick-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+        .quick-link {
+            font-size: 0.8rem;
+            color: rgba(255,255,255,0.38);
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 6px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: all 0.2s;
+        }
+        .quick-link:hover { color: rgba(255,255,255,0.8); border-color: rgba(255,255,255,0.22); background: rgba(255,255,255,0.03); }
+
+        @media (max-width: 600px) {
+            .err-main { padding: 90px 20px 60px; align-items: center; }
+            .err-code { font-size: clamp(4.5rem, 25vw, 6rem); margin-bottom: -6px; }
+            .err-eyebrow { margin-bottom: 12px; }
+            .err-title { font-size: clamp(1.3rem, 5.5vw, 1.7rem); }
+            .err-sub { font-size: 0.875rem; margin-bottom: 28px; }
+            .btn-primary, .btn-ghost { padding: 12px 20px; font-size: 0.85rem; width: 100%; justify-content: center; }
+            .err-links { flex-direction: column; gap: 10px; }
+            .err-main::after { width: 300px; height: 300px; }
+        }
+
 
 /* ============================
            HEADER / MEGA-MENU — v2 clean
@@ -1336,24 +1482,30 @@
   <a href="/fale-com-especialista/" id="hdrMobCta" style="color:var(--accent-gold);margin-top:16px;font-weight:700;">Diagnóstico Gratuito</a>
 </div>
 
-    <a href="/" class="logo">AM Cabral</a>
+<main class="err-main">
+  <div class="err-inner">
+    <div class="err-eyebrow">Erro 404</div>
     <div class="err-code">404</div>
     <h1 class="err-title">Página não encontrada</h1>
     <p class="err-sub">O endereço que você buscou não existe ou foi movido. Tente uma das opções abaixo para continuar navegando.</p>
     <div class="err-links">
-        <a href="/" class="btn-primary">Voltar ao início</a>
-        <a href="/fale-com-especialista/" class="btn-ghost">Falar com especialista</a>
+      <a href="/" class="btn-primary">← Voltar ao início</a>
+      <a href="/fale-com-especialista/" class="btn-ghost">Falar com especialista</a>
     </div>
+    <div class="err-divider"></div>
+    <p class="err-links-label">Páginas populares</p>
     <div class="quick-links">
-        <a href="/nossos-servicos/" class="quick-link">Serviços</a>
-        <a href="/nossos-servicos/recuperacao-creditos-tributarios/" class="quick-link">Recuperação de Créditos</a>
-        <a href="/nossos-servicos/holding-patrimonial/" class="quick-link">Holding Patrimonial</a>
-        <a href="/nossos-servicos/planejamento-tributario/" class="quick-link">Planejamento Tributário</a>
-        <a href="/blog/" class="quick-link">Blog</a>
-        <a href="/sobre-amcabral-blindagem/" class="quick-link">Sobre a Amanda</a>
-        <a href="/casos-de-sucesso/" class="quick-link">Casos de Sucesso</a>
-        <a href="/faq-amcabralblindagem/" class="quick-link">Perguntas Frequentes</a>
+      <a href="/nossos-servicos/" class="quick-link">Serviços</a>
+      <a href="/nossos-servicos/recuperacao-creditos-tributarios/" class="quick-link">Recuperação de Créditos</a>
+      <a href="/nossos-servicos/holding-patrimonial/" class="quick-link">Holding Patrimonial</a>
+      <a href="/nossos-servicos/planejamento-tributario/" class="quick-link">Planejamento Tributário</a>
+      <a href="/blog/" class="quick-link">Blog</a>
+      <a href="/sobre-amcabral-blindagem/" class="quick-link">Sobre a Amanda</a>
+      <a href="/casos-de-sucesso/" class="quick-link">Casos de Sucesso</a>
+      <a href="/faq-amcabralblindagem/" class="quick-link">Perguntas Frequentes</a>
     </div>
+  </div>
+</main>
 
 <footer class="site-footer">
   <div class="footer-inner">
