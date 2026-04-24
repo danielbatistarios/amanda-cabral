@@ -69,6 +69,9 @@ const pages = [
   ['/para-de-minas-mg/holding-patrimonial-para-de-minas',                        '0.7', 'monthly'],
   ['/para-de-minas-mg/planejamento-tributario-para-de-minas',                    '0.7', 'monthly'],
   ['/para-de-minas-mg/recuperacao-creditos-tributarios-para-de-minas',           '0.7', 'monthly'],
+  ['/para-de-minas-mg/contador-especializado-em-holding',                        '0.7', 'monthly'],
+  ['/para-de-minas-mg/contador-para-fabricas-e-industrias',                      '0.7', 'monthly'],
+  ['/para-de-minas-mg/trocar-de-contador',                                       '0.7', 'monthly'],
 
   // Uberlândia — polo industrial grande (contador + abertura + holding + planejamento + recuperação)
   ['/uberlandia-mg',                                                              '0.7', 'monthly'],
