@@ -355,51 +355,26 @@ footer{background:var(--z1);border-top:1px solid var(--border-z1);padding:clamp(
 
 <!-- Header -->
 <header id="hdr">
-  <div class="hdr-inner">
-    <a href="/" class="hdr-logo">AM <span>Cabral</span></a>
-    <nav class="hdr-nav">
-      <a href="/">Início</a>
-      <div class="mega-wrap">
-        <button class="mega-trigger" aria-expanded="false">Sobre nós <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
-        <div class="mega-panel" id="mega-sobre">
-          <div class="mega-col">
-            <h4>A Contadora</h4>
-            <a href="/sobre-amcabral-blindagem/"><span>👤</span><div><strong>Amanda Cabral</strong><em>CRC e trajetória profissional</em></div></a>
-            <a href="/perguntas-frequentes/"><span>❓</span><div><strong>Perguntas Frequentes</strong><em>Dúvidas sobre holding e tributos</em></div></a>
-          </div>
-          <div class="mega-col">
-            <h4>Empresa</h4>
-            <a href="/sobre-amcabral-blindagem/"><span>🏢</span><div><strong>Sobre a AM Cabral</strong><em>Missão, valores e equipe</em></div></a>
-            <a href="/casos-de-sucesso/"><span>⭐</span><div><strong>Casos de Sucesso</strong><em>Resultados reais de clientes</em></div></a>
-          </div>
-        </div>
-      </div>
-      <div class="mega-wrap">
-        <button class="mega-trigger" aria-expanded="false">Serviços <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 4l4 4 4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
-        <div class="mega-panel" id="mega-servicos">
-          <div class="mega-col">
-            <h4>Contabilidade</h4>
-            <a href="/nossos-servicos/gestao-contabil/"><span>📊</span><div><strong>Gestão Contábil</strong><em>BPO financeiro completo</em></div></a>
-            <a href="/nossos-servicos/consultoria-tributaria/"><span>🚀</span><div><strong>Abertura de Empresa</strong><em>Constituição societária</em></div></a>
-          </div>
-          <div class="mega-col">
-            <h4>Tributário</h4>
-            <a href="/nossos-servicos/planejamento-tributario/"><span>📉</span><div><strong>Planejamento Tributário</strong><em>Redução legal de impostos</em></div></a>
-            <a href="/nossos-servicos/holding-patrimonial/"><span>🏛️</span><div><strong>Holding Patrimonial</strong><em>Proteção e sucessão</em></div></a>
-          </div>
-          <div class="mega-col">
-            <h4>Especialidades</h4>
-            <a href="/nossos-servicos/recuperacao-creditos-tributarios/"><span>💰</span><div><strong>Gestão Financeira</strong><em>Fluxo de caixa e DRE</em></div></a>
-            <a href="/nossos-servicos/consultoria-tributaria/"><span>🎯</span><div><strong>Consultoria Empresarial</strong><em>Estratégia e crescimento</em></div></a>
-          </div>
-        </div>
-      </div>
-      <a href="/blog/">Blog</a>
-      <a href="https://wa.me/5531912745462" class="hdr-cta" target="_blank" rel="noopener">Falar com Amanda</a>
-    </nav>
-    <button class="hdr-burger" id="burger" aria-label="Menu">
-      <span></span><span></span><span></span>
-    </button>
+  <div id="hdr-inner">
+    <a href="/" id="hdr-logo">AM Cabral</a>
+
+    <ul id="hdr-nav">
+      <li class="hdr-item">
+        <a href="/" class="hdr-btn">Início</a>
+      </li>
+      <li class="hdr-item" data-menu="sobre">
+        <button class="hdr-btn">Sobre a AM Cabral <span class="hdr-arrow">▾</span></button>
+      </li>
+      <li class="hdr-item" data-menu="servicos">
+        <button class="hdr-btn">Serviços <span class="hdr-arrow">▾</span></button>
+      </li>
+      <li class="hdr-item" data-menu="blog">
+        <button class="hdr-btn">Blog <span class="hdr-arrow">▾</span></button>
+      </li>
+    </ul>
+
+    <a href="/fale-com-especialista/" class="hdr-cta" id="hdrCta">Diagnóstico Gratuito</a>
+    <button id="hdr-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
 </header>
 
@@ -783,30 +758,95 @@ footer{background:var(--z1);border-top:1px solid var(--border-z1);padding:clamp(
 </main>
 
 <!-- Footer -->
-<footer>
-  <div class="ft-inner">
-    <div class="ft-grid">
-      <div>
-        <div class="ft-brand">AM <span>Cabral</span></div>
-        <p class="ft-desc">Contabilidade estratégica para empresários e proprietários que querem pagar menos imposto, crescer com segurança e proteger o patrimônio.</p>
+<footer class="site-footer">
+  <div class="footer-inner">
+
+    <!-- Prova social -->
+
+    <div class="footer-grid">
+
+      <!-- Col 1: Brand + Social + Fale Conosco -->
+      <div class="footer-brand-col">
+
+        <p class="footer-contact-title">Fale Conosco</p>
+        <address class="footer-nap">
+          <a href="tel:+5537999967558" class="footer-nap-row">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.83a16 16 0 0 0 5.38 5.38l1.92-1.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            (37) 99996-7558
+          </a>
+          <a href="mailto:contato@amcabralblindagem.com.br" class="footer-nap-row">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            contato@amcabralblindagem.com.br
+          </a>
+          <span class="footer-nap-row">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Rua Major Fidelis, 244, Centro<br>Pará de Minas, MG 35660-109
+          </span>
+          <span class="footer-nap-row">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            CNPJ 34.733.620/0001-51
+          </span>
+        </address>
       </div>
-      <div class="ft-col">
-        <h4>Serviços</h4>
-        <a href="/nossos-servicos/gestao-contabil/">Gestão Contábil</a>
-        <a href="/nossos-servicos/holding-patrimonial/">Holding Patrimonial</a>
-        <a href="/nossos-servicos/planejamento-tributario/">Planejamento Tributário</a>
-        <a href="/nossos-servicos/consultoria-tributaria/">Abertura de Empresa</a>
+
+      <!-- Col 2: A Empresa -->
+      <div class="footer-col">
+        <h3 class="footer-heading">A Empresa</h3>
+        <ul>
+          <li><a href="/sobre-amcabral-blindagem/">Sobre</a></li>
+          <li><a href="/casos-de-sucesso/">Casos de Sucesso</a></li>
+          <li><a href="/perguntas-frequentes/">Duvidas Frequentes</a></li>
+          <li><a href="/fale-com-especialista/">Contato</a></li>
+          <li><a href="/blog/">Blog</a></li>
+        </ul>
       </div>
-      <div class="ft-col">
-        <h4>Empresa</h4>
-        <a href="/sobre-amcabral-blindagem/">Sobre Nós</a>
-        <a href="/blog/">Blog</a>
-        <a href="https://wa.me/5531912745462" target="_blank" rel="noopener">WhatsApp</a>
+
+      <!-- Col 3: Serviços -->
+      <div class="footer-col">
+        <h3 class="footer-heading">Serviços</h3>
+        <ul>
+          <li><a href="/nossos-servicos/gestao-contabil/">Contabilidade Estratégica</a></li>
+          <li><a href="/nossos-servicos/recuperacao-creditos-tributarios/">Recuperação de Créditos</a></li>
+          <li><a href="/nossos-servicos/holding-patrimonial/">Holding</a></li>
+          <li><a href="/nossos-servicos/planejamento-tributario/">Planejamento Fiscal</a></li>
+          <li><a href="/nossos-servicos/consultoria-tributaria/">Consultoria Tributária</a></li>
+        </ul>
       </div>
+
+      <!-- Col 4: Cidades Atendidas -->
+      <div class="footer-col">
+        <h3 class="footer-heading">Cidades Atendidas</h3>
+        <ul>
+          <li><a href="/contabilidade-para-de-minas/">Pará de Minas</a></li>
+          <li><a href="/contabilidade-sete-lagoas/">Sete Lagoas</a></li>
+          <li><a href="/contador-betim/">Betim</a></li>
+          <li><a href="/contador-belo-horizonte/">Belo Horizonte</a></li>
+          <li><a href="/cidades-atendidas/">Ver todas as cidades →</a></li>
+        </ul>
+      </div>
+
     </div>
-    <div class="ft-bottom">
-      <p class="ft-copy">© 2024 AM Cabral Contabilidade. Todos os direitos reservados.</p>
-      <p class="ft-copy">CRC/MG — Belo Horizonte, MG</p>
+
+
+    <p class="footer-wordmark-tagline"><em>Inteligência tributária para empresas que competem para vencer.</em></p>
+    <div class="footer-wordmark">AM Cabral Contabilidade</div>
+
+    <!-- Barra legal -->
+    <div class="footer-legal">
+      <p>© 2026 Amanda Silva Cabral Contabilidade. CNPJ 34.733.620/0001-51. CRC/MG ativo.</p>
+      <div class="footer-social-icons">
+        <a href="https://www.instagram.com/amandacabral28/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/amanda-cabral-de-oliveira-82183a179/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+      <div class="footer-legal-links">
+        <a href="/politica-de-privacidade/">Política de Privacidade</a>
+        <a href="/politica-de-cookies/">Política de Cookies</a>
+        <a href="/termos-de-uso/">Termos de Uso</a>
+      </div>
     </div>
   </div>
 </footer>
