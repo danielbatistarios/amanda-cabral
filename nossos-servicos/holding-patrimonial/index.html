@@ -48,1616 +48,1886 @@
         "about": {"@id": "https://amcabralblindagem.com.br/nossos-servicos/holding-patrimonial/#service"}
       },
       {
-        "@type": "BreadcrumbList",
-        "@id": "https://amcabralblindagem.com.br/nossos-servicos/holding-patrimonial/#breadcrumb",
-        "itemListElement": [
-          {"@type": "ListItem", "position": 1, "name": "Home", "item": "https://amcabralblindagem.com.br/"},
-          {"@type": "ListItem", "position": 2, "name": "Nossos Serviços", "item": "https://amcabralblindagem.com.br/nossos-servicos/"},
-          {"@type": "ListItem", "position": 3, "name": "Holding Patrimonial", "item": "https://amcabralblindagem.com.br/nossos-servicos/holding-patrimonial/"}
-        ]
-      },
-      {
         "@type": "Service",
         "@id": "https://amcabralblindagem.com.br/nossos-servicos/holding-patrimonial/#service",
         "name": "Constituição de Holding Patrimonial e Familiar",
+        "description": "Estruturação de holding familiar para proteção patrimonial, redução de ITCMD, blindagem de bens e planejamento sucessório em Minas Gerais.",
         "provider": {"@id": "https://amcabralblindagem.com.br/#organization"},
-        "areaServed": {"@type": "State", "name": "Minas Gerais"},
-        "description": "Constituição de holdings patrimoniais e familiares para proteção de bens, redução de ITCMD e planejamento sucessório."
+        "areaServed": {"@type": "State", "name": "Minas Gerais"}
       }
     ]
   }
   </script>
 
   <style>
-    @font-face {
-      font-family: 'Inter';
-      src: url('/assets/fonts/inter-latin.woff2') format('woff2');
-      font-weight: 100 900;
-      font-style: normal;
-      font-display: swap;
+    :root {
+      --blue-900: #0a2540;
+      --blue-800: #0f3d66;
+      --blue-700: #1a5490;
+      --gold: #d4af37;
+      --accent-gold: #e6c757;
+      --text: #1a1a1a;
+      --text-light: #666;
+      --bg-light: #f7f9fc;
+      --bg-white: #fff;
+      --border: #e5e5e5;
+      --font-display: "Instrument Serif", serif;
+      --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.1);
     }
+
     @font-face {
-      font-family: 'Instrument Serif';
-      src: url('/assets/fonts/instrument-serif-normal.woff2') format('woff2');
+      font-family: "Inter";
+      src: url("/assets/fonts/inter-latin.woff2") format("woff2");
       font-weight: 400;
       font-style: normal;
       font-display: swap;
     }
+
     @font-face {
-      font-family: 'Instrument Serif';
-      src: url('/assets/fonts/instrument-serif-italic.woff2') format('woff2');
+      font-family: "Instrument Serif";
+      src: url("/assets/fonts/instrument-serif-normal.woff2") format("woff2");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Instrument Serif";
+      src: url("/assets/fonts/instrument-serif-italic.woff2") format("woff2");
       font-weight: 400;
       font-style: italic;
       font-display: swap;
     }
 
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --blue-900: #060E1A;
-      --blue-800: #0A1628;
-      --blue-700: #0F2137;
-      --blue-600: #1E3A5F;
-      --gold: #C9A84C;
-      --accent-gold: #C4A574;
-      --accent: #3B82F6;
-      --surface-dark: #1A2535;
-      --silver: #94A3B8;
-      --text: #CBD5E1;
-      --text-muted: #64748B;
-      --border: rgba(201,168,76,0.15);
-      --font-display: 'Instrument Serif', Georgia, serif;
-      --font-body: 'Inter', system-ui, sans-serif;
-      --ease: cubic-bezier(0.16, 1, 0.3, 1);
-      --ease-out: cubic-bezier(0.16,1,0.3,1);
-      --t: .3s ease;
-      --max-w: 1200px;
-      --radius: 12px;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    html { scroll-behavior: smooth; }
     body {
-      background: var(--blue-900);
-      color: var(--text);
       font-family: var(--font-body);
-      font-size: 16px;
-      line-height: 1.6;
-      cursor: none;
+      color: var(--text);
+      background: var(--bg-white);
       overflow-x: hidden;
     }
-    a { color: inherit; text-decoration: none; }
-    img { max-width: 100%; display: block; }
-    button { cursor: none; font-family: var(--font-body); }
 
-    /* CURSOR */
-    .cursor {
-      position: fixed; top: 0; left: 0; width: 20px; height: 20px;
-      border: 1.5px solid var(--gold); border-radius: 50%;
-      pointer-events: none; z-index: 9999;
-      transform: translate(-50%,-50%);
-      transition: width .2s, height .2s, opacity .2s;
-    }
-    .cursor-dot {
-      position: fixed; top: 0; left: 0; width: 4px; height: 4px;
-      background: var(--gold); border-radius: 50%;
-      pointer-events: none; z-index: 9999;
-      transform: translate(-50%,-50%);
-    }
-    a:hover ~ .cursor, button:hover ~ .cursor { width: 36px; height: 36px; }
-
-    /* NOISE */
-    .noise {
-      position: fixed; inset: 0; z-index: 1; pointer-events: none;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-      opacity: 0.4;
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.6; }
     }
 
-    /* PROGRESS BAR */
-    #progress-bar {
-      position: fixed; top: 0; left: 0; height: 3px; width: 0%;
-      background: var(--gold); z-index: 9998;
-      transition: width .1s linear;
+    @keyframes border-travel {
+      0% {
+        border-image-source: linear-gradient(90deg, var(--gold) 0%, transparent 100%);
+        border-image-slice: 1;
+      }
+      50% {
+        border-image-source: linear-gradient(90deg, transparent 0%, var(--gold) 50%, transparent 100%);
+        border-image-slice: 1;
+      }
+      100% {
+        border-image-source: linear-gradient(90deg, transparent 0%, var(--gold) 100%);
+        border-image-slice: 1;
+      }
     }
 
-    /* HEADER */
-    #hdr {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-      background: rgba(6,14,26,0.92);
-      backdrop-filter: blur(16px);
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(20px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+
+    @keyframes marquee {
+      from { transform: translateX(100%); }
+      to { transform: translateX(-100%); }
+    }
+
+    .site-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: var(--bg-white);
       border-bottom: 1px solid var(--border);
-      height: 64px;
+      z-index: 999;
+      padding: 16px 0;
     }
-    .hdr-inner {
-      max-width: 1280px; margin: 0 auto;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 24px; height: 100%;
+
+    .header-wrapper {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
-    .hdr-logo {
+
+    .header-logo {
       font-family: var(--font-display);
-      font-size: 1.25rem; color: var(--text);
-      display: flex; align-items: center; gap: 10px;
-    }
-    .hdr-logo-mark {
-      width: 32px; height: 32px; border-radius: 8px;
-      background: linear-gradient(135deg, var(--gold), #8B6914);
-      display: flex; align-items: center; justify-content: center;
-      font-size: .75rem; font-weight: 700; color: var(--blue-900);
-      font-family: var(--font-body);
-    }
-    .hdr-nav { display: flex; align-items: center; gap: 4px; }
-    .hdr-item { position: relative; }
-    .hdr-btn {
-      background: none; border: none; color: var(--text-muted);
-      font-size: .875rem; font-weight: 500;
-      padding: 8px 14px; border-radius: 8px;
-      display: flex; align-items: center; gap: 6px;
-      transition: color .2s, background .2s;
-    }
-    .hdr-btn:hover, .hdr-item.open .hdr-btn { color: var(--text); background: rgba(255,255,255,0.05); }
-    .hdr-btn svg { width: 14px; height: 14px; transition: transform .2s; }
-    .hdr-item.open .hdr-btn svg { transform: rotate(180deg); }
-    .hdr-cta {
-      background: var(--gold); color: var(--blue-900);
-      font-size: .875rem; font-weight: 600;
-      padding: 8px 18px; border-radius: 8px;
-      border: none; transition: opacity .2s;
-    }
-    .hdr-cta:hover { opacity: .85; }
-
-    /* MEGA PANELS */
-    .hdr-mega {
-      position: fixed; top: 64px; left: 0; right: 0;
-      background: rgba(10,22,40,0.98);
-      backdrop-filter: blur(20px);
-      border-bottom: 1px solid var(--border);
-      padding: 32px 0; z-index: 999;
-      opacity: 0; pointer-events: none;
-      transform: translateY(-8px);
-      transition: opacity .25s var(--ease-out), transform .25s var(--ease-out);
-    }
-    .hdr-mega.open { opacity: 1; pointer-events: auto; transform: translateY(0); }
-    .hdr-mega-inner {
-      max-width: 1280px; margin: 0 auto; padding: 0 24px;
-      display: grid; grid-template-columns: 280px 1fr; gap: 40px; align-items: start;
-    }
-    .hdr-mega-img {
-      border-radius: var(--radius); overflow: hidden; aspect-ratio: 4/3;
-    }
-    .hdr-mega-img img { width: 100%; height: 100%; object-fit: cover; }
-    .hdr-mega-links {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 4px;
-    }
-    .hdr-mega-link {
-      display: block; padding: 10px 14px; border-radius: 8px;
-      font-size: .875rem; color: var(--text-muted);
-      transition: color .2s, background .2s;
-    }
-    .hdr-mega-link:hover { color: var(--text); background: rgba(255,255,255,0.05); }
-    .hdr-mega-link.active { color: var(--gold); }
-    .hdr-mega-link span { display: block; font-size: .75rem; color: var(--text-muted); margin-top: 2px; }
-    .hdr-mega-link.active span { color: var(--accent-gold); opacity: .7; }
-
-    /* MOBILE HEADER */
-    #hdr-hamburger {
-      display: none; flex-direction: column; gap: 5px;
-      background: none; border: none; padding: 8px;
-    }
-    #hdr-hamburger span {
-      display: block; width: 22px; height: 2px;
-      background: var(--text); border-radius: 2px; transition: .3s;
-    }
-    #hdr-mob {
-      display: none; position: fixed; inset: 0; z-index: 2000;
-      background: var(--blue-900); padding: 24px;
-      flex-direction: column; overflow-y: auto;
-    }
-    #hdr-mob.open { display: flex; }
-    .hdr-mob-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 32px; }
-    #hdr-mob-close {
-      background: none; border: none; color: var(--text);
-      font-size: 1.5rem; line-height: 1;
-    }
-    .hdr-mob-links { display: flex; flex-direction: column; gap: 4px; }
-    .hdr-mob-section { margin-bottom: 24px; }
-    .hdr-mob-section-title {
-      font-size: .75rem; font-weight: 600; color: var(--text-muted);
-      text-transform: uppercase; letter-spacing: .08em;
-      padding: 0 12px; margin-bottom: 8px;
-    }
-    .hdr-mob-link {
-      display: block; padding: 12px; border-radius: 8px;
-      font-size: .9375rem; color: var(--text-muted);
-      transition: color .2s, background .2s;
-    }
-    .hdr-mob-link:hover { color: var(--text); background: rgba(255,255,255,0.05); }
-    .hdr-mob-cta {
-      margin-top: auto; padding-top: 24px;
-      border-top: 1px solid var(--border);
-    }
-    .hdr-mob-cta a {
-      display: block; text-align: center;
-      background: var(--gold); color: var(--blue-900);
-      font-weight: 600; padding: 14px; border-radius: 10px;
+      font-size: 20px;
+      font-weight: 400;
+      color: var(--text);
+      text-decoration: none;
     }
 
-    /* HERO */
-    .hero {
-      min-height: 100vh; display: flex; align-items: center;
-      padding: 120px 24px 80px;
-      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(30,58,95,0.5) 0%, transparent 70%),
-                  var(--blue-900);
-      position: relative; overflow: hidden;
+    .header-nav {
+      display: flex;
+      gap: 30px;
+      list-style: none;
     }
-    .hero::before {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(circle at 70% 50%, rgba(201,168,76,0.06) 0%, transparent 60%);
-    }
-    .hero-inner { max-width: 900px; margin: 0 auto; text-align: center; position: relative; z-index: 2; }
-    .hero-tag {
-      display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.25);
-      color: var(--gold); font-size: .8125rem; font-weight: 500;
-      padding: 6px 14px; border-radius: 20px; margin-bottom: 28px;
-    }
-    .hero-tag::before { content: ''; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; }
-    .hero h1 {
-      font-family: var(--font-display);
-      font-size: clamp(2.5rem, 6vw, 4.5rem);
-      font-weight: 400; line-height: 1.1;
-      color: var(--text); margin-bottom: 24px;
-    }
-    .hero h1 em { font-style: italic; color: var(--gold); }
-    .hero-sub {
-      font-size: clamp(1rem, 2vw, 1.25rem);
-      color: var(--text-muted); max-width: 620px; margin: 0 auto 40px;
-    }
-    .hero-actions { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-    .btn-primary {
-      background: var(--gold); color: var(--blue-900);
-      font-weight: 700; font-size: .9375rem;
-      padding: 14px 28px; border-radius: 10px; border: none;
-      transition: opacity .2s, transform .2s;
-    }
-    .btn-primary:hover { opacity: .85; transform: translateY(-1px); }
-    .btn-outline {
-      background: transparent; color: var(--text);
-      font-weight: 500; font-size: .9375rem;
-      padding: 14px 28px; border-radius: 10px;
-      border: 1px solid rgba(255,255,255,0.15);
-      transition: border-color .2s, background .2s;
-    }
-    .btn-outline:hover { border-color: rgba(255,255,255,0.35); background: rgba(255,255,255,0.04); }
 
-    /* CRED STRIP */
-    .cred-strip {
+    .header-nav a {
+      color: var(--text);
+      text-decoration: none;
+      font-size: 14px;
+      position: relative;
+      font-weight: 500;
+    }
+
+    .header-nav a::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      transition: width 0.3s;
+    }
+
+    .header-nav a:hover::after {
+      width: 100%;
+    }
+
+    .header-cta {
+      background: var(--blue-900);
+      color: var(--bg-white);
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-size: 14px;
+      cursor: pointer;
+      border: none;
+      transition: background 0.3s;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .header-cta:hover {
       background: var(--blue-800);
-      border-top: 1px solid var(--border);
+    }
+
+    .header-burger {
+      display: none;
+      flex-direction: column;
+      gap: 6px;
+      cursor: pointer;
+      background: none;
+      border: none;
+    }
+
+    .header-burger span {
+      width: 24px;
+      height: 2px;
+      background: var(--text);
+      transition: all 0.3s;
+    }
+
+    .mega-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: var(--bg-white);
       border-bottom: 1px solid var(--border);
-      padding: 20px 24px;
+      width: 100%;
+      padding: 30px 20px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s;
     }
-    .cred-strip-inner {
-      max-width: 1280px; margin: 0 auto;
-      display: flex; flex-wrap: wrap; gap: 16px 40px; justify-content: center; align-items: center;
-    }
-    .cred-item {
-      display: flex; align-items: center; gap: 8px;
-      font-size: .8125rem; color: var(--text-muted);
-    }
-    .cred-item::before { content: ''; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; flex-shrink: 0; }
 
-    /* BREADCRUMB */
-    .breadcrumb { padding: 16px 24px; font-size: .8125rem; color: var(--text-muted); }
-    .breadcrumb-inner { max-width: var(--max-w); margin: 0 auto; display: flex; gap: 8px; align-items: center; justify-content: center; flex-wrap: wrap; }
-    .breadcrumb a { color: var(--text-muted); transition: color .2s; }
-    .breadcrumb a:hover { color: var(--gold); }
-    .bc-sep { color: var(--text-muted); opacity: .5; }
-    .breadcrumb span:not(.bc-sep) { color: var(--text); }
-
-    /* SECTION BASE */
-    section { padding: 80px 24px; }
-    .section-inner { max-width: 1280px; margin: 0 auto; }
-    .section-tag {
-      display: inline-flex; align-items: center; gap: 8px;
-      color: var(--gold); font-size: .8125rem; font-weight: 500;
-      text-transform: uppercase; letter-spacing: .1em; margin-bottom: 16px;
+    .mega-menu.active {
+      max-height: 400px;
     }
-    .section-tag::before { content: ''; width: 20px; height: 1px; background: var(--gold); }
-    .section-title {
+
+    .mega-menu-col h4 {
+      font-size: 12px;
+      color: var(--text-light);
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .mega-menu-col a {
+      display: block;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 13px;
+      padding: 8px 0;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.2s;
+    }
+
+    .mega-menu-col a:hover {
+      border-bottom-color: var(--gold);
+    }
+
+    @media (max-width: 1024px) {
+      .header-nav {
+        display: none;
+      }
+
+      .header-burger {
+        display: flex;
+      }
+
+      .mega-menu {
+        position: fixed;
+        top: 60px;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(10, 37, 64, 0.95);
+        border: none;
+        grid-template-columns: 1fr;
+        padding: 30px 20px;
+        max-height: none;
+        overflow-y: auto;
+      }
+
+      .mega-menu.active {
+        max-height: none;
+      }
+
+      .mega-menu-col {
+        color: var(--bg-white);
+      }
+
+      .mega-menu-col h4 {
+        color: var(--accent-gold);
+      }
+
+      .mega-menu-col a {
+        color: var(--bg-white);
+      }
+    }
+
+    .site-hero {
+      margin-top: 60px;
+      padding: 80px 20px 60px;
+      background: radial-gradient(ellipse at center, rgba(212, 175, 55, 0.03) 0%, transparent 70%);
+      text-align: center;
+    }
+
+    .breadcrumb {
+      font-size: 12px;
+      color: var(--text-light);
+      text-transform: uppercase;
+      margin-bottom: 30px;
+      letter-spacing: 0.5px;
+    }
+
+    .hero-tag {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--blue-900) 0%, var(--blue-800) 100%);
+      color: var(--bg-white);
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-size: 13px;
+      margin-bottom: 20px;
+      font-weight: 500;
+      animation: pulse 2s infinite;
+    }
+
+    .hero-tag-full {
+      display: inline;
+    }
+
+    .hero-tag-short {
+      display: none;
+    }
+
+    .site-hero h1 {
       font-family: var(--font-display);
-      font-size: clamp(1.75rem, 3.5vw, 2.75rem);
-      font-weight: 400; line-height: 1.2; color: var(--text);
+      font-size: 52px;
+      line-height: 1.2;
+      margin-bottom: 30px;
+      color: var(--text);
+    }
+
+    .site-hero h1 em {
+      font-style: italic;
+      color: var(--blue-900);
+      font-weight: 400;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--blue-900);
+      color: var(--bg-white);
+      padding: 14px 28px;
+      border-radius: 6px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn-primary::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+      transform: translateX(-100%);
+      animation: shimmer 2s infinite;
+    }
+
+    @keyframes shimmer {
+      100% { transform: translateX(100%); }
+    }
+
+    .btn-primary:hover {
+      background: var(--blue-800);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      color: var(--blue-900);
+      padding: 14px 28px;
+      border: 2px solid var(--blue-900);
+      border-radius: 6px;
+      text-decoration: none;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+
+    .btn-secondary:hover {
+      background: var(--blue-900);
+      color: var(--bg-white);
+    }
+
+    .cred-strip {
+      background: var(--blue-900);
+      color: var(--bg-white);
+      padding: 20px 0;
+      overflow: hidden;
+    }
+
+    .marquee {
+      display: flex;
+      gap: 40px;
+      animation: marquee 20s linear infinite;
+      white-space: nowrap;
+    }
+
+    .marquee-item {
+      font-size: 14px;
+      flex-shrink: 0;
+    }
+
+    .cfo-sec, .impacto-sec, .consultoria-sec {
+      background: #f7f9fc;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .escopo-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .escopo-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 30px;
+      text-align: center;
+      transition: all 0.3s;
+    }
+
+    .escopo-card:hover {
+      border-color: var(--gold);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+    }
+
+    .escopo-card.highlight {
+      background: linear-gradient(135deg, var(--blue-900) 0%, var(--blue-800) 100%);
+      color: var(--bg-white);
+      grid-column: 1 / -1;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .escopo-card.highlight h3 {
+      color: var(--bg-white);
+    }
+
+    .escopo-icon {
+      font-size: 32px;
       margin-bottom: 16px;
     }
-    .section-title em { font-style: italic; color: var(--gold); }
-    .section-sub { color: var(--text-muted); max-width: 560px; font-size: 1rem; }
 
-    /* AUTHORITY */
-    .authority { background: var(--blue-800); }
-    .auth-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px;
-      margin-top: 48px;
-    }
-    .auth-card {
-      background: var(--blue-700); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 28px;
-      transition: border-color .3s, transform .3s;
-    }
-    .auth-card:hover { border-color: rgba(201,168,76,0.4); transform: translateY(-3px); }
-    .auth-card-icon {
-      width: 44px; height: 44px; border-radius: 10px;
-      background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.2);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.25rem; margin-bottom: 16px;
-    }
-    .auth-card h3 { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 8px; }
-    .auth-card p { font-size: .875rem; color: var(--text-muted); line-height: 1.6; }
-
-    /* NUMBERS */
-    .numbers { background: var(--blue-900); }
-    .numbers-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-      gap: 2px; margin-top: 48px;
-      border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden;
-    }
-    .num-item {
-      background: var(--blue-800); padding: 32px 24px; text-align: center;
-    }
-    .num-value {
-      font-family: var(--font-display); font-size: 2.5rem; color: var(--gold);
-      line-height: 1; margin-bottom: 8px; display: block;
-    }
-    .num-label { font-size: .8125rem; color: var(--text-muted); }
-
-    /* DIFERENCIAL */
-    .diferencial { background: var(--blue-800); }
-    .dif-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px; margin-top: 48px;
-    }
-    .dif-card {
-      background: var(--blue-700); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 32px;
-    }
-    .dif-number {
-      font-family: var(--font-display); font-size: 3rem; color: rgba(201,168,76,0.15);
-      line-height: 1; margin-bottom: 16px;
-    }
-    .dif-card h3 { font-size: 1.0625rem; font-weight: 600; color: var(--text); margin-bottom: 10px; }
-    .dif-card p { font-size: .875rem; color: var(--text-muted); line-height: 1.65; }
-
-    /* SERVICES CAROUSEL */
-    .services-car { background: var(--blue-900); overflow: hidden; }
-    .car-track-wrap { overflow: hidden; margin-top: 48px; }
-    .car-track {
-      display: flex; gap: 20px;
-      transition: transform .4s var(--ease-out);
-    }
-    .car-slide {
-      flex: 0 0 calc(33.333% - 14px);
-      background: var(--blue-800); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 28px;
-      transition: border-color .3s;
-    }
-    .car-slide:hover { border-color: rgba(201,168,76,0.4); }
-    .car-slide-icon {
-      width: 48px; height: 48px; border-radius: 10px;
-      background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.2);
-      display: flex; align-items: center; justify-content: center;
-      font-size: 1.375rem; margin-bottom: 20px;
-    }
-    .car-slide h3 { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 8px; }
-    .car-slide p { font-size: .875rem; color: var(--text-muted); line-height: 1.6; }
-    .car-controls { display: flex; gap: 12px; margin-top: 24px; justify-content: center; }
-    .car-btn {
-      width: 44px; height: 44px; border-radius: 50%;
-      background: var(--blue-800); border: 1px solid var(--border);
-      color: var(--text); font-size: 1rem;
-      display: flex; align-items: center; justify-content: center;
-      transition: border-color .2s, background .2s;
-    }
-    .car-btn:hover { border-color: var(--gold); background: rgba(201,168,76,0.08); }
-
-    /* AMANDA STRIP */
-    .amanda-strip { padding: 0; position: relative; height: 400px; overflow: hidden; }
-    .amanda-strip img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
-    .amanda-strip-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to right, rgba(6,14,26,0.85) 40%, transparent 100%);
-      display: flex; align-items: center; padding: 0 24px;
-    }
-    .amanda-strip-content { max-width: 520px; margin: 0 auto 0 calc(50% - 640px + 24px); }
-    .amanda-strip-content h2 {
+    .escopo-card h3 {
       font-family: var(--font-display);
-      font-size: clamp(1.5rem, 3vw, 2.25rem);
-      font-weight: 400; color: var(--text); margin-bottom: 16px;
+      font-size: 18px;
+      margin-bottom: 12px;
+      color: var(--text);
     }
-    .amanda-strip-content h2 em { font-style: italic; color: var(--gold); }
-    .amanda-strip-content p { color: var(--text-muted); margin-bottom: 24px; }
 
-    /* FORM */
-    .form-sec { background: var(--blue-800); }
-    .form-wrap {
-      max-width: 680px; margin: 48px auto 0;
-      background: var(--blue-700); border: 1px solid var(--border);
-      border-radius: 16px; padding: 40px;
+    .escopo-card p {
+      font-size: 14px;
+      color: var(--text-light);
+      line-height: 1.6;
     }
-    .form-step { display: none; }
-    .form-step.active { display: block; }
-    .form-step-title {
-      font-family: var(--font-display); font-size: 1.5rem;
-      color: var(--text); margin-bottom: 8px;
-    }
-    .form-step-sub { color: var(--text-muted); font-size: .9375rem; margin-bottom: 28px; }
-    .form-options { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-    .form-option {
-      background: var(--blue-800); border: 1px solid var(--border);
-      border-radius: 10px; padding: 16px; text-align: center;
-      color: var(--text-muted); font-size: .9375rem; font-weight: 500;
-      transition: border-color .2s, color .2s, background .2s;
-    }
-    .form-option:hover, .form-option.selected {
-      border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,0.07);
-    }
-    .form-field { margin-bottom: 16px; }
-    .form-field label { display: block; font-size: .875rem; color: var(--text-muted); margin-bottom: 6px; }
-    .form-field input {
-      width: 100%; background: var(--blue-800); border: 1px solid var(--border);
-      border-radius: 8px; padding: 12px 14px; color: var(--text);
-      font-family: var(--font-body); font-size: .9375rem;
-      transition: border-color .2s;
-    }
-    .form-field input:focus { outline: none; border-color: var(--gold); }
-    .form-nav { display: flex; justify-content: space-between; margin-top: 24px; gap: 12px; }
-    .form-back {
-      background: transparent; border: 1px solid var(--border);
-      color: var(--text-muted); padding: 12px 24px; border-radius: 8px;
-      font-size: .9375rem; transition: border-color .2s;
-    }
-    .form-back:hover { border-color: rgba(255,255,255,0.3); }
-    .form-next, .form-submit {
-      background: var(--gold); color: var(--blue-900);
-      border: none; padding: 12px 28px; border-radius: 8px;
-      font-size: .9375rem; font-weight: 700; flex: 1;
-      transition: opacity .2s;
-    }
-    .form-next:hover, .form-submit:hover { opacity: .85; }
-    .form-progress { display: flex; gap: 6px; margin-bottom: 32px; }
-    .form-dot {
-      height: 3px; border-radius: 2px; flex: 1;
-      background: var(--border); transition: background .3s;
-    }
-    .form-dot.done { background: var(--gold); }
 
-    /* COMPARATIVO */
-    .comp { background: var(--blue-900); }
-    .comp-table {
-      margin-top: 48px; overflow: hidden;
-      border: 1px solid var(--border); border-radius: var(--radius);
+    .cfo-sec h2, .impacto-sec h2, .consultoria-sec h2 {
+      font-family: var(--font-display);
+      font-size: 36px;
+      margin-bottom: 40px;
+      color: var(--text);
     }
-    .comp-head {
-      display: grid; grid-template-columns: 1fr 1fr 1fr;
-      background: var(--blue-800);
-    }
-    .comp-head-cell {
-      padding: 20px 24px; font-weight: 600; font-size: .9375rem;
-    }
-    .comp-head-cell.bad { color: #EF4444; }
-    .comp-head-cell.good { color: #22C55E; }
-    .comp-row {
-      display: grid; grid-template-columns: 1fr 1fr 1fr;
-      border-top: 1px solid var(--border);
-    }
-    .comp-row:nth-child(even) .comp-cell { background: rgba(255,255,255,0.02); }
-    .comp-cell { padding: 16px 24px; font-size: .875rem; color: var(--text-muted); }
-    .comp-cell.feature { color: var(--text); font-weight: 500; }
-    .comp-cell.bad { color: #EF4444; }
-    .comp-cell.good { color: #22C55E; }
 
-    /* CASES */
-    .cases { background: var(--blue-800); }
-    .cases-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px; margin-top: 48px;
+    .cfo-left h3, .consultoria-left h3 {
+      font-family: var(--font-display);
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: var(--text);
     }
-    .case-card {
-      background: var(--blue-700); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 28px;
+
+    .bullets {
+      list-style: none;
+      margin-top: 20px;
     }
-    .case-result {
-      font-family: var(--font-display); font-size: 2rem; color: var(--gold);
+
+    .bullets li {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 16px;
+      font-size: 14px;
+      line-height: 1.6;
+    }
+
+    .bullets li::before {
+      content: '✓';
+      color: var(--gold);
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
+    .auth-badge {
+      position: relative;
+      display: inline-block;
+      margin-top: 20px;
+    }
+
+    .badge-img {
+      border-radius: 12px;
+      width: 100%;
+      max-width: 300px;
+    }
+
+    .badge-label {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(255, 255, 255, 0.95);
+      padding: 8px 12px;
+      border-radius: 6px;
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--blue-900);
+    }
+
+    .num-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .num-card {
+      text-align: center;
+    }
+
+    .num-value {
+      font-family: var(--font-display);
+      font-size: 42px;
+      color: var(--blue-900);
       margin-bottom: 8px;
     }
-    .case-desc { font-size: .9375rem; color: var(--text); margin-bottom: 8px; }
-    .case-detail { font-size: .8125rem; color: var(--text-muted); }
 
-    /* MARQUEE */
-    .marquee-sec { background: var(--blue-900); padding: 40px 0; overflow: hidden; }
-    .marquee-track {
-      display: flex; gap: 0; white-space: nowrap;
-      animation: marquee 30s linear infinite;
+    .num-label {
+      font-size: 13px;
+      color: var(--text-light);
+      line-height: 1.5;
     }
-    .marquee-item {
-      display: inline-flex; align-items: center; gap: 12px;
-      padding: 0 32px; font-size: .875rem; color: var(--text-muted); flex-shrink: 0;
-    }
-    .marquee-item::before { content: ''; width: 6px; height: 6px; background: var(--gold); border-radius: 50%; }
-    @keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-    /* DEPOIMENTOS */
-    .depoimentos { background: var(--blue-800); }
+    .dif-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .dif-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      padding: 24px;
+      border-radius: 12px;
+    }
+
+    .dif-number {
+      font-family: var(--font-display);
+      font-size: 28px;
+      color: var(--gold);
+      margin-bottom: 12px;
+    }
+
+    .dif-card h3 {
+      font-family: var(--font-display);
+      font-size: 18px;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    .dif-card p {
+      font-size: 13px;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    .cases-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .case-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      transition: all 0.3s;
+    }
+
+    .case-card:hover {
+      border-color: var(--gold);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+    }
+
+    .case-value {
+      font-family: var(--font-display);
+      font-size: 32px;
+      color: var(--blue-900);
+      margin-bottom: 8px;
+    }
+
+    .case-tag {
+      display: inline-block;
+      background: var(--bg-light);
+      color: var(--text);
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 11px;
+      margin-bottom: 16px;
+    }
+
+    .case-card h3 {
+      font-family: var(--font-display);
+      font-size: 16px;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    .case-card p {
+      font-size: 13px;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
     .dep-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px; margin-top: 48px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 40px;
     }
-    .dep-card {
-      background: var(--blue-700); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 28px;
-    }
-    .dep-stars { color: var(--gold); font-size: .875rem; margin-bottom: 16px; }
-    .dep-text { font-size: .9375rem; color: var(--text); line-height: 1.65; margin-bottom: 20px; }
-    .dep-author { display: flex; align-items: center; gap: 12px; }
-    .dep-avatar {
-      width: 40px; height: 40px; border-radius: 50%;
-      background: var(--blue-600); display: flex; align-items: center; justify-content: center;
-      font-weight: 700; color: var(--gold); font-size: .875rem;
-    }
-    .dep-name { font-weight: 600; font-size: .875rem; color: var(--text); }
-    .dep-role { font-size: .75rem; color: var(--text-muted); }
 
-    /* PROCESSO */
-    .processo { background: var(--blue-900); }
-    .proc-steps {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 32px; margin-top: 48px; position: relative;
+    .depo-card {
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
     }
-    .proc-step { text-align: center; }
-    .proc-num {
-      width: 56px; height: 56px; border-radius: 50%;
-      background: rgba(201,168,76,0.1); border: 2px solid rgba(201,168,76,0.3);
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-display); font-size: 1.5rem; color: var(--gold);
-      margin: 0 auto 20px;
-    }
-    .proc-step h3 { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 8px; }
-    .proc-step p { font-size: .875rem; color: var(--text-muted); }
 
-    /* CONTENT SEO */
-    .content-seo { background: var(--blue-800); }
-    .content-seo-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 24px; margin-top: 48px;
+    .stars {
+      color: var(--gold);
+      font-size: 14px;
+      margin-bottom: 12px;
     }
-    .content-block {
-      background: var(--blue-700); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 28px;
-    }
-    .content-block h3 { font-size: 1.0625rem; font-weight: 600; color: var(--text); margin-bottom: 12px; }
-    .content-block p { font-size: .875rem; color: var(--text-muted); line-height: 1.65; }
 
-    /* FAQ */
-    .faq { background: var(--blue-900); }
-    .faq-list { max-width: 760px; margin: 48px auto 0; display: flex; flex-direction: column; gap: 8px; }
+    .depo-card p {
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.6;
+      margin-bottom: 16px;
+      font-style: italic;
+    }
+
+    .depo-author {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .depo-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--bg-light);
+    }
+
+    .depo-name {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    .depo-role {
+      font-size: 11px;
+      color: var(--text-light);
+    }
+
+    .processo-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 40px;
+      position: relative;
+    }
+
+    .processo-step {
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+    }
+
+    .step-number {
+      font-family: var(--font-display);
+      font-size: 28px;
+      color: var(--gold);;
+      margin-bottom: 12px;
+    }
+
+    .processo-step h3 {
+      font-family: var(--font-display);
+      font-size: 16px;
+      margin-bottom: 12px;
+      color: var(--text);
+    }
+
+    .processo-step p {
+      font-size: 13px;
+      color: var(--text-light);
+      line-height: 1.6;
+    }
+
+    .step-tags {
+      display: flex;
+      gap: 8px;
+      margin-top: 12px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .step-tag {
+      background: var(--bg-light);
+      color: var(--text);
+      padding: 4px 8px;
+      border-radius: 12px;
+      font-size: 10px;
+      font-weight: 500;
+    }
+
+    .form-sec {
+      background: var(--bg-white);
+    }
+
+    .form-wrapper {
+      max-width: 600px;
+      margin: 0 auto;
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 40px;
+    }
+
+    .form-step {
+      display: none;
+    }
+
+    .form-step.active {
+      display: block;
+      animation: fadeIn 0.3s;
+    }
+
+    .form-step h3 {
+      font-family: var(--font-display);
+      font-size: 20px;
+      margin-bottom: 24px;
+      color: var(--text);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      font-size: 14px;
+      font-family: var(--font-body);
+    }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-options {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .form-option {
+      position: relative;
+    }
+
+    .form-option input {
+      display: none;
+    }
+
+    .form-option label {
+      display: block;
+      padding: 16px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s;
+      margin: 0;
+    }
+
+    .form-option input:checked + label {
+      background: var(--blue-900);
+      color: var(--bg-white);
+      border-color: var(--blue-900);
+    }
+
+    .progress-dots {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 32px;
+      justify-content: center;
+    }
+
+    .progress-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--border);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .progress-dot.active {
+      background: var(--blue-900);
+      width: 24px;
+      border-radius: 4px;
+    }
+
+    .form-buttons {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    .form-buttons button {
+      flex: 1;
+      padding: 12px;
+      border: 1px solid var(--border);
+      background: var(--bg-white);
+      color: var(--text);
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: 500;
+      font-size: 14px;
+      transition: all 0.2s;
+    }
+
+    .form-buttons button:hover:not(:disabled) {
+      background: var(--bg-light);
+    }
+
+    .form-buttons button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .form-buttons .btn-submit {
+      background: var(--blue-900);
+      color: var(--bg-white);
+      border-color: var(--blue-900);
+    }
+
+    .form-buttons .btn-submit:hover {
+      background: var(--blue-800);
+    }
+
+    .faq-list {
+      list-style: none;
+      margin-top: 40px;
+    }
+
     .faq-item {
-      background: var(--blue-800); border: 1px solid var(--border);
-      border-radius: var(--radius); overflow: hidden;
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 12px;
+      overflow: hidden;
     }
-    .faq-q {
-      width: 100%; background: none; border: none; color: var(--text);
-      font-size: .9375rem; font-weight: 500; text-align: left;
-      padding: 20px 24px; display: flex; justify-content: space-between; align-items: center;
-      gap: 16px; transition: color .2s;
-    }
-    .faq-q:hover { color: var(--gold); }
-    .faq-icon { width: 20px; height: 20px; flex-shrink: 0; transition: transform .3s; color: var(--gold); }
-    .faq-item.open .faq-icon { transform: rotate(45deg); }
-    .faq-a {
-      max-height: 0; overflow: hidden; transition: max-height .4s var(--ease-out);
-    }
-    .faq-a-inner { padding: 0 24px 20px; color: var(--text-muted); font-size: .9375rem; line-height: 1.65; }
 
-    /* HUB */
-    .hub { background: var(--blue-800); }
+    .faq-trigger {
+      padding: 20px;
+      background: var(--bg-white);
+      border: none;
+      width: 100%;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--text);
+      transition: all 0.2s;
+    }
+
+    .faq-trigger:hover {
+      background: var(--bg-light);
+    }
+
+    .faq-trigger::after {
+      content: '▼';
+      color: var(--text-light);
+      font-size: 11px;
+      transition: transform 0.3s;
+    }
+
+    .faq-item.active .faq-trigger::after {
+      transform: rotate(-180deg);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s;
+    }
+
+    .faq-item.active .faq-answer {
+      max-height: 500px;
+    }
+
+    .faq-answer p {
+      padding: 0 20px 20px;
+      font-size: 13px;
+      color: var(--text-light);
+      line-height: 1.8;
+    }
+
     .hub-grid {
-      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 20px; margin-top: 48px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 40px;
     }
+
     .hub-card {
-      background: var(--blue-700); border: 1px solid var(--border);
-      border-radius: var(--radius); padding: 24px;
-      transition: border-color .3s, transform .3s;
-    }
-    .hub-card:hover { border-color: rgba(201,168,76,0.4); transform: translateY(-3px); }
-    .hub-card h3 { font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 8px; }
-    .hub-card p { font-size: .875rem; color: var(--text-muted); margin-bottom: 16px; }
-    .hub-card a {
-      font-size: .8125rem; color: var(--gold); font-weight: 500;
-      display: inline-flex; align-items: center; gap: 4px;
+      background: var(--bg-white);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px;
+      text-align: center;
+      transition: all 0.3s;
+      text-decoration: none;
+      color: var(--text);
     }
 
-    /* FOOTER */
-    .site-footer { background: #040A14; border-top: 1px solid #0A1628; padding: 64px 0 0; }
-    .footer-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 40px; }
-    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 64px; }
-    .footer-brand-col { display: flex; flex-direction: column; }
-    .footer-contact-title { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
-    .footer-nap { display: flex; flex-direction: column; gap: 10px; font-style: normal; }
-    .footer-nap-row { display: flex; align-items: flex-start; gap: 10px; font-size: 0.8125rem; color: #4a5568; text-decoration: none; transition: color 0.2s; line-height: 1.6; }
-    a.footer-nap-row:hover { color: rgba(255,255,255,0.75); }
-    a.footer-nap-row:hover svg { color: var(--gold); }
-    .footer-nap-row svg { flex-shrink: 0; margin-top: 2px; color: var(--gold); transition: color 0.2s; }
-    .footer-heading { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
-    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-    .footer-col ul li a { font-size: .875rem; color: var(--text-muted); transition: color .2s; }
-    .footer-col ul li a:hover { color: var(--gold); }
-    .footer-wordmark-tagline { text-align: center; font-family: var(--font-display); font-size: clamp(0.95rem, 1.5vw, 1.15rem); color: rgba(255,255,255,0.55); margin-bottom: 8px; font-weight: 300; letter-spacing: 0.01em; }
-    .footer-wordmark { font-family: var(--font-display); font-size: clamp(3.5rem, 8vw, 7rem); font-style: italic; font-weight: 400; color: transparent; -webkit-text-stroke: 1px rgba(201,168,76,0.2); letter-spacing: -0.02em; line-height: 1; margin-bottom: 0; user-select: none; text-align: center; }
-    .footer-legal { border-top: 1px solid #0A1628; padding: 24px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
-    .footer-legal p { font-size: 0.8125rem; color: #2d3748; }
-    .footer-legal-links { display: flex; gap: 24px; }
-    .footer-legal-links a { font-size: 0.8125rem; color: #2d3748; text-decoration: none; transition: color 0.2s; }
-    .footer-legal-links a:hover { color: var(--white); }
-    .footer-social-icons { display: flex; gap: 16px; }
-    .footer-social-icons a { color: #2d3748; transition: color 0.2s; }
-    .footer-social-icons a:hover { color: var(--gold); }
+    .hub-card:hover {
+      border-color: var(--gold);
+      box-shadow: var(--shadow-lg);
+      transform: translateY(-4px);
+    }
 
-    /* REVEAL ANIMATION */
-    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .6s var(--ease-out), transform .6s var(--ease-out); }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .hub-card h3 {
+      font-family: var(--font-display);
+      font-size: 16px;
+      color: var(--text);
+    }
 
-    /* RESPONSIVE */
+    .content-seo {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      margin-top: 40px;
+    }
+
+    .content-block h3 {
+      font-family: var(--font-display);
+      font-size: 20px;
+      margin-bottom: 16px;
+      color: var(--text);
+    }
+
+    .content-block p {
+      font-size: 13px;
+      color: var(--text-light);
+      line-height: 1.8;
+      margin-bottom: 12px;
+    }
+
+    .content-block ul {
+      list-style: none;
+      font-size: 13px;
+      color: var(--text-light);
+    }
+
+    .content-block li {
+      padding-left: 20px;
+      position: relative;
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+
+    .content-block li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
+
+    .site-footer {
+      background: var(--blue-900);
+      color: var(--bg-white);
+      padding: 60px 20px 40px;
+    }
+
+    .footer-wrapper {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      margin-bottom: 40px;
+    }
+
+    .footer-col h4 {
+      font-size: 12px;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      font-weight: 600;
+      color: var(--accent-gold);
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col a {
+      display: block;
+      color: var(--bg-white);
+      text-decoration: none;
+      font-size: 13px;
+      margin-bottom: 8px;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover {
+      color: var(--accent-gold);
+    }
+
+    .footer-wordmark {
+      font-family: var(--font-display);
+      font-size: 16px;
+      margin-bottom: 12px;
+      color: var(--bg-white);
+    }
+
+    .footer-legal {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 20px;
+      text-align: center;
+      font-size: 12px;
+      color: rgba(255, 255, 255, 0.6);
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: all 0.6s ease-out;
+    }
+
+    .custom-cursor {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--gold);
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transform: translate(-50%, -50%);
+      display: none;
+    }
+
     @media (max-width: 1024px) {
-      .footer-grid { grid-template-columns: 1fr 1fr; }
-      .car-slide { flex: 0 0 calc(50% - 10px); }
+      .site-hero h1 {
+        font-size: 36px;
+      }
+
+      .num-grid, .dif-grid, .cases-grid, .dep-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .escopo-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hub-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .footer-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .two-col {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .processo-steps {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .form-options {
+        grid-template-columns: 1fr;
+      }
     }
+
+    @media (max-width: 960px) {
+      .site-hero {
+        padding: 60px 20px 40px;
+      }
+
+      .container {
+        padding: 40px 20px;
+      }
+
+      .cfo-sec h2, .impacto-sec h2, .consultoria-sec h2 {
+        font-size: 28px;
+      }
+
+      .hero-tag-full {
+        display: none;
+      }
+
+      .hero-tag-short {
+        display: inline;
+      }
+    }
+
     @media (max-width: 768px) {
-      .hdr-nav, .hdr-cta { display: none; }
-      #hdr-hamburger { display: flex; }
-      .hero { padding: 100px 24px 60px; }
-      .form-options { grid-template-columns: 1fr; }
-      .comp-table { overflow-x: auto; }
-      .comp-head, .comp-row { min-width: 540px; }
-      .car-slide { flex: 0 0 calc(100% - 20px); }
-      .amanda-strip-content { margin: 0 auto; text-align: center; }
-      .hdr-mega { display: none; }
+      .site-hero h1 {
+        font-size: 28px;
+      }
+
+      .num-grid, .dif-grid, .cases-grid, .dep-grid, .escopo-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hub-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-wrapper {
+        grid-template-columns: 1fr;
+      }
+
+      .processo-steps {
+        grid-template-columns: 1fr;
+      }
+
+      .content-seo {
+        grid-template-columns: 1fr;
+      }
+
+      .form-wrapper {
+        padding: 24px;
+      }
     }
-    @media (max-width: 640px) {
-      section { padding: 60px 20px; }
-      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
-      .form-wrap { padding: 28px 20px; }
+
+    @media (max-width: 600px) {
+      .site-hero {
+        padding: 40px 16px 30px;
+      }
+
+      .site-hero h1 {
+        font-size: 24px;
+      }
+
+      .hero-btns {
+        flex-direction: column;
+      }
+
+      .btn-primary, .btn-secondary {
+        width: 100%;
+      }
+
+      .container {
+        padding: 30px 16px;
+      }
+
+      .two-col {
+        gap: 30px;
+      }
+
+      .hub-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .header-logo {
+        font-size: 16px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .site-hero {
+        margin-top: 60px;
+        padding: 30px 12px 20px;
+      }
+
+      .site-hero h1 {
+        font-size: 20px;
+        margin-bottom: 20px;
+      }
+
+      .site-hero h1 em {
+        display: block;
+      }
+
+      .hero-tag {
+        font-size: 11px;
+        padding: 10px 16px;
+      }
+
+      .breadcrumb {
+        font-size: 10px;
+      }
+
+      .escopo-card, .case-card, .depo-card, .processo-step {
+        padding: 16px;
+      }
+
+      .escopo-icon {
+        font-size: 24px;
+      }
+
+      .container {
+        padding: 20px 12px;
+      }
+
+      .form-wrapper {
+        padding: 16px;
+      }
+
+      .footer-wrapper {
+        gap: 24px;
+      }
     }
   </style>
 </head>
 <body>
-  <div class="noise" aria-hidden="true"></div>
-  <div class="cursor" aria-hidden="true"></div>
-  <div class="cursor-dot" aria-hidden="true"></div>
-  <div id="progress-bar" aria-hidden="true"></div>
 
-  <!-- HEADER -->
-  <header id="hdr" role="banner">
-    <div class="hdr-inner">
-      <a href="/" class="hdr-logo" aria-label="AM Cabral — página inicial">
-        <div class="hdr-logo-mark" aria-hidden="true">AM</div>
-        AM Cabral
-      </a>
-      <nav class="hdr-nav" aria-label="Navegação principal">
-        <div class="hdr-item" data-menu="sobre">
-          <button class="hdr-btn" aria-expanded="false" aria-haspopup="true">
-            Sobre
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
-          </button>
-        </div>
-        <div class="hdr-item" data-menu="servicos">
-          <button class="hdr-btn" aria-expanded="false" aria-haspopup="true">
-            Serviços
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
-          </button>
-        </div>
-        <div class="hdr-item" data-menu="blog">
-          <button class="hdr-btn" aria-expanded="false" aria-haspopup="true">
-            Blog
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 6l4 4 4-4"/></svg>
-          </button>
-        </div>
-        <a href="/nossos-servicos/gestao-contabil/" class="hdr-btn" style="color:var(--text-muted)">Gestão Contábil</a>
-      </nav>
-      <a href="https://wa.me/5537999967558?text=Olá%20Amanda!%20Quero%20uma%20consulta%20gratuita." class="hdr-cta" target="_blank" rel="noopener">Consulta Gratuita</a>
-      <button id="hdr-hamburger" aria-label="Abrir menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
+<div class="custom-cursor"></div>
 
-  <!-- MEGA: SOBRE -->
-  <div class="hdr-mega" id="mega-sobre" role="region" aria-label="Menu Sobre">
-    <div class="hdr-mega-inner">
-      <div class="hdr-mega-img">
-        <img src="/assets/amanda-cabral-equipe.jpg" alt="Equipe AM Cabral" loading="lazy" width="280" height="210">
-      </div>
-      <div class="hdr-mega-links">
-        <a href="/sobre/" class="hdr-mega-link">Quem Somos<span>20 anos em Pará de Minas</span></a>
-        <a href="/sobre/amanda-cabral/" class="hdr-mega-link">Amanda Cabral<span>Sócia fundadora</span></a>
-        <a href="/para-de-minas-mg/escritorio-de-contabilidade/" class="hdr-mega-link">Escritório PM<span>Pará de Minas, MG</span></a>
-        <a href="/contato/" class="hdr-mega-link">Contato<span>Fale com a equipe</span></a>
-      </div>
-    </div>
-  </div>
-
-  <!-- MEGA: SERVIÇOS -->
-  <div class="hdr-mega" id="mega-servicos" role="region" aria-label="Menu Serviços">
-    <div class="hdr-mega-inner">
-      <div class="hdr-mega-img">
-        <img src="/assets/amanda-servicos-contabilidade.jpg" alt="Serviços contábeis AM Cabral" loading="lazy" width="280" height="210">
-      </div>
-      <div class="hdr-mega-links">
-        <a href="/nossos-servicos/holding-patrimonial/" class="hdr-mega-link active">Holding Patrimonial<span>Proteção e sucessão</span></a>
-        <a href="/nossos-servicos/planejamento-tributario/" class="hdr-mega-link">Planejamento Tributário<span>Redução legal de impostos</span></a>
-        <a href="/nossos-servicos/recuperacao-creditos-tributarios/" class="hdr-mega-link">Recuperação de Créditos<span>Restituição tributária</span></a>
-        <a href="/nossos-servicos/consultoria-tributaria/" class="hdr-mega-link">Consultoria Tributária<span>Suporte estratégico</span></a>
-        <a href="/nossos-servicos/gestao-contabil/" class="hdr-mega-link">Gestão Contábil<span>Contabilidade completa</span></a>
-        <a href="/nossos-servicos/desenquadrar-mei-para-me/" class="hdr-mega-link">MEI para ME<span>Crescimento sem riscos</span></a>
-      </div>
-    </div>
-  </div>
-
-  <!-- MEGA: BLOG -->
-  <div class="hdr-mega" id="mega-blog" role="region" aria-label="Menu Blog">
-    <div class="hdr-mega-inner">
-      <div class="hdr-mega-img">
-        <img src="/assets/amanda-blog-contabilidade.jpg" alt="Blog AM Cabral" loading="lazy" width="280" height="210">
-      </div>
-      <div class="hdr-mega-links">
-        <a href="/blog/" class="hdr-mega-link">Todos os Artigos<span>Conteúdo tributário</span></a>
-        <a href="/blog/reforma-tributaria/" class="hdr-mega-link">Reforma Tributária<span>O que muda para você</span></a>
-        <a href="/blog/planejamento-tributario/" class="hdr-mega-link">Planejamento Fiscal<span>Estratégias legais</span></a>
-        <a href="/blog/holding-familiar/" class="hdr-mega-link">Holding Familiar<span>Proteção patrimonial</span></a>
-      </div>
-    </div>
-  </div>
-
-  <!-- MOBILE NAV -->
-  <div id="hdr-mob" role="dialog" aria-modal="true" aria-label="Menu mobile">
-    <div class="hdr-mob-head">
-      <a href="/" class="hdr-logo">
-        <div class="hdr-logo-mark">AM</div>
-        AM Cabral
-      </a>
-      <button id="hdr-mob-close" aria-label="Fechar menu">&times;</button>
-    </div>
-    <div class="hdr-mob-links">
-      <div class="hdr-mob-section">
-        <div class="hdr-mob-section-title">Sobre</div>
-        <a href="/sobre/" class="hdr-mob-link">Quem Somos</a>
-        <a href="/contato/" class="hdr-mob-link">Contato</a>
-      </div>
-      <div class="hdr-mob-section">
-        <div class="hdr-mob-section-title">Serviços</div>
-        <a href="/nossos-servicos/holding-patrimonial/" class="hdr-mob-link" style="color:var(--gold);">Holding Patrimonial</a>
-        <a href="/nossos-servicos/planejamento-tributario/" class="hdr-mob-link">Planejamento Tributário</a>
-        <a href="/nossos-servicos/recuperacao-creditos-tributarios/" class="hdr-mob-link">Recuperação de Créditos</a>
-        <a href="/nossos-servicos/consultoria-tributaria/" class="hdr-mob-link">Consultoria Tributária</a>
-        <a href="/nossos-servicos/gestao-contabil/" class="hdr-mob-link">Gestão Contábil</a>
-        <a href="/nossos-servicos/desenquadrar-mei-para-me/" class="hdr-mob-link">MEI para ME</a>
-      </div>
-      <div class="hdr-mob-section">
-        <div class="hdr-mob-section-title">Blog</div>
-        <a href="/blog/" class="hdr-mob-link">Todos os Artigos</a>
-      </div>
-    </div>
-    <div class="hdr-mob-cta">
-      <a href="https://wa.me/5537999967558?text=Olá%20Amanda!%20Quero%20uma%20consulta%20gratuita." target="_blank" rel="noopener">Consulta Gratuita no WhatsApp</a>
-    </div>
-  </div>
-
-  <main>
-    <!-- HERO -->
-    <section class="hero" aria-labelledby="hero-h1">
-      <div class="hero-inner">
-        <div class="hero-tag">Holding · Patrimônio · Sucessão · 20 Anos</div>
-        <h1 id="hero-h1">Proteja o que você construiu.<br><em>Estruture sua holding.</em></h1>
-        <p class="hero-sub">Constituímos holdings patrimoniais e familiares para blindar seus bens, reduzir o ITCMD na herança e organizar a governança entre sócios e herdeiros. Em MG, há 20 anos.</p>
-        <div class="hero-actions">
-          <a href="#form" class="btn-primary">Diagnóstico Gratuito</a>
-          <a href="#autoridade" class="btn-outline">Como funciona</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- CRED STRIP -->
-    <div class="cred-strip" aria-label="Credenciais">
-      <div class="cred-strip-inner">
-        <span class="cred-item">Holdings patrimoniais e familiares</span>
-        <span class="cred-item">Redução de ITCMD até 5%</span>
-        <span class="cred-item">Blindagem contra credores</span>
-        <span class="cred-item">20 anos de experiência</span>
-        <span class="cred-item">Pará de Minas / MG</span>
-      </div>
-    </div>
-
-    <!-- BREADCRUMB -->
-    <nav class="breadcrumb" aria-label="Breadcrumb">
-      <div class="breadcrumb-inner">
-        <a href="/">Início</a>
-        <span class="bc-sep">›</span>
-        <a href="/nossos-servicos/">Nossos Serviços</a>
-        <span class="bc-sep">›</span>
-        <span>Holding Patrimonial e Familiar</span>
-      </div>
+<header class="site-header">
+  <div class="header-wrapper">
+    <a href="/" class="header-logo">AM Cabral</a>
+    <nav>
+      <ul class="header-nav">
+        <li><a href="/">Início</a></li>
+        <li>
+          <a href="#servicos">Serviços</a>
+          <div class="mega-menu">
+            <div class="mega-menu-col">
+              <h4>Estruturação</h4>
+              <a href="/nossos-servicos/holding-patrimonial/">Holding Patrimonial</a>
+              <a href="/nossos-servicos/planejamento-tributario/">Planejamento Tributário</a>
+              <a href="/nossos-servicos/gestao-contabil/">Gestão Contábil</a>
+            </div>
+            <div class="mega-menu-col">
+              <h4>Recuperação</h4>
+              <a href="/nossos-servicos/recuperacao-creditos/">Recuperação de Créditos</a>
+              <a href="/nossos-servicos/consultoria-tributaria/">Consultoria Tributária</a>
+            </div>
+            <div class="mega-menu-col">
+              <h4>Regime</h4>
+              <a href="/nossos-servicos/desenquadrar-mei-para-me/">MEI para ME</a>
+              <a href="/nossos-servicos/consultor-mei/">Consultor MEI</a>
+            </div>
+            <div class="mega-menu-col">
+              <h4>Empresa</h4>
+              <a href="/#sobre">Sobre Amanda</a>
+              <a href="/#contato">Contato</a>
+            </div>
+          </div>
+        </li>
+        <li><a href="/#casos">Casos</a></li>
+        <li><a href="/#blog">Blog</a></li>
+      </ul>
     </nav>
+    <button class="header-cta">Quero uma consultoria</button>
+    <button class="header-burger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
 
-    <!-- AUTHORITY -->
-    <section class="authority reveal" id="autoridade" aria-labelledby="auth-title">
-      <div class="section-inner">
-        <div class="section-tag">O que fazemos</div>
-        <h2 class="section-title" id="auth-title">Holding certa para<br><em>cada objetivo patrimonial</em></h2>
-        <p class="section-sub">Da holding pura ao acordo de sócios, estruturamos a solução ideal para proteger e transferir seu patrimônio com eficiência.</p>
-        <div class="auth-grid">
-          <div class="auth-card">
-            <div class="auth-card-icon" aria-hidden="true">🏛️</div>
-            <h3>Holding Pura</h3>
-            <p>Controla participações em outras empresas sem exercer atividade operacional. Ideal para famílias com múltiplos negócios que buscam centralizar o controle acionário.</p>
-          </div>
-          <div class="auth-card">
-            <div class="auth-card-icon" aria-hidden="true">🔀</div>
-            <h3>Holding Mista</h3>
-            <p>Combina controle patrimonial com atividade operacional. Permite maior flexibilidade na gestão dos recursos e das participações societárias.</p>
-          </div>
-          <div class="auth-card">
-            <div class="auth-card-icon" aria-hidden="true">🛡️</div>
-            <h3>Cláusulas de Proteção</h3>
-            <p>Incomunicabilidade, impenhorabilidade e inalienabilidade nas cotas. Seus bens protegidos de dívidas pessoais dos herdeiros e cônjuges.</p>
-          </div>
-          <div class="auth-card">
-            <div class="auth-card-icon" aria-hidden="true">📦</div>
-            <h3>Doação com Usufruto</h3>
-            <p>Transferência antecipada das cotas com reserva de usufruto vitalício. Você mantém o controle e os rendimentos enquanto reduz o imposto de herança.</p>
-          </div>
-          <div class="auth-card">
-            <div class="auth-card-icon" aria-hidden="true">🤝</div>
-            <h3>Acordo de Sócios</h3>
-            <p>Regras claras para tomada de decisão, preferência na compra de cotas e resolução de conflitos entre herdeiros e sócios.</p>
-          </div>
-          <div class="auth-card">
-            <div class="auth-card-icon" aria-hidden="true">📊</div>
-            <h3>ITCMD Reduzido</h3>
-            <p>Planejamento sucessório via holding reduz o ITCMD para até 5%, contra alíquotas crescentes previstas para inventários comuns após a reforma tributária.</p>
-          </div>
-        </div>
+<section class="site-hero">
+  <div class="breadcrumb">Início › Nossos Serviços › Holding Patrimonial</div>
+  <span class="hero-tag">
+    <span class="hero-tag-full">Holding Patrimonial · Blindagem Patrimonial · ITCMD · Sucessão</span>
+    <span class="hero-tag-short">Holding Patrimonial · Blindagem</span>
+  </span>
+  <h1>Proteja o que você construiu. <em>Organize e estruture seu patrimônio familiar.</em></h1>
+  <div class="hero-btns">
+    <button class="btn-primary">Quero um diagnóstico gratuito</button>
+    <button class="btn-secondary">Ver casos reais</button>
+  </div>
+</section>
+
+<div class="cred-strip">
+  <div style="width: 100%; overflow: hidden;">
+    <div class="marquee">
+      <span class="marquee-item">20 anos estruturando patrimônios em MG</span>
+      <span class="marquee-item">150+ holdings constituídas</span>
+      <span class="marquee-item">Média 22% redução ITCMD</span>
+      <span class="marquee-item">30 dias prazo de estruturação</span>
+      <span class="marquee-item">0 multas ou autuações</span>
+      <span class="marquee-item">100% blindagem segura</span>
+      <span class="marquee-item">20 anos estruturando patrimônios em MG</span>
+      <span class="marquee-item">150+ holdings constituídas</span>
+      <span class="marquee-item">Média 22% redução ITCMD</span>
+      <span class="marquee-item">30 dias prazo de estruturação</span>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <h2>O que é incluído na constituição de holding patrimonial</h2>
+  <div class="escopo-grid">
+    <div class="escopo-card reveal">
+      <div class="escopo-icon">🏛️</div>
+      <h3>Diagnóstico de Patrimônio</h3>
+      <p>Avaliação completa de todos os bens, débitos e estrutura familiar para determinar a melhor estratégia.</p>
+    </div>
+    <div class="escopo-card reveal">
+      <div class="escopo-icon">📊</div>
+      <h3>Simulação de Cenários</h3>
+      <p>Comparação de ITCMD, imposto de renda e outras obrigações antes e depois da holding patrimonial.</p>
+    </div>
+    <div class="escopo-card reveal">
+      <div class="escopo-icon">📋</div>
+      <h3>Estrutura Legal</h3>
+      <p>Documentação completa para constituição da holding com segurança legal e conformidade fiscal.</p>
+    </div>
+    <div class="escopo-card reveal">
+      <div class="escopo-icon">🔐</div>
+      <h3>Blindagem Patrimonial</h3>
+      <p>Proteção contra credores, processos judiciais e riscos operacionais da atividade principal.</p>
+    </div>
+    <div class="escopo-card reveal">
+      <div class="escopo-icon">💼</div>
+      <h3>Governança Familiar</h3>
+      <p>Estrutura de planejamento sucessório e regras de decisão entre sócios.</p>
+    </div>
+    <div class="escopo-card reveal">
+      <div class="escopo-icon">✅</div>
+      <h3>Registro em Cartório</h3>
+      <p>Constituição e registro da holding com todas as obrigações legais e fiscais regularizadas.</p>
+    </div>
+    <div class="escopo-card reveal">
+      <div class="escopo-icon">👥</div>
+      <h3>Monitoramento Contínuo</h3>
+      <p>Acompanhamento anual de mudanças legais, fiscais e patrimoniais com reuniões de revisão.</p>
+    </div>
+    <div class="escopo-card highlight reveal">
+      <h3>Reunião Pós-Estruturação</h3>
+      <p>Apresentação da holding constituída, explicação dos benefícios conquistados e próximos passos para a sucessão planejada.</p>
+    </div>
+  </div>
+</div>
+
+<section class="cfo-sec">
+  <div class="container">
+    <div class="two-col">
+      <div class="cfo-left">
+        <h3>Sua parceira de crescimento e proteção patrimonial</h3>
+        <ul class="bullets">
+          <li>20 anos de experiência em estruturação patrimonial</li>
+          <li>Especializada em proteção e planejamento sucessório</li>
+          <li>Acompanhamento contínuo da sua holding e patrimônio</li>
+        </ul>
       </div>
-    </section>
-
-    <!-- NUMBERS -->
-    <section class="numbers reveal" aria-labelledby="numbers-title">
-      <div class="section-inner">
-        <div class="section-tag">Resultados em números</div>
-        <h2 class="section-title" id="numbers-title">Impacto real<br><em>para nossos clientes</em></h2>
-        <div class="numbers-grid">
-          <div class="num-item">
-            <span class="num-value" data-count="5" data-suffix="%">0%</span>
-            <span class="num-label">ITCMD máximo via holding</span>
-          </div>
-          <div class="num-item">
-            <span class="num-value" data-count="40" data-suffix="%+">0%</span>
-            <span class="num-label">Redução média de carga tributária</span>
-          </div>
-          <div class="num-item">
-            <span class="num-value" data-count="90" data-suffix=" dias">0 dias</span>
-            <span class="num-label">Para constituição completa</span>
-          </div>
-          <div class="num-item">
-            <span class="num-value" data-count="20" data-suffix="+ anos">0 anos</span>
-            <span class="num-label">De experiência em estruturação</span>
-          </div>
-        </div>
+      <div class="auth-badge">
+        <img src="/para-de-minas-mg/escritorio-de-contabilidade/assets/amanda-cabral-contadora-am9.jpg" alt="Amanda Cabral" class="badge-img">
+        <div class="badge-label">Amanda Cabral · CFO</div>
       </div>
-    </section>
+    </div>
+  </div>
+</section>
 
-    <!-- DIFERENCIAL -->
-    <section class="diferencial reveal" aria-labelledby="dif-title">
-      <div class="section-inner">
-        <div class="section-tag">Por que a AM Cabral</div>
-        <h2 class="section-title" id="dif-title">Abordagem integrada.<br><em>Resultado garantido.</em></h2>
-        <div class="dif-grid">
-          <div class="dif-card">
-            <div class="dif-number" aria-hidden="true">01</div>
-            <h3>Diagnóstico patrimonial completo</h3>
-            <p>Antes de qualquer estruturação, mapeamos todos os bens, passivos, regime de casamento, número de herdeiros e objetivos de curto e longo prazo. Nenhum detalhe escapa.</p>
-          </div>
-          <div class="dif-card">
-            <div class="dif-number" aria-hidden="true">02</div>
-            <h3>Integração contábil, fiscal e jurídica</h3>
-            <p>A AM Cabral coordena a equipe contábil, fiscal e jurídica em um único fluxo. Você não precisa gerenciar múltiplos fornecedores ou risco de lacunas.</p>
-          </div>
-          <div class="dif-card">
-            <div class="dif-number" aria-hidden="true">03</div>
-            <h3>Gestão contínua da holding</h3>
-            <p>Após a constituição, cuidamos das obrigações acessórias, assembleias anuais, atualização do contrato social e revisão do planejamento sucessório.</p>
-          </div>
-        </div>
+<section class="impacto-sec">
+  <div class="container">
+    <div class="two-col">
+      <div>
+        <h3>Resultados reais de holding patrimonial</h3>
+        <p style="margin-top: 20px; font-size: 14px; color: var(--text-light); line-height: 1.8;">Empresas que estruturaram holding patrimonial veem reduções significativas em impostos sucessórios, melhor proteção de patrimônio e continuidade garantida de negócios. Os números abaixo refletem resultados de clientes Amanda Cabral.</p>
+        <a href="#contato" style="margin-top: 20px; display: inline-block; color: var(--blue-900); text-decoration: underline; font-weight: 500; font-size: 14px;">Veja seu potencial de economia</a>
       </div>
-    </section>
-
-    <!-- SERVICES CAROUSEL -->
-    <section class="services-car reveal" aria-labelledby="car-title">
-      <div class="section-inner">
-        <div class="section-tag">Modalidades</div>
-        <h2 class="section-title" id="car-title">Soluções de holding<br><em>para cada perfil</em></h2>
-        <div class="car-track-wrap" id="carTrack">
-          <div class="car-track" id="carInner">
-            <div class="car-slide">
-              <div class="car-slide-icon" aria-hidden="true">🏛️</div>
-              <h3>Holding Pura</h3>
-              <p>Concentra participações societárias sem atividade operacional. Foco em controle e sucessão patrimonial.</p>
-            </div>
-            <div class="car-slide">
-              <div class="car-slide-icon" aria-hidden="true">🏢</div>
-              <h3>Holding Imobiliária</h3>
-              <p>Centraliza imóveis na PJ, reduz IR sobre locação e elimina o inventário de bens imóveis.</p>
-            </div>
-            <div class="car-slide">
-              <div class="car-slide-icon" aria-hidden="true">👨‍👩‍👧</div>
-              <h3>Holding Familiar</h3>
-              <p>Voltada para famílias com patrimônio relevante. Define regras de governança e uso dos bens entre membros.</p>
-            </div>
-            <div class="car-slide">
-              <div class="car-slide-icon" aria-hidden="true">🔀</div>
-              <h3>Holding Mista</h3>
-              <p>Exerce atividade operacional e controla participações. Flexibilidade máxima para grupos empresariais.</p>
-            </div>
-            <div class="car-slide">
-              <div class="car-slide-icon" aria-hidden="true">📦</div>
-              <h3>Doação com Usufruto</h3>
-              <p>Antecipação da herança com controle total. Reduz ITCMD e evita inventário judicial.</p>
-            </div>
-            <div class="car-slide">
-              <div class="car-slide-icon" aria-hidden="true">📝</div>
-              <h3>Acordo de Sócios</h3>
-              <p>Regras claras para entrada, saída e decisão. Protege o patrimônio de conflitos familiares.</p>
-            </div>
+      <div>
+        <div class="num-grid">
+          <div class="num-card reveal">
+            <div class="num-value" data-value="150">150+</div>
+            <div class="num-label">Holdings constituídas em MG</div>
           </div>
-        </div>
-        <div class="car-controls" aria-label="Controles do carrossel">
-          <button class="car-btn" id="carPrev" aria-label="Anterior">&#8592;</button>
-          <button class="car-btn" id="carNext" aria-label="Próximo">&#8594;</button>
-        </div>
-      </div>
-    </section>
-
-    <!-- AMANDA STRIP -->
-    <div class="amanda-strip" aria-hidden="true">
-      <img src="/para-de-minas-mg/escritorio-de-contabilidade/assets/amanda-cabral-contadora-cta-strip.jpg" alt="Amanda Cabral, contadora especialista em holdings em Pará de Minas" loading="lazy" width="1440" height="400">
-      <div class="amanda-strip-overlay">
-        <div class="amanda-strip-content">
-          <h2>Proteja seu patrimônio <em>antes da reforma tributária</em> encarecer o inventário.</h2>
-          <p>A janela de oportunidade está aberta. Quem estrutura a holding agora garante as melhores condições de ITCMD e proteção patrimonial.</p>
-          <a href="#form" class="btn-primary">Quero meu diagnóstico gratuito</a>
+          <div class="num-card reveal">
+            <div class="num-value" data-value="22">22%</div>
+            <div class="num-label">Redução média de ITCMD</div>
+          </div>
+          <div class="num-card reveal">
+            <div class="num-value" data-value="30">30</div>
+            <div class="num-label">Dias prazo de estruturação</div>
+          </div>
+          <div class="num-card reveal">
+            <div class="num-value" data-value="0">0</div>
+            <div class="num-label">Multas ou autuações</div>
+          </div>
         </div>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- FORM -->
-    <section class="form-sec reveal" id="form" aria-labelledby="form-title">
-      <div class="section-inner">
-        <div class="section-tag">Diagnóstico gratuito</div>
-        <h2 class="section-title" id="form-title">4 perguntas para<br><em>seu diagnóstico patrimonial</em></h2>
-        <div class="form-wrap" role="form" aria-label="Formulário de diagnóstico patrimonial">
-          <div class="form-progress" aria-label="Progresso do formulário" role="progressbar" aria-valuenow="1" aria-valuemin="1" aria-valuemax="4">
-            <div class="form-dot done" id="fdot1"></div>
-            <div class="form-dot" id="fdot2"></div>
-            <div class="form-dot" id="fdot3"></div>
-            <div class="form-dot" id="fdot4"></div>
-          </div>
-
-          <div class="form-step active" id="fstep1">
-            <div class="form-step-title">Qual é seu principal objetivo?</div>
-            <div class="form-step-sub">Isso define o tipo ideal de estrutura.</div>
-            <div class="form-options">
-              <button class="form-option" data-field="objetivo" data-value="Proteger bens de dívidas">Proteger bens de dívidas</button>
-              <button class="form-option" data-field="objetivo" data-value="Planejar a herança">Planejar a herança</button>
-              <button class="form-option" data-field="objetivo" data-value="Reduzir ITCMD">Reduzir ITCMD</button>
-              <button class="form-option" data-field="objetivo" data-value="Organizar sócios">Organizar sócios</button>
-            </div>
-            <div class="form-nav">
-              <button class="form-next" id="fnext1">Próximo</button>
-            </div>
-          </div>
-
-          <div class="form-step" id="fstep2">
-            <div class="form-step-title">Qual seu principal ativo?</div>
-            <div class="form-step-sub">Imóveis, empresas, aplicações ou uma combinação?</div>
-            <div class="form-options">
-              <button class="form-option" data-field="ativo" data-value="Imóveis">Imóveis</button>
-              <button class="form-option" data-field="ativo" data-value="Participações em empresas">Participações em empresas</button>
-              <button class="form-option" data-field="ativo" data-value="Aplicações financeiras">Aplicações financeiras</button>
-              <button class="form-option" data-field="ativo" data-value="Combinação de ativos">Combinação de ativos</button>
-            </div>
-            <div class="form-nav">
-              <button class="form-back" id="fback2">Voltar</button>
-              <button class="form-next" id="fnext2">Próximo</button>
-            </div>
-          </div>
-
-          <div class="form-step" id="fstep3">
-            <div class="form-step-title">Quantos herdeiros ou sócios?</div>
-            <div class="form-step-sub">Isso influencia as cláusulas de proteção e governança.</div>
-            <div class="form-options">
-              <button class="form-option" data-field="herdeiros" data-value="1 a 2">1 a 2</button>
-              <button class="form-option" data-field="herdeiros" data-value="3 a 5">3 a 5</button>
-              <button class="form-option" data-field="herdeiros" data-value="6 a 10">6 a 10</button>
-              <button class="form-option" data-field="herdeiros" data-value="Mais de 10">Mais de 10</button>
-            </div>
-            <div class="form-nav">
-              <button class="form-back" id="fback3">Voltar</button>
-              <button class="form-next" id="fnext3">Próximo</button>
-            </div>
-          </div>
-
-          <div class="form-step" id="fstep4">
-            <div class="form-step-title">Para onde enviamos o diagnóstico?</div>
-            <div class="form-step-sub">Amanda retorna em até 4 horas úteis.</div>
-            <div class="form-field">
-              <label for="f-nome">Seu nome</label>
-              <input type="text" id="f-nome" name="nome" placeholder="Nome completo" autocomplete="name">
-            </div>
-            <div class="form-field">
-              <label for="f-empresa">Empresa (opcional)</label>
-              <input type="text" id="f-empresa" name="empresa" placeholder="Nome da empresa" autocomplete="organization">
-            </div>
-            <div class="form-field">
-              <label for="f-whatsapp">WhatsApp</label>
-              <input type="tel" id="f-whatsapp" name="whatsapp" placeholder="(37) 99999-0000" autocomplete="tel">
-            </div>
-            <div class="form-nav">
-              <button class="form-back" id="fback4">Voltar</button>
-              <button class="form-submit" id="fsubmit">Quero meu diagnóstico</button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- COMPARATIVO -->
-    <section class="comp reveal" aria-labelledby="comp-title">
-      <div class="section-inner">
-        <div class="section-tag">Antes e depois</div>
-        <h2 class="section-title" id="comp-title">Sem estrutura vs.<br><em>com holding da AM Cabral</em></h2>
-        <div class="comp-table" role="table" aria-label="Comparação antes e depois da holding">
-          <div class="comp-head" role="row">
-            <div class="comp-head-cell" role="columnheader">Situação</div>
-            <div class="comp-head-cell bad" role="columnheader">Sem estrutura patrimonial</div>
-            <div class="comp-head-cell good" role="columnheader">Com holding da AM Cabral</div>
-          </div>
-          <div class="comp-row" role="row">
-            <div class="comp-cell feature" role="cell">ITCMD na herança</div>
-            <div class="comp-cell bad" role="cell">Até 8% (tendência de aumento)</div>
-            <div class="comp-cell good" role="cell">Até 5% com doação programada</div>
-          </div>
-          <div class="comp-row" role="row">
-            <div class="comp-cell feature" role="cell">Inventário judicial</div>
-            <div class="comp-cell bad" role="cell">Obrigatório, lento e caro</div>
-            <div class="comp-cell good" role="cell">Eliminado via doação de cotas</div>
-          </div>
-          <div class="comp-row" role="row">
-            <div class="comp-cell feature" role="cell">Bens vs. dívidas pessoais</div>
-            <div class="comp-cell bad" role="cell">Expostos a execuções e penhoras</div>
-            <div class="comp-cell good" role="cell">Protegidos por cláusulas de impenhorabilidade</div>
-          </div>
-          <div class="comp-row" role="row">
-            <div class="comp-cell feature" role="cell">Tributação de locação</div>
-            <div class="comp-cell bad" role="cell">IR até 27,5% na pessoa física</div>
-            <div class="comp-cell good" role="cell">Até 11,33% na holding imobiliária</div>
-          </div>
-          <div class="comp-row" role="row">
-            <div class="comp-cell feature" role="cell">Conflitos entre herdeiros</div>
-            <div class="comp-cell bad" role="cell">Sem regras, risco de disputa judicial</div>
-            <div class="comp-cell good" role="cell">Acordo de sócios previne litígios</div>
-          </div>
-          <div class="comp-row" role="row">
-            <div class="comp-cell feature" role="cell">Controle do patrimônio</div>
-            <div class="comp-cell bad" role="cell">Fragmentado, sem governança</div>
-            <div class="comp-cell good" role="cell">Centralizado com usufruto vitalício</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CASES -->
-    <section class="cases reveal" aria-labelledby="cases-title">
-      <div class="section-inner">
-        <div class="section-tag">Resultados reais</div>
-        <h2 class="section-title" id="cases-title">Clientes que já<br><em>protegeram seu patrimônio</em></h2>
-        <div class="cases-grid">
-          <div class="case-card">
-            <div class="case-result">R$ 2,4M</div>
-            <div class="case-desc">Patrimônio imobiliário protegido em Pará de Minas</div>
-            <div class="case-detail">Empresário do setor de serviços constituiu holding imobiliária com 4 imóveis. Eliminou inventário e reduziu IR sobre aluguéis de 27,5% para 11,33%.</div>
-          </div>
-          <div class="case-card">
-            <div class="case-result">40% menos</div>
-            <div class="case-desc">Redução de ITCMD em Sete Lagoas</div>
-            <div class="case-detail">Família com três herdeiros transferiu cotas com doação programada. Economizou 40% no imposto de transmissão frente ao inventário convencional.</div>
-          </div>
-          <div class="case-card">
-            <div class="case-result">3 sócios</div>
-            <div class="case-desc">Governança resolvida no agronegócio</div>
-            <div class="case-detail">Três irmãos sócios de propriedade rural formalizaram acordo de gestão via holding mista, eliminando conflitos e garantindo continuidade do negócio.</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- MARQUEE -->
-    <div class="marquee-sec" aria-hidden="true">
-      <div class="marquee-track">
-        <span class="marquee-item">Empresários</span>
-        <span class="marquee-item">Profissionais Liberais</span>
-        <span class="marquee-item">Famílias com Imóveis</span>
-        <span class="marquee-item">Produtores Rurais</span>
-        <span class="marquee-item">Médicos e Dentistas</span>
-        <span class="marquee-item">Sócios em Conflito</span>
-        <span class="marquee-item">Herdeiros</span>
-        <span class="marquee-item">Investidores Imobiliários</span>
-        <span class="marquee-item">Grupos Familiares</span>
-        <span class="marquee-item">Advogados e Arquitetos</span>
-        <span class="marquee-item">Empresários</span>
-        <span class="marquee-item">Profissionais Liberais</span>
-        <span class="marquee-item">Famílias com Imóveis</span>
-        <span class="marquee-item">Produtores Rurais</span>
-        <span class="marquee-item">Médicos e Dentistas</span>
-        <span class="marquee-item">Sócios em Conflito</span>
-        <span class="marquee-item">Herdeiros</span>
-        <span class="marquee-item">Investidores Imobiliários</span>
-        <span class="marquee-item">Grupos Familiares</span>
-        <span class="marquee-item">Advogados e Arquitetos</span>
-      </div>
+<div class="container">
+  <h2>Casos reais de proteção patrimonial</h2>
+  <div class="cases-grid">
+    <div class="case-card reveal">
+      <div class="case-value">22%</div>
+      <span class="case-tag">Redução ITCMD</span>
+      <h3>Empresário com 3 propriedades</h3>
+      <p>Estruturou holding para centralizar imóveis comerciais e residenciais. Conseguiu redução de 22% na alíquota de imposto sucessório através da blindagem patrimonial.</p>
     </div>
+    <div class="case-card reveal">
+      <div class="case-value">R$ 0</div>
+      <span class="case-tag">Multa ou autuação</span>
+      <h3>Sócios em conflito</h3>
+      <p>Dois sócios de empresa recorrente estruturaram holding para organizar participação, garantir governança clara e proteger cada sócio de riscos operacionais um do outro.</p>
+    </div>
+    <div class="case-card reveal">
+      <div class="case-value">3</div>
+      <span class="case-tag">Gerações protegidas</span>
+      <h3>Família com múltiplos negócios</h3>
+      <p>Holding familiar consolidou três negócios. Planejamento sucessório permitiu transição clara entre gerações com segurança patrimonial mantida.</p>
+    </div>
+  </div>
+</div>
 
-    <!-- DEPOIMENTOS -->
-    <section class="depoimentos reveal" aria-labelledby="dep-title">
-      <div class="section-inner">
-        <div class="section-tag">O que dizem nossos clientes</div>
-        <h2 class="section-title" id="dep-title">Patrimônio protegido.<br><em>Família tranquila.</em></h2>
-        <div class="dep-grid">
-          <div class="dep-card">
-            <div class="dep-stars" aria-label="5 estrelas">★★★★★</div>
-            <p class="dep-text">"A Amanda mapeou todo o nosso patrimônio e propôs uma estrutura que protege os imóveis e já resolve a questão da herança. O processo foi muito mais simples do que eu imaginava."</p>
-            <div class="dep-author">
-              <div class="dep-avatar" aria-hidden="true">RC</div>
-              <div>
-                <div class="dep-name">Roberto C.</div>
-                <div class="dep-role">Empresário, Pará de Minas</div>
-              </div>
-            </div>
-          </div>
-          <div class="dep-card">
-            <div class="dep-stars" aria-label="5 estrelas">★★★★★</div>
-            <p class="dep-text">"Tínhamos três imóveis na pessoa física e não sabíamos que poderíamos reduzir tanto o imposto. A holding imobiliária foi a melhor decisão que tomamos nos últimos anos."</p>
-            <div class="dep-author">
-              <div class="dep-avatar" aria-hidden="true">MF</div>
-              <div>
-                <div class="dep-name">Mariana F.</div>
-                <div class="dep-role">Médica, Sete Lagoas</div>
-              </div>
-            </div>
-          </div>
-          <div class="dep-card">
-            <div class="dep-stars" aria-label="5 estrelas">★★★★★</div>
-            <p class="dep-text">"Eu e meus irmãos não conseguíamos chegar a um acordo sobre a gestão da fazenda. A AM Cabral nos ajudou a formalizar as regras e hoje trabalhamos sem conflitos."</p>
-            <div class="dep-author">
-              <div class="dep-avatar" aria-hidden="true">JS</div>
-              <div>
-                <div class="dep-name">João S.</div>
-                <div class="dep-role">Produtor rural, Minas Gerais</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROCESSO -->
-    <section class="processo reveal" aria-labelledby="proc-title">
-      <div class="section-inner">
-        <div class="section-tag">Como trabalhamos</div>
-        <h2 class="section-title" id="proc-title">Da análise à holding<br><em>em 4 etapas</em></h2>
-        <div class="proc-steps">
-          <div class="proc-step">
-            <div class="proc-num" aria-hidden="true">1</div>
-            <h3>Diagnóstico</h3>
-            <p>Mapeamos bens, passivos, regime matrimonial, herdeiros e objetivos. Base para toda a estruturação.</p>
-          </div>
-          <div class="proc-step">
-            <div class="proc-num" aria-hidden="true">2</div>
-            <h3>Projeto</h3>
-            <p>Definimos o tipo de holding, cláusulas de proteção, estratégia de doação e contrato social.</p>
-          </div>
-          <div class="proc-step">
-            <div class="proc-num" aria-hidden="true">3</div>
-            <h3>Constituição</h3>
-            <p>Abertura da holding, integralização dos bens, registro cartorial e integração fiscal.</p>
-          </div>
-          <div class="proc-step">
-            <div class="proc-num" aria-hidden="true">4</div>
-            <h3>Gestão Contínua</h3>
-            <p>Obrigações acessórias, assembleias anuais e revisão do planejamento conforme mudanças legais.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTENT SEO -->
-    <section class="content-seo reveal" aria-labelledby="cseo-title">
-      <div class="section-inner">
-        <div class="section-tag">Entenda o tema</div>
-        <h2 class="section-title" id="cseo-title">Tudo que você precisa saber<br><em>sobre holding patrimonial</em></h2>
-        <div class="content-seo-grid">
-          <div class="content-block">
-            <h3>Blindagem patrimonial: como as cláusulas protegem seus bens</h3>
-            <p>As cláusulas de incomunicabilidade e impenhorabilidade nas cotas da holding impedem que credores de herdeiros ou cônjuges alcancem o patrimônio familiar. Diferente dos bens na pessoa física, as cotas da holding ficam protegidas de execuções fiscais e trabalhistas pessoais, desde que estruturadas corretamente.</p>
-          </div>
-          <div class="content-block">
-            <h3>ITCMD e a janela de oportunidade da reforma tributária</h3>
-            <p>A reforma tributária tende a elevar o ITCMD progressivamente. Quem estrutura a holding antes das novas alíquotas entrarem em vigor garante a doação de cotas sob as regras atuais. Em MG, a alíquota de ITCMD na transmissão de cotas pode ser até 40% menor do que no inventário convencional de bens físicos.</p>
-          </div>
-          <div class="content-block">
-            <h3>Tributação favorecida na holding imobiliária</h3>
-            <p>Imóveis na pessoa física geram rendimento de aluguel tributado pelo IR a até 27,5%. Na holding imobiliária com Lucro Presumido, essa carga cai para cerca de 11,33% (IRPJ + CSLL + PIS + Cofins). Para quem tem mais de 2 imóveis alugados, a diferença representa economia expressiva todo mês.</p>
-          </div>
-          <div class="content-block">
-            <h3>Governança familiar: prevenindo conflitos futuros</h3>
-            <p>O acordo de sócios e as cláusulas do contrato social da holding definem como decisões são tomadas, como cotas são transferidas e o que acontece em caso de morte ou divórcio de um sócio. Essa governança prévia elimina a maioria dos conflitos familiares que surgem na partilha de bens sem estrutura.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ -->
-    <section class="faq reveal" aria-labelledby="faq-title">
-      <div class="section-inner">
-        <div class="section-tag">Perguntas frequentes</div>
-        <h2 class="section-title" id="faq-title">Dúvidas sobre<br><em>holding patrimonial</em></h2>
-        <div class="faq-list" role="list">
-          <div class="faq-item" role="listitem">
-            <button class="faq-q" aria-expanded="false">
-              Qualquer pessoa pode constituir uma holding?
-              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
-            </button>
-            <div class="faq-a" role="region">
-              <div class="faq-a-inner">Sim. Holding é uma estrutura societária acessível a qualquer pessoa física que tenha patrimônio a proteger ou transferir. Não é restrita a grandes fortunas. Empresários, profissionais liberais, famílias com imóveis e produtores rurais se beneficiam da estrutura. O diagnóstico inicial define se a constituição é vantajosa para o seu perfil específico.</div>
-            </div>
-          </div>
-          <div class="faq-item" role="listitem">
-            <button class="faq-q" aria-expanded="false">
-              Qual a diferença de ITCMD entre inventário e holding?
-              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
-            </button>
-            <div class="faq-a" role="region">
-              <div class="faq-a-inner">No inventário de bens físicos, o ITCMD incide sobre o valor total dos bens na data do falecimento, com alíquotas que variam por estado. Em MG, pode chegar a 8%. Na holding, a transmissão ocorre via doação de cotas, que pode ser realizada em vida com alíquota menor e de forma parcelada ao longo de anos, reduzindo significativamente o imposto total pago.</div>
-            </div>
-          </div>
-          <div class="faq-item" role="listitem">
-            <button class="faq-q" aria-expanded="false">
-              Qual a diferença entre holding pura e holding mista?
-              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
-            </button>
-            <div class="faq-a" role="region">
-              <div class="faq-a-inner">A holding pura só detém participações em outras empresas, sem exercer atividade operacional própria. Já a holding mista combina controle patrimonial com alguma atividade operacional, como locação de imóveis. A escolha entre elas depende do perfil dos ativos, dos objetivos do sócio e da estrutura tributária mais eficiente para cada caso.</div>
-            </div>
-          </div>
-          <div class="faq-item" role="listitem">
-            <button class="faq-q" aria-expanded="false">
-              A holding protege bens de dívidas pessoais?
-              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
-            </button>
-            <div class="faq-a" role="region">
-              <div class="faq-a-inner">Sim, quando bem estruturada. As cláusulas de impenhorabilidade e incomunicabilidade nas cotas da holding protegem o patrimônio de dívidas pessoais dos herdeiros e cônjuges. É importante que a integralização dos bens na holding seja feita de forma transparente e com a devida anterioridade, para que não caracterize fraude contra credores.</div>
-            </div>
-          </div>
-          <div class="faq-item" role="listitem">
-            <button class="faq-q" aria-expanded="false">
-              Quanto tempo leva para constituir uma holding?
-              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
-            </button>
-            <div class="faq-a" role="region">
-              <div class="faq-a-inner">O processo completo, do diagnóstico ao registro da holding com todos os bens integralizados, leva em média 60 a 90 dias. O prazo varia conforme a complexidade do patrimônio, o número de bens a integralizar e a agilidade nos cartórios e na Receita Federal. A AM Cabral coordena todo o processo para minimizar atrasos.</div>
-            </div>
-          </div>
-          <div class="faq-item" role="listitem">
-            <button class="faq-q" aria-expanded="false">
-              Posso colocar imóveis financiados na holding?
-              <svg class="faq-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
-            </button>
-            <div class="faq-a" role="region">
-              <div class="faq-a-inner">Imóveis com alienação fiduciária (financiados) não podem ser transferidos para a holding sem anuência do banco credor, pois o bem ainda está gravado em garantia. O planejamento correto considera quais bens podem ser integralizados imediatamente e quais aguardam a quitação do financiamento para serem incorporados à estrutura.</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- HUB DE SERVIÇOS -->
-    <section class="hub reveal" aria-labelledby="hub-title">
-      <div class="section-inner">
-        <div class="section-tag">Outros serviços</div>
-        <h2 class="section-title" id="hub-title">Soluções complementares<br><em>da AM Cabral</em></h2>
-        <div class="hub-grid">
-          <div class="hub-card">
-            <h3>Planejamento Tributário</h3>
-            <p>Redução legal da carga fiscal para empresas e profissionais liberais em Minas Gerais.</p>
-            <a href="/nossos-servicos/planejamento-tributario/">Saiba mais &rarr;</a>
-          </div>
-          <div class="hub-card">
-            <h3>Recuperação de Créditos</h3>
-            <p>Identificamos e recuperamos créditos tributários pagos a mais nos últimos 5 anos.</p>
-            <a href="/nossos-servicos/recuperacao-creditos-tributarios/">Saiba mais &rarr;</a>
-          </div>
-          <div class="hub-card">
-            <h3>Gestão Contábil</h3>
-            <p>Contabilidade completa, folha de pagamento e obrigações acessórias com suporte dedicado.</p>
-            <a href="/nossos-servicos/gestao-contabil/">Saiba mais &rarr;</a>
-          </div>
-          <div class="hub-card">
-            <h3>Consultoria Tributária</h3>
-            <p>Análise pontual de cenários fiscais, due diligence e suporte a decisões empresariais.</p>
-            <a href="/nossos-servicos/consultoria-tributaria/">Saiba mais &rarr;</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <div class="footer-grid">
-        <div class="footer-brand-col">
-          <p class="footer-contact-title">Fale Conosco</p>
-          <address class="footer-nap">
-            <a href="tel:+5537999967558" class="footer-nap-row">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.83a16 16 0 0 0 5.38 5.38l1.92-1.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-              (37) 99996-7558
-            </a>
-            <a href="mailto:contato@amcabralblindagem.com.br" class="footer-nap-row">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
-              contato@amcabralblindagem.com.br
-            </a>
-            <span class="footer-nap-row">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
-              Rua Major Fidelis, 244, Centro<br>Pará de Minas, MG 35660-109
-            </span>
-            <span class="footer-nap-row">
-              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-              CNPJ 34.733.620/0001-51
-            </span>
-          </address>
-        </div>
-        <div class="footer-col">
-          <h3 class="footer-heading">A Empresa</h3>
-          <ul>
-            <li><a href="/sobre-amcabral-blindagem/">Sobre</a></li>
-            <li><a href="/casos-de-sucesso/">Casos de Sucesso</a></li>
-            <li><a href="/perguntas-frequentes/">Dúvidas Frequentes</a></li>
-            <li><a href="/fale-com-especialista/">Contato</a></li>
-            <li><a href="/blog/">Blog</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h3 class="footer-heading">Serviços</h3>
-          <ul>
-            <li><a href="/nossos-servicos/gestao-contabil/">Contabilidade Estratégica</a></li>
-            <li><a href="/nossos-servicos/recuperacao-creditos-tributarios/">Recuperação de Créditos</a></li>
-            <li><a href="/nossos-servicos/holding-patrimonial/">Holding</a></li>
-            <li><a href="/nossos-servicos/planejamento-tributario/">Planejamento Fiscal</a></li>
-            <li><a href="/nossos-servicos/consultoria-tributaria/">Consultoria Tributária</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h3 class="footer-heading">Cidades Atendidas</h3>
-          <ul>
-            <li><a href="/para-de-minas-mg/">Pará de Minas</a></li>
-            <li><a href="/sete-lagoas-mg/escritorio-de-contabilidade-sete-lagoas/">Sete Lagoas</a></li>
-            <li><a href="/betim-mg/contador-em-betim/">Betim</a></li>
-            <li><a href="/cidades-atendidas/">Belo Horizonte</a></li>
-            <li><a href="/cidades-atendidas/">Ver todas as cidades →</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <p class="footer-wordmark-tagline"><em>Inteligência tributária para empresas que competem para vencer.</em></p>
-      <div class="footer-wordmark">AM Cabral Contabilidade</div>
-
-      <div class="footer-legal">
-        <p>© 2026 Amanda Silva Cabral Contabilidade. CNPJ 34.733.620/0001-51. CRC/MG ativo.</p>
-        <div class="footer-social-icons">
-          <a href="https://www.instagram.com/amandacabral28/" target="_blank" rel="noopener" aria-label="Instagram">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg>
-          </a>
-          <a href="https://www.linkedin.com/in/amanda-cabral-de-oliveira-82183a179/" target="_blank" rel="noopener" aria-label="LinkedIn">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          </a>
-        </div>
-        <div class="footer-legal-links">
-          <a href="/politica-de-privacidade/">Política de Privacidade</a>
-          <a href="/politica-de-cookies/">Política de Cookies</a>
-          <a href="/termos-de-uso/">Termos de Uso</a>
+<div class="container">
+  <h2>O que falam sobre nossas holdings</h2>
+  <div class="dep-grid">
+    <div class="depo-card reveal">
+      <div class="stars">★★★★★</div>
+      <p>"Sentia que meu patrimônio estava vulnerável. A holding me deu segurança e paz de espírito. Amanda é clara e objetiva."</p>
+      <div class="depo-author">
+        <div class="depo-avatar"></div>
+        <div>
+          <div class="depo-name">Carlos M.</div>
+          <div class="depo-role">Empresário, Belo Horizonte</div>
         </div>
       </div>
     </div>
-  </footer>
+    <div class="depo-card reveal">
+      <div class="stars">★★★★★</div>
+      <p>"Não sabia que era possível proteger meu patrimônio e economizar impostos ao mesmo tempo. A estrutura é robusta e segura."</p>
+      <div class="depo-author">
+        <div class="depo-avatar"></div>
+        <div>
+          <div class="depo-name">Fernanda S.</div>
+          <div class="depo-role">Proprietária, Pará de Minas</div>
+        </div>
+      </div>
+    </div>
+    <div class="depo-card reveal">
+      <div class="stars">★★★★★</div>
+      <p>"A holding resolveu nossas questões de sucessão. Agora sabemos como os negócios e patrimônio vão passar para a próxima geração."</p>
+      <div class="depo-author">
+        <div class="depo-avatar"></div>
+        <div>
+          <div class="depo-name">Roberto L.</div>
+          <div class="depo-role">Diretor, Divinópolis</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-  <script>
-    // CURSOR LERP
-    const cursor = document.querySelector('.cursor');
-    const cursorDot = document.querySelector('.cursor-dot');
-    let mx = 0, my = 0, cx = 0, cy = 0;
-    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-    (function lerp() {
-      cx += (mx - cx) * 0.15; cy += (my - cy) * 0.15;
-      if (cursor) { cursor.style.left = cx + 'px'; cursor.style.top = cy + 'px'; }
-      if (cursorDot) { cursorDot.style.left = mx + 'px'; cursorDot.style.top = my + 'px'; }
-      requestAnimationFrame(lerp);
-    })();
+<div class="container">
+  <h2>Processo de constituição em 4 etapas</h2>
+  <div class="processo-steps">
+    <div class="processo-step reveal">
+      <div class="step-number">01</div>
+      <h3>Análise Patrimonial</h3>
+      <p>Mapeamos todos os bens, débitos e estrutura familiar para criar o melhor modelo de holding.</p>
+      <div class="step-tags">
+        <span class="step-tag">1 semana</span>
+        <span class="step-tag">Reunião</span>
+      </div>
+    </div>
+    <div class="processo-step reveal">
+      <div class="step-number">02</div>
+      <h3>Simulação Fiscal</h3>
+      <p>Comparamos cenários de ITCMD, IR e outras obrigações antes e depois da holding.</p>
+      <div class="step-tags">
+        <span class="step-tag">1 semana</span>
+        <span class="step-tag">Relatório</span>
+      </div>
+    </div>
+    <div class="processo-step reveal">
+      <div class="step-number">03</div>
+      <h3>Estruturação Legal</h3>
+      <p>Criamos documentação, contrato social e todos os requisitos legais e fiscais.</p>
+      <div class="step-tags">
+        <span class="step-tag">2 semanas</span>
+        <span class="step-tag">Documentos</span>
+      </div>
+    </div>
+    <div class="processo-step reveal">
+      <div class="step-number">04</div>
+      <h3>Registro e Acompanhamento</h3>
+      <p>Registramos a holding em cartório e iniciamos acompanhamento contínuo da estrutura.</p>
+      <div class="step-tags">
+        <span class="step-tag">10 dias</span>
+        <span class="step-tag">Operacional</span>
+      </div>
+    </div>
+  </div>
+</div>
 
-    // PROGRESS BAR
-    const pb = document.getElementById('progress-bar');
-    window.addEventListener('scroll', () => {
-      const h = document.documentElement;
-      const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
-      if (pb) pb.style.width = pct + '%';
+<section class="form-sec">
+  <div class="container">
+    <h2>Comece agora mesmo: diagnóstico gratuito</h2>
+    <div class="form-wrapper">
+      <div class="progress-dots">
+        <div class="progress-dot active" onclick="goToStep(0)"></div>
+        <div class="progress-dot" onclick="goToStep(1)"></div>
+        <div class="progress-dot" onclick="goToStep(2)"></div>
+        <div class="progress-dot" onclick="goToStep(3)"></div>
+      </div>
+
+      <form id="holdingForm">
+        <div class="form-step active">
+          <h3>Qual é o valor aproximado do seu patrimônio?</h3>
+          <div class="form-options">
+            <div class="form-option">
+              <input type="radio" name="patrimonio" id="p1" value="ate-500k">
+              <label for="p1">Até R$ 500k</label>
+            </div>
+            <div class="form-option">
+              <input type="radio" name="patrimonio" id="p2" value="500k-1m">
+              <label for="p2">R$ 500k a R$ 1M</label>
+            </div>
+            <div class="form-option">
+              <input type="radio" name="patrimonio" id="p3" value="1m-5m">
+              <label for="p3">R$ 1M a R$ 5M</label>
+            </div>
+            <div class="form-option">
+              <input type="radio" name="patrimonio" id="p4" value="acima-5m">
+              <label for="p4">Acima de R$ 5M</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-step">
+          <h3>Seu patrimônio é composto por quê?</h3>
+          <div class="form-options">
+            <div class="form-option">
+              <input type="radio" name="tipos" id="t1" value="imoveis">
+              <label for="t1">Imóveis</label>
+            </div>
+            <div class="form-option">
+              <input type="radio" name="tipos" id="t2" value="negocio">
+              <label for="t2">Negócio</label>
+            </div>
+            <div class="form-option">
+              <input type="radio" name="tipos" id="t3" value="acoes">
+              <label for="t3">Ações / Investimentos</label>
+            </div>
+            <div class="form-option">
+              <input type="radio" name="tipos" id="t4" value="misto">
+              <label for="t4">Patrimônio misto</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-step">
+          <h3>Seu objetivo principal com a holding é:</h3>
+          <div class="form-options">
+            <div class="form-option">
+              <input type="radio" name="objetivo" id="o1" value="reducao-impostos">
+              <label for="o1">Redução de impostos</label>
+            </div>
+            <div class="form-option">
+              <input type="radio" name="objetivo" id="o2" value="blindagem">
+              <label for="o2">Blindagem patrimonial</label>
+            </div>
+            <div class="form-option">
+              <input type="radio" name="objetivo" id="o3" value="sucessao">
+              <label for="o3">Planejamento sucessório</label>
+            </div>
+            <div class="form-option">
+              <input type="radio" name="objetivo" id="o4" value="governance">
+              <label for="o4">Governança entre sócios</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-step">
+          <h3>Seus dados para contato</h3>
+          <div class="form-group">
+            <label for="nome">Seu nome completo</label>
+            <input type="text" id="nome" name="nome" required>
+          </div>
+          <div class="form-group">
+            <label for="email">E-mail</label>
+            <input type="email" id="email" name="email" required>
+          </div>
+          <div class="form-group">
+            <label for="telefone">Telefone (WhatsApp)</label>
+            <input type="tel" id="telefone" name="telefone" required>
+          </div>
+          <div class="form-group">
+            <label for="mensagem">Mensagem (opcional)</label>
+            <textarea id="mensagem" name="mensagem" placeholder="Conte um pouco sobre sua situação..."></textarea>
+          </div>
+        </div>
+
+        <div class="form-buttons">
+          <button type="button" onclick="previousStep()" id="btnPrev" style="display: none;">Voltar</button>
+          <button type="button" onclick="nextStep()" id="btnNext">Próximo</button>
+          <button type="submit" class="btn-submit" id="btnSubmit" style="display: none;">Enviar diagnóstico</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <h2>Dúvidas frequentes sobre holding patrimonial</h2>
+  <ul class="faq-list">
+    <li class="faq-item">
+      <button class="faq-trigger">Qual é a diferença entre holding patrimonial e holding operacional?</button>
+      <div class="faq-answer">
+        <p>Holding patrimonial é uma empresa criada para administrar o patrimônio pessoal (imóveis, ações, investimentos). Holding operacional gerencia negócios e operações. Na maioria dos casos, estruturamos ambas para máxima eficiência fiscal e proteção.</p>
+      </div>
+    </li>
+    <li class="faq-item">
+      <button class="faq-trigger">Quanto tempo leva para constituir uma holding?</button>
+      <div class="faq-answer">
+        <p>Em média, 30 dias do início das reuniões até o registro em cartório. Isso inclui análise patrimonial, simulações fiscais, elaboração de documentos e processos de registro junto aos órgãos públicos.</p>
+      </div>
+    </li>
+    <li class="faq-item">
+      <button class="faq-trigger">Qual é o custo de uma holding patrimonial?</button>
+      <div class="faq-answer">
+        <p>O custo varia conforme complexidade do patrimônio e estrutura desejada. Em geral, inclui honorários de constituição, registro em cartório, e acompanhamento contábil-fiscal inicial. Solicitamos um diagnóstico para orçamento preciso.</p>
+      </div>
+    </li>
+    <li class="faq-item">
+      <button class="faq-trigger">A holding é auditada? Qual é a obrigação fiscal?</button>
+      <div class="faq-answer">
+        <p>A holding precisa apresentar Declaração de Imposto de Renda, Escrituração Contábil Digital (ECD) e demais obrigações como pessoa jurídica. Acompanhamos todas as obrigações para garantir conformidade total.</p>
+      </div>
+    </li>
+    <li class="faq-item">
+      <button class="faq-trigger">A holding protege meu patrimônio de credores?</button>
+      <div class="faq-answer">
+        <p>Sim, a holding patrimonial oferece blindagem contra riscos operacionais da empresa. Quando patrimônio está em holding separada, credores da empresa operacional não podem acessá-lo facilmente. Essa proteção é um dos principais benefícios.</p>
+      </div>
+    </li>
+    <li class="faq-item">
+      <button class="faq-trigger">Posso transferir bens para a holding sem pagar impostos?</button>
+      <div class="faq-answer">
+        <p>A transferência de bens é estruturada de forma a minimizar a tributação imediata. Dependendo do tipo de bem e da situação, é possível aproveitar regimes especiais e planejamento estratégico. Fazemos a melhor estrutura para seu caso.</p>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="container">
+  <h2>Conheça nossos outros serviços</h2>
+  <div class="hub-grid">
+    <a href="/nossos-servicos/gestao-contabil/" class="hub-card reveal">
+      <h3>Gestão Contábil</h3>
+    </a>
+    <a href="/nossos-servicos/planejamento-tributario/" class="hub-card reveal">
+      <h3>Planejamento Tributário</h3>
+    </a>
+    <a href="/nossos-servicos/recuperacao-creditos/" class="hub-card reveal">
+      <h3>Recuperação de Créditos</h3>
+    </a>
+    <a href="/nossos-servicos/consultoria-tributaria/" class="hub-card reveal">
+      <h3>Consultoria Tributária</h3>
+    </a>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-wrapper">
+    <div class="footer-col">
+      <div class="footer-wordmark">AM Cabral</div>
+      <p style="font-size: 13px; color: rgba(255, 255, 255, 0.7); margin-bottom: 16px;">Contabilidade estratégica e blindagem patrimonial em Minas Gerais.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Serviços</h4>
+      <ul>
+        <li><a href="/nossos-servicos/holding-patrimonial/">Holding Patrimonial</a></li>
+        <li><a href="/nossos-servicos/planejamento-tributario/">Planejamento Tributário</a></li>
+        <li><a href="/nossos-servicos/gestao-contabil/">Gestão Contábil</a></li>
+        <li><a href="/nossos-servicos/recuperacao-creditos/">Recuperação de Créditos</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Empresa</h4>
+      <ul>
+        <li><a href="/">Sobre Amanda</a></li>
+        <li><a href="/casos">Casos</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/contato">Contato</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contato</h4>
+      <ul>
+        <li><a href="tel:+553799996-7558">+55 37 9999-6758</a></li>
+        <li><a href="mailto:contato@amcabral.com.br">contato@amcabral.com.br</a></li>
+        <li style="margin-top: 16px; font-size: 12px; color: rgba(255, 255, 255, 0.6);">Rua Major Fidelis, 244<br>Pará de Minas, MG 35660-060</li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-legal">
+    <p>© 2024 AM Cabral Contabilidade. Todos os direitos reservados. | <a href="/" style="color: inherit;">Política de Privacidade</a></p>
+  </div>
+</footer>
+
+<script>
+  let currentStep = 0;
+
+  function showStep(n) {
+    const steps = document.querySelectorAll('.form-step');
+    const dots = document.querySelectorAll('.progress-dot');
+    const btnPrev = document.getElementById('btnPrev');
+    const btnNext = document.getElementById('btnNext');
+    const btnSubmit = document.getElementById('btnSubmit');
+
+    if (n >= steps.length) n = steps.length - 1;
+    if (n < 0) n = 0;
+
+    steps.forEach(step => step.classList.remove('active'));
+    dots.forEach(dot => dot.classList.remove('active'));
+
+    steps[n].classList.add('active');
+    dots[n].classList.add('active');
+    currentStep = n;
+
+    btnPrev.style.display = n === 0 ? 'none' : 'block';
+    btnNext.style.display = n === steps.length - 1 ? 'none' : 'block';
+    btnSubmit.style.display = n === steps.length - 1 ? 'block' : 'none';
+  }
+
+  function nextStep() {
+    showStep(currentStep + 1);
+  }
+
+  function previousStep() {
+    showStep(currentStep - 1);
+  }
+
+  function goToStep(n) {
+    showStep(n);
+  }
+
+  document.getElementById('holdingForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const formData = new FormData(this);
+    console.log(Object.fromEntries(formData));
+    alert('Obrigado! Entraremos em contato em breve com seu diagnóstico.');
+    this.reset();
+    showStep(0);
+  });
+
+  // Header menu
+  document.querySelectorAll('.header-nav li').forEach(li => {
+    li.addEventListener('mouseenter', function() {
+      const menu = this.querySelector('.mega-menu');
+      if (menu) menu.classList.add('active');
     });
-
-    // MEGA-MENU
-    let hdrTimer = null, currentMega = null, currentItem = null;
-    const closeAll = () => {
-      document.querySelectorAll('.hdr-mega.open').forEach(m => { m.classList.remove('open'); });
-      document.querySelectorAll('.hdr-item.open').forEach(i => { i.classList.remove('open'); });
-      currentMega = null; currentItem = null;
-    };
-    document.querySelectorAll('.hdr-item[data-menu]').forEach(item => {
-      const btn = item.querySelector('.hdr-btn');
-      const mega = document.getElementById('mega-' + item.dataset.menu);
-      if (!btn || !mega) return;
-      const open = () => {
-        clearTimeout(hdrTimer);
-        if (currentMega && currentMega !== mega) { currentMega.classList.remove('open'); currentItem && currentItem.classList.remove('open'); }
-        mega.classList.add('open'); item.classList.add('open');
-        btn.setAttribute('aria-expanded', 'true');
-        currentMega = mega; currentItem = item;
-      };
-      const scheduleClose = () => { hdrTimer = setTimeout(closeAll, 150); };
-      btn.addEventListener('mouseenter', open);
-      btn.addEventListener('mouseleave', scheduleClose);
-      mega.addEventListener('mouseenter', () => clearTimeout(hdrTimer));
-      mega.addEventListener('mouseleave', scheduleClose);
-      btn.addEventListener('click', e => { e.preventDefault(); mega.classList.contains('open') ? closeAll() : open(); });
+    li.addEventListener('mouseleave', function() {
+      const menu = this.querySelector('.mega-menu');
+      if (menu) menu.classList.remove('active');
     });
+  });
 
-    // MOBILE NAV
-    const hamburger = document.getElementById('hdr-hamburger');
-    const mobNav = document.getElementById('hdr-mob');
-    const mobClose = document.getElementById('hdr-mob-close');
-    if (hamburger) hamburger.addEventListener('click', () => {
-      mobNav.classList.add('open');
-      hamburger.setAttribute('aria-expanded', 'true');
-      document.body.style.overflow = 'hidden';
-    });
-    if (mobClose) mobClose.addEventListener('click', () => {
-      mobNav.classList.remove('open');
-      hamburger.setAttribute('aria-expanded', 'false');
-      document.body.style.overflow = '';
-    });
+  // Mobile menu
+  const burger = document.querySelector('.header-burger');
+  const megaMenus = document.querySelectorAll('.mega-menu');
+  burger.addEventListener('click', function() {
+    megaMenus.forEach(menu => menu.classList.toggle('active'));
+  });
 
-    // REVEAL
-    const revealEls = document.querySelectorAll('.reveal');
-    const revealObs = new IntersectionObserver(entries => {
-      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealObs.unobserve(e.target); } });
-    }, { threshold: 0.1 });
-    revealEls.forEach(el => revealObs.observe(el));
-
-    // COUNTERS
-    const counterEls = document.querySelectorAll('[data-count]');
-    const counterObs = new IntersectionObserver(entries => {
-      entries.forEach(e => {
-        if (!e.isIntersecting) return;
-        const el = e.target;
-        const target = +el.dataset.count;
-        const suffix = el.dataset.suffix || '';
-        const duration = 1200;
-        const start = performance.now();
-        (function tick(now) {
-          const p = Math.min((now - start) / duration, 1);
-          const ease = 1 - Math.pow(1 - p, 3);
-          el.textContent = Math.round(ease * target) + suffix;
-          if (p < 1) requestAnimationFrame(tick);
-        })(start);
-        counterObs.unobserve(el);
-      });
-    }, { threshold: 0.5 });
-    counterEls.forEach(el => counterObs.observe(el));
-
-    // CAROUSEL
-    const carInner = document.getElementById('carInner');
-    const carPrev = document.getElementById('carPrev');
-    const carNext = document.getElementById('carNext');
-    if (carInner && carPrev && carNext) {
-      let carIdx = 0;
-      const getVisible = () => window.innerWidth < 768 ? 1 : window.innerWidth < 1024 ? 2 : 3;
-      const slides = carInner.querySelectorAll('.car-slide');
-      const maxIdx = () => Math.max(0, slides.length - getVisible());
-      const updateCar = () => {
-        const w = slides[0].offsetWidth + 20;
-        carInner.style.transform = `translateX(-${carIdx * w}px)`;
-      };
-      carPrev.addEventListener('click', () => { carIdx = Math.max(0, carIdx - 1); updateCar(); });
-      carNext.addEventListener('click', () => { carIdx = Math.min(maxIdx(), carIdx + 1); updateCar(); });
-      window.addEventListener('resize', () => { carIdx = Math.min(carIdx, maxIdx()); updateCar(); });
-    }
-
-    // FAQ
-    document.querySelectorAll('.faq-q').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const item = btn.closest('.faq-item');
-        const ans = item.querySelector('.faq-a');
-        const isOpen = item.classList.contains('open');
-        document.querySelectorAll('.faq-item.open').forEach(o => {
-          o.classList.remove('open');
-          o.querySelector('.faq-a').style.maxHeight = '0';
-          o.querySelector('.faq-q').setAttribute('aria-expanded', 'false');
-        });
-        if (!isOpen) {
-          item.classList.add('open');
-          ans.style.maxHeight = ans.scrollHeight + 'px';
-          btn.setAttribute('aria-expanded', 'true');
-        }
-      });
-    });
-
-    // MULTI-STEP FORM
-    const formData = {};
-    let currentStep = 1;
-    const totalSteps = 4;
-
-    const showStep = (n) => {
-      document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
-      const step = document.getElementById('fstep' + n);
-      if (step) step.classList.add('active');
-      for (let i = 1; i <= totalSteps; i++) {
-        const dot = document.getElementById('fdot' + i);
-        if (dot) dot.classList.toggle('done', i <= n);
+  // Reveal on scroll
+  const revealElements = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
       }
-      currentStep = n;
-    };
-
-    document.querySelectorAll('.form-option').forEach(opt => {
-      opt.addEventListener('click', () => {
-        const field = opt.dataset.field;
-        document.querySelectorAll(`.form-option[data-field="${field}"]`).forEach(o => o.classList.remove('selected'));
-        opt.classList.add('selected');
-        formData[field] = opt.dataset.value;
-      });
     });
+  }, { threshold: 0.1 });
 
-    ['fnext1','fnext2','fnext3'].forEach((id, i) => {
-      const btn = document.getElementById(id);
-      if (btn) btn.addEventListener('click', () => { showStep(i + 2); });
-    });
-    ['fback2','fback3','fback4'].forEach((id, i) => {
-      const btn = document.getElementById(id);
-      if (btn) btn.addEventListener('click', () => { showStep(i + 1); });
-    });
+  revealElements.forEach(el => observer.observe(el));
 
-    const submitBtn = document.getElementById('fsubmit');
-    if (submitBtn) {
-      submitBtn.addEventListener('click', () => {
-        const nome = document.getElementById('f-nome').value.trim();
-        const empresa = document.getElementById('f-empresa').value.trim();
-        const tel = document.getElementById('f-whatsapp').value.trim();
-        if (!nome || !tel) { alert('Por favor, preencha nome e WhatsApp.'); return; }
-        const msg = `Olá Amanda! Meu nome é ${nome}${empresa ? ' (' + empresa + ')' : ''}. Quero um diagnóstico gratuito para constituição de holding patrimonial.${formData.objetivo ? ' Objetivo: ' + formData.objetivo + '.' : ''}${formData.ativo ? ' Principal ativo: ' + formData.ativo + '.' : ''}`;
-        const encoded = encodeURIComponent(msg);
-        window.open(`https://wa.me/5537999967558?text=${encoded}`, '_blank');
-      });
-    }
-  </script>
+  // Custom cursor
+  const cursor = document.querySelector('.custom-cursor');
+  document.addEventListener('mousemove', (e) => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+  });
+
+  document.addEventListener('mouseenter', () => {
+    cursor.style.display = 'block';
+  });
+
+  document.addEventListener('mouseleave', () => {
+    cursor.style.display = 'none';
+  });
+
+  // Counter animation
+  const numCards = document.querySelectorAll('.num-value');
+  numCards.forEach(card => {
+    const value = parseInt(card.getAttribute('data-value'));
+    let current = 0;
+    const increment = Math.ceil(value / 30);
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= value) {
+        current = value;
+        clearInterval(timer);
+      }
+      card.textContent = current + (card.getAttribute('data-value').includes('+') ? '+' : card.getAttribute('data-value').includes('%') ? '%' : '');
+    }, 30);
+  });
+
+  // FAQ toggle
+  document.querySelectorAll('.faq-trigger').forEach(trigger => {
+    trigger.addEventListener('click', function() {
+      const item = this.closest('.faq-item');
+      item.classList.toggle('active');
+    });
+  });
+
+  // Initialize
+  showStep(0);
+</script>
+
 </body>
 </html>
