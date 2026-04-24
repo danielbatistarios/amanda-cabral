@@ -483,119 +483,6 @@
         }
 
         /* ============================
-           LOADER
-        ============================ */
-        .loader {
-            position: fixed;
-            inset: 0;
-            background: var(--blue-900);
-            z-index: 9999;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            gap: 32px;
-            transition: opacity 0.6s ease, visibility 0.6s;
-        }
-
-        .loader.done { opacity: 0; visibility: hidden; pointer-events: none; }
-
-        .loader-content {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 28px;
-            max-width: 700px;
-            padding: 0 24px;
-        }
-
-        .loader-phrase {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 6px 10px;
-            overflow: hidden;
-            text-align: center;
-        }
-
-        .loader-word {
-            font-family: var(--font-display);
-            font-size: clamp(1.3rem, 3.5vw, 2.2rem);
-            color: var(--white);
-            opacity: 0;
-            transform: translateY(100%);
-            animation: loaderWordIn 0.6s var(--ease) forwards;
-            line-height: 1.3;
-        }
-
-        .loader-word.accent { color: var(--gold); }
-        .loader-word.italic { font-style: italic; color: rgba(255,255,255,0.95); }
-
-        /* Loader: nome AM Cabral em cima */
-        .loader-brand {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 2px;
-            overflow: hidden;
-            margin-bottom: 8px;
-        }
-        .loader-brand-name {
-            font-family: var(--font-display);
-            font-size: clamp(1.6rem, 4vw, 2.4rem);
-            font-weight: 400;
-            color: var(--gold);
-            opacity: 0;
-            transform: translateY(16px);
-            animation: loaderWordIn 0.8s 0.1s cubic-bezier(0.22,1,0.36,1) forwards;
-            letter-spacing: 0.02em;
-            line-height: 1.2;
-        }
-        .loader-brand-sep {
-            width: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(201,168,76,0.5), transparent);
-            animation: loaderSepExpand 0.8s 0.7s ease forwards;
-            margin: 6px 0;
-        }
-        @keyframes loaderSepExpand { to { width: 180px; } }
-
-        /* Loader: tagline */
-        .loader-phrase {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 4px 7px;
-            overflow: visible;
-            text-align: center;
-        }
-
-        @keyframes loaderWordIn {
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .loader-line {
-            width: 48px;
-            height: 1px;
-            background: var(--blue-700);
-            overflow: hidden;
-            position: relative;
-            margin-top: 12px;
-        }
-
-        .loader-line::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(90deg, transparent, var(--gold), transparent);
-            animation: loaderFill 1.2s 1.8s ease forwards;
-            transform-origin: left;
-            transform: scaleX(0);
-        }
-
-        @keyframes loaderFill { to { transform: scaleX(1); } }
-
-        /* ============================
            SCROLL PROGRESS
         ============================ */
         .scroll-progress {
@@ -1091,9 +978,6 @@
             h2.heading { font-size: clamp(1.3rem, 5vw, 1.7rem); }
             .heading-sub { font-size: 1rem; }
 
-            /* Loader */
-            .loader-phrase { gap: 4px 8px; }
-            .loader-word { font-size: clamp(1rem, 4vw, 1.5rem); }
         }
 
         @media (max-width: 480px) {
@@ -1687,22 +1571,6 @@ body { padding-top: 60px; }
 <!-- Scroll progress -->
 <div class="scroll-progress" id="scrollProgress"></div>
 
-<!-- Loader -->
-<div class="loader" id="loader">
-  <div class="loader-content">
-    <div class="loader-brand">
-      <span class="loader-brand-name">AM Cabral</span>
-      <div class="loader-brand-sep"></div>
-    </div>
-    <div class="loader-phrase">
-      <span class="loader-word" style="animation-delay:.9s">Blindagem</span>
-      <span class="loader-word italic" style="animation-delay:1.05s">fiscal</span>
-      <span class="loader-word" style="animation-delay:1.2s">para</span>
-      <span class="loader-word accent" style="animation-delay:1.35s">empresas</span>
-    </div>
-    <div class="loader-line"></div>
-  </div>
-</div>
 
 <!-- ===== HEADER ===== -->
 <header id="hdr">
@@ -2208,17 +2076,6 @@ body { padding-top: 60px; }
 </footer>
 
 <script>
-    // ---- LOADER ----
-    const loader = document.getElementById('loader');
-    if (loader) {
-        const hideLoader = () => { loader.classList.add('done'); };
-        if (document.readyState === 'complete') {
-            setTimeout(hideLoader, 2400);
-        } else {
-            window.addEventListener('load', () => setTimeout(hideLoader, 2400));
-        }
-    }
-
     // ---- CURSOR ----
     const cur = document.querySelector('.cursor');
     const dot = document.querySelector('.cursor-dot');
@@ -2261,8 +2118,6 @@ body { padding-top: 60px; }
     }
 
     // ---- COUNTER ANIMATION ----
-    // O loader dura 2.4s — a stats bar já está no viewport quando ele some.
-    // Por isso registramos o observer só APÓS o loader terminar + scroll > 0.
     const statsBar = document.querySelector('.stats-bar');
     if (statsBar) {
         let fired = false;
@@ -2298,14 +2153,8 @@ body { padding-top: 60px; }
             barIO.observe(statsBar);
         };
 
-        // Aguarda o loader sumir (2400ms) + 200ms de margem, depois registra o observer
         // Nesse ponto o usuário ainda está no topo — precisa scrollar para disparar
-        const loaderDelay = 2400 + 200;
-        if (document.readyState === 'complete') {
-            setTimeout(attachObserver, loaderDelay);
-        } else {
-            window.addEventListener('load', () => setTimeout(attachObserver, loaderDelay));
-        }
+        if (document.readyState === 'complete') { attachObserver(); } else { window.addEventListener('load', attachObserver); }
     }
 
     // ---- MEGA-MENU — painéis fora do header ----

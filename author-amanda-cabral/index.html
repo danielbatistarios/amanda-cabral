@@ -118,25 +118,6 @@ ul { list-style: none; }
 .scroll-progress { position: fixed; top: 0; left: 0; height: 2px; background: linear-gradient(90deg, var(--gold), #D4B86A); z-index: 10001; width: 0%; }
 
 /* ============================
-   LOADER
-============================ */
-.loader { position: fixed; inset: 0; background: var(--blue-900); z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 32px; transition: opacity 0.6s ease, visibility 0.6s; }
-.loader.done { opacity: 0; visibility: hidden; pointer-events: none; }
-.loader-content { display: flex; flex-direction: column; align-items: center; gap: 28px; max-width: 700px; padding: 0 24px; }
-.loader-brand { display: flex; flex-direction: column; align-items: center; gap: 2px; overflow: hidden; margin-bottom: 8px; }
-.loader-brand-name { font-family: var(--font-display); font-size: clamp(1.6rem, 4vw, 2.4rem); font-weight: 400; color: var(--gold); opacity: 0; transform: translateY(16px); animation: loaderWordIn 0.8s 0.1s cubic-bezier(0.22,1,0.36,1) forwards; letter-spacing: 0.02em; line-height: 1.2; }
-.loader-brand-sep { width: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(201,168,76,0.5), transparent); animation: loaderSepExpand 0.8s 0.7s ease forwards; margin: 6px 0; }
-@keyframes loaderSepExpand { to { width: 180px; } }
-.loader-phrase { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 7px; text-align: center; }
-.loader-word { font-family: var(--font-display); font-size: clamp(1.3rem, 3.5vw, 2.2rem); color: var(--white); opacity: 0; transform: translateY(100%); animation: loaderWordIn 0.6s var(--ease) forwards; line-height: 1.3; }
-.loader-word.accent { color: var(--gold); }
-.loader-word.italic { font-style: italic; color: rgba(255,255,255,0.95); }
-@keyframes loaderWordIn { to { opacity: 1; transform: translateY(0); } }
-.loader-line { width: 48px; height: 1px; background: var(--blue-700); overflow: hidden; position: relative; margin-top: 12px; }
-.loader-line::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, var(--gold), transparent); animation: loaderFill 1.2s 1.8s ease forwards; transform-origin: left; transform: scaleX(0); }
-@keyframes loaderFill { to { transform: scaleX(1); } }
-
-/* ============================
    REVEAL
 ============================ */
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
@@ -425,20 +406,6 @@ a.footer-nap-row:hover svg { color: var(--gold); }
 <!-- Scroll progress -->
 <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
-<!-- Loader -->
-<div class="loader" id="loader" aria-hidden="true">
-  <div class="loader-content">
-    <div class="loader-brand">
-      <span class="loader-brand-name">AM Cabral</span>
-      <div class="loader-brand-sep"></div>
-    </div>
-    <div class="loader-phrase">
-      <span class="loader-word italic" style="animation-delay:.3s">Amanda</span>
-      <span class="loader-word accent" style="animation-delay:.5s">Cabral</span>
-    </div>
-    <div class="loader-line"></div>
-  </div>
-</div>
 
 <!-- HEADER -->
 <a href="#main-content" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">Pular para conteúdo</a>
@@ -1010,17 +977,6 @@ a.footer-nap-row:hover svg { color: var(--gold); }
 </footer>
 
 <script>
-// ---- LOADER ----
-const loader = document.getElementById('loader');
-if (loader) {
-  const hideLoader = () => { loader.classList.add('done'); };
-  if (document.readyState === 'complete') {
-    setTimeout(hideLoader, 2400);
-  } else {
-    window.addEventListener('load', () => setTimeout(hideLoader, 2400));
-  }
-}
-
 // ---- CURSOR ----
 const cur = document.querySelector('.cursor');
 const dot = document.querySelector('.cursor-dot');
@@ -1063,9 +1019,7 @@ if (revealEls.length) {
       if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
-  if (loader) {
-    setTimeout(() => revealEls.forEach(el => io.observe(el)), 2400);
-  } else {
+ else {
     revealEls.forEach(el => io.observe(el));
   }
 }

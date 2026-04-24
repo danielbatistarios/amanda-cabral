@@ -209,83 +209,6 @@ ul { list-style: none; }
   width: 0%;
 }
 
-/* ── Loader ── */
-.loader {
-  position: fixed;
-  inset: 0;
-  background: var(--z0);
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  gap: 20px;
-  transition: opacity .6s ease, visibility .6s;
-}
-.loader.done { opacity: 0; visibility: hidden; pointer-events: none; }
-.loader-brand {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
-  overflow: hidden;
-}
-.loader-brand-name {
-  font-family: var(--serif);
-  font-size: clamp(1.6rem, 4vw, 2.4rem);
-  font-style: italic;
-  color: var(--gold);
-  opacity: 0;
-  transform: translateY(20px);
-  animation: loaderWordIn .8s .1s var(--spring) forwards;
-  letter-spacing: -0.01em;
-}
-.loader-brand-sep {
-  width: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(201,168,76,0.5), transparent);
-  animation: loaderSepExpand .8s .7s ease forwards;
-}
-@keyframes loaderSepExpand { to { width: 180px; } }
-.loader-phrase {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 6px 10px;
-  max-width: 640px;
-  padding: 0 24px;
-  text-align: center;
-}
-.loader-word {
-  font-family: var(--serif);
-  font-size: clamp(1.1rem, 2.8vw, 1.7rem);
-  color: rgba(255,255,255,0.65);
-  opacity: 0;
-  transform: translateY(100%);
-  animation: loaderWordIn .6s var(--spring) forwards;
-  line-height: 1.3;
-}
-.loader-word.accent { color: var(--dourado); }
-.loader-word.italic { font-style: italic; }
-@keyframes loaderWordIn { to { opacity: 1; transform: translateY(0); } }
-.loader-line {
-  width: 120px; height: 2px;
-  background: var(--z2);
-  border-radius: 2px;
-  overflow: hidden;
-  position: relative;
-}
-.loader-line::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: var(--dourado);
-  animation: loaderFill 1.4s 1.6s var(--spring) forwards;
-  transform-origin: left;
-  transform: scaleX(0);
-}
-@keyframes loaderFill { to { transform: scaleX(1); } }
-
 /* ── Custom cursor ── */
 .cursor {
   position: fixed;
@@ -1094,20 +1017,6 @@ a.footer-nap-row:hover svg { color: var(--gold); }
 </head>
 <body>
 
-<!-- LOADER -->
-<div class="loader" id="loader">
-  <div class="loader-brand">
-    <span class="loader-brand-name">AM Cabral</span>
-    <div class="loader-brand-sep"></div>
-  </div>
-  <div class="loader-phrase">
-    <span class="loader-word" style="animation-delay:.9s">Resultados</span>
-    <span class="loader-word italic accent" style="animation-delay:1.05s">reais.</span>
-    <span class="loader-word" style="animation-delay:1.2s">Empresas</span>
-    <span class="loader-word italic" style="animation-delay:1.35s">que transformamos.</span>
-  </div>
-  <div class="loader-line"></div>
-</div>
 
 <!-- SCROLL PROGRESS -->
 <div class="scroll-progress" id="scrollProgress"></div>
@@ -1540,11 +1449,6 @@ a.footer-nap-row:hover svg { color: var(--gold); }
 </a>
 
 <script>
-// ── LOADER ──
-window.addEventListener('load', () => {
-  setTimeout(() => document.getElementById('loader').classList.add('done'), 2800);
-});
-
 // ── SCROLL PROGRESS ──
 const prog = document.getElementById('scrollProgress');
 window.addEventListener('scroll', () => {

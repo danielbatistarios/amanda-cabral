@@ -426,16 +426,6 @@ ul { list-style: none; }
   transform: translate(-50%,-50%);
 }
 
-/* ============================
-   LOADER
-============================ */
-#loader {
-  position: fixed; inset: 0; background: var(--blue-900); z-index: 9999;
-  display: flex; align-items: center; justify-content: center;
-  transition: opacity 0.6s ease, visibility 0.6s;
-}
-#loader.hide { opacity: 0; visibility: hidden; }
-.loader-ring { width: 48px; height: 48px; border: 3px solid rgba(201,168,76,0.2); border-top-color: var(--gold); border-radius: 50%; animation: spin 0.8s linear infinite; }
 @keyframes spin { to { transform: rotate(360deg); } }
 
 /* ============================
@@ -814,8 +804,6 @@ a.footer-nap-row:hover svg { color: var(--gold); }
 <!-- NOISE -->
 <div class="noise" aria-hidden="true"></div>
 
-<!-- LOADER -->
-<div id="loader"><div class="loader-ring"></div></div>
 
 <!-- HEADER (idêntico à home) -->
 <header id="hdr">
@@ -1654,9 +1642,6 @@ a.footer-nap-row:hover svg { color: var(--gold); }
     el.addEventListener('mouseleave',()=>cur.classList.remove('hover'));
   });
 })();
-
-// LOADER
-window.addEventListener('load', () => setTimeout(() => document.getElementById('loader').classList.add('hide'), 300));
 
 // MEGA-MENU
 let hdrTimer=null, currentMega=null, currentItem=null;
