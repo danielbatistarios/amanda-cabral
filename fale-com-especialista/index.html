@@ -1437,7 +1437,30 @@ button { cursor:none; }
 @media (max-width:600px) {
   .form-row { grid-template-columns:1fr; }
   .fc-form-card { padding:24px; }
-  .fc-trust-item { padding:8px 20px; }
+
+  /* TRUST — 2x2 grid, compacto */
+  .fc-trust { padding:12px 0; }
+  .fc-trust-inner { display:grid; grid-template-columns:1fr 1fr; gap:0; padding:0; }
+  .fc-trust-item {
+    padding:12px 16px;
+    border-right:1px solid rgba(255,255,255,.07);
+    border-bottom:1px solid rgba(255,255,255,.07);
+    text-align:center;
+  }
+  .fc-trust-item:nth-child(2) { border-right:none; }
+  .fc-trust-item:nth-child(3) { border-bottom:none; }
+  .fc-trust-item:nth-child(4) { border-right:none; border-bottom:none; }
+  .fc-trust-val { font-size:1.2rem; }
+  .fc-trust-label { font-size:.65rem; }
+
+  /* SEO section — reduz espaçamento e tamanhos */
+  .fc-seo-section { padding:36px 0 40px; }
+  .fc-seo-badge { margin-bottom:14px; }
+  .fc-seo-title { font-size:1.35rem; margin-bottom:18px; }
+  .fc-seo-body { gap:12px; margin-bottom:24px; }
+  .fc-seo-body p { font-size:.88rem; line-height:1.7; }
+  .fc-seo-links { gap:8px; }
+  .fc-seo-link { padding:6px 14px; font-size:.72rem; }
 }
 
 </style>
