@@ -859,105 +859,120 @@ img { display: block; max-width: 100%; }
 
 /* === SERVICES CAROUSEL === */
 .services-sec {
-  background: var(--paper);
+  background: var(--z0);
   padding: var(--sec-pad) 0;
-  color: var(--ink);
 }
-.services-head {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  margin-bottom: 48px;
-  flex-wrap: wrap;
-  gap: 16px;
+.services-intro {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 64px;
 }
-.services-head-left { flex: 1; min-width: 0; }
-.services-arrows {
-  display: flex;
-  gap: 8px;
-}
-.services-arrow {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  border: 1px solid #E2E8F0;
-  background: #fff;
-  color: var(--ink);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: background .2s, border-color .2s;
-}
-.services-arrow:hover {
-  background: #F8FAFC;
-  border-color: var(--accent);
-}
-.services-arrow svg { width: 18px; height: 18px; }
-
-.services-track {
-  display: flex;
+.svc-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
   gap: 24px;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: none;
-  padding-bottom: 8px;
 }
-.services-track::-webkit-scrollbar { display: none; }
-
 .svc-card {
-  min-width: 300px;
-  max-width: 340px;
-  flex-shrink: 0;
-  scroll-snap-align: start;
-  background: #fff;
-  border: 1px solid #E2E8F0;
-  border-radius: var(--radius);
+  background: rgba(15,33,55,.7);
+  border: 1px solid rgba(255,255,255,.08);
+  border-radius: 18px;
   padding: 32px 28px;
-  transition: transform .3s var(--spring), border-color .3s, box-shadow .3s;
+  display: flex;
+  flex-direction: column;
+  transition: transform .35s var(--spring), border-color .3s, box-shadow .3s;
+  position: relative;
+  overflow: hidden;
+  color: var(--paper);
+  text-decoration: none;
 }
-.svc-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--accent);
-  box-shadow: 0 12px 40px rgba(0,0,0,.08);
+.svc-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--dourado), transparent);
+  opacity: 0;
+  transition: opacity .3s;
+}
+.svc-card:hover { transform: translateY(-6px); border-color: rgba(201,168,76,.25); box-shadow: 0 20px 48px rgba(0,0,0,.35); }
+.svc-card:hover::before { opacity: 1; }
+.svc-card.featured {
+  background: linear-gradient(135deg, rgba(201,168,76,.08), rgba(13,27,46,.9));
+  border-color: rgba(201,168,76,.3);
 }
 .svc-icon {
-  width: 48px;
-  height: 48px;
-  border-radius: var(--r-card);
-  background: rgba(59,130,246,.1);
+  width: 52px;
+  height: 52px;
+  border-radius: 14px;
+  background: rgba(201,168,76,.1);
+  border: 1px solid rgba(201,168,76,.2);
   display: flex;
   align-items: center;
   justify-content: center;
+  font-size: 1.4rem;
   margin-bottom: 20px;
 }
-.svc-icon svg { width: 24px; height: 24px; color: var(--accent); }
+.svc-card.featured .svc-icon { background: rgba(201,168,76,.18); border-color: rgba(201,168,76,.4); }
+.svc-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  background: rgba(59,130,246,.12);
+  border: 1px solid rgba(59,130,246,.25);
+  border-radius: 100px;
+  font-size: .68rem;
+  font-weight: 700;
+  color: #93C5FD;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
 .svc-title {
   font-family: var(--serif);
-  font-size: 22px;
-  color: var(--ink);
+  font-size: 1.2rem;
+  color: #fff;
+  line-height: 1.3;
   margin-bottom: 12px;
-  line-height: 1.2;
 }
 .svc-desc {
-  font-size: 15px;
+  font-size: .88rem;
+  color: var(--dim);
   line-height: 1.7;
-  color: #64748B;
+  flex: 1;
   margin-bottom: 20px;
 }
+.svc-bullets {
+  margin-bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.svc-bullet {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  font-size: .82rem;
+  color: rgba(255,255,255,.7);
+}
+.svc-bullet svg { color: var(--dourado); flex-shrink: 0; margin-top: 2px; }
 .svc-link {
-  font-size: 13px;
-  font-weight: 600;
-  color: var(--accent);
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  transition: gap .2s;
+  padding: 10px 20px;
+  background: transparent;
+  border: 1.5px solid rgba(201,168,76,.35);
+  border-radius: 6px;
+  font-size: .82rem;
+  font-weight: 700;
+  color: var(--dourado);
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  transition: background .2s, border-color .2s, color .2s;
+  align-self: flex-start;
 }
-.svc-link:hover { gap: 10px; }
-.svc-link svg { width: 14px; height: 14px; }
+.svc-link:hover { background: rgba(201,168,76,.08); border-color: var(--dourado); color: #fff; }
+.svc-link svg { width: 14px; height: 14px; transition: transform .2s; }
+.svc-link:hover svg { transform: translateX(3px); }
 
 /* === NUMBERS IMPACT === */
 .numbers-sec {
@@ -1973,7 +1988,7 @@ fieldset legend.form-step-title + * { clear: both; }
   .process-grid::before { display: none; }
   .numbers-grid { gap: 0; }
   .numbers-item { padding: 20px 32px; }
-  .svc-card { min-width: 280px; }
+  .svc-grid { grid-template-columns: repeat(2, 1fr); }
 
   .diferencial-grid { grid-template-columns: 1fr; gap: 40px; }
   .cases-grid { grid-template-columns: repeat(2, 1fr); }
@@ -2014,7 +2029,7 @@ fieldset legend.form-step-title + * { clear: both; }
   .hub-nav { display: flex; }
   .hub-card { min-width: 80vw; padding: 20px 18px; }
   .hub-title { font-size: 16px; }
-  .svc-card { min-width: 80vw; max-width: 300px; }
+  .svc-grid { grid-template-columns: 1fr; }
   .numbers-item { padding: 16px 20px; }
   .case-stat { font-size: 28px; }
   .form-card { padding: 24px 16px; }
@@ -2202,48 +2217,103 @@ fieldset legend.form-step-title + * { clear: both; }
 </nav>
 
 
-<!-- AUTHORITY INTRO (--paper, white, dot grid) -->
-<section class="authority-sec dot-grid">
+<!-- SERVICES GRID -->
+<section class="services-sec">
   <div class="container">
-    <div class="authority-grid">
-      <div class="authority-text reveal">
-        <div class="sec-label dk">A Empresa</div>
-        <h2 class="sec-h dk" style="margin-bottom:32px;">Contabilidade que reduz tributo, n&#227;o s&#243; registra</h2>
-        <p>A AM Cabral nasceu com uma miss&#227;o que a maioria dos escrit&#243;rios ignora: <strong>encontrar o dinheiro que a empresa deixa na mesa sem saber</strong>. N&#227;o apenas cumprir prazos e emitir guias.</p>
-        <p>Em 20 anos atendendo empresas em Minas Gerais, vimos o mesmo padr&#227;o se repetir. O contador faz o b&#225;sico. Declara&#231;&#245;es em dia, guias pagas, obriga&#231;&#245;es cumpridas. Mas ningu&#233;m pergunta se o regime tribut&#225;rio est&#225; correto. Se existe cr&#233;dito que nunca foi aproveitado. Se o patrim&#244;nio do s&#243;cio est&#225; exposto.</p>
-        <p>Esse &#233; o trabalho que fazemos. Para com&#233;rcio, servi&#231;os e ind&#250;strias em todo MG e Brasil. Atendimento presencial em Par&#225; de Minas e remoto para empresas de qualquer cidade.</p>
-      </div>
-      <div class="stats-card reveal">
-        <img
-          class="stats-card-photo"
-          src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=450&fit=crop"
-          alt="Contabilidade estrat&#233;gica para empresas em Minas Gerais"
-          width="440"
-          loading="lazy"
-        >
-        <div class="stats-card-overlay">
-          <div class="stat-row">
-            <span class="stat-num">20</span>
-            <span class="stat-label">anos de mercado</span>
-          </div>
-          <div class="stat-row">
-            <span class="stat-num">127+</span>
-            <span class="stat-label">empresas atendidas</span>
-          </div>
-          <div class="stat-row">
-            <span class="stat-num">R$ 12M</span>
-            <span class="stat-label">em cr&#233;ditos recuperados</span>
-          </div>
-          <div class="stat-row">
-            <span class="stat-num">6</span>
-            <span class="stat-label">servi&#231;os especializados</span>
-          </div>
-        </div>
-      </div>
+    <div class="services-intro">
+      <div class="sec-label lt reveal">6 servi&#231;os especializados</div>
+      <h2 class="sec-h lt reveal" style="color:#fff;">Uma estrutura completa para cada decis&#227;o tribut&#225;ria da sua empresa</h2>
+      <p class="reveal" style="color:var(--dim);max-width:640px;margin:0 auto;">Cada servi&#231;o resolve um problema espec&#237;fico. Juntos, formam a blindagem tribut&#225;ria que protege resultado e patrim&#244;nio.</p>
+    </div>
+    <div class="svc-grid">
+
+      <!-- 1 - Gestão Contábil -->
+      <a href="/nossos-servicos/gestao-contabil/" class="svc-card reveal d1">
+        <div class="svc-icon">&#128202;</div>
+        <div class="svc-badge">Contabilidade</div>
+        <h3 class="svc-title">Gest&#227;o Cont&#225;bil Estrat&#233;gica</h3>
+        <p class="svc-desc">Contabilidade que vai al&#233;m do cumprimento de obriga&#231;&#245;es. Balan&#231;os, DRE e fluxo de caixa usados como ferramenta real de decis&#227;o empresarial.</p>
+        <ul class="svc-bullets">
+          <li class="svc-bullet"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Escritura&#231;&#227;o cont&#225;bil completa e SPED</li>
+          <li class="svc-bullet"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>DRE, balan&#231;o e fluxo de caixa mensais</li>
+          <li class="svc-bullet"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Indicadores de sa&#250;de financeira em tempo real</li>
+        </ul>
+        <span class="svc-link">Ver detalhes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </a>
+
+      <!-- 2 - Recuperação de Créditos (featured) -->
+      <a href="/nossos-servicos/recuperacao-creditos-tributarios/" class="svc-card featured reveal d2">
+        <div class="svc-icon">&#128269;</div>
+        <div class="svc-badge">Alto Impacto</div>
+        <h3 class="svc-title">Recupera&#231;&#227;o de Cr&#233;ditos Tribut&#225;rios</h3>
+        <p class="svc-desc">8 em 10 empresas t&#234;m cr&#233;ditos esquecidos na Receita. Auditamos os &#250;ltimos 5 anos de ICMS, IPI e PIS/COFINS e devolvemos o que &#233; seu.</p>
+        <ul class="svc-bullets">
+          <li class="svc-bullet"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Diagn&#243;stico gratuito em at&#233; 48 horas</li>
+          <li class="svc-bullet"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Auditoria dos &#250;ltimos 5 anos (prazo prescricional)</li>
+          <li class="svc-bullet"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>R$ 12M+ recuperados. 0 auto&#231;&#245;es em 20 anos</li>
+        </ul>
+        <span class="svc-link">Ver detalhes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </a>
+
+      <!-- 3 - Holding -->
+      <a href="/nossos-servicos/holding-patrimonial/" class="svc-card reveal d3">
+        <div class="svc-icon">&#127963;&#65039;</div>
+        <div class="svc-badge">Blindagem</div>
+        <h3 class="svc-title">Constitui&#231;&#227;o de Holding Patrimonial e Familiar</h3>
+        <p class="svc-desc">Proteja os bens da fam&#237;lia de credores, reduza carga tribut&#225;ria sobre im&#243;veis e organize a sucess&#227;o sem o custo do invent&#225;rio.</p>
+        <ul class="svc-bullets">
+          <li class="svc-bullet"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Constitui&#231;&#227;o completa da holding</li>
+          <li class="svc-bullet"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Imposto sobre aluguel cai de 27,5% para 8,4%</li>
+          <li class="svc-bullet"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Planejamento sucess&#243;rio sem invent&#225;rio</li>
+        </ul>
+        <span class="svc-link">Ver detalhes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </a>
+
+      <!-- 4 - Planejamento Tributário (featured) -->
+      <a href="/nossos-servicos/planejamento-tributario/" class="svc-card featured reveal d4">
+        <div class="svc-icon">&#128201;</div>
+        <div class="svc-badge">Redu&#231;&#227;o Fiscal</div>
+        <h3 class="svc-title">Planejamento Tribut&#225;rio</h3>
+        <p class="svc-desc">A maioria das empresas nunca teve planejamento de verdade. Analisamos regime, al&#237;quotas e incentivos para reduzir a carga fiscal 20 a 30%, dentro da lei.</p>
+        <ul class="svc-bullets">
+          <li class="svc-bullet"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>An&#225;lise comparativa Simples, Presumido e Real</li>
+          <li class="svc-bullet"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Redu&#231;&#227;o m&#233;dia de 20 a 30% na carga tribut&#225;ria</li>
+          <li class="svc-bullet"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Revis&#227;o anual e preparo para reforma de 2026</li>
+        </ul>
+        <span class="svc-link">Ver detalhes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </a>
+
+      <!-- 5 - Consultoria Tributária -->
+      <a href="/nossos-servicos/consultoria-tributaria/" class="svc-card reveal d5">
+        <div class="svc-icon">&#9878;&#65039;</div>
+        <div class="svc-badge">Compliance</div>
+        <h3 class="svc-title">Consultoria Tribut&#225;ria</h3>
+        <p class="svc-desc">Decis&#245;es fiscais que comprometem anos de resultado. Pareceres t&#233;cnicos fundamentados em legisla&#231;&#227;o para fus&#245;es, mudan&#231;as de regime e preparo para a reforma tribut&#225;ria.</p>
+        <ul class="svc-bullets">
+          <li class="svc-bullet"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Pareceres t&#233;cnicos com fundamenta&#231;&#227;o legal</li>
+          <li class="svc-bullet"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Due diligence fiscal em M&amp;A</li>
+          <li class="svc-bullet"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>An&#225;lise de impacto do IBS/CBS para 2026</li>
+        </ul>
+        <span class="svc-link">Ver detalhes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </a>
+
+      <!-- 6 - Desenquadrar MEI -->
+      <a href="/nossos-servicos/desenquadrar-mei-para-me/" class="svc-card reveal d6">
+        <div class="svc-icon">&#128640;</div>
+        <div class="svc-badge">MEI para ME</div>
+        <h3 class="svc-title">Desenquadrar MEI para ME</h3>
+        <p class="svc-desc">MEI que cresceu tem tributa&#231;&#227;o inadequada. Fazemos o processo completo de sa&#237;da do MEI e estrutura&#231;&#227;o como Microempresa, sem perder competitividade fiscal.</p>
+        <ul class="svc-bullets">
+          <li class="svc-bullet"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>An&#225;lise de enquadramento e regime ideal</li>
+          <li class="svc-bullet"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Processo completo de desenquadramento</li>
+          <li class="svc-bullet"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>Estrutura&#231;&#227;o da ME com carga fiscal otimizada</li>
+        </ul>
+        <span class="svc-link">Ver detalhes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg></span>
+      </a>
+
     </div>
   </div>
 </section>
-
 
 <!-- NUMBERS IMPACT (--z2, dark, SVG cross pattern) -->
 <section class="numbers-sec cross-pattern" aria-labelledby="numbers-heading">
@@ -2293,82 +2363,6 @@ fieldset legend.form-step-title + * { clear: both; }
           <li><span class="diferencial-dot"></span>Atendimento presencial ou remoto para todo MG</li>
           <li><span class="diferencial-dot"></span>Atendimento direto com Amanda Cabral</li>
         </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES CAROUSEL (--paper, white, dot grid) -->
-<section class="services-sec dot-grid">
-  <div class="container">
-    <div class="services-head">
-      <div class="services-head-left">
-        <div class="sec-label dk">Nossos Servi&#231;os</div>
-        <h2 class="sec-h dk">6 servi&#231;os cont&#225;beis especializados para empresas em MG</h2>
-      </div>
-      <div class="services-arrows">
-        <button class="services-arrow" id="svcPrev" aria-label="Anterior">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
-        </button>
-        <button class="services-arrow" id="svcNext" aria-label="Pr&#243;ximo">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
-        </button>
-      </div>
-    </div>
-    <div class="services-track" id="svcTrack">
-      <!-- Card 1: Gestão Contábil -->
-      <div class="svc-card reveal d1">
-        <div class="svc-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="m19 9-5 5-4-4-3 3"/></svg>
-        </div>
-        <h3 class="svc-title">Gest&#227;o Cont&#225;bil</h3>
-        <p class="svc-desc">Contabilidade completa para com&#233;rcio, servi&#231;os e ind&#250;strias. DRE, fluxo de caixa, departamento pessoal e obriga&#231;&#245;es acess&#243;rias. Tudo em dia, sem surpresa no final do m&#234;s.</p>
-        <a href="/nossos-servicos/gestao-contabil/" class="svc-link">Conhecer servi&#231;o <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-      </div>
-      <!-- Card 2: Recuperação de Créditos -->
-      <div class="svc-card reveal d2">
-        <div class="svc-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
-        </div>
-        <h3 class="svc-title">Recupera&#231;&#227;o de Cr&#233;ditos Tribut&#225;rios</h3>
-        <p class="svc-desc">Auditoria retroativa de 5 anos. 8 em cada 10 empresas que atendemos encontram cr&#233;ditos que nunca foram aproveitados. M&#233;dia de <span style="color:var(--dourado);font-weight:600;">R$ 180 mil</span> recuperados por empresa.</p>
-        <a href="/nossos-servicos/recuperacao-creditos-tributarios/" class="svc-link">Conhecer servi&#231;o <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-      </div>
-      <!-- Card 3: Holding -->
-      <div class="svc-card reveal d3">
-        <div class="svc-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/><path d="M9 9v.01M9 12v.01M9 15v.01M9 18v.01"/></svg>
-        </div>
-        <h3 class="svc-title">Constitui&#231;&#227;o de Holding Patrimonial e Familiar</h3>
-        <p class="svc-desc">Para empres&#225;rios que querem proteger o que constru&#237;ram. Separa patrim&#244;nio da empresa, reduz imposto sobre aluguel de 27,5% para 8,4% e organiza a sucess&#227;o familiar com seguran&#231;a.</p>
-        <a href="/nossos-servicos/holding-patrimonial/" class="svc-link">Conhecer servi&#231;o <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-      </div>
-      <!-- Card 4: Planejamento Tributário -->
-      <div class="svc-card reveal d4">
-        <div class="svc-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H2v7l6.29 6.29c.94.94 2.48.94 3.42 0l3.58-3.58c.94-.94.94-2.48 0-3.42L9 5Z"/><path d="M6 9.01V9"/><path d="m15 5 6.3 6.3a2.4 2.4 0 0 1 0 3.4L17 19"/></svg>
-        </div>
-        <h3 class="svc-title">Planejamento Tribut&#225;rio</h3>
-        <p class="svc-desc">Sua empresa est&#225; no regime certo? Simples Nacional, Lucro Presumido ou Lucro Real. A escolha errada pode custar dezenas de milhares por ano. Mapeamos o regime ideal para o seu faturamento atual.</p>
-        <a href="/nossos-servicos/planejamento-tributario/" class="svc-link">Conhecer servi&#231;o <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-      </div>
-      <!-- Card 5: Consultoria Tributária -->
-      <div class="svc-card reveal d5">
-        <div class="svc-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"/><path d="m9 12 2 2 4-4"/></svg>
-        </div>
-        <h3 class="svc-title">Consultoria Tribut&#225;ria</h3>
-        <p class="svc-desc">Sua empresa est&#225; preparada para uma fiscaliza&#231;&#227;o? Cuidamos das obriga&#231;&#245;es acess&#243;rias, da conformidade fiscal e da reforma tribut&#225;ria. Sem surpresa quando o fisco bater na porta.</p>
-        <a href="/nossos-servicos/consultoria-tributaria/" class="svc-link">Conhecer servi&#231;o <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
-      </div>
-      <!-- Card 6: Desenquadrar MEI -->
-      <div class="svc-card reveal d6">
-        <div class="svc-icon">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-        </div>
-        <h3 class="svc-title">Desenquadrar MEI para ME</h3>
-        <p class="svc-desc">Faturou mais que o limite do MEI ou quer crescer sem restri&#231;&#245;es? Fazemos a migra&#231;&#227;o completa para Microempresa com planejamento para o menor impacto tribut&#225;rio poss&#237;vel.</p>
-        <a href="/nossos-servicos/desenquadrar-mei-para-me/" class="svc-link">Conhecer servi&#231;o <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg></a>
       </div>
     </div>
   </div>
