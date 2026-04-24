@@ -1,35 +1,18 @@
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
-  Expires: Thu, 31 Dec 2037 23:55:55 GMT
 
 /assets/fonts/*
   Cache-Control: public, max-age=31536000, immutable
-  Expires: Thu, 31 Dec 2037 23:55:55 GMT
   Access-Control-Allow-Origin: *
 
 /*.webp
   Cache-Control: public, max-age=31536000, immutable
-  Expires: Thu, 31 Dec 2037 23:55:55 GMT
 
 /*.jpg
   Cache-Control: public, max-age=31536000, immutable
-  Expires: Thu, 31 Dec 2037 23:55:55 GMT
-
-/*.woff2
-  Cache-Control: public, max-age=31536000, immutable
-  Expires: Thu, 31 Dec 2037 23:55:55 GMT
 
 /favicon.svg
   Cache-Control: public, max-age=31536000, immutable
-  Expires: Thu, 31 Dec 2037 23:55:55 GMT
-
-/favicon.ico
-  Cache-Control: public, max-age=31536000, immutable
-  Expires: Thu, 31 Dec 2037 23:55:55 GMT
-
-/*.css
-  Cache-Control: public, max-age=31536000, immutable
-  Expires: Thu, 31 Dec 2037 23:55:55 GMT
 
 /
   Cache-Control: public, max-age=3600, must-revalidate
