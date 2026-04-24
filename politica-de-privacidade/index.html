@@ -1224,6 +1224,184 @@
             .m-line-3 { font-size: 1.35rem; }
             .form-panel h4 { font-size: 1.1rem; }
         }
+
+        /* ============================
+           LEGAL PAGES — DESIGN SYSTEM
+        ============================ */
+
+        /* Hero */
+        .page-hero {
+            background: var(--blue-900);
+            padding: 128px 0 72px;
+            position: relative;
+            overflow: hidden;
+        }
+        .page-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-image:
+                linear-gradient(rgba(196,165,116,0.04) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(196,165,116,0.04) 1px, transparent 1px);
+            background-size: 72px 72px;
+            mask-image: radial-gradient(ellipse 90% 80% at 30% 60%, black 0%, transparent 100%);
+            -webkit-mask-image: radial-gradient(ellipse 90% 80% at 30% 60%, black 0%, transparent 100%);
+        }
+        .page-hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(196,165,116,0.25), transparent);
+        }
+        .page-hero .container { position: relative; z-index: 1; }
+        .page-hero-eyebrow {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em;
+            text-transform: uppercase; color: var(--accent-gold);
+            margin-bottom: 20px;
+        }
+        .page-hero-eyebrow::before {
+            content: '';
+            display: inline-block; width: 24px; height: 1px;
+            background: var(--accent-gold); opacity: 0.6;
+        }
+        .page-hero h1 {
+            font-family: var(--font-display);
+            font-size: clamp(2.2rem, 4.5vw, 3.5rem);
+            color: var(--white);
+            font-weight: 400;
+            line-height: 1.1;
+            margin-bottom: 18px;
+            letter-spacing: -0.01em;
+        }
+        .page-hero p {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.5);
+            max-width: 520px;
+            line-height: 1.7;
+        }
+        .page-breadcrumb {
+            display: flex; align-items: center; gap: 8px;
+            margin-top: 32px;
+            font-size: 0.75rem; color: rgba(255,255,255,0.3);
+        }
+        .page-breadcrumb a { color: rgba(255,255,255,0.3); text-decoration: none; transition: color 0.2s; }
+        .page-breadcrumb a:hover { color: rgba(255,255,255,0.65); }
+        .page-breadcrumb span { color: rgba(255,255,255,0.55); }
+
+        /* Legal wrapper */
+        .legal-body {
+            padding: 64px 0 100px;
+            background: #0D1525;
+        }
+        .legal-wrap {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 80px;
+        }
+        .legal-card {
+            background: #F8FAFC;
+            border-radius: 20px;
+            padding: 64px 72px;
+            border: 1px solid rgba(255,255,255,0.04);
+            box-shadow: 0 0 0 1px rgba(0,0,0,0.06), 0 8px 40px rgba(0,0,0,0.18);
+        }
+        .legal-date {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em;
+            text-transform: uppercase; color: #64748B;
+            margin-bottom: 36px; padding: 6px 12px;
+            background: #F1F5F9; border-radius: 4px;
+            border-left: 2px solid var(--accent-gold);
+        }
+        .legal-content p {
+            font-size: 0.9375rem;
+            color: #374151;
+            line-height: 1.85;
+            margin-bottom: 16px;
+        }
+        .legal-content h2 {
+            font-family: var(--font-display);
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: #0F172A;
+            margin: 48px 0 14px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #E2E8F0;
+            letter-spacing: -0.01em;
+        }
+        .legal-content h2:first-of-type { margin-top: 8px; }
+        .legal-content h3 {
+            font-size: 0.875rem;
+            font-weight: 700;
+            color: #0F172A;
+            margin: 28px 0 10px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+        }
+        .legal-content ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 16px;
+            display: flex; flex-direction: column; gap: 8px;
+        }
+        .legal-content ul li {
+            font-size: 0.9375rem;
+            color: #374151;
+            line-height: 1.75;
+            padding-left: 18px;
+            position: relative;
+        }
+        .legal-content ul li::before {
+            content: '';
+            position: absolute; left: 0; top: 10px;
+            width: 5px; height: 5px;
+            border-radius: 50%; background: var(--accent-gold);
+        }
+        .legal-content a { color: #3B82F6; text-decoration: none; border-bottom: 1px solid rgba(59,130,246,0.25); transition: border-color 0.2s; }
+        .legal-content a:hover { border-color: #3B82F6; }
+        .legal-content strong { color: #0F172A; }
+
+        /* LGPD badge */
+        .lgpd-badge {
+            display: inline-flex; align-items: center; gap: 8px;
+            background: rgba(59,130,246,0.07); border: 1px solid rgba(59,130,246,0.18);
+            color: #3B82F6; font-size: 0.78rem; font-weight: 700;
+            padding: 8px 16px; border-radius: 6px; margin-bottom: 32px;
+            letter-spacing: 0.02em;
+        }
+
+        /* Cookie tables */
+        .cookie-table {
+            width: 100%; border-collapse: collapse;
+            margin: 16px 0 28px; font-size: 0.875rem;
+            border-radius: 8px; overflow: hidden;
+        }
+        .cookie-table th {
+            background: #0F172A; color: rgba(255,255,255,0.85);
+            font-weight: 600; padding: 11px 16px; text-align: left;
+            font-size: 0.75rem; letter-spacing: 0.06em; text-transform: uppercase;
+        }
+        .cookie-table td {
+            padding: 11px 16px; border-bottom: 1px solid #E8EDF2;
+            color: #374151; vertical-align: top; font-size: 0.875rem;
+        }
+        .cookie-table tr:last-child td { border-bottom: none; }
+        .cookie-table tbody tr:nth-child(even) td { background: #F8FAFC; }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .legal-wrap { padding: 0 24px; }
+        }
+        @media (max-width: 680px) {
+            .page-hero { padding: 100px 0 56px; }
+            .page-hero h1 { font-size: clamp(1.8rem, 7vw, 2.4rem); }
+            .legal-body { padding: 40px 0 72px; }
+            .legal-wrap { padding: 0 16px; }
+            .legal-card { padding: 36px 28px; border-radius: 14px; }
+            .cookie-table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        }
     </style>
 </head>
 <body>
@@ -1337,19 +1515,26 @@
 <main>
   <section class="page-hero">
     <div class="container">
+      <p class="page-hero-eyebrow">Informações legais</p>
       <h1>Política de Privacidade</h1>
       <p>Como tratamos seus dados pessoais, conforme a Lei Geral de Proteção de Dados (LGPD)</p>
+      <nav class="page-breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Início</a>
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+        <span>Política de Privacidade</span>
+      </nav>
     </div>
   </section>
 
   <section class="legal-body">
-    <div class="container">
-      <div class="legal-content">
-        <span class="legal-date">Última atualização: abril de 2026</span>
-        <div class="lgpd-badge">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          Em conformidade com a LGPD, Lei n. 13.709/2018
-        </div>
+    <div class="legal-wrap">
+      <div class="legal-card">
+        <div class="legal-content">
+          <span class="legal-date">Última atualização: abril de 2026</span>
+          <div class="lgpd-badge">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Em conformidade com a LGPD, Lei n. 13.709/2018
+          </div>
 
         <p>A AM Cabral Contabilidade (CNPJ 34.733.620/0001-51) respeita sua privacidade e está comprometida com a proteção dos seus dados pessoais. Esta política explica como coletamos, usamos e protegemos suas informações ao acessar nosso site.</p>
 
@@ -1427,7 +1612,8 @@
         <p>Nosso site pode conter links para sites de terceiros. Esta política não se aplica a esses sites. Recomendamos consultar as políticas de privacidade de cada site que você visitar.</p>
 
         <h2>10. Atualizações desta Política</h2>
-        <p>Esta política pode ser atualizada periodicamente. Notificaremos mudanças significativas por meio de aviso em destaque no site. O uso continuado após as alterações implica na aceitação da nova versão.</p>
+          <p>Esta política pode ser atualizada periodicamente. Notificaremos mudanças significativas por meio de aviso em destaque no site. O uso continuado após as alterações implica na aceitação da nova versão.</p>
+        </div>
       </div>
     </div>
   </section>
