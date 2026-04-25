@@ -1106,6 +1106,88 @@
     .context-divider { display: none; }
   }
 
+  /* ===== PAINEL DE IDENTIFICAÇÃO ===== */
+  .id-panel {
+    background: rgba(255,255,255,.025);
+    border: 1px solid rgba(201,168,76,.2);
+    border-radius: 16px;
+    padding: 32px;
+    margin-bottom: 32px;
+    position: relative;
+  }
+  .id-panel-header {
+    display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+  }
+  .id-panel-icon {
+    width: 36px; height: 36px; border-radius: 50%;
+    background: rgba(201,168,76,.12); border: 1px solid rgba(201,168,76,.3);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+  }
+  .id-panel-title {
+    font-family: var(--font-display); font-size: 1.15rem; font-weight: 400; color: var(--white);
+  }
+  .id-panel-sub {
+    font-size: .82rem; color: var(--silver); margin-bottom: 24px; padding-left: 48px;
+    line-height: 1.5;
+  }
+  .id-panel-fields {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px;
+  }
+  @media (max-width: 580px) {
+    .id-panel-fields { grid-template-columns: 1fr; }
+    .id-panel { padding: 20px 16px; }
+    .id-panel-sub { padding-left: 0; }
+  }
+  .id-panel-row-full { grid-column: 1 / -1; }
+  .id-toggle-row {
+    grid-column: 1 / -1; display: flex; align-items: center; gap: 16px;
+    background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07);
+    border-radius: 10px; padding: 14px 16px;
+  }
+  .id-toggle-label { font-size: .88rem; color: var(--silver); flex: 1; }
+  .id-toggle-btns { display: flex; gap: 6px; }
+  .id-toggle-btn {
+    padding: 6px 16px; border-radius: 6px; border: 1px solid rgba(255,255,255,.1);
+    background: transparent; color: var(--silver); font-size: .82rem; font-weight: 600;
+    cursor: pointer; transition: all .2s var(--ease); font-family: var(--font-body);
+  }
+  .id-toggle-btn.is-active {
+    background: rgba(201,168,76,.15); border-color: var(--gold); color: var(--white);
+  }
+  .id-panel-actions {
+    display: flex; align-items: center; gap: 12px; margin-top: 8px; flex-wrap: wrap;
+  }
+  .btn-id-submit {
+    padding: 12px 28px; background: var(--gold); color: #060E1A;
+    font-weight: 700; font-size: .9rem; letter-spacing: .04em;
+    border: none; border-radius: 8px; cursor: pointer;
+    transition: opacity .2s, transform .2s var(--ease);
+    font-family: var(--font-body);
+  }
+  .btn-id-submit:hover { opacity: .9; transform: translateY(-1px); }
+  .btn-id-skip {
+    padding: 12px 20px; background: transparent; color: var(--silver);
+    border: 1px solid rgba(255,255,255,.1); border-radius: 8px;
+    font-size: .85rem; cursor: pointer; transition: all .2s; font-family: var(--font-body);
+  }
+  .btn-id-skip:hover { color: var(--white); border-color: rgba(255,255,255,.2); }
+  .id-panel-greeting {
+    display: none; padding: 12px 0 4px;
+    font-size: .9rem; color: var(--gold); font-weight: 600;
+  }
+  /* Estado: minimizado após submissão */
+  .id-panel.is-filled {
+    padding: 16px 24px;
+  }
+  .id-panel.is-filled .id-panel-sub,
+  .id-panel.is-filled .id-panel-fields,
+  .id-panel.is-filled .id-panel-actions {
+    display: none;
+  }
+  .id-panel.is-filled .id-panel-greeting { display: block; }
+  .id-panel.is-filled .id-panel-header { margin-bottom: 0; }
+
   /* ===== OVERVIEW INTELIGENTE ===== */
   .overview-section {
     margin: 8px 0 32px;
@@ -1736,6 +1818,41 @@
         <div class="section-tag"><span class="dot"></span> Simulador 2025</div>
         <h2 class="heading">Calcule o custo real <em>de cada contratacao</em></h2>
         <p class="heading-sub">Duas perguntas rapidas para personalizar a analise. Depois ajuste os valores e veja o resultado em tempo real.</p>
+      </div>
+
+      <!-- Painel de identificação (captura de lead antes de calcular) -->
+      <div class="id-panel reveal" id="idPanel">
+        <div class="id-panel-header">
+          <div class="id-panel-icon">👤</div>
+          <div class="id-panel-title">Personalizar analise</div>
+        </div>
+        <p class="id-panel-sub">Coloque seu nome e WhatsApp para recebermos a analise personalizada. Amanda responde em ate 24h. Opcional — pode pular.</p>
+        <div class="id-panel-fields">
+          <div class="calc-input-group">
+            <label for="idNome">Seu nome</label>
+            <input type="text" id="idNome" placeholder="Ex: Rafael" autocomplete="given-name">
+          </div>
+          <div class="calc-input-group">
+            <label for="idWhatsapp">WhatsApp <span>(opcional)</span></label>
+            <input type="tel" id="idWhatsapp" placeholder="(11) 99999-9999">
+          </div>
+          <div class="calc-input-group id-panel-row-full">
+            <label for="idEmpresa">Empresa / negocio <span>(opcional)</span></label>
+            <input type="text" id="idEmpresa" placeholder="Ex: Tech Solutions, Freelancer, MEI...">
+          </div>
+          <div class="id-toggle-row">
+            <span class="id-toggle-label">Voce ja tem um contador?</span>
+            <div class="id-toggle-btns">
+              <button type="button" class="id-toggle-btn" data-contador="nao" id="idContadorNao">Nao</button>
+              <button type="button" class="id-toggle-btn" data-contador="sim" id="idContadorSim">Sim</button>
+            </div>
+          </div>
+        </div>
+        <div class="id-panel-actions">
+          <button type="button" class="btn-id-submit" id="btnIdSubmit">Personalizar minha analise →</button>
+          <button type="button" class="btn-id-skip" id="btnIdSkip">Só os numeros</button>
+        </div>
+        <div class="id-panel-greeting" id="idPanelGreeting"></div>
       </div>
 
       <!-- Pergunta 1 e 2: Contexto em toggle buttons -->
@@ -2856,7 +2973,6 @@ function resetCalc() {
   document.getElementById('demissaoBody').style.display = 'none';
   document.getElementById('overviewSection').style.display = 'none';
   document.getElementById('deltaBigContainer').classList.remove('is-visible');
-  document.getElementById('wizard').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
 document.getElementById('btnReset').addEventListener('click', resetCalc);
@@ -3228,7 +3344,6 @@ function renderOverview(d) {
   const ovSection = document.getElementById('overviewSection');
   ovSection.classList.toggle('is-featured', mot === 'demissao' || mot === 'existente');
   ovSection.style.display = 'block';
-  ovSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
 // Demissao accordion toggle
@@ -3240,10 +3355,78 @@ document.getElementById('demissaoToggle').addEventListener('click', function() {
 });
 
 /* ============================
-   LEAD CAPTURE MODAL
+   PAINEL DE IDENTIFICAÇÃO
 ============================ */
 window.LEAD_NAME = '';
 window.LEAD_COMPANY = '';
+window.TEM_CONTADOR = null;
+
+// Mascara WhatsApp no painel de identificacao
+document.getElementById('idWhatsapp').addEventListener('input', function(e) {
+  let v = e.target.value.replace(/\D/g, '');
+  if (v.length <= 2) { /* raw */ }
+  else if (v.length <= 7) { v = '(' + v.slice(0,2) + ') ' + v.slice(2); }
+  else if (v.length <= 11) { v = '(' + v.slice(0,2) + ') ' + v.slice(2,7) + '-' + v.slice(7); }
+  else { v = '(' + v.slice(0,2) + ') ' + v.slice(2,7) + '-' + v.slice(7,11); }
+  e.target.value = v;
+});
+
+// Toggle "Ja tem contador"
+document.querySelectorAll('.id-toggle-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.id-toggle-btn').forEach(b => b.classList.remove('is-active'));
+    btn.classList.add('is-active');
+    window.TEM_CONTADOR = btn.dataset.contador;
+  });
+});
+
+function applyIdData(nome, empresa) {
+  window.LEAD_NAME = nome;
+  window.LEAD_COMPANY = empresa;
+  // Minimiza painel e exibe saudacao
+  const panel = document.getElementById('idPanel');
+  panel.classList.add('is-filled');
+  const greeting = document.getElementById('idPanelGreeting');
+  const suffix = window.TEM_CONTADOR === 'sim'
+    ? ' — Amanda pode revisar o trabalho do seu contador e identificar oportunidades'
+    : ' — Amanda pode ajudar a abrir seu CNPJ com o menor custo tributario';
+  greeting.textContent = nome
+    ? 'Ola, ' + nome + '!' + suffix + '.'
+    : 'Analise personalizada ativada.';
+  // Marca modal como dispensavel (ja capturamos o lead)
+  sessionStorage.setItem('lead-modal-shown', '1');
+  // Recalcula para aplicar personalizacao no overview
+  calcAndRender();
+}
+
+document.getElementById('btnIdSubmit').addEventListener('click', function() {
+  const nome = document.getElementById('idNome').value.trim();
+  const empresa = document.getElementById('idEmpresa').value.trim();
+  if (!nome) {
+    document.getElementById('idNome').focus();
+    document.getElementById('idNome').style.borderColor = 'rgba(239,68,68,.6)';
+    setTimeout(() => { document.getElementById('idNome').style.borderColor = ''; }, 2000);
+    return;
+  }
+  applyIdData(nome, empresa);
+});
+
+document.getElementById('btnIdSkip').addEventListener('click', function() {
+  const panel = document.getElementById('idPanel');
+  panel.style.transition = 'opacity .3s, max-height .4s';
+  panel.style.opacity = '0';
+  panel.style.maxHeight = '0';
+  panel.style.overflow = 'hidden';
+  panel.style.marginBottom = '0';
+  panel.style.padding = '0';
+  setTimeout(() => { panel.style.display = 'none'; }, 400);
+});
+
+/* ============================
+   LEAD CAPTURE MODAL
+============================ */
+window.LEAD_NAME = window.LEAD_NAME || '';
+window.LEAD_COMPANY = window.LEAD_COMPANY || '';
 
 const leadModal = document.getElementById('leadCaptureModal');
 
