@@ -1106,87 +1106,115 @@
     .context-divider { display: none; }
   }
 
-  /* ===== PAINEL DE IDENTIFICAÇÃO ===== */
-  .id-panel {
-    background: rgba(255,255,255,.025);
-    border: 1px solid rgba(201,168,76,.2);
-    border-radius: 16px;
-    padding: 32px;
+  /* ===== WIZARD DE IDENTIFICAÇÃO ===== */
+  .id-wizard {
     margin-bottom: 32px;
-    position: relative;
   }
-  .id-panel-header {
-    display: flex; align-items: center; gap: 12px; margin-bottom: 8px;
+  .id-wizard-filled {
+    display: flex; align-items: center; gap: 12px;
+    background: rgba(201,168,76,.06); border: 1px solid rgba(201,168,76,.2);
+    border-radius: 12px; padding: 14px 20px;
   }
-  .id-panel-icon {
-    width: 36px; height: 36px; border-radius: 50%;
-    background: rgba(201,168,76,.12); border: 1px solid rgba(201,168,76,.3);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 1rem; flex-shrink: 0;
+  .id-wizard-filled-icon { font-size: 1rem; }
+  .id-wizard-filled-text { font-size: .88rem; color: var(--gold); font-weight: 600; flex: 1; }
+  .id-wizard-filled-reset {
+    background: transparent; border: none; color: var(--silver);
+    font-size: .78rem; cursor: pointer; text-decoration: underline;
+    font-family: var(--font-body); padding: 0;
   }
-  .id-panel-title {
-    font-family: var(--font-display); font-size: 1.15rem; font-weight: 400; color: var(--white);
-  }
-  .id-panel-sub {
-    font-size: .82rem; color: var(--silver); margin-bottom: 24px; padding-left: 48px;
-    line-height: 1.5;
-  }
-  .id-panel-fields {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 20px;
+  .id-wizard-filled-reset:hover { color: var(--white); }
+
+  /* form-card */
+  .id-form-card {
+    background: rgba(255,255,255,.025);
+    border: 1px solid rgba(201,168,76,.15);
+    border-radius: 16px;
+    padding: 32px 32px 28px;
   }
   @media (max-width: 580px) {
-    .id-panel-fields { grid-template-columns: 1fr; }
-    .id-panel { padding: 20px 16px; }
-    .id-panel-sub { padding-left: 0; }
+    .id-form-card { padding: 24px 16px 20px; }
   }
-  .id-panel-row-full { grid-column: 1 / -1; }
-  .id-toggle-row {
-    grid-column: 1 / -1; display: flex; align-items: center; gap: 16px;
-    background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07);
-    border-radius: 10px; padding: 14px 16px;
+
+  /* dots */
+  .id-form-dots {
+    display: flex; gap: 8px; margin-bottom: 28px;
   }
-  .id-toggle-label { font-size: .88rem; color: var(--silver); flex: 1; }
-  .id-toggle-btns { display: flex; gap: 6px; }
-  .id-toggle-btn {
-    padding: 6px 16px; border-radius: 6px; border: 1px solid rgba(255,255,255,.1);
-    background: transparent; color: var(--silver); font-size: .82rem; font-weight: 600;
-    cursor: pointer; transition: all .2s var(--ease); font-family: var(--font-body);
+  .id-form-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: rgba(255,255,255,.12); transition: background .25s, transform .25s;
   }
-  .id-toggle-btn.is-active {
-    background: rgba(201,168,76,.15); border-color: var(--gold); color: var(--white);
+  .id-form-dot.active { background: var(--gold); transform: scale(1.25); }
+  .id-form-dot.done { background: rgba(201,168,76,.4); }
+
+  /* steps */
+  .id-form-step { display: none; }
+  .id-form-step.active { display: block; }
+  .id-form-step-title {
+    font-family: var(--font-display); font-size: 1.1rem; font-weight: 400;
+    color: var(--white); margin-bottom: 16px;
   }
-  .id-panel-actions {
-    display: flex; align-items: center; gap: 12px; margin-top: 8px; flex-wrap: wrap;
+
+  /* option buttons */
+  .id-cta-opts {
+    display: flex; flex-direction: column; gap: 10px;
   }
-  .btn-id-submit {
-    padding: 12px 28px; background: var(--gold); color: #060E1A;
-    font-weight: 700; font-size: .9rem; letter-spacing: .04em;
-    border: none; border-radius: 8px; cursor: pointer;
-    transition: opacity .2s, transform .2s var(--ease);
-    font-family: var(--font-body);
+  .id-cta-opt {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 18px; border-radius: 10px;
+    border: 1px solid rgba(255,255,255,.08);
+    background: rgba(255,255,255,.02);
+    color: var(--silver-light); font-size: .93rem;
+    font-family: var(--font-body); cursor: pointer;
+    transition: border-color .2s, background .2s, color .2s;
+    text-align: left;
   }
-  .btn-id-submit:hover { opacity: .9; transform: translateY(-1px); }
-  .btn-id-skip {
-    padding: 12px 20px; background: transparent; color: var(--silver);
+  .id-cta-opt:hover { border-color: rgba(201,168,76,.35); color: var(--white); }
+  .id-cta-opt.selected { border-color: var(--gold); background: rgba(201,168,76,.07); color: var(--white); }
+  .id-cta-opt-icon { font-size: 1.15rem; flex-shrink: 0; }
+
+  /* inputs (step 4) */
+  .id-form-group { margin-bottom: 16px; }
+  .id-form-group label {
+    display: block; font-size: .8rem; font-weight: 600; color: var(--silver);
+    text-transform: uppercase; letter-spacing: .06em; margin-bottom: 6px;
+  }
+  .id-form-group input {
+    width: 100%; padding: 12px 14px; border-radius: 8px;
+    border: 1px solid rgba(255,255,255,.1); background: rgba(255,255,255,.04);
+    color: var(--white); font-size: .95rem; font-family: var(--font-body);
+    transition: border-color .2s; box-sizing: border-box;
+  }
+  .id-form-group input:focus { outline: none; border-color: rgba(201,168,76,.5); }
+  .id-form-group input::placeholder { color: rgba(255,255,255,.25); }
+
+  /* nav (step 4) */
+  .id-form-nav {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: 12px; margin-top: 20px;
+  }
+  .id-form-btn-back {
+    padding: 10px 20px; background: transparent; color: var(--silver);
     border: 1px solid rgba(255,255,255,.1); border-radius: 8px;
-    font-size: .85rem; cursor: pointer; transition: all .2s; font-family: var(--font-body);
+    font-size: .88rem; cursor: pointer; transition: all .2s; font-family: var(--font-body);
   }
-  .btn-id-skip:hover { color: var(--white); border-color: rgba(255,255,255,.2); }
-  .id-panel-greeting {
-    display: none; padding: 12px 0 4px;
-    font-size: .9rem; color: var(--gold); font-weight: 600;
+  .id-form-btn-back:hover { color: var(--white); border-color: rgba(255,255,255,.2); }
+  .id-form-btn-submit {
+    flex: 1; padding: 13px 24px; background: var(--gold); color: #060E1A;
+    font-weight: 700; font-size: .92rem; letter-spacing: .04em;
+    border: none; border-radius: 8px; cursor: pointer;
+    transition: opacity .2s, transform .2s var(--ease); font-family: var(--font-body);
   }
-  /* Estado: minimizado após submissão */
-  .id-panel.is-filled {
-    padding: 16px 24px;
+  .id-form-btn-submit:hover { opacity: .9; transform: translateY(-1px); }
+  .id-form-skip {
+    display: block; text-align: center; margin-top: 14px;
+    font-size: .78rem; color: var(--silver); cursor: pointer;
+    text-decoration: underline; background: none; border: none;
+    font-family: var(--font-body); width: 100%;
   }
-  .id-panel.is-filled .id-panel-sub,
-  .id-panel.is-filled .id-panel-fields,
-  .id-panel.is-filled .id-panel-actions {
-    display: none;
+  .id-form-skip:hover { color: var(--silver-light); }
+  .id-form-privacy {
+    text-align: center; font-size: .75rem; color: rgba(255,255,255,.3); margin-top: 10px;
   }
-  .id-panel.is-filled .id-panel-greeting { display: block; }
-  .id-panel.is-filled .id-panel-header { margin-bottom: 0; }
 
   /* ===== OVERVIEW INTELIGENTE ===== */
   .overview-section {
@@ -1820,39 +1848,97 @@
         <p class="heading-sub">Duas perguntas rapidas para personalizar a analise. Depois ajuste os valores e veja o resultado em tempo real.</p>
       </div>
 
-      <!-- Painel de identificação (captura de lead antes de calcular) -->
-      <div class="id-panel reveal" id="idPanel">
-        <div class="id-panel-header">
-          <div class="id-panel-icon">👤</div>
-          <div class="id-panel-title">Personalizar analise</div>
+      <!-- Wizard de identificação (captura de lead + contexto) -->
+      <div class="id-wizard reveal" id="idWizard">
+
+        <!-- Estado: preenchido (aparece após submit) -->
+        <div class="id-wizard-filled" id="idWizardFilled" style="display:none">
+          <span class="id-wizard-filled-icon">✓</span>
+          <span class="id-wizard-filled-text" id="idWizardFilledText">Analise personalizada ativada.</span>
+          <button type="button" class="id-wizard-filled-reset" id="idWizardReset">Alterar</button>
         </div>
-        <p class="id-panel-sub">Coloque seu nome e WhatsApp para recebermos a analise personalizada. Amanda responde em ate 24h. Opcional — pode pular.</p>
-        <div class="id-panel-fields">
-          <div class="calc-input-group">
-            <label for="idNome">Seu nome</label>
-            <input type="text" id="idNome" placeholder="Ex: Rafael" autocomplete="given-name">
+
+        <!-- Formulário wizard (oculto após submit) -->
+        <div class="id-form-card" id="idFormCard">
+          <div class="id-form-dots">
+            <div class="id-form-dot active" data-step="1"></div>
+            <div class="id-form-dot" data-step="2"></div>
+            <div class="id-form-dot" data-step="3"></div>
+            <div class="id-form-dot" data-step="4"></div>
           </div>
-          <div class="calc-input-group">
-            <label for="idWhatsapp">WhatsApp <span>(opcional)</span></label>
-            <input type="tel" id="idWhatsapp" placeholder="(11) 99999-9999">
-          </div>
-          <div class="calc-input-group id-panel-row-full">
-            <label for="idEmpresa">Empresa / negocio <span>(opcional)</span></label>
-            <input type="text" id="idEmpresa" placeholder="Ex: Tech Solutions, Freelancer, MEI...">
-          </div>
-          <div class="id-toggle-row">
-            <span class="id-toggle-label">Voce ja tem um contador?</span>
-            <div class="id-toggle-btns">
-              <button type="button" class="id-toggle-btn" data-contador="nao" id="idContadorNao">Nao</button>
-              <button type="button" class="id-toggle-btn" data-contador="sim" id="idContadorSim">Sim</button>
+
+          <form id="idWizForm" novalidate>
+            <!-- Step 1: Voce é... -->
+            <div class="id-form-step active" data-step="1">
+              <div class="id-form-step-title">Voce e...</div>
+              <div class="id-cta-opts">
+                <button type="button" class="id-cta-opt" data-field="cargo" data-value="contratante">
+                  <span class="id-cta-opt-icon">🏢</span> Empresa ou RH — quero contratar alguem
+                </button>
+                <button type="button" class="id-cta-opt" data-field="cargo" data-value="profissional">
+                  <span class="id-cta-opt-icon">👤</span> Profissional — quero virar PJ ou comparar
+                </button>
+                <button type="button" class="id-cta-opt" data-field="cargo" data-value="comparar">
+                  <span class="id-cta-opt-icon">📊</span> So comparando os numeros
+                </button>
+              </div>
             </div>
-          </div>
+
+            <!-- Step 2: O cenario e... -->
+            <div class="id-form-step" data-step="2">
+              <div class="id-form-step-title">O cenario e...</div>
+              <div class="id-cta-opts">
+                <button type="button" class="id-cta-opt" data-field="motivacao" data-value="nova">
+                  <span class="id-cta-opt-icon">🆕</span> Nova contratacao — decidindo o formato agora
+                </button>
+                <button type="button" class="id-cta-opt" data-field="motivacao" data-value="existente">
+                  <span class="id-cta-opt-icon">🔄</span> Migracao CLT → PJ — relacao existente
+                </button>
+                <button type="button" class="id-cta-opt" data-field="motivacao" data-value="demissao">
+                  <span class="id-cta-opt-icon">📋</span> Pos-demissao — recontratacao como PJ
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 3: Ja tem contador? -->
+            <div class="id-form-step" data-step="3">
+              <div class="id-form-step-title">Voce ja tem contador?</div>
+              <div class="id-cta-opts">
+                <button type="button" class="id-cta-opt" data-field="contador" data-value="sim">
+                  <span class="id-cta-opt-icon">✅</span> Sim, ja tenho contador
+                </button>
+                <button type="button" class="id-cta-opt" data-field="contador" data-value="nao">
+                  <span class="id-cta-opt-icon">❌</span> Nao, ainda nao tenho
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 4: Dados de contato -->
+            <div class="id-form-step" data-step="4">
+              <div class="id-form-step-title">Ultimo passo</div>
+              <div class="id-form-group">
+                <label for="idWizNome">Seu nome <span style="color:rgba(239,68,68,.7)">*</span></label>
+                <input type="text" id="idWizNome" name="nome" placeholder="Ex: Rafael" autocomplete="given-name" required>
+              </div>
+              <div class="id-form-group">
+                <label for="idWizWhatsapp">WhatsApp <span style="color:var(--silver);font-weight:400;text-transform:none;letter-spacing:0">(opcional)</span></label>
+                <input type="tel" id="idWizWhatsapp" name="whatsapp" placeholder="(11) 99999-9999">
+              </div>
+              <div class="id-form-group">
+                <label for="idWizEmpresa">Empresa / negocio <span style="color:var(--silver);font-weight:400;text-transform:none;letter-spacing:0">(opcional)</span></label>
+                <input type="text" id="idWizEmpresa" name="empresa" placeholder="Ex: Tech Solutions, MEI...">
+              </div>
+              <div class="id-form-nav">
+                <button type="button" class="id-form-btn-back" id="idBtnBack">← Voltar</button>
+                <button type="submit" class="id-form-btn-submit">Ver minha analise →</button>
+              </div>
+              <p class="id-form-privacy">Seus dados estao protegidos. Sem spam.</p>
+            </div>
+          </form>
+
+          <button type="button" class="id-form-skip" id="idBtnSkip">Pular — so quero os numeros</button>
         </div>
-        <div class="id-panel-actions">
-          <button type="button" class="btn-id-submit" id="btnIdSubmit">Personalizar minha analise →</button>
-          <button type="button" class="btn-id-skip" id="btnIdSkip">Só os numeros</button>
-        </div>
-        <div class="id-panel-greeting" id="idPanelGreeting"></div>
+
       </div>
 
       <!-- Pergunta 1 e 2: Contexto em toggle buttons -->
@@ -3355,72 +3441,136 @@ document.getElementById('demissaoToggle').addEventListener('click', function() {
 });
 
 /* ============================
-   PAINEL DE IDENTIFICAÇÃO
+   WIZARD DE IDENTIFICAÇÃO
 ============================ */
 window.LEAD_NAME = '';
 window.LEAD_COMPANY = '';
 window.TEM_CONTADOR = null;
 
-// Mascara WhatsApp no painel de identificacao
-document.getElementById('idWhatsapp').addEventListener('input', function(e) {
-  let v = e.target.value.replace(/\D/g, '');
-  if (v.length <= 2) { /* raw */ }
-  else if (v.length <= 7) { v = '(' + v.slice(0,2) + ') ' + v.slice(2); }
-  else if (v.length <= 11) { v = '(' + v.slice(0,2) + ') ' + v.slice(2,7) + '-' + v.slice(7); }
-  else { v = '(' + v.slice(0,2) + ') ' + v.slice(2,7) + '-' + v.slice(7,11); }
-  e.target.value = v;
-});
+(function() {
+  var wizData = { cargo: null, motivacao: null, contador: null };
+  var currentIdStep = 1;
 
-// Toggle "Ja tem contador"
-document.querySelectorAll('.id-toggle-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.id-toggle-btn').forEach(b => b.classList.remove('is-active'));
-    btn.classList.add('is-active');
-    window.TEM_CONTADOR = btn.dataset.contador;
-  });
-});
-
-function applyIdData(nome, empresa) {
-  window.LEAD_NAME = nome;
-  window.LEAD_COMPANY = empresa;
-  // Minimiza painel e exibe saudacao
-  const panel = document.getElementById('idPanel');
-  panel.classList.add('is-filled');
-  const greeting = document.getElementById('idPanelGreeting');
-  const suffix = window.TEM_CONTADOR === 'sim'
-    ? ' — Amanda pode revisar o trabalho do seu contador e identificar oportunidades'
-    : ' — Amanda pode ajudar a abrir seu CNPJ com o menor custo tributario';
-  greeting.textContent = nome
-    ? 'Ola, ' + nome + '!' + suffix + '.'
-    : 'Analise personalizada ativada.';
-  // Marca modal como dispensavel (ja capturamos o lead)
-  sessionStorage.setItem('lead-modal-shown', '1');
-  // Recalcula para aplicar personalizacao no overview
-  calcAndRender();
-}
-
-document.getElementById('btnIdSubmit').addEventListener('click', function() {
-  const nome = document.getElementById('idNome').value.trim();
-  const empresa = document.getElementById('idEmpresa').value.trim();
-  if (!nome) {
-    document.getElementById('idNome').focus();
-    document.getElementById('idNome').style.borderColor = 'rgba(239,68,68,.6)';
-    setTimeout(() => { document.getElementById('idNome').style.borderColor = ''; }, 2000);
-    return;
+  function goToIdStep(step) {
+    document.querySelectorAll('#idWizForm .id-form-step').forEach(function(s) {
+      s.classList.remove('active');
+    });
+    var target = document.querySelector('#idWizForm .id-form-step[data-step="' + step + '"]');
+    if (target) target.classList.add('active');
+    document.querySelectorAll('#idWizard .id-form-dot').forEach(function(d) {
+      var ds = parseInt(d.getAttribute('data-step'));
+      d.classList.remove('active', 'done');
+      if (ds < step) d.classList.add('done');
+      if (ds === step) d.classList.add('active');
+    });
+    currentIdStep = step;
   }
-  applyIdData(nome, empresa);
-});
 
-document.getElementById('btnIdSkip').addEventListener('click', function() {
-  const panel = document.getElementById('idPanel');
-  panel.style.transition = 'opacity .3s, max-height .4s';
-  panel.style.opacity = '0';
-  panel.style.maxHeight = '0';
-  panel.style.overflow = 'hidden';
-  panel.style.marginBottom = '0';
-  panel.style.padding = '0';
-  setTimeout(() => { panel.style.display = 'none'; }, 400);
-});
+  // Auto-advance on option click (steps 1-3)
+  document.getElementById('idWizForm').querySelectorAll('.id-cta-opt').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var field = btn.dataset.field;
+      var val = btn.dataset.value;
+      wizData[field] = val;
+      // Highlight selected
+      btn.closest('.id-cta-opts').querySelectorAll('.id-cta-opt').forEach(function(b) {
+        b.classList.remove('selected');
+      });
+      btn.classList.add('selected');
+      // Store TEM_CONTADOR for use in overview/WhatsApp
+      if (field === 'contador') window.TEM_CONTADOR = val;
+      var thisStep = parseInt(btn.closest('.id-form-step').getAttribute('data-step'));
+      setTimeout(function() { goToIdStep(thisStep + 1); }, 260);
+    });
+  });
+
+  // Back button (step 4 → step 3)
+  document.getElementById('idBtnBack').addEventListener('click', function() {
+    goToIdStep(currentIdStep - 1);
+  });
+
+  // WhatsApp mask
+  document.getElementById('idWizWhatsapp').addEventListener('input', function(e) {
+    var v = e.target.value.replace(/\D/g, '');
+    if (v.length <= 2) { /* raw */ }
+    else if (v.length <= 7) { v = '(' + v.slice(0,2) + ') ' + v.slice(2); }
+    else if (v.length <= 11) { v = '(' + v.slice(0,2) + ') ' + v.slice(2,7) + '-' + v.slice(7); }
+    else { v = '(' + v.slice(0,2) + ') ' + v.slice(2,7) + '-' + v.slice(7,11); }
+    e.target.value = v;
+  });
+
+  function collapseWizard(nome, empresa, contador) {
+    document.getElementById('idFormCard').style.display = 'none';
+    var filledEl = document.getElementById('idWizardFilled');
+    filledEl.style.display = 'flex';
+    var suffix = contador === 'sim'
+      ? ' — Amanda pode revisar o seu contador'
+      : contador === 'nao'
+        ? ' — Amanda pode ajudar a abrir seu CNPJ'
+        : '';
+    document.getElementById('idWizardFilledText').textContent = nome
+      ? 'Ola, ' + nome + '!' + suffix + '.'
+      : 'Analise personalizada ativada.';
+    sessionStorage.setItem('lead-modal-shown', '1');
+  }
+
+  function syncContextToggles() {
+    // Pre-select context-strip toggles with wizard choices
+    if (wizData.cargo) {
+      var cargoBtn = document.querySelector('.context-toggle[data-name="cargo"][data-value="' + wizData.cargo + '"]');
+      if (cargoBtn) cargoBtn.click();
+    }
+    if (wizData.motivacao) {
+      var motBtn = document.querySelector('.context-toggle[data-name="motivacao"][data-value="' + wizData.motivacao + '"]');
+      if (motBtn) motBtn.click();
+    }
+  }
+
+  // Form submit (step 4)
+  document.getElementById('idWizForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var nome = document.getElementById('idWizNome').value.trim();
+    if (!nome) {
+      var inp = document.getElementById('idWizNome');
+      inp.focus();
+      inp.style.borderColor = 'rgba(239,68,68,.6)';
+      setTimeout(function() { inp.style.borderColor = ''; }, 2000);
+      return;
+    }
+    var empresa = document.getElementById('idWizEmpresa').value.trim();
+    window.LEAD_NAME = nome;
+    window.LEAD_COMPANY = empresa;
+    collapseWizard(nome, empresa, wizData.contador);
+    syncContextToggles();
+    calcAndRender();
+  });
+
+  // Skip
+  document.getElementById('idBtnSkip').addEventListener('click', function() {
+    var card = document.getElementById('idFormCard');
+    card.style.transition = 'opacity .3s';
+    card.style.opacity = '0';
+    setTimeout(function() { card.style.display = 'none'; }, 300);
+    sessionStorage.setItem('lead-modal-shown', '1');
+    syncContextToggles();
+    calcAndRender();
+  });
+
+  // Reset (after filled)
+  document.getElementById('idWizardReset').addEventListener('click', function() {
+    wizData = { cargo: null, motivacao: null, contador: null };
+    window.LEAD_NAME = '';
+    window.LEAD_COMPANY = '';
+    window.TEM_CONTADOR = null;
+    document.getElementById('idWizardFilled').style.display = 'none';
+    var card = document.getElementById('idFormCard');
+    card.style.opacity = '';
+    card.style.display = '';
+    // Reset selections
+    document.querySelectorAll('#idWizForm .id-cta-opt').forEach(function(b) { b.classList.remove('selected'); });
+    goToIdStep(1);
+  });
+})();
 
 /* ============================
    LEAD CAPTURE MODAL
