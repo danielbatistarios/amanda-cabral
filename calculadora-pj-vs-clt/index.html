@@ -2859,6 +2859,12 @@
               <input type="text" id="leadCompany" name="empresa" placeholder="Ex: Startup / Freelancer / CNPJ proprio" autocomplete="organization">
             </div>
           </div>
+          <div class="lead-form-row" style="margin-bottom:8px;">
+            <div class="lead-form-group lead-form-full" style="flex-direction:row;align-items:center;gap:10px;">
+              <input type="checkbox" id="leadContato" name="contato" style="width:18px;height:18px;accent-color:var(--gold);flex-shrink:0;cursor:pointer;">
+              <label for="leadContato" style="font-size:.85rem;color:var(--silver-light);cursor:pointer;margin:0;">Gostaria de receber contato da Amanda</label>
+            </div>
+          </div>
           <button type="submit" class="lead-capture-submit">Enviar e falar com Amanda →</button>
         </form>
       </div>
@@ -4499,6 +4505,15 @@ window.TEM_CONTADOR = null;
     window.LEAD_NAME = nome;
     window.LEAD_COMPANY = empresa;
     collapseWizard(nome, empresa, wizData.contador);
+    // Enviar lead para Google Sheets
+    sendLead({
+      fonte: 'wizard-entrada',
+      nome: nome,
+      whatsapp: '',
+      empresa: empresa,
+      contador: wizData.contador || '',
+      contato: ''
+    });
     // Scroll suave para a calculadora
     setTimeout(function() {
       document.getElementById('calcGridWrapper').scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -4562,6 +4577,17 @@ function closeLeadModal() {
   sessionStorage.setItem('lead-modal-shown', '1');
 }
 
+const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbyE_YhKeohsU8T9q7KRPlIHnBxo0T6Z3hBlh7PQaFMBQ3xq17Pl43uLXQQLEsC31F8W1w/exec';
+
+function sendLead(data) {
+  fetch(SHEETS_URL, {
+    method: 'POST',
+    mode: 'no-cors',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data)
+  }).catch(function() { /* silencioso — nao bloquear UX */ });
+}
+
 document.getElementById('leadCaptureClose').addEventListener('click', closeLeadModal);
 leadModal.addEventListener('click', function(e) {
   if (e.target === leadModal) closeLeadModal();
@@ -4607,6 +4633,18 @@ document.getElementById('leadCaptureForm').addEventListener('submit', function(e
     const cargo = CALC_STATE.cargo;
     titleEl.textContent = name + (cargo === 'contratante' ? ', aqui esta o custo real' : ', aqui esta o seu cenario');
   }
+
+  // Enviar lead para Google Sheets
+  const salarioAtual = parseFormattedNumber(document.getElementById('wizardSalario').value);
+  const contatoCb = document.getElementById('leadContato');
+  sendLead({
+    fonte: 'modal-lead',
+    nome: name,
+    whatsapp: phone,
+    empresa: company,
+    contador: window.TEM_CONTADOR || '',
+    contato: contatoCb && contatoCb.checked ? 'Sim' : 'Nao'
+  });
 
   // Show success
   document.getElementById('leadCaptureFormView').style.display = 'none';
