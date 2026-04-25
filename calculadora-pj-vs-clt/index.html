@@ -1058,6 +1058,84 @@
     .result-liquido-sep { padding: 0; }
   }
 
+  /* ============================
+     VISUAL COMPONENTS — CHARTS
+  ============================ */
+
+  /* Visual strip: gauge + stacked bar */
+  .visual-strip {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 12px;
+    margin: 16px 0 4px;
+  }
+  @media (max-width: 600px) { .visual-strip { grid-template-columns: 1fr; } }
+
+  .viz-card {
+    background: rgba(255,255,255,.025); border: 1px solid rgba(255,255,255,.07);
+    border-radius: 12px; padding: 18px 16px;
+    display: none; /* shown by JS */
+  }
+  .viz-card-label {
+    font-size: .68rem; text-transform: uppercase; letter-spacing: .06em;
+    color: var(--silver); margin-bottom: 12px;
+  }
+
+  /* Gauge */
+  .gauge-wrap { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .gauge-svg { overflow: visible; }
+  .gauge-track { fill: none; stroke: rgba(255,255,255,.06); }
+  .gauge-fill { fill: none; stroke-linecap: round; transition: stroke-dashoffset .8s cubic-bezier(.16,1,.3,1), stroke .4s; }
+  .gauge-fill[data-risk="low"]    { stroke: #4ADE80; }
+  .gauge-fill[data-risk="medium"] { stroke: #FBBF24; }
+  .gauge-fill[data-risk="high"]   { stroke: #F87171; }
+  .gauge-score { font-family: var(--font-display); font-size: 1.6rem; fill: var(--white); text-anchor: middle; dominant-baseline: middle; }
+  .gauge-risk-label { font-size: .72rem; font-weight: 600; letter-spacing: .04em; }
+  .gauge-risk-label[data-risk="low"]    { color: #4ADE80; }
+  .gauge-risk-label[data-risk="medium"] { color: #FBBF24; }
+  .gauge-risk-label[data-risk="high"]   { color: #F87171; }
+  .gauge-desc { font-size: .72rem; color: rgba(255,255,255,.5); text-align: center; line-height: 1.5; max-width: 180px; }
+
+  /* Stacked bar */
+  .bar-wrap { display: flex; flex-direction: column; gap: 10px; }
+  .bar-track { height: 20px; border-radius: 6px; overflow: hidden; display: flex; width: 100%; }
+  .bar-seg { height: 100%; transition: width .7s cubic-bezier(.16,1,.3,1); }
+  .bar-seg-salario  { background: #60A5FA; }
+  .bar-seg-inss     { background: #C084FC; }
+  .bar-seg-fgts     { background: #FB923C; }
+  .bar-seg-sistemas { background: #34D399; }
+  .bar-seg-provis   { background: #FBBF24; }
+  .bar-seg-benef    { background: #94A3B8; }
+  .bar-legend { display: flex; flex-wrap: wrap; gap: 6px 12px; }
+  .bar-legend-item { display: flex; align-items: center; gap: 5px; font-size: .68rem; color: rgba(255,255,255,.6); }
+  .bar-legend-dot { width: 8px; height: 8px; border-radius: 2px; flex-shrink: 0; }
+
+  /* Donut comparison */
+  .donuts-wrapper {
+    display: none; /* shown by JS */
+    background: rgba(255,255,255,.02); border: 1px solid rgba(255,255,255,.07);
+    border-radius: 12px; padding: 20px 16px; margin: 16px 0;
+  }
+  .donuts-label {
+    font-size: .68rem; text-transform: uppercase; letter-spacing: .06em;
+    color: var(--silver); margin-bottom: 16px; text-align: center;
+  }
+  .donuts-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; align-items: center; }
+  @media (max-width: 480px) { .donuts-grid { grid-template-columns: 1fr; gap: 16px; } }
+  .donut-item { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+  .donut-svg { overflow: visible; }
+  .donut-track { fill: none; stroke: rgba(255,255,255,.05); }
+  .donut-fill  { fill: none; stroke-linecap: round; transition: stroke-dashoffset .9s cubic-bezier(.16,1,.3,1); }
+  .donut-fill-clt { stroke: #60A5FA; }
+  .donut-fill-pj  { stroke: #C9A84C; }
+  .donut-center-val { font-family: var(--font-display); font-size: 1rem; fill: var(--white); text-anchor: middle; dominant-baseline: middle; }
+  .donut-center-pct { font-size: .65rem; fill: rgba(255,255,255,.5); text-anchor: middle; }
+  .donut-item-title { font-size: .8rem; font-weight: 600; color: var(--white); }
+  .donut-item-sub   { font-size: .68rem; color: rgba(255,255,255,.45); text-align: center; line-height: 1.5; }
+  .donuts-insight {
+    margin-top: 14px; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.06);
+    font-size: .78rem; color: rgba(255,255,255,.55); text-align: center; line-height: 1.6;
+  }
+  .donuts-insight strong { color: var(--white); }
+
   /* ===== DETALHES / ENCARGOS ===== */
   .detalhe-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,.05); font-size: .82rem; }
   .detalhe-row span { color: var(--silver); }
@@ -2282,6 +2360,50 @@
               </div>
             </div>
             <div class="result-inline-anual" id="resAnual"></div>
+
+            <!-- Visual strip: gauge risco + barra composicao CLT -->
+            <div class="visual-strip" id="visualStrip">
+              <!-- Gauge de Risco Juridico -->
+              <div class="viz-card" id="riskGaugeCard">
+                <div class="viz-card-label">Risco juridico do cenario</div>
+                <div class="gauge-wrap">
+                  <svg class="gauge-svg" width="140" height="80" viewBox="0 0 140 80" id="gaugeSvg">
+                    <!-- Track: semicircle r=56, cx=70, cy=70 -->
+                    <path class="gauge-track" d="M 14 70 A 56 56 0 0 1 126 70" stroke-width="10"/>
+                    <!-- Fill: same path, animated via dashoffset -->
+                    <path class="gauge-fill" id="gaugeFill" d="M 14 70 A 56 56 0 0 1 126 70" stroke-width="10"
+                      stroke-dasharray="175.93" stroke-dashoffset="175.93" data-risk="medium"/>
+                    <!-- Score text -->
+                    <text class="gauge-score" id="gaugeScore" x="70" y="62">-</text>
+                  </svg>
+                  <div class="gauge-risk-label" id="gaugeRiskLabel" data-risk="medium">-</div>
+                  <div class="gauge-desc" id="gaugeDesc"></div>
+                </div>
+              </div>
+
+              <!-- Stacked Bar: composicao do custo CLT -->
+              <div class="viz-card" id="costBarCard">
+                <div class="viz-card-label">De onde vem o custo CLT</div>
+                <div class="bar-wrap">
+                  <div class="bar-track" id="costBarTrack">
+                    <div class="bar-seg bar-seg-salario"  id="bsalario"  style="width:0%"></div>
+                    <div class="bar-seg bar-seg-inss"     id="binss"     style="width:0%"></div>
+                    <div class="bar-seg bar-seg-fgts"     id="bfgts"     style="width:0%"></div>
+                    <div class="bar-seg bar-seg-sistemas" id="bsistemas" style="width:0%"></div>
+                    <div class="bar-seg bar-seg-provis"   id="bprovis"   style="width:0%"></div>
+                    <div class="bar-seg bar-seg-benef"    id="bbenef"    style="width:0%"></div>
+                  </div>
+                  <div class="bar-legend" id="costBarLegend">
+                    <div class="bar-legend-item"><div class="bar-legend-dot" style="background:#60A5FA"></div><span id="lblSalario">Salario</span></div>
+                    <div class="bar-legend-item"><div class="bar-legend-dot" style="background:#C084FC"></div><span id="lblInss">INSS pat.</span></div>
+                    <div class="bar-legend-item"><div class="bar-legend-dot" style="background:#FB923C"></div><span id="lblFgts">FGTS</span></div>
+                    <div class="bar-legend-item"><div class="bar-legend-dot" style="background:#34D399"></div><span id="lblSistemas">Sistema S</span></div>
+                    <div class="bar-legend-item"><div class="bar-legend-dot" style="background:#FBBF24"></div><span id="lblProvis">13o+Ferias</span></div>
+                    <div class="bar-legend-item" id="legendBenef" style="display:none"><div class="bar-legend-dot" style="background:#94A3B8"></div><span id="lblBenef">Beneficios</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -2343,6 +2465,38 @@
         <div class="delta-amount" id="deltaBigAmount">-<span class="delta-dir"></span></div>
         <div class="delta-percent" id="deltaBigPercent"></div>
         <div class="delta-sub" id="deltaBigSub"></div>
+      </div>
+
+      <!-- DONUT: Liquido real CLT vs PJ (aparece apos calculo) -->
+      <div class="donuts-wrapper" id="donutsWrapper">
+        <div class="donuts-label">Quanto o profissional realmente recebe</div>
+        <div class="donuts-grid">
+          <div class="donut-item">
+            <svg class="donut-svg" width="110" height="110" viewBox="0 0 110 110">
+              <circle class="donut-track" cx="55" cy="55" r="42" stroke-width="12"/>
+              <circle class="donut-fill donut-fill-clt" id="donutCltFill" cx="55" cy="55" r="42"
+                stroke-width="12" stroke-dasharray="263.89" stroke-dashoffset="263.89"
+                transform="rotate(-90 55 55)"/>
+              <text class="donut-center-val" id="donutCltVal" x="55" y="51">-</text>
+              <text class="donut-center-pct" id="donutCltPct" x="55" y="65">-</text>
+            </svg>
+            <div class="donut-item-title" style="color:#60A5FA">CLT</div>
+            <div class="donut-item-sub" id="donutCltSub">Liquido apos INSS e IR</div>
+          </div>
+          <div class="donut-item">
+            <svg class="donut-svg" width="110" height="110" viewBox="0 0 110 110">
+              <circle class="donut-track" cx="55" cy="55" r="42" stroke-width="12"/>
+              <circle class="donut-fill donut-fill-pj" id="donutPjFill" cx="55" cy="55" r="42"
+                stroke-width="12" stroke-dasharray="263.89" stroke-dashoffset="263.89"
+                transform="rotate(-90 55 55)"/>
+              <text class="donut-center-val" id="donutPjVal" x="55" y="51">-</text>
+              <text class="donut-center-pct" id="donutPjPct" x="55" y="65">-</text>
+            </svg>
+            <div class="donut-item-title" style="color:#C9A84C">PJ</div>
+            <div class="donut-item-sub" id="donutPjSub">Liquido apos impostos CNPJ</div>
+          </div>
+        </div>
+        <div class="donuts-insight" id="donutsInsight"></div>
       </div>
 
       <!-- OVERVIEW INTELIGENTE (aparece apos calculo) -->
@@ -3268,6 +3422,12 @@ function resetCalc() {
   document.getElementById('resultInline').style.display = 'none';
   const liqCtxReset = document.getElementById('resLiquidoContext');
   if (liqCtxReset) liqCtxReset.style.display = 'none';
+  const riskCard = document.getElementById('riskGaugeCard');
+  if (riskCard) riskCard.style.display = 'none';
+  const barCard = document.getElementById('costBarCard');
+  if (barCard) barCard.style.display = 'none';
+  const donutsWrap = document.getElementById('donutsWrapper');
+  if (donutsWrap) donutsWrap.style.display = 'none';
   const ddWrap = document.getElementById('deepDiveWrapper');
   if (ddWrap) ddWrap.style.display = 'none';
   const ddSec = document.getElementById('deepDiveSection');
@@ -3641,6 +3801,11 @@ function calcAndRender() {
     setTimeout(() => { openLeadModal(); }, 4000);
   }
 
+  // Visual components
+  renderRiskGauge();
+  renderCostBar(clt, salario);
+  renderLiquidDonuts(liquidoEmpregado, salario, pjLiquido, pjCusto, aliqPJ);
+
   renderOverview({
     salario, honorario: pjCusto, pjLiquido, liquidoEmpregado,
     inssEmp, irrf, clt, demissao, diff, difAnual, aliqPJ, regime, ramo: getRamo(), tempo,
@@ -3727,6 +3892,114 @@ function renderOverview(d) {
   const ovSection = document.getElementById('overviewSection');
   ovSection.classList.toggle('is-featured', mot === 'demissao' || mot === 'existente');
   ovSection.style.display = 'block';
+}
+
+/* ============================
+   VISUAL COMPONENTS — JS
+============================ */
+
+// Risk score logic: 0-100, based on motivacao + cargo context
+function getRiskScore() {
+  const mot  = CALC_STATE.motivacao || 'comparar';
+  const cargo = CALC_STATE.cargo    || 'comparar';
+  if (mot === 'demissao')   return { score: 88, risk: 'high',   label: 'Risco elevado',  desc: 'Recontratacao imediata apos demissao e considerada fraude pela Justica do Trabalho.' };
+  if (mot === 'existente')  return { score: 72, risk: 'high',   label: 'Risco alto',     desc: 'Migracao CLT para PJ sem mudanca real de condicoes tem alto risco de passivo retroativo.' };
+  if (cargo === 'profissional' && mot === 'nova') return { score: 30, risk: 'low',  label: 'Risco baixo',   desc: 'Profissional autonomo com contrato de escopo definido e sem exclusividade tem risco reduzido.' };
+  if (cargo === 'contratante' && mot === 'nova')  return { score: 42, risk: 'medium', label: 'Risco moderado', desc: 'Avalie criterios de vinculo antes de formalizar: habitualidade, subordinacao e exclusividade.' };
+  return { score: 35, risk: 'low', label: 'Risco baixo', desc: 'Comparacao financeira — para contratar, avalie criterios de vinculo antes de formalizar.' };
+}
+
+function renderRiskGauge() {
+  const card = document.getElementById('riskGaugeCard');
+  const { score, risk, label, desc } = getRiskScore();
+  // Arc length of the semicircle (r=56): pi * 56 ≈ 175.93
+  const arcLen = 175.93;
+  const offset = arcLen - (score / 100) * arcLen;
+  const fill = document.getElementById('gaugeFill');
+  fill.setAttribute('data-risk', risk);
+  fill.style.strokeDashoffset = arcLen; // reset first
+  // Animate after a tick
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => { fill.style.strokeDashoffset = offset; });
+  });
+  document.getElementById('gaugeScore').textContent = score;
+  const lbl = document.getElementById('gaugeRiskLabel');
+  lbl.textContent = label;
+  lbl.setAttribute('data-risk', risk);
+  document.getElementById('gaugeDesc').textContent = desc;
+  card.style.display = 'block';
+}
+
+function renderCostBar(clt, salario) {
+  const card  = document.getElementById('costBarCard');
+  const total = clt.custoTotal;
+  if (total <= 0) return;
+  const pct = v => ((v / total) * 100).toFixed(1) + '%';
+  document.getElementById('bsalario').style.width  = pct(salario);
+  document.getElementById('binss').style.width     = pct(clt.inssPat);
+  document.getElementById('bfgts').style.width     = pct(clt.fgts);
+  document.getElementById('bsistemas').style.width = pct(clt.sistemaS);
+  document.getElementById('bprovis').style.width   = pct(clt.prov13 + clt.provFerias);
+  document.getElementById('bbenef').style.width    = pct(clt.beneficios);
+  // Update legend labels with %
+  document.getElementById('lblSalario').textContent = 'Salario ' + pct(salario);
+  document.getElementById('lblInss').textContent    = 'INSS pat. ' + pct(clt.inssPat);
+  document.getElementById('lblFgts').textContent    = 'FGTS ' + pct(clt.fgts);
+  document.getElementById('lblSistemas').textContent= 'Sistema S ' + pct(clt.sistemaS);
+  document.getElementById('lblProvis').textContent  = '13o+Ferias ' + pct(clt.prov13 + clt.provFerias);
+  if (clt.beneficios > 0) {
+    document.getElementById('legendBenef').style.display = 'flex';
+    document.getElementById('lblBenef').textContent = 'Beneficios ' + pct(clt.beneficios);
+  } else {
+    document.getElementById('legendBenef').style.display = 'none';
+  }
+  card.style.display = 'block';
+}
+
+function fmtShort(v) {
+  if (v >= 1000) return 'R$' + (v / 1000).toFixed(1).replace('.', ',') + 'k';
+  return 'R$' + Math.round(v);
+}
+
+function renderLiquidDonuts(liquidoClt, salario, pjLiquido, pjCusto, aliqPJ) {
+  const wrapper = document.getElementById('donutsWrapper');
+  const circumf = 263.89; // 2*pi*42
+  // CLT pct: liquido / salario bruto (how much of gross the employee keeps)
+  const cltPct = salario > 0 ? liquidoClt / salario : 0;
+  const pjPct  = pjCusto > 0 ? pjLiquido / pjCusto  : 0;
+  const cltOffset = circumf * (1 - cltPct);
+  const pjOffset  = circumf * (1 - pjPct);
+
+  // Reset then animate
+  const cltFill = document.getElementById('donutCltFill');
+  const pjFill  = document.getElementById('donutPjFill');
+  cltFill.style.strokeDashoffset = circumf;
+  pjFill.style.strokeDashoffset  = circumf;
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      cltFill.style.strokeDashoffset = cltOffset;
+      pjFill.style.strokeDashoffset  = pjOffset;
+    });
+  });
+
+  document.getElementById('donutCltVal').textContent = fmtShort(liquidoClt);
+  document.getElementById('donutCltPct').textContent = Math.round(cltPct * 100) + '% do bruto';
+  document.getElementById('donutPjVal').textContent  = fmtShort(pjLiquido);
+  document.getElementById('donutPjPct').textContent  = Math.round(pjPct  * 100) + '% do bruto';
+  document.getElementById('donutCltSub').textContent = 'Liquido de ' + fmtShort(salario) + ' bruto';
+  document.getElementById('donutPjSub').textContent  = 'Liquido de ' + fmtShort(pjCusto) + ' (honorario)';
+
+  const diff = pjLiquido - liquidoClt;
+  let insight = '';
+  if (Math.abs(diff) < 50) {
+    insight = 'O liquido do profissional e praticamente igual nas duas modalidades. A diferenca real esta nos beneficios CLT e na seguranca juridica.';
+  } else if (diff > 0) {
+    insight = 'O profissional recebe <strong>' + fmtShort(diff) + '/mes a mais como PJ</strong>. Mas precisara provisionar INSS autonomo (~R$ 1.412/mes), contador e reserva para periodos sem contrato.';
+  } else {
+    insight = 'O CLT entrega <strong>' + fmtShort(Math.abs(diff)) + '/mes a mais liquido</strong> para o profissional, alem de FGTS, 13o e seguro-desemprego nao computados aqui.';
+  }
+  document.getElementById('donutsInsight').innerHTML = insight;
+  wrapper.style.display = 'block';
 }
 
 // Demissao accordion toggle
