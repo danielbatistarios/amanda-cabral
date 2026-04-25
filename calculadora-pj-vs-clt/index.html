@@ -1524,6 +1524,57 @@
   .result-delta-container.is-pj-expensive .delta-percent { color: #ff6b6b; }
   .delta-sub { font-size: .85rem; color: var(--silver); margin-top: 10px; }
 
+  /* ===== SECAO DE ANALISE (separada do form) ===== */
+  .analise-section {
+    background: var(--blue-800);
+    border-top: 1px solid rgba(255,255,255,.05);
+    padding: 64px 0 80px;
+  }
+  .analise-section-header {
+    text-align: center;
+    margin-bottom: 40px;
+  }
+  .analise-section-tag {
+    display: inline-block;
+    padding: 4px 14px;
+    border-radius: 999px;
+    background: rgba(201,168,76,.1);
+    border: 1px solid rgba(201,168,76,.25);
+    color: var(--gold);
+    font-size: .7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .1em;
+    margin-bottom: 14px;
+  }
+  .analise-section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    color: var(--white);
+    margin-bottom: 10px;
+  }
+  .analise-section-sub {
+    color: var(--silver);
+    font-size: .9rem;
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+  /* Dentro da secao de analise, o delta e donuts ganham mais respiro */
+  .analise-section .result-delta-container {
+    margin: 0 0 24px;
+  }
+  .analise-section .donuts-wrapper {
+    margin-bottom: 24px;
+  }
+  .analise-section .overview-section {
+    margin-bottom: 24px;
+  }
+  .analise-section .calc-cta-bar {
+    border-radius: 16px;
+    margin-top: 0;
+  }
+
   /* ===== TOGGLE ANALISE DETALHADA ===== */
   .toggle-deep-dive {
     display: flex; align-items: center; gap: 8px; width: 100%;
@@ -2514,7 +2565,27 @@
         </div>
       </div>
 
-      <!-- DELTA HIGHLIGHT (aparece apos calculo) -->
+      </div><!-- /calc-grid-wrapper -->
+
+      <p class="calc-note">Os calculos usam aliquotas INSS patronal, FGTS e Sistema S vigentes em 2025. Resultado orientativo, nao substitui consultoria contabil.</p>
+    </div>
+  </section>
+
+  <!-- ====================================================
+       SECAO DE ANALISE (aparece apos o calculo)
+       Separada do form para nao sobrecarregar a tela
+  ==================================================== -->
+  <section class="analise-section" id="analiseSection" style="display:none;" aria-live="polite">
+    <div class="container">
+
+      <!-- Cabecalho da secao de analise -->
+      <div class="analise-section-header" id="analiseSectionHeader">
+        <div class="analise-section-tag" id="analiseSectionTag">Analise para Empresa</div>
+        <h2 class="analise-section-title">Entenda o que os numeros significam</h2>
+        <p class="analise-section-sub" id="analiseSectionSub">Com base no seu cenario, preparamos uma analise completa abaixo.</p>
+      </div>
+
+      <!-- DELTA HIGHLIGHT -->
       <div class="result-delta-container" id="deltaBigContainer">
         <div class="delta-label">Diferenca de custo para a empresa</div>
         <div class="delta-amount" id="deltaBigAmount">-<span class="delta-dir"></span></div>
@@ -2522,7 +2593,7 @@
         <div class="delta-sub" id="deltaBigSub"></div>
       </div>
 
-      <!-- DONUT: Liquido real CLT vs PJ (aparece apos calculo) -->
+      <!-- DONUTS: Liquido real CLT vs PJ -->
       <div class="donuts-wrapper" id="donutsWrapper">
         <div class="donuts-label">Quanto o profissional realmente recebe</div>
         <div class="donuts-grid">
@@ -2554,7 +2625,7 @@
         <div class="donuts-insight" id="donutsInsight"></div>
       </div>
 
-      <!-- OVERVIEW INTELIGENTE (aparece apos calculo) -->
+      <!-- OVERVIEW INTELIGENTE -->
       <div class="overview-section" id="overviewSection" style="display:none;">
         <div class="overview-header">
           <div class="overview-header-icon" id="ovHeaderIcon">📊</div>
@@ -2615,8 +2686,8 @@
         </div>
       </div>
 
-      <!-- CTA area (aparece apos calculo) -->
-      <div class="calc-cta-bar" id="calcCtaBar" style="display:none;">
+      <!-- CTA final -->
+      <div class="calc-cta-bar" id="calcCtaBar">
         <div class="dash-narrative" style="margin:0;">
           <div class="narrative-icon" id="narrativeIcon">💡</div>
           <div class="narrative-content">
@@ -2636,9 +2707,6 @@
         </div>
       </div>
 
-      </div><!-- /calc-grid-wrapper -->
-
-      <p class="calc-note">Os calculos usam aliquotas INSS patronal, FGTS e Sistema S vigentes em 2025. Resultado orientativo, nao substitui consultoria contabil.</p>
     </div>
   </section>
 
@@ -3512,6 +3580,8 @@ function resetCalc() {
   document.getElementById('overviewSection').style.display = 'none';
   const dc = document.getElementById('deltaBigContainer');
   dc.classList.remove('is-visible','is-pj-expensive');
+  const analiseSecReset = document.getElementById('analiseSection');
+  if (analiseSecReset) analiseSecReset.style.display = 'none';
 }
 
 document.getElementById('btnReset').addEventListener('click', resetCalc);
@@ -3866,6 +3936,24 @@ function calcAndRender() {
   if (btnWA) btnWA.href = 'https://wa.me/5537999967558?text=' + encodeURIComponent(msg);
 
   document.getElementById('calcCtaBar').style.display = 'block';
+
+  // Mostrar secao de analise e atualizar cabecalho contextual
+  const analiseSecEl = document.getElementById('analiseSection');
+  if (analiseSecEl) {
+    analiseSecEl.style.display = 'block';
+    const tagEl = document.getElementById('analiseSectionTag');
+    const subEl = document.getElementById('analiseSectionSub');
+    const cargoTagMap = { contratante: 'Analise para Empresa', profissional: 'Analise para Profissional', comparar: 'Comparativo Financeiro' };
+    const motSubMap = {
+      nova: 'Simulando nova contratacao com salario de ' + brl(salario) + '.',
+      existente: 'Avaliando migracao CLT para PJ com salario de ' + brl(salario) + '.',
+      demissao: 'Analisando recontratacao pos-demissao com salario de ' + brl(salario) + '.',
+      comparar: 'Comparativo financeiro com salario de ' + brl(salario) + '.'
+    };
+    if (tagEl) tagEl.textContent = cargoTagMap[CALC_STATE.cargo] || 'Analise Personalizada';
+    if (subEl) subEl.textContent = motSubMap[CALC_STATE.motivacao] || 'Com base no cenario informado, veja a analise completa abaixo.';
+    setTimeout(() => analiseSecEl.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+  }
 
   // Trigger lead modal apos primeiro calculo (apenas uma vez por sessao)
   if (!sessionStorage.getItem('lead-modal-shown')) {
