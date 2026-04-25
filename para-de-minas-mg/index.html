@@ -616,12 +616,14 @@ address { font-style: normal; }
 .coverage-col li { font-size: 14px; color: rgba(255,255,255,.65); display: flex; align-items: center; gap: 10px; }
 .coverage-col li::before { content: ''; display: inline-block; width: 6px; height: 6px; background: var(--dourado); border-radius: 50%; flex-shrink: 0; opacity: .7; }
 .local-prose-wrap { max-width: 780px; margin: 0 auto; }
+.local-prose-intro { font-size: 17px; line-height: 1.85; color: rgba(255,255,255,.65); margin-bottom: 0; }
+.local-prose-intro strong { color: var(--paper); font-weight: 700; }
 .local-prose { overflow: hidden; max-height: 0; transition: max-height .5s ease; }
 .local-prose.is-open { max-height: 600px; }
 .local-prose p { font-size: 17px; line-height: 1.85; color: rgba(255,255,255,.65); margin-bottom: 20px; padding-top: 4px; }
 .local-prose p:last-child { margin-bottom: 0; }
 .local-prose strong { color: var(--paper); font-weight: 700; }
-.local-prose-toggle { display: flex; align-items: center; gap: 8px; background: none; border: 1px solid rgba(255,255,255,.12); border-radius: 8px; color: rgba(255,255,255,.6); font-size: 13px; font-weight: 600; letter-spacing: .04em; padding: 12px 20px; cursor: pointer; transition: color .2s, border-color .2s; margin-top: 24px; }
+.local-prose-toggle { display: flex; align-items: center; gap: 8px; background: none; border: 1px solid rgba(255,255,255,.12); border-radius: 8px; color: rgba(255,255,255,.6); font-size: 13px; font-weight: 600; letter-spacing: .04em; padding: 12px 20px; cursor: pointer; transition: color .2s, border-color .2s; margin-top: 20px; }
 .local-prose-toggle:hover { color: var(--dourado); border-color: var(--dourado); }
 .local-prose-toggle svg { transition: transform .3s; }
 .local-prose-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
@@ -1482,10 +1484,10 @@ a.footer-nap-row:hover svg { color: var(--dourado); }
     </div>
 
     <div class="local-prose-wrap reveal" id="localProseWrap">
+      <p class="local-prose-intro">
+        A economia de Pará de Minas é <strong>industrial e diversa</strong>. O Distrito Industrial Antônio Júlio de Faria concentra cerca de 45 empresas nos setores têxtil, fundição, cerâmica e mineração de agalmatolito. O Distrito Industrial 2, às margens da BR-262, abriga operações de maior porte, incluindo o complexo da <strong>Itambé Laticínios</strong>. No eixo comercial, o movimento se concentra na Avenida Benedito Valadares, na Avenida Getúlio Vargas e na Rua Direita, no Centro.
+      </p>
       <div class="local-prose" id="localProse">
-        <p>
-          A economia de Pará de Minas é <strong>industrial e diversa</strong>. O Distrito Industrial Antônio Júlio de Faria concentra cerca de 45 empresas nos setores têxtil, fundição, cerâmica e mineração de agalmatolito. O Distrito Industrial 2, às margens da BR-262, abriga operações de maior porte, incluindo o complexo da <strong>Itambé Laticínios</strong>. No eixo comercial, o movimento se concentra na Avenida Benedito Valadares, na Avenida Getúlio Vargas e na Rua Direita, no Centro.
-        </p>
         <p>
           Cada polo tem uma estrutura tributária própria: indústrias com ICMS-ST e IPI, comércio varejista no Simples Nacional, profissionais liberais com ISSQN e holdings familiares para proteção patrimonial. <strong>Atendemos empresas em todos esses polos</strong>: indústrias do Jardim Industrial e do Parque Industrial, comércios do Centro, Santos Dumont, Padre Libério e Eldorado, clínicas e escritórios no Dom Bosco e no Belvedere.
         </p>
