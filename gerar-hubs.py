@@ -1714,7 +1714,7 @@ def build_html(c):
         f'alt="{c["foto_alt"]}"'
     )
     html = html.replace(
-        'Gruta Rei do Mato, Sete Lagoas. Cidade com polo siderúrgico, farmácia e comércio ativo.',
+        'Gruta Rei do Mato, Sete Lagoas. Cidade com polo sider&#250;rgico, farm&#225;cia e com&#233;rcio ativo.',
         c['foto_figcaption']
     )
 
@@ -1804,8 +1804,8 @@ def build_html(c):
         c['amanda_quote']
     )
     html = html.replace(
-        'alt="Amanda Cabral de Oliveira, CRC/MG Ativo, contadora especialista em tributação para empresas de Sete Lagoas"',
-        f'alt="Amanda Cabral de Oliveira, CRC/MG Ativo, contadora especialista em tributação para empresas {c["preposition"]} {c["name"]}"'
+        'alt="Amanda Cabral de Oliveira, CRC/MG Ativo, contadora especialista em tributa&#231;&#227;o para empresas de Sete Lagoas"',
+        f'alt="Amanda Cabral de Oliveira, CRC/MG Ativo, contadora especialista em tributa&#231;&#227;o para empresas {c["preposition"]} {c["name"]}"'
     )
 
     # Setores marquee
