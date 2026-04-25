@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="shortcut icon" href="/favicon.svg">
-  <title>Calculadora PJ vs CLT 2025 | Simule Seus Ganhos | Amanda Cabral</title>
-  <meta name="description" content="Calculadora gratuita PJ vs CLT com tabelas INSS e IRRF 2025. Descubra quanto voce precisa faturar como PJ para ganhar o mesmo que CLT. Por Amanda Cabral, contadora CRC/MG.">
-  <meta property="og:title" content="Calculadora PJ vs CLT 2025 | Amanda Cabral Contadora">
-  <meta property="og:description" content="Simule seus ganhos como PJ e CLT em 2 minutos. Tabelas INSS e IRRF 2025 atualizadas. Ferramenta gratuita por Amanda Cabral, CRC/MG ativo.">
+  <title>Calculadora CLT vs PJ para Empresas 2025 | Custo Real de Contratacao | Amanda Cabral</title>
+  <meta name="description" content="Calcule o custo real de contratar CLT vs PJ para sua empresa. INSS patronal, FGTS, 13o, ferias, encargos e custo de demissao. Tabelas 2025. Por Amanda Cabral, contadora CRC/MG.">
+  <meta property="og:title" content="Calculadora CLT vs PJ para Empresas 2025 | Amanda Cabral Contadora">
+  <meta property="og:description" content="Descubra o custo total de um colaborador CLT vs PJ para sua empresa. Encargos patronais, provisoes e simulacao de demissao. Ferramenta gratuita.">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://amcabralblindagem.com.br/assets/og-image.webp">
   <link rel="canonical" href="https://amcabralblindagem.com.br/calculadora-pj-vs-clt/">
@@ -345,27 +345,6 @@
     .calc-input-group input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
     .calc-input-group input[type="number"] { -moz-appearance: textfield; }
 
-    .calc-radio-group { display: flex; gap: 10px; flex-wrap: wrap; }
-    .calc-radio-option {
-      flex: 1; min-width: 120px;
-    }
-    .calc-radio-option input[type="radio"] { display: none; }
-    .calc-radio-option label {
-      display: block; padding: 10px 14px; text-align: center;
-      background: rgba(255,255,255,.03);
-      border: 1px solid rgba(255,255,255,.1);
-      border-radius: 8px; cursor: pointer;
-      font-size: .82rem; font-weight: 600;
-      color: rgba(255,255,255,.5);
-      transition: all .2s;
-      text-transform: none; letter-spacing: 0;
-    }
-    .calc-radio-option input[type="radio"]:checked + label {
-      background: rgba(201,168,76,.1);
-      border-color: rgba(201,168,76,.4);
-      color: var(--gold);
-    }
-
     .calc-checkbox-group { display: flex; align-items: center; gap: 10px; margin-top: 4px; }
     .calc-checkbox-group input[type="checkbox"] {
       width: 18px; height: 18px; accent-color: var(--gold); cursor: pointer; flex-shrink: 0;
@@ -437,8 +416,8 @@
       padding: 4px 10px; border-radius: 20px;
       font-size: .72rem; font-weight: 700; letter-spacing: .04em;
     }
-    .result-delta.positive { background: rgba(16,185,129,.15); color: #10B981; border: 1px solid rgba(16,185,129,.25); }
-    .result-delta.negative { background: rgba(239,68,68,.12); color: #EF4444; border: 1px solid rgba(239,68,68,.2); }
+    .result-delta.cheaper { background: rgba(16,185,129,.15); color: #10B981; border: 1px solid rgba(16,185,129,.25); }
+    .result-delta.expensive { background: rgba(239,68,68,.12); color: #EF4444; border: 1px solid rgba(239,68,68,.2); }
     .result-delta.neutral { background: rgba(255,255,255,.06); color: rgba(255,255,255,.5); border: 1px solid rgba(255,255,255,.1); }
 
     .result-equivalente {
@@ -460,12 +439,12 @@
     }
     .result-equivalente-sub { font-size: .85rem; color: rgba(255,255,255,.5); line-height: 1.6; }
 
-    /* BENEFÍCIOS ACCORDION */
+    /* ENCARGOS BREAKDOWN */
     .benefits-section {
       background: rgba(255,255,255,.02);
       border: 1px solid rgba(255,255,255,.07);
       border-radius: 14px; overflow: hidden;
-      margin-bottom: 28px;
+      margin-bottom: 20px;
     }
     .benefits-header {
       padding: 20px 24px;
@@ -476,9 +455,7 @@
     }
     .benefits-header:hover { background: rgba(255,255,255,.02); }
     .benefits-header-left { display: flex; flex-direction: column; gap: 2px; }
-    .benefits-header-title {
-      font-size: .9rem; font-weight: 700; color: var(--white);
-    }
+    .benefits-header-title { font-size: .9rem; font-weight: 700; color: var(--white); }
     .benefits-header-sub { font-size: .78rem; color: rgba(255,255,255,.4); }
     .benefits-header-total {
       font-family: var(--font-display);
@@ -494,16 +471,61 @@
       padding: 12px 0;
       border-bottom: 1px solid rgba(255,255,255,.04);
       font-size: .875rem;
+      gap: 16px;
     }
     .benefit-row:last-child { border-bottom: none; }
-    .benefit-row-name { color: rgba(255,255,255,.65); }
-    .benefit-row-value { font-weight: 700; color: #EF4444; }
+    .benefit-row-name { color: rgba(255,255,255,.65); flex: 1; }
+    .benefit-row-pct { font-size: .75rem; color: rgba(255,255,255,.35); }
+    .benefit-row-value { font-weight: 700; color: #EF4444; white-space: nowrap; }
     .benefit-row-detail { font-size: .75rem; color: rgba(255,255,255,.3); margin-top: 2px; }
+
+    /* DEMISSAO SECTION */
+    .demissao-section {
+      background: rgba(239,68,68,.04);
+      border: 1px solid rgba(239,68,68,.12);
+      border-radius: 14px; overflow: hidden;
+      margin-bottom: 20px;
+    }
+    .demissao-header {
+      padding: 20px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      cursor: pointer;
+      transition: background .2s;
+    }
+    .demissao-header:hover { background: rgba(239,68,68,.03); }
+    .demissao-header-title { font-size: .9rem; font-weight: 700; color: var(--white); }
+    .demissao-header-sub { font-size: .78rem; color: rgba(255,255,255,.4); margin-top: 2px; }
+    .demissao-header-total {
+      font-family: var(--font-display);
+      font-size: 1.1rem; font-style: italic;
+      color: #EF4444;
+    }
+    .demissao-header-arrow { font-size: 14px; color: rgba(255,255,255,.4); transition: transform .25s; }
+    .demissao-section.open .demissao-header-arrow { transform: rotate(180deg); }
+    .demissao-body { display: none; padding: 0 24px 20px; }
+    .demissao-section.open .demissao-body { display: block; }
+    .demissao-tabs {
+      display: flex; gap: 8px; margin-bottom: 16px; flex-wrap: wrap;
+    }
+    .demissao-tab {
+      padding: 7px 14px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 6px; cursor: pointer;
+      font-size: .78rem; font-weight: 600;
+      color: rgba(255,255,255,.45);
+      transition: all .15s;
+    }
+    .demissao-tab.active {
+      background: rgba(239,68,68,.12);
+      border-color: rgba(239,68,68,.3);
+      color: #EF4444;
+    }
 
     /* IMPOSTOS DETALHES */
     .taxes-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       gap: 12px;
       margin-bottom: 20px;
     }
@@ -603,7 +625,6 @@
       font-size: .78rem; font-weight: 700;
       color: var(--accent-gold);
     }
-    .amanda-content { }
     .amanda-creds {
       display: flex; flex-wrap: wrap; gap: 10px;
       margin-bottom: 28px;
@@ -759,9 +780,9 @@
     "@context": "https://schema.org",
     "@type": "WebApplication",
     "@id": "https://amcabralblindagem.com.br/calculadora-pj-vs-clt/#webapp",
-    "name": "Calculadora PJ vs CLT 2025",
+    "name": "Calculadora CLT vs PJ para Empresas 2025",
     "url": "https://amcabralblindagem.com.br/calculadora-pj-vs-clt/",
-    "description": "Calculadora gratuita PJ vs CLT com tabelas INSS e IRRF 2025. Descubra quanto voce precisa faturar como PJ para ganhar o mesmo que CLT.",
+    "description": "Calcule o custo real de contratar CLT vs PJ: INSS patronal, FGTS, 13o salario, ferias, encargos e simulacao de demissao. Tabelas 2025.",
     "applicationCategory": "FinanceApplication",
     "operatingSystem": "All",
     "browserRequirements": "Requires JavaScript",
@@ -787,42 +808,42 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Como funciona o calculo do INSS para CLT em 2025?",
+        "name": "Quanto custa um funcionario CLT alem do salario?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "O INSS CLT 2025 e calculado de forma progressiva por faixas: 7,5% sobre a parcela ate R$ 1.621,00; 9% sobre a parcela de R$ 1.621,01 a R$ 2.902,84; 12% sobre a parcela de R$ 2.902,85 a R$ 4.354,27; e 14% sobre a parcela de R$ 4.354,28 ate o teto de R$ 8.475,55. O salario acima do teto nao tem desconto adicional de INSS."
+          "text": "Alem do salario bruto, a empresa paga: INSS patronal (20%), FGTS (8%), provisao de 13o salario (8,33%), provisao de ferias com 1/3 (11,11%) e contribuicoes ao Sistema S como SESI, SENAI e SEBRAE (cerca de 5,8%). No total, o custo real de um colaborador CLT costuma ser entre 60% e 80% acima do salario bruto."
         }
       },
       {
         "@type": "Question",
-        "name": "Vale mais a pena ser PJ ou CLT?",
+        "name": "E legal contratar PJ no lugar de CLT?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Depende do salario CLT e do faturamento PJ. Como PJ voce perde FGTS (8%), 13 salario, ferias com 1/3, seguro-desemprego e plano de saude custeado pelo empregador. Em geral, um PJ precisa faturar entre 30% e 50% a mais que o salario CLT bruto para igualar o liquido. Use a calculadora acima para simular seu caso especifico."
+          "text": "Sim, desde que nao haja vinculo empregaticio de fato. Para o contrato PJ ser valido, o prestador deve ter CNPJ ativo, nao ter exclusividade, nao ter horario fixo imposto pela empresa e poder recusar servicos. Se a relacao tiver subordinacao, habitualidade, exclusividade e pessoalidade, o fisco pode caracterizar vinculo empregaticio e exigir o recolhimento de todos os encargos retroativos, com multas."
         }
       },
       {
         "@type": "Question",
-        "name": "Qual regime tributario escolher como PJ: Simples Nacional ou Lucro Presumido?",
+        "name": "Qual o custo de demissao de um colaborador CLT?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Para faturamentos mensais ate R$ 15.000 (R$ 180.000/ano), o Simples Nacional Anexo III costuma ser mais vantajoso com aliquota efetiva de 6%. Para faturamentos maiores, o Lucro Presumido com aliquota efetiva em torno de 27% pode ser mais adequado dependendo do tipo de servico. A escolha ideal depende do CNAE, margem de lucro e estrutura de custos. Um contador especializado pode fazer a simulacao correta."
+          "text": "O custo de demissao sem justa causa inclui: aviso previo (salario proporcional ao tempo de empresa, minimo 30 dias), multa de 40% sobre o saldo total do FGTS, ferias proporcionais com 1/3, e 13o salario proporcional. Para um colaborador com salario de R$ 5.000 e 2 anos de contrato, o custo de demissao pode chegar a R$ 15.000 a R$ 20.000."
         }
       },
       {
         "@type": "Question",
-        "name": "Quanto preciso faturar como PJ para compensar o salario CLT?",
+        "name": "Quando vale a pena contratar CLT em vez de PJ?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Nao existe uma formula unica, pois depende do salario CLT bruto, dos beneficios (VR, VT, plano de saude), do regime tributario PJ e das suas despesas operacionais. A calculadora desta pagina faz essa conta automaticamente usando as tabelas INSS e IRRF 2025, considerando os beneficios perdidos e o regime tributario escolhido."
+          "text": "CLT e mais adequado quando a funcao exige presenca continua, horario fixo e subordinacao direta, pois tentar mascarar esse vinculo como PJ gera risco trabalhista alto. Tambem e preferivel para cargos estrategicos em que a empresa quer garantir exclusividade e lealdade. PJ e mais vantajoso para projetos, consultorias pontuais ou quando o profissional ja atende varios clientes."
         }
       },
       {
         "@type": "Question",
-        "name": "Preciso contratar contador para trabalhar como PJ?",
+        "name": "Como calcular o custo total de um colaborador CLT?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Sim, e altamente recomendado. Como PJ voce precisara emitir notas fiscais, declarar imposto de renda como pessoa juridica, pagar guias mensais (DAS no Simples, ou IRPJ, CSLL, PIS e COFINS no Lucro Presumido), alem do INSS como contribuinte individual. Um contador garante que voce nao pague mais imposto do que deve e cumpra todas as obrigacoes fiscais."
+          "text": "Some ao salario bruto: INSS patronal (20%), FGTS (8%), provisao 13o (8,33%), provisao ferias + 1/3 (11,11%), Sistema S aproximado (5,8%). Acrescente ainda os beneficios custeados, como vale-refeicao, vale-transporte e plano de saude. A calculadora desta pagina faz esse calculo automaticamente com as tabelas 2025."
         }
       }
     ]
@@ -833,9 +854,9 @@
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://amcabralblindagem.com.br/" },
+      { "@type": "ListItem", "position": 1, "name": "Amanda Cabral Contadora", "item": "https://amcabralblindagem.com.br/" },
       { "@type": "ListItem", "position": 2, "name": "Ferramentas", "item": "https://amcabralblindagem.com.br/calculadora-pj-vs-clt/" },
-      { "@type": "ListItem", "position": 3, "name": "Calculadora PJ vs CLT", "item": "https://amcabralblindagem.com.br/calculadora-pj-vs-clt/" }
+      { "@type": "ListItem", "position": 3, "name": "Calculadora CLT vs PJ para Empresas" }
     ]
   }
   </script>
@@ -845,28 +866,35 @@
 <!-- HEADER -->
 <header id="hdr">
   <div id="hdr-inner">
-    <a href="/" id="hdr-logo" onmouseenter="this.style.webkitTextStrokeColor='rgba(201,168,76,.9)'" onmouseleave="this.style.webkitTextStrokeColor='rgba(201,168,76,.55)'">AM Cabral</a>
+    <a href="/" id="hdr-logo">AM Cabral</a>
     <ul id="hdr-nav">
-      <li class="hdr-item"><a href="/" class="hdr-btn">Inicio</a></li>
-      <li class="hdr-item" data-menu="sobre"><button class="hdr-btn">Sobre a AM Cabral <span class="hdr-arrow">▾</span></button></li>
-      <li class="hdr-item" data-menu="servicos"><button class="hdr-btn">Servicos <span class="hdr-arrow">▾</span></button></li>
-      <li class="hdr-item" data-menu="blog"><button class="hdr-btn">Blog <span class="hdr-arrow">▾</span></button></li>
+      <li class="hdr-item" data-menu="empresa">
+        <button class="hdr-btn">A Empresa <span class="hdr-arrow">&#9660;</span></button>
+      </li>
+      <li class="hdr-item" data-menu="servicos">
+        <button class="hdr-btn">Servicos <span class="hdr-arrow">&#9660;</span></button>
+      </li>
+      <li class="hdr-item" data-menu="blog">
+        <button class="hdr-btn">Blog e Ferramentas <span class="hdr-arrow">&#9660;</span></button>
+      </li>
     </ul>
     <a href="/fale-com-especialista/" class="hdr-cta">Diagnostico Gratuito</a>
-    <button id="hdr-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    <button id="hdr-hamburger" aria-label="Abrir menu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </header>
 
-<!-- Mega-menus -->
-<div class="hdr-mega" id="mega-sobre">
+<!-- MEGA A EMPRESA -->
+<div class="hdr-mega" id="mega-empresa">
   <div class="hdr-mega-inner">
     <a href="/sobre-amcabral-blindagem/" class="hdr-mega-img">
-      <img src="/amanda-sobre.webp" alt="Amanda Cabral Contadora" loading="lazy" width="600" height="800" style="object-position:top center;">
+      <img src="/amanda-cabral-foto.jpg" alt="Amanda Cabral Contadora" loading="lazy" width="300" height="400">
     </a>
     <div class="hdr-mega-col">
-      <div class="hdr-mega-col-title">Sobre a AM Cabral</div>
+      <div class="hdr-mega-col-title">A Empresa</div>
       <div class="hdr-mega-links">
-        <a href="/sobre-amcabral-blindagem/" class="hdr-mega-link"><strong>Amanda Cabral</strong><span>Conheca a trajetoria e a historia do escritorio AM Cabral</span></a>
+        <a href="/sobre-amcabral-blindagem/" class="hdr-mega-link"><strong>Sobre Amanda Cabral</strong><span>CRC/MG ativo. 20 anos de experiencia em contabilidade industrial</span></a>
         <a href="/casos-de-sucesso/" class="hdr-mega-link"><strong>Casos de Sucesso</strong><span>Veja resultados reais de empresas que atendemos</span></a>
         <a href="/perguntas-frequentes/" class="hdr-mega-link"><strong>Perguntas Frequentes</strong><span>Tire duvidas sobre contabilidade, holding e tributacao</span></a>
         <a href="/cidades-atendidas/" class="hdr-mega-link"><strong>Cidades Atendidas</strong><span>Atendimento em Para de Minas e toda a regiao de MG</span></a>
@@ -910,7 +938,7 @@
         <a href="/blog/incentivos-fiscais-minas-gerais/" class="hdr-mega-link"><strong>Incentivos Fiscais em MG</strong><span>Beneficios para industrias e empresas em Minas Gerais</span></a>
         <a href="/blog/87-industrias-mg-pagam-icms-a-mais/" class="hdr-mega-link"><strong>87% das Industrias Pagam ICMS a Mais</strong><span>Como identificar e recuperar creditos indevidos</span></a>
         <a href="/author-amanda-cabral/" class="hdr-mega-link"><strong>Sobre a Autora</strong><span>Formacao, especializacoes e trajetoria de Amanda Cabral</span></a>
-        <a href="/calculadora-pj-vs-clt/" class="hdr-mega-link" style="border-top:1px solid rgba(201,168,76,0.15);margin-top:8px;padding-top:12px;"><strong style="color:var(--gold);">&#9883; Calculadora PJ vs CLT</strong><span>Simule quanto voce precisa faturar como PJ</span></a>
+        <a href="/calculadora-pj-vs-clt/" class="hdr-mega-link" style="border-top:1px solid rgba(201,168,76,0.15);margin-top:8px;padding-top:12px;"><strong style="color:var(--gold);">&#9883; Calculadora CLT vs PJ</strong><span>Custo real de contratar: encargos, beneficios e demissao</span></a>
       </div>
       <a href="/blog/" class="hdr-mega-col-cta">Ver todos os artigos &rarr;</a>
     </div>
@@ -928,7 +956,7 @@
   <a href="/nossos-servicos/holding-patrimonial/">Holding Patrimonial</a>
   <a href="/nossos-servicos/planejamento-tributario/">Planejamento Fiscal</a>
   <a href="/blog/">Blog</a>
-  <a href="/calculadora-pj-vs-clt/" style="color:var(--gold);">&#9883; Calculadora PJ vs CLT</a>
+  <a href="/calculadora-pj-vs-clt/" style="color:var(--gold);">&#9883; Calculadora CLT vs PJ</a>
   <a href="/fale-com-especialista/" style="color:var(--accent-gold);margin-top:16px;font-weight:700;">Diagnostico Gratuito</a>
 </div>
 
@@ -943,7 +971,7 @@
 <div class="scroll-progress" id="scrollProgress"></div>
 
 <!-- WHATSAPP FLOAT -->
-<a href="https://wa.me/5537999967558?text=Ola%2C%20acabei%20de%20usar%20a%20calculadora%20PJ%20vs%20CLT%20e%20gostaria%20de%20saber%20mais" class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+<a href="https://wa.me/5537999967558?text=Ola%2C%20usei%20a%20calculadora%20CLT%20vs%20PJ%20e%20gostaria%20de%20conversar%20sobre%20contratacao" class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">
   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
@@ -956,7 +984,7 @@
     <span class="bb-sep"></span>
     <a href="/fale-com-especialista/?ref=calculadora-pj-clt" class="bb-cta">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
-      Agendar com Amanda
+      Falar com Amanda
     </a>
   </div>
 </div>
@@ -970,21 +998,21 @@
     <div class="calc-hero-orb-2" aria-hidden="true"></div>
     <div class="container">
       <div class="calc-hero-inner reveal">
-        <div class="section-tag"><span class="dot"></span> Ferramenta Gratuita</div>
-        <h1>Calculadora <em>PJ vs CLT</em></h1>
-        <p class="calc-hero-sub">Descubra em 2 minutos quanto voce precisa faturar como PJ para igualar o seu salario CLT. Tabelas INSS e IRRF 2025 atualizadas. Beneficios perdidos calculados automaticamente.</p>
+        <div class="section-tag"><span class="dot"></span> Ferramenta Gratuita para Empresas</div>
+        <h1>CLT ou PJ: <em>qual custa mais</em> para sua empresa?</h1>
+        <p class="calc-hero-sub">Calcule o custo real de contratar: encargos patronais, provisoes de 13o e ferias, beneficios e simulacao de demissao. Tabelas 2025 atualizadas. Assinalado por Amanda Cabral, CRC/MG.</p>
         <div class="calc-hero-badges stagger">
           <span class="calc-hero-badge">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-            Tabelas INSS e IRRF 2025
+            Encargos patronais 2025
           </span>
           <span class="calc-hero-badge">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
             Resultado em tempo real
           </span>
           <span class="calc-hero-badge">
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-            Validade por Amanda Cabral, CRC/MG
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            Simulacao de demissao incluida
           </span>
         </div>
         <a href="#calculadora" class="btn-hero-anchor" id="heroAnchor">
@@ -1000,7 +1028,7 @@
     <ol>
       <li><a href="/">Amanda Cabral Contadora</a></li>
       <li><a href="/calculadora-pj-vs-clt/">Ferramentas</a></li>
-      <li aria-current="page">Calculadora PJ vs CLT</li>
+      <li aria-current="page">Calculadora CLT vs PJ para Empresas</li>
     </ol>
   </nav>
 
@@ -1009,8 +1037,8 @@
     <div class="container">
       <div class="calc-header reveal">
         <div class="section-tag"><span class="dot"></span> Simulador 2025</div>
-        <h2 class="heading">Simule seus ganhos <em>em 2 minutos</em></h2>
-        <p class="heading-sub">Preencha os campos abaixo. O resultado aparece automaticamente, incluindo os beneficios que voce perde ao sair da CLT.</p>
+        <h2 class="heading">Calcule o custo real <em>de cada contratacao</em></h2>
+        <p class="heading-sub">Preencha o salario ou honorario e os beneficios oferecidos. O resultado mostra o custo total para a empresa, com todos os encargos detalhados.</p>
       </div>
 
       <div class="calc-grid">
@@ -1021,13 +1049,13 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
             </div>
             <div>
-              <div class="calc-col-title">Dados CLT</div>
-              <div class="calc-col-sub">Regime trabalhista com carteira assinada</div>
+              <div class="calc-col-title">Contratacao CLT</div>
+              <div class="calc-col-sub">Regime com carteira assinada e encargos patronais</div>
             </div>
           </div>
 
           <div class="calc-input-group">
-            <label for="salarioBruto">Salario Bruto <span>(obrigatorio)</span></label>
+            <label for="salarioBruto">Salario Bruto do Colaborador <span>(obrigatorio)</span></label>
             <input type="number" id="salarioBruto" placeholder="ex: 5000" min="1412" step="100" inputmode="numeric">
           </div>
           <div class="calc-input-group">
@@ -1039,8 +1067,15 @@
             <input type="number" id="beneficioVT" placeholder="0" min="0" step="10" value="0" inputmode="numeric">
           </div>
           <div class="calc-input-group">
-            <label for="beneficioSaude">Plano de Saude <span>(custo mensal do empregador)</span></label>
+            <label for="beneficioSaude">Plano de Saude <span>(custo mensal para a empresa)</span></label>
             <input type="number" id="beneficioSaude" placeholder="0" min="0" step="50" value="0" inputmode="numeric">
+          </div>
+          <div class="calc-input-group">
+            <label>Incluir provisoes mensais</label>
+            <div class="calc-checkbox-group">
+              <input type="checkbox" id="incluirProvisoes" checked>
+              <label for="incluirProvisoes">Provisionar 13o e ferias (recomendado)</label>
+            </div>
           </div>
         </div>
 
@@ -1051,146 +1086,191 @@
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
             </div>
             <div>
-              <div class="calc-col-title">Dados PJ</div>
-              <div class="calc-col-sub">Pessoa juridica, autonomia e responsabilidade fiscal</div>
+              <div class="calc-col-title">Contratacao PJ</div>
+              <div class="calc-col-sub">Pessoa juridica: sem encargos patronais para a empresa</div>
             </div>
           </div>
 
           <div class="calc-input-group">
-            <label>Regime Tributario</label>
-            <div class="calc-radio-group">
-              <div class="calc-radio-option">
-                <input type="radio" id="simplesNacional" name="regimeTributario" value="simples" checked>
-                <label for="simplesNacional">Simples Nacional</label>
-              </div>
-              <div class="calc-radio-option">
-                <input type="radio" id="lucroPresumido" name="regimeTributario" value="presumido">
-                <label for="lucroPresumido">Lucro Presumido</label>
-              </div>
-            </div>
+            <label for="honorarioPJ">Honorario Mensal do PJ <span>(valor pago pela empresa)</span></label>
+            <input type="number" id="honorarioPJ" placeholder="ex: 8000" min="0" step="100" inputmode="numeric">
           </div>
           <div class="calc-input-group">
-            <label for="honorariosContador">Honorarios do Contador <span>(mensal)</span></label>
-            <input type="number" id="honorariosContador" placeholder="300" min="0" step="50" value="300" inputmode="numeric">
+            <label for="tempoContrato">Tempo estimado de contrato <span>(meses, para calculo de demissao)</span></label>
+            <input type="number" id="tempoContrato" placeholder="ex: 24" min="1" max="120" step="1" value="24" inputmode="numeric">
           </div>
-          <div class="calc-input-group">
-            <label for="gastosOperacionais">Gastos Operacionais PJ <span>(mensal)</span></label>
-            <input type="number" id="gastosOperacionais" placeholder="500" min="0" step="50" value="500" inputmode="numeric">
-          </div>
-          <div class="calc-input-group">
-            <label>Provisoes</label>
-            <div class="calc-checkbox-group">
-              <input type="checkbox" id="provisao13Ferias" checked>
-              <label for="provisao13Ferias">Provisionar 13° e ferias (recomendado)</label>
-            </div>
-          </div>
-          <div class="calc-input-group">
-            <label for="inssAutonomo">INSS como Autonomo <span>(contribuicao voluntaria)</span></label>
-            <input type="number" id="inssAutonomo" placeholder="0" min="0" max="1189" step="50" value="0" inputmode="numeric">
+          <div style="padding:16px;background:rgba(201,168,76,.05);border:1px solid rgba(201,168,76,.12);border-radius:10px;margin-top:8px;">
+            <p style="font-size:.8rem;color:rgba(255,255,255,.55);line-height:1.7;">
+              <strong style="color:var(--accent-gold);display:block;margin-bottom:4px;">Lembre-se:</strong>
+              No contrato PJ a empresa nao paga INSS patronal, FGTS, 13o salario nem ferias. O risco de reconhecimento de vinculo empregaticio existe se houver subordinacao e exclusividade.
+            </p>
           </div>
         </div>
       </div>
 
       <button class="btn-calc" id="btnCalc" type="button">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M8 6h8M8 10h8M8 14h4"/></svg>
-        Comparar CLT vs PJ
+        Calcular Custo Real
       </button>
-      <p class="calc-note">Os calculos usam as tabelas INSS e IRRF oficiais de 2025. Resultado orientativo, nao substitui consultoria contabil.</p>
+      <p class="calc-note">Os calculos usam aliquotas INSS patronal, FGTS e Sistema S vigentes em 2025. Resultado orientativo, nao substitui consultoria contabil.</p>
 
       <!-- RESULTADO -->
       <div class="calc-result" id="calcResult">
 
-        <!-- Camada 1: Cards principais -->
+        <!-- Camada 1: Cards custo total mensal -->
         <div class="result-cards stagger">
           <div class="result-card clt">
-            <div class="result-card-label">Liquido CLT</div>
-            <div class="result-card-value" id="outCltLiquido">R$ 0</div>
-            <div class="result-card-detail" id="outCltDetail">INSS: R$ 0 | IRRF: R$ 0</div>
+            <div class="result-card-label">Custo Total CLT (mensal)</div>
+            <div class="result-card-value" id="outCltCustoTotal">R$ 0</div>
+            <div class="result-card-detail" id="outCltDetail">Encargos: R$ 0 | Beneficios: R$ 0</div>
           </div>
           <div class="result-card pj">
             <div class="result-delta" id="outDelta"></div>
-            <div class="result-card-label">Liquido PJ (faturando equivalente)</div>
-            <div class="result-card-value" id="outPjLiquido">R$ 0</div>
-            <div class="result-card-detail" id="outPjDetail">Impostos: R$ 0 | Despesas: R$ 0</div>
+            <div class="result-card-label">Custo Total PJ (mensal)</div>
+            <div class="result-card-value" id="outPjCusto">R$ 0</div>
+            <div class="result-card-detail">Apenas o honorario, sem encargos adicionais</div>
           </div>
         </div>
 
-        <!-- Camada 2: Faturamento equivalente -->
+        <!-- Camada 2: Diferenca anual -->
         <div class="result-equivalente reveal">
-          <div class="result-equivalente-label">Para igualar o CLT, voce precisa faturar como PJ</div>
-          <div class="result-equivalente-value" id="outFatEquivalente">R$ 0</div>
-          <div class="result-equivalente-sub" id="outFatSub">Isso representa <strong id="outFatPct">0%</strong> a mais que o salario bruto CLT.</div>
+          <div class="result-equivalente-label">Diferenca anual entre CLT e PJ</div>
+          <div class="result-equivalente-value" id="outDiferencaAnual">R$ 0</div>
+          <div class="result-equivalente-sub" id="outDiferencaSub">Calculando...</div>
         </div>
 
-        <!-- Camada 3: Beneficios perdidos -->
+        <!-- Camada 3: Encargos CLT detalhados (accordion) -->
         <div class="benefits-section" id="benefitsSection">
           <div class="benefits-header" id="benefitsToggle">
             <div class="benefits-header-left">
-              <span class="benefits-header-title">Beneficios que voce perde ao virar PJ</span>
-              <span class="benefits-header-sub">Clique para expandir o calculo anual</span>
+              <span class="benefits-header-title">Encargos patronais CLT detalhados</span>
+              <span class="benefits-header-sub">Clique para ver o custo de cada obrigacao legal</span>
             </div>
             <div style="display:flex;align-items:center;gap:16px;">
-              <span class="benefits-header-total" id="outBeneficiosTotal">-R$ 0/ano</span>
-              <span class="benefits-header-arrow">▾</span>
+              <span class="benefits-header-total" id="outEncargosTotal">+R$ 0/mes</span>
+              <span class="benefits-header-arrow">&#9662;</span>
             </div>
           </div>
           <div class="benefits-body">
             <div class="benefit-row">
-              <div>
-                <div class="benefit-row-name">FGTS (8% do salario bruto)</div>
-                <div class="benefit-row-detail">Depositado mensalmente pelo empregador, saque em demissao sem justa causa</div>
+              <div class="benefit-row-name">
+                INSS Patronal (20%)
+                <div class="benefit-row-detail">Base: salario bruto. Nao tem teto de contribuicao patronal.</div>
               </div>
-              <div class="benefit-row-value" id="outFgts">-R$ 0/ano</div>
+              <div>
+                <div class="benefit-row-value" id="outInssPat">+R$ 0</div>
+              </div>
             </div>
             <div class="benefit-row">
-              <div>
-                <div class="benefit-row-name">Decimo Terceiro Salario</div>
-                <div class="benefit-row-detail">1 salario liquido adicional por ano, pago em dezembro</div>
+              <div class="benefit-row-name">
+                FGTS (8%)
+                <div class="benefit-row-detail">Depositado em conta vinculada. Disponivel ao colaborador em demissao sem justa causa.</div>
               </div>
-              <div class="benefit-row-value" id="outDecimoTerceiro">-R$ 0</div>
+              <div>
+                <div class="benefit-row-value" id="outFgts">+R$ 0</div>
+              </div>
             </div>
             <div class="benefit-row">
-              <div>
-                <div class="benefit-row-name">Ferias + 1/3 Constitucional</div>
-                <div class="benefit-row-detail">30 dias de ferias anuais com acrescimo de 1/3 do salario</div>
+              <div class="benefit-row-name">
+                Sistema S (aprox. 5,8%)
+                <div class="benefit-row-detail">Inclui SESI/SENAI ou SESC/SENAC, SEBRAE, INCRA e outros. Varia por atividade.</div>
               </div>
-              <div class="benefit-row-value" id="outFerias">-R$ 0</div>
+              <div>
+                <div class="benefit-row-value" id="outSistemaS">+R$ 0</div>
+              </div>
             </div>
-            <div class="benefit-row">
-              <div>
-                <div class="benefit-row-name">Seguro-Desemprego estimado</div>
-                <div class="benefit-row-detail">5 parcelas medias em caso de demissao (estimativa conservadora)</div>
+            <div class="benefit-row" id="rowProvisoes">
+              <div class="benefit-row-name">
+                Provisao 13o Salario (8,33%)
+                <div class="benefit-row-detail">Reserva mensal para pagamento em novembro/dezembro.</div>
               </div>
-              <div class="benefit-row-value" id="outSeguroDesemprego">-R$ 0 est.</div>
+              <div>
+                <div class="benefit-row-value" id="outDecimoTerceiro">+R$ 0</div>
+              </div>
+            </div>
+            <div class="benefit-row" id="rowFerias">
+              <div class="benefit-row-name">
+                Provisao Ferias + 1/3 (11,11%)
+                <div class="benefit-row-detail">30 dias de ferias anuais acrescidos de 1/3 constitucional.</div>
+              </div>
+              <div>
+                <div class="benefit-row-value" id="outFerias">+R$ 0</div>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Detalhes de impostos -->
+        <!-- Camada 4: Custo de demissao (accordion) -->
+        <div class="demissao-section" id="demissaoSection">
+          <div class="demissao-header" id="demissaoToggle">
+            <div>
+              <div class="demissao-header-title">Simulacao de demissao sem justa causa</div>
+              <div class="demissao-header-sub">Custo estimado se a empresa dispensar o colaborador CLT</div>
+            </div>
+            <div style="display:flex;align-items:center;gap:16px;">
+              <span class="demissao-header-total" id="outDemissaoTotal">R$ 0</span>
+              <span class="demissao-header-arrow">&#9662;</span>
+            </div>
+          </div>
+          <div class="demissao-body">
+            <p style="font-size:.8rem;color:rgba(255,255,255,.4);margin-bottom:16px;">Baseado no tempo estimado de contrato informado. Todos os valores sao estimativas.</p>
+            <div class="benefit-row">
+              <div class="benefit-row-name">
+                Aviso Previo
+                <div class="benefit-row-detail">Minimo 30 dias + 3 dias por ano completo (maximo 90 dias)</div>
+              </div>
+              <div class="benefit-row-value" id="outAvisoPrevio">R$ 0</div>
+            </div>
+            <div class="benefit-row">
+              <div class="benefit-row-name">
+                Multa FGTS (40% sobre saldo acumulado)
+                <div class="benefit-row-detail">Calculada sobre todo o FGTS depositado durante o contrato</div>
+              </div>
+              <div class="benefit-row-value" id="outMultaFgts">R$ 0</div>
+            </div>
+            <div class="benefit-row">
+              <div class="benefit-row-name">
+                Ferias Proporcionais + 1/3
+                <div class="benefit-row-detail">Ferias do periodo atual nao gozadas</div>
+              </div>
+              <div class="benefit-row-value" id="outFeriasProp">R$ 0</div>
+            </div>
+            <div class="benefit-row">
+              <div class="benefit-row-name">
+                13o Proporcional
+                <div class="benefit-row-detail">Meses trabalhados no ano corrente</div>
+              </div>
+              <div class="benefit-row-value" id="outDecimoTerceiroProp">R$ 0</div>
+            </div>
+            <div class="benefit-row" style="border-top:1px solid rgba(239,68,68,.15);margin-top:8px;padding-top:12px;">
+              <div class="benefit-row-name" style="color:var(--white);font-weight:700;">Total estimado de demissao</div>
+              <div class="benefit-row-value" id="outDemissaoTotalBody">R$ 0</div>
+            </div>
+            <p style="font-size:.75rem;color:rgba(255,255,255,.3);margin-top:12px;">PJ: custo de demissao zero. Basta encerrar o contrato de prestacao de servicos com o prazo de aviso previsto no contrato comercial.</p>
+          </div>
+        </div>
+
+        <!-- Detalhes resumo -->
         <div class="taxes-grid stagger">
           <div class="tax-item">
-            <div class="tax-item-label">INSS CLT (mensal)</div>
-            <div class="tax-item-value" id="outInss">R$ 0</div>
+            <div class="tax-item-label">Custo CLT mensal</div>
+            <div class="tax-item-value" id="outCltMensal2">R$ 0</div>
           </div>
           <div class="tax-item">
-            <div class="tax-item-label">IRRF CLT (mensal)</div>
-            <div class="tax-item-value" id="outIrrf">R$ 0</div>
+            <div class="tax-item-label">Custo CLT anual (com demissao)</div>
+            <div class="tax-item-value" id="outCltAnualComDemissao">R$ 0</div>
           </div>
           <div class="tax-item">
-            <div class="tax-item-label">Impostos PJ (mensal)</div>
-            <div class="tax-item-value" id="outImpostosPj">R$ 0</div>
-          </div>
-          <div class="tax-item">
-            <div class="tax-item-label">Regime PJ</div>
-            <div class="tax-item-value" id="outRegimePj">Simples</div>
+            <div class="tax-item-label">Custo PJ anual</div>
+            <div class="tax-item-value" id="outPjAnual">R$ 0</div>
           </div>
         </div>
 
         <!-- LEAD FORM -->
         <div class="lead-form-wrapper" id="leadFormWrapper">
           <div id="leadFormContent">
-            <div class="lead-form-title">Receba sua analise completa <em>em PDF</em></div>
-            <p class="lead-form-sub">Amanda Cabral prepara uma analise personalizada com as melhores opcoes tributarias para o seu perfil. Gratuito, sem compromisso.</p>
+            <div class="lead-form-title">Receba um parecer <em>de viabilidade juridica</em></div>
+            <p class="lead-form-sub">Amanda Cabral analisa o seu caso especifico: risco de reconhecimento de vinculo, regime ideal de contratacao e estrategia para reduzir encargos legalmente. Gratuito, sem compromisso.</p>
             <form id="leadForm" novalidate>
               <div class="lead-form-row">
                 <div class="form-group">
@@ -1199,7 +1279,7 @@
                 </div>
                 <div class="form-group">
                   <label for="leadEmail">E-mail</label>
-                  <input type="email" id="leadEmail" name="email" placeholder="seu@email.com" required>
+                  <input type="email" id="leadEmail" name="email" placeholder="seu@empresa.com.br" required>
                 </div>
               </div>
               <div class="lead-form-row">
@@ -1208,15 +1288,14 @@
                   <input type="tel" id="leadWhatsapp" name="whatsapp" placeholder="(11) 99999-0000">
                 </div>
                 <div class="form-group">
-                  <label for="leadProfissao">Profissao</label>
-                  <select id="leadProfissao" name="profissao">
+                  <label for="leadCargo">Cargo / Funcao</label>
+                  <select id="leadCargo" name="cargo">
                     <option value="" disabled selected>Selecione</option>
-                    <option>Desenvolvedor / TI</option>
-                    <option>Designer / Criativo</option>
-                    <option>Consultor</option>
-                    <option>Engenheiro</option>
-                    <option>Medico / Saude</option>
-                    <option>Advogado</option>
+                    <option>Socio / Dono</option>
+                    <option>Diretor / Gerente</option>
+                    <option>RH / DP</option>
+                    <option>Financeiro</option>
+                    <option>Contador interno</option>
                     <option>Outro</option>
                   </select>
                 </div>
@@ -1230,7 +1309,7 @@
           </div>
           <div class="lead-form-success" id="leadFormSuccess">
             <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 16px;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
-            <p>Perfeito. Amanda recebeu seu pedido e entrara em contato em breve pelo WhatsApp. Enquanto isso, voce pode agendar ja uma conversa:</p>
+            <p>Amanda recebeu seu pedido e entrara em contato pelo WhatsApp em breve. Voce tambem pode agendar diretamente:</p>
             <a href="/fale-com-especialista/?ref=calculadora-pj-clt" class="btn-agendar">
               Agendar diagnostico gratuito &rarr;
             </a>
@@ -1247,7 +1326,7 @@
       <div class="amanda-grid">
         <div class="amanda-photo-wrap reveal">
           <div class="amanda-photo">
-            <img src="/amanda-cabral-foto.jpg" alt="Amanda Cabral contadora analisando simulacao PJ vs CLT" loading="lazy" width="760" height="1013">
+            <img src="/amanda-cabral-foto.jpg" alt="Amanda Cabral contadora especialista em custos de contratacao CLT vs PJ" loading="lazy" width="760" height="1013">
           </div>
           <div class="amanda-photo-badge">CRC/MG ativo · 20 anos de experiencia</div>
         </div>
@@ -1272,10 +1351,10 @@
               120+ empresas em MG
             </span>
           </div>
-          <p class="amanda-intro">Amanda atua ha mais de 20 anos no planejamento tributario de empresas industriais, comerciais e de servicos em Minas Gerais. Ao longo da carreira, <strong>recuperou mais de R$ 12 milhoes em creditos tributarios</strong> para clientes que pagavam impostos a mais sem saber. Esta calculadora usa as mesmas tabelas que ela usa nos diagnosticos pagos.</p>
+          <p class="amanda-intro">Amanda assessora empresas industriais, comerciais e de servicos em Minas Gerais ha mais de 20 anos. Ao longo da carreira, <strong>ajudou dezenas de empresas a estruturar suas equipes de forma juridicamente segura</strong>, reduzindo encargos sem risco de autuacao. Esta calculadora usa os mesmos criterios que ela aplica nos diagnosticos pagos.</p>
           <div class="amanda-testimonial">
-            <p>"Eu trabalhava como CLT ha 8 anos e sempre tive duvida se valia a pena ir para o PJ. A Amanda fez a conta certinho, mostrou que eu precisaria de R$ 9.200 de faturamento para igualar meu liquido de R$ 6.800. Com esse numero na mao, negociei o contrato e fui para o PJ."</p>
-            <div class="amanda-testimonial-author">Rodrigo M., Engenheiro de Software, Belo Horizonte</div>
+            <p>"Ibamos contratar tres desenvolvedores como PJ. A Amanda nos mostrou que a estrutura que tinhamos em mente caracterizava vinculo empregaticio. Reestruturamos os contratos, ficamos no PJ com seguranca juridica e economizamos quase R$ 8.000 por mes em encargos que seriam desnecessarios."</p>
+            <div class="amanda-testimonial-author">Rafael M., Diretor de Operacoes, empresa de tecnologia, Belo Horizonte</div>
           </div>
           <a href="/fale-com-especialista/?ref=calculadora-pj-clt" class="btn-agendar-full">
             Agendar Diagnostico Gratuito
@@ -1291,57 +1370,57 @@
     <div class="container">
       <div class="reveal" style="text-align:center;">
         <div class="section-tag" style="margin:0 auto 20px;"><span class="dot"></span> Duvidas Frequentes</div>
-        <h2 class="heading">Perguntas sobre <em>PJ vs CLT</em></h2>
+        <h2 class="heading">Perguntas sobre <em>CLT vs PJ para empresas</em></h2>
       </div>
       <div class="faq-list stagger" id="faqList">
 
         <div class="faq-item">
           <div class="faq-question" tabindex="0">
-            Como funciona o calculo do INSS para CLT em 2025?
-            <span class="faq-arrow">▾</span>
+            Quanto custa um funcionario CLT alem do salario?
+            <span class="faq-arrow">&#9662;</span>
           </div>
           <div class="faq-answer">
-            O INSS CLT 2025 e calculado de forma progressiva por faixas: 7,5% sobre a parcela ate R$ 1.621,00; 9% sobre a parcela de R$ 1.621,01 a R$ 2.902,84; 12% sobre a parcela de R$ 2.902,85 a R$ 4.354,27; e 14% sobre a parcela de R$ 4.354,28 ate o teto de R$ 8.475,55. O salario acima do teto nao tem desconto adicional de INSS. O calculo e identico ao que esta calculadora usa.
+            Alem do salario bruto, a empresa paga: INSS patronal (20%), FGTS (8%), provisao de 13o salario (8,33%), provisao de ferias com 1/3 (11,11%) e contribuicoes ao Sistema S como SESI, SENAI e SEBRAE (cerca de 5,8%). Some ainda os beneficios custeados, como VR, VT e plano de saude. No total, o custo real de um colaborador CLT costuma ficar entre 60% e 80% acima do salario bruto. Para um salario de R$ 5.000, a empresa desembolsa cerca de R$ 8.000 a R$ 9.000 por mes.
           </div>
         </div>
 
         <div class="faq-item">
           <div class="faq-question" tabindex="0">
-            Vale mais a pena ser PJ ou CLT?
-            <span class="faq-arrow">▾</span>
+            E legal contratar PJ no lugar de CLT?
+            <span class="faq-arrow">&#9662;</span>
           </div>
           <div class="faq-answer">
-            Depende do salario CLT e do faturamento PJ. Como PJ voce perde FGTS (8%), 13 salario, ferias com 1/3, seguro-desemprego e plano de saude custeado pelo empregador. Em geral, um PJ precisa faturar entre 30% e 50% a mais que o salario CLT bruto para igualar o liquido. A situacao e sempre individual. Use a calculadora acima para simular seu caso exato.
+            Sim, desde que nao haja vinculo empregaticio de fato. Para o contrato PJ ser juridicamente valido, o prestador deve ter CNPJ ativo, nao ter exclusividade, nao ter horario fixo imposto pela empresa e poder recusar servicos sem penalidade. Se a relacao tiver subordinacao, habitualidade, exclusividade e pessoalidade, o fisco pode caracterizar vinculo empregaticio e exigir o recolhimento retroativo de todos os encargos com multas e juros. A assessoria de um contador especializado e essencial antes de formalizar contratos PJ.
           </div>
         </div>
 
         <div class="faq-item">
           <div class="faq-question" tabindex="0">
-            Qual regime tributario escolher como PJ: Simples Nacional ou Lucro Presumido?
-            <span class="faq-arrow">▾</span>
+            Qual o custo de demissao de um colaborador CLT?
+            <span class="faq-arrow">&#9662;</span>
           </div>
           <div class="faq-answer">
-            Para faturamentos mensais ate R$ 15.000 (R$ 180.000/ano), o Simples Nacional Anexo III costuma ser mais vantajoso com aliquota efetiva de 6%. Para faturamentos maiores, o Lucro Presumido pode ser mais adequado dependendo do tipo de servico. A escolha ideal depende do CNAE, margem de lucro e estrutura de custos. Um contador especializado faz a simulacao correta para o seu perfil.
+            O custo de demissao sem justa causa inclui: aviso previo (salario proporcional ao tempo de empresa, minimo 30 dias), multa de 40% sobre o saldo total do FGTS acumulado, ferias proporcionais com 1/3 e 13o salario proporcional. Para um colaborador com salario de R$ 5.000 e 2 anos de contrato, o custo de demissao costuma ficar entre R$ 15.000 e R$ 20.000. No contrato PJ, o encerramento da relacao comercial nao gera esses custos.
           </div>
         </div>
 
         <div class="faq-item">
           <div class="faq-question" tabindex="0">
-            Quanto preciso faturar como PJ para compensar o salario CLT?
-            <span class="faq-arrow">▾</span>
+            Quando vale a pena contratar CLT em vez de PJ?
+            <span class="faq-arrow">&#9662;</span>
           </div>
           <div class="faq-answer">
-            Nao existe uma formula unica porque depende do salario CLT bruto, dos beneficios (VR, VT, plano de saude), do regime tributario PJ e das suas despesas operacionais. A calculadora desta pagina faz essa conta automaticamente usando as tabelas INSS e IRRF 2025. Para um salario CLT de R$ 5.000, por exemplo, o faturamento PJ equivalente no Simples Nacional costuma ficar entre R$ 7.000 e R$ 8.500.
+            CLT e mais adequado quando a funcao exige presenca continua, horario fixo e subordinacao direta. Tentar mascarar esse vinculo como PJ gera risco trabalhista alto. CLT tambem e preferivel para cargos estrategicos em que a empresa quer garantir exclusividade e lealdade de longo prazo. PJ e mais vantajoso para projetos, consultorias pontuais, especialistas que atendem multiplos clientes e funcoes que nao exigem subordinacao direta.
           </div>
         </div>
 
         <div class="faq-item">
           <div class="faq-question" tabindex="0">
-            Preciso contratar contador para trabalhar como PJ?
-            <span class="faq-arrow">▾</span>
+            Como calcular o custo total de um colaborador CLT?
+            <span class="faq-arrow">&#9662;</span>
           </div>
           <div class="faq-answer">
-            Sim, e altamente recomendado. Como PJ voce precisara emitir notas fiscais, declarar imposto de renda como pessoa juridica, pagar guias mensais (DAS no Simples, ou IRPJ, CSLL, PIS e COFINS no Lucro Presumido), alem do INSS como contribuinte individual. Um contador garante que voce nao pague mais imposto do que deve e cumpra todas as obrigacoes fiscais. O custo medio de honorarios fica entre R$ 200 e R$ 500/mes para PJ de servicos.
+            Some ao salario bruto: INSS patronal (20%), FGTS (8%), provisao 13o (8,33%), provisao ferias com 1/3 (11,11%) e Sistema S aproximado (5,8%). Acrescente os beneficios custeados pela empresa, como vale-refeicao, vale-transporte e plano de saude. A calculadora desta pagina faz esse calculo automaticamente com as tabelas 2025, incluindo a simulacao do custo de demissao conforme o tempo de contrato estimado.
           </div>
         </div>
 
@@ -1399,7 +1478,7 @@
       <div class="footer-col">
         <h3 class="footer-heading">Ferramentas</h3>
         <ul>
-          <li><a href="/calculadora-pj-vs-clt/" style="color:var(--gold);">Calculadora PJ vs CLT</a></li>
+          <li><a href="/calculadora-pj-vs-clt/" style="color:var(--gold);">Calculadora CLT vs PJ</a></li>
           <li><a href="/planejamento-tributario/">Planejamento Tributario</a></li>
           <li><a href="/cidades-atendidas/">Para de Minas</a></li>
           <li><a href="/sete-lagoas-mg/escritorio-de-contabilidade-sete-lagoas/">Sete Lagoas</a></li>
@@ -1524,143 +1603,118 @@ document.querySelectorAll('.faq-item').forEach(item => {
 });
 
 /* ============================
-   BENEFITS ACCORDION
+   ENCARGOS + DEMISSAO ACCORDIONS
 ============================ */
 document.getElementById('benefitsToggle').addEventListener('click', () => {
   document.getElementById('benefitsSection').classList.toggle('open');
 });
+document.getElementById('demissaoToggle').addEventListener('click', () => {
+  document.getElementById('demissaoSection').classList.toggle('open');
+});
 
 /* ============================
-   CALCULADORA — TABELAS 2025
+   CALCULADORA — ENCARGOS PATRONAIS 2025
 ============================ */
-const INSS_TABLE = [
-  { limit: 1621.00,  rate: 0.075 },
-  { limit: 2902.84,  rate: 0.090 },
-  { limit: 4354.27,  rate: 0.120 },
-  { limit: 8475.55,  rate: 0.140 },
-];
-const IRRF_TABLE = [
-  { limit: 2428.80,  rate: 0.000, deduction: 0       },
-  { limit: 3751.48,  rate: 0.075, deduction: 181.50  },
-  { limit: 4664.68,  rate: 0.150, deduction: 528.30  },
-  { limit: 8236.01,  rate: 0.225, deduction: 1206.20 },
-  { limit: Infinity, rate: 0.275, deduction: 1685.38 },
-];
-const DEDUCAO_DEPENDENTE = 189.59;
-const simplesTaxRate = fat => fat <= 15000 ? 0.06 : 0.105;
-const PRESUMIDO_RATE = 0.27;
+const INSS_PATRONAL = 0.20;
+const FGTS_RATE     = 0.08;
+const SISTEMA_S     = 0.058;
+const PROV_13       = 1 / 12;       // 8.33%
+const PROV_FERIAS   = (1 + 1/3) / 12; // 11.11%
 
 const brl = v => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(v);
-const pct = (v, base) => base > 0 ? ((v / base - 1) * 100).toFixed(1) + '%' : '0%';
 
-function calcINSS(bruto) {
-  let prev = 0, total = 0;
-  for (const faixa of INSS_TABLE) {
-    if (bruto <= 0) break;
-    const base = Math.min(bruto, faixa.limit) - prev;
-    if (base <= 0) break;
-    total += base * faixa.rate;
-    prev = faixa.limit;
-    if (bruto <= faixa.limit) break;
-  }
-  return Math.round(total * 100) / 100;
+function calcCustoTotalCLT(salario, vr, vt, saude, incluirProvisoes) {
+  const inssPat      = Math.round(salario * INSS_PATRONAL * 100) / 100;
+  const fgts         = Math.round(salario * FGTS_RATE * 100) / 100;
+  const sistemaS     = Math.round(salario * SISTEMA_S * 100) / 100;
+  const prov13       = incluirProvisoes ? Math.round(salario * PROV_13 * 100) / 100 : 0;
+  const provFerias   = incluirProvisoes ? Math.round(salario * PROV_FERIAS * 100) / 100 : 0;
+  const encargos     = inssPat + fgts + sistemaS + prov13 + provFerias;
+  const beneficios   = vr + vt + saude;
+  const custoTotal   = salario + encargos + beneficios;
+  return { inssPat, fgts, sistemaS, prov13, provFerias, encargos, beneficios, custoTotal };
 }
 
-function calcIRRF(bruto, inss) {
-  const base = Math.max(bruto - inss, 0);
-  for (const faixa of IRRF_TABLE) {
-    if (base <= faixa.limit) {
-      const irrf = base * faixa.rate - faixa.deduction;
-      return Math.max(Math.round(irrf * 100) / 100, 0);
-    }
-  }
-  return 0;
-}
-
-function calcCLT(bruto) {
-  const inss = calcINSS(bruto);
-  const irrf = calcIRRF(bruto, inss);
-  const liquido = bruto - inss - irrf;
-  return { inss, irrf, liquido };
-}
-
-function calcPJLiquido(faturamento, regime, honorarios, gastos, provisao, inssAut) {
-  const aliquota = regime === 'simples' ? simplesTaxRate(faturamento) : PRESUMIDO_RATE;
-  const impostos = faturamento * aliquota;
-  const provisaoVal = provisao ? (faturamento - impostos) * (2 / 13.333) : 0;
-  const liquido = faturamento - impostos - honorarios - gastos - provisaoVal - inssAut;
-  return { impostos: Math.round(impostos * 100) / 100, liquido: Math.round(liquido * 100) / 100 };
-}
-
-function findEquivalente(cltLiquido, regime, honorarios, gastos, provisao, inssAut, cltBruto) {
-  let lo = cltBruto * 0.9, hi = cltBruto * 4;
-  for (let i = 0; i < 60; i++) {
-    const mid = (lo + hi) / 2;
-    const { liquido } = calcPJLiquido(mid, regime, honorarios, gastos, provisao, inssAut);
-    if (Math.abs(liquido - cltLiquido) < 0.01) return mid;
-    if (liquido < cltLiquido) lo = mid; else hi = mid;
-  }
-  return (lo + hi) / 2;
-}
-
-function calcBeneficios(bruto) {
-  const clt = calcCLT(bruto);
-  const fgtsAnual = bruto * 0.08 * 12;
-  const decimoTerceiro = clt.liquido;
-  const ferias = clt.liquido * (4 / 3);
-  const parcelas = bruto < 1412 ? 3 : bruto < 2824 ? 4 : 5;
-  const parcelaMedia = clt.liquido * 0.8;
-  const seguroDesemprego = parcelas * parcelaMedia;
-  const total = fgtsAnual + decimoTerceiro + ferias + seguroDesemprego;
-  return { fgtsAnual, decimoTerceiro, ferias, seguroDesemprego, total };
+function calcCustoDemissao(salario, meses) {
+  const anos        = meses / 12;
+  const diasAviso   = Math.min(30 + 3 * Math.floor(anos), 90);
+  const avisoPrevio = Math.round(salario * (diasAviso / 30) * 100) / 100;
+  const saldoFgts   = Math.round(salario * FGTS_RATE * meses * 100) / 100;
+  const multaFgts   = Math.round(saldoFgts * 0.40 * 100) / 100;
+  const mesesNoAno  = meses % 12 === 0 ? 12 : meses % 12;
+  const feriasProp  = Math.round(salario * (1 + 1/3) * (mesesNoAno / 12) * 100) / 100;
+  const dec13Prop   = Math.round(salario * (mesesNoAno / 12) * 100) / 100;
+  const total       = avisoPrevio + multaFgts + feriasProp + dec13Prop;
+  return { avisoPrevio, saldoFgts, multaFgts, feriasProp, dec13Prop, total };
 }
 
 /* ============================
    RENDER RESULTS
 ============================ */
 function renderResults(data) {
-  const { clt, pj, equivalente, beneficios, regime, salarioBruto } = data;
+  const { clt, pjCusto, demissao, salario, meses, incluirProvisoes } = data;
 
-  document.getElementById('outCltLiquido').textContent = brl(clt.liquido);
-  document.getElementById('outCltDetail').textContent = `INSS: ${brl(clt.inss)} | IRRF: ${brl(clt.irrf)}`;
-  document.getElementById('outPjLiquido').textContent = brl(pj.liquido);
-  document.getElementById('outPjDetail').textContent = `Impostos: ${brl(pj.impostos)} | Despesas: ${brl(pj.despesas)}`;
+  // Cards principais
+  document.getElementById('outCltCustoTotal').textContent = brl(clt.custoTotal);
+  document.getElementById('outCltDetail').textContent = 'Encargos: ' + brl(clt.encargos) + ' | Beneficios: ' + brl(clt.beneficios);
+  document.getElementById('outPjCusto').textContent = brl(pjCusto);
 
-  const delta = clt.liquido > 0 ? ((pj.liquido / clt.liquido) - 1) * 100 : 0;
+  // Delta
   const deltaEl = document.getElementById('outDelta');
-  if (Math.abs(delta) < 1) {
+  const diff = clt.custoTotal - pjCusto;
+  if (Math.abs(diff) < 50) {
     deltaEl.textContent = 'Equivalente';
     deltaEl.className = 'result-delta neutral';
-  } else if (delta > 0) {
-    deltaEl.textContent = '+' + delta.toFixed(1) + '%';
-    deltaEl.className = 'result-delta positive';
+  } else if (clt.custoTotal > pjCusto) {
+    const pctDiff = ((clt.custoTotal / pjCusto - 1) * 100).toFixed(0);
+    deltaEl.textContent = pctDiff + '% mais barato';
+    deltaEl.className = 'result-delta cheaper';
   } else {
-    deltaEl.textContent = delta.toFixed(1) + '%';
-    deltaEl.className = 'result-delta negative';
+    const pctDiff = ((pjCusto / clt.custoTotal - 1) * 100).toFixed(0);
+    deltaEl.textContent = pctDiff + '% mais caro';
+    deltaEl.className = 'result-delta expensive';
   }
 
-  document.getElementById('outFatEquivalente').textContent = brl(equivalente);
-  const fatPct = salarioBruto > 0 ? ((equivalente / salarioBruto - 1) * 100) : 0;
-  document.getElementById('outFatPct').textContent = fatPct.toFixed(1) + '%';
-  document.getElementById('outFatSub').innerHTML = `Para faturar ${brl(equivalente)} como PJ e ter o mesmo liquido CLT, voce precisaria de <strong>${fatPct.toFixed(1)}%</strong> a mais que o salario bruto CLT.`;
+  // Diferenca anual
+  const difAnual = (clt.custoTotal - pjCusto) * 12;
+  document.getElementById('outDiferencaAnual').textContent = brl(Math.abs(difAnual)) + '/ano';
+  const quem = clt.custoTotal > pjCusto ? 'CLT custa mais' : 'PJ custa mais';
+  document.getElementById('outDiferencaSub').innerHTML =
+    quem + ': diferenca de <strong>' + brl(Math.abs(diff)) + '/mes</strong> ou <strong>' + brl(Math.abs(difAnual)) + '/ano</strong>. ' +
+    (clt.custoTotal > pjCusto
+      ? 'PJ e a opcao de menor custo direto, desde que sem risco de vinculo empregaticio.'
+      : 'CLT e a opcao de menor custo direto neste cenario.');
 
-  document.getElementById('outBeneficiosTotal').textContent = '-' + brl(beneficios.total) + '/ano';
-  document.getElementById('outFgts').textContent = '-' + brl(beneficios.fgtsAnual) + '/ano';
-  document.getElementById('outDecimoTerceiro').textContent = '-' + brl(beneficios.decimoTerceiro);
-  document.getElementById('outFerias').textContent = '-' + brl(beneficios.ferias);
-  document.getElementById('outSeguroDesemprego').textContent = '-' + brl(beneficios.seguroDesemprego) + ' est.';
+  // Encargos detalhados
+  document.getElementById('outEncargosTotal').textContent = '+' + brl(clt.encargos) + '/mes';
+  document.getElementById('outInssPat').textContent = '+' + brl(clt.inssPat);
+  document.getElementById('outFgts').textContent = '+' + brl(clt.fgts);
+  document.getElementById('outSistemaS').textContent = '+' + brl(clt.sistemaS);
+  document.getElementById('rowProvisoes').style.opacity = incluirProvisoes ? '1' : '0.35';
+  document.getElementById('rowFerias').style.opacity = incluirProvisoes ? '1' : '0.35';
+  document.getElementById('outDecimoTerceiro').textContent = '+' + brl(clt.prov13);
+  document.getElementById('outFerias').textContent = '+' + brl(clt.provFerias);
 
-  document.getElementById('outInss').textContent = brl(clt.inss);
-  document.getElementById('outIrrf').textContent = brl(clt.irrf);
-  document.getElementById('outImpostosPj').textContent = brl(pj.impostos);
-  document.getElementById('outRegimePj').textContent = regime === 'simples' ? 'Simples Nacional' : 'Lucro Presumido';
+  // Demissao
+  document.getElementById('outDemissaoTotal').textContent = brl(demissao.total);
+  document.getElementById('outAvisoPrevio').textContent = brl(demissao.avisoPrevio);
+  document.getElementById('outMultaFgts').textContent = brl(demissao.multaFgts);
+  document.getElementById('outFeriasProp').textContent = brl(demissao.feriasProp);
+  document.getElementById('outDecimoTerceiroProp').textContent = brl(demissao.dec13Prop);
+  document.getElementById('outDemissaoTotalBody').textContent = brl(demissao.total);
 
+  // Resumo
+  document.getElementById('outCltMensal2').textContent = brl(clt.custoTotal);
+  const cltAnualComDem = clt.custoTotal * meses + demissao.total;
+  document.getElementById('outCltAnualComDemissao').textContent = brl(cltAnualComDem);
+  document.getElementById('outPjAnual').textContent = brl(pjCusto * meses);
+
+  // Mostrar resultado
   const result = document.getElementById('calcResult');
   if (!result.classList.contains('visible')) {
     result.classList.add('visible');
     result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
   }
-
   document.querySelectorAll('.stagger, .reveal').forEach(el => {
     if (!el.classList.contains('is-visible')) io.observe(el);
   });
@@ -1670,59 +1724,42 @@ function renderResults(data) {
    CALCULAR
 ============================ */
 function getInputs() {
-  const salarioBruto = parseFloat(document.getElementById('salarioBruto').value) || 0;
-  const vr = parseFloat(document.getElementById('beneficioVR').value) || 0;
-  const vt = parseFloat(document.getElementById('beneficioVT').value) || 0;
-  const saude = parseFloat(document.getElementById('beneficioSaude').value) || 0;
-  const regime = document.querySelector('input[name="regimeTributario"]:checked').value;
-  const honorarios = parseFloat(document.getElementById('honorariosContador').value) || 0;
-  const gastos = parseFloat(document.getElementById('gastosOperacionais').value) || 0;
-  const provisao = document.getElementById('provisao13Ferias').checked;
-  const inssAut = parseFloat(document.getElementById('inssAutonomo').value) || 0;
-  return { salarioBruto, vr, vt, saude, regime, honorarios, gastos, provisao, inssAut };
+  const salario          = parseFloat(document.getElementById('salarioBruto').value) || 0;
+  const vr               = parseFloat(document.getElementById('beneficioVR').value) || 0;
+  const vt               = parseFloat(document.getElementById('beneficioVT').value) || 0;
+  const saude            = parseFloat(document.getElementById('beneficioSaude').value) || 0;
+  const incluirProvisoes = document.getElementById('incluirProvisoes').checked;
+  const honorarioPJ      = parseFloat(document.getElementById('honorarioPJ').value) || 0;
+  const tempoContrato    = parseInt(document.getElementById('tempoContrato').value) || 24;
+  return { salario, vr, vt, saude, incluirProvisoes, honorarioPJ, tempoContrato };
 }
 
 function calcAll() {
   const inp = getInputs();
-  if (inp.salarioBruto < 1412) return;
+  if (inp.salario < 1412 && inp.honorarioPJ === 0) return;
 
-  const clt = calcCLT(inp.salarioBruto);
-  const totalBeneficios = inp.vr + inp.vt + inp.saude;
-  const cltComBeneficios = { ...clt, liquido: clt.liquido + totalBeneficios };
+  const salarioRef = inp.salario || (inp.honorarioPJ * 0.65);
+  const clt        = calcCustoTotalCLT(salarioRef, inp.vr, inp.vt, inp.saude, inp.incluirProvisoes);
+  const pjCusto    = inp.honorarioPJ > 0 ? inp.honorarioPJ : (inp.salario * 1.1);
+  const demissao   = calcCustoDemissao(salarioRef, inp.tempoContrato);
 
-  const equivalente = findEquivalente(
-    cltComBeneficios.liquido, inp.regime,
-    inp.honorarios, inp.gastos, inp.provisao, inp.inssAut, inp.salarioBruto
-  );
-  const pjResult = calcPJLiquido(equivalente, inp.regime, inp.honorarios, inp.gastos, inp.provisao, inp.inssAut);
-  pjResult.despesas = inp.honorarios + inp.gastos;
-
-  const beneficios = calcBeneficios(inp.salarioBruto);
-
-  renderResults({
-    clt: cltComBeneficios,
-    pj: pjResult,
-    equivalente,
-    beneficios,
-    regime: inp.regime,
-    salarioBruto: inp.salarioBruto
-  });
+  renderResults({ clt, pjCusto, demissao, salario: salarioRef, meses: inp.tempoContrato, incluirProvisoes: inp.incluirProvisoes });
 }
 
 /* Debounce */
 let debTimer = null;
 function debouncedCalc() { clearTimeout(debTimer); debTimer = setTimeout(calcAll, 150); }
 
-document.querySelectorAll('#salarioBruto,#beneficioVR,#beneficioVT,#beneficioSaude,#honorariosContador,#gastosOperacionais,#inssAutonomo').forEach(el => {
+document.querySelectorAll('#salarioBruto,#beneficioVR,#beneficioVT,#beneficioSaude,#honorarioPJ,#tempoContrato').forEach(el => {
   el.addEventListener('input', debouncedCalc);
 });
-document.querySelectorAll('input[name="regimeTributario"]').forEach(el => {
-  el.addEventListener('change', debouncedCalc);
-});
-document.getElementById('provisao13Ferias').addEventListener('change', debouncedCalc);
+document.getElementById('incluirProvisoes').addEventListener('change', debouncedCalc);
 document.getElementById('btnCalc').addEventListener('click', () => {
   calcAll();
-  document.getElementById('calcResult').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  const result = document.getElementById('calcResult');
+  if (result.classList.contains('visible')) {
+    result.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 });
 
 /* ============================
@@ -1730,27 +1767,32 @@ document.getElementById('btnCalc').addEventListener('click', () => {
 ============================ */
 document.getElementById('leadForm').addEventListener('submit', e => {
   e.preventDefault();
-  const nome = document.getElementById('leadNome').value.trim();
-  const email = document.getElementById('leadEmail').value.trim();
+  const nome     = document.getElementById('leadNome').value.trim();
+  const email    = document.getElementById('leadEmail').value.trim();
   const whatsapp = document.getElementById('leadWhatsapp').value.trim();
-  const profissao = document.getElementById('leadProfissao').value;
+  const cargo    = document.getElementById('leadCargo').value;
 
-  const inp = getInputs();
-  const clt = calcCLT(inp.salarioBruto);
-  const equiv = inp.salarioBruto >= 1412 ? findEquivalente(clt.liquido, inp.regime, inp.honorarios, inp.gastos, inp.provisao, inp.inssAut, inp.salarioBruto) : 0;
+  const inp     = getInputs();
+  const clt     = calcCustoTotalCLT(inp.salario || 0, inp.vr, inp.vt, inp.saude, inp.incluirProvisoes);
+  const pjCusto = inp.honorarioPJ;
 
   const texto = encodeURIComponent(
-    `Ola Amanda! Usei a calculadora PJ vs CLT do seu site.\n\nNome: ${nome}\nE-mail: ${email}\nProfissao: ${profissao || 'nao informada'}\n\nSalario CLT bruto: ${brl(inp.salarioBruto)}\nLiquido CLT: ${brl(clt.liquido)}\nFaturamento PJ equivalente (${inp.regime === 'simples' ? 'Simples' : 'L. Presumido'}): ${brl(equiv)}\n\nGostaria de receber a analise completa em PDF.`
+    'Ola Amanda! Usei a calculadora CLT vs PJ do seu site.\n\n' +
+    'Nome: ' + nome + '\n' +
+    'E-mail: ' + email + '\n' +
+    'Cargo: ' + (cargo || 'nao informado') + '\n\n' +
+    'Salario CLT analisado: ' + brl(inp.salario || 0) + '\n' +
+    'Custo total CLT/mes: ' + brl(clt.custoTotal) + '\n' +
+    'Honorario PJ: ' + brl(pjCusto) + '\n\n' +
+    'Gostaria de receber uma analise de viabilidade juridica para a contratacao.'
   );
 
-  window.open(`https://wa.me/5537999967558?text=${texto}`, '_blank');
+  window.open('https://wa.me/5537999967558?text=' + texto, '_blank');
 
   document.getElementById('leadFormContent').style.display = 'none';
   document.getElementById('leadFormSuccess').classList.add('visible');
 });
-
-/* Calcular automaticamente se houver valor pre-preenchido */
-if (document.getElementById('salarioBruto').value) calcAll();
 </script>
+
 </body>
 </html>
