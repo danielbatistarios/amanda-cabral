@@ -1905,6 +1905,7 @@
             <div class="id-form-dot" data-step="2"></div>
             <div class="id-form-dot" data-step="3"></div>
             <div class="id-form-dot" data-step="4"></div>
+            <div class="id-form-dot" data-step="5"></div>
           </div>
 
           <form id="idWizForm" novalidate>
@@ -1940,8 +1941,27 @@
               </div>
             </div>
 
-            <!-- Step 3: Ja tem contador? -->
+            <!-- Step 3: Ramo de atividade -->
             <div class="id-form-step" data-step="3">
+              <div class="id-form-step-title">Qual e o ramo de atividade do PJ?</div>
+              <div class="id-cta-opts">
+                <button type="button" class="id-cta-opt" data-field="ramo" data-value="servicos_iii">
+                  <span class="id-cta-opt-icon">💻</span> TI, dev, design, marketing — Simples Anexo III
+                </button>
+                <button type="button" class="id-cta-opt" data-field="ramo" data-value="servicos_v">
+                  <span class="id-cta-opt-icon">📋</span> Consultoria, engenharia, advocacia, contabilidade — Anexo V
+                </button>
+                <button type="button" class="id-cta-opt" data-field="ramo" data-value="comercio">
+                  <span class="id-cta-opt-icon">🛒</span> Comercio ou industria — Anexo I/II
+                </button>
+                <button type="button" class="id-cta-opt" data-field="ramo" data-value="presumido">
+                  <span class="id-cta-opt-icon">🏦</span> Lucro Presumido ou Real
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 4: Ja tem contador? -->
+            <div class="id-form-step" data-step="4">
               <div class="id-form-step-title">Voce ja tem contador?</div>
               <div class="id-cta-opts">
                 <button type="button" class="id-cta-opt" data-field="contador" data-value="sim">
@@ -1953,8 +1973,8 @@
               </div>
             </div>
 
-            <!-- Step 4: Dados de contato -->
-            <div class="id-form-step" data-step="4">
+            <!-- Step 5: Dados de contato -->
+            <div class="id-form-step" data-step="5">
               <div class="id-form-step-title">Ultimo passo</div>
               <div class="id-form-group">
                 <label for="idWizNome">Seu nome <span style="color:rgba(239,68,68,.7)">*</span></label>
@@ -2081,19 +2101,6 @@
                 </div>
               </label>
             </div>
-          </div>
-
-          <!-- Ramo de atividade (aparece so no Simples Nacional) -->
-          <div class="ramo-group is-visible" id="ramoGroup">
-            <label for="wizardRamo">Ramo de atividade (Simples Nacional)</label>
-            <select id="wizardRamo" class="ramo-select">
-              <option value="comercio">Comercio / Revenda de produtos — Anexo I (~4%)</option>
-              <option value="industria">Industria / Fabricacao — Anexo II (~4,5%)</option>
-              <option value="servicos_iii" selected>Servicos gerais (TI, dev, design, marketing) — Anexo III (~6%)</option>
-              <option value="servicos_iv">Servicos de transporte / locacao — Anexo IV (~7,5%)</option>
-              <option value="servicos_v">Consultoria, advocacia, engenharia, contabilidade — Anexo V (~15,5%)</option>
-            </select>
-            <div class="ramo-hint" id="ramoHint">TI e servicos digitais geralmente se enquadram no Anexo III. Consultorias e profissoes regulamentadas, no Anexo V.</div>
           </div>
 
           <!-- Resultado inline -->
@@ -3025,7 +3032,7 @@ document.querySelectorAll('.faq-item').forEach(item => {
 /* ============================
    CALCULADORA SIMPLIFICADA
 ============================ */
-const CALC_STATE = { cargo: '', motivacao: '' };
+const CALC_STATE = { cargo: '', motivacao: '', ramo: null };
 
 // Formata enquanto digita: remove nao-digitos, aplica separador de milhar
 function formatCurrencyInput(input) {
@@ -3067,26 +3074,11 @@ document.querySelectorAll('.context-toggle').forEach(btn => {
   });
 });
 
-// Listener de regime (radio cards) — mostra/oculta ramo de atividade
-document.querySelectorAll('input[name="wizardRegime"]').forEach(r => r.addEventListener('change', function() {
-  const ramoGroup = document.getElementById('ramoGroup');
-  if (ramoGroup) ramoGroup.classList.toggle('is-visible', this.value === 'simples');
-  calcAndRender();
-}));
-
-// Listener de ramo de atividade — atualiza hint e recalcula
-(function() {
-  const ramoSel = document.getElementById('wizardRamo');
-  if (!ramoSel) return;
-  ramoSel.addEventListener('change', function() {
-    const hint = document.getElementById('ramoHint');
-    if (hint) hint.textContent = RAMO_HINTS[this.value] || '';
-    calcAndRender();
-  });
-})();
+// Listener de regime (radio cards)
+document.querySelectorAll('input[name="wizardRegime"]').forEach(r => r.addEventListener('change', calcAndRender));
 
 // Listeners de inputs numericos: recalcula em tempo real
-['wizardSalario','wizardHonorario','wizardVr','wizardVt','wizardSaude','wizardTempo','wizardRamo'].forEach(id => {
+['wizardSalario','wizardHonorario','wizardVr','wizardVt','wizardSaude','wizardTempo'].forEach(id => {
   const el = document.getElementById(id);
   if (el) el.addEventListener('input', calcAndRender);
 });
@@ -3094,6 +3086,7 @@ document.querySelectorAll('input[name="wizardRegime"]').forEach(r => r.addEventL
 function resetCalc() {
   CALC_STATE.cargo = '';
   CALC_STATE.motivacao = '';
+  CALC_STATE.ramo = null;
   document.querySelectorAll('.context-toggle').forEach(b => b.classList.remove('is-active'));
   document.querySelectorAll('#wizard input[type="radio"]').forEach(r => r.checked = false);
   document.querySelectorAll('#wizard input[type="text"]').forEach(i => i.value = '');
@@ -3101,12 +3094,6 @@ function resetCalc() {
   // Reset regime para Simples Nacional + ramo para default
   const firstRegime = document.querySelector('input[name="wizardRegime"]');
   if (firstRegime) firstRegime.checked = true;
-  const ramoSel = document.getElementById('wizardRamo');
-  if (ramoSel) ramoSel.value = 'servicos_iii';
-  const ramoGroup = document.getElementById('ramoGroup');
-  if (ramoGroup) ramoGroup.classList.add('is-visible');
-  const ramoHint = document.getElementById('ramoHint');
-  if (ramoHint) ramoHint.textContent = RAMO_HINTS.servicos_iii;
   document.getElementById('resultInline').style.display = 'none';
   document.getElementById('colDetalhes').style.display = 'none';
   document.getElementById('calcCtaBar').style.display = 'none';
@@ -3293,18 +3280,25 @@ const RAMO_HINTS = {
 };
 
 function getRamo() {
+  // Wizard tem prioridade; fallback para o select na calculadora
+  if (CALC_STATE.ramo) return CALC_STATE.ramo;
   const sel = document.getElementById('wizardRamo');
   return sel ? sel.value : 'servicos_iii';
 }
 
 function getRegime() {
+  // Se o ramo escolhido no wizard é Lucro Presumido, respeita isso
+  if (CALC_STATE.ramo === 'presumido') return 'presumido';
   const sel = document.querySelector('input[name="wizardRegime"]:checked');
   return sel ? sel.value : 'simples';
 }
 
 function getAliqPJ() {
+  const ramo = getRamo();
+  // Ramo 'presumido' indica Lucro Presumido direto
+  if (ramo === 'presumido') return REGIME_ALIQ.presumido;
   const regime = getRegime();
-  if (regime === 'simples') return RAMO_ALIQ[getRamo()] || RAMO_ALIQ.servicos_iii;
+  if (regime === 'simples') return RAMO_ALIQ[ramo] || RAMO_ALIQ.servicos_iii;
   return REGIME_ALIQ[regime] || REGIME_ALIQ.presumido;
 }
 
@@ -3570,7 +3564,7 @@ window.TEM_CONTADOR = null;
     currentIdStep = step;
   }
 
-  // Auto-advance on option click (steps 1-3)
+  // Auto-advance on option click (steps 1-4)
   document.getElementById('idWizForm').querySelectorAll('.id-cta-opt').forEach(function(btn) {
     btn.addEventListener('click', function() {
       var field = btn.dataset.field;
@@ -3581,14 +3575,15 @@ window.TEM_CONTADOR = null;
         b.classList.remove('selected');
       });
       btn.classList.add('selected');
-      // Store TEM_CONTADOR for use in overview/WhatsApp
+      // Propagar para CALC_STATE e globals
       if (field === 'contador') window.TEM_CONTADOR = val;
+      if (field === 'ramo') CALC_STATE.ramo = val;
       var thisStep = parseInt(btn.closest('.id-form-step').getAttribute('data-step'));
       setTimeout(function() { goToIdStep(thisStep + 1); }, 260);
     });
   });
 
-  // Back button (step 4 → step 3)
+  // Back button (steps 2-5 → passo anterior)
   document.getElementById('idBtnBack').addEventListener('click', function() {
     goToIdStep(currentIdStep - 1);
   });
@@ -3624,7 +3619,7 @@ window.TEM_CONTADOR = null;
     unlockCalc();
   }
 
-  // Form submit (step 4)
+  // Form submit (step 5)
   document.getElementById('idWizForm').addEventListener('submit', function(e) {
     e.preventDefault();
     var nome = document.getElementById('idWizNome').value.trim();
@@ -3662,10 +3657,11 @@ window.TEM_CONTADOR = null;
 
   // Reset (after filled)
   document.getElementById('idWizardReset').addEventListener('click', function() {
-    wizData = { cargo: null, motivacao: null, contador: null };
+    wizData = { cargo: null, motivacao: null, ramo: null, contador: null };
     window.LEAD_NAME = '';
     window.LEAD_COMPANY = '';
     window.TEM_CONTADOR = null;
+    CALC_STATE.ramo = null;
     document.getElementById('idWizardFilled').style.display = 'none';
     var card = document.getElementById('idFormCard');
     card.style.opacity = '';
