@@ -312,6 +312,8 @@
             font-family: var(--font-display); font-style: italic;
             font-size: 0.82rem; color: rgba(255,255,255,0.35);
             line-height: 1.45; margin: 0;
+            padding: 18px 22px 0;
+            flex-shrink: 0;
         }
         .mob-contact {
             display: flex; flex-direction: column; gap: 6px;
@@ -2550,7 +2552,18 @@
   </div>
   <ul class="mob-list">
     <li><a href="/" class="mob-list-link">Início</a></li>
-    <li><a href="/sobre-amcabral-blindagem/" class="mob-list-link">Sobre Amanda</a></li>
+    <li>
+      <button class="mob-list-link mob-trigger" data-target="mob-sobre" aria-expanded="false">
+        Sobre Amanda
+        <span class="mob-caret"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="4 6 8 10 12 6"/></svg></span>
+      </button>
+      <ul class="mob-sub" id="mob-sobre">
+        <li><a href="/sobre-amcabral-blindagem/" class="mob-sub-link">Amanda Cabral</a></li>
+        <li><a href="/casos-de-sucesso/" class="mob-sub-link">Casos de Sucesso</a></li>
+        <li><a href="/perguntas-frequentes/" class="mob-sub-link">Perguntas Frequentes</a></li>
+        <li><a href="/cidades-atendidas/" class="mob-sub-link">Cidades Atendidas</a></li>
+      </ul>
+    </li>
     <li>
       <button class="mob-list-link mob-trigger" data-target="mob-servicos" aria-expanded="false">
         Serviços
@@ -2566,11 +2579,24 @@
         <li><a href="/nossos-servicos/desenquadrar-mei-para-me/" class="mob-sub-link">Desenquadrar MEI para ME</a></li>
       </ul>
     </li>
-    <li><a href="/blog/" class="mob-list-link">Blog</a></li>
+    <li>
+      <button class="mob-list-link mob-trigger" data-target="mob-blog" aria-expanded="false">
+        Blog
+        <span class="mob-caret"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="4 6 8 10 12 6"/></svg></span>
+      </button>
+      <ul class="mob-sub" id="mob-blog">
+        <li><a href="/blog/" class="mob-sub-link">Ver todos os artigos</a></li>
+        <li><a href="/blog/reforma-tributaria-guia-industrias/" class="mob-sub-link">Reforma Tributária 2026</a></li>
+        <li><a href="/blog/o-que-e-ibs-e-cbs/" class="mob-sub-link">O que é IBS e CBS?</a></li>
+        <li><a href="/blog/cronograma-reforma-tributaria/" class="mob-sub-link">Cronograma da Reforma</a></li>
+        <li><a href="/blog/incentivos-fiscais-minas-gerais/" class="mob-sub-link">Incentivos Fiscais em MG</a></li>
+        <li><a href="/author-amanda-cabral/" class="mob-sub-link">Sobre a Autora</a></li>
+      </ul>
+    </li>
     <li><a href="/calculadora-pj-vs-clt/" class="mob-list-link" style="color:var(--gold);">Calculadora PJ vs CLT</a></li>
   </ul>
+  <p class="mob-slogan">Inteligência tributária para empresas que competem para vencer.</p>
   <div class="mob-footer">
-    <p class="mob-slogan">Inteligência tributária para empresas que competem para vencer.</p>
     <div class="mob-contact">
       <a href="mailto:contato@amcabralblindagem.com.br" class="mob-contact-link">
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
