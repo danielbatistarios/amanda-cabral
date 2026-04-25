@@ -1051,6 +1051,23 @@
   .regime-card:has(input:checked) { border-color: var(--gold); background: rgba(201,168,76,.07); }
   .regime-card:hover { border-color: rgba(201,168,76,.35); }
 
+  /* ===== RAMO DE ATIVIDADE ===== */
+  .ramo-group { margin-top: 12px; display: none; }
+  .ramo-group.is-visible { display: block; }
+  .ramo-group label { font-size: .82rem; font-weight: 600; color: var(--silver-light); display: block; margin-bottom: 6px; }
+  .ramo-select {
+    width: 100%; padding: 10px 14px;
+    background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.1);
+    border-radius: 10px; color: var(--white); font-size: .85rem; font-family: var(--font-body);
+    appearance: none; -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2394A3B8' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 12px center;
+    cursor: pointer; transition: border-color .2s;
+  }
+  .ramo-select:focus { outline: none; border-color: var(--gold); }
+  .ramo-select option { background: #0A1628; color: var(--white); }
+  .ramo-hint { font-size: .73rem; color: var(--silver); margin-top: 5px; line-height: 1.4; }
+
   /* ===== RESPONSIVO ===== */
   @media (max-width: 900px) {
     .calc-grid-simple { grid-template-columns: 1fr 1fr; }
@@ -2043,8 +2060,8 @@
                 <input type="radio" name="wizardRegime" value="simples" checked>
                 <div class="regime-card-inner">
                   <div class="regime-card-nome">Simples Nacional</div>
-                  <div class="regime-card-aliq">~6–14% s/ NF</div>
-                  <div class="regime-card-desc">Faturamento ate R$4,8M/ano. Aliquota depende do anexo e receita acumulada.</div>
+                  <div class="regime-card-aliq" id="simplexAliqBadge">~6% s/ NF</div>
+                  <div class="regime-card-desc">Faturamento ate R$4,8M/ano. Aliquota varia por ramo: Anexo III (~6%) a Anexo V (~15,5%).</div>
                 </div>
               </label>
               <label class="regime-card">
@@ -2064,6 +2081,19 @@
                 </div>
               </label>
             </div>
+          </div>
+
+          <!-- Ramo de atividade (aparece so no Simples Nacional) -->
+          <div class="ramo-group is-visible" id="ramoGroup">
+            <label for="wizardRamo">Ramo de atividade (Simples Nacional)</label>
+            <select id="wizardRamo" class="ramo-select">
+              <option value="comercio">Comercio / Revenda de produtos — Anexo I (~4%)</option>
+              <option value="industria">Industria / Fabricacao — Anexo II (~4,5%)</option>
+              <option value="servicos_iii" selected>Servicos gerais (TI, dev, design, marketing) — Anexo III (~6%)</option>
+              <option value="servicos_iv">Servicos de transporte / locacao — Anexo IV (~7,5%)</option>
+              <option value="servicos_v">Consultoria, advocacia, engenharia, contabilidade — Anexo V (~15,5%)</option>
+            </select>
+            <div class="ramo-hint" id="ramoHint">TI e servicos digitais geralmente se enquadram no Anexo III. Consultorias e profissoes regulamentadas, no Anexo V.</div>
           </div>
 
           <!-- Resultado inline -->
@@ -3037,11 +3067,26 @@ document.querySelectorAll('.context-toggle').forEach(btn => {
   });
 });
 
-// Listener de regime (radio cards)
-document.querySelectorAll('input[name="wizardRegime"]').forEach(r => r.addEventListener('change', calcAndRender));
+// Listener de regime (radio cards) — mostra/oculta ramo de atividade
+document.querySelectorAll('input[name="wizardRegime"]').forEach(r => r.addEventListener('change', function() {
+  const ramoGroup = document.getElementById('ramoGroup');
+  if (ramoGroup) ramoGroup.classList.toggle('is-visible', this.value === 'simples');
+  calcAndRender();
+}));
+
+// Listener de ramo de atividade — atualiza hint e recalcula
+(function() {
+  const ramoSel = document.getElementById('wizardRamo');
+  if (!ramoSel) return;
+  ramoSel.addEventListener('change', function() {
+    const hint = document.getElementById('ramoHint');
+    if (hint) hint.textContent = RAMO_HINTS[this.value] || '';
+    calcAndRender();
+  });
+})();
 
 // Listeners de inputs numericos: recalcula em tempo real
-['wizardSalario','wizardHonorario','wizardVr','wizardVt','wizardSaude','wizardTempo'].forEach(id => {
+['wizardSalario','wizardHonorario','wizardVr','wizardVt','wizardSaude','wizardTempo','wizardRamo'].forEach(id => {
   const el = document.getElementById(id);
   if (el) el.addEventListener('input', calcAndRender);
 });
@@ -3053,9 +3098,15 @@ function resetCalc() {
   document.querySelectorAll('#wizard input[type="radio"]').forEach(r => r.checked = false);
   document.querySelectorAll('#wizard input[type="text"]').forEach(i => i.value = '');
   document.getElementById('wizardTempo').value = '24';
-  // Reset regime para Simples Nacional (primeiro radio)
+  // Reset regime para Simples Nacional + ramo para default
   const firstRegime = document.querySelector('input[name="wizardRegime"]');
   if (firstRegime) firstRegime.checked = true;
+  const ramoSel = document.getElementById('wizardRamo');
+  if (ramoSel) ramoSel.value = 'servicos_iii';
+  const ramoGroup = document.getElementById('ramoGroup');
+  if (ramoGroup) ramoGroup.classList.add('is-visible');
+  const ramoHint = document.getElementById('ramoHint');
+  if (ramoHint) ramoHint.textContent = RAMO_HINTS.servicos_iii;
   document.getElementById('resultInline').style.display = 'none';
   document.getElementById('colDetalhes').style.display = 'none';
   document.getElementById('calcCtaBar').style.display = 'none';
@@ -3209,16 +3260,52 @@ const NARRATIVAS = {
   }
 };
 
-// Aliquota efetiva estimada de impostos PJ por regime (servicos)
+// Aliquota efetiva estimada de impostos PJ por regime e ramo
 const REGIME_ALIQ = {
-  simples:   0.10,  // media Anexo III/V para honorarios entre R$5-15k
+  simples:   0.06,  // default Anexo III (TI/dev/design) — sobrescrito por getRamo()
   presumido: 0.145, // IRPJ 4,8% + CSLL 2,88% + PIS 0,65% + COFINS 3% + ISS 3% = ~14,5%
   real:      0.19   // estimativa conservadora sobre lucro efetivo + folha pro-labore
 };
 
+// Aliquotas por ramo no Simples Nacional (tabela 2025, faixa ate R$180k/ano)
+const RAMO_ALIQ = {
+  comercio:      0.04,   // Anexo I — 1a faixa
+  industria:     0.045,  // Anexo II — 1a faixa
+  servicos_iii:  0.06,   // Anexo III — 1a faixa (TI, dev, design, marketing)
+  servicos_iv:   0.075,  // Anexo IV — 1a faixa (transporte, locacao de mao de obra)
+  servicos_v:    0.155   // Anexo V — 1a faixa (consultoria, advocacia, engenharia, contabilidade)
+};
+
+const RAMO_LABELS = {
+  comercio:     'Simples — Anexo I (~4%)',
+  industria:    'Simples — Anexo II (~4,5%)',
+  servicos_iii: 'Simples — Anexo III (~6%)',
+  servicos_iv:  'Simples — Anexo IV (~7,5%)',
+  servicos_v:   'Simples — Anexo V (~15,5%)'
+};
+
+const RAMO_HINTS = {
+  comercio:     'Revenda de mercadorias. Sem ISS.',
+  industria:    'Fabricacao e transformacao de produtos.',
+  servicos_iii: 'TI, desenvolvimento, design, marketing digital, publicidade.',
+  servicos_iv:  'Transporte de cargas/passageiros e locacao de mao de obra.',
+  servicos_v:   'Consultorias e profissoes regulamentadas: advocacia, engenharia, arquitetura, contabilidade, medicina veterinaria, fisioterapia.'
+};
+
+function getRamo() {
+  const sel = document.getElementById('wizardRamo');
+  return sel ? sel.value : 'servicos_iii';
+}
+
 function getRegime() {
   const sel = document.querySelector('input[name="wizardRegime"]:checked');
   return sel ? sel.value : 'simples';
+}
+
+function getAliqPJ() {
+  const regime = getRegime();
+  if (regime === 'simples') return RAMO_ALIQ[getRamo()] || RAMO_ALIQ.servicos_iii;
+  return REGIME_ALIQ[regime] || REGIME_ALIQ.presumido;
 }
 
 function calcAndRender() {
@@ -3228,7 +3315,16 @@ function calcAndRender() {
   const honorario = parseFormattedNumber(document.getElementById('wizardHonorario').value);
   const regime = getRegime();
   const isSimples = regime === 'simples';
-  const aliqPJ = REGIME_ALIQ[regime] || REGIME_ALIQ.simples;
+  const aliqPJ = getAliqPJ();
+
+  // Atualiza badge de aliquota do card Simples conforme ramo escolhido
+  if (isSimples) {
+    const ramo = getRamo();
+    const pct = Math.round(RAMO_ALIQ[ramo] * 1000) / 10;
+    const badge = document.getElementById('simplexAliqBadge');
+    if (badge) badge.textContent = '~' + pct + '% s/ NF';
+  }
+
   const vr = parseFormattedNumber(document.getElementById('wizardVr').value);
   const vt = parseFormattedNumber(document.getElementById('wizardVt').value);
   const saude = parseFormattedNumber(document.getElementById('wizardSaude').value);
@@ -3354,7 +3450,7 @@ function calcAndRender() {
 
   renderOverview({
     salario, honorario: pjCusto, pjLiquido, liquidoEmpregado,
-    inssEmp, irrf, clt, demissao, diff, difAnual, aliqPJ, regime, tempo,
+    inssEmp, irrf, clt, demissao, diff, difAnual, aliqPJ, regime, ramo: getRamo(), tempo,
     cargo: CALC_STATE.cargo, motivacao: CALC_STATE.motivacao
   });
 }
@@ -3363,7 +3459,10 @@ function renderOverview(d) {
   const cargo = d.cargo || 'comparar';
   const mot = d.motivacao || 'comparar';
   const regime = d.regime;
-  const regimeLabel = { simples: 'Simples Nacional', presumido: 'Lucro Presumido', real: 'Lucro Real' }[regime] || 'Simples Nacional';
+  const ramo = d.ramo || 'servicos_iii';
+  const regimeLabel = regime === 'simples'
+    ? (RAMO_LABELS[ramo] || 'Simples Nacional')
+    : ({ presumido: 'Lucro Presumido', real: 'Lucro Real' }[regime] || 'Lucro Presumido');
 
   // --- Bloco 1: Para a empresa ---
   let textoEmpresa = '';
