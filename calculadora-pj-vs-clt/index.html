@@ -2023,6 +2023,69 @@
     .tldr-box, .info-box, .expert-quote, .pattern-break,
     .opening-scene, .narrative-return, .micro-cta { padding: 16px; }
   }
+
+  /* ===== STICKY SECTION NAV ===== */
+  #stickySecNav {
+    position: fixed;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 150;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .35s ease;
+  }
+  #stickySecNav.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .ssn-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    justify-content: flex-end;
+  }
+  .ssn-label {
+    font-size: .7rem;
+    color: var(--silver);
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateX(6px);
+    transition: opacity .2s, transform .2s, color .2s;
+    pointer-events: none;
+  }
+  .ssn-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.2);
+    border: 1px solid rgba(255,255,255,.15);
+    flex-shrink: 0;
+    transition: background .25s, border-color .25s, transform .25s;
+  }
+  .ssn-item:hover .ssn-label,
+  .ssn-item.active .ssn-label {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  .ssn-item.active .ssn-dot {
+    background: var(--gold);
+    border-color: var(--gold);
+    transform: scale(1.35);
+  }
+  .ssn-item:hover .ssn-dot {
+    background: rgba(201,168,76,.5);
+    border-color: rgba(201,168,76,.6);
+  }
+  @media (max-width: 900px) {
+    #stickySecNav { display: none; }
+  }
   </style>
 
   <!-- SCHEMA JSON-LD -->
@@ -2575,7 +2638,7 @@
             Ver detalhamento dos encargos
             <span class="toggle-deep-icon">▼</span>
           </button>
-          <div class="deep-dive-section" id="deepDiveSection">
+          <div class="deep-dive-section" id="deepDiveSection" data-sec="sec-encargos">
             <div class="calc-col-simple" id="colDetalhes">
               <div class="calc-col-header">
                 <div class="calc-col-icon" style="background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.2);">
@@ -2633,7 +2696,7 @@
   <section class="analise-section" id="analiseSection" style="display:none;" aria-live="polite">
 
     <!-- Hero do resultado: fundo mais escuro, largura full -->
-    <div class="analise-hero" id="analiseHero">
+    <div class="analise-hero" id="analiseHero" data-sec="sec-resumo">
       <div class="container">
         <div class="analise-hero-inner">
           <div class="analise-hero-label">
@@ -2748,7 +2811,7 @@
     <div class="container">
 
       <!-- DONUTS: Liquido real CLT vs PJ -->
-      <div class="donuts-wrapper" id="donutsWrapper">
+      <div class="donuts-wrapper" id="donutsWrapper" data-sec="sec-perfil">
         <div class="donuts-label">Quanto o profissional realmente recebe</div>
         <div class="donuts-grid">
           <div class="donut-item">
@@ -2780,7 +2843,7 @@
       </div>
 
       <!-- OVERVIEW INTELIGENTE -->
-      <div class="overview-section" id="overviewSection" style="display:none;">
+      <div class="overview-section" id="overviewSection" style="display:none;" data-sec="sec-analise">
         <div class="overview-header">
           <div class="overview-header-icon" id="ovHeaderIcon">📊</div>
           <div>
@@ -2826,7 +2889,7 @@
         </div>
 
         <!-- Proximos passos acionaveis -->
-        <div class="next-steps" id="nextStepsBlock">
+        <div class="next-steps" id="nextStepsBlock" data-sec="sec-decisao">
           <div class="next-steps-title">O que fazer agora</div>
           <ul class="next-steps-list" id="nextStepsList"></ul>
           <a id="nextStepsWA" href="https://wa.me/5537999967558" target="_blank" rel="noopener" class="next-step-amanda">
@@ -2841,7 +2904,7 @@
       </div>
 
       <!-- CTA final -->
-      <div class="calc-cta-bar" id="calcCtaBar">
+      <div class="calc-cta-bar" id="calcCtaBar" data-sec="sec-conversa">
         <div class="dash-narrative" style="margin:0;">
           <div class="narrative-icon" id="narrativeIcon">💡</div>
           <div class="narrative-content">
@@ -4134,6 +4197,8 @@ function calcAndRender() {
     if (!jaVisivel) {
       setTimeout(() => analiseSecEl.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
     }
+    // Mostrar sticky nav apos primeiro calculo
+    if (window.ssnShow) window.ssnShow();
   }
 
   // Trigger lead modal apos primeiro calculo (apenas uma vez por sessao)
@@ -4728,6 +4793,87 @@ document.getElementById('leadCaptureForm').addEventListener('submit', function(e
       });
     });
     </script>
+
+<script>
+/* ===== STICKY SECTION NAV ===== */
+(function() {
+  const nav = document.getElementById('stickySecNav');
+  if (!nav) return;
+
+  const items = Array.from(nav.querySelectorAll('.ssn-item'));
+  let calcDone = false;
+
+  // Scroll to target section on click
+  items.forEach(item => {
+    item.addEventListener('click', () => {
+      const targetId = item.dataset.target;
+      const el = document.querySelector('[data-sec="' + targetId + '"]');
+      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  // Show nav after calc is done (hooked into calcDone flag)
+  function showNav() {
+    calcDone = true;
+    nav.classList.add('visible');
+  }
+
+  // Expose so main calc script can call it
+  window.ssnShow = showNav;
+
+  // IntersectionObserver: highlight active section
+  const sectionEls = [];
+  function initObserver() {
+    const targets = document.querySelectorAll('[data-sec]');
+    if (!targets.length) return;
+    targets.forEach(el => sectionEls.push(el));
+
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const id = entry.target.getAttribute('data-sec');
+          items.forEach(item => {
+            item.classList.toggle('active', item.dataset.target === id);
+          });
+        }
+      });
+    }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+
+    sectionEls.forEach(el => io.observe(el));
+  }
+
+  // Init observer once — the elements exist even before display:none is removed
+  initObserver();
+})();
+</script>
+
+<!-- STICKY SECTION NAV -->
+<nav id="stickySecNav" aria-label="Navegação por seção" role="navigation">
+  <div class="ssn-item" data-target="sec-resumo">
+    <span class="ssn-label">Resumo</span>
+    <span class="ssn-dot"></span>
+  </div>
+  <div class="ssn-item" data-target="sec-encargos">
+    <span class="ssn-label">Encargos</span>
+    <span class="ssn-dot"></span>
+  </div>
+  <div class="ssn-item" data-target="sec-perfil">
+    <span class="ssn-label">Perfil</span>
+    <span class="ssn-dot"></span>
+  </div>
+  <div class="ssn-item" data-target="sec-analise">
+    <span class="ssn-label">Análise</span>
+    <span class="ssn-dot"></span>
+  </div>
+  <div class="ssn-item" data-target="sec-decisao">
+    <span class="ssn-label">Decisão</span>
+    <span class="ssn-dot"></span>
+  </div>
+  <div class="ssn-item" data-target="sec-conversa">
+    <span class="ssn-label">Conversa</span>
+    <span class="ssn-dot"></span>
+  </div>
+</nav>
 
 </body>
 </html>
