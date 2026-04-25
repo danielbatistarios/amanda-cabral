@@ -236,58 +236,82 @@
         }
         #hdr-hamburger span { width: 22px; height: 2px; background: #E2DAC8; border-radius: 2px; display: block; transition: background 0.2s; }
         #hdr-hamburger:hover span { background: #fff; }
+
+        /* ── Mobile overlay (padrão Move Máquinas) ── */
         #hdr-mob {
-            display: none; position: fixed; inset: 0;
-            background: #060E1A; z-index: 600;
-            flex-direction: column; padding: 80px 28px 32px;
+            position: fixed; inset: 0;
+            background: rgba(6,14,26,.99);
+            z-index: 600;
+            display: flex; flex-direction: column;
+            opacity: 0; visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s;
             overflow-y: auto;
         }
-        #hdr-mob.open { display: flex; }
-        #hdr-mob-close {
-            position: absolute; top: 18px; right: 20px;
-            background: none; border: 1px solid rgba(201,168,76,0.25);
-            border-radius: 50%; width: 36px; height: 36px;
-            color: rgba(201,168,76,0.7); font-size: 16px;
-            cursor: pointer; line-height: 1;
-            display: flex; align-items: center; justify-content: center;
-            transition: border-color 0.2s, color 0.2s;
-        }
-        #hdr-mob-close:hover { border-color: var(--gold); color: var(--gold); }
-        /* Brand block no topo do menu */
-        .mob-brand {
-            margin-bottom: 28px;
-            padding-bottom: 20px;
+        #hdr-mob.open { opacity: 1; visibility: visible; }
+
+        /* Cabeçalho do overlay */
+        .mob-head {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 20px 22px;
             border-bottom: 1px solid rgba(201,168,76,0.12);
+            flex-shrink: 0;
         }
-        .mob-brand-name {
+        .mob-head-logo {
             font-family: var(--font-display);
-            font-size: clamp(2rem, 9vw, 2.8rem);
-            font-style: italic;
-            font-weight: 400;
-            color: transparent;
-            -webkit-text-stroke: 1px rgba(201,168,76,0.45);
-            letter-spacing: -0.02em;
-            line-height: 1.1;
-            display: block;
+            font-size: 1.35rem; font-style: italic; font-weight: 400;
+            color: var(--gold); letter-spacing: -0.01em; text-decoration: none;
         }
-        .mob-brand-sub {
-            font-family: var(--font-body);
-            font-size: 0.72rem;
-            letter-spacing: 0.14em;
-            text-transform: uppercase;
-            color: rgba(201,168,76,0.5);
-            margin-top: 6px;
-            display: block;
+        #hdr-mob-close {
+            background: none; border: none;
+            padding: 8px; width: 42px; height: 42px;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            gap: 0; position: relative; cursor: pointer;
         }
-        #hdr-mob a {
-            color: rgba(255,255,255,0.75);
-            font-size: 16px;
-            padding: 14px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.06);
+        #hdr-mob-close span {
+            position: absolute; width: 22px; height: 2px;
+            background: rgba(255,255,255,0.8); border-radius: 2px;
+        }
+        #hdr-mob-close span:first-child { transform: rotate(45deg); }
+        #hdr-mob-close span:last-child  { transform: rotate(-45deg); }
+
+        /* Lista de itens */
+        .mob-list { list-style: none; padding: 10px 0; flex: 1; }
+        .mob-list li { border-bottom: 1px solid rgba(255,255,255,0.06); }
+        .mob-list-link {
+            display: block; padding: 16px 22px;
+            font-family: var(--font-body); font-weight: 700;
+            font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.4px;
+            color: rgba(255,255,255,0.8); background: none;
+            width: 100%; text-align: left; border: none;
+            cursor: pointer; transition: background 0.15s, color 0.15s;
             text-decoration: none;
-            display: block;
         }
-        #hdr-mob a:hover { color: #fff; }
+        .mob-list-link:hover { background: rgba(255,255,255,0.05); color: #fff; }
+        .mob-trigger { display: flex; justify-content: space-between; align-items: center; }
+        .mob-caret { width: 18px; height: 18px; transition: transform 0.2s; flex-shrink: 0; }
+        .mob-trigger[aria-expanded="true"] .mob-caret { transform: rotate(180deg); }
+
+        /* Submenus */
+        .mob-sub { max-height: 0; overflow: hidden; list-style: none; background: rgba(255,255,255,0.02); transition: max-height 0.3s ease; }
+        .mob-sub.open { max-height: 600px; }
+        .mob-sub-link {
+            display: block; padding: 13px 22px 13px 36px;
+            font-family: var(--font-body); font-size: 0.88rem;
+            color: rgba(255,255,255,0.5); transition: color 0.15s; text-decoration: none;
+        }
+        .mob-sub-link:hover { color: var(--gold); }
+
+        /* CTA rodapé */
+        .mob-cta-wrap { padding: 20px 22px; flex-shrink: 0; }
+        .mob-cta {
+            display: block; width: 100%; padding: 14px 20px;
+            background: var(--gold); color: #0A0E14;
+            font-family: var(--font-body); font-weight: 700; font-size: 0.88rem;
+            text-transform: uppercase; letter-spacing: 0.5px;
+            text-align: center; text-decoration: none; border-radius: 4px;
+            transition: opacity 0.2s;
+        }
+        .mob-cta:hover { opacity: 0.88; }
 
         @media (max-width: 900px) {
             #hdr-nav, .hdr-cta { display: none; }
@@ -2474,6 +2498,7 @@
         <a href="/blog/incentivos-fiscais-minas-gerais/" class="hdr-mega-link"><strong>Incentivos Fiscais em Minas Gerais</strong><span>Benefícios disponíveis para indústrias e empresas em MG</span></a>
         <a href="/blog/87-industrias-mg-pagam-icms-a-mais/" class="hdr-mega-link"><strong>87% das Indústrias em MG Pagam ICMS a Mais</strong><span>Como identificar e recuperar créditos pagos indevidamente</span></a>
         <a href="/author-amanda-cabral/" class="hdr-mega-link"><strong>Sobre a Autora</strong><span>Formação, especializações e trajetória de Amanda Cabral</span></a>
+        <a href="/calculadora-pj-vs-clt/" class="hdr-mega-link" style="border-top:1px solid rgba(201,168,76,0.15);margin-top:8px;padding-top:12px;"><strong style="color:var(--gold);">⚖ Calculadora PJ vs CLT</strong><span>Simule quanto você precisa faturar como PJ</span></a>
       </div>
       <a href="/blog/" class="hdr-mega-col-cta">Ver todos os artigos →</a>
     </div>
@@ -2497,6 +2522,7 @@
   <a href="/nossos-servicos/holding-patrimonial/">Holding Patrimonial</a>
   <a href="/nossos-servicos/planejamento-tributario/">Planejamento Fiscal</a>
   <a href="/blog/">Blog</a>
+  <a href="/calculadora-pj-vs-clt/" style="color:var(--gold);">⚖ Calculadora PJ vs CLT</a>
   <a href="/fale-com-especialista/" id="hdrMobCta" style="color:var(--gold);margin-top:20px;font-weight:600;border-color:rgba(201,168,76,0.2);letter-spacing:0.04em;">→ Diagnóstico Gratuito</a>
 </div>
 

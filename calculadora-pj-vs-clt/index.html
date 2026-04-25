@@ -1,0 +1,1756 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+  <link rel="shortcut icon" href="/favicon.svg">
+  <title>Calculadora PJ vs CLT 2025 | Simule Seus Ganhos | Amanda Cabral</title>
+  <meta name="description" content="Calculadora gratuita PJ vs CLT com tabelas INSS e IRRF 2025. Descubra quanto voce precisa faturar como PJ para ganhar o mesmo que CLT. Por Amanda Cabral, contadora CRC/MG.">
+  <meta property="og:title" content="Calculadora PJ vs CLT 2025 | Amanda Cabral Contadora">
+  <meta property="og:description" content="Simule seus ganhos como PJ e CLT em 2 minutos. Tabelas INSS e IRRF 2025 atualizadas. Ferramenta gratuita por Amanda Cabral, CRC/MG ativo.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="https://amcabralblindagem.com.br/assets/og-image.webp">
+  <link rel="canonical" href="https://amcabralblindagem.com.br/calculadora-pj-vs-clt/">
+  <meta name="robots" content="index, follow">
+  <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/assets/fonts/instrument-serif-normal.woff2" as="font" type="font/woff2" crossorigin>
+
+  <style>
+    @font-face { font-family: 'Inter'; font-style: normal; font-weight: 100 900; font-display: swap; src: url('/assets/fonts/inter-latin.woff2') format('woff2'); }
+    @font-face { font-family: 'Instrument Serif'; font-style: normal; font-weight: 400; font-display: swap; src: url('/assets/fonts/instrument-serif-normal.woff2') format('woff2'); }
+    @font-face { font-family: 'Instrument Serif'; font-style: italic; font-weight: 400; font-display: swap; src: url('/assets/fonts/instrument-serif-italic.woff2') format('woff2'); }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --blue-900: #060E1A;
+      --blue-800: #0A1628;
+      --blue-700: #0F2137;
+      --accent: #3B82F6;
+      --accent-light: #60A5FA;
+      --silver: #94A3B8;
+      --silver-light: #CBD5E1;
+      --ice: #F1F5F9;
+      --white: #FFFFFF;
+      --text: #1E293B;
+      --text-muted: #64748B;
+      --gold: #C9A84C;
+      --accent-gold: #C4A574;
+      --font-body: 'Inter', system-ui, sans-serif;
+      --font-display: 'Instrument Serif', Georgia, serif;
+      --max-w: 1200px;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    html { font-size: 16px; }
+    body {
+      font-family: var(--font-body);
+      color: var(--white);
+      background: var(--blue-900);
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      padding-top: 60px;
+      cursor: none;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; cursor: none; }
+    ul { list-style: none; }
+    button { cursor: none; }
+
+    .container { max-width: var(--max-w); margin: 0 auto; padding: 0 clamp(20px,4vw,48px); }
+
+    /* ============================
+       HEADER / MEGA-MENU
+    ============================ */
+    #hdr {
+      position: fixed; top: 0; left: 0; width: 100%;
+      background: rgba(10,14,20,0.96);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      z-index: 500;
+      height: 60px;
+    }
+    #hdr-inner {
+      max-width: 1200px; margin: 0 auto;
+      padding: 0 24px; height: 100%;
+      display: flex; align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+    #hdr-logo {
+      font-family: var(--font-display);
+      font-size: clamp(1.15rem,5vw,1.45rem);
+      font-style: italic; font-weight: 400;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(201,168,76,.55);
+      letter-spacing: -.01em;
+      white-space: nowrap;
+      text-decoration: none;
+      transition: -webkit-text-stroke-color .2s;
+    }
+    #hdr-logo:hover { -webkit-text-stroke-color: rgba(201,168,76,.9); }
+    #hdr-nav { display: flex; align-items: center; gap: 4px; list-style: none; position: absolute; left: 50%; transform: translateX(-50%); }
+    .hdr-item { position: relative; }
+    .hdr-btn {
+      background: none; border: none; cursor: pointer;
+      font-size: 13px; font-weight: 500;
+      color: rgba(255,255,255,0.7);
+      padding: 8px 14px; display: flex; align-items: center; gap: 5px;
+      transition: color 0.2s;
+    }
+    .hdr-btn:hover { color: #fff; }
+    .hdr-item.open .hdr-btn { color: var(--accent-gold); }
+    .hdr-arrow { font-size: 9px; transition: transform 0.25s; }
+    .hdr-item.open .hdr-arrow { transform: rotate(180deg); }
+    .hdr-cta {
+      display: inline-block; padding: 9px 22px;
+      background: var(--accent-gold); color: #0a0e14;
+      font-size: 12px; font-weight: 700;
+      letter-spacing: 0.05em; text-transform: uppercase;
+      border-radius: 4px; text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .hdr-cta:hover { opacity: 0.88; }
+
+    .hdr-mega {
+      display: none;
+      position: fixed; top: 60px; left: 0; right: 0;
+      background: rgba(10,14,20,0.97);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(20px);
+      z-index: 499;
+    }
+    .hdr-mega.open { display: block; }
+    .hdr-mega-inner {
+      max-width: 1400px; margin: 0 auto;
+      padding: 36px 48px;
+      display: grid; grid-template-columns: 300px 1fr; gap: 64px;
+      align-items: start;
+    }
+    .hdr-mega-img { display: block; position: relative; border-radius: 10px; overflow: hidden; aspect-ratio: 3/4; }
+    .hdr-mega-img img { width: 100%; height: 100%; object-fit: cover; object-position: top center; display: block; }
+    .hdr-mega-col { display: flex; flex-direction: column; }
+    .hdr-mega-col-title { font-size: 10px; font-weight: 700; color: rgba(255,255,255,0.35); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 12px; }
+    .hdr-mega-col-cta { display: inline-block; margin-top: 16px; padding: 7px 14px; background: var(--accent-gold); color: #0a0e14; font-size: 11px; font-weight: 700; border-radius: 3px; text-decoration: none; width: fit-content; }
+    .hdr-mega-links { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0 64px; }
+    .hdr-mega-link { display: block; padding: 12px 0; border-bottom: 1px solid rgba(255,255,255,0.05); text-decoration: none; transition: color 0.15s; }
+    .hdr-mega-link strong { display: block; font-size: 14px; color: #fff; margin-bottom: 3px; transition: color 0.15s; }
+    .hdr-mega-link span { font-size: 12px; color: rgba(255,255,255,0.5); transition: color 0.15s; }
+    .hdr-mega-link:hover strong { color: var(--accent-gold); }
+    .hdr-mega-link:hover span { color: rgba(255,255,255,0.75); }
+
+    #hdr-hamburger {
+      display: none; background: none; border: none;
+      cursor: pointer; flex-direction: column; gap: 5px; padding: 8px;
+    }
+    #hdr-hamburger span { width: 20px; height: 2px; background: #fff; border-radius: 2px; display: block; }
+    #hdr-mob {
+      display: none; position: fixed; inset: 0;
+      background: #0a0e14; z-index: 600;
+      flex-direction: column; padding: 72px 24px 24px;
+      overflow-y: auto;
+    }
+    #hdr-mob.open { display: flex; }
+    #hdr-mob-close { position: absolute; top: 16px; right: 20px; background: none; border: none; color: #fff; font-size: 28px; cursor: pointer; line-height: 1; }
+    #hdr-mob a { color: rgba(255,255,255,0.75); font-size: 16px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.06); text-decoration: none; display: block; }
+    #hdr-mob a:hover { color: #fff; }
+
+    @media (max-width: 900px) {
+      #hdr-nav, .hdr-cta { display: none; }
+      #hdr-hamburger { display: flex; }
+    }
+    @media (max-width: 600px) { #hdr-inner { padding: 0 16px; } }
+
+    /* ============================
+       CURSOR
+    ============================ */
+    .cursor { position: fixed; width: 20px; height: 20px; border: 1.5px solid var(--gold); border-radius: 50%; pointer-events: none; z-index: 10000; mix-blend-mode: difference; transition: width .3s var(--ease), height .3s var(--ease), background .3s, border-color .3s; transform: translate(-50%,-50%); }
+    .cursor.hover { width: 48px; height: 48px; background: rgba(201,168,76,.08); border-color: var(--accent-gold); }
+    .cursor-dot { position: fixed; width: 4px; height: 4px; background: var(--gold); border-radius: 50%; pointer-events: none; z-index: 10001; transform: translate(-50%,-50%); }
+    @media (max-width: 768px) { .cursor, .cursor-dot { display: none; } body { cursor: auto; } a, button { cursor: pointer; } }
+
+    /* ============================
+       NOISE + SCROLL PROGRESS
+    ============================ */
+    .noise { position: fixed; inset: 0; pointer-events: none; z-index: 9998; opacity: .03; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size: 200px; }
+    .scroll-progress { position: fixed; top: 0; left: 0; height: 2px; background: linear-gradient(90deg, var(--gold), #D4B86A); z-index: 10001; width: 0%; }
+
+    /* ============================
+       REVEAL
+    ============================ */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .8s var(--ease), transform .8s var(--ease); }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    .stagger > * { opacity: 0; transform: translateY(20px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+    .stagger.is-visible > * { opacity: 1; transform: translateY(0); }
+    .stagger.is-visible > *:nth-child(1) { transition-delay: 0ms; }
+    .stagger.is-visible > *:nth-child(2) { transition-delay: 80ms; }
+    .stagger.is-visible > *:nth-child(3) { transition-delay: 160ms; }
+    .stagger.is-visible > *:nth-child(4) { transition-delay: 240ms; }
+    .stagger.is-visible > *:nth-child(5) { transition-delay: 320ms; }
+
+    /* ============================
+       SECTION TAG + HEADINGS
+    ============================ */
+    .section-tag {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(201,168,76,.08); border: 1px solid rgba(201,168,76,.15);
+      padding: 6px 16px; border-radius: 60px;
+      font-size: .68rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+      color: rgba(255,255,255,.45); margin-bottom: 20px;
+    }
+    .section-tag .dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; }
+    h2.heading {
+      font-family: var(--font-display);
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 400; color: var(--white);
+      line-height: 1.15; margin-bottom: 12px;
+    }
+    h2.heading em { font-style: italic; color: var(--accent-gold); }
+    .heading-sub { font-size: 1rem; color: rgba(255,255,255,.6); line-height: 1.7; max-width: 600px; }
+
+    /* ============================
+       BREADCRUMB
+    ============================ */
+    .lp-breadcrumb { background: #1E293B; border-top: 1px solid #334155; border-bottom: 1px solid #334155; padding: 10px 0; }
+    .lp-breadcrumb ol { display: flex; align-items: center; justify-content: center; gap: 6px; list-style: none; flex-wrap: wrap; font-size: 11px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: #94A3B8; max-width: 1200px; margin: 0 auto; padding: 0 clamp(24px,5vw,80px); }
+    .lp-breadcrumb ol li:not(:last-child)::after { content: '›'; margin-left: 6px; color: #475569; }
+    .lp-breadcrumb ol a { color: #94A3B8; text-decoration: none; transition: color .2s; }
+    .lp-breadcrumb ol a:hover { color: #fff; }
+    .lp-breadcrumb ol li[aria-current] { color: var(--gold); }
+
+    /* ============================
+       HERO
+    ============================ */
+    .calc-hero {
+      position: relative; overflow: hidden;
+      background: var(--blue-900);
+      padding: clamp(72px,9vw,120px) 0 clamp(56px,7vw,96px);
+    }
+    .calc-hero-grid {
+      position: absolute; inset: 0;
+      background-image: linear-gradient(rgba(255,255,255,.015) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.015) 1px, transparent 1px);
+      background-size: 80px 80px;
+      mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 0%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 50%, black 0%, transparent 100%);
+    }
+    .calc-hero-orb {
+      position: absolute; border-radius: 50%; pointer-events: none;
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(201,168,76,.06) 0%, transparent 70%);
+      top: -200px; right: -150px;
+    }
+    .calc-hero-orb-2 {
+      position: absolute; border-radius: 50%; pointer-events: none;
+      width: 500px; height: 500px;
+      background: radial-gradient(circle, rgba(59,130,246,.05) 0%, transparent 70%);
+      bottom: -150px; left: -100px;
+    }
+    .calc-hero .container { position: relative; z-index: 2; }
+    .calc-hero-inner { max-width: 720px; }
+    .calc-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2.2rem, 5vw, 3.6rem);
+      font-weight: 400; color: var(--white);
+      line-height: 1.08; margin-bottom: 18px;
+    }
+    .calc-hero h1 em { font-style: italic; color: var(--accent-gold); }
+    .calc-hero-sub {
+      font-size: clamp(.95rem, 1.5vw, 1.05rem);
+      color: rgba(255,255,255,.65); line-height: 1.75;
+      max-width: 560px; margin-bottom: 36px;
+    }
+    .calc-hero-badges { display: flex; flex-wrap: wrap; gap: 10px; margin-bottom: 36px; }
+    .calc-hero-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.09);
+      border-radius: 6px; padding: 7px 14px;
+      font-size: .78rem; font-weight: 600; color: rgba(255,255,255,.6);
+    }
+    .calc-hero-badge svg { color: var(--gold); flex-shrink: 0; }
+    .btn-hero-anchor {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--gold); color: #060E1A;
+      font-size: .9rem; font-weight: 700; letter-spacing: .04em;
+      padding: 14px 32px; border-radius: 8px; text-decoration: none;
+      transition: opacity .2s, transform .2s;
+    }
+    .btn-hero-anchor:hover { opacity: .9; transform: translateY(-2px); }
+
+    /* ============================
+       CALCULADORA
+    ============================ */
+    .calc-section {
+      background: var(--blue-800);
+      padding: clamp(64px,8vw,96px) 0;
+    }
+    .calc-header { text-align: center; margin-bottom: 48px; }
+    .calc-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-bottom: 28px;
+    }
+    .calc-col {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 16px;
+      padding: 32px;
+    }
+    .calc-col-header {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 28px; padding-bottom: 20px;
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .calc-col-icon {
+      width: 40px; height: 40px; border-radius: 10px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .calc-col-icon.clt { background: rgba(59,130,246,.12); border: 1px solid rgba(59,130,246,.2); }
+    .calc-col-icon.pj { background: rgba(201,168,76,.12); border: 1px solid rgba(201,168,76,.2); }
+    .calc-col-icon svg { width: 20px; height: 20px; }
+    .calc-col-icon.clt svg { color: var(--accent-light); }
+    .calc-col-icon.pj svg { color: var(--gold); }
+    .calc-col-title { font-size: 1rem; font-weight: 700; color: var(--white); }
+    .calc-col-sub { font-size: .75rem; color: rgba(255,255,255,.4); margin-top: 2px; }
+
+    .calc-input-group { margin-bottom: 18px; }
+    .calc-input-group label {
+      display: block; font-size: .75rem; font-weight: 700;
+      letter-spacing: .06em; text-transform: uppercase;
+      color: rgba(255,255,255,.45); margin-bottom: 7px;
+    }
+    .calc-input-group label span {
+      font-weight: 400; text-transform: none; letter-spacing: 0;
+      color: rgba(255,255,255,.25);
+    }
+    .calc-input-group input[type="number"],
+    .calc-input-group input[type="text"] {
+      width: 100%; padding: 11px 14px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 8px; color: var(--white);
+      font-size: .95rem; font-family: inherit;
+      transition: border-color .2s, background .2s;
+    }
+    .calc-input-group input:focus {
+      outline: none;
+      border-color: var(--gold);
+      background: rgba(201,168,76,.04);
+    }
+    .calc-input-group input::placeholder { color: rgba(255,255,255,.2); }
+    .calc-input-group input[type="number"]::-webkit-inner-spin-button,
+    .calc-input-group input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+    .calc-input-group input[type="number"] { -moz-appearance: textfield; }
+
+    .calc-radio-group { display: flex; gap: 10px; flex-wrap: wrap; }
+    .calc-radio-option {
+      flex: 1; min-width: 120px;
+    }
+    .calc-radio-option input[type="radio"] { display: none; }
+    .calc-radio-option label {
+      display: block; padding: 10px 14px; text-align: center;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 8px; cursor: pointer;
+      font-size: .82rem; font-weight: 600;
+      color: rgba(255,255,255,.5);
+      transition: all .2s;
+      text-transform: none; letter-spacing: 0;
+    }
+    .calc-radio-option input[type="radio"]:checked + label {
+      background: rgba(201,168,76,.1);
+      border-color: rgba(201,168,76,.4);
+      color: var(--gold);
+    }
+
+    .calc-checkbox-group { display: flex; align-items: center; gap: 10px; margin-top: 4px; }
+    .calc-checkbox-group input[type="checkbox"] {
+      width: 18px; height: 18px; accent-color: var(--gold); cursor: pointer; flex-shrink: 0;
+    }
+    .calc-checkbox-group label {
+      font-size: .85rem; font-weight: 500;
+      color: rgba(255,255,255,.6);
+      text-transform: none; letter-spacing: 0;
+      cursor: pointer;
+    }
+
+    .btn-calc {
+      display: flex; align-items: center; justify-content: center; gap: 10px;
+      width: 100%; padding: 16px;
+      background: var(--gold); color: #060E1A;
+      font-size: .95rem; font-weight: 800;
+      letter-spacing: .06em; text-transform: uppercase;
+      border: none; border-radius: 10px; cursor: pointer;
+      transition: opacity .2s, transform .2s, box-shadow .2s;
+      margin-top: 8px;
+    }
+    .btn-calc:hover { opacity: .92; transform: translateY(-2px); box-shadow: 0 12px 32px rgba(201,168,76,.25); }
+    .btn-calc svg { width: 18px; height: 18px; }
+
+    .calc-note { text-align: center; font-size: .78rem; color: rgba(255,255,255,.3); margin-top: 12px; }
+
+    /* ============================
+       RESULTADO
+    ============================ */
+    .calc-result {
+      display: none;
+      margin-top: 40px;
+      animation: fadeUp .5s var(--ease) forwards;
+    }
+    .calc-result.visible { display: block; }
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+    .result-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    .result-card {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 14px; padding: 28px 24px;
+      position: relative; overflow: hidden;
+    }
+    .result-card.clt { border-color: rgba(59,130,246,.2); }
+    .result-card.pj { border-color: rgba(201,168,76,.25); background: rgba(201,168,76,.04); }
+    .result-card-label {
+      font-size: .72rem; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: rgba(255,255,255,.4); margin-bottom: 10px;
+    }
+    .result-card.clt .result-card-label { color: rgba(96,165,250,.7); }
+    .result-card.pj .result-card-label { color: rgba(201,168,76,.7); }
+    .result-card-value {
+      font-family: var(--font-display);
+      font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+      font-style: italic; color: var(--white);
+      line-height: 1; margin-bottom: 8px;
+    }
+    .result-card.pj .result-card-value { color: var(--accent-gold); }
+    .result-card-detail { font-size: .8rem; color: rgba(255,255,255,.4); line-height: 1.6; }
+    .result-delta {
+      position: absolute; top: 16px; right: 16px;
+      padding: 4px 10px; border-radius: 20px;
+      font-size: .72rem; font-weight: 700; letter-spacing: .04em;
+    }
+    .result-delta.positive { background: rgba(16,185,129,.15); color: #10B981; border: 1px solid rgba(16,185,129,.25); }
+    .result-delta.negative { background: rgba(239,68,68,.12); color: #EF4444; border: 1px solid rgba(239,68,68,.2); }
+    .result-delta.neutral { background: rgba(255,255,255,.06); color: rgba(255,255,255,.5); border: 1px solid rgba(255,255,255,.1); }
+
+    .result-equivalente {
+      background: rgba(201,168,76,.06);
+      border: 1px solid rgba(201,168,76,.2);
+      border-radius: 14px; padding: 24px 28px;
+      margin-bottom: 20px;
+    }
+    .result-equivalente-label {
+      font-size: .75rem; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: rgba(201,168,76,.65); margin-bottom: 8px;
+    }
+    .result-equivalente-value {
+      font-family: var(--font-display);
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-style: italic; color: var(--white);
+      line-height: 1; margin-bottom: 6px;
+    }
+    .result-equivalente-sub { font-size: .85rem; color: rgba(255,255,255,.5); line-height: 1.6; }
+
+    /* BENEFÍCIOS ACCORDION */
+    .benefits-section {
+      background: rgba(255,255,255,.02);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 14px; overflow: hidden;
+      margin-bottom: 28px;
+    }
+    .benefits-header {
+      padding: 20px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+      cursor: pointer;
+      border-bottom: 1px solid rgba(255,255,255,.05);
+      transition: background .2s;
+    }
+    .benefits-header:hover { background: rgba(255,255,255,.02); }
+    .benefits-header-left { display: flex; flex-direction: column; gap: 2px; }
+    .benefits-header-title {
+      font-size: .9rem; font-weight: 700; color: var(--white);
+    }
+    .benefits-header-sub { font-size: .78rem; color: rgba(255,255,255,.4); }
+    .benefits-header-total {
+      font-family: var(--font-display);
+      font-size: 1.25rem; font-style: italic;
+      color: #EF4444;
+    }
+    .benefits-header-arrow { font-size: 14px; color: rgba(255,255,255,.4); transition: transform .25s; }
+    .benefits-section.open .benefits-header-arrow { transform: rotate(180deg); }
+    .benefits-body { display: none; padding: 0 24px 20px; }
+    .benefits-section.open .benefits-body { display: block; }
+    .benefit-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 0;
+      border-bottom: 1px solid rgba(255,255,255,.04);
+      font-size: .875rem;
+    }
+    .benefit-row:last-child { border-bottom: none; }
+    .benefit-row-name { color: rgba(255,255,255,.65); }
+    .benefit-row-value { font-weight: 700; color: #EF4444; }
+    .benefit-row-detail { font-size: .75rem; color: rgba(255,255,255,.3); margin-top: 2px; }
+
+    /* IMPOSTOS DETALHES */
+    .taxes-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .tax-item {
+      background: rgba(255,255,255,.02);
+      border: 1px solid rgba(255,255,255,.05);
+      border-radius: 10px; padding: 14px 16px;
+    }
+    .tax-item-label { font-size: .72rem; font-weight: 700; letter-spacing: .07em; text-transform: uppercase; color: rgba(255,255,255,.35); margin-bottom: 4px; }
+    .tax-item-value { font-size: 1rem; font-weight: 700; color: rgba(255,255,255,.75); }
+
+    /* ============================
+       LEAD FORM
+    ============================ */
+    .lead-form-wrapper {
+      background: rgba(201,168,76,.05);
+      border: 1px solid rgba(201,168,76,.18);
+      border-radius: 16px; padding: 32px;
+      margin-bottom: 16px;
+    }
+    .lead-form-title {
+      font-family: var(--font-display);
+      font-size: clamp(1.2rem, 2vw, 1.5rem);
+      font-weight: 400; color: var(--white);
+      margin-bottom: 6px;
+    }
+    .lead-form-title em { font-style: italic; color: var(--accent-gold); }
+    .lead-form-sub { font-size: .875rem; color: rgba(255,255,255,.5); margin-bottom: 24px; line-height: 1.6; }
+    .lead-form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 14px; }
+    .form-group label { font-size: .75rem; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: rgba(255,255,255,.45); }
+    .form-group input,
+    .form-group select {
+      padding: 11px 14px;
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 8px; color: var(--white);
+      font-size: .9rem; font-family: inherit;
+      transition: border-color .2s, background .2s;
+      width: 100%;
+    }
+    .form-group input::placeholder { color: rgba(255,255,255,.25); }
+    .form-group input:focus,
+    .form-group select:focus { outline: none; border-color: var(--gold); background: rgba(201,168,76,.04); }
+    .form-group select option { background: #0F2137; color: #fff; }
+    .btn-lead-submit {
+      width: 100%; display: flex; align-items: center; justify-content: center; gap: 10px;
+      background: #25D366; color: #fff;
+      font-size: .9rem; font-weight: 700;
+      padding: 14px; border-radius: 8px; border: none; cursor: pointer;
+      transition: opacity .2s, box-shadow .2s;
+      margin-top: 4px;
+    }
+    .btn-lead-submit:hover { opacity: .92; box-shadow: 0 8px 24px rgba(37,211,102,.25); }
+    .lead-form-notice { font-size: .72rem; color: rgba(255,255,255,.3); text-align: center; margin-top: 10px; }
+    .lead-form-success { display: none; text-align: center; padding: 24px; }
+    .lead-form-success.visible { display: block; }
+    .lead-form-success p { font-size: .95rem; color: rgba(255,255,255,.7); line-height: 1.7; margin-bottom: 20px; }
+    .btn-agendar {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--gold); color: #060E1A;
+      font-size: .88rem; font-weight: 700; letter-spacing: .04em;
+      padding: 13px 28px; border-radius: 8px; text-decoration: none;
+      transition: opacity .2s, transform .2s;
+    }
+    .btn-agendar:hover { opacity: .9; transform: translateY(-2px); }
+
+    /* ============================
+       AMANDA SECTION
+    ============================ */
+    .amanda-section {
+      background: var(--blue-900);
+      padding: clamp(64px,8vw,100px) 0;
+      border-top: 1px solid rgba(255,255,255,.05);
+    }
+    .amanda-grid {
+      display: grid;
+      grid-template-columns: 380px 1fr;
+      gap: 64px;
+      align-items: center;
+    }
+    .amanda-photo-wrap { position: relative; }
+    .amanda-photo {
+      border-radius: 16px; overflow: hidden;
+      aspect-ratio: 3/4;
+    }
+    .amanda-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: top center;
+      display: block;
+    }
+    .amanda-photo-badge {
+      position: absolute; bottom: -16px; left: 24px;
+      background: var(--blue-800);
+      border: 1px solid rgba(201,168,76,.3);
+      border-radius: 10px; padding: 12px 18px;
+      font-size: .78rem; font-weight: 700;
+      color: var(--accent-gold);
+    }
+    .amanda-content { }
+    .amanda-creds {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      margin-bottom: 28px;
+    }
+    .amanda-cred {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+      border-radius: 6px; padding: 6px 12px;
+      font-size: .76rem; font-weight: 600;
+      color: rgba(255,255,255,.55);
+    }
+    .amanda-cred svg { color: var(--gold); width: 14px; height: 14px; flex-shrink: 0; }
+    .amanda-intro {
+      font-size: .97rem; color: rgba(255,255,255,.65);
+      line-height: 1.8; margin-bottom: 28px;
+    }
+    .amanda-intro strong { color: var(--white); font-weight: 600; }
+    .amanda-testimonial {
+      background: rgba(255,255,255,.03);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 10px 10px 0;
+      padding: 20px 24px; margin-bottom: 32px;
+    }
+    .amanda-testimonial p {
+      font-family: var(--font-display);
+      font-size: 1.05rem; font-style: italic;
+      color: rgba(255,255,255,.75); line-height: 1.7; margin-bottom: 10px;
+    }
+    .amanda-testimonial-author { font-size: .78rem; color: rgba(255,255,255,.4); }
+    .btn-agendar-full {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: var(--gold); color: #060E1A;
+      font-size: .9rem; font-weight: 800;
+      letter-spacing: .05em; text-transform: uppercase;
+      padding: 15px 36px; border-radius: 8px; text-decoration: none;
+      transition: opacity .2s, transform .2s, box-shadow .2s;
+    }
+    .btn-agendar-full:hover { opacity: .92; transform: translateY(-2px); box-shadow: 0 12px 32px rgba(201,168,76,.25); }
+
+    /* ============================
+       FAQ
+    ============================ */
+    .faq-section {
+      background: var(--blue-800);
+      padding: clamp(64px,8vw,96px) 0;
+    }
+    .faq-section .container { max-width: 800px; }
+    .faq-list { margin-top: 40px; display: flex; flex-direction: column; gap: 12px; }
+    .faq-item {
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.07);
+      border-radius: 12px; overflow: hidden;
+    }
+    .faq-question {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 20px 24px; cursor: pointer;
+      font-size: .95rem; font-weight: 600; color: var(--white);
+      transition: color .2s;
+      list-style: none;
+    }
+    .faq-question::marker, .faq-question::-webkit-details-marker { display: none; }
+    .faq-item.open .faq-question { color: var(--accent-gold); }
+    .faq-arrow { font-size: 12px; color: rgba(255,255,255,.35); transition: transform .25s; flex-shrink: 0; margin-left: 16px; }
+    .faq-item.open .faq-arrow { transform: rotate(180deg); color: var(--gold); }
+    .faq-answer {
+      display: none; padding: 0 24px 20px;
+      font-size: .9rem; color: rgba(255,255,255,.6); line-height: 1.8;
+    }
+    .faq-item.open .faq-answer { display: block; }
+
+    /* ============================
+       FOOTER
+    ============================ */
+    .site-footer { background: #040A14; border-top: 1px solid #0A1628; padding: 64px 0 0; }
+    .footer-inner { max-width: 1200px; margin: 0 auto; padding: 0 40px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 64px; }
+    .footer-brand-col { display: flex; flex-direction: column; }
+    .footer-contact-title { font-size: .8125rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+    .footer-nap { display: flex; flex-direction: column; gap: 10px; font-style: normal; }
+    .footer-nap-row { display: flex; align-items: flex-start; gap: 10px; font-size: .8125rem; color: #4a5568; text-decoration: none; transition: color .2s; line-height: 1.6; }
+    a.footer-nap-row:hover { color: rgba(255,255,255,.75); }
+    a.footer-nap-row:hover svg { color: var(--gold); }
+    .footer-nap-row svg { flex-shrink: 0; margin-top: 2px; color: var(--gold); transition: color .2s; }
+    .footer-col { display: flex; flex-direction: column; }
+    .footer-heading { font-size: .8125rem; font-weight: 700; letter-spacing: .18em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col a { display: block; font-size: .875rem; font-weight: 300; color: #4a5568; transition: color .2s; text-decoration: none; }
+    .footer-col a:hover { color: var(--white); }
+    .footer-wordmark-tagline { text-align: center; font-family: var(--font-display); font-size: clamp(.95rem, 1.5vw, 1.15rem); color: rgba(255,255,255,.55); margin-bottom: 8px; font-weight: 300; }
+    .footer-wordmark { font-family: var(--font-display); font-size: clamp(3.5rem, 8vw, 7rem); font-style: italic; font-weight: 400; color: transparent; -webkit-text-stroke: 1px rgba(201,168,76,.2); letter-spacing: -.02em; line-height: 1; margin-bottom: 0; user-select: none; text-align: center; }
+    .footer-legal { border-top: 1px solid #0A1628; padding: 24px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .footer-legal p { font-size: .8125rem; color: #2d3748; }
+    .footer-legal-links { display: flex; gap: 24px; }
+    .footer-legal-links a { font-size: .8125rem; color: #2d3748; text-decoration: none; transition: color .2s; }
+    .footer-legal-links a:hover { color: var(--white); }
+    .footer-social-icons { display: flex; gap: 16px; align-items: center; }
+    .footer-social-icons a { color: #4a5568; transition: color .2s; display: flex; align-items: center; }
+    .footer-social-icons a:hover { color: var(--gold); }
+
+    /* ============================
+       BOTTOM BAR
+    ============================ */
+    .bottom-bar {
+      position: fixed; bottom: 0; left: 0; right: 0; z-index: 600;
+      background: rgba(6,14,26,.97); backdrop-filter: blur(16px);
+      border-top: 1px solid rgba(255,255,255,.07);
+      display: flex; align-items: center; justify-content: center;
+      transform: translateY(100%); transition: transform .4s cubic-bezier(.34,1.56,.64,1);
+    }
+    .bottom-bar.visible { transform: none; }
+    .bb-desktop { display: flex; align-items: center; gap: 20px; width: 100%; max-width: 860px; justify-content: space-between; padding: 12px 40px; }
+    .bb-info { font-size: 13px; color: rgba(255,255,255,.55); white-space: nowrap; }
+    .bb-stars { color: #F59E0B; letter-spacing: 1px; }
+    .bb-sep { width: 1px; height: 20px; background: rgba(255,255,255,.1); }
+    .bb-cta { background: transparent; color: #C9A84C; border: 1.5px solid #C9A84C; font-family: inherit; font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 10px 20px; border-radius: 8px; white-space: nowrap; display: flex; align-items: center; gap: 6px; transition: transform .2s, background .2s, color .2s; text-decoration: none; }
+    .bb-cta:hover { background: #C9A84C; color: #060E1A; transform: translateY(-1px); }
+
+    /* ============================
+       WHATSAPP FLOAT
+    ============================ */
+    .wa-float { position: fixed; bottom: 80px; right: 24px; z-index: 997; width: 56px; height: 56px; background: #25D366; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 20px rgba(37,211,102,.3); transition: all .4s var(--ease-spring); }
+    .wa-float:hover { transform: scale(1.1) translateY(-2px); box-shadow: 0 8px 32px rgba(37,211,102,.4); }
+    .wa-float svg { width: 26px; height: 26px; fill: white; }
+
+    /* ============================
+       RESPONSIVE
+    ============================ */
+    @media (max-width: 1024px) {
+      .amanda-grid { grid-template-columns: 1fr; gap: 48px; }
+      .amanda-photo-wrap { max-width: 360px; margin: 0 auto; }
+      .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+    }
+    @media (max-width: 768px) {
+      .calc-grid { grid-template-columns: 1fr; }
+      .result-cards { grid-template-columns: 1fr; }
+      .taxes-grid { grid-template-columns: 1fr 1fr; }
+      .lead-form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .site-footer { padding: 48px 0 0; }
+      .footer-inner { padding: 0 20px; }
+      .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+      .footer-legal { flex-direction: column; gap: 12px; text-align: center; }
+      .footer-legal-links { flex-wrap: wrap; justify-content: center; }
+      .taxes-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+
+  <!-- SCHEMA JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebApplication",
+    "@id": "https://amcabralblindagem.com.br/calculadora-pj-vs-clt/#webapp",
+    "name": "Calculadora PJ vs CLT 2025",
+    "url": "https://amcabralblindagem.com.br/calculadora-pj-vs-clt/",
+    "description": "Calculadora gratuita PJ vs CLT com tabelas INSS e IRRF 2025. Descubra quanto voce precisa faturar como PJ para ganhar o mesmo que CLT.",
+    "applicationCategory": "FinanceApplication",
+    "operatingSystem": "All",
+    "browserRequirements": "Requires JavaScript",
+    "offers": { "@type": "Offer", "price": "0", "priceCurrency": "BRL" },
+    "author": {
+      "@type": "Person",
+      "name": "Amanda Cabral",
+      "jobTitle": "Contadora",
+      "identifier": "CRC/MG ativo",
+      "url": "https://amcabralblindagem.com.br/sobre-amcabral-blindagem/"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "AM Cabral Contabilidade",
+      "url": "https://amcabralblindagem.com.br/"
+    }
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Como funciona o calculo do INSS para CLT em 2025?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "O INSS CLT 2025 e calculado de forma progressiva por faixas: 7,5% sobre a parcela ate R$ 1.621,00; 9% sobre a parcela de R$ 1.621,01 a R$ 2.902,84; 12% sobre a parcela de R$ 2.902,85 a R$ 4.354,27; e 14% sobre a parcela de R$ 4.354,28 ate o teto de R$ 8.475,55. O salario acima do teto nao tem desconto adicional de INSS."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Vale mais a pena ser PJ ou CLT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Depende do salario CLT e do faturamento PJ. Como PJ voce perde FGTS (8%), 13 salario, ferias com 1/3, seguro-desemprego e plano de saude custeado pelo empregador. Em geral, um PJ precisa faturar entre 30% e 50% a mais que o salario CLT bruto para igualar o liquido. Use a calculadora acima para simular seu caso especifico."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Qual regime tributario escolher como PJ: Simples Nacional ou Lucro Presumido?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Para faturamentos mensais ate R$ 15.000 (R$ 180.000/ano), o Simples Nacional Anexo III costuma ser mais vantajoso com aliquota efetiva de 6%. Para faturamentos maiores, o Lucro Presumido com aliquota efetiva em torno de 27% pode ser mais adequado dependendo do tipo de servico. A escolha ideal depende do CNAE, margem de lucro e estrutura de custos. Um contador especializado pode fazer a simulacao correta."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Quanto preciso faturar como PJ para compensar o salario CLT?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nao existe uma formula unica, pois depende do salario CLT bruto, dos beneficios (VR, VT, plano de saude), do regime tributario PJ e das suas despesas operacionais. A calculadora desta pagina faz essa conta automaticamente usando as tabelas INSS e IRRF 2025, considerando os beneficios perdidos e o regime tributario escolhido."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Preciso contratar contador para trabalhar como PJ?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sim, e altamente recomendado. Como PJ voce precisara emitir notas fiscais, declarar imposto de renda como pessoa juridica, pagar guias mensais (DAS no Simples, ou IRPJ, CSLL, PIS e COFINS no Lucro Presumido), alem do INSS como contribuinte individual. Um contador garante que voce nao pague mais imposto do que deve e cumpra todas as obrigacoes fiscais."
+        }
+      }
+    ]
+  }
+  </script>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://amcabralblindagem.com.br/" },
+      { "@type": "ListItem", "position": 2, "name": "Ferramentas", "item": "https://amcabralblindagem.com.br/calculadora-pj-vs-clt/" },
+      { "@type": "ListItem", "position": 3, "name": "Calculadora PJ vs CLT", "item": "https://amcabralblindagem.com.br/calculadora-pj-vs-clt/" }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<!-- HEADER -->
+<header id="hdr">
+  <div id="hdr-inner">
+    <a href="/" id="hdr-logo" onmouseenter="this.style.webkitTextStrokeColor='rgba(201,168,76,.9)'" onmouseleave="this.style.webkitTextStrokeColor='rgba(201,168,76,.55)'">AM Cabral</a>
+    <ul id="hdr-nav">
+      <li class="hdr-item"><a href="/" class="hdr-btn">Inicio</a></li>
+      <li class="hdr-item" data-menu="sobre"><button class="hdr-btn">Sobre a AM Cabral <span class="hdr-arrow">▾</span></button></li>
+      <li class="hdr-item" data-menu="servicos"><button class="hdr-btn">Servicos <span class="hdr-arrow">▾</span></button></li>
+      <li class="hdr-item" data-menu="blog"><button class="hdr-btn">Blog <span class="hdr-arrow">▾</span></button></li>
+    </ul>
+    <a href="/fale-com-especialista/" class="hdr-cta">Diagnostico Gratuito</a>
+    <button id="hdr-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- Mega-menus -->
+<div class="hdr-mega" id="mega-sobre">
+  <div class="hdr-mega-inner">
+    <a href="/sobre-amcabral-blindagem/" class="hdr-mega-img">
+      <img src="/amanda-sobre.webp" alt="Amanda Cabral Contadora" loading="lazy" width="600" height="800" style="object-position:top center;">
+    </a>
+    <div class="hdr-mega-col">
+      <div class="hdr-mega-col-title">Sobre a AM Cabral</div>
+      <div class="hdr-mega-links">
+        <a href="/sobre-amcabral-blindagem/" class="hdr-mega-link"><strong>Amanda Cabral</strong><span>Conheca a trajetoria e a historia do escritorio AM Cabral</span></a>
+        <a href="/casos-de-sucesso/" class="hdr-mega-link"><strong>Casos de Sucesso</strong><span>Veja resultados reais de empresas que atendemos</span></a>
+        <a href="/perguntas-frequentes/" class="hdr-mega-link"><strong>Perguntas Frequentes</strong><span>Tire duvidas sobre contabilidade, holding e tributacao</span></a>
+        <a href="/cidades-atendidas/" class="hdr-mega-link"><strong>Cidades Atendidas</strong><span>Atendimento em Para de Minas e toda a regiao de MG</span></a>
+      </div>
+      <a href="/fale-com-especialista/" class="hdr-mega-col-cta">Falar com especialista &rarr;</a>
+    </div>
+  </div>
+</div>
+
+<div class="hdr-mega" id="mega-servicos">
+  <div class="hdr-mega-inner">
+    <a href="/nossos-servicos/" class="hdr-mega-img">
+      <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=450&fit=crop" alt="Servicos Contabeis" loading="lazy" width="600" height="450">
+    </a>
+    <div class="hdr-mega-col">
+      <div class="hdr-mega-col-title">Nossos Servicos</div>
+      <div class="hdr-mega-links">
+        <a href="/nossos-servicos/gestao-contabil/" class="hdr-mega-link"><strong>Gestao Contabil Estrategica</strong><span>Escrituracao, balancas, DRE e obrigacoes fiscais</span></a>
+        <a href="/nossos-servicos/recuperacao-creditos-tributarios/" class="hdr-mega-link"><strong>Recuperacao de Creditos</strong><span>Identificamos e recuperamos creditos de ICMS, IPI e PIS/COFINS</span></a>
+        <a href="/nossos-servicos/holding-patrimonial/" class="hdr-mega-link"><strong>Holding Patrimonial</strong><span>Abertura de holding familiar para proteger seu patrimonio</span></a>
+        <a href="/nossos-servicos/planejamento-tributario/" class="hdr-mega-link"><strong>Planejamento Tributario</strong><span>Escolha do regime ideal e reducao legal da carga tributaria</span></a>
+        <a href="/nossos-servicos/consultoria-tributaria/" class="hdr-mega-link"><strong>Consultoria Tributaria</strong><span>Revisao de obrigacoes fiscais e compliance tributario</span></a>
+        <a href="/nossos-servicos/desenquadrar-mei-para-me/" class="hdr-mega-link"><strong>Desenquadrar MEI para ME</strong><span>Migracao do MEI para ME com planejamento fiscal</span></a>
+      </div>
+      <a href="/nossos-servicos/" class="hdr-mega-col-cta">Ver todos os servicos &rarr;</a>
+    </div>
+  </div>
+</div>
+
+<div class="hdr-mega" id="mega-blog">
+  <div class="hdr-mega-inner">
+    <a href="/blog/" class="hdr-mega-img">
+      <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&h=450&fit=crop" alt="Blog" loading="lazy" width="600" height="450">
+    </a>
+    <div class="hdr-mega-col">
+      <div class="hdr-mega-col-title">Conteudo e Artigos</div>
+      <div class="hdr-mega-links">
+        <a href="/blog/reforma-tributaria-guia-industrias/" class="hdr-mega-link"><strong>Reforma Tributaria 2026</strong><span>O que muda no ICMS, IPI e PIS/COFINS com a reforma</span></a>
+        <a href="/blog/o-que-e-ibs-e-cbs/" class="hdr-mega-link"><strong>O que e IBS e CBS?</strong><span>Entenda os dois novos tributos que substituem 5 impostos</span></a>
+        <a href="/blog/cronograma-reforma-tributaria/" class="hdr-mega-link"><strong>Cronograma da Reforma Tributaria</strong><span>Datas e prazos que toda empresa precisa conhecer</span></a>
+        <a href="/blog/incentivos-fiscais-minas-gerais/" class="hdr-mega-link"><strong>Incentivos Fiscais em MG</strong><span>Beneficios para industrias e empresas em Minas Gerais</span></a>
+        <a href="/blog/87-industrias-mg-pagam-icms-a-mais/" class="hdr-mega-link"><strong>87% das Industrias Pagam ICMS a Mais</strong><span>Como identificar e recuperar creditos indevidos</span></a>
+        <a href="/author-amanda-cabral/" class="hdr-mega-link"><strong>Sobre a Autora</strong><span>Formacao, especializacoes e trajetoria de Amanda Cabral</span></a>
+        <a href="/calculadora-pj-vs-clt/" class="hdr-mega-link" style="border-top:1px solid rgba(201,168,76,0.15);margin-top:8px;padding-top:12px;"><strong style="color:var(--gold);">&#9883; Calculadora PJ vs CLT</strong><span>Simule quanto voce precisa faturar como PJ</span></a>
+      </div>
+      <a href="/blog/" class="hdr-mega-col-cta">Ver todos os artigos &rarr;</a>
+    </div>
+  </div>
+</div>
+
+<!-- Mobile nav -->
+<div id="hdr-mob">
+  <button id="hdr-mob-close">&#10005;</button>
+  <a href="/">Inicio</a>
+  <a href="/sobre-amcabral-blindagem/">Sobre Amanda</a>
+  <a href="/nossos-servicos/">Servicos</a>
+  <a href="/nossos-servicos/gestao-contabil/">Contabilidade Estrategica</a>
+  <a href="/nossos-servicos/recuperacao-creditos-tributarios/">Recuperacao de Creditos</a>
+  <a href="/nossos-servicos/holding-patrimonial/">Holding Patrimonial</a>
+  <a href="/nossos-servicos/planejamento-tributario/">Planejamento Fiscal</a>
+  <a href="/blog/">Blog</a>
+  <a href="/calculadora-pj-vs-clt/" style="color:var(--gold);">&#9883; Calculadora PJ vs CLT</a>
+  <a href="/fale-com-especialista/" style="color:var(--accent-gold);margin-top:16px;font-weight:700;">Diagnostico Gratuito</a>
+</div>
+
+<!-- CURSOR -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<!-- NOISE -->
+<div class="noise" aria-hidden="true"></div>
+
+<!-- SCROLL PROGRESS -->
+<div class="scroll-progress" id="scrollProgress"></div>
+
+<!-- WHATSAPP FLOAT -->
+<a href="https://wa.me/5537999967558?text=Ola%2C%20acabei%20de%20usar%20a%20calculadora%20PJ%20vs%20CLT%20e%20gostaria%20de%20saber%20mais" class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- BOTTOM BAR -->
+<div class="bottom-bar" id="bottomBar">
+  <div class="bb-desktop">
+    <span class="bb-info"><span class="bb-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 120+ empresas assessoradas em MG</span>
+    <span class="bb-sep"></span>
+    <span class="bb-info">R$ 12M+ recuperados em creditos tributarios</span>
+    <span class="bb-sep"></span>
+    <a href="/fale-com-especialista/?ref=calculadora-pj-clt" class="bb-cta">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h13M8 12h13M8 18h13M3 6h.01M3 12h.01M3 18h.01"/></svg>
+      Agendar com Amanda
+    </a>
+  </div>
+</div>
+
+<main>
+
+  <!-- HERO -->
+  <section class="calc-hero" id="s-hero">
+    <div class="calc-hero-grid" aria-hidden="true"></div>
+    <div class="calc-hero-orb" aria-hidden="true"></div>
+    <div class="calc-hero-orb-2" aria-hidden="true"></div>
+    <div class="container">
+      <div class="calc-hero-inner reveal">
+        <div class="section-tag"><span class="dot"></span> Ferramenta Gratuita</div>
+        <h1>Calculadora <em>PJ vs CLT</em></h1>
+        <p class="calc-hero-sub">Descubra em 2 minutos quanto voce precisa faturar como PJ para igualar o seu salario CLT. Tabelas INSS e IRRF 2025 atualizadas. Beneficios perdidos calculados automaticamente.</p>
+        <div class="calc-hero-badges stagger">
+          <span class="calc-hero-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Tabelas INSS e IRRF 2025
+          </span>
+          <span class="calc-hero-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+            Resultado em tempo real
+          </span>
+          <span class="calc-hero-badge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 7H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2z"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            Validade por Amanda Cabral, CRC/MG
+          </span>
+        </div>
+        <a href="#calculadora" class="btn-hero-anchor" id="heroAnchor">
+          Calcular agora
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6,9 12,15 18,9"></polyline></svg>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- BREADCRUMB -->
+  <nav class="lp-breadcrumb" aria-label="Navegacao estrutural">
+    <ol>
+      <li><a href="/">Amanda Cabral Contadora</a></li>
+      <li><a href="/calculadora-pj-vs-clt/">Ferramentas</a></li>
+      <li aria-current="page">Calculadora PJ vs CLT</li>
+    </ol>
+  </nav>
+
+  <!-- CALCULADORA -->
+  <section class="calc-section" id="calculadora">
+    <div class="container">
+      <div class="calc-header reveal">
+        <div class="section-tag"><span class="dot"></span> Simulador 2025</div>
+        <h2 class="heading">Simule seus ganhos <em>em 2 minutos</em></h2>
+        <p class="heading-sub">Preencha os campos abaixo. O resultado aparece automaticamente, incluindo os beneficios que voce perde ao sair da CLT.</p>
+      </div>
+
+      <div class="calc-grid">
+        <!-- CLT -->
+        <div class="calc-col reveal">
+          <div class="calc-col-header">
+            <div class="calc-col-icon clt">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            </div>
+            <div>
+              <div class="calc-col-title">Dados CLT</div>
+              <div class="calc-col-sub">Regime trabalhista com carteira assinada</div>
+            </div>
+          </div>
+
+          <div class="calc-input-group">
+            <label for="salarioBruto">Salario Bruto <span>(obrigatorio)</span></label>
+            <input type="number" id="salarioBruto" placeholder="ex: 5000" min="1412" step="100" inputmode="numeric">
+          </div>
+          <div class="calc-input-group">
+            <label for="beneficioVR">Vale-Refeicao / Vale-Alimentacao <span>(mensal)</span></label>
+            <input type="number" id="beneficioVR" placeholder="0" min="0" step="10" value="0" inputmode="numeric">
+          </div>
+          <div class="calc-input-group">
+            <label for="beneficioVT">Vale-Transporte <span>(mensal)</span></label>
+            <input type="number" id="beneficioVT" placeholder="0" min="0" step="10" value="0" inputmode="numeric">
+          </div>
+          <div class="calc-input-group">
+            <label for="beneficioSaude">Plano de Saude <span>(custo mensal do empregador)</span></label>
+            <input type="number" id="beneficioSaude" placeholder="0" min="0" step="50" value="0" inputmode="numeric">
+          </div>
+        </div>
+
+        <!-- PJ -->
+        <div class="calc-col reveal" style="transition-delay:.1s">
+          <div class="calc-col-header">
+            <div class="calc-col-icon pj">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+            </div>
+            <div>
+              <div class="calc-col-title">Dados PJ</div>
+              <div class="calc-col-sub">Pessoa juridica, autonomia e responsabilidade fiscal</div>
+            </div>
+          </div>
+
+          <div class="calc-input-group">
+            <label>Regime Tributario</label>
+            <div class="calc-radio-group">
+              <div class="calc-radio-option">
+                <input type="radio" id="simplesNacional" name="regimeTributario" value="simples" checked>
+                <label for="simplesNacional">Simples Nacional</label>
+              </div>
+              <div class="calc-radio-option">
+                <input type="radio" id="lucroPresumido" name="regimeTributario" value="presumido">
+                <label for="lucroPresumido">Lucro Presumido</label>
+              </div>
+            </div>
+          </div>
+          <div class="calc-input-group">
+            <label for="honorariosContador">Honorarios do Contador <span>(mensal)</span></label>
+            <input type="number" id="honorariosContador" placeholder="300" min="0" step="50" value="300" inputmode="numeric">
+          </div>
+          <div class="calc-input-group">
+            <label for="gastosOperacionais">Gastos Operacionais PJ <span>(mensal)</span></label>
+            <input type="number" id="gastosOperacionais" placeholder="500" min="0" step="50" value="500" inputmode="numeric">
+          </div>
+          <div class="calc-input-group">
+            <label>Provisoes</label>
+            <div class="calc-checkbox-group">
+              <input type="checkbox" id="provisao13Ferias" checked>
+              <label for="provisao13Ferias">Provisionar 13° e ferias (recomendado)</label>
+            </div>
+          </div>
+          <div class="calc-input-group">
+            <label for="inssAutonomo">INSS como Autonomo <span>(contribuicao voluntaria)</span></label>
+            <input type="number" id="inssAutonomo" placeholder="0" min="0" max="1189" step="50" value="0" inputmode="numeric">
+          </div>
+        </div>
+      </div>
+
+      <button class="btn-calc" id="btnCalc" type="button">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M8 6h8M8 10h8M8 14h4"/></svg>
+        Comparar CLT vs PJ
+      </button>
+      <p class="calc-note">Os calculos usam as tabelas INSS e IRRF oficiais de 2025. Resultado orientativo, nao substitui consultoria contabil.</p>
+
+      <!-- RESULTADO -->
+      <div class="calc-result" id="calcResult">
+
+        <!-- Camada 1: Cards principais -->
+        <div class="result-cards stagger">
+          <div class="result-card clt">
+            <div class="result-card-label">Liquido CLT</div>
+            <div class="result-card-value" id="outCltLiquido">R$ 0</div>
+            <div class="result-card-detail" id="outCltDetail">INSS: R$ 0 | IRRF: R$ 0</div>
+          </div>
+          <div class="result-card pj">
+            <div class="result-delta" id="outDelta"></div>
+            <div class="result-card-label">Liquido PJ (faturando equivalente)</div>
+            <div class="result-card-value" id="outPjLiquido">R$ 0</div>
+            <div class="result-card-detail" id="outPjDetail">Impostos: R$ 0 | Despesas: R$ 0</div>
+          </div>
+        </div>
+
+        <!-- Camada 2: Faturamento equivalente -->
+        <div class="result-equivalente reveal">
+          <div class="result-equivalente-label">Para igualar o CLT, voce precisa faturar como PJ</div>
+          <div class="result-equivalente-value" id="outFatEquivalente">R$ 0</div>
+          <div class="result-equivalente-sub" id="outFatSub">Isso representa <strong id="outFatPct">0%</strong> a mais que o salario bruto CLT.</div>
+        </div>
+
+        <!-- Camada 3: Beneficios perdidos -->
+        <div class="benefits-section" id="benefitsSection">
+          <div class="benefits-header" id="benefitsToggle">
+            <div class="benefits-header-left">
+              <span class="benefits-header-title">Beneficios que voce perde ao virar PJ</span>
+              <span class="benefits-header-sub">Clique para expandir o calculo anual</span>
+            </div>
+            <div style="display:flex;align-items:center;gap:16px;">
+              <span class="benefits-header-total" id="outBeneficiosTotal">-R$ 0/ano</span>
+              <span class="benefits-header-arrow">▾</span>
+            </div>
+          </div>
+          <div class="benefits-body">
+            <div class="benefit-row">
+              <div>
+                <div class="benefit-row-name">FGTS (8% do salario bruto)</div>
+                <div class="benefit-row-detail">Depositado mensalmente pelo empregador, saque em demissao sem justa causa</div>
+              </div>
+              <div class="benefit-row-value" id="outFgts">-R$ 0/ano</div>
+            </div>
+            <div class="benefit-row">
+              <div>
+                <div class="benefit-row-name">Decimo Terceiro Salario</div>
+                <div class="benefit-row-detail">1 salario liquido adicional por ano, pago em dezembro</div>
+              </div>
+              <div class="benefit-row-value" id="outDecimoTerceiro">-R$ 0</div>
+            </div>
+            <div class="benefit-row">
+              <div>
+                <div class="benefit-row-name">Ferias + 1/3 Constitucional</div>
+                <div class="benefit-row-detail">30 dias de ferias anuais com acrescimo de 1/3 do salario</div>
+              </div>
+              <div class="benefit-row-value" id="outFerias">-R$ 0</div>
+            </div>
+            <div class="benefit-row">
+              <div>
+                <div class="benefit-row-name">Seguro-Desemprego estimado</div>
+                <div class="benefit-row-detail">5 parcelas medias em caso de demissao (estimativa conservadora)</div>
+              </div>
+              <div class="benefit-row-value" id="outSeguroDesemprego">-R$ 0 est.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Detalhes de impostos -->
+        <div class="taxes-grid stagger">
+          <div class="tax-item">
+            <div class="tax-item-label">INSS CLT (mensal)</div>
+            <div class="tax-item-value" id="outInss">R$ 0</div>
+          </div>
+          <div class="tax-item">
+            <div class="tax-item-label">IRRF CLT (mensal)</div>
+            <div class="tax-item-value" id="outIrrf">R$ 0</div>
+          </div>
+          <div class="tax-item">
+            <div class="tax-item-label">Impostos PJ (mensal)</div>
+            <div class="tax-item-value" id="outImpostosPj">R$ 0</div>
+          </div>
+          <div class="tax-item">
+            <div class="tax-item-label">Regime PJ</div>
+            <div class="tax-item-value" id="outRegimePj">Simples</div>
+          </div>
+        </div>
+
+        <!-- LEAD FORM -->
+        <div class="lead-form-wrapper" id="leadFormWrapper">
+          <div id="leadFormContent">
+            <div class="lead-form-title">Receba sua analise completa <em>em PDF</em></div>
+            <p class="lead-form-sub">Amanda Cabral prepara uma analise personalizada com as melhores opcoes tributarias para o seu perfil. Gratuito, sem compromisso.</p>
+            <form id="leadForm" novalidate>
+              <div class="lead-form-row">
+                <div class="form-group">
+                  <label for="leadNome">Nome</label>
+                  <input type="text" id="leadNome" name="nome" placeholder="Seu nome" required>
+                </div>
+                <div class="form-group">
+                  <label for="leadEmail">E-mail</label>
+                  <input type="email" id="leadEmail" name="email" placeholder="seu@email.com" required>
+                </div>
+              </div>
+              <div class="lead-form-row">
+                <div class="form-group">
+                  <label for="leadWhatsapp">WhatsApp</label>
+                  <input type="tel" id="leadWhatsapp" name="whatsapp" placeholder="(11) 99999-0000">
+                </div>
+                <div class="form-group">
+                  <label for="leadProfissao">Profissao</label>
+                  <select id="leadProfissao" name="profissao">
+                    <option value="" disabled selected>Selecione</option>
+                    <option>Desenvolvedor / TI</option>
+                    <option>Designer / Criativo</option>
+                    <option>Consultor</option>
+                    <option>Engenheiro</option>
+                    <option>Medico / Saude</option>
+                    <option>Advogado</option>
+                    <option>Outro</option>
+                  </select>
+                </div>
+              </div>
+              <button type="submit" class="btn-lead-submit">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                Enviar via WhatsApp
+              </button>
+              <p class="lead-form-notice">Seus dados nao serao compartilhados com terceiros. Sigilo total.</p>
+            </form>
+          </div>
+          <div class="lead-form-success" id="leadFormSuccess">
+            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="margin:0 auto 16px;"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg>
+            <p>Perfeito. Amanda recebeu seu pedido e entrara em contato em breve pelo WhatsApp. Enquanto isso, voce pode agendar ja uma conversa:</p>
+            <a href="/fale-com-especialista/?ref=calculadora-pj-clt" class="btn-agendar">
+              Agendar diagnostico gratuito &rarr;
+            </a>
+          </div>
+        </div>
+
+      </div><!-- /calc-result -->
+    </div>
+  </section>
+
+  <!-- AMANDA SECTION -->
+  <section class="amanda-section" id="s-amanda">
+    <div class="container">
+      <div class="amanda-grid">
+        <div class="amanda-photo-wrap reveal">
+          <div class="amanda-photo">
+            <img src="/amanda-cabral-foto.jpg" alt="Amanda Cabral contadora analisando simulacao PJ vs CLT" loading="lazy" width="760" height="1013">
+          </div>
+          <div class="amanda-photo-badge">CRC/MG ativo · 20 anos de experiencia</div>
+        </div>
+        <div class="amanda-content reveal" style="transition-delay:.12s">
+          <div class="section-tag"><span class="dot"></span> Quem assina esta calculadora</div>
+          <h2 class="heading">Amanda Cabral, <em>contadora tributarista</em></h2>
+          <div class="amanda-creds">
+            <span class="amanda-cred">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              CRC/MG ativo
+            </span>
+            <span class="amanda-cred">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+              20+ anos de experiencia
+            </span>
+            <span class="amanda-cred">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              R$ 12M+ recuperados
+            </span>
+            <span class="amanda-cred">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              120+ empresas em MG
+            </span>
+          </div>
+          <p class="amanda-intro">Amanda atua ha mais de 20 anos no planejamento tributario de empresas industriais, comerciais e de servicos em Minas Gerais. Ao longo da carreira, <strong>recuperou mais de R$ 12 milhoes em creditos tributarios</strong> para clientes que pagavam impostos a mais sem saber. Esta calculadora usa as mesmas tabelas que ela usa nos diagnosticos pagos.</p>
+          <div class="amanda-testimonial">
+            <p>"Eu trabalhava como CLT ha 8 anos e sempre tive duvida se valia a pena ir para o PJ. A Amanda fez a conta certinho, mostrou que eu precisaria de R$ 9.200 de faturamento para igualar meu liquido de R$ 6.800. Com esse numero na mao, negociei o contrato e fui para o PJ."</p>
+            <div class="amanda-testimonial-author">Rodrigo M., Engenheiro de Software, Belo Horizonte</div>
+          </div>
+          <a href="/fale-com-especialista/?ref=calculadora-pj-clt" class="btn-agendar-full">
+            Agendar Diagnostico Gratuito
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9,18 15,12 9,6"></polyline></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="faq-section" id="s-faq">
+    <div class="container">
+      <div class="reveal" style="text-align:center;">
+        <div class="section-tag" style="margin:0 auto 20px;"><span class="dot"></span> Duvidas Frequentes</div>
+        <h2 class="heading">Perguntas sobre <em>PJ vs CLT</em></h2>
+      </div>
+      <div class="faq-list stagger" id="faqList">
+
+        <div class="faq-item">
+          <div class="faq-question" tabindex="0">
+            Como funciona o calculo do INSS para CLT em 2025?
+            <span class="faq-arrow">▾</span>
+          </div>
+          <div class="faq-answer">
+            O INSS CLT 2025 e calculado de forma progressiva por faixas: 7,5% sobre a parcela ate R$ 1.621,00; 9% sobre a parcela de R$ 1.621,01 a R$ 2.902,84; 12% sobre a parcela de R$ 2.902,85 a R$ 4.354,27; e 14% sobre a parcela de R$ 4.354,28 ate o teto de R$ 8.475,55. O salario acima do teto nao tem desconto adicional de INSS. O calculo e identico ao que esta calculadora usa.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" tabindex="0">
+            Vale mais a pena ser PJ ou CLT?
+            <span class="faq-arrow">▾</span>
+          </div>
+          <div class="faq-answer">
+            Depende do salario CLT e do faturamento PJ. Como PJ voce perde FGTS (8%), 13 salario, ferias com 1/3, seguro-desemprego e plano de saude custeado pelo empregador. Em geral, um PJ precisa faturar entre 30% e 50% a mais que o salario CLT bruto para igualar o liquido. A situacao e sempre individual. Use a calculadora acima para simular seu caso exato.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" tabindex="0">
+            Qual regime tributario escolher como PJ: Simples Nacional ou Lucro Presumido?
+            <span class="faq-arrow">▾</span>
+          </div>
+          <div class="faq-answer">
+            Para faturamentos mensais ate R$ 15.000 (R$ 180.000/ano), o Simples Nacional Anexo III costuma ser mais vantajoso com aliquota efetiva de 6%. Para faturamentos maiores, o Lucro Presumido pode ser mais adequado dependendo do tipo de servico. A escolha ideal depende do CNAE, margem de lucro e estrutura de custos. Um contador especializado faz a simulacao correta para o seu perfil.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" tabindex="0">
+            Quanto preciso faturar como PJ para compensar o salario CLT?
+            <span class="faq-arrow">▾</span>
+          </div>
+          <div class="faq-answer">
+            Nao existe uma formula unica porque depende do salario CLT bruto, dos beneficios (VR, VT, plano de saude), do regime tributario PJ e das suas despesas operacionais. A calculadora desta pagina faz essa conta automaticamente usando as tabelas INSS e IRRF 2025. Para um salario CLT de R$ 5.000, por exemplo, o faturamento PJ equivalente no Simples Nacional costuma ficar entre R$ 7.000 e R$ 8.500.
+          </div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question" tabindex="0">
+            Preciso contratar contador para trabalhar como PJ?
+            <span class="faq-arrow">▾</span>
+          </div>
+          <div class="faq-answer">
+            Sim, e altamente recomendado. Como PJ voce precisara emitir notas fiscais, declarar imposto de renda como pessoa juridica, pagar guias mensais (DAS no Simples, ou IRPJ, CSLL, PIS e COFINS no Lucro Presumido), alem do INSS como contribuinte individual. Um contador garante que voce nao pague mais imposto do que deve e cumpra todas as obrigacoes fiscais. O custo medio de honorarios fica entre R$ 200 e R$ 500/mes para PJ de servicos.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand-col">
+        <p class="footer-contact-title">Fale Conosco</p>
+        <address class="footer-nap">
+          <a href="tel:+5537999967558" class="footer-nap-row">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.83a16 16 0 0 0 5.38 5.38l1.92-1.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            (37) 99996-7558
+          </a>
+          <a href="mailto:contato@amcabralblindagem.com.br" class="footer-nap-row">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+            contato@amcabralblindagem.com.br
+          </a>
+          <span class="footer-nap-row">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            Rua Major Fidelis, 244, Centro<br>Para de Minas, MG 35660-109
+          </span>
+          <span class="footer-nap-row">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            CNPJ 34.733.620/0001-51
+          </span>
+        </address>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-heading">A Empresa</h3>
+        <ul>
+          <li><a href="/sobre-amcabral-blindagem/">Sobre</a></li>
+          <li><a href="/casos-de-sucesso/">Casos de Sucesso</a></li>
+          <li><a href="/perguntas-frequentes/">Duvidas Frequentes</a></li>
+          <li><a href="/fale-com-especialista/">Contato</a></li>
+          <li><a href="/blog/">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-heading">Servicos</h3>
+        <ul>
+          <li><a href="/nossos-servicos/gestao-contabil/">Gestao Contabil</a></li>
+          <li><a href="/nossos-servicos/recuperacao-creditos-tributarios/">Recuperacao de Creditos</a></li>
+          <li><a href="/nossos-servicos/holding-patrimonial/">Holding Patrimonial</a></li>
+          <li><a href="/nossos-servicos/planejamento-tributario/">Planejamento Tributario</a></li>
+          <li><a href="/nossos-servicos/consultoria-tributaria/">Consultoria Tributaria</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h3 class="footer-heading">Ferramentas</h3>
+        <ul>
+          <li><a href="/calculadora-pj-vs-clt/" style="color:var(--gold);">Calculadora PJ vs CLT</a></li>
+          <li><a href="/planejamento-tributario/">Planejamento Tributario</a></li>
+          <li><a href="/cidades-atendidas/">Para de Minas</a></li>
+          <li><a href="/sete-lagoas-mg/escritorio-de-contabilidade-sete-lagoas/">Sete Lagoas</a></li>
+          <li><a href="/cidades-atendidas/">Ver cidades atendidas</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="footer-wordmark-tagline"><em>Inteligencia tributaria para empresas que competem para vencer.</em></p>
+    <div class="footer-wordmark">AM Cabral Contabilidade</div>
+    <div class="footer-legal">
+      <p>&copy; 2026 Amanda Silva Cabral Contabilidade. CNPJ 34.733.620/0001-51. CRC/MG ativo.</p>
+      <div class="footer-social-icons">
+        <a href="https://www.instagram.com/amandacabral28/" target="_blank" rel="noopener" aria-label="Instagram">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/amanda-cabral-de-oliveira-82183a179/" target="_blank" rel="noopener" aria-label="LinkedIn">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        </a>
+      </div>
+      <div class="footer-legal-links">
+        <a href="/politica-de-privacidade/">Politica de Privacidade</a>
+        <a href="/politica-de-cookies/">Politica de Cookies</a>
+        <a href="/termos-de-uso/">Termos de Uso</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ============================
+   CURSOR
+============================ */
+const cur = document.getElementById('cursor');
+const curDot = document.getElementById('cursorDot');
+if (cur && curDot) {
+  document.addEventListener('mousemove', e => {
+    cur.style.left = e.clientX + 'px'; cur.style.top = e.clientY + 'px';
+    curDot.style.left = e.clientX + 'px'; curDot.style.top = e.clientY + 'px';
+  });
+  document.querySelectorAll('a,button,input,select,textarea,[data-hover]').forEach(el => {
+    el.addEventListener('mouseenter', () => cur.classList.add('hover'));
+    el.addEventListener('mouseleave', () => cur.classList.remove('hover'));
+  });
+}
+
+/* ============================
+   SCROLL PROGRESS + BOTTOM BAR + REVEAL
+============================ */
+const sp = document.getElementById('scrollProgress');
+const bb = document.getElementById('bottomBar');
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('is-visible'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal, .stagger').forEach(el => io.observe(el));
+
+window.addEventListener('scroll', () => {
+  const h = document.documentElement;
+  const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
+  if (sp) sp.style.width = Math.min(pct, 100) + '%';
+  if (bb) { h.scrollTop > 300 ? bb.classList.add('visible') : bb.classList.remove('visible'); }
+}, { passive: true });
+
+/* ============================
+   MEGA-MENU
+============================ */
+let hdrTimer = null, currentMega = null, currentItem = null;
+const closeAll = () => {
+  document.querySelectorAll('.hdr-mega.open').forEach(m => m.classList.remove('open'));
+  document.querySelectorAll('.hdr-item.open').forEach(i => i.classList.remove('open'));
+  currentMega = null; currentItem = null;
+};
+document.querySelectorAll('.hdr-item[data-menu]').forEach(item => {
+  const btn = item.querySelector('.hdr-btn');
+  const mega = document.getElementById('mega-' + item.dataset.menu);
+  if (!btn || !mega) return;
+  const open = () => {
+    clearTimeout(hdrTimer);
+    if (currentMega && currentMega !== mega) { currentMega.classList.remove('open'); currentItem && currentItem.classList.remove('open'); }
+    mega.classList.add('open'); item.classList.add('open');
+    currentMega = mega; currentItem = item;
+  };
+  const scheduleClose = () => { hdrTimer = setTimeout(closeAll, 150); };
+  btn.addEventListener('mouseenter', open);
+  btn.addEventListener('mouseleave', scheduleClose);
+  mega.addEventListener('mouseenter', () => clearTimeout(hdrTimer));
+  mega.addEventListener('mouseleave', scheduleClose);
+  btn.addEventListener('click', e => { e.preventDefault(); mega.classList.contains('open') ? closeAll() : open(); });
+});
+document.addEventListener('click', e => {
+  if (!e.target.closest('.hdr-item') && !e.target.closest('.hdr-mega')) closeAll();
+});
+const hdrHamburger = document.getElementById('hdr-hamburger');
+const hdrMob = document.getElementById('hdr-mob');
+const hdrMobClose = document.getElementById('hdr-mob-close');
+if (hdrHamburger && hdrMob && hdrMobClose) {
+  hdrHamburger.addEventListener('click', () => hdrMob.classList.toggle('open'));
+  hdrMobClose.addEventListener('click', () => hdrMob.classList.remove('open'));
+  hdrMob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => hdrMob.classList.remove('open')));
+}
+
+/* ============================
+   SMOOTH SCROLL
+============================ */
+document.getElementById('heroAnchor').addEventListener('click', e => {
+  e.preventDefault();
+  document.getElementById('calculadora').scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+
+/* ============================
+   FAQ ACCORDION
+============================ */
+document.querySelectorAll('.faq-item').forEach(item => {
+  const q = item.querySelector('.faq-question');
+  q.addEventListener('click', () => {
+    const isOpen = item.classList.contains('open');
+    document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+    if (!isOpen) item.classList.add('open');
+  });
+  q.addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); q.click(); } });
+});
+
+/* ============================
+   BENEFITS ACCORDION
+============================ */
+document.getElementById('benefitsToggle').addEventListener('click', () => {
+  document.getElementById('benefitsSection').classList.toggle('open');
+});
+
+/* ============================
+   CALCULADORA — TABELAS 2025
+============================ */
+const INSS_TABLE = [
+  { limit: 1621.00,  rate: 0.075 },
+  { limit: 2902.84,  rate: 0.090 },
+  { limit: 4354.27,  rate: 0.120 },
+  { limit: 8475.55,  rate: 0.140 },
+];
+const IRRF_TABLE = [
+  { limit: 2428.80,  rate: 0.000, deduction: 0       },
+  { limit: 3751.48,  rate: 0.075, deduction: 181.50  },
+  { limit: 4664.68,  rate: 0.150, deduction: 528.30  },
+  { limit: 8236.01,  rate: 0.225, deduction: 1206.20 },
+  { limit: Infinity, rate: 0.275, deduction: 1685.38 },
+];
+const DEDUCAO_DEPENDENTE = 189.59;
+const simplesTaxRate = fat => fat <= 15000 ? 0.06 : 0.105;
+const PRESUMIDO_RATE = 0.27;
+
+const brl = v => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(v);
+const pct = (v, base) => base > 0 ? ((v / base - 1) * 100).toFixed(1) + '%' : '0%';
+
+function calcINSS(bruto) {
+  let prev = 0, total = 0;
+  for (const faixa of INSS_TABLE) {
+    if (bruto <= 0) break;
+    const base = Math.min(bruto, faixa.limit) - prev;
+    if (base <= 0) break;
+    total += base * faixa.rate;
+    prev = faixa.limit;
+    if (bruto <= faixa.limit) break;
+  }
+  return Math.round(total * 100) / 100;
+}
+
+function calcIRRF(bruto, inss) {
+  const base = Math.max(bruto - inss, 0);
+  for (const faixa of IRRF_TABLE) {
+    if (base <= faixa.limit) {
+      const irrf = base * faixa.rate - faixa.deduction;
+      return Math.max(Math.round(irrf * 100) / 100, 0);
+    }
+  }
+  return 0;
+}
+
+function calcCLT(bruto) {
+  const inss = calcINSS(bruto);
+  const irrf = calcIRRF(bruto, inss);
+  const liquido = bruto - inss - irrf;
+  return { inss, irrf, liquido };
+}
+
+function calcPJLiquido(faturamento, regime, honorarios, gastos, provisao, inssAut) {
+  const aliquota = regime === 'simples' ? simplesTaxRate(faturamento) : PRESUMIDO_RATE;
+  const impostos = faturamento * aliquota;
+  const provisaoVal = provisao ? (faturamento - impostos) * (2 / 13.333) : 0;
+  const liquido = faturamento - impostos - honorarios - gastos - provisaoVal - inssAut;
+  return { impostos: Math.round(impostos * 100) / 100, liquido: Math.round(liquido * 100) / 100 };
+}
+
+function findEquivalente(cltLiquido, regime, honorarios, gastos, provisao, inssAut, cltBruto) {
+  let lo = cltBruto * 0.9, hi = cltBruto * 4;
+  for (let i = 0; i < 60; i++) {
+    const mid = (lo + hi) / 2;
+    const { liquido } = calcPJLiquido(mid, regime, honorarios, gastos, provisao, inssAut);
+    if (Math.abs(liquido - cltLiquido) < 0.01) return mid;
+    if (liquido < cltLiquido) lo = mid; else hi = mid;
+  }
+  return (lo + hi) / 2;
+}
+
+function calcBeneficios(bruto) {
+  const clt = calcCLT(bruto);
+  const fgtsAnual = bruto * 0.08 * 12;
+  const decimoTerceiro = clt.liquido;
+  const ferias = clt.liquido * (4 / 3);
+  const parcelas = bruto < 1412 ? 3 : bruto < 2824 ? 4 : 5;
+  const parcelaMedia = clt.liquido * 0.8;
+  const seguroDesemprego = parcelas * parcelaMedia;
+  const total = fgtsAnual + decimoTerceiro + ferias + seguroDesemprego;
+  return { fgtsAnual, decimoTerceiro, ferias, seguroDesemprego, total };
+}
+
+/* ============================
+   RENDER RESULTS
+============================ */
+function renderResults(data) {
+  const { clt, pj, equivalente, beneficios, regime, salarioBruto } = data;
+
+  document.getElementById('outCltLiquido').textContent = brl(clt.liquido);
+  document.getElementById('outCltDetail').textContent = `INSS: ${brl(clt.inss)} | IRRF: ${brl(clt.irrf)}`;
+  document.getElementById('outPjLiquido').textContent = brl(pj.liquido);
+  document.getElementById('outPjDetail').textContent = `Impostos: ${brl(pj.impostos)} | Despesas: ${brl(pj.despesas)}`;
+
+  const delta = clt.liquido > 0 ? ((pj.liquido / clt.liquido) - 1) * 100 : 0;
+  const deltaEl = document.getElementById('outDelta');
+  if (Math.abs(delta) < 1) {
+    deltaEl.textContent = 'Equivalente';
+    deltaEl.className = 'result-delta neutral';
+  } else if (delta > 0) {
+    deltaEl.textContent = '+' + delta.toFixed(1) + '%';
+    deltaEl.className = 'result-delta positive';
+  } else {
+    deltaEl.textContent = delta.toFixed(1) + '%';
+    deltaEl.className = 'result-delta negative';
+  }
+
+  document.getElementById('outFatEquivalente').textContent = brl(equivalente);
+  const fatPct = salarioBruto > 0 ? ((equivalente / salarioBruto - 1) * 100) : 0;
+  document.getElementById('outFatPct').textContent = fatPct.toFixed(1) + '%';
+  document.getElementById('outFatSub').innerHTML = `Para faturar ${brl(equivalente)} como PJ e ter o mesmo liquido CLT, voce precisaria de <strong>${fatPct.toFixed(1)}%</strong> a mais que o salario bruto CLT.`;
+
+  document.getElementById('outBeneficiosTotal').textContent = '-' + brl(beneficios.total) + '/ano';
+  document.getElementById('outFgts').textContent = '-' + brl(beneficios.fgtsAnual) + '/ano';
+  document.getElementById('outDecimoTerceiro').textContent = '-' + brl(beneficios.decimoTerceiro);
+  document.getElementById('outFerias').textContent = '-' + brl(beneficios.ferias);
+  document.getElementById('outSeguroDesemprego').textContent = '-' + brl(beneficios.seguroDesemprego) + ' est.';
+
+  document.getElementById('outInss').textContent = brl(clt.inss);
+  document.getElementById('outIrrf').textContent = brl(clt.irrf);
+  document.getElementById('outImpostosPj').textContent = brl(pj.impostos);
+  document.getElementById('outRegimePj').textContent = regime === 'simples' ? 'Simples Nacional' : 'Lucro Presumido';
+
+  const result = document.getElementById('calcResult');
+  if (!result.classList.contains('visible')) {
+    result.classList.add('visible');
+    result.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  document.querySelectorAll('.stagger, .reveal').forEach(el => {
+    if (!el.classList.contains('is-visible')) io.observe(el);
+  });
+}
+
+/* ============================
+   CALCULAR
+============================ */
+function getInputs() {
+  const salarioBruto = parseFloat(document.getElementById('salarioBruto').value) || 0;
+  const vr = parseFloat(document.getElementById('beneficioVR').value) || 0;
+  const vt = parseFloat(document.getElementById('beneficioVT').value) || 0;
+  const saude = parseFloat(document.getElementById('beneficioSaude').value) || 0;
+  const regime = document.querySelector('input[name="regimeTributario"]:checked').value;
+  const honorarios = parseFloat(document.getElementById('honorariosContador').value) || 0;
+  const gastos = parseFloat(document.getElementById('gastosOperacionais').value) || 0;
+  const provisao = document.getElementById('provisao13Ferias').checked;
+  const inssAut = parseFloat(document.getElementById('inssAutonomo').value) || 0;
+  return { salarioBruto, vr, vt, saude, regime, honorarios, gastos, provisao, inssAut };
+}
+
+function calcAll() {
+  const inp = getInputs();
+  if (inp.salarioBruto < 1412) return;
+
+  const clt = calcCLT(inp.salarioBruto);
+  const totalBeneficios = inp.vr + inp.vt + inp.saude;
+  const cltComBeneficios = { ...clt, liquido: clt.liquido + totalBeneficios };
+
+  const equivalente = findEquivalente(
+    cltComBeneficios.liquido, inp.regime,
+    inp.honorarios, inp.gastos, inp.provisao, inp.inssAut, inp.salarioBruto
+  );
+  const pjResult = calcPJLiquido(equivalente, inp.regime, inp.honorarios, inp.gastos, inp.provisao, inp.inssAut);
+  pjResult.despesas = inp.honorarios + inp.gastos;
+
+  const beneficios = calcBeneficios(inp.salarioBruto);
+
+  renderResults({
+    clt: cltComBeneficios,
+    pj: pjResult,
+    equivalente,
+    beneficios,
+    regime: inp.regime,
+    salarioBruto: inp.salarioBruto
+  });
+}
+
+/* Debounce */
+let debTimer = null;
+function debouncedCalc() { clearTimeout(debTimer); debTimer = setTimeout(calcAll, 150); }
+
+document.querySelectorAll('#salarioBruto,#beneficioVR,#beneficioVT,#beneficioSaude,#honorariosContador,#gastosOperacionais,#inssAutonomo').forEach(el => {
+  el.addEventListener('input', debouncedCalc);
+});
+document.querySelectorAll('input[name="regimeTributario"]').forEach(el => {
+  el.addEventListener('change', debouncedCalc);
+});
+document.getElementById('provisao13Ferias').addEventListener('change', debouncedCalc);
+document.getElementById('btnCalc').addEventListener('click', () => {
+  calcAll();
+  document.getElementById('calcResult').scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+
+/* ============================
+   LEAD FORM
+============================ */
+document.getElementById('leadForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const nome = document.getElementById('leadNome').value.trim();
+  const email = document.getElementById('leadEmail').value.trim();
+  const whatsapp = document.getElementById('leadWhatsapp').value.trim();
+  const profissao = document.getElementById('leadProfissao').value;
+
+  const inp = getInputs();
+  const clt = calcCLT(inp.salarioBruto);
+  const equiv = inp.salarioBruto >= 1412 ? findEquivalente(clt.liquido, inp.regime, inp.honorarios, inp.gastos, inp.provisao, inp.inssAut, inp.salarioBruto) : 0;
+
+  const texto = encodeURIComponent(
+    `Ola Amanda! Usei a calculadora PJ vs CLT do seu site.\n\nNome: ${nome}\nE-mail: ${email}\nProfissao: ${profissao || 'nao informada'}\n\nSalario CLT bruto: ${brl(inp.salarioBruto)}\nLiquido CLT: ${brl(clt.liquido)}\nFaturamento PJ equivalente (${inp.regime === 'simples' ? 'Simples' : 'L. Presumido'}): ${brl(equiv)}\n\nGostaria de receber a analise completa em PDF.`
+  );
+
+  window.open(`https://wa.me/5537999967558?text=${texto}`, '_blank');
+
+  document.getElementById('leadFormContent').style.display = 'none';
+  document.getElementById('leadFormSuccess').classList.add('visible');
+});
+
+/* Calcular automaticamente se houver valor pre-preenchido */
+if (document.getElementById('salarioBruto').value) calcAll();
+</script>
+</body>
+</html>

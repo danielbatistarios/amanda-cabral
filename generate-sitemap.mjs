@@ -49,6 +49,9 @@ const pages = [
   ['/faq-amcabralblindagem',                     '0.6', 'monthly'],
   ['/fale-com-especialista',                     '0.6', 'monthly'],
 
+  // Ferramentas
+  ['/calculadora-pj-vs-clt',                    '0.8', 'monthly'],
+
   // Serviços
   ['/nossos-servicos',                                          '0.8', 'monthly'],
   ['/nossos-servicos/gestao-contabil',                          '0.7', 'monthly'],
