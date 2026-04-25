@@ -411,8 +411,8 @@
 
     /* SETORES MARQUEE */
     .setores { background: var(--blue-900); padding: 40px 0; overflow: hidden; border-top: 1px solid rgba(255,255,255,.06); border-bottom: 1px solid rgba(255,255,255,.06); }
-    .marquee-track { display: flex; gap: 40px; width: max-content; animation: marquee 28s linear infinite; white-space: nowrap; }
-    .marquee-item { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 500; color: var(--text-muted); }
+    .marquee-track { display: flex; gap: 28px; width: max-content; animation: marquee 28s linear infinite; white-space: nowrap; }
+    .marquee-item { display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 500; color: var(--text-muted); }
     .marquee-item::before { content: '◆'; color: var(--gold); font-size: 8px; }
     @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
@@ -522,7 +522,9 @@
       .hero-tag-short { display: inline; }
       .hero .breadcrumb { padding: 0 0 20px; }
       .hero .breadcrumb-inner { justify-content: center; }
-      .proc-steps { grid-template-columns: repeat(2, 1fr); }
+      .proc-steps { grid-template-columns: 1fr; }
+      .proc-step { display: grid; grid-template-columns: 56px 1fr; gap: 16px; text-align: left; align-items: start; }
+      .proc-num { margin: 0; }
       .proc-steps::before { display: none; }
       .hub-grid { grid-template-columns: repeat(2, 1fr); }
 
