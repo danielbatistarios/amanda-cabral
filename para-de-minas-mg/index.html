@@ -623,6 +623,8 @@ address { font-style: normal; }
 .local-prose p { font-size: 17px; line-height: 1.85; color: rgba(255,255,255,.65); margin-bottom: 20px; padding-top: 4px; }
 .local-prose p:last-child { margin-bottom: 0; }
 .local-prose strong { color: var(--paper); font-weight: 700; }
+.local-prose-intro a, .local-prose a, .faq-a a { color: var(--dourado); text-decoration: underline; text-underline-offset: 3px; }
+.local-prose-intro a:hover, .local-prose a:hover, .faq-a a:hover { color: #e8c97a; }
 .local-prose-toggle { display: flex; align-items: center; gap: 8px; background: none; border: 1px solid rgba(255,255,255,.12); border-radius: 8px; color: rgba(255,255,255,.6); font-size: 13px; font-weight: 600; letter-spacing: .04em; padding: 12px 20px; cursor: pointer; transition: color .2s, border-color .2s; margin-top: 20px; }
 .local-prose-toggle:hover { color: var(--dourado); border-color: var(--dourado); }
 .local-prose-toggle svg { transition: transform .3s; }
@@ -1440,6 +1442,27 @@ a.footer-nap-row:hover svg { color: var(--dourado); }
         </h3>
         <div class="faq-a"><p>Sim. A troca de contador &#233; um processo simples e n&#227;o interrompe a opera&#231;&#227;o da empresa. Assumimos a transfer&#234;ncia de todos os documentos e dados do contador anterior. Em geral, o processo leva entre 15 e 30 dias e &#233; completamente transparente para o cliente.</p></div>
       </div>
+      <div class="faq-item">
+        <h3 class="faq-q" role="button" tabindex="0" aria-expanded="false">
+          Qual a al&#237;quota de ISS para servi&#231;os em Par&#225; de Minas?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+        </h3>
+        <div class="faq-a"><p>A al&#237;quota de ISSQN em Par&#225; de Minas varia conforme o tipo de servi&#231;o prestado, seguindo a tabela do C&#243;digo Tribut&#225;rio Municipal. A al&#237;quota m&#237;nima legal &#233; de 2% e a m&#225;xima de 5%, conforme a Lei Complementar Federal 116/2003. Profissionais liberais, cl&#237;nicas, consult&#243;rios e prestadores de servi&#231;o t&#234;cnico t&#234;m al&#237;quotas espec&#237;ficas. A emiss&#227;o de nota fiscal de servi&#231;os &#233; feita pelo sistema NFS-e da <a href="https://parademinas.mg.gov.br/para-empresas/" target="_blank" rel="noopener">Prefeitura de Par&#225; de Minas</a>. Podemos verificar a al&#237;quota exata da sua atividade gratuitamente.</p></div>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-q" role="button" tabindex="0" aria-expanded="false">
+          Como abrir empresa no Polo Industrial de Par&#225; de Minas?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+        </h3>
+        <div class="faq-a"><p>A abertura de empresa no munic&#237;pio &#233; feita via <a href="https://www.jucemg.mg.gov.br/" target="_blank" rel="noopener">JUCEMG</a> (Junta Comercial de Minas Gerais) pelo portal Empresa F&#225;cil. Para ind&#250;strias no Polo Industrial, &#233; necess&#225;rio obter Licen&#231;a de Localiza&#231;&#227;o e Funcionamento junto &#224; Prefeitura de Par&#225; de Minas e, conforme o setor, Licen&#231;a Ambiental junto ao SUPRAM. O CNAE precisa estar alinhado com a atividade real para evitar enquadramento tribut&#225;rio errado, problema que corrigimos com freq&#252;&#234;ncia em empresas j&#225; constitu&#237;das.</p></div>
+      </div>
+      <div class="faq-item">
+        <h3 class="faq-q" role="button" tabindex="0" aria-expanded="false">
+          Ind&#250;strias de Par&#225; de Minas t&#234;m benef&#237;cios fiscais de ICMS?
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14"/><path d="M5 12h14"/></svg>
+        </h3>
+        <div class="faq-a"><p>Sim. Ind&#250;strias instaladas em Minas Gerais podem se enquadrar no Regime Especial de Tributa&#231;&#227;o (RET) previsto na Lei Estadual 23.954/2021, que permite redu&#231;&#227;o de at&#233; 60% sobre o ICMS incremental. Al&#233;m disso, h&#225; cr&#233;ditos de ICMS sobre a entrada de mat&#233;rias-primas e IPI sobre produtos industrializados que, quando n&#227;o aproveitados corretamente, representam dinheiro deixado na mesa todo m&#234;s. Uma auditoria retroativa dos &#250;ltimos 5 anos costuma identificar valores significativos para compensa&#231;&#227;o ou restitui&#231;&#227;o.</p></div>
+      </div>
     </div>
   </div>
 </section>
@@ -1485,18 +1508,18 @@ a.footer-nap-row:hover svg { color: var(--dourado); }
 
     <div class="local-prose-wrap reveal" id="localProseWrap">
       <p class="local-prose-intro">
-        A economia de Pará de Minas é <strong>industrial e diversa</strong>. O Distrito Industrial Antônio Júlio de Faria concentra cerca de 45 empresas nos setores têxtil, fundição, cerâmica e mineração de agalmatolito. O Distrito Industrial 2, às margens da BR-262, abriga operações de maior porte, incluindo o complexo da <strong>Itambé Laticínios</strong>. No eixo comercial, o movimento se concentra na Avenida Benedito Valadares, na Avenida Getúlio Vargas e na Rua Direita, no Centro.
+        Par&#225; de Minas tem <strong>14.368 empresas ativas</strong> e PIB de aproximadamente R$ 4 bilh&#245;es, composto por servi&#231;os (49%), ind&#250;stria (33,5%) e agropecuária (3,8%). S&#243; em 2024, foram abertas <strong>454 novas empresas</strong> no munic&#237;pio. O Distrito Industrial Antônio Júlio de Faria e o Distrito Industrial 2, &#224;s margens da BR-262, concentram siderurgia, têxtil, latic&#237;nios (Itamb&#233;) e ração animal. Informa&#231;&#245;es oficiais de abertura de empresa est&#227;o dispon&#237;veis na <a href="https://parademinas.mg.gov.br/para-empresas/" target="_blank" rel="noopener">Prefeitura de Par&#225; de Minas</a> e na <a href="https://www.jucemg.mg.gov.br/" target="_blank" rel="noopener">JUCEMG</a>.
       </p>
       <div class="local-prose" id="localProse">
         <p>
-          Cada polo tem uma estrutura tributária própria: indústrias com ICMS-ST e IPI, comércio varejista no Simples Nacional, profissionais liberais com ISSQN e holdings familiares para proteção patrimonial. <strong>Atendemos empresas em todos esses polos</strong>: indústrias do Jardim Industrial e do Parque Industrial, comércios do Centro, Santos Dumont, Padre Libério e Eldorado, clínicas e escritórios no Dom Bosco e no Belvedere.
+          Cada polo tem uma estrutura tribut&#225;ria pr&#243;pria: ind&#250;strias com <strong>ICMS-ST e IPI</strong> sobre insumos e produtos fabricados, com&#233;rcio varejista no Simples Nacional, profissionais liberais sujeitos ao <strong>ISSQN municipal</strong> e holdings familiares para prote&#231;&#227;o patrimonial. <strong>Atendemos empresas em todos esses polos</strong>: ind&#250;strias do Jardim Industrial e do Parque Industrial, com&#233;rcios do Centro, Santos Dumont, Padre Libério e Eldorado, cl&#237;nicas e escrit&#243;rios no Dom Bosco e no Belvedere.
         </p>
         <p>
-          Para o comércio varejista do Centro e dos bairros, o foco está na escolha correta entre Simples Nacional, Lucro Presumido e Lucro Real, que pode representar uma diferença de até 8 pontos percentuais na carga tributária. Para clínicas e consultórios no Dom Bosco e no Belvedere, trabalhamos com planejamento de ISSQN e constituição de sociedades médicas. Para holdings patrimoniais, a localização do imóvel em Pará de Minas define alíquotas de ITCD e critérios de valorização.
+          Para o com&#233;rcio varejista, a escolha entre Simples Nacional, Lucro Presumido e Lucro Real pode representar at&#233; 8 pontos percentuais de diferen&#231;a na carga tribut&#225;ria. Para cl&#237;nicas e consult&#243;rios, trabalhamos com planejamento de ISSQN e constitui&#231;&#227;o de sociedades m&#233;dicas. Para holdings patrimoniais, a localiza&#231;&#227;o do im&#243;vel em Par&#225; de Minas define al&#237;quotas de ITCD e crit&#233;rios de valoriza&#231;&#227;o. Ind&#250;strias do Polo podem ainda aproveitar incentivos estaduais de redu&#231;&#227;o de ICMS incremental previstos na <strong>Lei Estadual 23.954/2021</strong>.
         </p>
       </div>
       <button class="local-prose-toggle" id="localProseToggle" aria-expanded="false">
-        Ver mais sobre a economia de Pará de Minas
+        Ver mais sobre a economia de Par&#225; de Minas
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M6 9l6 6 6-6"/></svg>
       </button>
     </div>
