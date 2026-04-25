@@ -1004,8 +1004,8 @@
   /* ===== CALC GRID SIMPLIFICADA ===== */
   .calc-grid-simple {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    gap: 20px;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
     margin-bottom: 32px;
   }
   .calc-col-simple {
@@ -1253,11 +1253,7 @@
   .ramo-hint { font-size: .73rem; color: var(--silver); margin-top: 5px; line-height: 1.4; }
 
   /* ===== RESPONSIVO ===== */
-  @media (max-width: 900px) {
-    .calc-grid-simple { grid-template-columns: 1fr 1fr; }
-    #colDetalhes { grid-column: 1 / -1; }
-  }
-  @media (max-width: 600px) {
+  @media (max-width: 640px) {
     .calc-grid-simple { grid-template-columns: 1fr; }
     .quick-q-options { flex-direction: column; }
     .quick-option { flex-direction: column; align-items: flex-start; gap: 4px; }
@@ -2554,11 +2550,11 @@
 
       <!-- Toggle analise detalhada — full width abaixo dos cards -->
       <div id="deepDiveWrapper" style="display:none;">
-          <button class="toggle-deep-dive" id="toggleDeepDive" aria-expanded="false" type="button">
+          <button class="toggle-deep-dive" id="toggleDeepDive" aria-expanded="true" type="button">
             Ver detalhamento dos encargos
             <span class="toggle-deep-icon">▼</span>
           </button>
-          <div class="deep-dive-section" id="deepDiveSection" hidden>
+          <div class="deep-dive-section" id="deepDiveSection">
             <div class="calc-col-simple" id="colDetalhes">
               <div class="calc-col-header">
                 <div class="calc-col-icon" style="background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.2);">
