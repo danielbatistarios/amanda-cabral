@@ -155,163 +155,51 @@ body {
   z-index: 1;
 }
 
-.cursor {
-  position: fixed;
-  width: 20px;
-  height: 20px;
-  border: 2px solid var(--gold);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  display: none;
-}
+    .cursor { position: fixed; width: 20px; height: 20px; border: 1.5px solid var(--gold); border-radius: 50%; pointer-events: none; z-index: 10000; mix-blend-mode: difference; transition: width .3s var(--ease), height .3s var(--ease), background .3s, border-color .3s; transform: translate(-50%, -50%); }
+    .cursor.hover { width: 56px; height: 56px; background: rgba(59,130,246,0.1); border-color: var(--accent-light); }
+    .cursor-dot { position: fixed; width: 4px; height: 4px; background: var(--gold); border-radius: 50%; pointer-events: none; z-index: 10001; transform: translate(-50%, -50%); }
 
-.cursor-dot {
-  position: fixed;
-  width: 4px;
-  height: 4px;
-  background: var(--gold);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 10000;
-  display: none;
-}
-
-#progress-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 3px;
-  background: linear-gradient(to right, var(--gold), var(--gold));
-  width: 0;
-  z-index: 9998;
-}
-
-/* HEADER */
-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 64px;
-  background: rgba(6, 14, 26, 0.95);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid rgba(201, 168, 76, 0.1);
-  z-index: 1000;
-}
-
-#hdr-inner {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-#hdr-logo {
-  font-weight: 700;
-  font-size: 18px;
-  color: var(--gold);
-  text-decoration: none;
-  letter-spacing: -0.5px;
-  flex: 0 0 auto;
-}
-
-#hdr-nav {
-  display: flex;
-  list-style: none;
-  gap: 0;
-  align-items: center;
-  flex: 1;
-  justify-content: center;
-}
-
-.hdr-item {
-  position: relative;
-}
-
-.hdr-btn {
-  background: none;
-  border: none;
-  color: var(--gray-300);
-  font-size: 14px;
-  font-weight: 500;
-  padding: 8px 16px;
-  cursor: pointer;
-  transition: var(--transition);
-  position: relative;
-}
-
-.hdr-btn:hover {
-  color: var(--gold);
-}
-
-.hdr-cta {
-  background: transparent;
-  border: 1px solid var(--gold);
-  color: var(--gold);
-  padding: 8px 20px;
-  border-radius: 4px;
-  font-size: 13px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: var(--transition);
-  margin-left: 16px;
-  flex: 0 0 auto;
-}
-
-.hdr-cta:hover {
-  background: var(--gold);
-  color: var(--blue-900);
-}
-
-#hdr-menu-toggle {
-  display: none;
-  background: none;
-  border: none;
-  color: var(--gold);
-  font-size: 24px;
-  cursor: pointer;
-  flex: 0 0 auto;
-}
-
-.mobile-nav {
-  display: none;
-  position: fixed;
-  top: 64px;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(6, 14, 26, 0.98);
-  backdrop-filter: blur(10px);
-  z-index: 999;
-  flex-direction: column;
-  padding: 20px;
-  overflow-y: auto;
-}
-
-.mobile-nav.active {
-  display: flex;
-}
-
-.mobile-nav a,
-.mobile-nav button {
-  color: var(--gray-300);
-  background: none;
-  border: none;
-  padding: 12px 0;
-  text-align: left;
-  font-size: 16px;
-  cursor: pointer;
-  transition: var(--transition);
-}
-
-.mobile-nav a:hover,
-.mobile-nav button:hover {
-  color: var(--gold);
-}
+    #progress-bar { position: fixed; top: 0; left: 0; height: 3px; background: var(--gold); width: 0%; z-index: 9999; transition: width .1s; }
+    /* HEADER */
+    #hdr { position: fixed; top: 0; left: 0; right: 0; height: 64px; background: rgba(6,14,26,.92); backdrop-filter: blur(16px); border-bottom: 1px solid rgba(201,168,76,.08); z-index: 500; }
+    #hdr-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; height: 100%; display: flex; align-items: center; justify-content: space-between; position: relative; }
+    #hdr-logo { font-family: var(--font-display); font-size: clamp(1.15rem, 5vw, 1.45rem); font-style: italic; font-weight: 400; color: transparent; -webkit-text-stroke: 1px rgba(201,168,76,0.55); letter-spacing: -0.01em; white-space: nowrap; text-decoration: none; transition: -webkit-text-stroke-color 0.2s; }
+    #hdr-logo:hover { -webkit-text-stroke-color: rgba(201,168,76,0.9); }
+    #hdr-nav { display: flex; list-style: none; align-items: center; gap: 2px; margin: 0; padding: 0; }
+    .hdr-item { position: relative; }
+    .hdr-btn { background: none; border: none; cursor: pointer; font-size: 13px; font-weight: 500; color: rgba(255,255,255,0.7); padding: 8px 14px; display: flex; align-items: center; gap: 5px; transition: color 0.2s; font-family: var(--font-body); }
+    .hdr-btn:hover { color: #fff; }
+    .hdr-arrow { font-size: 10px; opacity: 0.5; transition: transform 0.2s; }
+    .hdr-item.open .hdr-arrow { transform: rotate(180deg); }
+    .hdr-cta { display: inline-block; padding: 9px 22px; background: var(--accent-gold); color: #0a0e14; font-size: 12px; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; border-radius: 4px; text-decoration: none; transition: opacity 0.2s; }
+    .hdr-cta:hover { opacity: 0.88; }
+    .hdr-mega { display: none; position: fixed; top: 64px; left: 0; right: 0; background: rgba(8,16,28,.97); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(201,168,76,.1); z-index: 490; padding: 32px 0; }
+    .hdr-mega.open { display: block; }
+    .hdr-mega-inner { max-width: 1200px; margin: 0 auto; padding: 0 24px; display: grid; grid-template-columns: 220px 1fr; gap: 40px; align-items: start; }
+    .hdr-mega-img { display: block; border-radius: 8px; overflow: hidden; }
+    .hdr-mega-img img { width: 220px; height: 180px; object-fit: cover; display: block; border-radius: 8px; }
+    .hdr-mega-col-title { font-size: 10px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(201,168,76,.5); margin-bottom: 16px; }
+    .hdr-mega-links { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; }
+    .hdr-mega-link { display: flex; flex-direction: column; padding: 10px 12px; border-radius: 6px; text-decoration: none; transition: background 0.15s; }
+    .hdr-mega-link:hover { background: rgba(255,255,255,.04); }
+    .hdr-mega-link strong { font-size: 13px; font-weight: 600; color: rgba(255,255,255,.85); margin-bottom: 2px; }
+    .hdr-mega-link span { font-size: 11px; color: rgba(255,255,255,.4); line-height: 1.4; }
+    .hdr-mega-link.active strong { color: var(--gold); }
+    .hdr-mega-col-cta { display: inline-block; margin-top: 16px; font-size: 12px; font-weight: 600; color: var(--gold); text-decoration: none; letter-spacing: 0.04em; }
+    #hdr-hamburger { display: none; background: none; border: none; cursor: pointer; flex-direction: column; gap: 6px; padding: 8px; }
+    #hdr-hamburger span { width: 22px; height: 2px; background: #E2DAC8; border-radius: 2px; display: block; transition: background 0.2s; }
+    #hdr-hamburger:hover span { background: #fff; }
+    @media (max-width: 900px) { #hdr-nav, .hdr-cta { display: none; } #hdr-hamburger { display: flex; } }
+    #hdr-mob { display: none; position: fixed; inset: 0; background: #060E1A; z-index: 600; flex-direction: column; padding: 80px 28px 32px; overflow-y: auto; }
+    #hdr-mob.open { display: flex; }
+    #hdr-mob-close { position: absolute; top: 18px; right: 20px; background: none; border: 1px solid rgba(201,168,76,0.25); border-radius: 50%; width: 36px; height: 36px; color: rgba(201,168,76,0.7); font-size: 16px; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: border-color 0.2s, color 0.2s; }
+    #hdr-mob-close:hover { border-color: var(--gold); color: var(--gold); }
+    .mob-brand { margin-bottom: 32px; }
+    .mob-brand-name { font-family: var(--font-display); font-size: clamp(2rem, 9vw, 2.8rem); font-style: italic; font-weight: 400; color: transparent; -webkit-text-stroke: 1px rgba(201,168,76,0.45); letter-spacing: -0.02em; line-height: 1.1; display: block; }
+    .mob-brand-sub { font-family: var(--font-body); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(201,168,76,0.5); margin-top: 6px; display: block; }
+    #hdr-mob a { color: rgba(255,255,255,0.75); font-size: 16px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.06); text-decoration: none; display: block; }
+    #hdr-mob a:hover { color: #fff; }
+    @media (max-width: 600px) { #hdr-inner { padding: 0 16px; } }
 
 /* BODY SECTIONS */
 section {
@@ -339,22 +227,12 @@ section {
   position: relative;
 }
 
-.breadcrumb {
-  margin-bottom: 24px;
-  font-size: 13px;
-  color: var(--gray-400);
-  letter-spacing: 0.5px;
-}
-
-.breadcrumb a {
-  color: var(--gold);
-  text-decoration: none;
-  transition: var(--transition);
-}
-
-.breadcrumb a:hover {
-  text-decoration: underline;
-}
+    .breadcrumb { padding: 0 0 24px; background: transparent; }
+    .breadcrumb-inner { max-width: var(--max-w); margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+    .breadcrumb-inner a { color: rgba(255,255,255,.3); text-decoration: none; transition: var(--t); }
+    .breadcrumb-inner a:hover { color: var(--gold); }
+    .breadcrumb-inner .bc-sep { color: rgba(255,255,255,.15); }
+    .breadcrumb-inner span:last-child { color: rgba(201,168,76,.7); }
 
 .breadcrumb span {
   margin: 0 8px;
@@ -427,37 +305,11 @@ section {
   text-decoration: none;
 }
 
-.btn-primary {
-  background: transparent;
-  border: 2px solid var(--gold);
-  color: var(--gold);
-  position: relative;
-  overflow: hidden;
-}
-
-.btn-primary::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(90deg, transparent, rgba(201, 168, 76, 0.3), transparent);
-  animation: shimmer 3s infinite;
-  pointer-events: none;
-}
-
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  50% { transform: translateX(100%); }
-  100% { transform: translateX(100%); }
-}
-
-.btn-primary:hover {
-  background: var(--gold);
-  color: var(--blue-900);
-  border-color: var(--gold);
-}
+.btn-primary { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; background: transparent; color: var(--gold); font-weight: 700; font-size: 15px; border-radius: 60px; border: 1.5px solid var(--gold); cursor: pointer; transition: all .5s ease; text-decoration: none; font-family: var(--font-body); position: relative; overflow: hidden; }
+    .btn-primary::after { content: ''; position: absolute; top: -2px; left: -100%; width: 100%; height: calc(100% + 4px); background: linear-gradient(90deg, transparent 0%, rgba(201,168,76,.35) 50%, transparent 100%); animation: border-travel 4s linear infinite; pointer-events: none; }
+    @keyframes border-travel { 0%{left:-100%} 100%{left:100%} }
+    .btn-primary:hover { background: var(--gold); color: var(--blue-900); box-shadow: 0 8px 24px rgba(201,168,76,.2); transform: translateY(-1px); }
+    .btn-primary:hover::after { animation-play-state: paused; }
 
 .btn-ghost {
   background: transparent;
@@ -1550,6 +1402,35 @@ footer p {
     grid-template-columns: 1fr;
   }
 }
+
+    /* FOOTER */
+    .site-footer { background: #040A14; border-top: 1px solid #0A1628; padding: 64px 0 0; }
+    .footer-inner { max-width: var(--max-w); margin: 0 auto; padding: 0 40px; }
+    .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 64px; }
+    .footer-brand-col { display: flex; flex-direction: column; }
+    .footer-contact-title { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 14px; }
+    .footer-nap { display: flex; flex-direction: column; gap: 10px; font-style: normal; }
+    .footer-nap-row { display: flex; align-items: flex-start; gap: 10px; font-size: 0.8125rem; color: #4a5568; text-decoration: none; transition: color 0.2s; line-height: 1.6; }
+    a.footer-nap-row:hover { color: rgba(255,255,255,0.75); }
+    a.footer-nap-row:hover svg { color: var(--gold); }
+    .footer-nap-row svg { flex-shrink: 0; margin-top: 2px; color: var(--gold); transition: color 0.2s; }
+    .footer-col { display: flex; flex-direction: column; }
+    .footer-heading { font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin-bottom: 16px; }
+    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-col a { display: block; font-size: 0.875rem; font-weight: 300; color: #4a5568; transition: color 0.2s; text-decoration: none; }
+    .footer-col a:hover { color: var(--white); }
+    .footer-wordmark-tagline { text-align: center; font-family: var(--font-display); font-size: clamp(0.95rem, 1.5vw, 1.15rem); color: rgba(255,255,255,0.55); margin-bottom: 8px; font-weight: 300; letter-spacing: 0.01em; }
+    .footer-wordmark { font-family: var(--font-display); font-size: clamp(3.5rem, 8vw, 7rem); font-style: italic; font-weight: 400; color: transparent; -webkit-text-stroke: 1px rgba(201,168,76,0.2); letter-spacing: -0.02em; line-height: 1; margin-bottom: 0; user-select: none; text-align: center; }
+    .footer-legal { border-top: 1px solid #0A1628; padding: 24px 0; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; }
+    .footer-legal p { font-size: 0.8125rem; color: #2d3748; }
+    .footer-legal-links { display: flex; gap: 24px; }
+    .footer-legal-links a { font-size: 0.8125rem; color: #2d3748; text-decoration: none; transition: color 0.2s; }
+    .footer-legal-links a:hover { color: var(--white); }
+    .footer-social-icons { display: flex; gap: 16px; align-items: center; }
+    .footer-social-icons a { color: #4a5568; transition: color 0.2s; display: flex; align-items: center; }
+    .footer-social-icons a:hover { color: var(--gold); }
+    @media (max-width: 1024px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; } }
+    @media (max-width: 600px) { .site-footer { padding: 48px 0 0; } .footer-inner { padding: 0 20px; } .footer-grid { grid-template-columns: 1fr; gap: 32px; } .footer-legal { flex-direction: column; gap: 12px; text-align: center; } .footer-legal-links { flex-wrap: wrap; justify-content: center; } }
   </style>
 </head>
 <body>
@@ -1568,45 +1449,112 @@ footer p {
           <a href="/" class="hdr-btn">Início</a>
         </li>
         <li class="hdr-item" data-menu="sobre">
-          <button class="hdr-btn">Sobre a AM Cabral <span class="hdr-caret">▼</span></button>
+          <button class="hdr-btn">Sobre a AM Cabral <span class="hdr-arrow">▾</span></button>
         </li>
         <li class="hdr-item" data-menu="servicos">
-          <button class="hdr-btn">Serviços <span class="hdr-caret">▼</span></button>
+          <button class="hdr-btn">Serviços <span class="hdr-arrow">▾</span></button>
         </li>
-        <li class="hdr-item" data-menu="clientes">
-          <button class="hdr-btn">Para Clientes <span class="hdr-caret">▼</span></button>
-        </li>
-        <li class="hdr-item">
-          <a href="/blog/" class="hdr-btn">Blog</a>
-        </li>
-        <li class="hdr-item">
-          <button class="hdr-cta" onclick="window.location='/contato'">Falar com Amanda</button>
+        <li class="hdr-item" data-menu="blog">
+          <button class="hdr-btn">Blog <span class="hdr-arrow">▾</span></button>
         </li>
       </ul>
-      <button id="hdr-menu-toggle">☰</button>
-    </div>
-    <div class="mobile-nav" id="mobile-nav">
-      <a href="/" class="mobile-nav-link">Início</a>
-      <button class="mobile-nav-submenu">Sobre a AM Cabral ▼</button>
-      <button class="mobile-nav-submenu">Serviços ▼</button>
-      <button class="mobile-nav-submenu">Para Clientes ▼</button>
-      <a href="/blog/" class="mobile-nav-link">Blog</a>
-      <button class="mobile-nav-link" onclick="window.location='/contato'">Falar com Amanda</button>
+      <a href="/fale-com-especialista/" class="hdr-cta">Diagnóstico Gratuito</a>
+      <button id="hdr-hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
     </div>
   </header>
-  <!-- MOBILE NAV END -->
+
+  <!-- MEGA MENUS -->
+  <div class="hdr-mega" id="mega-sobre">
+    <div class="hdr-mega-inner">
+      <a href="/sobre-amcabral-blindagem/" class="hdr-mega-img">
+        <img src="/amanda-sobre.webp" alt="Amanda Cabral Contadora" loading="lazy" width="600" height="800">
+      </a>
+      <div class="hdr-mega-col">
+        <div class="hdr-mega-col-title">Sobre a AM Cabral</div>
+        <div class="hdr-mega-links">
+          <a href="/sobre-amcabral-blindagem/" class="hdr-mega-link"><strong>Amanda Cabral</strong><span>Conheça a trajetória e a história do escritório AM Cabral</span></a>
+          <a href="/casos-de-sucesso/" class="hdr-mega-link"><strong>Casos de Sucesso</strong><span>Veja resultados reais de empresas que atendemos</span></a>
+          <a href="/perguntas-frequentes/" class="hdr-mega-link"><strong>Perguntas Frequentes</strong><span>Tire dúvidas sobre contabilidade, holding e tributação</span></a>
+          <a href="/cidades-atendidas/" class="hdr-mega-link"><strong>Cidades Atendidas</strong><span>Atendimento presencial em Pará de Minas e toda a região de MG</span></a>
+        </div>
+        <a href="/fale-com-especialista/" class="hdr-mega-col-cta">Falar com especialista →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hdr-mega" id="mega-servicos">
+    <div class="hdr-mega-inner">
+      <a href="/nossos-servicos/" class="hdr-mega-img">
+        <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=600&h=450&fit=crop" alt="Serviços Contábeis" loading="lazy" width="600" height="450">
+      </a>
+      <div class="hdr-mega-col">
+        <div class="hdr-mega-col-title">Nossos Serviços</div>
+        <div class="hdr-mega-links">
+          <a href="/nossos-servicos/gestao-contabil/" class="hdr-mega-link"><strong>Gestão Contábil Estratégica</strong><span>Escrituração, balanços, DRE e obrigações fiscais do seu negócio</span></a>
+          <a href="/nossos-servicos/recuperacao-creditos-tributarios/" class="hdr-mega-link"><strong>Recuperação de Créditos</strong><span>Até R$12M recuperados em ICMS, IPI e PIS/COFINS</span></a>
+          <a href="/nossos-servicos/holding-patrimonial/" class="hdr-mega-link active"><strong>Holding Patrimonial</strong><span>Abertura de holding familiar e patrimonial para proteger e organizar seu patrimônio</span></a>
+          <a href="/nossos-servicos/planejamento-tributario/" class="hdr-mega-link"><strong>Planejamento Tributário</strong><span>Escolha do regime ideal e redução legal da carga tributária da sua empresa</span></a>
+          <a href="/nossos-servicos/consultoria-tributaria/" class="hdr-mega-link"><strong>Consultoria Tributária</strong><span>Revisão de obrigações fiscais, compliance e orientação em decisões tributárias</span></a>
+          <a href="/nossos-servicos/desenquadrar-mei-para-me/" class="hdr-mega-link"><strong>Desenquadrar MEI para ME</strong><span>Migração do MEI para ME com planejamento para não perder benefícios fiscais</span></a>
+        </div>
+        <a href="/nossos-servicos/" class="hdr-mega-col-cta">Ver todos os serviços →</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="hdr-mega" id="mega-blog">
+    <div class="hdr-mega-inner">
+      <a href="/blog/" class="hdr-mega-img">
+        <img src="https://images.unsplash.com/photo-1499750310107-5fef28a66643?w=600&h=450&fit=crop" alt="Blog AM Cabral" loading="lazy" width="600" height="450">
+      </a>
+      <div class="hdr-mega-col">
+        <div class="hdr-mega-col-title">Conteúdo e Artigos</div>
+        <div class="hdr-mega-links">
+          <a href="/blog/reforma-tributaria-guia-industrias/" class="hdr-mega-link"><strong>Reforma Tributária 2026: Guia para Indústrias</strong><span>O que muda no ICMS, IPI e PIS/COFINS com a reforma</span></a>
+          <a href="/blog/o-que-e-ibs-e-cbs/" class="hdr-mega-link"><strong>O que é IBS e CBS?</strong><span>Entenda os dois novos tributos que substituem 5 impostos</span></a>
+          <a href="/blog/cronograma-reforma-tributaria/" class="hdr-mega-link"><strong>Cronograma da Reforma Tributária</strong><span>Datas e prazos que toda empresa precisa conhecer até 2033</span></a>
+          <a href="/blog/incentivos-fiscais-minas-gerais/" class="hdr-mega-link"><strong>Incentivos Fiscais em Minas Gerais</strong><span>Benefícios disponíveis para indústrias e empresas em MG</span></a>
+          <a href="/blog/87-industrias-mg-pagam-icms-a-mais/" class="hdr-mega-link"><strong>87% das Indústrias em MG Pagam ICMS a Mais</strong><span>Como identificar e recuperar créditos pagos indevidamente</span></a>
+          <a href="/author-amanda-cabral/" class="hdr-mega-link"><strong>Sobre a Autora</strong><span>Formação, especializações e trajetória de Amanda Cabral</span></a>
+        </div>
+        <a href="/blog/" class="hdr-mega-col-cta">Ver todos os artigos →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MOBILE NAV -->
+  <div id="hdr-mob">
+    <button id="hdr-mob-close">✕</button>
+    <div class="mob-brand">
+      <span class="mob-brand-name">AM Cabral</span>
+      <span class="mob-brand-sub">Contabilidade &amp; Planejamento Tributário</span>
+    </div>
+    <a href="/">Início</a>
+    <a href="/sobre-amcabral-blindagem/">Sobre Amanda</a>
+    <a href="/nossos-servicos/">Serviços</a>
+    <a href="/nossos-servicos/gestao-contabil/">Contabilidade Estratégica</a>
+    <a href="/nossos-servicos/recuperacao-creditos-tributarios/">Recuperação de Créditos</a>
+    <a href="/nossos-servicos/holding-patrimonial/" style="color:var(--gold);">Holding Patrimonial</a>
+    <a href="/nossos-servicos/planejamento-tributario/">Planejamento Fiscal</a>
+    <a href="/blog/">Blog</a>
+    <a href="/fale-com-especialista/" style="color:var(--gold);margin-top:20px;font-weight:600;border-color:rgba(201,168,76,0.2);letter-spacing:0.04em;">→ Diagnóstico Gratuito</a>
+  </div>
 
   <!-- HERO SECTION -->
   <section class="hero">
     <div class="hero-content">
-      <div class="breadcrumb">
-        <span><a href="/">Início</a></span>
-        <span><a href="/nossos-servicos/">Nossos Serviços</a></span>
-        <span>Holding Patrimonial</span>
-      </div>
-      <div class="hero-tags">
-        <div class="hero-tag-full">Holding Patrimonial · Família · Patrimônio · Sucessão · 20 Anos em MG</div>
-        <div class="hero-tag-short">Holding Patrimonial · 20 Anos em MG</div>
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <div class="breadcrumb-inner">
+          <a href="/">Início</a>
+          <span class="bc-sep">›</span>
+          <a href="/nossos-servicos/">Nossos Serviços</a>
+          <span class="bc-sep">›</span>
+          <span>Holding Patrimonial</span>
+        </div>
+      </nav>
+      <div class="hero-tag">
+        <span class="hero-tag-full">Holding Patrimonial · Família · Patrimônio · Sucessão · 20 Anos em MG</span>
+        <span class="hero-tag-short">Holding Patrimonial · 20 Anos em MG</span>
       </div>
       <h1>Proteja o que você construiu para um contador que <em>pensa como sócio.</em></h1>
       <p class="hero-sub">Constituímos holdings patrimoniais e familiares para blindar seus bens, reduzir o ITCMD na herança e organizar a governança entre sócios e herdeiros. Em MG, há 20 anos.</p>
@@ -2131,96 +2079,209 @@ footer p {
   </section>
 
   <!-- FOOTER -->
-  <footer>
-    <div style="max-width: 1200px; margin: 0 auto; padding: 0 20px;">
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px;">
-        <div>
-          <h4 style="color: var(--gold); margin-bottom: 16px;">AM Cabral</h4>
-          <p style="font-size: 13px; color: var(--gray-400); line-height: 1.6;">Consultoria em Holding Patrimonial, Planejamento Tributário e Contabilidade Estratégica para Famílias e Empresas em Minas Gerais.</p>
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-grid">
+        <div class="footer-brand-col">
+          <p class="footer-contact-title">Fale Conosco</p>
+          <address class="footer-nap">
+            <a href="tel:+5537999967558" class="footer-nap-row">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.27h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.83a16 16 0 0 0 5.38 5.38l1.92-1.92a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              (37) 99996-7558
+            </a>
+            <a href="mailto:contato@amcabralblindagem.com.br" class="footer-nap-row">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              contato@amcabralblindagem.com.br
+            </a>
+            <span class="footer-nap-row">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              Rua Major Fidelis, 244, Centro<br>Pará de Minas, MG 35660-109
+            </span>
+            <span class="footer-nap-row">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+              CNPJ 34.733.620/0001-51
+            </span>
+          </address>
         </div>
-        <div>
-          <h4 style="color: var(--gold); margin-bottom: 16px;">Serviços</h4>
-          <ul style="list-style: none; font-size: 13px;">
-            <li style="margin-bottom: 8px;"><a href="/nossos-servicos/holding-patrimonial/" style="color: var(--gray-400); text-decoration: none;">Holding Patrimonial</a></li>
-            <li style="margin-bottom: 8px;"><a href="/nossos-servicos/gestao-contabil/" style="color: var(--gray-400); text-decoration: none;">Gestão Contábil</a></li>
-            <li style="margin-bottom: 8px;"><a href="/nossos-servicos/imposto-renda/" style="color: var(--gray-400); text-decoration: none;">Imposto de Renda</a></li>
-            <li><a href="/nossos-servicos/" style="color: var(--gray-400); text-decoration: none;">Todos os Serviços</a></li>
+        <div class="footer-col">
+          <h3 class="footer-heading">A Empresa</h3>
+          <ul>
+            <li><a href="/sobre-amcabral-blindagem/">Sobre</a></li>
+            <li><a href="/casos-de-sucesso/">Casos de Sucesso</a></li>
+            <li><a href="/perguntas-frequentes/">Dúvidas Frequentes</a></li>
+            <li><a href="/fale-com-especialista/">Contato</a></li>
+            <li><a href="/blog/">Blog</a></li>
           </ul>
         </div>
-        <div>
-          <h4 style="color: var(--gold); margin-bottom: 16px;">Contato</h4>
-          <ul style="list-style: none; font-size: 13px;">
-            <li style="margin-bottom: 8px;"><a href="tel:(31)99999-9999" style="color: var(--gray-400); text-decoration: none;">(31) 99999-9999</a></li>
-            <li style="margin-bottom: 8px;"><a href="mailto:contato@amcabral.com.br" style="color: var(--gray-400); text-decoration: none;">contato@amcabral.com.br</a></li>
-            <li><a href="/contato/" style="color: var(--gray-400); text-decoration: none;">Formulário de Contato</a></li>
+        <div class="footer-col">
+          <h3 class="footer-heading">Serviços</h3>
+          <ul>
+            <li><a href="/nossos-servicos/gestao-contabil/">Contabilidade Estratégica</a></li>
+            <li><a href="/nossos-servicos/recuperacao-creditos-tributarios/">Recuperação de Créditos</a></li>
+            <li><a href="/nossos-servicos/holding-patrimonial/">Holding</a></li>
+            <li><a href="/nossos-servicos/planejamento-tributario/">Planejamento Fiscal</a></li>
+            <li><a href="/nossos-servicos/consultoria-tributaria/">Consultoria Tributária</a></li>
           </ul>
         </div>
-        <div>
-          <h4 style="color: var(--gold); margin-bottom: 16px;">Siga-nos</h4>
-          <ul style="list-style: none; font-size: 13px;">
-            <li style="margin-bottom: 8px;"><a href="#" style="color: var(--gray-400); text-decoration: none;">LinkedIn</a></li>
-            <li style="margin-bottom: 8px;"><a href="#" style="color: var(--gray-400); text-decoration: none;">Instagram</a></li>
-            <li><a href="#" style="color: var(--gray-400); text-decoration: none;">WhatsApp</a></li>
+        <div class="footer-col">
+          <h3 class="footer-heading">Cidades Atendidas</h3>
+          <ul>
+            <li><a href="/para-de-minas-mg/">Pará de Minas</a></li>
+            <li><a href="/sete-lagoas-mg/escritorio-de-contabilidade-sete-lagoas/">Sete Lagoas</a></li>
+            <li><a href="/betim-mg/contador-em-betim/">Betim</a></li>
+            <li><a href="/cidades-atendidas/">Belo Horizonte</a></li>
+            <li><a href="/cidades-atendidas/">Ver todas as cidades →</a></li>
           </ul>
         </div>
       </div>
-      <p style="font-size: 12px; text-align: center; color: var(--gray-500); margin-top: 40px; padding-top: 20px; border-top: 1px solid rgba(201, 168, 76, 0.1);">© 2024 AM Cabral. Consultoria em Holding Patrimonial e Contabilidade Estratégica. Todos os direitos reservados.</p>
+
+      <p class="footer-wordmark-tagline"><em>Inteligência tributária para empresas que competem para vencer.</em></p>
+      <div class="footer-wordmark">AM Cabral Contabilidade</div>
+
+      <div class="footer-legal">
+        <p>© 2026 Amanda Silva Cabral Contabilidade. CNPJ 34.733.620/0001-51. CRC/MG ativo.</p>
+        <div class="footer-social-icons">
+          <a href="https://www.instagram.com/amandacabral28/" target="_blank" rel="noopener" aria-label="Instagram">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.8" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/in/amanda-cabral-de-oliveira-82183a179/" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+        </div>
+        <div class="footer-legal-links">
+          <a href="/politica-de-privacidade/">Política de Privacidade</a>
+          <a href="/politica-de-cookies/">Política de Cookies</a>
+          <a href="/termos-de-uso/">Termos de Uso</a>
+        </div>
+      </div>
     </div>
   </footer>
 
   <script>
-    // Cursor tracking
+    // CURSOR
     const cursor = document.getElementById('cursor');
-    const cursorDot = document.getElementById('cursorDot');
-
-    document.addEventListener('mousemove', (e) => {
-      cursor.style.left = (e.clientX - 10) + 'px';
-      cursor.style.top = (e.clientY - 10) + 'px';
-      cursorDot.style.left = (e.clientX - 2) + 'px';
-      cursorDot.style.top = (e.clientY - 2) + 'px';
+    const dot = document.getElementById('cursorDot');
+    let mx = 0, my = 0, cx = 0, cy = 0;
+    document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; dot.style.left = mx + 'px'; dot.style.top = my + 'px'; });
+    (function animCursor() {
+      cx += (mx - cx) * 0.12; cy += (my - cy) * 0.12;
+      cursor.style.left = cx + 'px'; cursor.style.top = cy + 'px';
+      requestAnimationFrame(animCursor);
+    })();
+    document.querySelectorAll('a,button,.faq-q,.hub-card').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
     });
 
-    // Show custom cursor only on desktop
-    if (window.innerWidth > 1024) {
-      cursor.style.display = 'block';
-      cursorDot.style.display = 'block';
-    }
-
-    // Progress bar
+    // PROGRESS BAR
     window.addEventListener('scroll', () => {
-      const scrollTop = window.scrollY;
-      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-      const scrollPercent = scrollTop / docHeight;
-      document.getElementById('progress-bar').style.width = scrollPercent * 100 + '%';
+      const s = document.documentElement;
+      const p = (s.scrollTop / (s.scrollHeight - s.clientHeight)) * 100;
+      document.getElementById('progress-bar').style.width = p + '%';
     });
 
-    // Mobile menu
-    const menuToggle = document.getElementById('hdr-menu-toggle');
-    const mobileNav = document.getElementById('mobile-nav');
-
-    menuToggle.addEventListener('click', () => {
-      mobileNav.classList.toggle('active');
+    // MEGA-MENU
+    let hdrTimer = null, currentMega = null, currentItem = null;
+    const closeAll = () => {
+      document.querySelectorAll('.hdr-mega.open').forEach(m => m.classList.remove('open'));
+      document.querySelectorAll('.hdr-item.open').forEach(i => i.classList.remove('open'));
+      currentMega = null; currentItem = null;
+    };
+    document.querySelectorAll('.hdr-item[data-menu]').forEach(item => {
+      const btn = item.querySelector('.hdr-btn');
+      const mega = document.getElementById('mega-' + item.dataset.menu);
+      if (!btn || !mega) return;
+      const open = () => {
+        clearTimeout(hdrTimer);
+        if (currentMega && currentMega !== mega) { currentMega.classList.remove('open'); currentItem && currentItem.classList.remove('open'); }
+        mega.classList.add('open'); item.classList.add('open'); currentMega = mega; currentItem = item;
+      };
+      const scheduleClose = () => { hdrTimer = setTimeout(closeAll, 150); };
+      btn.addEventListener('mouseenter', open); btn.addEventListener('mouseleave', scheduleClose);
+      mega.addEventListener('mouseenter', () => clearTimeout(hdrTimer)); mega.addEventListener('mouseleave', scheduleClose);
+      btn.addEventListener('click', e => { e.preventDefault(); mega.classList.contains('open') ? closeAll() : open(); });
     });
+    document.addEventListener('click', e => { if (!e.target.closest('.hdr-item') && !e.target.closest('.hdr-mega')) closeAll(); });
 
-    // Scroll to form
-    function scrollToForm() {
-      document.getElementById('form-section').scrollIntoView({ behavior: 'smooth' });
+    // MOBILE NAV
+    const hdrHamburger = document.getElementById('hdr-hamburger');
+    const hdrMob = document.getElementById('hdr-mob');
+    const hdrMobClose = document.getElementById('hdr-mob-close');
+    if (hdrHamburger && hdrMob && hdrMobClose) {
+      hdrHamburger.addEventListener('click', () => hdrMob.classList.toggle('open'));
+      hdrMobClose.addEventListener('click', () => hdrMob.classList.remove('open'));
+      hdrMob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => hdrMob.classList.remove('open')));
     }
 
-    // FAQ accordion
+    // REVEAL ON SCROLL
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealIO = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); revealIO.unobserve(e.target); } });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+    revealEls.forEach(el => revealIO.observe(el));
+
+    // COUNTERS
+    const counterEls = document.querySelectorAll('.num-val[data-target]');
+    const counterIO = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const el = e.target;
+        const target = parseFloat(el.dataset.target);
+        const prefix = el.dataset.prefix || '';
+        const suffix = el.dataset.suffix || '';
+        const duration = 1800;
+        const start = performance.now();
+        const isFloat = String(target).includes('.');
+        function update(now) {
+          const p = Math.min((now - start) / duration, 1);
+          const val = p < 1 ? target * (1 - Math.pow(1 - p, 3)) : target;
+          el.textContent = prefix + (isFloat ? val.toFixed(1) : Math.round(val)) + suffix;
+          if (p < 1) requestAnimationFrame(update);
+        }
+        requestAnimationFrame(update);
+        counterIO.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+    counterEls.forEach(el => counterIO.observe(el));
+
+    // FAQ
+    function toggleFaq(el) {
+      const item = el.parentElement;
+      const answer = item.querySelector('.faq-a');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => {
+        i.classList.remove('open');
+        i.querySelector('.faq-a').style.maxHeight = null;
+      });
+      if (!isOpen) {
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    }
+
+    // SCROLL TO FORM
+    function scrollToForm() {
+      const el = document.getElementById('form-section');
+      if (el) el.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // FAQ ACCORDION (holding uses .faq-trigger pattern)
     document.querySelectorAll('.faq-trigger').forEach(trigger => {
       trigger.addEventListener('click', () => {
-        const item = trigger.closest('.faq-item');
-        item.classList.toggle('active');
+        trigger.closest('.faq-item').classList.toggle('active');
       });
     });
 
-    // Form submission
-    document.querySelector('.contact-form').addEventListener('submit', (e) => {
-      e.preventDefault();
-      alert('Mensagem enviada! Entraremos em contato em breve.');
-      e.target.reset();
-    });
+    // CONTACT FORM
+    const contactForm = document.querySelector('.contact-form');
+    if (contactForm) {
+      contactForm.addEventListener('submit', e => {
+        e.preventDefault();
+        const nome = contactForm.querySelector('[name="nome"],input[type="text"]');
+        const msg = encodeURIComponent('Olá Amanda, quero saber mais sobre holding patrimonial.');
+        window.open('https://wa.me/5537999967558?text=' + msg, '_blank');
+      });
+    }
   </script>
 </body>
 </html>
