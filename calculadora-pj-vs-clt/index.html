@@ -1626,7 +1626,7 @@
       </div>
 
       <!-- Navigation buttons -->
-      <div class="wizard-nav" id="wizardNavBar" style="display:none;">
+      <div class="wizard-nav" id="wizardNavBar">
         <button class="btn-wizard-prev" id="btnWizardPrev" type="button" style="display:none;">Voltar</button>
         <button class="btn-wizard-next" id="btnWizardNext" type="button">Proxima etapa</button>
       </div>
@@ -2402,8 +2402,7 @@ function showStep(n) {
   document.getElementById('wizardProgressFill').style.width = fill + '%';
   document.getElementById('btnWizardPrev').style.display = n === 1 ? 'none' : 'block';
   document.getElementById('btnWizardNext').textContent = n === 5 ? 'Ver resultado' : 'Proxima etapa';
-  // Esconde barra de nav nos steps de radio (auto-avanco); mostra nos de input
-  document.getElementById('wizardNavBar').style.display = n >= 4 ? 'flex' : 'none';
+  document.getElementById('wizardNavBar').style.display = 'flex';
 }
 
 function validateStep(n) {
