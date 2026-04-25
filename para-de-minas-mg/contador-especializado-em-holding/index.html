@@ -10,8 +10,13 @@
   <meta property="og:title" content="Contador Especializado em Holding em Pará de Minas | AM Cabral">
   <meta property="og:description" content="Holding patrimonial e familiar em Pará de Minas. Blindagem fiscal, planejamento sucessório e redução de ITCMD.">
   <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:url" content="https://amcabralblindagem.com.br/para-de-minas-mg/contador-especializado-em-holding/">
   <meta property="og:image" content="https://amcabralblindagem.com.br/assets/og-image.webp">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <link rel="canonical" href="https://amcabralblindagem.com.br/para-de-minas-mg/contador-especializado-em-holding/">
+  <meta name="theme-color" content="#060E1A">
   <meta name="robots" content="index, follow">
   <link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/instrument-serif-normal.woff2" as="font" type="font/woff2" crossorigin>
@@ -24,13 +29,15 @@
         "@type": "AccountingService",
         "@id": "https://amcabralblindagem.com.br/#organization",
         "name": "AM Cabral Contabilidade",
+        "legalName": "AC Contabilidade e Consultoria LTDA",
+        "taxID": "34733620000151",
         "url": "https://amcabralblindagem.com.br",
         "logo": "https://amcabralblindagem.com.br/assets/logo-am-cabral.svg",
         "telephone": "+5537999967558",
         "email": "contato@amcabralblindagem.com.br",
         "address": {
           "@type": "PostalAddress",
-          "streetAddress": "Rua Major Fidelis, 244",
+          "streetAddress": "Rua Major Fidelis, 244, Centro",
           "addressLocality": "Pará de Minas",
           "addressRegion": "MG",
           "postalCode": "35660-109",
@@ -41,6 +48,15 @@
           "latitude": -19.8607,
           "longitude": -44.6126
         },
+        "hasMap": "https://maps.google.com/?q=Rua+Major+Fidelis+244+Para+de+Minas+MG",
+        "openingHoursSpecification": [
+          {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+            "opens": "08:00",
+            "closes": "18:00"
+          }
+        ],
         "foundingDate": "2005",
         "areaServed": [
           {"@type": "City", "name": "Pará de Minas", "sameAs": "https://www.wikidata.org/wiki/Q1749821"},
@@ -489,6 +505,10 @@
     /* ── REVEAL ── */
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
     .reveal.visible { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) {
+      .reveal { opacity: 1; transform: none; transition: none; }
+      .marquee-track { animation: none; }
+    }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
@@ -504,12 +524,62 @@
       .form-options { grid-template-columns: 1fr; }
       .form-row { grid-template-columns: 1fr; }
       .sec { padding: 60px 24px; }
-      .hero { padding: 120px 24px 80px; }
+      .hero { padding: 100px 24px 64px; }
     }
     @media (max-width: 480px) {
       .num-grid { grid-template-columns: repeat(2, 1fr); }
       .hub-grid { grid-template-columns: 1fr; }
       .proc-steps { grid-template-columns: 1fr; }
+      .hero { padding: 84px 20px 52px; }
+      .sec { padding: 48px 20px; }
+    }
+
+    /* ── MOBILE TOUCH FIXES ── */
+    /* scroll-padding compensa header fixo em âncoras */
+    html { scroll-padding-top: 72px; }
+
+    /* touch targets mínimos 44px */
+    @media (max-width: 900px) {
+      .hdr-btn { min-height: 44px; padding: 0 14px; }
+      #hdr-hamburger { min-width: 44px; min-height: 44px; justify-content: center; }
+    }
+    @media (max-width: 768px) {
+      .car-btn { width: 44px; height: 44px; }
+      .faq-q { padding: 16px 0; min-height: 44px; }
+      .footer-social-icons a { padding: 8px; }
+      #hdr-mob a { min-height: 44px; display: flex; align-items: center; }
+      #hdr-mob-close { width: 44px; height: 44px; }
+    }
+
+    /* hover apenas em dispositivos com ponteiro fino (mouse) */
+    @media (hover: hover) and (pointer: fine) {
+      .num-card:hover { border-color: rgba(201,168,76,.3); transform: translateY(-4px); }
+      .dif-card:hover { border-color: rgba(201,168,76,.25); transform: translateY(-4px); }
+      .hub-card:hover { border-color: rgba(201,168,76,.3); transform: translateY(-3px); }
+      .car-card:hover { border-color: rgba(201,168,76,.3); transform: translateY(-4px); }
+      .case-card:hover { border-color: rgba(201,168,76,.25); transform: translateY(-4px); }
+      .dep-card:hover { border-color: rgba(201,168,76,.2); }
+      .content-block:hover { border-color: rgba(201,168,76,.2); }
+      .btn-primary:hover { background: #E8C96A; transform: translateY(-2px); }
+      .btn-ghost:hover { border-color: var(--gold); color: var(--gold); }
+    }
+    @media (hover: none) {
+      .num-card, .dif-card, .hub-card, .car-card, .case-card, .dep-card, .content-block { transition: none; }
+    }
+
+    /* desabilitar cursor custom em touch */
+    @media (hover: none), (pointer: coarse) {
+      .cursor, .cursor-dot { display: none; }
+      body, a, button { cursor: auto; }
+    }
+
+    /* carousel touch-friendly: scroll horizontal com snap */
+    @media (max-width: 768px) {
+      .car-track-wrap { overflow-x: auto; overflow-y: hidden; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+      .car-track-wrap::-webkit-scrollbar { display: none; }
+      .car-track { overflow: visible; transition: none; will-change: auto; }
+      .car-card { scroll-snap-align: start; min-width: min(260px, 80vw); }
+      .car-controls { display: none; }
     }
   </style>
 </head>
@@ -890,16 +960,16 @@
           <div class="form-row">
             <div class="form-group">
               <label>Nome</label>
-              <input type="text" id="nome" class="form-input" placeholder="Seu nome">
+              <input type="text" id="nome" class="form-input" placeholder="Seu nome" autocomplete="name">
             </div>
             <div class="form-group">
               <label>Empresa</label>
-              <input type="text" id="empresa" class="form-input" placeholder="Nome da empresa">
+              <input type="text" id="empresa" class="form-input" placeholder="Nome da empresa" autocomplete="organization">
             </div>
           </div>
           <div class="form-group" style="margin-bottom:12px;">
             <label>WhatsApp</label>
-            <input type="tel" id="whatsapp" class="form-input" placeholder="(37) 99999-0000">
+            <input type="tel" id="whatsapp" class="form-input" placeholder="(37) 99999-0000" autocomplete="tel">
           </div>
           <div class="form-nav">
             <button class="btn-back" onclick="prevStep(4)">← Voltar</button>

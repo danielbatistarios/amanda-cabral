@@ -434,9 +434,10 @@ address { font-style: normal; }
 .btn-p, .btn-gold, .btn-wa {
   display: inline-flex; align-items: center; gap: 8px;
   font-family: var(--sans); font-size: 14px; font-weight: 700;
-  letter-spacing: .05em; text-transform: uppercase; border: none;
+  letter-spacing: .05em; text-transform: uppercase;
   border-radius: 8px; cursor: pointer; padding: 14px 24px;
-  transition: transform .2s var(--spring), box-shadow .2s;
+  transition: transform .2s var(--spring), box-shadow .2s, background .2s, color .2s;
+  text-decoration: none;
 }
 .btn-p { background: var(--accent); color: #fff; }
 .btn-p:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(59,130,246,.35); }
@@ -829,20 +830,24 @@ a.footer-nap-row:hover svg { color: var(--dourado); }
 .bb-info { font-size: 13px; color: var(--dim); white-space: nowrap; }
 .bb-stars { color: #F59E0B; letter-spacing: 1px; }
 .bb-sep { width: 1px; height: 20px; background: rgba(255,255,255,.1); }
-.bb-cta { background: var(--dourado); color: #060E1A; font-family: var(--sans); font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 10px 20px; border-radius: 8px; white-space: nowrap; display: flex; align-items: center; gap: 6px; transition: transform .2s; }
-.bb-cta:hover { transform: translateY(-1px); }
+.bb-cta { background: transparent; color: #C9A84C; border: 1.5px solid #C9A84C; font-family: var(--sans); font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; padding: 10px 20px; border-radius: 8px; white-space: nowrap; display: flex; align-items: center; gap: 6px; transition: transform .2s, background .2s, color .2s; position: relative; overflow: hidden; }
+.bb-cta::after { content: ''; position: absolute; top: -2px; left: -100%; width: 100%; height: calc(100% + 4px); background: linear-gradient(90deg, transparent 0%, rgba(201,168,76,0.35) 50%, transparent 100%); animation: border-travel 4s linear infinite; pointer-events: none; }
+.bb-cta:hover { background: #C9A84C; color: #060E1A; transform: translateY(-1px); }
+.bb-cta:hover::after { animation-play-state: paused; }
 .bb-mobile { display: none; }
 
 /* === RESPONSIVE === */
 @media (max-width: 960px) {
   #bar { display: none; }
-  body { padding-bottom: 66px; }
+  body { padding-bottom: 52px; }
   :root { --sec-pad: clamp(64px, 10vw, 100px); }
   .bb-desktop { display: none; }
-  .bb-mobile { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 16px calc(8px + env(safe-area-inset-bottom, 4px)); flex-wrap: wrap; justify-content: center; gap: 6px 10px; }
-  .bb-mobile-top { font-size: 11px; font-weight: 500; color: var(--dim); display: flex; align-items: center; gap: 4px; }
-  .bb-mobile-stars { color: #F59E0B; font-size: 11px; letter-spacing: 1px; }
-  .bb-mobile-cta { display: flex; align-items: center; justify-content: center; gap: 5px; padding: 8px 16px; border-radius: 50px; background: var(--accent); color: #fff; font-size: 11px; font-weight: 600; border: none; cursor: pointer; white-space: nowrap; flex-shrink: 0; }
+  .bottom-bar { padding: 0; }
+  .bb-mobile { display: flex; align-items: center; justify-content: space-between; gap: 8px; padding: 8px 14px calc(8px + env(safe-area-inset-bottom, 0px)); width: 100%; }
+  .bb-mobile-top { font-size: 11px; font-weight: 500; color: rgba(255,255,255,.7); display: flex; align-items: center; gap: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; min-width: 0; }
+  .bb-mobile-stars { color: #F59E0B; font-size: 11px; letter-spacing: 1px; flex-shrink: 0; }
+  .bb-mobile-cta { display: flex; align-items: center; gap: 4px; padding: 7px 14px; border-radius: 50px; background: transparent; color: #C9A84C; border: 1.5px solid #C9A84C; font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; white-space: nowrap; flex-shrink: 0; position: relative; overflow: hidden; }
+  .bb-mobile-cta::after { content: ''; position: absolute; top: -2px; left: -100%; width: 100%; height: calc(100% + 4px); background: linear-gradient(90deg, transparent 0%, rgba(201,168,76,0.35) 50%, transparent 100%); animation: border-travel 4s linear infinite; pointer-events: none; }
   .city-hero { min-height: auto; padding: 80px 0 48px; }
   .hero-layout { grid-template-columns: 1fr; gap: 40px; }
   .hero-img-col { display: none; }
@@ -1575,8 +1580,8 @@ a.footer-nap-row:hover svg { color: var(--dourado); }
     </a>
   </div>
   <div class="bb-mobile">
-    <span class="bb-mobile-top"><span class="bb-mobile-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 4.9 &middot; 127+ empresas</span>
-    <a href="/fale-com-especialista/" class="bb-mobile-cta">Diagn&#243;stico Gratuito</a>
+    <span class="bb-mobile-top"><span class="bb-mobile-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> 4.9 &middot; +127 empresas atendidas</span>
+    <a href="/fale-com-especialista/" class="bb-mobile-cta">An&#225;lise Gratuita</a>
   </div>
 </div>
 
