@@ -2714,8 +2714,8 @@ function calcAndRender() {
   const saude = parseFormattedNumber(document.getElementById('wizardSaude').value);
   const tempo = parseFloat(document.getElementById('wizardTempo').value) || 24;
 
-  // Calculo CLT
-  const clt = calcCustoTotalCLT(salario, vr, vt, saude, true, SISTEMA_S, isSimples, 0.02, false, 0, 0.02);
+  // Calculo CLT — INSS patronal sempre 20% (regime PJ nao afeta o custo CLT)
+  const clt = calcCustoTotalCLT(salario, vr, vt, saude, true, SISTEMA_S, false, 0.02, false, 0, 0.02);
 
   // Custo PJ para a empresa contratante: o honorario bruto da NF
   const pjCusto = honorario > 0 ? honorario : Math.round(salario * 1.10);
