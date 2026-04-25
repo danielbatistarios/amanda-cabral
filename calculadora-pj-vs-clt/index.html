@@ -1208,18 +1208,24 @@
     display: flex; flex-direction: column; gap: 10px;
   }
   .id-cta-opt {
-    display: flex; align-items: center; gap: 12px;
-    padding: 14px 18px; border-radius: 10px;
+    display: flex; align-items: flex-start; gap: 14px;
+    padding: 16px 18px; border-radius: 12px;
     border: 1px solid rgba(255,255,255,.08);
     background: rgba(255,255,255,.02);
     color: var(--silver-light); font-size: .93rem;
     font-family: var(--font-body); cursor: pointer;
     transition: border-color .2s, background .2s, color .2s;
-    text-align: left;
+    text-align: left; width: 100%;
   }
-  .id-cta-opt:hover { border-color: rgba(201,168,76,.35); color: var(--white); }
-  .id-cta-opt.selected { border-color: var(--gold); background: rgba(201,168,76,.07); color: var(--white); }
-  .id-cta-opt-icon { font-size: 1.15rem; flex-shrink: 0; }
+  .id-cta-opt:hover { border-color: rgba(201,168,76,.35); background: rgba(201,168,76,.04); }
+  .id-cta-opt:hover .id-opt-title { color: var(--white); }
+  .id-cta-opt.selected { border-color: var(--gold); background: rgba(201,168,76,.07); }
+  .id-cta-opt.selected .id-opt-title { color: var(--white); }
+  .id-cta-opt.selected .id-opt-desc { color: rgba(255,255,255,.55); }
+  .id-cta-opt-icon { font-size: 1.4rem; flex-shrink: 0; line-height: 1; margin-top: 1px; }
+  .id-opt-body { display: flex; flex-direction: column; gap: 2px; }
+  .id-opt-title { font-size: .95rem; font-weight: 600; color: rgba(255,255,255,.85); line-height: 1.2; }
+  .id-opt-desc { font-size: .78rem; color: rgba(255,255,255,.38); line-height: 1.4; }
 
   /* inputs (step 4) */
   .id-form-group { margin-bottom: 16px; }
@@ -1995,51 +2001,91 @@
           <form id="idWizForm" novalidate>
             <!-- Step 1: Voce é... -->
             <div class="id-form-step active" data-step="1">
-              <div class="id-form-step-title">Voce e...</div>
+              <div class="id-form-step-title">Quem esta fazendo essa analise?</div>
               <div class="id-cta-opts">
                 <button type="button" class="id-cta-opt" data-field="cargo" data-value="contratante">
-                  <span class="id-cta-opt-icon">🏢</span> Empresa ou RH — quero contratar alguem
+                  <span class="id-cta-opt-icon">🏢</span>
+                  <div class="id-opt-body">
+                    <span class="id-opt-title">Sou empresa ou RH</span>
+                    <span class="id-opt-desc">Preciso decidir se contrato CLT ou terceirizo como PJ</span>
+                  </div>
                 </button>
                 <button type="button" class="id-cta-opt" data-field="cargo" data-value="profissional">
-                  <span class="id-cta-opt-icon">👤</span> Profissional — quero virar PJ ou comparar
+                  <span class="id-cta-opt-icon">👤</span>
+                  <div class="id-opt-body">
+                    <span class="id-opt-title">Sou profissional autonomo</span>
+                    <span class="id-opt-desc">Quero comparar quanto vou receber como PJ versus CLT</span>
+                  </div>
                 </button>
                 <button type="button" class="id-cta-opt" data-field="cargo" data-value="comparar">
-                  <span class="id-cta-opt-icon">📊</span> So comparando os numeros
+                  <span class="id-cta-opt-icon">📊</span>
+                  <div class="id-opt-body">
+                    <span class="id-opt-title">Estou so pesquisando</span>
+                    <span class="id-opt-desc">Quero entender os numeros sem compromisso</span>
+                  </div>
                 </button>
               </div>
             </div>
 
             <!-- Step 2: O cenario e... -->
             <div class="id-form-step" data-step="2">
-              <div class="id-form-step-title">O cenario e...</div>
+              <div class="id-form-step-title">Qual e a situacao atual?</div>
               <div class="id-cta-opts">
                 <button type="button" class="id-cta-opt" data-field="motivacao" data-value="nova">
-                  <span class="id-cta-opt-icon">🆕</span> Nova contratacao — decidindo o formato agora
+                  <span class="id-cta-opt-icon">🆕</span>
+                  <div class="id-opt-body">
+                    <span class="id-opt-title">Nova contratacao</span>
+                    <span class="id-opt-desc">Ainda decidindo entre CLT e PJ para uma vaga nova</span>
+                  </div>
                 </button>
                 <button type="button" class="id-cta-opt" data-field="motivacao" data-value="existente">
-                  <span class="id-cta-opt-icon">🔄</span> Migracao CLT → PJ — relacao existente
+                  <span class="id-cta-opt-icon">🔄</span>
+                  <div class="id-opt-body">
+                    <span class="id-opt-title">Migracao CLT para PJ</span>
+                    <span class="id-opt-desc">Relacao de emprego existente que esta sendo convertida</span>
+                  </div>
                 </button>
                 <button type="button" class="id-cta-opt" data-field="motivacao" data-value="demissao">
-                  <span class="id-cta-opt-icon">📋</span> Pos-demissao — recontratacao como PJ
+                  <span class="id-cta-opt-icon">📋</span>
+                  <div class="id-opt-body">
+                    <span class="id-opt-title">Recontratacao pos-demissao</span>
+                    <span class="id-opt-desc">Profissional foi desligado e a empresa quer recontratar como PJ</span>
+                  </div>
                 </button>
               </div>
             </div>
 
             <!-- Step 3: Ramo de atividade -->
             <div class="id-form-step" data-step="3">
-              <div class="id-form-step-title">Qual e o ramo de atividade do PJ?</div>
+              <div class="id-form-step-title">Qual e a area de atuacao do PJ?</div>
               <div class="id-cta-opts">
                 <button type="button" class="id-cta-opt" data-field="ramo" data-value="servicos_iii">
-                  <span class="id-cta-opt-icon">💻</span> TI, dev, design, marketing — Simples Anexo III
+                  <span class="id-cta-opt-icon">💻</span>
+                  <div class="id-opt-body">
+                    <span class="id-opt-title">Tecnologia, design ou marketing</span>
+                    <span class="id-opt-desc">Dev, UX, programador, agencia, social media — Simples Anexo III (~6%)</span>
+                  </div>
                 </button>
                 <button type="button" class="id-cta-opt" data-field="ramo" data-value="servicos_v">
-                  <span class="id-cta-opt-icon">📋</span> Consultoria, engenharia, advocacia, contabilidade — Anexo V
+                  <span class="id-cta-opt-icon">📋</span>
+                  <div class="id-opt-body">
+                    <span class="id-opt-title">Consultoria, engenharia ou juridico</span>
+                    <span class="id-opt-desc">Consultor, advogado, contador, arquiteto — Simples Anexo V (~15%)</span>
+                  </div>
                 </button>
                 <button type="button" class="id-cta-opt" data-field="ramo" data-value="comercio">
-                  <span class="id-cta-opt-icon">🛒</span> Comercio ou industria — Anexo I/II
+                  <span class="id-cta-opt-icon">🛒</span>
+                  <div class="id-opt-body">
+                    <span class="id-opt-title">Comercio ou industria</span>
+                    <span class="id-opt-desc">Revenda, fabricacao, distribuicao — Simples Anexo I/II (~4%)</span>
+                  </div>
                 </button>
                 <button type="button" class="id-cta-opt" data-field="ramo" data-value="presumido">
-                  <span class="id-cta-opt-icon">🏦</span> Lucro Presumido ou Real
+                  <span class="id-cta-opt-icon">🏦</span>
+                  <div class="id-opt-body">
+                    <span class="id-opt-title">Lucro Presumido ou Real</span>
+                    <span class="id-opt-desc">Empresa maior, faturamento acima do teto do Simples</span>
+                  </div>
                 </button>
               </div>
             </div>
