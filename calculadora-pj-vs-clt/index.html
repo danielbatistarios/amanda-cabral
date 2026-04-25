@@ -1039,6 +1039,25 @@
   .result-delta-badge.neutral { background: rgba(148,163,184,.1); color: var(--silver); border: 1px solid rgba(148,163,184,.2); }
   .result-inline-anual { font-size: .8rem; color: var(--silver); text-align: center; padding: 8px 12px; background: rgba(255,255,255,.02); border-radius: 8px; }
 
+  /* Linha de liquidez do profissional */
+  .result-liquido-context {
+    display: flex; align-items: center; gap: 0;
+    background: rgba(255,255,255,.015); border: 1px solid rgba(255,255,255,.07);
+    border-radius: 10px; padding: 14px 16px; margin: 10px 0 4px;
+  }
+  .result-liquido-col { flex: 1; display: flex; flex-direction: column; gap: 2px; }
+  .result-liquido-col:last-child { text-align: right; }
+  .result-liquido-label { font-size: .68rem; text-transform: uppercase; letter-spacing: .05em; color: var(--silver); }
+  .result-liquido-value { font-family: var(--font-display); font-size: 1.15rem; color: var(--white); }
+  .result-liquido-value.gold { color: var(--gold); }
+  .result-liquido-detail { font-size: .7rem; color: rgba(255,255,255,.35); margin-top: 1px; }
+  .result-liquido-sep { font-size: .75rem; color: rgba(255,255,255,.3); font-weight: 600; padding: 0 14px; flex-shrink: 0; }
+  @media (max-width: 480px) {
+    .result-liquido-context { flex-direction: column; gap: 12px; }
+    .result-liquido-col:last-child { text-align: left; }
+    .result-liquido-sep { padding: 0; }
+  }
+
   /* ===== DETALHES / ENCARGOS ===== */
   .detalhe-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,.05); font-size: .82rem; }
   .detalhe-row span { color: var(--silver); }
@@ -2237,15 +2256,29 @@
           <div class="result-inline" id="resultInline" style="display:none;">
             <div class="result-inline-row">
               <div class="result-inline-card clt">
-                <div class="result-inline-label">Custo CLT/mes</div>
+                <div class="result-inline-label">Custo total para a empresa / mes</div>
                 <div class="result-inline-value" id="resCltTotal">-</div>
                 <div class="result-inline-sub" id="resCltSub"></div>
               </div>
               <div class="result-inline-card pj">
                 <div class="result-delta-badge" id="resDelta"></div>
-                <div class="result-inline-label">Honorario PJ/mes (NF)</div>
+                <div class="result-inline-label">Desembolso PJ para a empresa / mes</div>
                 <div class="result-inline-value gold" id="resPjTotal">-</div>
                 <div class="result-inline-sub" id="resPjSub"></div>
+              </div>
+            </div>
+            <!-- Perspectiva do profissional: linha separada e simetrica -->
+            <div class="result-liquido-context" id="resLiquidoContext" style="display:none;">
+              <div class="result-liquido-col">
+                <span class="result-liquido-label">Profissional recebe como CLT</span>
+                <span class="result-liquido-value" id="resLiquidoClt">-</span>
+                <span class="result-liquido-detail" id="resLiquidoCltDetail"></span>
+              </div>
+              <div class="result-liquido-sep">vs</div>
+              <div class="result-liquido-col">
+                <span class="result-liquido-label">Profissional recebe como PJ</span>
+                <span class="result-liquido-value gold" id="resLiquidoPj">-</span>
+                <span class="result-liquido-detail" id="resLiquidoPjDetail"></span>
               </div>
             </div>
             <div class="result-inline-anual" id="resAnual"></div>
@@ -3233,6 +3266,8 @@ function resetCalc() {
   const firstRegime = document.querySelector('input[name="wizardRegime"]');
   if (firstRegime) firstRegime.checked = true;
   document.getElementById('resultInline').style.display = 'none';
+  const liqCtxReset = document.getElementById('resLiquidoContext');
+  if (liqCtxReset) liqCtxReset.style.display = 'none';
   const ddWrap = document.getElementById('deepDiveWrapper');
   if (ddWrap) ddWrap.style.display = 'none';
   const ddSec = document.getElementById('deepDiveSection');
@@ -3486,12 +3521,24 @@ function calcAndRender() {
 
   // --- Resultado inline: cards CLT x PJ ---
   document.getElementById('resCltTotal').textContent = brl(clt.custoTotal);
-  document.getElementById('resCltSub').textContent = 'Liquido empregado: ' + brl(liquidoEmpregado) + ' (INSS ' + brl(inssEmp) + ' + IR ' + brl(irrf) + ')';
-  document.getElementById('resPjTotal').textContent = brl(pjCusto);
+  // Sublabel CLT: o que compoe o custo da empresa
+  document.getElementById('resCltSub').textContent =
+    'Salario ' + brl(salario) + ' + encargos ' + brl(clt.encargos) + (clt.beneficios > 0 ? ' + beneficios ' + brl(clt.beneficios) : '');
 
-  // Sub do PJ: liquido apos impostos do CNPJ
+  document.getElementById('resPjTotal').textContent = brl(pjCusto);
+  // Sublabel PJ: so o honorario, sem encargos adicionais para a empresa
   const pjSubEl = document.getElementById('resPjSub');
-  if (pjSubEl) pjSubEl.textContent = 'Liquido estimado (' + Math.round(aliqPJ * 100) + '% impostos): ' + brl(pjLiquido);
+  if (pjSubEl) pjSubEl.textContent = 'So o honorario — sem INSS patronal, FGTS ou provisoes';
+
+  // Linha de perspectiva do profissional (separada dos custos da empresa)
+  const liqCtx = document.getElementById('resLiquidoContext');
+  if (liqCtx) {
+    liqCtx.style.display = 'flex';
+    document.getElementById('resLiquidoClt').textContent = brl(liquidoEmpregado);
+    document.getElementById('resLiquidoCltDetail').textContent = 'Apos INSS ' + brl(inssEmp) + ' e IR ' + brl(irrf);
+    document.getElementById('resLiquidoPj').textContent = brl(pjLiquido);
+    document.getElementById('resLiquidoPjDetail').textContent = 'Apos impostos CNPJ (' + Math.round(aliqPJ * 100) + '%)';
+  }
 
   // Delta: comparacao de custo para a empresa
   const diff = clt.custoTotal - pjCusto;
