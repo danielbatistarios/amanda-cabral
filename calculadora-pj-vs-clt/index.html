@@ -848,6 +848,68 @@
     .wizard-shake { animation: shake .35s ease; }
     @keyframes shake { 0%,100%{transform:translateX(0)} 20%,60%{transform:translateX(-6px)} 40%,80%{transform:translateX(6px)} }
 
+    /* ===== WIZARD INPUT GROUP ===== */
+    .wizard-input-group { margin-bottom: 4px; }
+    .wizard-input-group label {
+      display: block; font-size: .8rem; font-weight: 600;
+      letter-spacing: .05em; text-transform: uppercase;
+      color: rgba(232,236,244,.68); margin-bottom: 10px;
+      transition: color .2s;
+    }
+    .wizard-input-group:focus-within label { color: var(--accent-gold); }
+    /* Wrapper para prefixo R$ */
+    .currency-wrap { position: relative; }
+    .currency-wrap .currency-symbol {
+      position: absolute; left: 14px; top: 50%;
+      transform: translateY(-50%);
+      color: var(--accent-gold); font-weight: 700; font-size: .95rem;
+      pointer-events: none; user-select: none; z-index: 1;
+    }
+    .currency-wrap input { padding-left: 36px !important; }
+    /* Input e select base */
+    .wizard-input-group input[type="number"],
+    .wizard-input-group select {
+      width: 100%; padding: 13px 14px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.18);
+      border-radius: 10px; color: var(--white);
+      font-size: 1.05rem; font-weight: 500; font-family: inherit;
+      min-height: 50px;
+      transition: border-color .2s, background .2s, box-shadow .2s;
+    }
+    .wizard-input-group input[type="number"]::placeholder { color: rgba(232,236,244,.3); font-weight: 400; }
+    .wizard-input-group input[type="number"]::-webkit-inner-spin-button,
+    .wizard-input-group input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
+    .wizard-input-group input[type="number"] { -moz-appearance: textfield; }
+    .wizard-input-group input[type="number"]:hover,
+    .wizard-input-group select:hover { background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.26); }
+    .wizard-input-group input[type="number"]:focus,
+    .wizard-input-group select:focus {
+      outline: none;
+      border-color: var(--accent-gold);
+      background: rgba(201,168,76,.08);
+      box-shadow: 0 0 0 3px rgba(201,168,76,.14);
+    }
+    /* Select custom arrow */
+    .wizard-input-group select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath fill='%2394A3B8' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 14px center;
+      padding-right: 38px;
+      cursor: pointer;
+    }
+    .wizard-input-group select option { background: #0F2137; color: #fff; }
+    .wizard-input-group select:focus {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='7' viewBox='0 0 12 7'%3E%3Cpath fill='%23C4A574' d='M1 1l5 5 5-5'/%3E%3C/svg%3E");
+    }
+    @media (max-width: 640px) {
+      .wizard-input-group input[type="number"],
+      .wizard-input-group select { font-size: 1rem; min-height: 52px; padding: 14px; }
+      .wizard-input-group label { font-size: .75rem; }
+      .currency-wrap input { padding-left: 34px !important; }
+    }
+
     /* ===== DASHBOARD ===== */
     .dashboard-section { background: var(--blue-800); padding: 0 0 80px; }
     .dash-context-header { background: var(--blue-700); padding: 40px 0; border-bottom: 1px solid rgba(255,255,255,.06); }
@@ -1499,14 +1561,20 @@
           <h3>Qual é o salario ou honorario?</h3>
           <p>Valores mensais estimados em R$.</p>
         </div>
-        <div class="wizard-options" style="display:flex;flex-direction:column;gap:20px;">
+        <div class="wizard-inputs">
           <div class="wizard-input-group">
             <label for="wizardSalario">Salario bruto mensal (CLT)</label>
-            <input type="number" id="wizardSalario" placeholder="ex: 5000" min="1412" step="100" inputmode="numeric">
+            <div class="currency-wrap">
+              <span class="currency-symbol">R$</span>
+              <input type="number" id="wizardSalario" placeholder="5.000" min="1412" step="100" inputmode="numeric">
+            </div>
           </div>
           <div class="wizard-input-group">
             <label for="wizardHonorario">Honorario mensal (PJ)</label>
-            <input type="number" id="wizardHonorario" placeholder="ex: 8000" min="0" step="100" inputmode="numeric">
+            <div class="currency-wrap">
+              <span class="currency-symbol">R$</span>
+              <input type="number" id="wizardHonorario" placeholder="8.000" min="0" step="100" inputmode="numeric">
+            </div>
           </div>
           <div class="wizard-input-group">
             <label for="wizardRegime">Regime tributario da empresa</label>
@@ -1524,18 +1592,27 @@
           <h3>Beneficios e detalhes opcionais</h3>
           <p>Deixe em branco se nao houver. Nos calculos, pulamos automaticamente.</p>
         </div>
-        <div class="wizard-options" style="display:flex;flex-direction:column;gap:20px;">
+        <div class="wizard-inputs">
           <div class="wizard-input-group">
             <label for="wizardVr">Vale-Refeicao (R$/mes)</label>
-            <input type="number" id="wizardVr" placeholder="0" min="0" step="10" value="0" inputmode="numeric">
+            <div class="currency-wrap">
+              <span class="currency-symbol">R$</span>
+              <input type="number" id="wizardVr" placeholder="0" min="0" step="10" value="0" inputmode="numeric">
+            </div>
           </div>
           <div class="wizard-input-group">
             <label for="wizardVt">Vale-Transporte (R$/mes)</label>
-            <input type="number" id="wizardVt" placeholder="0" min="0" step="10" value="0" inputmode="numeric">
+            <div class="currency-wrap">
+              <span class="currency-symbol">R$</span>
+              <input type="number" id="wizardVt" placeholder="0" min="0" step="10" value="0" inputmode="numeric">
+            </div>
           </div>
           <div class="wizard-input-group">
             <label for="wizardSaude">Plano de Saude (R$/mes)</label>
-            <input type="number" id="wizardSaude" placeholder="0" min="0" step="50" value="0" inputmode="numeric">
+            <div class="currency-wrap">
+              <span class="currency-symbol">R$</span>
+              <input type="number" id="wizardSaude" placeholder="0" min="0" step="50" value="0" inputmode="numeric">
+            </div>
           </div>
           <div class="wizard-input-group">
             <label for="wizardTempo">Tempo estimado de contrato (meses)</label>
