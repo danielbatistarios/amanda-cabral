@@ -4067,6 +4067,7 @@ function calcAndRender() {
   // Mostrar secao de analise e atualizar cabecalho contextual
   const analiseSecEl = document.getElementById('analiseSection');
   if (analiseSecEl) {
+    const jaVisivel = analiseSecEl.style.display === 'block';
     analiseSecEl.style.display = 'block';
     const tagEl = document.getElementById('analiseSectionTag');
     const subEl = document.getElementById('analiseSectionSub');
@@ -4079,7 +4080,10 @@ function calcAndRender() {
     };
     if (tagEl) tagEl.textContent = cargoTagMap[CALC_STATE.cargo] || 'Analise Personalizada';
     if (subEl) subEl.textContent = motSubMap[CALC_STATE.motivacao] || 'Com base no cenario informado, veja a analise completa abaixo.';
-    setTimeout(() => analiseSecEl.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+    // Scroll apenas na primeira vez que a secao aparece
+    if (!jaVisivel) {
+      setTimeout(() => analiseSecEl.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+    }
   }
 
   // Trigger lead modal apos primeiro calculo (apenas uma vez por sessao)
