@@ -1449,185 +1449,212 @@
     </ol>
   </nav>
 
-  <!-- WIZARD + DASHBOARD -->
+  <!-- CALCULADORA -->
   <section class="wizard-section" id="wizard">
     <div class="container">
       <div class="calc-header reveal">
         <div class="section-tag"><span class="dot"></span> Simulador 2025</div>
         <h2 class="heading">Calcule o custo real <em>de cada contratacao</em></h2>
-        <p class="heading-sub">Responda 5 perguntas simples. O resultado mostra o custo total para a empresa, com todos os encargos detalhados.</p>
+        <p class="heading-sub">Duas perguntas rapidas para personalizar a analise. Depois ajuste os valores e veja o resultado em tempo real.</p>
       </div>
 
-      <!-- Progress bar -->
-      <div class="wizard-progress-wrap">
-        <div class="wizard-progress-bar">
-          <div class="wizard-progress-fill" id="wizardProgressFill"></div>
-        </div>
-        <div class="wizard-progress-text">
-          <span id="wizardProgressStep">Etapa 1 de 5</span>
-        </div>
-      </div>
-
-      <!-- Step 1: Cargo -->
-      <div class="wizard-step" id="wizardStep1" style="display:block;">
-        <div class="wizard-question">
-          <h3>Qual é o seu cargo nesta contratacao?</h3>
-          <p>Isso nos ajuda a entender melhor o contexto.</p>
-        </div>
-        <div class="wizard-options">
-          <label class="wizard-option">
-            <input type="radio" name="cargo" value="contratante" id="radioContratante">
-            <span class="option-label">Sou o contratante (dono, RH, gerente)</span>
-            <span class="option-desc">Estou considerando contratar alguém</span>
+      <!-- Pergunta 1: Cargo -->
+      <div class="quick-q-block">
+        <div class="quick-q-label">Voce é...</div>
+        <div class="quick-q-options" id="cargoOptions">
+          <label class="quick-option">
+            <input type="radio" name="cargo" value="contratante">
+            <span>Empresa / RH</span>
+            <small>Quero contratar alguem</small>
           </label>
-          <label class="wizard-option">
-            <input type="radio" name="cargo" value="profissional" id="radioProfissional">
-            <span class="option-label">Sou o profissional (desenvolvedor, consultor, designer)</span>
-            <span class="option-desc">Estou avaliando como me contratar</span>
+          <label class="quick-option">
+            <input type="radio" name="cargo" value="profissional">
+            <span>Profissional</span>
+            <small>Avaliando como me contratar</small>
           </label>
-          <label class="wizard-option">
-            <input type="radio" name="cargo" value="rh" id="radioRh">
-            <span class="option-label">Sou do RH ou Financeiro</span>
-            <span class="option-desc">Preciso comparar custos para análise</span>
+          <label class="quick-option">
+            <input type="radio" name="cargo" value="comparar">
+            <span>So comparando</span>
+            <small>Curiosidade ou planejamento</small>
           </label>
         </div>
       </div>
 
-      <!-- Step 2: Motivacao -->
-      <div class="wizard-step" id="wizardStep2" style="display:none;">
-        <div class="wizard-question">
-          <h3>Qual é o motivo dessa comparacao?</h3>
-          <p>Nos ajuda a personalizar o resultado.</p>
-        </div>
-        <div class="wizard-options">
-          <label class="wizard-option">
-            <input type="radio" name="motivacao" value="nova" id="radioMotivaçaoNova">
-            <span class="option-label">Vou contratar alguém novo</span>
-            <span class="option-desc">Nunca tivemos essa posição antes</span>
+      <!-- Pergunta 2: Motivacao -->
+      <div class="quick-q-block">
+        <div class="quick-q-label">O cenario é...</div>
+        <div class="quick-q-options" id="motivacaoOptions">
+          <label class="quick-option">
+            <input type="radio" name="motivacao" value="nova">
+            <span>Nova contratacao</span>
+            <small>Ainda nao esta no regime definido</small>
           </label>
-          <label class="wizard-option">
-            <input type="radio" name="motivacao" value="existente" id="radioMotivaçaoExistente">
-            <span class="option-label">Ja temos alguém nessa funcao</span>
-            <span class="option-desc">Queremos saber se o regime é ideal</span>
+          <label class="quick-option">
+            <input type="radio" name="motivacao" value="existente">
+            <span>Migracao CLT para PJ</span>
+            <small>Relacao existente mudando de regime</small>
           </label>
-          <label class="wizard-option">
-            <input type="radio" name="motivacao" value="demissao" id="radioMotivaçaoDemissao">
-            <span class="option-label">Vamos dispensar um colaborador</span>
-            <span class="option-desc">Preciso calcular o custo de demissao</span>
-          </label>
-          <label class="wizard-option">
-            <input type="radio" name="motivacao" value="comparar" id="radioMotivaçaoComparar">
-            <span class="option-label">Apenas comparar regimes</span>
-            <span class="option-desc">Tenho curiosidade sobre os valores</span>
+          <label class="quick-option">
+            <input type="radio" name="motivacao" value="demissao">
+            <span>Pos-demissao</span>
+            <small>Recontratar apos desligamento</small>
           </label>
         </div>
       </div>
 
-      <!-- Step 3: Funcao -->
-      <div class="wizard-step" id="wizardStep3" style="display:none;">
-        <div class="wizard-question">
-          <h3>Qual é a funcao / profissao?</h3>
-          <p>Ajuda a estimar beneficios e encargos específicos.</p>
-        </div>
-        <div class="wizard-options">
-          <label class="wizard-option">
-            <input type="radio" name="funcao" value="dev" id="radioFuncaoDev">
-            <span class="option-label">Desenvolvimento / Programacao</span>
-          </label>
-          <label class="wizard-option">
-            <input type="radio" name="funcao" value="consultor" id="radioFuncaoConsultor">
-            <span class="option-label">Consultor / Estratega</span>
-          </label>
-          <label class="wizard-option">
-            <input type="radio" name="funcao" value="designer" id="radioFuncaoDesigner">
-            <span class="option-label">Designer / UX</span>
-          </label>
-          <label class="wizard-option">
-            <input type="radio" name="funcao" value="engenheiro" id="radioFuncaoEngenheiro">
-            <span class="option-label">Engenheiro / Tecnico</span>
-          </label>
-          <label class="wizard-option">
-            <input type="radio" name="funcao" value="medico" id="radioFuncaoMedico">
-            <span class="option-label">Medico / Profissional Saude</span>
-          </label>
-          <label class="wizard-option">
-            <input type="radio" name="funcao" value="gerente" id="radioFuncaoGerente">
-            <span class="option-label">Gerente / Lider</span>
-          </label>
-          <label class="wizard-option">
-            <input type="radio" name="funcao" value="admin" id="radioFuncaoAdmin">
-            <span class="option-label">Administrativo / Operacional</span>
-          </label>
-          <label class="wizard-option">
-            <input type="radio" name="funcao" value="outro" id="radioFuncaoOutro">
-            <span class="option-label">Outro</span>
-          </label>
-        </div>
-      </div>
-
-      <!-- Step 4: Numeros -->
-      <div class="wizard-step" id="wizardStep4" style="display:none;">
-        <div class="wizard-question">
-          <h3>Qual é o salario ou honorario?</h3>
-          <p>Valores mensais estimados em R$.</p>
-        </div>
-        <div class="wizard-inputs">
-          <div class="wizard-input-group">
-            <label for="wizardSalario">Salario bruto mensal (CLT)</label>
+      <!-- Calculadora (sempre visivel) -->
+      <div class="calc-grid-simple">
+        <!-- CLT -->
+        <div class="calc-col-simple">
+          <div class="calc-col-header">
+            <div class="calc-col-icon clt">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+            </div>
+            <div>
+              <div class="calc-col-title">CLT</div>
+              <div class="calc-col-sub">Custo total para a empresa</div>
+            </div>
+          </div>
+          <div class="calc-input-group">
+            <label>Salario bruto mensal</label>
             <div class="currency-wrap">
               <span class="currency-symbol">R$</span>
               <input type="text" id="wizardSalario" placeholder="5.000" inputmode="numeric" autocomplete="off" data-currency>
             </div>
           </div>
-          <div class="wizard-input-group">
-            <label for="wizardHonorario">Honorario mensal (PJ)</label>
-            <div class="currency-wrap">
-              <span class="currency-symbol">R$</span>
-              <input type="text" id="wizardHonorario" placeholder="8.000" inputmode="numeric" autocomplete="off" data-currency>
-            </div>
-          </div>
-          <div class="wizard-input-group">
-            <label for="wizardRegime">Regime tributario da empresa</label>
-            <select id="wizardRegime">
-              <option value="outros">Lucro Presumido ou Lucro Real</option>
-              <option value="simples">Simples Nacional</option>
-            </select>
-          </div>
-        </div>
-      </div>
-
-      <!-- Step 5: Detalhes opcionais -->
-      <div class="wizard-step" id="wizardStep5" style="display:none;">
-        <div class="wizard-question">
-          <h3>Beneficios e detalhes opcionais</h3>
-          <p>Deixe em branco se nao houver. Nos calculos, pulamos automaticamente.</p>
-        </div>
-        <div class="wizard-inputs">
-          <div class="wizard-input-group">
-            <label for="wizardVr">Vale-Refeicao (R$/mes)</label>
+          <div class="calc-input-group">
+            <label>Vale-Refeicao <span>(opcional)</span></label>
             <div class="currency-wrap">
               <span class="currency-symbol">R$</span>
               <input type="text" id="wizardVr" placeholder="0" inputmode="numeric" autocomplete="off" data-currency>
             </div>
           </div>
-          <div class="wizard-input-group">
-            <label for="wizardVt">Vale-Transporte (R$/mes)</label>
+          <div class="calc-input-group">
+            <label>Vale-Transporte <span>(opcional)</span></label>
             <div class="currency-wrap">
               <span class="currency-symbol">R$</span>
               <input type="text" id="wizardVt" placeholder="0" inputmode="numeric" autocomplete="off" data-currency>
             </div>
           </div>
-          <div class="wizard-input-group">
-            <label for="wizardSaude">Plano de Saude (R$/mes)</label>
+          <div class="calc-input-group">
+            <label>Plano de Saude <span>(opcional)</span></label>
             <div class="currency-wrap">
               <span class="currency-symbol">R$</span>
               <input type="text" id="wizardSaude" placeholder="0" inputmode="numeric" autocomplete="off" data-currency>
             </div>
           </div>
-          <div class="wizard-input-group">
-            <label for="wizardTempo">Tempo estimado de contrato (meses)</label>
+          <div class="calc-input-group">
+            <label>Tempo de contrato <span>(meses, para simulacao de demissao)</span></label>
             <input type="number" id="wizardTempo" placeholder="24" min="1" max="120" step="1" value="24" inputmode="numeric">
           </div>
+        </div>
+
+        <!-- PJ -->
+        <div class="calc-col-simple">
+          <div class="calc-col-header">
+            <div class="calc-col-icon pj">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+            </div>
+            <div>
+              <div class="calc-col-title">PJ</div>
+              <div class="calc-col-sub">Honorario mensal</div>
+            </div>
+          </div>
+          <div class="calc-input-group">
+            <label>Honorario PJ mensal <span>(deixe vazio para calcular automatico)</span></label>
+            <div class="currency-wrap">
+              <span class="currency-symbol">R$</span>
+              <input type="text" id="wizardHonorario" placeholder="8.000" inputmode="numeric" autocomplete="off" data-currency>
+            </div>
+          </div>
+          <div class="calc-input-group">
+            <label>Regime da empresa PJ</label>
+            <select id="wizardRegime">
+              <option value="outros">Lucro Presumido / Lucro Real</option>
+              <option value="simples">Simples Nacional</option>
+            </select>
+          </div>
+
+          <!-- Resultado inline -->
+          <div class="result-inline" id="resultInline" style="display:none;">
+            <div class="result-inline-row">
+              <div class="result-inline-card clt">
+                <div class="result-inline-label">Custo CLT/mes</div>
+                <div class="result-inline-value" id="resCltTotal">-</div>
+                <div class="result-inline-sub" id="resCltSub"></div>
+              </div>
+              <div class="result-inline-card pj">
+                <div class="result-delta-badge" id="resDelta"></div>
+                <div class="result-inline-label">Custo PJ/mes</div>
+                <div class="result-inline-value gold" id="resPjTotal">-</div>
+              </div>
+            </div>
+            <div class="result-inline-anual" id="resAnual"></div>
+          </div>
+        </div>
+
+        <!-- Resultado detalhado -->
+        <div class="calc-col-simple" id="colDetalhes" style="display:none;">
+          <div class="calc-col-header">
+            <div class="calc-col-icon" style="background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.2);">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--gold)"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+            </div>
+            <div>
+              <div class="calc-col-title">Detalhes CLT</div>
+              <div class="calc-col-sub">Composicao dos encargos</div>
+            </div>
+          </div>
+          <!-- Narrativa personalizada -->
+          <div class="narrative-inline" id="narrativeInline" style="display:none;">
+            <span class="narrative-inline-icon" id="narrativeInlineIcon">💡</span>
+            <div>
+              <div class="narrative-inline-title" id="narrativeInlineTitle"></div>
+              <div class="narrative-inline-text" id="narrativeInlineText"></div>
+            </div>
+          </div>
+          <!-- Encargos -->
+          <div id="detalhesEncargos">
+            <div class="detalhe-row"><span>INSS Patronal (20%)</span><strong id="detInss">-</strong></div>
+            <div class="detalhe-row"><span>FGTS (8%)</span><strong id="detFgts">-</strong></div>
+            <div class="detalhe-row"><span>Sistema S (~5,8%)</span><strong id="detSistemaS">-</strong></div>
+            <div class="detalhe-row"><span>Provisao 13o (8,33%)</span><strong id="detDecimo">-</strong></div>
+            <div class="detalhe-row"><span>Provisao Ferias + 1/3 (11,11%)</span><strong id="detFerias">-</strong></div>
+            <div class="detalhe-row detalhe-total"><span>Total encargos</span><strong id="detTotal">-</strong></div>
+          </div>
+          <!-- Demissao accordion -->
+          <div class="detalhe-accordion" id="demissaoAccordion" style="margin-top:20px;display:none;">
+            <button class="detalhe-accordion-btn" id="demissaoToggle" type="button">
+              Simulacao de demissao <span id="demissaoToggleArrow">▼</span>
+            </button>
+            <div class="detalhe-accordion-body" id="demissaoBody" style="display:none;">
+              <div class="detalhe-row"><span>Aviso previo</span><strong id="detAvisoPrevio">-</strong></div>
+              <div class="detalhe-row"><span>Multa FGTS (50%)</span><strong id="detMultaFgts">-</strong></div>
+              <div class="detalhe-row"><span>Ferias proporcionais + 1/3</span><strong id="detFeriasProp">-</strong></div>
+              <div class="detalhe-row"><span>13o proporcional</span><strong id="detDecimoProp">-</strong></div>
+              <div class="detalhe-row detalhe-total"><span>Total de demissao</span><strong id="detDemissaoTotal">-</strong></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CTA area (aparece apos calculo) -->
+      <div class="calc-cta-bar" id="calcCtaBar" style="display:none;">
+        <div class="dash-narrative" style="margin:0;">
+          <div class="narrative-icon" id="narrativeIcon">💡</div>
+          <div class="narrative-content">
+            <div class="narrative-title" id="narrativeTitle"></div>
+            <div class="narrative-text" id="narrativeText"></div>
+          </div>
+        </div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:24px;">
+          <a id="btnWhatsapp" href="https://wa.me/5537999967558?text=Ola%2C%20usei%20a%20calculadora%20CLT%20vs%20PJ%20e%20gostaria%20de%20conversar" class="btn-whatsapp" target="_blank" rel="noopener">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+            Falar com Amanda
+          </a>
+          <a href="/fale-com-especialista/?ref=calculadora-pj-clt" class="btn-agendar">Agendar diagnostico gratuito</a>
+        </div>
+        <div style="text-align:center;margin-top:32px;">
+          <button class="btn-reset" id="btnReset" type="button">Limpar e refazer</button>
         </div>
       </div>
 
@@ -1635,7 +1662,7 @@
     </div>
   </section>
 
-  <!-- DASHBOARD -->
+  <!-- DASHBOARD (mantido vazio para nao quebrar refs JS, nunca mostrado) -->
   <section class="dashboard-section" id="dashboard" style="display:none;">
     <div class="container">
       <!-- Context header -->
