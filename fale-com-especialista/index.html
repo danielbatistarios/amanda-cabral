@@ -1848,7 +1848,9 @@ button { cursor:none; }
         document.querySelectorAll('.reveal, .stagger').forEach(el => io.observe(el));
     };
 
- else {
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', attachObserver);
+    } else {
         attachObserver();
     }
 
