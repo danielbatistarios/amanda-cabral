@@ -1311,6 +1311,18 @@
       }
     }
 
+    // ---- BOTTOM BAR ----
+    var bottomBar = document.getElementById('bottomBar');
+    var siteFooter = document.querySelector('.site-footer');
+    window.addEventListener('scroll', function() {
+      if (bottomBar) {
+        var pastHalf = window.scrollY > window.innerHeight * 0.5;
+        var footerVisible = siteFooter ? siteFooter.getBoundingClientRect().top < window.innerHeight : false;
+        bottomBar.classList.toggle('visible', pastHalf && !footerVisible);
+      }
+    }, { passive: true });
+  </script>
+
   <!-- ===== BOTTOM BAR ===== -->
   <div class="bottom-bar" id="bottomBar">
     <div class="bb-desktop">
@@ -1329,17 +1341,5 @@
       <a href="/fale-com-especialista/" class="bb-mobile-cta">Fale Conosco</a>
     </div>
   </div>
-
-    // ---- BOTTOM BAR ----
-    var bottomBar = document.getElementById('bottomBar');
-    var siteFooter = document.querySelector('.site-footer');
-    window.addEventListener('scroll', function() {
-      if (bottomBar) {
-        var pastHalf = window.scrollY > window.innerHeight * 0.5;
-        var footerVisible = siteFooter ? siteFooter.getBoundingClientRect().top < window.innerHeight : false;
-        bottomBar.classList.toggle('visible', pastHalf && !footerVisible);
-      }
-    }, { passive: true });
-  </script>
 </body>
 </html>
