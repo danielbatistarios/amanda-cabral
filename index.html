@@ -716,12 +716,12 @@
             text-transform: uppercase;
             color: rgba(255,255,255,0.35);
             white-space: nowrap;
-            opacity: 1;
-            transition: color 0.3s;
+            opacity: 0;
+            transition: color 0.3s, opacity 0.3s;
             pointer-events: none;
         }
 
-        .toc-dot:hover .toc-label { color: rgba(255,255,255,0.6); }
+        .toc-dot:hover .toc-label { color: rgba(255,255,255,0.6); opacity: 1; }
         .toc-dot.active .toc-label { color: var(--gold); }
 
         .toc.on-light .toc-dot { background: rgba(0,0,0,0.15); }
