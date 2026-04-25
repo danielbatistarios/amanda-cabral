@@ -562,11 +562,13 @@
         ============================ */
         .process {
             padding: 160px 0;
-            background: var(--white);
+            background: var(--blue-800);
         }
 
         .process-header { text-align: center; margin-bottom: 100px; }
         .process-header .heading-sub { margin: 0 auto; }
+        .process .heading { color: var(--white); }
+        .process .heading-sub { color: var(--silver); }
 
         .process-steps {
             display: grid;
@@ -589,11 +591,11 @@
 
         .step {
             text-align: left;
-            background: var(--white);
-            border: 1px solid var(--border);
+            background: rgba(255,255,255,0.03);
+            border: 1px solid rgba(255,255,255,0.08);
             border-radius: 16px;
             padding: 40px 32px;
-            box-shadow: 0 4px 24px rgba(15,23,42,0.05);
+            box-shadow: 0 4px 24px rgba(0,0,0,0.2);
             transition: box-shadow 0.3s var(--ease), border-color 0.3s var(--ease), transform 0.3s var(--ease);
         }
         .step:hover {
@@ -622,13 +624,13 @@
         .step h3 {
             font-family: var(--font-display);
             font-size: 1.15rem;
-            color: var(--text);
+            color: var(--white);
             margin-bottom: 12px;
         }
 
         .step p {
             font-size: 1rem;
-            color: var(--text-light);
+            color: var(--silver);
             max-width: none;
             margin: 0;
             line-height: 1.75;
