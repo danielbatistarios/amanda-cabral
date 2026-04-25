@@ -632,9 +632,9 @@
        AMANDA SECTION
     ============================ */
     .amanda-section {
-      background: var(--blue-900);
+      background: #EEF2F8;
       padding: clamp(64px,8vw,100px) 0;
-      border-top: 1px solid rgba(255,255,255,.05);
+      border-top: 1px solid rgba(15,33,55,.08);
     }
     .amanda-grid {
       display: grid;
@@ -655,7 +655,7 @@
     .amanda-photo-badge {
       position: absolute; bottom: -16px; left: 24px;
       background: var(--blue-800);
-      border: 1px solid rgba(201,168,76,.3);
+      border: 1px solid rgba(201,168,76,.4);
       border-radius: 10px; padding: 12px 18px;
       font-size: .78rem; font-weight: 700;
       color: var(--accent-gold);
@@ -666,29 +666,35 @@
     }
     .amanda-cred {
       display: inline-flex; align-items: center; gap: 6px;
-      background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+      background: rgba(15,33,55,.06); border: 1px solid rgba(15,33,55,.12);
       border-radius: 6px; padding: 6px 12px;
       font-size: .76rem; font-weight: 600;
-      color: rgba(255,255,255,.55);
+      color: var(--blue-600);
     }
     .amanda-cred svg { color: var(--gold); width: 14px; height: 14px; flex-shrink: 0; }
     .amanda-intro {
-      font-size: .97rem; color: rgba(255,255,255,.65);
+      font-size: .97rem; color: var(--text-light);
       line-height: 1.8; margin-bottom: 28px;
     }
-    .amanda-intro strong { color: var(--white); font-weight: 600; }
+    .amanda-intro strong { color: var(--text); font-weight: 600; }
     .amanda-testimonial {
-      background: rgba(255,255,255,.03);
+      background: rgba(255,255,255,.65);
       border-left: 3px solid var(--gold);
       border-radius: 0 10px 10px 0;
       padding: 20px 24px; margin-bottom: 32px;
+      box-shadow: 0 2px 12px rgba(0,0,0,.06);
     }
     .amanda-testimonial p {
       font-family: var(--font-display);
       font-size: 1.05rem; font-style: italic;
-      color: rgba(255,255,255,.75); line-height: 1.7; margin-bottom: 10px;
+      color: var(--text); line-height: 1.7; margin-bottom: 10px;
     }
-    .amanda-testimonial-author { font-size: .78rem; color: rgba(255,255,255,.4); }
+    .amanda-testimonial-author { font-size: .78rem; color: var(--text-muted); }
+    /* Light section overrides for Amanda */
+    .amanda-section .section-tag { color: var(--gold); background: rgba(201,168,76,.1); border-color: rgba(201,168,76,.25); }
+    .amanda-section .section-tag .dot { background: var(--gold); }
+    .amanda-section h2.heading { color: var(--blue-800); }
+    .amanda-section h2.heading em { color: var(--gold); font-style: italic; }
     .btn-agendar-full {
       display: inline-flex; align-items: center; gap: 10px;
       background: var(--gold); color: #060E1A;
@@ -703,7 +709,7 @@
        FAQ
     ============================ */
     .faq-section {
-      background: var(--blue-800);
+      background: var(--blue-900);
       padding: clamp(64px,8vw,96px) 0;
     }
     .faq-section .container { max-width: 800px; }
@@ -851,7 +857,7 @@
     }
 
     /* ===== WIZARD ===== */
-    .wizard-section { background: var(--blue-800); padding: 80px 0 140px; min-height: 70vh; position: relative; }
+    .wizard-section { background: var(--blue-900); padding: 80px 0 140px; min-height: 70vh; position: relative; }
     .wizard-progress-wrap { position: fixed; top: 0; left: 0; width: 100%; height: 3px; background: rgba(255,255,255,.06); z-index: 200; }
     .wizard-progress-bar { height: 100%; background: var(--gold); transition: width .4s ease; }
     .wizard-inner { max-width: 640px; }
@@ -1024,8 +1030,8 @@
   }
   .result-inline-card.clt { border-color: rgba(74,144,217,.3); border-top: 3px solid #4A90D9; }
   .result-inline-card.pj { border-color: rgba(201,168,76,.3); background: rgba(201,168,76,.05); border-top: 3px solid var(--gold); }
-  .result-inline-label { font-size: .7rem; text-transform: uppercase; letter-spacing: .06em; color: var(--silver); margin-bottom: 6px; }
-  .result-inline-value { font-family: var(--font-display); font-size: 1.8rem; color: var(--white); }
+  .result-inline-label { font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; color: var(--silver); margin-bottom: 8px; }
+  .result-inline-value { font-family: var(--font-display); font-size: clamp(1.8rem,3.5vw,2.4rem); color: var(--white); }
   .result-inline-value.gold { color: var(--gold); }
   .result-inline-sub { font-size: .75rem; margin-top: 4px; }
   .result-inline-card.clt .result-inline-sub { color: #4A90D9; }
@@ -1037,7 +1043,19 @@
   .result-delta-badge.cheaper { background: rgba(16,185,129,.15); color: #10B981; border: 1px solid rgba(16,185,129,.3); }
   .result-delta-badge.expensive { background: rgba(239,68,68,.12); color: #F87171; border: 1px solid rgba(239,68,68,.25); }
   .result-delta-badge.neutral { background: rgba(148,163,184,.1); color: var(--silver); border: 1px solid rgba(148,163,184,.2); }
-  .result-inline-anual { font-size: .8rem; color: var(--silver); text-align: center; padding: 8px 12px; background: rgba(255,255,255,.02); border-radius: 8px; }
+  .result-inline-anual {
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+    text-align: center; padding: 20px 24px;
+    background: rgba(201,168,76,.06); border: 1px solid rgba(201,168,76,.2);
+    border-radius: 12px; margin-top: 4px;
+  }
+  .result-inline-anual-value {
+    font-family: var(--font-display); font-size: clamp(1.6rem,3.5vw,2.4rem);
+    color: var(--gold); font-weight: 700; line-height: 1.1;
+  }
+  .result-inline-anual-label {
+    font-size: .78rem; color: var(--silver); text-transform: uppercase; letter-spacing: .06em;
+  }
 
   /* Linha de liquidez do profissional */
   .result-liquido-context {
@@ -1513,7 +1531,7 @@
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
   }
-  .delta-headline { font-family: var(--font-display); font-size: clamp(1.1rem,2.5vw,1.5rem); font-weight: 700; color: var(--gold); margin: 0 0 16px; line-height: 1.3; display: none; }
+  .delta-headline { font-family: var(--font-display); font-size: clamp(1.3rem,3vw,1.9rem); font-weight: 700; color: var(--gold); margin: 0 0 12px; line-height: 1.3; display: none; }
   .delta-headline.visible { display: block; }
   .delta-headline.clt-wins { color: rgba(96,165,250,.9); }
   .delta-label { font-size: .92rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: rgba(201,168,76,.8); margin-bottom: 8px; }
@@ -1619,7 +1637,7 @@
   .analise-card-col:last-child { text-align: right; }
   .analise-card-modlabel { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 4px; }
   .analise-card-value {
-    font-family: var(--font-display); font-size: 1.6rem; color: var(--white); line-height: 1.1;
+    font-family: var(--font-display); font-size: clamp(1.6rem,2.8vw,2.1rem); color: var(--white); line-height: 1.1;
   }
   .analise-card-value.gold { color: var(--gold); }
   .analise-card-sub { font-size: .78rem; color: rgba(255,255,255,.5); line-height: 1.5; margin-top: 4px; }
@@ -1661,7 +1679,7 @@
     .analise-section-sub { max-width: 100%; }
     .delta-amount { font-size: 2.6rem; }
     .analise-card { min-height: 160px; padding: 16px 14px; }
-    .analise-card-value { font-size: 1.35rem; }
+    .analise-card-value { font-size: 1.5rem; }
     .analise-section > .container { padding-top: 24px; padding-bottom: 40px; }
   }
 
@@ -2545,7 +2563,10 @@
             <div class="result-inline-sub" id="resPjSub"></div>
           </div>
         </div>
-        <div class="result-inline-anual" id="resAnual"></div>
+        <div class="result-inline-anual" id="resAnualWrap" style="display:none">
+          <span class="result-inline-anual-value" id="resAnualValue"></span>
+          <span class="result-inline-anual-label" id="resAnualLabel"></span>
+        </div>
       </div>
 
       <!-- Toggle analise detalhada — full width abaixo dos cards -->
@@ -4000,10 +4021,13 @@ function calcAndRender() {
   }
 
   const difAnual = diff * 12;
-  const quemCustaMais = diff > 0
-    ? 'CLT custa ' + brl(Math.abs(difAnual)) + '/ano a mais para a empresa'
-    : 'PJ custa ' + brl(Math.abs(difAnual)) + '/ano a mais para a empresa';
-  document.getElementById('resAnual').textContent = quemCustaMais;
+  const quemCustaMais = diff > 0 ? 'CLT' : 'PJ';
+  const anualWrap = document.getElementById('resAnualWrap');
+  if (anualWrap) {
+    document.getElementById('resAnualValue').textContent = brl(Math.abs(difAnual)) + '/ano';
+    document.getElementById('resAnualLabel').textContent = quemCustaMais + ' custa esse valor a mais para a empresa';
+    anualWrap.style.display = 'block';
+  }
 
   document.getElementById('resultInline').style.display = 'block';
 
@@ -4679,7 +4703,31 @@ document.getElementById('leadCaptureForm').addEventListener('submit', function(e
   sessionStorage.setItem('lead-modal-shown', '1');
   setTimeout(closeLeadModal, 2500);
 });
-</script>
+    // MOBILE NAV
+    const hdrHamburger = document.getElementById('hdr-hamburger');
+    const hdrMob = document.getElementById('hdr-mob');
+    const hdrMobClose = document.getElementById('hdr-mob-close');
+    if (hdrHamburger && hdrMob && hdrMobClose) {
+      hdrHamburger.addEventListener('click', () => { hdrMob.classList.add('open'); document.body.style.overflow = 'hidden'; });
+      hdrMobClose.addEventListener('click', () => { hdrMob.classList.remove('open'); document.body.style.overflow = ''; });
+      hdrMob.querySelectorAll('.mob-sub-link').forEach(a => a.addEventListener('click', () => { hdrMob.classList.remove('open'); document.body.style.overflow = ''; }));
+    }
+    document.querySelectorAll('.mob-trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const targetId = btn.dataset.target;
+        const sub = document.getElementById(targetId);
+        if (!sub) return;
+        const isOpen = sub.classList.contains('open');
+        document.querySelectorAll('.mob-sub.open').forEach(s => { s.classList.remove('open'); s.style.maxHeight = null; });
+        document.querySelectorAll('.mob-trigger[aria-expanded="true"]').forEach(b => b.setAttribute('aria-expanded', 'false'));
+        if (!isOpen) {
+          sub.classList.add('open');
+          sub.style.maxHeight = sub.scrollHeight + 'px';
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+    </script>
 
 </body>
 </html>

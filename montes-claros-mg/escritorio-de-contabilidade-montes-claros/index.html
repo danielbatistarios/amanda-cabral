@@ -837,21 +837,119 @@ img { display: block; max-width: 100%; }
     cursor: pointer; flex-direction: column; gap: 5px; padding: 8px;
 }
 #hdr-hamburger span { width: 20px; height: 2px; background: #fff; border-radius: 2px; display: block; }
-#hdr-mob {
-    display: none; position: fixed; inset: 0;
-    background: #0a0e14; z-index: 600;
-    flex-direction: column; padding: 72px 24px 24px;
-    overflow-y: auto;
-}
-#hdr-mob.open { display: flex; }
-#hdr-mob-close {
-    position: absolute; top: 16px; right: 20px;
-    background: none; border: none; color: #fff;
-    font-size: 28px; cursor: pointer; line-height: 1;
-}
-#hdr-mob a { color: rgba(255,255,255,0.75); font-size: 16px; padding: 14px 0; border-bottom: 1px solid rgba(255,255,255,0.06); text-decoration: none; display: block; }
-#hdr-mob a:hover { color: #fff; }
-@media (max-width: 900px) {
+        #hdr-mob {
+            position: fixed; inset: 0;
+            background: rgba(6,14,26,.99);
+            z-index: 600;
+            display: flex; flex-direction: column;
+            opacity: 0; visibility: hidden;
+            transition: opacity 0.3s ease, visibility 0.3s;
+            overflow-y: auto;
+        }
+        #hdr-mob.open { opacity: 1; visibility: visible; }
+
+        /* Cabeçalho do overlay */
+        .mob-head {
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 20px 22px;
+            border-bottom: 1px solid rgba(201,168,76,0.12);
+            flex-shrink: 0;
+        }
+        .mob-head-logo {
+            font-family: var(--font-display);
+            font-size: 1.35rem; font-style: italic; font-weight: 400;
+            color: var(--gold); letter-spacing: -0.01em; text-decoration: none;
+        }
+        #hdr-mob-close {
+            background: none; border: none;
+            padding: 8px; width: 42px; height: 42px;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            gap: 0; position: relative; cursor: pointer;
+        }
+        #hdr-mob-close span {
+            position: absolute; width: 22px; height: 2px;
+            background: rgba(255,255,255,0.8); border-radius: 2px;
+        }
+        #hdr-mob-close span:first-child { transform: rotate(45deg); }
+        #hdr-mob-close span:last-child  { transform: rotate(-45deg); }
+
+        /* Lista de itens */
+        .mob-list { list-style: none; padding: 10px 0; }
+        .mob-list li { border-bottom: 1px solid rgba(255,255,255,0.06); }
+        .mob-list-link {
+            display: block; padding: 16px 22px;
+            font-family: var(--font-body); font-weight: 700;
+            font-size: 0.88rem; text-transform: uppercase; letter-spacing: 0.4px;
+            color: rgba(255,255,255,0.8); background: none;
+            width: 100%; text-align: left; border: none;
+            cursor: pointer; transition: background 0.15s, color 0.15s;
+            text-decoration: none;
+        }
+        .mob-list-link:hover { background: rgba(255,255,255,0.05); color: #fff; }
+        .mob-trigger { display: flex; justify-content: space-between; align-items: center; }
+        .mob-caret { width: 18px; height: 18px; transition: transform 0.2s; flex-shrink: 0; }
+        .mob-trigger[aria-expanded="true"] .mob-caret { transform: rotate(180deg); }
+
+        /* Submenus */
+        .mob-sub { max-height: 0; overflow: hidden; list-style: none; background: rgba(255,255,255,0.02); transition: max-height 0.3s ease; }
+        .mob-sub.open { max-height: 600px; }
+        .mob-sub-link {
+            display: block; padding: 13px 22px 13px 36px;
+            font-family: var(--font-body); font-size: 0.88rem;
+            color: rgba(255,255,255,0.5); transition: color 0.15s; text-decoration: none;
+        }
+        .mob-sub-link:hover { color: var(--gold); }
+
+        /* Rodapé do menu mobile */
+        .mob-footer {
+            padding: 33px 22px 28px;
+            flex-shrink: 0;
+            display: flex; flex-direction: column; gap: 16px;
+        }
+        .mob-slogan {
+            font-family: var(--font-display); font-style: italic;
+            font-size: 0.82rem; color: rgba(255,255,255,0.35);
+            line-height: 1.45; margin: 0;
+            padding: 16px 22px 0;
+            flex-shrink: 0;
+        }
+        .mob-contact {
+            display: flex; flex-direction: column; gap: 6px;
+        }
+        .mob-contact-link {
+            display: flex; align-items: center; gap: 8px;
+            font-family: var(--font-body); font-size: 0.78rem;
+            color: rgba(255,255,255,0.45); text-decoration: none;
+            transition: color 0.15s;
+        }
+        .mob-contact-link:hover { color: rgba(255,255,255,0.75); }
+        .mob-cnpj {
+            font-family: var(--font-body); font-size: 0.72rem;
+            color: rgba(255,255,255,0.25); letter-spacing: 0.3px;
+        }
+        .mob-social {
+            display: flex; gap: 14px;
+        }
+        .mob-social-link {
+            display: flex; align-items: center; justify-content: center;
+            width: 36px; height: 36px;
+            border: 1px solid rgba(255,255,255,0.12); border-radius: 50%;
+            color: rgba(255,255,255,0.5); text-decoration: none;
+            transition: border-color 0.15s, color 0.15s;
+        }
+        .mob-social-link:hover { border-color: var(--gold); color: var(--gold); }
+        .mob-cta {
+            display: flex; align-items: center; justify-content: center;
+            gap: 8px; width: 100%; padding: 14px 20px;
+            background: var(--gold); color: #0A0E14;
+            font-family: var(--font-body); font-weight: 700; font-size: 0.88rem;
+            text-transform: uppercase; letter-spacing: 0.5px;
+            text-decoration: none; border-radius: 4px;
+            transition: opacity 0.2s;
+        }
+        .mob-cta:hover { opacity: 0.88; }
+
+        @media (max-width: 900px) {
     #hdr-nav, .hdr-cta { display: none; }
     #hdr-hamburger { display: flex; }
 }
@@ -2621,19 +2719,79 @@ fieldset legend.form-step-title + * { clear: both; }
 </div>
 
 <!-- Mobile nav -->
-<div id="hdr-mob">
-  <button id="hdr-mob-close">&#10005;</button>
-  <a href="/">In&#237;cio</a>
-  <a href="/sobre-amcabral-blindagem/">Sobre Amanda</a>
-  <a href="/nossos-servicos/">Servi&#231;os</a>
-  <a href="/nossos-servicos/gestao-contabil/">Gest&#227;o Cont&#225;bil</a>
-  <a href="/nossos-servicos/recuperacao-creditos-tributarios/">Recupera&#231;&#227;o de Cr&#233;ditos</a>
-  <a href="/nossos-servicos/holding-patrimonial/">Holding Patrimonial</a>
-  <a href="/nossos-servicos/planejamento-tributario/">Planejamento Tribut&#225;rio</a>
-  <a href="/blog/">Blog</a>
-  <a href="/fale-com-especialista/" style="color:var(--accent-gold);margin-top:16px;font-weight:700;">Diagn&#243;stico Gratuito</a>
+<div id="hdr-mob" role="dialog" aria-label="Menu de navegação" aria-modal="true">
+  <div class="mob-head">
+    <a href="/" class="mob-head-logo">AM Cabral</a>
+    <button id="hdr-mob-close" aria-label="Fechar menu"><span></span><span></span></button>
+  </div>
+  <ul class="mob-list">
+    <li><a href="/" class="mob-list-link">Início</a></li>
+    <li>
+      <button class="mob-list-link mob-trigger" data-target="mob-sobre" aria-expanded="false">
+        Sobre Amanda
+        <span class="mob-caret"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="4 6 8 10 12 6"/></svg></span>
+      </button>
+      <ul class="mob-sub" id="mob-sobre">
+        <li><a href="/sobre-amcabral-blindagem/" class="mob-sub-link">Amanda Cabral</a></li>
+        <li><a href="/casos-de-sucesso/" class="mob-sub-link">Casos de Sucesso</a></li>
+        <li><a href="/perguntas-frequentes/" class="mob-sub-link">Perguntas Frequentes</a></li>
+        <li><a href="/cidades-atendidas/" class="mob-sub-link">Cidades Atendidas</a></li>
+      </ul>
+    </li>
+    <li>
+      <button class="mob-list-link mob-trigger" data-target="mob-servicos" aria-expanded="false">
+        Serviços
+        <span class="mob-caret"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="4 6 8 10 12 6"/></svg></span>
+      </button>
+      <ul class="mob-sub" id="mob-servicos">
+        <li><a href="/nossos-servicos/" class="mob-sub-link">Ver todos os serviços</a></li>
+        <li><a href="/nossos-servicos/gestao-contabil/" class="mob-sub-link">Contabilidade Estratégica</a></li>
+        <li><a href="/nossos-servicos/recuperacao-creditos-tributarios/" class="mob-sub-link">Recuperação de Créditos</a></li>
+        <li><a href="/nossos-servicos/holding-patrimonial/" class="mob-sub-link">Holding Patrimonial</a></li>
+        <li><a href="/nossos-servicos/planejamento-tributario/" class="mob-sub-link">Planejamento Fiscal</a></li>
+        <li><a href="/nossos-servicos/consultoria-tributaria/" class="mob-sub-link">Consultoria Tributária</a></li>
+        <li><a href="/nossos-servicos/desenquadrar-mei-para-me/" class="mob-sub-link">Desenquadrar MEI para ME</a></li>
+      </ul>
+    </li>
+    <li>
+      <button class="mob-list-link mob-trigger" data-target="mob-blog" aria-expanded="false">
+        Blog
+        <span class="mob-caret"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="4 6 8 10 12 6"/></svg></span>
+      </button>
+      <ul class="mob-sub" id="mob-blog">
+        <li><a href="/blog/" class="mob-sub-link">Ver todos os artigos</a></li>
+        <li><a href="/blog/reforma-tributaria-guia-industrias/" class="mob-sub-link">Reforma Tributária 2026</a></li>
+        <li><a href="/blog/o-que-e-ibs-e-cbs/" class="mob-sub-link">O que é IBS e CBS?</a></li>
+        <li><a href="/blog/cronograma-reforma-tributaria/" class="mob-sub-link">Cronograma da Reforma</a></li>
+        <li><a href="/blog/incentivos-fiscais-minas-gerais/" class="mob-sub-link">Incentivos Fiscais em MG</a></li>
+        <li><a href="/author-amanda-cabral/" class="mob-sub-link">Sobre a Autora</a></li>
+      </ul>
+    </li>
+    <li><a href="/calculadora-pj-vs-clt/" class="mob-list-link" style="color:var(--gold);">Calculadora PJ vs CLT</a></li>
+  </ul>
+  <p class="mob-slogan">Inteligência tributária para empresas que competem para vencer.</p>
+  <div class="mob-footer">
+    <div class="mob-contact">
+      <a href="mailto:contato@amcabralblindagem.com.br" class="mob-contact-link">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+        contato@amcabralblindagem.com.br
+      </a>
+      <span class="mob-cnpj">CNPJ 34.733.620/0001-51</span>
+    </div>
+    <div class="mob-social">
+      <a href="https://www.instagram.com/amandacabral28/" target="_blank" rel="noopener" aria-label="Instagram" class="mob-social-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/amanda-cabral-de-oliveira-82183a179/" target="_blank" rel="noopener" aria-label="LinkedIn" class="mob-social-link">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+      </a>
+    </div>
+    <a href="https://wa.me/5537999967558?text=Olá%2C+gostaria+de+falar+com+a+Amanda" class="mob-cta" target="_blank" rel="noopener noreferrer">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479c0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347zm-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884z"/></svg>
+      Fale Conosco
+    </a>
+  </div>
 </div>
-
 <!-- 4. HERO -->
 <main>
 <section class="city-hero" id="main-content">
@@ -3729,6 +3887,31 @@ function toggleLocalExpand() {
     });
   });
 })();
-</script>
+    // MOBILE NAV
+    const hdrHamburger = document.getElementById('hdr-hamburger');
+    const hdrMob = document.getElementById('hdr-mob');
+    const hdrMobClose = document.getElementById('hdr-mob-close');
+    if (hdrHamburger && hdrMob && hdrMobClose) {
+      hdrHamburger.addEventListener('click', () => { hdrMob.classList.add('open'); document.body.style.overflow = 'hidden'; });
+      hdrMobClose.addEventListener('click', () => { hdrMob.classList.remove('open'); document.body.style.overflow = ''; });
+      hdrMob.querySelectorAll('.mob-sub-link').forEach(a => a.addEventListener('click', () => { hdrMob.classList.remove('open'); document.body.style.overflow = ''; }));
+    }
+    // Accordion mob-trigger
+    document.querySelectorAll('.mob-trigger').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const targetId = btn.dataset.target;
+        const sub = document.getElementById(targetId);
+        if (!sub) return;
+        const isOpen = sub.classList.contains('open');
+        document.querySelectorAll('.mob-sub.open').forEach(s => { s.classList.remove('open'); s.style.maxHeight = null; });
+        document.querySelectorAll('.mob-trigger[aria-expanded="true"]').forEach(b => b.setAttribute('aria-expanded', 'false'));
+        if (!isOpen) {
+          sub.classList.add('open');
+          sub.style.maxHeight = sub.scrollHeight + 'px';
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+    </script>
 </body>
 </html>
