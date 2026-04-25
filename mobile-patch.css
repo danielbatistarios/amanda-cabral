@@ -52,46 +52,7 @@
   }
 }
 
-/* ── SERVICES: carousel mobile com snap e nav visível ── */
-@media (max-width: 768px) {
-  /* Remover padding direito excessivo que corta conteúdo */
-  .services-track {
-    padding: 16px 24px 16px 0;
-    gap: 12px;
-  }
-  .service-card {
-    min-width: 280px;
-    max-width: 85vw;
-    flex-shrink: 0;
-    scroll-snap-align: start;
-  }
-  /* Botões de nav visíveis e grandes o suficiente */
-  .services-nav {
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-    margin-top: 20px;
-    padding: 0 16px;
-  }
-  .services-nav button {
-    width: 48px;
-    height: 48px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-}
-@media (max-width: 480px) {
-  .service-card {
-    min-width: 260px;
-    max-width: 88vw;
-  }
-  /* Hint de scroll mais visível */
-  .services-scroll-hint {
-    right: 8px;
-  }
-}
+/* ── SERVICES: regras gerenciadas inline no index.html ── */
 
 /* ── ABOUT: foto + texto empilhados corretamente ── */
 @media (max-width: 768px) {
