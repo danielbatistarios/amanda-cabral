@@ -1551,19 +1551,23 @@
 
         /* Services carousel: remover padding-right excessivo */
         @media (max-width: 768px) {
+          .services-inner { padding: 48px 0 32px !important; min-height: auto !important; }
           .services-header { margin-bottom: 0 !important; }
           .services-track { padding: 16px 16px 16px 0 !important; }
           .service-card   { min-width: 80vw !important; max-width: 88vw !important; }
-          .services-nav   { display: flex !important; justify-content: flex-end; gap: 12px; margin-top: 16px; margin-bottom: 0; padding: 0 16px; }
-          .services-nav button {
+          /* setas de baixo: ocultar no mobile */
+          .services-nav:not(.services-nav--top) { display: none !important; }
+          /* setas de cima: mostrar alinhadas à direita */
+          .services-nav--top { display: flex !important; justify-content: flex-end; gap: 12px; margin-top: 16px; margin-bottom: 16px; padding: 0 16px; }
+          .services-nav--top button {
             width: 44px; height: 44px; border-radius: 50%;
             border: 1.5px solid rgba(255,255,255,0.25);
             background: rgba(255,255,255,0.06); color: #ffffff;
             display: flex !important; align-items: center; justify-content: center;
             cursor: pointer; transition: all 0.3s; opacity: 1 !important;
           }
-          .services-nav button svg { width: 18px; height: 18px; stroke: #ffffff; }
-          .services-nav button:hover { border-color: var(--gold); background: rgba(201,168,76,0.15); }
+          .services-nav--top button svg { width: 18px; height: 18px; stroke: #ffffff; }
+          .services-nav--top button:hover { border-color: var(--gold); background: rgba(201,168,76,0.15); }
         }
         @media (max-width: 480px) {
           .service-card { min-width: 84vw !important; max-width: 90vw !important; }
@@ -2734,6 +2738,16 @@
                     <div class="section-tag" style="color:var(--accent)">Serviços</div>
                     <h2 class="heading">6 especialidades que protegem seu lucro e <em style="color:var(--gold)">patrimônio</em></h2>
                     <p class="heading-sub">Cada servi&ccedil;o desenhado para dores reais de ind&uacute;strias. Nada gen&eacute;rico.</p>
+                </div>
+            </div>
+            <div class="container">
+                <div class="services-nav services-nav--top">
+                    <button onclick="scrollServices(-1)" aria-label="Anterior">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    </button>
+                    <button onclick="scrollServices(1)" aria-label="Pr&oacute;ximo">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                    </button>
                 </div>
             </div>
             <div class="services-track-wrapper">
