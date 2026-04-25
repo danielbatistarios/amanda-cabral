@@ -4619,14 +4619,17 @@ window.TEM_CONTADOR = null;
     window.LEAD_NAME = nome;
     window.LEAD_COMPANY = empresa;
     collapseWizard(nome, empresa, wizData.contador);
-    // Enviar lead para Google Sheets
+    // Enviar lead para Google Sheets no momento do clique em "Preencher calculadora"
     sendLead({
-      fonte: 'wizard-entrada',
-      nome: nome,
-      whatsapp: '',
-      empresa: empresa,
-      contador: wizData.contador || '',
-      contato: ''
+      nome: nome + (empresa ? ' / ' + empresa : ''),
+      telefone: '',
+      email: '',
+      cargo: wizData.cargo || '',
+      motivacao: wizData.motivacao || '',
+      funcao: '',
+      salarioBruto: '',
+      honorarioPJ: '',
+      regime: ''
     });
     // Scroll suave para a calculadora
     setTimeout(function() {
