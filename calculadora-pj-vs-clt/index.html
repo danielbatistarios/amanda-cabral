@@ -2306,7 +2306,8 @@ window.addEventListener('scroll', () => {
   const h = document.documentElement;
   const pct = (h.scrollTop / (h.scrollHeight - h.clientHeight)) * 100;
   if (sp) sp.style.width = Math.min(pct, 100) + '%';
-  if (bb) { h.scrollTop > 300 ? bb.classList.add('visible') : bb.classList.remove('visible'); }
+  const wizardVisible = document.getElementById('wizard') && document.getElementById('wizard').style.display !== 'none';
+  if (bb) { (!wizardVisible && h.scrollTop > 300) ? bb.classList.add('visible') : bb.classList.remove('visible'); }
 }, { passive: true });
 
 /* ============================
