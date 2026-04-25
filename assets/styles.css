@@ -475,6 +475,9 @@
             margin-bottom: 24px;
             position: relative; z-index: 1;
         }
+        @media (max-width: 768px) {
+          .services-nav:not(.services-nav--top) { display: none !important; }
+        }
 
         .services-nav button,
         .blog-nav button {
