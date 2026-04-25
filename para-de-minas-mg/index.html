@@ -534,23 +534,18 @@ address { font-style: normal; }
 .wiki-link:hover { text-decoration-color: var(--dourado); }
 
 /* === CRED STRIP === */
-.cred-strip {
-  background: var(--ink); overflow: hidden;
-  padding: 0; margin-top: 88px; border-top: 1px solid rgba(255,255,255,.05);
-  border-bottom: 1px solid rgba(255,255,255,.05);
-}
-.cred-track {
-  display: flex; gap: 0; padding: 16px 0;
-  animation: marquee 24s linear infinite;
-  white-space: nowrap; width: max-content;
-}
-.cred-item { font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--dim); padding: 0 20px; }
-.cred-dot { color: var(--dourado); font-size: 16px; padding: 0 6px; }
-@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.marquee-section { background: var(--z1); border-top: 1px solid rgba(255,255,255,.03); border-bottom: 1px solid rgba(255,255,255,.03); padding: 18px 0; overflow: hidden; position: relative; margin-top: 88px; }
+.marquee-section::before, .marquee-section::after { content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2; pointer-events: none; }
+.marquee-section::before { left: 0; background: linear-gradient(90deg, var(--z1), transparent); }
+.marquee-section::after { right: 0; background: linear-gradient(-90deg, var(--z1), transparent); }
+.marquee-track { display: flex; gap: 48px; animation: marquee-lp 30s linear infinite; width: max-content; }
+@keyframes marquee-lp { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+.marquee-item { font-size: .78rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,.85); white-space: nowrap; }
+.marquee-item .sep { display: inline-block; width: 4px; height: 4px; background: var(--dourado); border-radius: 50%; opacity: .6; margin-left: 48px; vertical-align: middle; }
 
 /* === BREADCRUMB === */
 .lp-breadcrumb { background: var(--z2); border-bottom: 1px solid rgba(255,255,255,.05); padding: 12px 0; }
-.lp-breadcrumb ol { list-style: none; display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+.lp-breadcrumb ol { list-style: none; display: flex; align-items: center; justify-content: center; gap: 8px; flex-wrap: wrap; }
 .lp-breadcrumb li { font-size: 12px; color: var(--dim); }
 .lp-breadcrumb li + li::before { content: '/'; color: rgba(255,255,255,.2); margin-right: 8px; }
 .lp-breadcrumb a { color: var(--dim); transition: color .2s; }
@@ -609,6 +604,21 @@ address { font-style: normal; }
 }
 .svc-link-hub:hover { gap: 10px; color: #60A5FA; }
 .svc-link-hub svg { width: 16px; height: 16px; }
+
+/* === PRESENÇA LOCAL === */
+.local-presence-sec { padding: var(--sec-pad) 0; background: var(--z1); }
+.local-presence-sec .sec-label { color: var(--dourado); }
+.local-presence-sec .sec-h { color: var(--paper); }
+.local-prose { max-width: 780px; margin: 0 auto 64px; }
+.local-prose p { font-size: 17px; line-height: 1.85; color: rgba(255,255,255,.65); margin-bottom: 20px; }
+.local-prose p:last-child { margin-bottom: 0; }
+.local-prose strong { color: var(--paper); font-weight: 700; }
+.coverage-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.coverage-col { background: rgba(255,255,255,.025); border: 1px solid rgba(255,255,255,.06); border-radius: 16px; padding: 32px 28px; }
+.coverage-col h3 { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--dourado); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,.08); }
+.coverage-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+.coverage-col li { font-size: 14px; color: rgba(255,255,255,.65); display: flex; align-items: center; gap: 10px; }
+.coverage-col li::before { content: ''; display: inline-block; width: 6px; height: 6px; background: var(--dourado); border-radius: 50%; flex-shrink: 0; opacity: .7; }
 
 /* === AMANDA CTA STRIP (light) === */
 .amanda-cta-strip { background: var(--lt-bg); padding: var(--sec-pad) 0; overflow: hidden; }
@@ -869,6 +879,7 @@ a.footer-nap-row:hover svg { color: var(--dourado); }
   .svc-grid { grid-template-columns: repeat(2, 1fr); }
   .cases-grid { grid-template-columns: repeat(2, 1fr); }
   .depoimentos-grid { grid-template-columns: repeat(2, 1fr); }
+  .coverage-grid { grid-template-columns: 1fr; gap: 16px; }
   .location-grid { grid-template-columns: 1fr; }
   .amanda-cta-inner { grid-template-columns: 1fr; }
   .amanda-cta-photo { display: none; }
@@ -881,6 +892,7 @@ a.footer-nap-row:hover svg { color: var(--dourado); }
   .svc-grid { grid-template-columns: 1fr; }
   .cases-grid { grid-template-columns: 1fr; }
   .depoimentos-grid { grid-template-columns: 1fr; }
+  .coverage-grid { grid-template-columns: 1fr; }
   .numbers-grid { flex-direction: column; align-items: center; }
   .numbers-sep { width: 56px; height: 1px; }
   .footer-grid { grid-template-columns: 1fr; }
@@ -1052,31 +1064,32 @@ a.footer-nap-row:hover svg { color: var(--dourado); }
   <div class="scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
 </section>
 
-<!-- 2. CRED STRIP -->
-<div class="cred-strip">
-  <h2 class="visually-hidden">Escrit&#243;rio de contabilidade em Par&#225; de Minas &mdash; CRC/MG Ativo</h2>
-  <div class="cred-track" id="credTrack">
-    <span class="cred-item"><abbr title="Conselho Regional de Contabilidade de Minas Gerais">CRC/MG</abbr> Ativo</span><span class="cred-dot">&middot;</span>
-    <span class="cred-item">30 Anos de Experi&#234;ncia</span><span class="cred-dot">&middot;</span>
-    <span class="cred-item">Especialista <abbr title="Imposto sobre Circula&#231;&#227;o de Mercadorias e Servi&#231;os">ICMS</abbr>/<abbr title="Imposto sobre Produtos Industrializados">IPI</abbr></span><span class="cred-dot">&middot;</span>
-    <span class="cred-item">P&#243;s-gradua&#231;&#227;o em Direito Tribut&#225;rio</span><span class="cred-dot">&middot;</span>
-    <span class="cred-item">R$ 12M Recuperados</span><span class="cred-dot">&middot;</span>
-    <span class="cred-item">127+ Empresas Atendidas</span><span class="cred-dot">&middot;</span>
-    <span class="cred-item">Polo Industrial de Par&#225; de Minas</span><span class="cred-dot">&middot;</span>
-    <span class="cred-item">Par&#225; de Minas, MG</span><span class="cred-dot">&middot;</span>
-    <span class="cred-item"><abbr title="Cadastro Nacional de Pessoa Jur&#237;dica">CNPJ</abbr> 34.733.620/0001-51</span><span class="cred-dot">&middot;</span>
+<!-- 2. MARQUEE CREDENCIAIS -->
+<section class="marquee-section" aria-hidden="true">
+  <div class="marquee-track">
+    <span class="marquee-item"><abbr title="Conselho Regional de Contabilidade de Minas Gerais">CRC/MG</abbr> Ativo<span class="sep"></span></span>
+    <span class="marquee-item">30 Anos de Experi&#234;ncia<span class="sep"></span></span>
+    <span class="marquee-item">Especialista <abbr title="Imposto sobre Circula&#231;&#227;o de Mercadorias e Servi&#231;os">ICMS</abbr>/<abbr title="Imposto sobre Produtos Industrializados">IPI</abbr><span class="sep"></span></span>
+    <span class="marquee-item">P&#243;s em Direito Tribut&#225;rio<span class="sep"></span></span>
+    <span class="marquee-item">R$ 12M Recuperados<span class="sep"></span></span>
+    <span class="marquee-item">127+ Empresas Atendidas<span class="sep"></span></span>
+    <span class="marquee-item">Polo Industrial Par&#225; de Minas<span class="sep"></span></span>
+    <span class="marquee-item">Par&#225; de Minas, MG<span class="sep"></span></span>
+    <span class="marquee-item">Holding Patrimonial<span class="sep"></span></span>
+    <span class="marquee-item">Planejamento Tribut&#225;rio<span class="sep"></span></span>
     <!-- duplicate for seamless loop -->
-    <span class="cred-item">CRC/MG Ativo</span><span class="cred-dot">&middot;</span>
-    <span class="cred-item">30 Anos de Experi&#234;ncia</span><span class="cred-dot">&middot;</span>
-    <span class="cred-item">Especialista ICMS/IPI</span><span class="cred-dot">&middot;</span>
-    <span class="cred-item">P&#243;s-gradua&#231;&#227;o em Direito Tribut&#225;rio</span><span class="cred-dot">&middot;</span>
-    <span class="cred-item">R$ 12M Recuperados</span><span class="cred-dot">&middot;</span>
-    <span class="cred-item">127+ Empresas Atendidas</span><span class="cred-dot">&middot;</span>
-    <span class="cred-item">Polo Industrial de Par&#225; de Minas</span><span class="cred-dot">&middot;</span>
-    <span class="cred-item">Par&#225; de Minas, MG</span><span class="cred-dot">&middot;</span>
-    <span class="cred-item">CNPJ 34.733.620/0001-51</span><span class="cred-dot">&middot;</span>
+    <span class="marquee-item">CRC/MG Ativo<span class="sep"></span></span>
+    <span class="marquee-item">30 Anos de Experi&#234;ncia<span class="sep"></span></span>
+    <span class="marquee-item">Especialista ICMS/IPI<span class="sep"></span></span>
+    <span class="marquee-item">P&#243;s em Direito Tribut&#225;rio<span class="sep"></span></span>
+    <span class="marquee-item">R$ 12M Recuperados<span class="sep"></span></span>
+    <span class="marquee-item">127+ Empresas Atendidas<span class="sep"></span></span>
+    <span class="marquee-item">Polo Industrial Par&#225; de Minas<span class="sep"></span></span>
+    <span class="marquee-item">Par&#225; de Minas, MG<span class="sep"></span></span>
+    <span class="marquee-item">Holding Patrimonial<span class="sep"></span></span>
+    <span class="marquee-item">Planejamento Tribut&#225;rio<span class="sep"></span></span>
   </div>
-</div>
+</section>
 
 <!-- 3. BREADCRUMB -->
 <nav class="lp-breadcrumb" aria-label="Navega&#231;&#227;o estrutural">
@@ -1255,7 +1268,57 @@ a.footer-nap-row:hover svg { color: var(--dourado); }
   </div>
 </section>
 
-<!-- 7. AMANDA CTA STRIP -->
+<!-- 7. PRESENÇA LOCAL EM PARÁ DE MINAS -->
+<section class="local-presence-sec">
+  <div class="container">
+    <div class="sec-label reveal">Onde Atuamos em Pará de Minas</div>
+    <h2 class="sec-h reveal">Contabilidade especializada para cada polo e bairro da cidade</h2>
+
+    <div class="local-prose reveal">
+      <p>
+        A economia de Pará de Minas é <strong>industrial e diversa</strong>. O Distrito Industrial Antônio Júlio de Faria concentra cerca de 45 empresas nos setores têxtil, fundição, cerâmica e mineração de agalmatolito. O Distrito Industrial 2, às margens da BR-262, abriga operações de maior porte, incluindo o complexo da <strong>Itambé Laticínios</strong>. No eixo comercial, o movimento se concentra na Avenida Benedito Valadares, na Avenida Getúlio Vargas e na Rua Direita, no Centro.
+      </p>
+      <p>
+        Cada polo tem uma estrutura tributária própria: indústrias com ICMS-ST e IPI, comércio varejista no Simples Nacional, profissionais liberais com ISSQN e holdings familiares para proteção patrimonial. <strong>Atendemos empresas em todos esses polos</strong>: indústrias do Jardim Industrial e do Parque Industrial, comércios do Centro, Santos Dumont, Padre Libério e Eldorado, clínicas e escritórios no Dom Bosco e no Belvedere.
+      </p>
+    </div>
+
+    <div class="coverage-grid reveal">
+      <div class="coverage-col">
+        <h3>Zona Industrial</h3>
+        <ul>
+          <li>Distrito Industrial Antônio Júlio de Faria</li>
+          <li>Distrito Industrial 2 (BR-262)</li>
+          <li>Jardim Industrial</li>
+          <li>Parque Industrial</li>
+          <li>Polo Têxtil e Metalúrgico</li>
+        </ul>
+      </div>
+      <div class="coverage-col">
+        <h3>Eixo Comercial</h3>
+        <ul>
+          <li>Centro (Av. Benedito Valadares)</li>
+          <li>Av. Getúlio Vargas</li>
+          <li>Rua Direita</li>
+          <li>Santos Dumont</li>
+          <li>Eldorado</li>
+        </ul>
+      </div>
+      <div class="coverage-col">
+        <h3>Bairros Residenciais</h3>
+        <ul>
+          <li>Padre Libério</li>
+          <li>Dom Bosco</li>
+          <li>Belvedere</li>
+          <li>São João</li>
+          <li>Todo o município</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. AMANDA CTA STRIP -->
 <section class="amanda-cta-strip">
   <div class="container">
     <div class="amanda-cta-inner">
@@ -1283,7 +1346,7 @@ a.footer-nap-row:hover svg { color: var(--dourado); }
   </div>
 </section>
 
-<!-- 8. SETORES MARQUEE -->
+<!-- 9. SETORES MARQUEE -->
 <div class="setores-marquee">
   <h2 class="visually-hidden">Setores atendidos pelo escrit&#243;rio de contabilidade em Par&#225; de Minas</h2>
   <div class="setores-track" id="setoresTrack">
@@ -1309,7 +1372,7 @@ a.footer-nap-row:hover svg { color: var(--dourado); }
   </div>
 </div>
 
-<!-- 9. CASES -->
+<!-- 10. CASES -->
 <section class="cases-sec dot-grid">
   <div class="container">
     <div class="sec-label lt reveal" style="text-align:center;">Resultados Reais</div>
@@ -1340,7 +1403,7 @@ a.footer-nap-row:hover svg { color: var(--dourado); }
   </div>
 </section>
 
-<!-- 10. DEPOIMENTOS -->
+<!-- 11. DEPOIMENTOS -->
 <section class="depoimentos-sec">
   <div class="container">
     <div class="sec-label on-lt reveal" style="text-align:center;">Depoimentos</div>
@@ -1371,7 +1434,7 @@ a.footer-nap-row:hover svg { color: var(--dourado); }
   </div>
 </section>
 
-<!-- 11. FAQ -->
+<!-- 12. FAQ -->
 <section class="faq-sec">
   <div class="container">
     <div class="sec-label lt reveal" style="text-align:center;">D&#250;vidas</div>
@@ -1423,7 +1486,7 @@ a.footer-nap-row:hover svg { color: var(--dourado); }
   </div>
 </section>
 
-<!-- 12. LOCALIZAÇÃO + CTA FINAL -->
+<!-- 13. LOCALIZAÇÃO + CTA FINAL -->
 <section class="location-sec" id="onde-estamos">
   <div class="container">
     <div class="location-header reveal">
