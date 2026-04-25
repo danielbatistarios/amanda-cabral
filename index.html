@@ -1555,6 +1555,9 @@
           .pain-card  { width: 100% !important; box-sizing: border-box !important; max-width: 100% !important; }
         }
 
+        /* Badge: sempre oculto */
+        .service-badge { display: none !important; }
+
         /* Services carousel: remover padding-right excessivo */
         @media (max-width: 768px) {
           .services-inner { padding: 48px 0 32px !important; min-height: auto !important; }
@@ -1574,9 +1577,11 @@
           }
           .services-nav--top button svg { width: 18px; height: 18px; stroke: #ffffff; }
           .services-nav--top button:hover { border-color: var(--gold); background: rgba(201,168,76,0.15); }
+          .service-badge { display: none !important; }
         }
         @media (max-width: 480px) {
           .service-card { min-width: 84vw !important; max-width: 90vw !important; }
+          .service-badge { display: none !important; }
         }
 
         /* Process: carousel mobile com setas */

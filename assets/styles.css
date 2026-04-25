@@ -454,7 +454,7 @@
             line-height: 1.75;
         }
 
-        .service-badge { display: none; }
+        .service-badge { display: none !important; }
 
         a.service-card { display: flex; flex-direction: column; text-decoration: none; color: inherit; }
 
