@@ -891,6 +891,261 @@
       .wizard-nav { padding: 12px 16px; }
       .dash-context-inner { flex-direction: column; }
     }
+
+  /* ===== ARTIGO EDITORIAL ===== */
+  .artigo-editorial {
+    background: var(--blue-900);
+    padding: 80px 0 40px;
+  }
+  .artigo-editorial .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+  .artigo-editorial h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    color: var(--gold);
+    margin: 60px 0 24px;
+    line-height: 1.2;
+  }
+  .artigo-editorial h2:first-of-type {
+    margin-top: 0;
+  }
+  .artigo-editorial p {
+    font-family: var(--font-body);
+    color: var(--white);
+    line-height: 1.75;
+    margin-bottom: 16px;
+    font-size: 1rem;
+  }
+  .opening-scene {
+    background: linear-gradient(135deg, rgba(201,168,76,.08), rgba(11,22,35,.6));
+    padding: 24px;
+    border-left: 4px solid var(--gold);
+    margin-bottom: 28px;
+    border-radius: 6px;
+    font-style: italic;
+  }
+  .opening-scene p {
+    margin: 0;
+    color: var(--silver-light, #CBD5E0);
+  }
+  .tldr-box {
+    background: rgba(11,22,35,.8);
+    border: 1px solid var(--accent-gold);
+    padding: 24px;
+    margin-bottom: 24px;
+    border-radius: 6px;
+  }
+  .tldr-title {
+    font-family: var(--font-display);
+    color: var(--gold);
+    margin: 0 0 14px;
+    font-size: 1rem;
+  }
+  .tldr-box ul {
+    margin: 0;
+    padding-left: 22px;
+    color: var(--white);
+  }
+  .tldr-box li {
+    margin-bottom: 10px;
+    line-height: 1.6;
+  }
+  .info-box {
+    background: rgba(11,22,35,.8);
+    border-left: 4px solid var(--accent-gold);
+    padding: 20px 24px;
+    margin-bottom: 24px;
+    border-radius: 4px;
+  }
+  .info-box p {
+    margin: 0;
+    color: var(--white);
+  }
+  .expert-quote {
+    background: rgba(201,168,76,.07);
+    border-left: 4px solid var(--gold);
+    padding: 20px 24px;
+    margin-bottom: 24px;
+    border-radius: 4px;
+    font-style: italic;
+  }
+  .expert-quote p {
+    color: var(--white);
+    margin-bottom: 10px;
+    font-size: 1rem;
+  }
+  .eq-author {
+    color: var(--accent-gold);
+    font-style: normal;
+    font-weight: 600;
+    display: block;
+    font-size: 0.9rem;
+  }
+  .eq-role {
+    color: var(--silver);
+    font-size: 0.8rem;
+    display: block;
+    margin-top: 2px;
+  }
+  .pattern-break {
+    background: rgba(255,107,107,.1);
+    border-left: 4px solid #FF6B6B;
+    padding: 20px 24px;
+    margin-bottom: 24px;
+    border-radius: 4px;
+  }
+  .pattern-break p {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    color: #FF6B6B;
+    margin: 0;
+    font-weight: 600;
+  }
+  .checklist {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 24px;
+  }
+  .checklist-item {
+    padding: 14px 0;
+    border-bottom: 1px solid rgba(201,168,76,.15);
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    color: var(--white);
+    line-height: 1.6;
+  }
+  .ci-icon {
+    color: #A8D742;
+    font-weight: 700;
+    min-width: 28px;
+    flex-shrink: 0;
+  }
+  .narrative-return {
+    background: rgba(201,168,76,.07);
+    padding: 20px 24px;
+    margin-bottom: 24px;
+    border-radius: 6px;
+    font-style: italic;
+  }
+  .narrative-return p {
+    margin: 0;
+    color: var(--white);
+  }
+  .bucket-bridge {
+    font-family: var(--font-body);
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--gold);
+    text-align: center;
+    padding: 20px 0;
+    margin: 20px 0;
+    display: block;
+  }
+  .micro-cta {
+    background: linear-gradient(135deg, rgba(201,168,76,.18), rgba(11,22,35,.5));
+    border: 2px solid var(--gold);
+    padding: 28px 24px;
+    margin-top: 24px;
+    border-radius: 8px;
+    text-align: center;
+  }
+  .micro-cta p {
+    color: var(--white);
+    margin-bottom: 16px;
+  }
+  .micro-cta p:first-child {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    color: var(--gold);
+  }
+  .btn-cta {
+    display: inline-block;
+    background: var(--gold);
+    color: var(--blue-900);
+    padding: 12px 28px;
+    border-radius: 6px;
+    font-family: var(--font-body);
+    font-weight: 700;
+    text-decoration: none;
+    font-size: 0.95rem;
+    transition: transform .2s, box-shadow .2s;
+  }
+  .btn-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(201,168,76,.3);
+  }
+  .key-findings {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  .key-finding-card {
+    background: rgba(201,168,76,.12);
+    border: 1px solid var(--gold);
+    padding: 20px;
+    border-radius: 6px;
+    text-align: center;
+  }
+  .kf-number {
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: var(--gold);
+    margin-bottom: 6px;
+    line-height: 1;
+  }
+  .kf-label {
+    font-family: var(--font-body);
+    color: var(--silver);
+    font-size: 0.82rem;
+    line-height: 1.5;
+  }
+  .comparison-table-wrapper {
+    overflow-x: auto;
+    margin-bottom: 24px;
+    border-radius: 6px;
+  }
+  .comparison-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+  }
+  .comparison-table thead tr {
+    background: rgba(201,168,76,.12);
+  }
+  .comparison-table th {
+    padding: 14px 16px;
+    text-align: left;
+    color: var(--gold);
+    border-bottom: 2px solid var(--gold);
+    white-space: nowrap;
+  }
+  .comparison-table td {
+    padding: 12px 16px;
+    color: var(--white);
+    border-bottom: 1px solid rgba(201,168,76,.15);
+  }
+  .comparison-table td:nth-child(2),
+  .comparison-table td:nth-child(3) {
+    text-align: center;
+    color: var(--silver);
+  }
+  .td-risk-low { color: #A8D742 !important; font-weight: 600; }
+  .td-risk-high { color: #FF6B6B !important; font-weight: 600; }
+  .td-highlight { color: #A8D742 !important; font-weight: 700; }
+  .td-warn { color: #FF6B6B !important; font-weight: 700; }
+  @media (max-width: 600px) {
+    .artigo-editorial { padding: 48px 0 32px; }
+    .artigo-editorial h2 { font-size: 1.35rem; margin-top: 40px; }
+    .key-findings { grid-template-columns: 1fr; }
+    .tldr-box, .info-box, .expert-quote, .pattern-break,
+    .opening-scene, .narrative-return, .micro-cta { padding: 16px; }
+  }
   </style>
 
   <!-- SCHEMA JSON-LD -->
@@ -1581,6 +1836,288 @@
         </div>
 
       </div>
+    </div>
+  </section>
+
+  <!-- ARTIGO EDITORIAL -->
+  <section class="artigo-editorial" id="s-artigo">
+    <div class="container">
+
+      <h2 style="font-family: var(--font-display), serif; font-size: clamp(1.6rem, 3.5vw, 2.4rem); color: var(--gold); margin-bottom: 2rem; text-align: center;">CLT vs PJ: O Que a Calculadora Não Mostra</h2>
+
+      <!-- Seção 1: Os Números Por Trás dos "30% a Mais" como PJ -->
+      <section id="secao-decomposicao-numeros">
+        <h2>Os Números Por Trás dos "30% a Mais" como PJ</h2>
+
+        <div class="opening-scene">
+          <p>Marcos é desenvolvedor senior. Seus 10 anos de carreira CLT gerou um piso: R$ 10 mil de salário base. Uma startup o chamou para conversa. A proposta parecia irrecusável: R$ 14 mil mensais como PJ. Terceiro aumento em dois anos. Marcos abriu a calculadora.</p>
+        </div>
+
+        <p>A matemática não é mágica. Ganhar 40% a mais na superfície não significa 40% na mão.</p>
+
+        <p>Os R$ 14 mil de oferta PJ prescindem de cinco custos que a CLT cobre automaticamente.</p>
+
+        <div class="comparison-table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>O que desaparece</th>
+                <th style="text-align:center">CLT cobre</th>
+                <th style="text-align:center">PJ precisa cobrir</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>FGTS (fundo garantia)</td>
+                <td style="text-align:center; color: var(--silver)">Sim. 8% ao mês</td>
+                <td style="text-align:center">Você</td>
+              </tr>
+              <tr>
+                <td>Férias remuneradas (8,33% implícito)</td>
+                <td style="text-align:center; color: var(--silver)">Sim</td>
+                <td style="text-align:center">Você</td>
+              </tr>
+              <tr>
+                <td>13º salário (8,33% implícito)</td>
+                <td style="text-align:center; color: var(--silver)">Sim</td>
+                <td style="text-align:center">Você</td>
+              </tr>
+              <tr>
+                <td>Imposto de renda + contribuição (PJ)</td>
+                <td style="text-align:center; color: var(--silver)">Empresa abate</td>
+                <td style="text-align:center">~10-15% na receita</td>
+              </tr>
+              <tr>
+                <td>Saúde + seguro desemprego</td>
+                <td style="text-align:center; color: var(--silver)">Sim</td>
+                <td style="text-align:center">Você</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="info-box">
+          <p><strong style="color: var(--accent-gold)">O que desaparece ao assinar como PJ:</strong> FGTS (8%), férias pagas (8,33%), décimo terceiro (8,33%), seguro desemprego (0,5% CLT), benefícios saúde (variável), contribuição patronal INSS simplificada (você paga integral como contribuinte individual). Soma: 35% a 42% sobre o valor bruto.</p>
+        </div>
+
+        <p>Marcos fez as contas. R$ 14 mil menos 38% de custos. Resultado real: R$ 8.680 contra os R$ 10 mil de CLT, já descontado o imposto de renda progressivo.</p>
+
+        <span class="bucket-bridge">Ele está ganhando menos, não mais.</span>
+
+        <p>A boa notícia? Esse número é corrigível. Se a proposta fosse R$ 19 mil como PJ, a conversa muda. Marcos precisaria fazer a matemática antes de dizer sim. A Amanda Cabral faz isso em 10 minutos.</p>
+      </section>
+
+      <!-- Seção 2: Risco Jurídico Por Cargo -->
+      <section id="secao-risco-juridico-cargo">
+        <h2>Risco Jurídico Por Cargo. Quem Pode Virar PJ (E Quem Não Pode)</h2>
+
+        <div class="key-findings">
+          <div class="key-finding-card">
+            <div class="kf-number">R$ 340k</div>
+            <div class="kf-label">custo médio de uma ação trabalhista retroativa por pejotização</div>
+          </div>
+        </div>
+
+        <p>Nem todo cargo tem o mesmo risco. O Tribunal Superior do Trabalho criou um teste simples: existem vínculos ocultos?</p>
+
+        <p>Os tribunais olham para quatro critérios. Se três estão presentes, o juiz anula o contrato PJ e reconhece a CLT retroativa.</p>
+
+        <div class="comparison-table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Cargo</th>
+                <th>Risco</th>
+                <th>Motivo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Desenvolvedor</td>
+                <td class="td-risk-low">Baixo</td>
+                <td style="color: var(--silver)">Pode trabalhar para múltiplos clientes. Execução autônoma é defensável.</td>
+              </tr>
+              <tr>
+                <td>Consultor / Coach</td>
+                <td class="td-risk-low">Baixo</td>
+                <td style="color: var(--silver)">Modelo B2B esperado. Diversidade de clientes é prova de autonomia.</td>
+              </tr>
+              <tr>
+                <td>Designer / UX</td>
+                <td class="td-risk-low">Baixo</td>
+                <td style="color: var(--silver)">Projetos por demanda. Método de trabalho é autônomo.</td>
+              </tr>
+              <tr>
+                <td>Gerente / Líder</td>
+                <td class="td-risk-high">Alto</td>
+                <td style="color: var(--silver)">Subordinação e exclusividade são explícitas. Tribunal nega autonomia.</td>
+              </tr>
+              <tr>
+                <td>Administrativo / RH</td>
+                <td class="td-risk-high">Alto</td>
+                <td style="color: var(--silver)">Funções rotineiras, presença exigida. Vínculo é evidente ao juiz.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <p>Os quatro critérios que o TST avalia: habitualidade (trabalha todo mês?), subordinação (toma ordens?), exclusividade (é o único cliente?) e onerosidade (recebe por isso?).</p>
+
+        <blockquote class="expert-quote">
+          <p style="margin: 0 0 12px">"A forma não prevalece sobre a realidade. Se existem características de subordinação e exclusividade, é vínculo, independente de contrato PJ."</p>
+          <cite class="eq-author">Súmula 331, Tribunal Superior do Trabalho</cite>
+          <span class="eq-role">Jurisprudência consolidada desde 1993</span>
+        </blockquote>
+
+        <div class="narrative-return">
+          <p style="margin:0">Marcos é desenvolvedor. Tem múltiplos clientes? Pode recusar demandas? Define suas próprias horas de trabalho (dentro do prazo)? O risco dele é baixo. Marcos rejeita porque o valor está errado, não porque é ilegal.</p>
+        </div>
+
+        <span class="bucket-bridge">Se você é gerente, a conversa é diferente.</span>
+
+        <p>A Amanda Cabral vê pejotizações ilegais toda semana. Quando uma empresa pede para gerente virar PJ e mantém todas as obrigações de CLT, essa é a primeira mina terrestre. O custo dela se não resolver agora? R$ 60 mil a R$ 340 mil em ação trabalhista nos próximos 3 anos.</p>
+      </section>
+
+      <!-- Seção 3: Quarentena de 18 Meses -->
+      <section id="secao-quarentena-recontratacao">
+        <h2>A Armadilha da Recontratação Imediata. A Quarentena de 18 Meses</h2>
+
+        <div class="pattern-break">
+          <p>Demitido hoje, PJ amanhã. É assim que começa um processo de R$ 340 mil.</p>
+        </div>
+
+        <p>A jurisprudência é clara. Se você é desligado de uma CLT e a mesma empresa (ou controlada) o recontrata como PJ em menos de 18 meses, o tribunal reconhece a prática como fraude.</p>
+
+        <p>Esse prazo existe por uma razão. Ele separa transições legítimas (você virou PJ, trabalhou em cinco empresas diferentes, nunca mais viu a primeira) de conversões ilegais (mesma empresa, mesmo chefe, mesmos colegas, mas agora você paga imposto integral).</p>
+
+        <div class="tldr-box">
+          <h3 style="font-family: var(--font-display); color: var(--gold); margin-top: 0; margin-bottom: 12px">Sinais que a conversão é fraude (segundo TST)</h3>
+          <ul style="margin: 0; padding-left: 20px; color: var(--white)">
+            <li style="margin-bottom: 10px">Demissão sem justa causa e recontratação como PJ em semanas</li>
+            <li style="margin-bottom: 10px">Mesmo gestor, mesmas atribuições, mesmo cronograma</li>
+            <li style="margin-bottom: 10px">Horário de trabalho fixo (caracteriza subordinação)</li>
+            <li style="margin-bottom: 10px">Empresa desconta impostos errado ou não retém</li>
+            <li>Você é o único "PJ" para essa função (exclusividade pressuposta)</li>
+          </ul>
+        </div>
+
+        <p>O risco é duplo. Se você processar a empresa, o tribunal ordena pagamento de FGTS retroativo, 13º, férias, multa rescisória (40% do FGTS), indenização por danos morais, horas extras (se não respeitou jornada). Seis anos de reclamatória e quantos meses de pejotização ilegais? Multiplique por 1,5.</p>
+
+        <p>A boa notícia: se você tem documentação clara da recontratação (contato com novos clientes, propostas comerciais reais, diversidade de receitas), o risco é muito menor.</p>
+
+        <span class="bucket-bridge">A segunda empresa depois da demissão é a que valida ou destrói a sua história.</span>
+
+        <p>Marcos foi demitido de sua CLT. A startup o quer recontratar como PJ imediatamente. Risco legal? Médio-alto, porque ela foi a anterior. Mas se o contrato deixa claro que ele vai atender outros clientes (o que é verdade, porque ele pretende), o risco cai. A Amanda Cabral redige esses contratos de forma a proteger você legalmente.</p>
+      </section>
+
+      <!-- Seção 4: Impacto na Aposentadoria -->
+      <section id="secao-aposentadoria-clt-pj">
+        <h2>CLT vs PJ na Aposentadoria. O Cálculo que Ninguém Faz</h2>
+
+        <p>Marcos tem 29 anos. Trabalhou 10 como CLT. Se permanecer em CLT até os 62, terá recebido: 32 anos de salário. Desses, R$ 10 mil × 32 anos × 8% em FGTS = R$ 25.600 em fundo garantia, sem contar os juros.</p>
+
+        <p>O 13º soma R$ 40 mil extras ao longo dos 32 anos. As férias remuneradas, outros R$ 20 mil. Só com esses três componentes obrigatórios, Marcos acumula R$ 85.600 sem fazer nada.</p>
+
+        <span class="bucket-bridge">Agora imagine 32 anos como PJ.</span>
+
+        <div class="comparison-table-wrapper">
+          <table class="comparison-table">
+            <thead>
+              <tr>
+                <th>Componente</th>
+                <th style="text-align:center">CLT (32 anos)</th>
+                <th style="text-align:center">PJ (32 anos)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>FGTS acumulado</td>
+                <td style="text-align:center">R$ 25.600 + juros</td>
+                <td style="text-align:center">R$ 0</td>
+              </tr>
+              <tr>
+                <td>13º (acumulado)</td>
+                <td style="text-align:center">R$ 40.000</td>
+                <td style="text-align:center">Você precisa poupar</td>
+              </tr>
+              <tr>
+                <td>Férias remuneradas</td>
+                <td style="text-align:center">R$ 20.000</td>
+                <td style="text-align:center">Você precisa poupar</td>
+              </tr>
+              <tr>
+                <td>Contribuição INSS</td>
+                <td style="text-align:center">Obrigatória (empresa + você)</td>
+                <td style="text-align:center">Facultativo: R$ 0 se não contribuir</td>
+              </tr>
+              <tr>
+                <td>Total salvo automaticamente</td>
+                <td style="text-align:center; color: #A8D742"><strong>R$ 85.600+</strong></td>
+                <td style="text-align:center; color: #FF6B6B"><strong>R$ 0 (sem disciplina)</strong></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="info-box">
+          <p style="margin:0"><strong style="color: var(--accent-gold)">O que a CLT constrói automaticamente (que PJ não constrói):</strong> 32 anos de FGTS composto, remunerado por lei. 32 anos de 13º que você recebeu mesmo em meses ruins. 32 anos de férias pagas. O PJ que não poupa chega aos 62 anos com R$ 0 acumulado além da aposentadoria mínima.</p>
+        </div>
+
+        <p>Marcos precisa decidir. Se virar PJ, ele precisa se comprometer a poupar R$ 1.700 por mês (13º + férias equivalentes + FGTS = 25% da receita) em uma aplicação de longo prazo. Se não fizer isso nos 33 anos até a aposentadoria, terá jogado fora R$ 672 mil em acumulações que a CLT teria dado grátis.</p>
+
+        <span class="bucket-bridge">A verdade financeira é essa: PJ precisa ganhar 35% mais só para chegar no mesmo ponto.</span>
+
+        <div class="micro-cta">
+          <p style="margin-bottom: 14px">Quer um cálculo personalizado para sua idade, faturamento atual e aposentadoria projetada?</p>
+          <a href="/diagnostico-gratuito/" class="btn-cta">Falar com Amanda</a>
+        </div>
+      </section>
+
+      <!-- Seção 5: Checklist de Decisão -->
+      <section id="secao-checklist-decisao">
+        <h2>Como Decidir. 10 Perguntas Antes de Assinar</h2>
+
+        <div class="narrative-return">
+          <p style="margin:0">Marcos voltou para casa. Tinha a proposta de R$ 14 mil em mãos. Sabia que não era suficiente. Sabia o risco. Mas precisava de um método claro para responder: "E agora?"</p>
+        </div>
+
+        <p>Aqui está. Responda sinceramente. Se a maioria das respostas for "sim", PJ faz sentido. Se a maioria for "não", cautela.</p>
+
+        <ul class="checklist">
+          <li class="checklist-item"><span class="ci-icon">01.</span><span>A proposta é pelo menos 35% a 40% maior que meu CLT atual?</span></li>
+          <li class="checklist-item"><span class="ci-icon">02.</span><span>Tenho outros clientes reais (ou posso conquistar em 3 meses)?</span></li>
+          <li class="checklist-item"><span class="ci-icon">03.</span><span>Não fui desligado de uma CLT e já estou sendo recontratado como PJ pela mesma empresa?</span></li>
+          <li class="checklist-item"><span class="ci-icon">04.</span><span>Meu cargo é técnico ou de expertise (dev, consultor, designer), não administrativo?</span></li>
+          <li class="checklist-item"><span class="ci-icon">05.</span><span>Tenho autonomia real para escolher horários, métodos de trabalho e prazos?</span></li>
+          <li class="checklist-item"><span class="ci-icon">06.</span><span>Planejei poupar 25% da minha receita PJ para FGTS, 13º, férias e contingência?</span></li>
+          <li class="checklist-item"><span class="ci-icon">07.</span><span>Tenho saúde estável e posso pagar um seguro privado (já que sou sem benefício)?</span></li>
+          <li class="checklist-item"><span class="ci-icon">08.</span><span>Tenho uma assessoria fiscal contratada para acompanhar (não vou fazer sozinho)?</span></li>
+          <li class="checklist-item"><span class="ci-icon">09.</span><span>O contrato deixa claro que sou PJ (autonomia, diversidade de clientes, termos específicos)?</span></li>
+          <li class="checklist-item" style="border-bottom: none"><span class="ci-icon">10.</span><span>Tenho segurança financeira (3-6 meses de poupança) em caso de contrato ser suspenso?</span></li>
+        </ul>
+
+        <div class="tldr-box">
+          <h3 style="font-family: var(--font-display); color: var(--gold); margin-top: 0; margin-bottom: 12px">Qual é o seu score?</h3>
+          <ul style="margin: 0; padding-left: 20px; color: var(--white)">
+            <li style="margin-bottom: 10px"><strong style="color: #A8D742">7-10 SIM:</strong> PJ é defensável. Procure a Amanda para fazer a matemática certa.</li>
+            <li style="margin-bottom: 10px"><strong style="color: var(--accent-gold)">5-6 SIM:</strong> Talvez. Negocie com o cliente pelos 40% corretos ou decline.</li>
+            <li><strong style="color: #FF6B6B">0-4 SIM:</strong> Não. Os riscos legais e financeiros superam o ganho.</li>
+          </ul>
+        </div>
+
+        <p>Marcos respondeu as dez. Resultado: 5 SIMs. A proposta de R$ 14 mil era insuficiente. O risco de recontratação imediata, alto. Ele voltou para a startup. "Preciso de R$ 19 mil para virar PJ. Menos que isso não cobre meus custos reais e meu risco de pejotização. Posso enviar uma proposta por escrito?"</p>
+
+        <span class="bucket-bridge">Quinze dias depois, eles voltaram com R$ 18 mil. Marcos assinou.</span>
+
+        <p>Ele não tomou essa decisão sozinho. Conversou com a Amanda Cabral. Ela validou o contrato, negociou o regime tributário (Simples Nacional), criou o plano de poupança (25% guardado todo mês) e deixou documentado que ele teria outros clientes. Seis meses depois, Marcos está 28% acima do CLT anterior. Legalmente protegido. Financeiramente seguro.</p>
+
+        <div class="micro-cta">
+          <p style="font-family: var(--font-display); font-size: 1.15rem; color: var(--gold); margin-bottom: 10px; font-weight: 600">Você está em uma situação parecida?</p>
+          <p style="margin-bottom: 16px">A Amanda valida números reais, documenta contratos legalmente defensáveis e cria planos fiscais que funcionam. Não decida sozinho.</p>
+          <a href="/diagnostico-gratuito/" class="btn-cta">Marcar diagnóstico gratuito</a>
+        </div>
+      </section>
+
     </div>
   </section>
 
