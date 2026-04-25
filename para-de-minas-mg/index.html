@@ -983,9 +983,10 @@ a.footer-nap-row:hover svg { color: var(--dourado); }
 }
 
         @media (max-width: 900px) {
-          #hdr-nav { display: none !important; }
-          .hdr-cta { display: none !important; }
-          .hdr-mega { display: none !important; }
+          #hdr-nav { display: none !important; visibility: hidden !important; pointer-events: none !important; }
+          .hdr-cta { display: none !important; visibility: hidden !important; pointer-events: none !important; }
+          .hdr-mega { display: none !important; visibility: hidden !important; pointer-events: none !important; }
+          .hdr-mega.open { display: none !important; visibility: hidden !important; }
         }
 </style>
 </head>

@@ -703,9 +703,10 @@
         }
 
         @media (max-width: 900px) {
-          #hdr-nav { display: none !important; }
-          .hdr-cta { display: none !important; }
-          .hdr-mega { display: none !important; }
+          #hdr-nav { display: none !important; visibility: hidden !important; pointer-events: none !important; }
+          .hdr-cta { display: none !important; visibility: hidden !important; pointer-events: none !important; }
+          .hdr-mega { display: none !important; visibility: hidden !important; pointer-events: none !important; }
+          .hdr-mega.open { display: none !important; visibility: hidden !important; }
         }
   </style>
 </head>
@@ -872,17 +873,6 @@
     </a>
   </div>
 </div>
-    <a href="/">Início</a>
-    <a href="/sobre-amcabral-blindagem/">Sobre Amanda</a>
-    <a href="/nossos-servicos/">Serviços</a>
-    <a href="/nossos-servicos/gestao-contabil/">Contabilidade Estratégica</a>
-    <a href="/nossos-servicos/recuperacao-creditos-tributarios/">Recuperação de Créditos</a>
-    <a href="/nossos-servicos/holding-patrimonial/" style="color:var(--gold);">Holding Patrimonial</a>
-    <a href="/nossos-servicos/planejamento-tributario/">Planejamento Fiscal</a>
-    <a href="/blog/">Blog</a>
-    <a href="/fale-com-especialista/" style="color:var(--gold);margin-top:20px;font-weight:600;border-color:rgba(201,168,76,0.2);letter-spacing:0.04em;">→ Diagnóstico Gratuito</a>
-  </div>
-
   <!-- HERO -->
   <section class="hero">
     <div class="hero-inner">
