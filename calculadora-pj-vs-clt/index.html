@@ -1528,12 +1528,23 @@
   .analise-section {
     background: var(--blue-800);
     border-top: 1px solid rgba(255,255,255,.05);
-    padding: 64px 0 80px;
   }
-  .analise-section-header {
-    text-align: center;
+
+  /* Hero: fundo mais escuro, cria "momento de chegada" */
+  .analise-hero {
+    background: var(--blue-900);
+    border-bottom: 1px solid rgba(255,255,255,.05);
+    padding: 56px 0 48px;
+  }
+  .analise-hero-inner {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 40px;
     margin-bottom: 40px;
+    flex-wrap: wrap;
   }
+  .analise-hero-label { flex: 1; min-width: 200px; }
   .analise-section-tag {
     display: inline-block;
     padding: 4px 14px;
@@ -1545,34 +1556,107 @@
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: .1em;
-    margin-bottom: 14px;
-  }
-  .analise-section-title {
-    font-family: var(--font-display);
-    font-size: clamp(1.4rem, 3vw, 2rem);
-    color: var(--white);
-    margin-bottom: 10px;
+    margin-bottom: 12px;
   }
   .analise-section-sub {
     color: var(--silver);
-    font-size: .9rem;
-    max-width: 520px;
-    margin: 0 auto;
+    font-size: .88rem;
     line-height: 1.6;
+    max-width: 340px;
   }
-  /* Dentro da secao de analise, o delta e donuts ganham mais respiro */
-  .analise-section .result-delta-container {
-    margin: 0 0 24px;
+  /* Delta dentro do hero: alinhado a direita, sem margem extra */
+  .analise-hero .result-delta-container {
+    margin: 0;
+    flex: 0 0 auto;
+    min-width: 260px;
+    max-width: 360px;
+    animation: deltaFadeIn .8s var(--ease-spring);
   }
-  .analise-section .donuts-wrapper {
-    margin-bottom: 24px;
+
+  /* 3 cards horizontais */
+  .analise-cards-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
   }
-  .analise-section .overview-section {
-    margin-bottom: 24px;
-  }
-  .analise-section .calc-cta-bar {
+  @media (max-width: 900px) { .analise-cards-row { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 560px) { .analise-cards-row { grid-template-columns: 1fr; } }
+
+  .analise-card {
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(255,255,255,.08);
     border-radius: 16px;
-    margin-top: 0;
+    padding: 22px 20px;
+  }
+  .analise-card-empresa { border-top: 3px solid #4A90D9; }
+  .analise-card-profissional { border-top: 3px solid var(--gold); }
+  .analise-card-risco { border-top: 3px solid rgba(255,255,255,.15); display: flex; flex-direction: column; align-items: center; }
+  .analise-card-risco .gauge-wrap { margin-top: 8px; }
+
+  .analise-card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+  .analise-card-icon {
+    width: 28px; height: 28px; border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .analise-card-icon-clt { background: rgba(74,144,217,.12); color: #60A5FA; }
+  .analise-card-icon-pj  { background: rgba(201,168,76,.12); color: var(--gold); }
+  .analise-card-icon-risco { background: rgba(255,255,255,.05); color: var(--silver); }
+  .analise-card-eyebrow {
+    font-size: .68rem; text-transform: uppercase; letter-spacing: .07em; color: var(--silver); font-weight: 600;
+  }
+  .analise-card-row {
+    display: flex; align-items: flex-start; gap: 0;
+  }
+  .analise-card-col { flex: 1; display: flex; flex-direction: column; gap: 3px; }
+  .analise-card-col:last-child { text-align: right; }
+  .analise-card-modlabel { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 2px; }
+  .analise-card-value {
+    font-family: var(--font-display); font-size: 1.4rem; color: var(--white); line-height: 1.1;
+  }
+  .analise-card-value.gold { color: var(--gold); }
+  .analise-card-sub { font-size: .7rem; color: rgba(255,255,255,.4); line-height: 1.4; margin-top: 2px; }
+  .analise-card-sub.gold { color: rgba(201,168,76,.6); }
+  .analise-card-sep {
+    flex-shrink: 0; padding: 0 12px;
+    font-size: .7rem; color: rgba(255,255,255,.25); font-weight: 600;
+    padding-top: 28px;
+  }
+
+  /* Barra de composicao CLT — full width, abaixo dos cards */
+  .analise-costbar {
+    margin-top: 20px;
+    background: rgba(255,255,255,.02);
+    border: 1px solid rgba(255,255,255,.06);
+    border-radius: 12px;
+    padding: 18px 20px;
+  }
+  .analise-costbar-label {
+    font-size: .68rem; text-transform: uppercase; letter-spacing: .07em;
+    color: var(--silver); margin-bottom: 12px; font-weight: 600;
+  }
+  .analise-costbar .bar-track { height: 16px; border-radius: 6px; overflow: hidden; display: flex; width: 100%; margin-bottom: 10px; }
+  .analise-costbar .bar-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; }
+
+  /* Conteudo abaixo do hero: padding proprio */
+  .analise-section > .container {
+    padding-top: 48px;
+    padding-bottom: 72px;
+  }
+  .analise-section .donuts-wrapper { margin-bottom: 24px; }
+  .analise-section .overview-section { margin-bottom: 24px; }
+  .analise-section .calc-cta-bar { border-radius: 16px; margin-top: 0; }
+
+  @media (max-width: 700px) {
+    .analise-hero { padding: 40px 0 32px; }
+    .analise-hero-inner { flex-direction: column; gap: 24px; }
+    .analise-hero .result-delta-container { min-width: 0; max-width: 100%; width: 100%; }
+    .analise-section-sub { max-width: 100%; }
   }
 
   /* ===== TOGGLE ANALISE DETALHADA ===== */
@@ -2451,65 +2535,7 @@
                 <div class="result-inline-sub" id="resPjSub"></div>
               </div>
             </div>
-            <!-- Perspectiva do profissional: linha separada e simetrica -->
-            <div class="result-liquido-context" id="resLiquidoContext" style="display:none;">
-              <div class="result-liquido-col">
-                <span class="result-liquido-label">Profissional recebe como CLT</span>
-                <span class="result-liquido-value" id="resLiquidoClt">-</span>
-                <span class="result-liquido-detail" id="resLiquidoCltDetail"></span>
-              </div>
-              <div class="result-liquido-sep">vs</div>
-              <div class="result-liquido-col">
-                <span class="result-liquido-label">Profissional recebe como PJ</span>
-                <span class="result-liquido-value gold" id="resLiquidoPj">-</span>
-                <span class="result-liquido-detail" id="resLiquidoPjDetail"></span>
-              </div>
-            </div>
             <div class="result-inline-anual" id="resAnual"></div>
-
-            <!-- Visual strip: gauge risco + barra composicao CLT -->
-            <div class="visual-strip" id="visualStrip">
-              <!-- Gauge de Risco Juridico -->
-              <div class="viz-card" id="riskGaugeCard">
-                <div class="viz-card-label">Risco juridico do cenario</div>
-                <div class="gauge-wrap">
-                  <svg class="gauge-svg" width="140" height="80" viewBox="0 0 140 80" id="gaugeSvg">
-                    <!-- Track: semicircle r=56, cx=70, cy=70 -->
-                    <path class="gauge-track" d="M 14 70 A 56 56 0 0 1 126 70" stroke-width="10"/>
-                    <!-- Fill: same path, animated via dashoffset -->
-                    <path class="gauge-fill" id="gaugeFill" d="M 14 70 A 56 56 0 0 1 126 70" stroke-width="10"
-                      stroke-dasharray="175.93" stroke-dashoffset="175.93" data-risk="medium"/>
-                    <!-- Score text -->
-                    <text class="gauge-score" id="gaugeScore" x="70" y="62">-</text>
-                  </svg>
-                  <div class="gauge-risk-label" id="gaugeRiskLabel" data-risk="medium">-</div>
-                  <div class="gauge-desc" id="gaugeDesc"></div>
-                </div>
-              </div>
-
-              <!-- Stacked Bar: composicao do custo CLT -->
-              <div class="viz-card" id="costBarCard">
-                <div class="viz-card-label">De onde vem o custo CLT</div>
-                <div class="bar-wrap">
-                  <div class="bar-track" id="costBarTrack">
-                    <div class="bar-seg bar-seg-salario"  id="bsalario"  style="width:0%"></div>
-                    <div class="bar-seg bar-seg-inss"     id="binss"     style="width:0%"></div>
-                    <div class="bar-seg bar-seg-fgts"     id="bfgts"     style="width:0%"></div>
-                    <div class="bar-seg bar-seg-sistemas" id="bsistemas" style="width:0%"></div>
-                    <div class="bar-seg bar-seg-provis"   id="bprovis"   style="width:0%"></div>
-                    <div class="bar-seg bar-seg-benef"    id="bbenef"    style="width:0%"></div>
-                  </div>
-                  <div class="bar-legend" id="costBarLegend">
-                    <div class="bar-legend-item"><div class="bar-legend-dot" style="background:#60A5FA"></div><span id="lblSalario">Salario</span></div>
-                    <div class="bar-legend-item"><div class="bar-legend-dot" style="background:#C084FC"></div><span id="lblInss">INSS pat.</span></div>
-                    <div class="bar-legend-item"><div class="bar-legend-dot" style="background:#FB923C"></div><span id="lblFgts">FGTS</span></div>
-                    <div class="bar-legend-item"><div class="bar-legend-dot" style="background:#34D399"></div><span id="lblSistemas">Sistema S</span></div>
-                    <div class="bar-legend-item"><div class="bar-legend-dot" style="background:#FBBF24"></div><span id="lblProvis">13o+Ferias</span></div>
-                    <div class="bar-legend-item" id="legendBenef" style="display:none"><div class="bar-legend-dot" style="background:#94A3B8"></div><span id="lblBenef">Beneficios</span></div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
 
@@ -2576,22 +2602,120 @@
        Separada do form para nao sobrecarregar a tela
   ==================================================== -->
   <section class="analise-section" id="analiseSection" style="display:none;" aria-live="polite">
+
+    <!-- Hero do resultado: fundo mais escuro, largura full -->
+    <div class="analise-hero" id="analiseHero">
+      <div class="container">
+        <div class="analise-hero-inner">
+          <div class="analise-hero-label">
+            <div class="analise-section-tag" id="analiseSectionTag">Analise para Empresa</div>
+            <p class="analise-section-sub" id="analiseSectionSub">Com base no seu cenario, preparamos a analise completa abaixo.</p>
+          </div>
+          <!-- Delta: o numero grande que responde "quanto custa a diferenca?" -->
+          <div class="result-delta-container" id="deltaBigContainer">
+            <div class="delta-label">Diferenca de custo para a empresa</div>
+            <div class="delta-amount" id="deltaBigAmount">-<span class="delta-dir"></span></div>
+            <div class="delta-percent" id="deltaBigPercent"></div>
+            <div class="delta-sub" id="deltaBigSub"></div>
+          </div>
+        </div>
+
+        <!-- 3 cards horizontais: custo empresa | liquido profissional | risco -->
+        <div class="analise-cards-row" id="analiseCardsRow">
+
+          <!-- Card 1: Custo para a empresa -->
+          <div class="analise-card analise-card-empresa">
+            <div class="analise-card-header">
+              <div class="analise-card-icon analise-card-icon-clt">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+              </div>
+              <span class="analise-card-eyebrow">Custo para a empresa / mes</span>
+            </div>
+            <div class="analise-card-row">
+              <div class="analise-card-col">
+                <div class="analise-card-modlabel" style="color:rgba(96,165,250,.7)">CLT</div>
+                <div class="analise-card-value" id="acEmpresaClt">-</div>
+                <div class="analise-card-sub" id="acEmpresaCltSub"></div>
+              </div>
+              <div class="analise-card-sep">vs</div>
+              <div class="analise-card-col">
+                <div class="analise-card-modlabel" style="color:rgba(201,168,76,.8)">PJ</div>
+                <div class="analise-card-value gold" id="acEmpresaPj">-</div>
+                <div class="analise-card-sub gold" id="acEmpresaPjSub"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2: Liquido do profissional -->
+          <div class="analise-card analise-card-profissional">
+            <div class="analise-card-header">
+              <div class="analise-card-icon analise-card-icon-pj">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              </div>
+              <span class="analise-card-eyebrow">Profissional recebe / mes</span>
+            </div>
+            <div class="analise-card-row">
+              <div class="analise-card-col">
+                <div class="analise-card-modlabel" style="color:rgba(96,165,250,.7)">CLT</div>
+                <div class="analise-card-value" id="acProfClt">-</div>
+                <div class="analise-card-sub" id="acProfCltSub"></div>
+              </div>
+              <div class="analise-card-sep">vs</div>
+              <div class="analise-card-col">
+                <div class="analise-card-modlabel" style="color:rgba(201,168,76,.8)">PJ</div>
+                <div class="analise-card-value gold" id="acProfPj">-</div>
+                <div class="analise-card-sub gold" id="acProfPjSub"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: Risco juridico -->
+          <div class="analise-card analise-card-risco">
+            <div class="analise-card-header">
+              <div class="analise-card-icon analise-card-icon-risco">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              </div>
+              <span class="analise-card-eyebrow">Risco juridico do cenario</span>
+            </div>
+            <div class="gauge-wrap">
+              <svg class="gauge-svg" width="140" height="80" viewBox="0 0 140 80" id="gaugeSvg">
+                <path class="gauge-track" d="M 14 70 A 56 56 0 0 1 126 70" stroke-width="10"/>
+                <path class="gauge-fill" id="gaugeFill" d="M 14 70 A 56 56 0 0 1 126 70" stroke-width="10"
+                  stroke-dasharray="175.93" stroke-dashoffset="175.93" data-risk="medium"/>
+                <text class="gauge-score" id="gaugeScore" x="70" y="62">-</text>
+              </svg>
+              <div class="gauge-risk-label" id="gaugeRiskLabel" data-risk="medium">-</div>
+              <div class="gauge-desc" id="gaugeDesc"></div>
+            </div>
+          </div>
+
+        </div><!-- /analise-cards-row -->
+
+        <!-- Barra de composicao do custo CLT -->
+        <div class="analise-costbar" id="analiseCostBar">
+          <div class="analise-costbar-label">De onde vem o custo CLT</div>
+          <div class="bar-track" id="costBarTrack">
+            <div class="bar-seg bar-seg-salario"  id="bsalario"  style="width:0%"></div>
+            <div class="bar-seg bar-seg-inss"     id="binss"     style="width:0%"></div>
+            <div class="bar-seg bar-seg-fgts"     id="bfgts"     style="width:0%"></div>
+            <div class="bar-seg bar-seg-sistemas" id="bsistemas" style="width:0%"></div>
+            <div class="bar-seg bar-seg-provis"   id="bprovis"   style="width:0%"></div>
+            <div class="bar-seg bar-seg-benef"    id="bbenef"    style="width:0%"></div>
+          </div>
+          <div class="bar-legend" id="costBarLegend">
+            <div class="bar-legend-item"><div class="bar-legend-dot" style="background:#60A5FA"></div><span id="lblSalario">Salario</span></div>
+            <div class="bar-legend-item"><div class="bar-legend-dot" style="background:#C084FC"></div><span id="lblInss">INSS pat.</span></div>
+            <div class="bar-legend-item"><div class="bar-legend-dot" style="background:#FB923C"></div><span id="lblFgts">FGTS</span></div>
+            <div class="bar-legend-item"><div class="bar-legend-dot" style="background:#34D399"></div><span id="lblSistemas">Sistema S</span></div>
+            <div class="bar-legend-item"><div class="bar-legend-dot" style="background:#FBBF24"></div><span id="lblProvis">13o+Ferias</span></div>
+            <div class="bar-legend-item" id="legendBenef" style="display:none"><div class="bar-legend-dot" style="background:#94A3B8"></div><span id="lblBenef">Beneficios</span></div>
+          </div>
+        </div>
+
+      </div>
+    </div><!-- /analise-hero -->
+
     <div class="container">
-
-      <!-- Cabecalho da secao de analise -->
-      <div class="analise-section-header" id="analiseSectionHeader">
-        <div class="analise-section-tag" id="analiseSectionTag">Analise para Empresa</div>
-        <h2 class="analise-section-title">Entenda o que os numeros significam</h2>
-        <p class="analise-section-sub" id="analiseSectionSub">Com base no seu cenario, preparamos uma analise completa abaixo.</p>
-      </div>
-
-      <!-- DELTA HIGHLIGHT -->
-      <div class="result-delta-container" id="deltaBigContainer">
-        <div class="delta-label">Diferenca de custo para a empresa</div>
-        <div class="delta-amount" id="deltaBigAmount">-<span class="delta-dir"></span></div>
-        <div class="delta-percent" id="deltaBigPercent"></div>
-        <div class="delta-sub" id="deltaBigSub"></div>
-      </div>
 
       <!-- DONUTS: Liquido real CLT vs PJ -->
       <div class="donuts-wrapper" id="donutsWrapper">
@@ -3557,12 +3681,6 @@ function resetCalc() {
   const firstRegime = document.querySelector('input[name="wizardRegime"]');
   if (firstRegime) firstRegime.checked = true;
   document.getElementById('resultInline').style.display = 'none';
-  const liqCtxReset = document.getElementById('resLiquidoContext');
-  if (liqCtxReset) liqCtxReset.style.display = 'none';
-  const riskCard = document.getElementById('riskGaugeCard');
-  if (riskCard) riskCard.style.display = 'none';
-  const barCard = document.getElementById('costBarCard');
-  if (barCard) barCard.style.display = 'none';
   const donutsWrap = document.getElementById('donutsWrapper');
   if (donutsWrap) donutsWrap.style.display = 'none';
   const nextList = document.getElementById('nextStepsList');
@@ -3831,14 +3949,17 @@ function calcAndRender() {
   const pjSubEl = document.getElementById('resPjSub');
   if (pjSubEl) pjSubEl.textContent = 'So o honorario — sem INSS patronal, FGTS ou provisoes';
 
-  // Linha de perspectiva do profissional (separada dos custos da empresa)
-  const liqCtx = document.getElementById('resLiquidoContext');
-  if (liqCtx) {
-    liqCtx.style.display = 'flex';
-    document.getElementById('resLiquidoClt').textContent = brl(liquidoEmpregado);
-    document.getElementById('resLiquidoCltDetail').textContent = 'Apos INSS ' + brl(inssEmp) + ' e IR ' + brl(irrf);
-    document.getElementById('resLiquidoPj').textContent = brl(pjLiquido);
-    document.getElementById('resLiquidoPjDetail').textContent = 'Apos impostos CNPJ (' + Math.round(aliqPJ * 100) + '%)';
+  // Cards da secao de analise: empresa e profissional
+  const acEmpClt = document.getElementById('acEmpresaClt');
+  if (acEmpClt) {
+    acEmpClt.textContent = brl(clt.custoTotal);
+    document.getElementById('acEmpresaCltSub').textContent = 'Salario ' + brl(salario) + ' + encargos ' + brl(clt.encargos) + (clt.beneficios > 0 ? ' + benef.' : '');
+    document.getElementById('acEmpresaPj').textContent = brl(pjCusto);
+    document.getElementById('acEmpresaPjSub').textContent = 'Honorario sem INSS patronal, FGTS ou provisoes';
+    document.getElementById('acProfClt').textContent = brl(liquidoEmpregado);
+    document.getElementById('acProfCltSub').textContent = 'Apos INSS ' + brl(inssEmp) + ' e IR ' + brl(irrf);
+    document.getElementById('acProfPj').textContent = brl(pjLiquido);
+    document.getElementById('acProfPjSub').textContent = 'Apos impostos CNPJ (' + Math.round(aliqPJ * 100) + '%)';
   }
 
   // Delta: comparacao de custo para a empresa
@@ -4180,15 +4301,12 @@ function getRiskScore() {
 }
 
 function renderRiskGauge() {
-  const card = document.getElementById('riskGaugeCard');
   const { score, risk, label, desc } = getRiskScore();
-  // Arc length of the semicircle (r=56): pi * 56 ≈ 175.93
   const arcLen = 175.93;
   const offset = arcLen - (score / 100) * arcLen;
   const fill = document.getElementById('gaugeFill');
   fill.setAttribute('data-risk', risk);
-  fill.style.strokeDashoffset = arcLen; // reset first
-  // Animate after a tick
+  fill.style.strokeDashoffset = arcLen;
   requestAnimationFrame(() => {
     requestAnimationFrame(() => { fill.style.strokeDashoffset = offset; });
   });
@@ -4197,11 +4315,9 @@ function renderRiskGauge() {
   lbl.textContent = label;
   lbl.setAttribute('data-risk', risk);
   document.getElementById('gaugeDesc').textContent = desc;
-  card.style.display = 'block';
 }
 
 function renderCostBar(clt, salario) {
-  const card  = document.getElementById('costBarCard');
   const total = clt.custoTotal;
   if (total <= 0) return;
   const pct = v => ((v / total) * 100).toFixed(1) + '%';
@@ -4211,7 +4327,6 @@ function renderCostBar(clt, salario) {
   document.getElementById('bsistemas').style.width = pct(clt.sistemaS);
   document.getElementById('bprovis').style.width   = pct(clt.prov13 + clt.provFerias);
   document.getElementById('bbenef').style.width    = pct(clt.beneficios);
-  // Update legend labels with %
   document.getElementById('lblSalario').textContent = 'Salario ' + pct(salario);
   document.getElementById('lblInss').textContent    = 'INSS pat. ' + pct(clt.inssPat);
   document.getElementById('lblFgts').textContent    = 'FGTS ' + pct(clt.fgts);
@@ -4223,7 +4338,6 @@ function renderCostBar(clt, salario) {
   } else {
     document.getElementById('legendBenef').style.display = 'none';
   }
-  card.style.display = 'block';
 }
 
 function fmtShort(v) {
