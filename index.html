@@ -1558,6 +1558,11 @@
         /* Badge: sempre oculto */
         .service-badge { display: none !important; }
 
+        /* Process: reduzir padding no mobile para não aparecer como faixa branca vazia */
+        @media (max-width: 768px) {
+          .process { padding: 64px 0 48px !important; }
+        }
+
         /* Services carousel: remover padding-right excessivo */
         @media (max-width: 768px) {
           .services-inner { padding: 48px 0 32px !important; min-height: auto !important; }
