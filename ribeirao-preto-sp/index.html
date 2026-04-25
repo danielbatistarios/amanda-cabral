@@ -888,7 +888,8 @@ address { font-style: normal; }
 /* === RESPONSIVE === */
 @media (max-width: 900px) {
   .hero-layout { grid-template-columns: 1fr; gap: 40px; }
-  .hero-img-col { max-height: 400px; aspect-ratio: 3/4; }
+  .hero-img-col { max-height: 420px; aspect-ratio: 3/4; }
+  .hero-img-col img { object-fit: cover; object-position: center 10%; background: none; }
   .authority-grid { grid-template-columns: 1fr; gap: 48px; }
   .svc-grid { grid-template-columns: repeat(2, 1fr); }
   .cases-grid { grid-template-columns: 1fr; }
