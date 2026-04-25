@@ -1216,6 +1216,29 @@
     text-align: center; font-size: .75rem; color: rgba(255,255,255,.3); margin-top: 10px;
   }
 
+  /* ===== CALC LOCK OVERLAY ===== */
+  .calc-grid-wrapper {
+    position: relative;
+  }
+  .calc-lock-overlay {
+    position: absolute; inset: 0; z-index: 10;
+    background: rgba(6,14,26,.65); backdrop-filter: blur(4px);
+    border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    pointer-events: none;
+    transition: opacity .4s, visibility .4s;
+  }
+  .calc-lock-overlay.is-unlocked {
+    opacity: 0; visibility: hidden;
+  }
+  .calc-lock-inner {
+    text-align: center;
+    background: rgba(6,14,26,.8); border: 1px solid rgba(201,168,76,.2);
+    border-radius: 14px; padding: 28px 36px;
+  }
+  .calc-lock-icon { font-size: 2rem; margin-bottom: 10px; }
+  .calc-lock-text { color: var(--silver-light); font-size: .95rem; margin: 0; }
+
   /* ===== OVERVIEW INTELIGENTE ===== */
   .overview-section {
     margin: 8px 0 32px;
@@ -1930,7 +1953,7 @@
               </div>
               <div class="id-form-nav">
                 <button type="button" class="id-form-btn-back" id="idBtnBack">← Voltar</button>
-                <button type="submit" class="id-form-btn-submit">Ver minha analise →</button>
+                <button type="submit" class="id-form-btn-submit">Preencher calculadora ↓</button>
               </div>
               <p class="id-form-privacy">Seus dados estao protegidos. Sem spam.</p>
             </div>
@@ -1941,34 +1964,14 @@
 
       </div>
 
-      <!-- Pergunta 1 e 2: Contexto em toggle buttons -->
-      <div class="context-strip">
-        <div class="context-group">
-          <div class="context-group-label">
-            <span class="context-group-num">1</span>
-            Voce é...
-          </div>
-          <div class="context-toggle-group" id="cargoOptions">
-            <button class="context-toggle" data-name="cargo" data-value="contratante" type="button">Empresa / RH</button>
-            <button class="context-toggle" data-name="cargo" data-value="profissional" type="button">Profissional</button>
-            <button class="context-toggle" data-name="cargo" data-value="comparar" type="button">So comparando</button>
+      <!-- Calculadora (travada até wizard ser preenchido) -->
+      <div class="calc-grid-wrapper" id="calcGridWrapper">
+        <div class="calc-lock-overlay" id="calcLockOverlay">
+          <div class="calc-lock-inner">
+            <div class="calc-lock-icon">🔒</div>
+            <p class="calc-lock-text">Preencha seus dados acima para liberar a calculadora</p>
           </div>
         </div>
-        <div class="context-divider"></div>
-        <div class="context-group">
-          <div class="context-group-label">
-            <span class="context-group-num">2</span>
-            O cenario é...
-          </div>
-          <div class="context-toggle-group" id="motivacaoOptions">
-            <button class="context-toggle" data-name="motivacao" data-value="nova" type="button">Nova contratacao</button>
-            <button class="context-toggle" data-name="motivacao" data-value="existente" type="button">Migracao CLT para PJ</button>
-            <button class="context-toggle" data-name="motivacao" data-value="demissao" type="button">Pos-demissao</button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Calculadora (sempre visivel) -->
       <div class="calc-grid-simple">
         <!-- CLT -->
         <div class="calc-col-simple">
@@ -2201,6 +2204,8 @@
           <button class="btn-reset" id="btnReset" type="button">Limpar e refazer</button>
         </div>
       </div>
+
+      </div><!-- /calc-grid-wrapper -->
 
       <p class="calc-note">Os calculos usam aliquotas INSS patronal, FGTS e Sistema S vigentes em 2025. Resultado orientativo, nao substitui consultoria contabil.</p>
     </div>
@@ -3499,6 +3504,11 @@ window.TEM_CONTADOR = null;
     e.target.value = v;
   });
 
+  function unlockCalc() {
+    var overlay = document.getElementById('calcLockOverlay');
+    if (overlay) overlay.classList.add('is-unlocked');
+  }
+
   function collapseWizard(nome, empresa, contador) {
     document.getElementById('idFormCard').style.display = 'none';
     var filledEl = document.getElementById('idWizardFilled');
@@ -3512,18 +3522,7 @@ window.TEM_CONTADOR = null;
       ? 'Ola, ' + nome + '!' + suffix + '.'
       : 'Analise personalizada ativada.';
     sessionStorage.setItem('lead-modal-shown', '1');
-  }
-
-  function syncContextToggles() {
-    // Pre-select context-strip toggles with wizard choices
-    if (wizData.cargo) {
-      var cargoBtn = document.querySelector('.context-toggle[data-name="cargo"][data-value="' + wizData.cargo + '"]');
-      if (cargoBtn) cargoBtn.click();
-    }
-    if (wizData.motivacao) {
-      var motBtn = document.querySelector('.context-toggle[data-name="motivacao"][data-value="' + wizData.motivacao + '"]');
-      if (motBtn) motBtn.click();
-    }
+    unlockCalc();
   }
 
   // Form submit (step 4)
@@ -3541,7 +3540,10 @@ window.TEM_CONTADOR = null;
     window.LEAD_NAME = nome;
     window.LEAD_COMPANY = empresa;
     collapseWizard(nome, empresa, wizData.contador);
-    syncContextToggles();
+    // Scroll suave para a calculadora
+    setTimeout(function() {
+      document.getElementById('calcGridWrapper').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 200);
     calcAndRender();
   });
 
@@ -3552,7 +3554,10 @@ window.TEM_CONTADOR = null;
     card.style.opacity = '0';
     setTimeout(function() { card.style.display = 'none'; }, 300);
     sessionStorage.setItem('lead-modal-shown', '1');
-    syncContextToggles();
+    unlockCalc();
+    setTimeout(function() {
+      document.getElementById('calcGridWrapper').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 200);
     calcAndRender();
   });
 
@@ -3566,6 +3571,9 @@ window.TEM_CONTADOR = null;
     var card = document.getElementById('idFormCard');
     card.style.opacity = '';
     card.style.display = '';
+    // Relock
+    var overlay = document.getElementById('calcLockOverlay');
+    if (overlay) overlay.classList.remove('is-unlocked');
     // Reset selections
     document.querySelectorAll('#idWizForm .id-cta-opt').forEach(function(b) { b.classList.remove('selected'); });
     goToIdStep(1);
