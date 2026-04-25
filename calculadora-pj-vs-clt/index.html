@@ -289,7 +289,7 @@
     .calc-header { text-align: center; margin-bottom: 48px; }
     .calc-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: repeat(3, 1fr);
       gap: 28px;
       margin-bottom: 28px;
     }
@@ -757,12 +757,54 @@
       .amanda-photo-wrap { max-width: 360px; margin: 0 auto; }
       .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; }
     }
+    /* MOBILE TABS */
+    .calc-tabs { display: none; }
+    .calc-tab-btn {
+      flex: 1; padding: 10px 8px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 10px; color: rgba(255,255,255,.5);
+      font-size: .8rem; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+      cursor: pointer; transition: all .2s; font-family: var(--font-body);
+    }
+    .calc-tab-btn.active {
+      background: rgba(201,168,76,.1); border-color: rgba(201,168,76,.35); color: var(--gold);
+    }
+    .calc-tab-btn.active.clt-tab { background: rgba(59,130,246,.1); border-color: rgba(59,130,246,.3); color: var(--accent-light); }
+    .calc-tab-btn.active.int-tab { background: rgba(16,185,129,.08); border-color: rgba(16,185,129,.25); color: #10B981; }
+
+    /* BOTAO EXPORTAR */
+    .btn-export {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      width: 100%; padding: 12px 16px; margin-top: 16px;
+      background: transparent; border: 1px solid rgba(201,168,76,.3);
+      border-radius: 10px; color: var(--gold);
+      font-size: .82rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase;
+      cursor: pointer; font-family: var(--font-body);
+      transition: background .2s, border-color .2s;
+    }
+    .btn-export:hover { background: rgba(201,168,76,.07); border-color: rgba(201,168,76,.5); }
+    .btn-export svg { width: 15px; height: 15px; flex-shrink: 0; }
+
+    /* COLUNA INTERMITENTE */
+    .calc-col-icon.int { background: rgba(16,185,129,.1); border: 1px solid rgba(16,185,129,.2); }
+    .calc-col-icon.int svg { color: #10B981; }
+
+    /* DESONERACAO NOTICE */
+    .desoneracao-notice {
+      display: none; margin-top: 8px; padding: 10px 14px;
+      background: rgba(16,185,129,.07); border: 1px solid rgba(16,185,129,.2);
+      border-radius: 8px; font-size: .78rem; color: rgba(16,185,129,.9); line-height: 1.5;
+    }
+
     @media (max-width: 768px) {
       .calc-grid { grid-template-columns: 1fr; }
       .result-cards { grid-template-columns: 1fr; }
       .taxes-grid { grid-template-columns: 1fr 1fr; }
       .lead-form-row { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
+      /* tabs visíveis, colunas ocultadas por JS */
+      .calc-tabs { display: flex; gap: 8px; margin-bottom: 16px; }
     }
     @media (max-width: 600px) {
       .site-footer { padding: 48px 0 0; }
@@ -1041,9 +1083,16 @@
         <p class="heading-sub">Preencha o salario ou honorario e os beneficios oferecidos. O resultado mostra o custo total para a empresa, com todos os encargos detalhados.</p>
       </div>
 
+      <!-- TABS MOBILE (visíveis só em ≤768px via JS) -->
+      <div class="calc-tabs" id="calcTabs" role="tablist" aria-label="Tipo de contratacao">
+        <button class="calc-tab-btn clt-tab active" data-tab="clt" role="tab" aria-selected="true">CLT</button>
+        <button class="calc-tab-btn active" data-tab="pj" role="tab" aria-selected="false">PJ</button>
+        <button class="calc-tab-btn int-tab" data-tab="int" role="tab" aria-selected="false">Intermitente</button>
+      </div>
+
       <div class="calc-grid">
         <!-- CLT -->
-        <div class="calc-col reveal">
+        <div class="calc-col reveal" id="colClt" role="tabpanel">
           <div class="calc-col-header">
             <div class="calc-col-icon clt">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
@@ -1080,6 +1129,19 @@
             </select>
           </div>
           <div class="calc-input-group">
+            <label for="ratFap">RAT / SAT — Risco Ambiental do Trabalho <span>(sobre o salario bruto)</span></label>
+            <select id="ratFap" style="width:100%;padding:12px 14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);border-radius:10px;color:var(--white);font-size:.9rem;font-family:var(--font-body);outline:none;cursor:pointer;transition:border-color .2s;appearance:none;-webkit-appearance:none;">
+              <option value="0.01">Risco Leve 1% — escritório, TI, adm., financeiro</option>
+              <option value="0.02" selected>Risco Medio 2% — comercio, saude, ensino, serv. gerais</option>
+              <option value="0.03">Risco Grave 3% — industria leve, construção leve, transportes</option>
+              <option value="0.04">Risco Grave + FAP alto 4% — metalurgia, quimica, construção pesada</option>
+              <option value="0.06">Risco Maximo 6% — mineração, explosivos, atividades de alto risco</option>
+            </select>
+            <div style="margin-top:6px;font-size:.75rem;color:rgba(255,255,255,.35);line-height:1.5;">
+              O FAP (Fator Acidentario de Prevenção) pode reduzir ate 50% ou aumentar ate 100% a aliquota RAT. Use o valor do ultimo NTEP/FAP ou consulte o eCAC.
+            </div>
+          </div>
+          <div class="calc-input-group">
             <label for="beneficioVR">Vale-Refeicao / Vale-Alimentacao <span>(mensal)</span></label>
             <input type="number" id="beneficioVR" placeholder="0" min="0" step="10" value="0" inputmode="numeric">
           </div>
@@ -1098,10 +1160,36 @@
               <label for="incluirProvisoes">Provisionar 13o e ferias (recomendado)</label>
             </div>
           </div>
+          <div class="calc-input-group">
+            <label>Desoneracao da folha <span>(setores especificos — substitui INSS 20%)</span></label>
+            <div class="calc-checkbox-group">
+              <input type="checkbox" id="desoneracao">
+              <label for="desoneracao">Empresa enquadrada na desoneração (TI, construção, textil, calcados etc.)</label>
+            </div>
+            <div id="desoneracaoFields" style="display:none;margin-top:10px;">
+              <div class="calc-input-group" style="margin-bottom:10px;">
+                <label for="faturamentoMensal">Faturamento bruto mensal da empresa <span>(para calcular CPRB)</span></label>
+                <input type="number" id="faturamentoMensal" placeholder="ex: 200000" min="0" step="1000" inputmode="numeric">
+              </div>
+              <div class="calc-input-group">
+                <label for="aliqCPRB">Aliquota CPRB <span>(sobre faturamento)</span></label>
+                <select id="aliqCPRB" style="width:100%;padding:12px 14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);border-radius:10px;color:var(--white);font-size:.9rem;font-family:var(--font-body);outline:none;cursor:pointer;transition:border-color .2s;appearance:none;-webkit-appearance:none;">
+                  <option value="0.01">1,0% — TI / TIC / call center / design</option>
+                  <option value="0.015">1,5% — construção civil / engenharia</option>
+                  <option value="0.02" selected>2,0% — construção / transporte passageiros</option>
+                  <option value="0.025">2,5% — industrias (textil, calcados, moveis, metalicos)</option>
+                  <option value="0.045">4,5% — industrias de marmore, ceramica, vidro</option>
+                </select>
+              </div>
+              <div class="desoneracao-notice" id="desoneracaoNotice">
+                Na desoneração da folha, o INSS patronal de 20% e substituido pela Contribuicao Previdenciaria sobre a Receita Bruta (CPRB). O calculo sera feito sobre o faturamento informado.
+              </div>
+            </div>
+          </div>
         </div>
 
         <!-- PJ -->
-        <div class="calc-col reveal" style="transition-delay:.1s">
+        <div class="calc-col reveal" id="colPj" role="tabpanel" style="transition-delay:.1s">
           <div class="calc-col-header">
             <div class="calc-col-icon pj">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
@@ -1125,6 +1213,63 @@
               <strong style="color:var(--accent-gold);display:block;margin-bottom:4px;">Lembre-se:</strong>
               No contrato PJ a empresa nao paga INSS patronal, FGTS, 13o salario nem ferias. O risco de reconhecimento de vinculo empregaticio existe se houver subordinacao e exclusividade.
             </p>
+          </div>
+        </div>
+
+        <!-- INTERMITENTE -->
+        <div class="calc-col reveal" id="colInt" role="tabpanel" style="transition-delay:.2s">
+          <div class="calc-col-header">
+            <div class="calc-col-icon int">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+            </div>
+            <div>
+              <div class="calc-col-title">Trabalho Intermitente</div>
+              <div class="calc-col-sub">CLT com jornada nao-continua (Lei 13.467/2017)</div>
+            </div>
+          </div>
+
+          <div class="calc-input-group">
+            <label for="valorHoraInt">Valor por hora acordado <span>(R$/hora)</span></label>
+            <input type="number" id="valorHoraInt" placeholder="ex: 30" min="0" step="1" inputmode="numeric">
+          </div>
+          <div class="calc-input-group">
+            <label for="horasDiaInt">Horas por dia trabalhado <span>(media)</span></label>
+            <input type="number" id="horasDiaInt" placeholder="ex: 8" min="1" max="24" step="1" value="8" inputmode="numeric">
+          </div>
+          <div class="calc-input-group">
+            <label for="diasMesInt">Dias convocados por mes <span>(media)</span></label>
+            <input type="number" id="diasMesInt" placeholder="ex: 10" min="0" max="31" step="1" value="10" inputmode="numeric">
+          </div>
+
+          <div style="padding:14px 16px;background:rgba(16,185,129,.05);border:1px solid rgba(16,185,129,.12);border-radius:10px;margin-top:4px;margin-bottom:16px;">
+            <p style="font-size:.78rem;color:rgba(255,255,255,.55);line-height:1.7;">
+              <strong style="color:#10B981;display:block;margin-bottom:4px;">Como funciona:</strong>
+              O empregador convoca com no minimo 3 dias de antecedencia. O trabalhador pode recusar. Sobre cada periodo trabalhado incidem: FGTS (8%), ferias proporcionais + 1/3, 13o proporcional e INSS do trabalhador. O piso e o salario minimo proporcional as horas.
+            </p>
+          </div>
+
+          <div style="background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);border-radius:12px;padding:18px 20px;">
+            <div style="font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(16,185,129,.65);margin-bottom:12px;">Custo estimado para a empresa</div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);">
+              <span style="font-size:.82rem;color:rgba(255,255,255,.6);">Remuneracao bruta/mes</span>
+              <span style="font-size:.9rem;font-weight:700;color:var(--white);" id="outIntRemuneracao">R$ 0</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);">
+              <span style="font-size:.82rem;color:rgba(255,255,255,.6);">FGTS (8%)</span>
+              <span style="font-size:.9rem;font-weight:700;color:#EF4444;" id="outIntFgts">+R$ 0</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);">
+              <span style="font-size:.82rem;color:rgba(255,255,255,.6);">Ferias proporcionais + 1/3</span>
+              <span style="font-size:.9rem;font-weight:700;color:#EF4444;" id="outIntFerias">+R$ 0</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:8px 0;border-bottom:1px solid rgba(255,255,255,.04);">
+              <span style="font-size:.82rem;color:rgba(255,255,255,.6);">13o proporcional</span>
+              <span style="font-size:.9rem;font-weight:700;color:#EF4444;" id="outInt13">+R$ 0</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0 0;margin-top:4px;">
+              <span style="font-size:.88rem;font-weight:700;color:var(--white);">Custo total/mes</span>
+              <span style="font-family:var(--font-display);font-size:1.2rem;font-style:italic;color:#10B981;" id="outIntTotal">R$ 0</span>
+            </div>
           </div>
         </div>
       </div>
@@ -1287,6 +1432,12 @@
             <div class="tax-item-value" id="outPjAnual">R$ 0</div>
           </div>
         </div>
+
+        <!-- BOTAO EXPORTAR -->
+        <button class="btn-export" id="btnExport" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7,10 12,15 17,10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Exportar resultado (copiar para area de transferencia)
+        </button>
 
         <!-- LEAD FORM -->
         <div class="lead-form-wrapper" id="leadFormWrapper">
@@ -1645,18 +1796,35 @@ const PROV_FERIAS   = (1 + 1/3) / 12; // 11.11%
 
 const brl = v => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(v);
 
-function calcCustoTotalCLT(salario, vr, vt, saude, incluirProvisoes, sistemaSRate, isSimples) {
-  const inssRate     = isSimples ? 0 : INSS_PATRONAL;
-  const inssPat      = Math.round(salario * inssRate * 100) / 100;
+function calcCustoTotalCLT(salario, vr, vt, saude, incluirProvisoes, sistemaSRate, isSimples, ratRate, desoneracao, faturamento, aliqCPRB) {
+  let inssPat;
+  if (desoneracao && faturamento > 0) {
+    // Desoneração: CPRB sobre faturamento (por funcionário, pro-rata)
+    // Exibimos o custo total de CPRB como substituto do INSS patronal
+    inssPat = Math.round(faturamento * (aliqCPRB || 0.02) * 100) / 100;
+  } else {
+    const inssRate = isSimples ? 0 : INSS_PATRONAL;
+    inssPat = Math.round(salario * inssRate * 100) / 100;
+  }
+  const rat          = Math.round(salario * (ratRate || 0.02) * 100) / 100;
   const fgts         = Math.round(salario * FGTS_RATE * 100) / 100;
   const sistemaS     = Math.round(salario * (sistemaSRate || SISTEMA_S) * 100) / 100;
   const prov13       = incluirProvisoes ? Math.round(salario * PROV_13 * 100) / 100 : 0;
   const provFerias   = incluirProvisoes ? Math.round(salario * PROV_FERIAS * 100) / 100 : 0;
-  const encargos     = inssPat + fgts + sistemaS + prov13 + provFerias;
+  const encargos     = inssPat + rat + fgts + sistemaS + prov13 + provFerias;
   const beneficios   = vr + vt + saude;
   const custoTotal   = salario + encargos + beneficios;
   const pctEncargos  = salario > 0 ? Math.round(encargos / salario * 1000) / 10 : 0;
-  return { inssPat, fgts, sistemaS, prov13, provFerias, encargos, beneficios, custoTotal, pctEncargos };
+  return { inssPat, rat, fgts, sistemaS, prov13, provFerias, encargos, beneficios, custoTotal, pctEncargos, desoneracao };
+}
+
+function calcCustoIntermitente(valorHora, horasDia, diasMes) {
+  const remuneracao = Math.round(valorHora * horasDia * diasMes * 100) / 100;
+  const fgts        = Math.round(remuneracao * FGTS_RATE * 100) / 100;
+  const ferias      = Math.round(remuneracao * PROV_FERIAS * 100) / 100;
+  const dec13       = Math.round(remuneracao * PROV_13 * 100) / 100;
+  const total       = remuneracao + fgts + ferias + dec13;
+  return { remuneracao, fgts, ferias, dec13, total };
 }
 
 function calcCustoDemissao(salario, meses) {
@@ -1715,11 +1883,31 @@ function renderResults(data) {
 
   // Encargos detalhados
   document.getElementById('outEncargosTotal').textContent = '+' + brl(clt.encargos) + '/mes';
-  document.getElementById('outInssPat').textContent = data.isSimples ? 'Incluso na DAS' : '+' + brl(clt.inssPat);
-  document.getElementById('outInssPatLabel').textContent = data.isSimples ? 'incluso na DAS' : '20%';
-  document.getElementById('outInssPatDetail').textContent = data.isSimples
-    ? 'Simples Nacional: INSS patronal ja faz parte da DAS. Nao e custo adicional.'
-    : 'Base: salario bruto. Nao tem teto de contribuicao patronal.';
+  if (clt.desoneracao) {
+    document.getElementById('outInssPat').textContent = '+' + brl(clt.inssPat);
+    document.getElementById('outInssPatLabel').textContent = 'CPRB s/ faturamento';
+    document.getElementById('outInssPatDetail').textContent = 'Desoneração: INSS patronal 20% substituído pela CPRB sobre faturamento.';
+  } else if (data.isSimples) {
+    document.getElementById('outInssPat').textContent = 'Incluso na DAS';
+    document.getElementById('outInssPatLabel').textContent = 'incluso na DAS';
+    document.getElementById('outInssPatDetail').textContent = 'Simples Nacional: INSS patronal ja faz parte da DAS. Nao e custo adicional.';
+  } else {
+    document.getElementById('outInssPat').textContent = '+' + brl(clt.inssPat);
+    document.getElementById('outInssPatLabel').textContent = '20%';
+    document.getElementById('outInssPatDetail').textContent = 'Base: salario bruto. Nao tem teto de contribuicao patronal.';
+  }
+  // RAT row — injeta dinamicamente se nao existir
+  let ratRow = document.getElementById('rowRat');
+  if (!ratRow) {
+    ratRow = document.createElement('div');
+    ratRow.className = 'benefit-row';
+    ratRow.id = 'rowRat';
+    ratRow.innerHTML = '<div class="benefit-row-name">RAT / SAT (<span id="outRatPct">2%</span>)<div class="benefit-row-detail">Risco Ambiental do Trabalho. Pode ser ajustado pelo FAP (0,5x a 2x).</div></div><div><div class="benefit-row-value" id="outRat">+R$ 0</div></div>';
+    const fgtsRow = document.getElementById('outFgts').closest('.benefit-row');
+    fgtsRow.parentNode.insertBefore(ratRow, fgtsRow);
+  }
+  document.getElementById('outRat').textContent = '+' + brl(clt.rat);
+  document.getElementById('outRatPct').textContent = (data.ratRate * 100).toFixed(0) + '%';
   document.getElementById('outFgts').textContent = '+' + brl(clt.fgts);
   document.getElementById('outSistemaS').textContent = '+' + brl(clt.sistemaS);
   document.getElementById('outSistemaSPct').textContent = (data.sistemaSRate * 100).toFixed(1) + '%';
@@ -1727,6 +1915,15 @@ function renderResults(data) {
   document.getElementById('rowFerias').style.opacity = incluirProvisoes ? '1' : '0.35';
   document.getElementById('outDecimoTerceiro').textContent = '+' + brl(clt.prov13);
   document.getElementById('outFerias').textContent = '+' + brl(clt.provFerias);
+
+  // Intermitente
+  if (data.int) {
+    document.getElementById('outIntRemuneracao').textContent = brl(data.int.remuneracao);
+    document.getElementById('outIntFgts').textContent = '+' + brl(data.int.fgts);
+    document.getElementById('outIntFerias').textContent = '+' + brl(data.int.ferias);
+    document.getElementById('outInt13').textContent = '+' + brl(data.int.dec13);
+    document.getElementById('outIntTotal').textContent = brl(data.int.total);
+  }
 
   // Demissao
   document.getElementById('outDemissaoTotal').textContent = brl(demissao.total);
@@ -1765,19 +1962,27 @@ function getInputs() {
   const tempoContrato    = parseInt(document.getElementById('tempoContrato').value) || 24;
   const sistemaSRate     = parseFloat(document.getElementById('segmentoEmpresa').value) || SISTEMA_S;
   const isSimples        = document.getElementById('regimeTributario').value === 'simples';
-  return { salario, vr, vt, saude, incluirProvisoes, honorarioPJ, tempoContrato, sistemaSRate, isSimples };
+  const ratRate          = parseFloat(document.getElementById('ratFap').value) || 0.02;
+  const desoneracao      = document.getElementById('desoneracao').checked;
+  const faturamento      = parseFloat(document.getElementById('faturamentoMensal').value) || 0;
+  const aliqCPRB         = parseFloat(document.getElementById('aliqCPRB').value) || 0.02;
+  const valorHoraInt     = parseFloat(document.getElementById('valorHoraInt').value) || 0;
+  const horasDiaInt      = parseFloat(document.getElementById('horasDiaInt').value) || 8;
+  const diasMesInt       = parseFloat(document.getElementById('diasMesInt').value) || 10;
+  return { salario, vr, vt, saude, incluirProvisoes, honorarioPJ, tempoContrato, sistemaSRate, isSimples, ratRate, desoneracao, faturamento, aliqCPRB, valorHoraInt, horasDiaInt, diasMesInt };
 }
 
 function calcAll() {
   const inp = getInputs();
-  if (inp.salario < 1412 && inp.honorarioPJ === 0) return;
+  if (inp.salario < 1412 && inp.honorarioPJ === 0 && inp.valorHoraInt === 0) return;
 
   const salarioRef = inp.salario || (inp.honorarioPJ * 0.65);
-  const clt        = calcCustoTotalCLT(salarioRef, inp.vr, inp.vt, inp.saude, inp.incluirProvisoes, inp.sistemaSRate, inp.isSimples);
+  const clt        = calcCustoTotalCLT(salarioRef, inp.vr, inp.vt, inp.saude, inp.incluirProvisoes, inp.sistemaSRate, inp.isSimples, inp.ratRate, inp.desoneracao, inp.faturamento, inp.aliqCPRB);
   const pjCusto    = inp.honorarioPJ > 0 ? inp.honorarioPJ : (inp.salario * 1.1);
   const demissao   = calcCustoDemissao(salarioRef, inp.tempoContrato);
+  const int        = calcCustoIntermitente(inp.valorHoraInt, inp.horasDiaInt, inp.diasMesInt);
 
-  renderResults({ clt, pjCusto, demissao, salario: salarioRef, meses: inp.tempoContrato, incluirProvisoes: inp.incluirProvisoes, sistemaSRate: inp.sistemaSRate, isSimples: inp.isSimples });
+  renderResults({ clt, pjCusto, demissao, int, salario: salarioRef, meses: inp.tempoContrato, incluirProvisoes: inp.incluirProvisoes, sistemaSRate: inp.sistemaSRate, isSimples: inp.isSimples, ratRate: inp.ratRate });
 }
 
 /* Debounce */
@@ -1789,11 +1994,22 @@ document.querySelectorAll('#salarioBruto,#beneficioVR,#beneficioVT,#beneficioSau
 });
 document.getElementById('incluirProvisoes').addEventListener('change', debouncedCalc);
 document.getElementById('segmentoEmpresa').addEventListener('change', debouncedCalc);
+document.getElementById('ratFap').addEventListener('change', debouncedCalc);
 document.getElementById('regimeTributario').addEventListener('change', function() {
   const isSimples = this.value === 'simples';
   document.getElementById('avisoSimples').style.display = isSimples ? 'block' : 'none';
   debouncedCalc();
 });
+document.getElementById('desoneracao').addEventListener('change', function() {
+  const fields = document.getElementById('desoneracaoFields');
+  const notice = document.getElementById('desoneracaoNotice');
+  fields.style.display = this.checked ? 'block' : 'none';
+  if (notice) notice.style.display = this.checked ? 'block' : 'none';
+  debouncedCalc();
+});
+document.getElementById('aliqCPRB').addEventListener('change', debouncedCalc);
+document.getElementById('faturamentoMensal').addEventListener('input', debouncedCalc);
+document.querySelectorAll('#valorHoraInt,#horasDiaInt,#diasMesInt').forEach(el => el.addEventListener('input', debouncedCalc));
 document.getElementById('btnCalc').addEventListener('click', () => {
   calcAll();
   const result = document.getElementById('calcResult');
@@ -1801,6 +2017,119 @@ document.getElementById('btnCalc').addEventListener('click', () => {
     result.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 });
+
+/* ============================
+   MOBILE TABS
+============================ */
+(function() {
+  const tabs = document.getElementById('calcTabs');
+  if (!tabs) return;
+  const colMap = { clt: 'colClt', pj: 'colPj', int: 'colInt' };
+
+  function applyTab(active) {
+    if (window.innerWidth > 768) return; // desktop: mostrar tudo
+    Object.entries(colMap).forEach(([key, id]) => {
+      const col = document.getElementById(id);
+      if (col) col.style.display = key === active ? 'block' : 'none';
+    });
+  }
+
+  tabs.querySelectorAll('.calc-tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabs.querySelectorAll('.calc-tab-btn').forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-selected', 'false');
+      });
+      btn.classList.add('active');
+      btn.setAttribute('aria-selected', 'true');
+      applyTab(btn.dataset.tab);
+    });
+  });
+
+  // Ao redimensionar, restaurar exibicao desktop
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768) {
+      Object.values(colMap).forEach(id => {
+        const col = document.getElementById(id);
+        if (col) col.style.display = '';
+      });
+    } else {
+      const activeBtn = tabs.querySelector('.calc-tab-btn.active');
+      if (activeBtn) applyTab(activeBtn.dataset.tab);
+    }
+  }, { passive: true });
+
+  // Inicializar no mobile
+  if (window.innerWidth <= 768) applyTab('clt');
+})();
+
+/* ============================
+   EXPORTAR RESULTADO
+============================ */
+document.getElementById('btnExport').addEventListener('click', () => {
+  const getText = id => {
+    const el = document.getElementById(id);
+    return el ? el.textContent.trim() : '';
+  };
+  const lines = [
+    '=== SIMULACAO CLT vs PJ — Amanda Cabral Contadora ===',
+    '',
+    '--- CUSTO MENSAL ---',
+    'Custo total CLT/mes:   ' + getText('outCltCustoTotal'),
+    'Custo PJ/mes:          ' + getText('outPjCusto'),
+    '',
+    '--- DIFERENCA ANUAL ---',
+    getText('outDiferencaSub'),
+    '',
+    '--- ENCARGOS CLT DETALHADOS ---',
+    'INSS Patronal:         ' + getText('outInssPat'),
+    'RAT/SAT:               ' + getText('outRat'),
+    'FGTS (8%):             ' + getText('outFgts'),
+    'Sistema S:             ' + getText('outSistemaS'),
+    '13o (provisao):        ' + getText('outDecimoTerceiro'),
+    'Ferias (provisao):     ' + getText('outFerias'),
+    'Total encargos/mes:    ' + getText('outEncargosTotal'),
+    '',
+    '--- SIMULACAO DEMISSAO ---',
+    'Aviso previo:          ' + getText('outAvisoPrevio'),
+    'Multa FGTS (50%):      ' + getText('outMultaFgts'),
+    'Ferias prop.:          ' + getText('outFeriasProp'),
+    '13o prop.:             ' + getText('outDecimoTerceiroProp'),
+    'Total demissao:        ' + getText('outDemissaoTotal'),
+    '',
+    '--- RESUMO ANUAL ---',
+    'Custo CLT anual:       ' + getText('outCltAnualComDemissao'),
+    'Custo PJ anual:        ' + getText('outPjAnual'),
+    '',
+    'Gerado em: amcabralblindagem.com.br/calculadora-pj-vs-clt/',
+    'Para analise personalizada: wa.me/5537999967558',
+  ];
+  const text = lines.join('\n');
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.getElementById('btnExport');
+      const orig = btn.innerHTML;
+      btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg> Copiado!';
+      setTimeout(() => { btn.innerHTML = orig; }, 2500);
+    }).catch(() => fallbackCopy(text));
+  } else {
+    fallbackCopy(text);
+  }
+});
+
+function fallbackCopy(text) {
+  const ta = document.createElement('textarea');
+  ta.value = text;
+  ta.style.cssText = 'position:fixed;top:-9999px;left:-9999px;opacity:0';
+  document.body.appendChild(ta);
+  ta.select();
+  document.execCommand('copy');
+  document.body.removeChild(ta);
+  const btn = document.getElementById('btnExport');
+  const orig = btn.innerHTML;
+  btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22,4 12,14.01 9,11.01"/></svg> Copiado!';
+  setTimeout(() => { btn.innerHTML = orig; }, 2500);
+}
 
 /* ============================
    LEAD FORM
