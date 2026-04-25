@@ -541,6 +541,64 @@
       .hero-tag { font-size: 10px; letter-spacing: .05em; padding: 5px 12px; }
       .breadcrumb-inner { font-size: 9px; letter-spacing: .04em; gap: 4px; }
     }
+
+        /* ============================
+           BOTTOM BAR (Sticky CTA)
+        ============================ */
+        .bottom-bar {
+          position: fixed; bottom: 0; left: 0; right: 0; z-index: 600;
+          background: rgba(6,14,26,.97); backdrop-filter: blur(16px);
+          border-top: 1px solid rgba(255,255,255,.07);
+          display: flex; align-items: center; justify-content: center; gap: 24px;
+          padding: 12px 40px; transform: translateY(100%);
+          transition: transform .4s cubic-bezier(.34,1.56,.64,1);
+        }
+        .bottom-bar.visible { transform: none; }
+        .bb-desktop { display: flex; align-items: center; gap: 20px; width: 100%; max-width: 800px; justify-content: space-between; }
+        .bb-info { font-size: 13px; color: rgba(255,255,255,.55); white-space: nowrap; }
+        .bb-stars { color: #F59E0B; letter-spacing: 1px; }
+        .bb-sep { width: 1px; height: 20px; background: rgba(255,255,255,.1); }
+        .bb-cta {
+          background: transparent; color: #C9A84C; border: 1.5px solid #C9A84C;
+          font-family: var(--font-sans, 'Inter', sans-serif); font-size: 13px; font-weight: 700;
+          letter-spacing: .06em; text-transform: uppercase; padding: 10px 20px;
+          border-radius: 8px; white-space: nowrap; display: flex; align-items: center; gap: 6px;
+          transition: transform .2s, background .2s, color .2s;
+          position: relative; overflow: hidden; text-decoration: none;
+        }
+        .bb-cta::after {
+          content: ''; position: absolute; top: -2px; left: -100%;
+          width: 100%; height: calc(100% + 4px);
+          background: linear-gradient(90deg, transparent 0%, rgba(201,168,76,0.35) 50%, transparent 100%);
+          animation: bb-travel 4s linear infinite; pointer-events: none;
+        }
+        @keyframes bb-travel { to { left: 100%; } }
+        .bb-cta:hover { background: #C9A84C; color: #060E1A; transform: translateY(-1px); }
+        .bb-cta:hover::after { animation-play-state: paused; }
+        .bb-mobile { display: none; }
+        @media (max-width: 960px) {
+          body { padding-bottom: 52px; }
+          .bb-desktop { display: none; }
+          .bottom-bar { padding: 0; }
+          .bb-mobile {
+            display: flex; align-items: center; justify-content: space-between;
+            gap: 8px; padding: 8px 36px calc(8px + env(safe-area-inset-bottom, 0px)); width: 100%;
+          }
+          .bb-mobile-top { font-size: 11px; font-weight: 600; color: rgba(255,255,255,.9); display: flex; flex-direction: column; gap: 1px; min-width: 0; }
+          .bb-mobile-stars { color: #F59E0B; font-size: 11px; letter-spacing: 1px; flex-shrink: 0; }
+          .bb-mobile-cta {
+            display: flex; align-items: center; gap: 4px; padding: 7px 14px;
+            border-radius: 50px; background: transparent; color: #C9A84C; border: 1.5px solid #C9A84C;
+            font-size: 11px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+            white-space: nowrap; flex-shrink: 0; position: relative; overflow: hidden; text-decoration: none;
+          }
+          .bb-mobile-cta::after {
+            content: ''; position: absolute; top: -2px; left: -100%;
+            width: 100%; height: calc(100% + 4px);
+            background: linear-gradient(90deg, transparent 0%, rgba(201,168,76,0.35) 50%, transparent 100%);
+            animation: bb-travel 4s linear infinite; pointer-events: none;
+          }
+        }
   </style>
 </head>
 <body>
@@ -1545,6 +1603,35 @@
       const msg = encodeURIComponent(`Olá Amanda, meu nome é ${nome}. Quero um diagnóstico gratuito sobre holding patrimonial.`);
       window.open(`https://wa.me/5537999967558?text=${msg}`, '_blank');
     }
+    // ---- BOTTOM BAR ----
+    var bottomBar = document.getElementById('bottomBar');
+    var siteFooter = document.querySelector('.site-footer');
+    window.addEventListener('scroll', function() {
+      if (bottomBar) {
+        var pastHalf = window.scrollY > window.innerHeight * 0.5;
+        var footerVisible = siteFooter ? siteFooter.getBoundingClientRect().top < window.innerHeight : false;
+        bottomBar.classList.toggle('visible', pastHalf && !footerVisible);
+      }
+    }, { passive: true });
   </script>
+  <!-- ===== BOTTOM BAR ===== -->
+  <div class="bottom-bar" id="bottomBar">
+    <div class="bb-desktop">
+      <span class="bb-info"><span class="bb-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> Nota 4.9</span>
+      <div class="bb-sep"></div>
+      <span class="bb-info">127+ empresas atendidas</span>
+      <div class="bb-sep"></div>
+      <span class="bb-info">R$ 12M recuperados em cr&#233;ditos</span>
+      <a href="/fale-com-especialista/" class="bb-cta">Fale Conosco</a>
+    </div>
+    <div class="bb-mobile">
+      <span class="bb-mobile-top">
+        <span style="display:flex;align-items:center;gap:4px;">4.9 <span class="bb-mobile-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span></span>
+        <span style="font-size:10px;color:rgba(255,255,255,.55);">+127 empresas atendidas</span>
+      </span>
+      <a href="/fale-com-especialista/" class="bb-mobile-cta">Fale Conosco</a>
+    </div>
+  </div>
+
 </body>
 </html>
