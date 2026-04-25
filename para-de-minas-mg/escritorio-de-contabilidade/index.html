@@ -15,6 +15,9 @@
 <meta property="og:image" content="https://amcabralblindagem.com.br/assets/og-image.webp">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
+<meta name="robots" content="index, follow">
+<link rel="preload" href="/assets/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/assets/fonts/instrument-serif-normal.woff2" as="font" type="font/woff2" crossorigin>
 
 <!-- Schema Markup — JSON-LD @graph -->
 <script type="application/ld+json">
@@ -2519,6 +2522,22 @@ fieldset legend.form-step-title + * { clear: both; }
   .city-hero { padding: 70px 0 40px; }
   .hero-layout { grid-template-columns: 1fr; gap: 24px; }
   .hero-img-col { max-height: 260px; aspect-ratio: 4/3; }
+}
+
+/* ── MOBILE TOUCH FIXES ── */
+html { scroll-padding-top: 72px; }
+
+@media (hover: hover) and (pointer: fine) {
+  .svc-card:hover { border-color: rgba(201,168,76,.3); transform: translateY(-4px); }
+  .case-card:hover { border-color: rgba(201,168,76,.25); transform: translateY(-4px); }
+  .hub-card:hover { border-color: rgba(201,168,76,.3); transform: translateY(-3px); }
+  .process-card:hover { border-color: rgba(201,168,76,.2); transform: translateY(-4px); }
+  .expandable-toggle:hover { gap: 10px; background: rgba(201,168,76,.18); border-color: var(--accent); }
+  .btn-p:hover { transform: translateY(-2px); }
+  .btn-gold:hover { transform: translateY(-2px); }
+}
+@media (hover: none) {
+  .svc-card, .case-card, .hub-card, .process-card { transition: none; }
 }
 </style>
 
