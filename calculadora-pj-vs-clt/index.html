@@ -214,7 +214,37 @@
       line-height: 1.15; margin-bottom: 12px;
     }
     h2.heading em { font-style: italic; color: var(--accent-gold); }
-    .heading-sub { font-size: 1rem; color: rgba(255,255,255,.6); line-height: 1.7; max-width: 600px; }
+    .heading-sub { font-size: 1rem; color: rgba(255,255,255,.6); line-height: 1.7; max-width: 600px; margin: 0 auto; }
+
+    /* Steps inline */
+    .calc-steps {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0; margin: 28px auto 0; max-width: 560px;
+    }
+    .calc-step {
+      display: flex; align-items: center; gap: 10px;
+      flex: 1;
+    }
+    .calc-step-num {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: rgba(201,168,76,.12); border: 1px solid rgba(201,168,76,.4);
+      color: var(--gold); font-size: .75rem; font-weight: 700;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .calc-step-label {
+      font-size: .8rem; color: rgba(255,255,255,.55); line-height: 1.3;
+    }
+    .calc-step-label strong { display: block; color: rgba(255,255,255,.85); font-size: .82rem; font-weight: 600; }
+    .calc-step-sep {
+      width: 32px; height: 1px;
+      background: linear-gradient(90deg, rgba(201,168,76,.3), rgba(201,168,76,.1));
+      flex-shrink: 0; margin: 0 4px;
+    }
+    @media (max-width: 540px) {
+      .calc-steps { flex-direction: column; align-items: flex-start; gap: 12px; max-width: 280px; }
+      .calc-step-sep { display: none; }
+    }
 
     /* ============================
        BREADCRUMB
@@ -1913,7 +1943,33 @@
       <div class="calc-header reveal">
         <div class="section-tag"><span class="dot"></span> Simulador 2025</div>
         <h2 class="heading">Calcule o custo real <em>de cada contratacao</em></h2>
-        <p class="heading-sub">Duas perguntas rapidas para personalizar a analise. Depois ajuste os valores e veja o resultado em tempo real.</p>
+        <p class="heading-sub">Preencha em menos de 2 minutos e veja o custo real de cada formato de contratacao, com analise personalizada para o seu perfil.</p>
+
+        <div class="calc-steps">
+          <div class="calc-step">
+            <div class="calc-step-num">1</div>
+            <div class="calc-step-label">
+              <strong>Seu perfil</strong>
+              2 perguntas rapidas
+            </div>
+          </div>
+          <div class="calc-step-sep"></div>
+          <div class="calc-step">
+            <div class="calc-step-num">2</div>
+            <div class="calc-step-label">
+              <strong>Os valores</strong>
+              Salario e beneficios
+            </div>
+          </div>
+          <div class="calc-step-sep"></div>
+          <div class="calc-step">
+            <div class="calc-step-num">3</div>
+            <div class="calc-step-label">
+              <strong>Resultado</strong>
+              Analise personalizada
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- Wizard de identificação (captura de lead + contexto) -->
