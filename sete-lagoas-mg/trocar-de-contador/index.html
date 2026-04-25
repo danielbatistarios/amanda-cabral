@@ -305,6 +305,26 @@
     .breadcrumb-inner span { color: var(--text); }
     .bc-sep { opacity: .4; }
 
+    /* ── SEÇÕES CLARAS (alternância branco/azul) ── */
+    .sec--light { background: #F8FAFC !important; }
+    .sec--light .sec-label { color: #64748B; }
+    .sec--light .sec-h { color: #0F172A; }
+    .sec--light .sec-sub { color: #334155; }
+    .sec--light .auth-card { background: #FFFFFF; border-color: rgba(201,168,76,.3); }
+    .sec--light .auth-card h3 { color: #0F172A; }
+    .sec--light .auth-list li { color: #334155; }
+    .sec--light .sinal-card { background: #FFFFFF; border-color: rgba(201,168,76,.15); box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+    .sec--light .sinal-card h3 { color: #0F172A; }
+    .sec--light .sinal-card p { color: #334155; }
+    .sec--light .content-block { background: #FFFFFF; border-color: rgba(201,168,76,.15); box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+    .sec--light .content-block h3 { color: #0F172A; }
+    .sec--light .content-block p { color: #334155; }
+    .sec--light .hub-card { background: #FFFFFF; border-color: rgba(201,168,76,.15); box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+    .sec--light .hub-card h3 { color: #0F172A; }
+    .sec--light .hub-card p { color: #475569; }
+    .sec--light .hub-link { color: #B8922A; }
+    .sec--light .hub { background: #F8FAFC; }
+
     /* ── AUTHORITY ── */
     .authority { background: var(--blue-800); }
     .auth-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
@@ -464,12 +484,15 @@
     @media (max-width: 1024px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; } }
     @media (max-width: 600px) { .site-footer { padding: 48px 0 0; } .footer-inner { padding: 0 20px; } .footer-grid { grid-template-columns: 1fr; gap: 32px; } .footer-legal { flex-direction: column; gap: 12px; text-align: center; } .footer-legal-links { flex-wrap: wrap; justify-content: center; } }
 
-    /* ── SETORES MARQUEE ── */
-    .setores { background: var(--blue-900); padding: 40px 0; overflow: hidden; border-top: 1px solid rgba(255,255,255,.06); border-bottom: 1px solid rgba(255,255,255,.06); }
-    .marquee-track { display: flex; gap: 40px; animation: marquee 28s linear infinite; white-space: nowrap; }
-    .marquee-item { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 500; color: var(--text-muted); }
-    .marquee-item::before { content: '◆'; color: var(--gold); font-size: 8px; }
-    @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    /* ── MARQUEE (padrão home) ── */
+    .marquee-section { background: var(--blue-900); border-top: 1px solid rgba(255,255,255,.04); border-bottom: 1px solid rgba(255,255,255,.04); padding: 18px 0; overflow: hidden; position: relative; }
+    .marquee-section::before, .marquee-section::after { content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2; pointer-events: none; }
+    .marquee-section::before { left: 0; background: linear-gradient(90deg, var(--blue-900), transparent); }
+    .marquee-section::after { right: 0; background: linear-gradient(-90deg, var(--blue-900), transparent); }
+    .marquee-track { display: flex; gap: 48px; animation: marquee-lp 30s linear infinite; width: max-content; }
+    @keyframes marquee-lp { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .marquee-item { font-size: .78rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,.85); white-space: nowrap; }
+    .marquee-item .sep { display: inline-block; width: 4px; height: 4px; background: var(--gold); border-radius: 50%; opacity: .6; margin-left: 48px; vertical-align: middle; }
 
     /* ── REVEAL ── */
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
@@ -478,6 +501,7 @@
       .reveal { opacity: 1; transform: none; transition: none; }
       .marquee-track { animation: none; }
     }
+
 
     /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
@@ -690,7 +714,7 @@
   </nav>
 
   <!-- AUTHORITY — bg: blue-800 -->
-  <section class="sec authority">
+  <section class="sec authority sec--light">
     <div class="sec-inner">
       <div class="auth-grid reveal">
         <div class="auth-text">
@@ -739,7 +763,7 @@
   </section>
 
   <!-- SINAIS — Por que você deveria trocar — bg: blue-800 -->
-  <section class="sec sinais">
+  <section class="sec sinais sec--light">
     <div class="sec-inner">
       <div class="reveal">
         <p class="sec-label">Sinais de alerta</p>
@@ -816,31 +840,31 @@
     </div>
   </section>
 
-  <!-- SETORES MARQUEE — bg: blue-900 -->
-  <div class="setores">
+  <!-- MARQUEE — padrão home -->
+  <section class="marquee-section" aria-hidden="true">
     <div class="marquee-track">
-      <div class="marquee-item">Comércio Varejista</div>
-      <div class="marquee-item">Prestação de Serviços</div>
-      <div class="marquee-item">Clínicas e Saúde</div>
-      <div class="marquee-item">Academias</div>
-      <div class="marquee-item">Concessionárias</div>
-      <div class="marquee-item">Advocacia</div>
-      <div class="marquee-item">Alimentação</div>
-      <div class="marquee-item">Construção Civil</div>
-      <div class="marquee-item">Distribuidoras</div>
-      <div class="marquee-item">Tecnologia</div>
-      <div class="marquee-item">Comércio Varejista</div>
-      <div class="marquee-item">Prestação de Serviços</div>
-      <div class="marquee-item">Clínicas e Saúde</div>
-      <div class="marquee-item">Academias</div>
-      <div class="marquee-item">Concessionárias</div>
-      <div class="marquee-item">Advocacia</div>
-      <div class="marquee-item">Alimentação</div>
-      <div class="marquee-item">Construção Civil</div>
-      <div class="marquee-item">Distribuidoras</div>
-      <div class="marquee-item">Tecnologia</div>
+      <span class="marquee-item">Com&eacute;rcio Varejista<span class="sep"></span></span>
+      <span class="marquee-item">Presta&ccedil;&atilde;o de Servi&ccedil;os<span class="sep"></span></span>
+      <span class="marquee-item">Cl&iacute;nicas e Sa&uacute;de<span class="sep"></span></span>
+      <span class="marquee-item">Academias<span class="sep"></span></span>
+      <span class="marquee-item">Concession&aacute;rias<span class="sep"></span></span>
+      <span class="marquee-item">Advocacia<span class="sep"></span></span>
+      <span class="marquee-item">Alimenta&ccedil;&atilde;o<span class="sep"></span></span>
+      <span class="marquee-item">Constru&ccedil;&atilde;o Civil<span class="sep"></span></span>
+      <span class="marquee-item">Distribuidoras<span class="sep"></span></span>
+      <span class="marquee-item">Tecnologia<span class="sep"></span></span>
+      <span class="marquee-item">Com&eacute;rcio Varejista<span class="sep"></span></span>
+      <span class="marquee-item">Presta&ccedil;&atilde;o de Servi&ccedil;os<span class="sep"></span></span>
+      <span class="marquee-item">Cl&iacute;nicas e Sa&uacute;de<span class="sep"></span></span>
+      <span class="marquee-item">Academias<span class="sep"></span></span>
+      <span class="marquee-item">Concession&aacute;rias<span class="sep"></span></span>
+      <span class="marquee-item">Advocacia<span class="sep"></span></span>
+      <span class="marquee-item">Alimenta&ccedil;&atilde;o<span class="sep"></span></span>
+      <span class="marquee-item">Constru&ccedil;&atilde;o Civil<span class="sep"></span></span>
+      <span class="marquee-item">Distribuidoras<span class="sep"></span></span>
+      <span class="marquee-item">Tecnologia<span class="sep"></span></span>
     </div>
-  </div>
+  </section>
 
   <!-- AMANDA STRIP -->
   <div class="amanda-strip">
@@ -977,7 +1001,7 @@
   </section>
 
   <!-- DEPOIMENTOS — bg: blue-800 (usando blue-800 para variar do azul-900 do comparativo) -->
-  <section class="sec depoimentos" style="background:var(--blue-800);">
+  <section class="sec depoimentos">
     <div class="sec-inner">
       <div class="reveal" style="text-align:center;">
         <p class="sec-label">Quem já fez a troca</p>
@@ -1022,7 +1046,7 @@
   </section>
 
   <!-- CONTENT SEO — bg: blue-900 -->
-  <section class="sec content-seo" style="background:var(--blue-900)!important;">
+  <section class="sec content-seo sec--light">
     <div class="sec-inner">
       <div class="reveal">
         <p class="sec-label">Perguntas que todo empresário tem</p>
@@ -1050,7 +1074,7 @@
   </section>
 
   <!-- FAQ — bg: blue-800 -->
-  <section class="sec faq" style="background:var(--blue-800)!important;">
+  <section class="sec faq">
     <div class="sec-inner">
       <div class="reveal" style="text-align:center;">
         <p class="sec-label">Perguntas frequentes</p>
@@ -1107,7 +1131,7 @@
   </section>
 
   <!-- HUB — bg: blue-900 -->
-  <section class="sec hub" style="background:var(--blue-900)!important;">
+  <section class="sec hub sec--light">
     <div class="sec-inner">
       <div class="reveal">
         <p class="sec-label">Explore nossos serviços</p>

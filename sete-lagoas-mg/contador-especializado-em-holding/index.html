@@ -312,6 +312,28 @@
     .breadcrumb-inner span { color: var(--text); }
     .bc-sep { opacity: .4; }
 
+    /* ── SEÇÕES CLARAS ── */
+    .sec--light { background: #F8FAFC !important; }
+    .sec--light .sec-label { color: #64748B; }
+    .sec--light .sec-h { color: #0F172A; }
+    .sec--light .sec-sub { color: #334155; }
+    .sec--light .auth-card { background: #FFFFFF; border-color: rgba(201,168,76,.3); }
+    .sec--light .auth-card h3 { color: #0F172A; }
+    .sec--light .auth-list li { color: #334155; }
+    .sec--light .dif-card { background: #FFFFFF; border-color: rgba(201,168,76,.15); box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+    .sec--light .dif-card h3 { color: #0F172A; }
+    .sec--light .dif-card p { color: #334155; }
+    .sec--light .case-card { background: #FFFFFF; border-color: rgba(201,168,76,.15); box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+    .sec--light .case-card h3, .sec--light .case-meta { color: #0F172A; }
+    .sec--light .case-card p { color: #334155; }
+    .sec--light .content-block { background: #FFFFFF; border-color: rgba(201,168,76,.15); box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+    .sec--light .content-block h3 { color: #0F172A; }
+    .sec--light .content-block p { color: #334155; }
+    .sec--light .hub-card { background: #FFFFFF; border-color: rgba(201,168,76,.15); box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+    .sec--light .hub-card h3 { color: #0F172A; }
+    .sec--light .hub-card p { color: #475569; }
+    .sec--light .hub-link { color: #B8922A; }
+
     /* ── AUTHORITY ── */
     .authority { background: var(--blue-800); }
     .auth-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
@@ -416,12 +438,15 @@
     .case-tag { display: inline-block; font-size: 11px; font-weight: 600; color: var(--gold); background: rgba(201,168,76,.1); border-radius: 4px; padding: 3px 8px; margin-bottom: 12px; text-transform: uppercase; letter-spacing: .07em; }
     .case-card p { font-size: 14px; color: var(--text); line-height: 1.6; }
 
-    /* ── SETORES MARQUEE ── */
-    .setores { background: var(--blue-900); padding: 40px 0; overflow: hidden; border-top: 1px solid rgba(255,255,255,.06); border-bottom: 1px solid rgba(255,255,255,.06); }
-    .marquee-track { display: flex; gap: 40px; animation: marquee 28s linear infinite; white-space: nowrap; }
-    .marquee-item { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 500; color: var(--text-muted); }
-    .marquee-item::before { content: '◆'; color: var(--gold); font-size: 8px; }
-    @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
+    /* ── MARQUEE (padrão home) ── */
+    .marquee-section { background: var(--blue-900); border-top: 1px solid rgba(255,255,255,.04); border-bottom: 1px solid rgba(255,255,255,.04); padding: 18px 0; overflow: hidden; position: relative; }
+    .marquee-section::before, .marquee-section::after { content: ''; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2; pointer-events: none; }
+    .marquee-section::before { left: 0; background: linear-gradient(90deg, var(--blue-900), transparent); }
+    .marquee-section::after { right: 0; background: linear-gradient(-90deg, var(--blue-900), transparent); }
+    .marquee-track { display: flex; gap: 48px; animation: marquee-lp 30s linear infinite; width: max-content; }
+    @keyframes marquee-lp { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+    .marquee-item { font-size: .78rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,.85); white-space: nowrap; }
+    .marquee-item .sep { display: inline-block; width: 4px; height: 4px; background: var(--gold); border-radius: 50%; opacity: .6; margin-left: 48px; vertical-align: middle; }
 
     /* ── DEPOIMENTOS ── */
     .depoimentos { background: var(--blue-800); }
@@ -785,7 +810,7 @@
   </nav>
 
   <!-- AUTHORITY — bg: blue-800 -->
-  <section class="sec authority">
+  <section class="sec authority sec--light">
     <div class="sec-inner">
       <div class="auth-grid reveal">
         <div class="auth-text">
@@ -834,7 +859,7 @@
   </section>
 
   <!-- DIFERENCIAL — bg: blue-800 -->
-  <section class="sec diferencial">
+  <section class="sec diferencial sec--light">
     <div class="sec-inner">
       <div class="reveal">
         <p class="sec-label">Como trabalhamos</p>
@@ -1072,7 +1097,7 @@
   </section>
 
   <!-- CASES — bg: blue-800 -->
-  <section class="sec cases">
+  <section class="sec cases sec--light">
     <div class="sec-inner">
       <div class="reveal">
         <p class="sec-label">Casos reais</p>
@@ -1098,31 +1123,31 @@
     </div>
   </section>
 
-  <!-- SETORES MARQUEE — bg: blue-900 -->
-  <div class="setores">
+  <!-- MARQUEE — padrão home -->
+  <section class="marquee-section" aria-hidden="true">
     <div class="marquee-track">
-      <div class="marquee-item">Siderurgia</div>
-      <div class="marquee-item">Metalurgia</div>
-      <div class="marquee-item">Farmacêutica</div>
-      <div class="marquee-item">Autopeças</div>
-      <div class="marquee-item">Laticínios</div>
-      <div class="marquee-item">Construção Civil</div>
-      <div class="marquee-item">Comércio</div>
-      <div class="marquee-item">Distribuição</div>
-      <div class="marquee-item">Serviços</div>
-      <div class="marquee-item">Agronegócio</div>
-      <div class="marquee-item">Siderurgia</div>
-      <div class="marquee-item">Metalurgia</div>
-      <div class="marquee-item">Farmacêutica</div>
-      <div class="marquee-item">Autopeças</div>
-      <div class="marquee-item">Laticínios</div>
-      <div class="marquee-item">Construção Civil</div>
-      <div class="marquee-item">Comércio</div>
-      <div class="marquee-item">Distribuição</div>
-      <div class="marquee-item">Serviços</div>
-      <div class="marquee-item">Agronegócio</div>
+      <span class="marquee-item">Siderurgia<span class="sep"></span></span>
+      <span class="marquee-item">Metalurgia<span class="sep"></span></span>
+      <span class="marquee-item">Farmac&ecirc;utica<span class="sep"></span></span>
+      <span class="marquee-item">Autope&ccedil;as<span class="sep"></span></span>
+      <span class="marquee-item">Latic&iacute;nios<span class="sep"></span></span>
+      <span class="marquee-item">Constru&ccedil;&atilde;o Civil<span class="sep"></span></span>
+      <span class="marquee-item">Com&eacute;rcio<span class="sep"></span></span>
+      <span class="marquee-item">Distribui&ccedil;&atilde;o<span class="sep"></span></span>
+      <span class="marquee-item">Servi&ccedil;os<span class="sep"></span></span>
+      <span class="marquee-item">Agroneg&oacute;cio<span class="sep"></span></span>
+      <span class="marquee-item">Siderurgia<span class="sep"></span></span>
+      <span class="marquee-item">Metalurgia<span class="sep"></span></span>
+      <span class="marquee-item">Farmac&ecirc;utica<span class="sep"></span></span>
+      <span class="marquee-item">Autope&ccedil;as<span class="sep"></span></span>
+      <span class="marquee-item">Latic&iacute;nios<span class="sep"></span></span>
+      <span class="marquee-item">Constru&ccedil;&atilde;o Civil<span class="sep"></span></span>
+      <span class="marquee-item">Com&eacute;rcio<span class="sep"></span></span>
+      <span class="marquee-item">Distribui&ccedil;&atilde;o<span class="sep"></span></span>
+      <span class="marquee-item">Servi&ccedil;os<span class="sep"></span></span>
+      <span class="marquee-item">Agroneg&oacute;cio<span class="sep"></span></span>
     </div>
-  </div>
+  </section>
 
   <!-- DEPOIMENTOS — bg: blue-800 -->
   <section class="sec depoimentos">
@@ -1206,7 +1231,7 @@
   </section>
 
   <!-- CONTENT SEO — bg: blue-800 -->
-  <section class="sec content-seo">
+  <section class="sec content-seo sec--light">
     <div class="sec-inner">
       <div class="reveal">
         <p class="sec-label">Base técnica</p>
@@ -1266,7 +1291,7 @@
   </section>
 
   <!-- HUB — bg: blue-800 -->
-  <section class="sec hub">
+  <section class="sec hub sec--light">
     <div class="sec-inner">
       <div class="reveal">
         <p class="sec-label">Explore mais serviços</p>
