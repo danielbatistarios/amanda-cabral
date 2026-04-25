@@ -1700,15 +1700,11 @@ def build_html(c):
         c['hero_sub']
     )
 
-    # Image paths
+    # Image paths — authority card only (hero uses /amanda-sobre.webp fixed)
     img_slug = c['foto_file']
     img_slug_webp = img_slug.replace('.jpg', '.webp').replace('.jpeg', '.webp')
     html = html.replace('srcset="sete-lagoas-lagoa-paulino.webp"', f'srcset="{img_slug_webp}"')
     html = html.replace('src="sete-lagoas-lagoa-paulino.jpg"', f'src="{img_slug}"')
-    html = html.replace(
-        'alt="Gruta Rei do Mato, Sete Lagoas/MG — AM Cabral Contabilidade atende empresas na cidade"',
-        f'alt="{c["foto_alt"]} — AM Cabral Contabilidade atende empresas na cidade"'
-    )
     html = html.replace(
         'alt="Gruta Rei do Mato, Sete Lagoas/MG"',
         f'alt="{c["foto_alt"]}"'
