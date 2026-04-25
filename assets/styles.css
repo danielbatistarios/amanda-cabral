@@ -395,6 +395,12 @@
             scroll-snap-type: x mandatory;
         }
         .services-track::-webkit-scrollbar { display: none; }
+@media (max-width: 768px) {
+  .services-track {
+    padding: 16px 0 16px 16px !important;
+    margin-left: 0 !important;
+  }
+}
 
         .service-card {
             min-width: 340px;
