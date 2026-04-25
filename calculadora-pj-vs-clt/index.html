@@ -1016,11 +1016,11 @@
   }
 
   /* ===== RESULTADO INLINE ===== */
-  .result-inline { margin-top: 20px; border-top: 1px solid rgba(255,255,255,.06); padding-top: 20px; }
-  .result-inline-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+  .result-inline { margin-top: 28px; border-top: 1px solid rgba(255,255,255,.06); padding-top: 24px; }
+  .result-inline-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 12px; }
   .result-inline-card {
     background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
-    border-radius: 12px; padding: 16px;
+    border-radius: 14px; padding: 20px 22px;
   }
   .result-inline-card.clt { border-color: rgba(74,144,217,.3); border-top: 3px solid #4A90D9; }
   .result-inline-card.pj { border-color: rgba(201,168,76,.3); background: rgba(201,168,76,.05); border-top: 3px solid var(--gold); }
@@ -2530,27 +2530,30 @@
             </div>
           </div>
 
-          <!-- Resultado inline -->
-          <div class="result-inline" id="resultInline" style="display:none;">
-            <div class="result-inline-row">
-              <div class="result-inline-card clt">
-                <div class="result-inline-label">Custo total para a empresa / mes</div>
-                <div class="result-inline-value" id="resCltTotal">-</div>
-                <div class="result-inline-sub" id="resCltSub"></div>
-              </div>
-              <div class="result-inline-card pj">
-                <div class="result-delta-badge" id="resDelta"></div>
-                <div class="result-inline-label">Desembolso PJ para a empresa / mes</div>
-                <div class="result-inline-value gold" id="resPjTotal">-</div>
-                <div class="result-inline-sub" id="resPjSub"></div>
-              </div>
-            </div>
-            <div class="result-inline-anual" id="resAnual"></div>
-          </div>
         </div>
 
-        <!-- Toggle analise detalhada -->
-        <div id="deepDiveWrapper" style="display:none;">
+      </div><!-- /calc-grid-simple -->
+
+      <!-- Resultado inline — full width abaixo dos inputs -->
+      <div class="result-inline" id="resultInline" style="display:none;">
+        <div class="result-inline-row">
+          <div class="result-inline-card clt">
+            <div class="result-inline-label">Custo total para a empresa / mes</div>
+            <div class="result-inline-value" id="resCltTotal">-</div>
+            <div class="result-inline-sub" id="resCltSub"></div>
+          </div>
+          <div class="result-inline-card pj">
+            <div class="result-delta-badge" id="resDelta"></div>
+            <div class="result-inline-label">Desembolso PJ para a empresa / mes</div>
+            <div class="result-inline-value gold" id="resPjTotal">-</div>
+            <div class="result-inline-sub" id="resPjSub"></div>
+          </div>
+        </div>
+        <div class="result-inline-anual" id="resAnual"></div>
+      </div>
+
+      <!-- Toggle analise detalhada — full width abaixo dos cards -->
+      <div id="deepDiveWrapper" style="display:none;">
           <button class="toggle-deep-dive" id="toggleDeepDive" aria-expanded="false" type="button">
             Ver detalhamento dos encargos
             <span class="toggle-deep-icon">▼</span>
@@ -2599,7 +2602,6 @@
             </div>
           </div>
         </div>
-      </div>
 
       </div><!-- /calc-grid-wrapper -->
 
@@ -4607,14 +4609,15 @@ function closeLeadModal() {
   sessionStorage.setItem('lead-modal-shown', '1');
 }
 
-const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbyE_YhKeohsU8T9q7KRPlIHnBxo0T6Z3hBlh7PQaFMBQ3xq17Pl43uLXQQLEsC31F8W1w/exec';
+const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbyHic1ClYayuxpAgvNXX0GuAtqEnN08mwqut3v9TdhBUiJcZBITBZ9hPdn9qFEXEBYJ7Q/exec';
 
 function sendLead(data) {
+  var form = new FormData();
+  Object.keys(data).forEach(function(k) { form.append(k, data[k] != null ? data[k] : ''); });
   fetch(SHEETS_URL, {
     method: 'POST',
     mode: 'no-cors',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify(data)
+    body: form
   }).catch(function() { /* silencioso — nao bloquear UX */ });
 }
 
