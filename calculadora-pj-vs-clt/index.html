@@ -4621,15 +4621,12 @@ window.TEM_CONTADOR = null;
     collapseWizard(nome, empresa, wizData.contador);
     // Enviar lead para Google Sheets no momento do clique em "Preencher calculadora"
     sendLead({
-      nome: nome + (empresa ? ' / ' + empresa : ''),
-      telefone: '',
-      email: '',
-      cargo: wizData.cargo || '',
-      motivacao: wizData.motivacao || '',
-      funcao: '',
-      salarioBruto: '',
-      honorarioPJ: '',
-      regime: ''
+      nome: nome,
+      whatsapp: '',
+      empresa: empresa,
+      contador: wizData.contador || '',
+      fonte: window.location.href,
+      contato: ''
     });
     // Scroll suave para a calculadora
     setTimeout(function() {
@@ -4694,7 +4691,7 @@ function closeLeadModal() {
   sessionStorage.setItem('lead-modal-shown', '1');
 }
 
-const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxgj0xxCeFNw7AqgpYCQlb2102cRjs_yJP0nMz8tMxms7WiI563uJeOuGzBfDBzzUJnNw/exec';
+const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbwFHl8_OZdZStMx5BwVTTM7NgxvFlcd_t5OeqZ10Lxc6Hs4vVtjCaZDGu6krkg-6JJUTg/exec';
 
 function sendLead(data) {
   var form = new FormData();
@@ -4750,21 +4747,15 @@ document.getElementById('leadCaptureForm').addEventListener('submit', function(e
     titleEl.textContent = name + (cargo === 'contratante' ? ', aqui esta o custo real' : ', aqui esta o seu cenario');
   }
 
-  // Enviar lead para Google Sheets
-  const salarioModal = parseFormattedNumber(document.getElementById('wizardSalario').value);
-  const honorarioElModal = document.getElementById('wizardHonorario');
-  const honorarioModal = honorarioElModal ? parseFormattedNumber(honorarioElModal.value) : 0;
-  const regimeRadio = document.querySelector('input[name="regime"]:checked');
+  // Enviar lead completo (com WhatsApp) via modal
+  const contatoCb = document.getElementById('leadContato');
   sendLead({
     nome: name,
-    telefone: phone,
-    email: '',
-    cargo: CALC_STATE.cargo || '',
-    motivacao: CALC_STATE.motivacao || '',
-    funcao: CALC_STATE.ramo || '',
-    salarioBruto: salarioModal || '',
-    honorarioPJ: honorarioModal || '',
-    regime: regimeRadio ? regimeRadio.value : (CALC_STATE.ramo === 'presumido' ? 'presumido' : 'simples')
+    whatsapp: phone,
+    empresa: company,
+    contador: window.TEM_CONTADOR || '',
+    fonte: window.location.href,
+    contato: contatoCb && contatoCb.checked ? 'Sim' : 'Nao'
   });
 
   // Show success
