@@ -159,8 +159,7 @@
     align-items: center;
     justify-content: center;
   }
-  #hdr-mob a {
-    padding: 14px 8px;
+  .mob-list-link, .mob-sub-link {
     min-height: 44px;
     display: flex;
     align-items: center;

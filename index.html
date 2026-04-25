@@ -1650,8 +1650,7 @@
         /* Hamburger touch target 44px */
         @media (max-width: 900px) {
           #hdr-hamburger { padding: 12px 10px; min-width: 44px; min-height: 44px; justify-content: center; align-items: center; }
-          #hdr-mob-close { min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center; }
-          #hdr-mob a     { padding: 14px 8px; min-height: 44px; display: flex; align-items: center; }
+          #hdr-mob-close { min-width: 44px; min-height: 44px; }
         }
 
         /* Form inputs: sem zoom iOS */
@@ -2508,22 +2507,35 @@
 <!-- Mobile nav -->
 
 
-<div id="hdr-mob">
-  <button id="hdr-mob-close">✕</button>
-  <div class="mob-brand">
-    <span class="mob-brand-name">AM Cabral</span>
-    <span class="mob-brand-sub">Contabilidade &amp; Planejamento Tributário</span>
+<div id="hdr-mob" role="dialog" aria-label="Menu de navegação" aria-modal="true">
+  <div class="mob-head">
+    <a href="/" class="mob-head-logo">AM Cabral</a>
+    <button id="hdr-mob-close" aria-label="Fechar menu"><span></span><span></span></button>
   </div>
-  <a href="/">Início</a>
-  <a href="/sobre-amcabral-blindagem/">Sobre Amanda</a>
-  <a href="/nossos-servicos/">Serviços</a>
-  <a href="/nossos-servicos/gestao-contabil/">Contabilidade Estratégica</a>
-  <a href="/nossos-servicos/recuperacao-creditos-tributarios/">Recuperação de Créditos</a>
-  <a href="/nossos-servicos/holding-patrimonial/">Holding Patrimonial</a>
-  <a href="/nossos-servicos/planejamento-tributario/">Planejamento Fiscal</a>
-  <a href="/blog/">Blog</a>
-  <a href="/calculadora-pj-vs-clt/" style="color:var(--gold);">⚖ Calculadora PJ vs CLT</a>
-  <a href="/fale-com-especialista/" id="hdrMobCta" style="color:var(--gold);margin-top:20px;font-weight:600;border-color:rgba(201,168,76,0.2);letter-spacing:0.04em;">→ Diagnóstico Gratuito</a>
+  <ul class="mob-list">
+    <li><a href="/" class="mob-list-link">Início</a></li>
+    <li><a href="/sobre-amcabral-blindagem/" class="mob-list-link">Sobre Amanda</a></li>
+    <li>
+      <button class="mob-list-link mob-trigger" data-target="mob-servicos" aria-expanded="false">
+        Serviços
+        <span class="mob-caret"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="4 6 8 10 12 6"/></svg></span>
+      </button>
+      <ul class="mob-sub" id="mob-servicos">
+        <li><a href="/nossos-servicos/" class="mob-sub-link">Ver todos os serviços</a></li>
+        <li><a href="/nossos-servicos/gestao-contabil/" class="mob-sub-link">Contabilidade Estratégica</a></li>
+        <li><a href="/nossos-servicos/recuperacao-creditos-tributarios/" class="mob-sub-link">Recuperação de Créditos</a></li>
+        <li><a href="/nossos-servicos/holding-patrimonial/" class="mob-sub-link">Holding Patrimonial</a></li>
+        <li><a href="/nossos-servicos/planejamento-tributario/" class="mob-sub-link">Planejamento Fiscal</a></li>
+        <li><a href="/nossos-servicos/consultoria-tributaria/" class="mob-sub-link">Consultoria Tributária</a></li>
+        <li><a href="/nossos-servicos/desenquadrar-mei-para-me/" class="mob-sub-link">Desenquadrar MEI para ME</a></li>
+      </ul>
+    </li>
+    <li><a href="/blog/" class="mob-list-link">Blog</a></li>
+    <li><a href="/calculadora-pj-vs-clt/" class="mob-list-link" style="color:var(--gold);">Calculadora PJ vs CLT</a></li>
+  </ul>
+  <div class="mob-cta-wrap">
+    <a href="/fale-com-especialista/" id="hdrMobCta" class="mob-cta">Diagnóstico Gratuito</a>
+  </div>
 </div>
 
 <!-- Mega-menus fora do header (evita backdrop-filter stacking context) -->
@@ -3639,15 +3651,39 @@
         if (!e.target.closest('.hdr-item') && !e.target.closest('.hdr-mega')) closeAll();
     });
 
-    // ---- MOBILE ----
+    // ---- MOBILE OVERLAY ----
     const hdrHamburger = document.getElementById('hdr-hamburger');
     const hdrMob = document.getElementById('hdr-mob');
     const hdrMobClose = document.getElementById('hdr-mob-close');
-    if (hdrHamburger && hdrMob && hdrMobClose) {
-        hdrHamburger.addEventListener('click', () => hdrMob.classList.toggle('open'));
-        hdrMobClose.addEventListener('click', () => hdrMob.classList.remove('open'));
-        hdrMob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => hdrMob.classList.remove('open')));
+    function openMobile() {
+        hdrMob.classList.add('open');
+        if (hdrHamburger) hdrHamburger.setAttribute('aria-expanded', 'true');
+        document.body.style.overflow = 'hidden';
     }
+    function closeMobile() {
+        hdrMob.classList.remove('open');
+        if (hdrHamburger) hdrHamburger.setAttribute('aria-expanded', 'false');
+        document.body.style.overflow = '';
+    }
+    if (hdrHamburger) hdrHamburger.addEventListener('click', openMobile);
+    if (hdrMobClose)  hdrMobClose.addEventListener('click', closeMobile);
+    if (hdrMob) {
+        hdrMob.querySelectorAll('a').forEach(a => a.addEventListener('click', closeMobile));
+        document.querySelectorAll('.mob-trigger').forEach(btn => {
+            btn.addEventListener('click', function() {
+                const targetId = btn.getAttribute('data-target');
+                const sub = document.getElementById(targetId);
+                const isOpen = btn.getAttribute('aria-expanded') === 'true';
+                document.querySelectorAll('.mob-trigger').forEach(b => b.setAttribute('aria-expanded', 'false'));
+                document.querySelectorAll('.mob-sub').forEach(s => s.classList.remove('open'));
+                if (!isOpen && sub) {
+                    btn.setAttribute('aria-expanded', 'true');
+                    sub.classList.add('open');
+                }
+            });
+        });
+    }
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeMobile(); });
     </script>
 </body>
 </html>
