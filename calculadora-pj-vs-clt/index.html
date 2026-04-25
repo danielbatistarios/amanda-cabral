@@ -1059,6 +1059,61 @@
   }
 
   /* ============================
+     PROXIMOS PASSOS
+  ============================ */
+  .next-steps {
+    margin-top: 24px;
+    border-top: 1px solid rgba(255,255,255,.06);
+    padding-top: 20px;
+  }
+  .next-steps-title {
+    font-size: .7rem; text-transform: uppercase; letter-spacing: .08em;
+    color: var(--gold); margin-bottom: 16px; font-weight: 600;
+  }
+  .next-steps-list {
+    display: flex; flex-direction: column; gap: 10px;
+    list-style: none; padding: 0; margin: 0;
+  }
+  .next-step-item {
+    display: flex; align-items: flex-start; gap: 12px;
+    background: rgba(255,255,255,.02); border: 1px solid rgba(255,255,255,.05);
+    border-radius: 10px; padding: 14px 16px;
+    transition: border-color .2s;
+  }
+  .next-step-item:hover { border-color: rgba(201,168,76,.25); }
+  .next-step-num {
+    flex-shrink: 0; width: 22px; height: 22px; border-radius: 50%;
+    background: rgba(201,168,76,.12); border: 1px solid rgba(201,168,76,.3);
+    color: var(--gold); font-size: .65rem; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    margin-top: 1px;
+  }
+  .next-step-body { flex: 1; }
+  .next-step-action {
+    font-size: .85rem; font-weight: 600; color: var(--white);
+    line-height: 1.3; margin-bottom: 3px;
+  }
+  .next-step-why {
+    font-size: .75rem; color: rgba(255,255,255,.45); line-height: 1.5;
+  }
+  .next-step-item.is-urgent { border-color: rgba(248,113,113,.25); background: rgba(248,113,113,.03); }
+  .next-step-item.is-urgent .next-step-num {
+    background: rgba(248,113,113,.12); border-color: rgba(248,113,113,.3); color: #F87171;
+  }
+  .next-step-amanda {
+    display: flex; align-items: center; gap: 10px;
+    margin-top: 16px; padding: 14px 16px;
+    background: rgba(201,168,76,.06); border: 1px solid rgba(201,168,76,.2);
+    border-radius: 10px; cursor: pointer; text-decoration: none;
+    transition: background .2s;
+  }
+  .next-step-amanda:hover { background: rgba(201,168,76,.1); }
+  .next-step-amanda-text { flex: 1; }
+  .next-step-amanda-label { font-size: .75rem; color: var(--gold); font-weight: 600; }
+  .next-step-amanda-desc { font-size: .75rem; color: rgba(255,255,255,.45); margin-top: 2px; }
+  .next-step-amanda-arrow { color: var(--gold); font-size: .9rem; flex-shrink: 0; }
+
+  /* ============================
      VISUAL COMPONENTS — CHARTS
   ============================ */
 
@@ -2544,6 +2599,20 @@
             <div class="overview-block-text" id="ovTextoRec"></div>
           </div>
         </div>
+
+        <!-- Proximos passos acionaveis -->
+        <div class="next-steps" id="nextStepsBlock">
+          <div class="next-steps-title">O que fazer agora</div>
+          <ul class="next-steps-list" id="nextStepsList"></ul>
+          <a id="nextStepsWA" href="https://wa.me/5537999967558" target="_blank" rel="noopener" class="next-step-amanda">
+            <span style="font-size:1.4rem">💬</span>
+            <div class="next-step-amanda-text">
+              <div class="next-step-amanda-label">Falar com Amanda Cabral</div>
+              <div class="next-step-amanda-desc" id="nextStepsWADesc">Ela analisa seu cenario especifico e responde em ate 24h.</div>
+            </div>
+            <span class="next-step-amanda-arrow">→</span>
+          </a>
+        </div>
       </div>
 
       <!-- CTA area (aparece apos calculo) -->
@@ -3428,6 +3497,8 @@ function resetCalc() {
   if (barCard) barCard.style.display = 'none';
   const donutsWrap = document.getElementById('donutsWrapper');
   if (donutsWrap) donutsWrap.style.display = 'none';
+  const nextList = document.getElementById('nextStepsList');
+  if (nextList) nextList.innerHTML = '';
   const ddWrap = document.getElementById('deepDiveWrapper');
   if (ddWrap) ddWrap.style.display = 'none';
   const ddSec = document.getElementById('deepDiveSection');
@@ -3892,6 +3963,117 @@ function renderOverview(d) {
   const ovSection = document.getElementById('overviewSection');
   ovSection.classList.toggle('is-featured', mot === 'demissao' || mot === 'existente');
   ovSection.style.display = 'block';
+
+  renderNextSteps(d);
+}
+
+/* ============================
+   PROXIMOS PASSOS
+============================ */
+
+const NEXT_STEPS_MAP = {
+  demissao: {
+    contratante: [
+      { action: 'Suspenda o contrato PJ ate ter parecer juridico', why: 'Sem ele, a empresa assume risco de passivo retroativo com multas e verbas de todo o periodo.', urgent: true },
+      { action: 'Respeite o intervalo de 6 meses antes de recontratar', why: 'A jurisprudencia do TST usa esse prazo como referencia. Recontratar antes fragiliza a defesa em eventual acao.' },
+      { action: 'Revise a estrutura do contrato com um contador e advogado', why: 'O contrato precisa eliminar os 4 criterios de vinculo: horario fixo, subordinacao, exclusividade e pessoalidade.' }
+    ],
+    profissional: [
+      { action: 'Nao assine nada ate ter uma segunda opiniao', why: 'Recontratar-se imediatamente como PJ pode anular seus direitos trabalhistas do periodo anterior.', urgent: true },
+      { action: 'Exija que o novo contrato nao tenha exclusividade nem horario fixo', why: 'Esses dois pontos sao os mais usados para caracterizar vinculo empregaticio em acoes futuras.' },
+      { action: 'Calcule o INSS autonomo na sua planilha de custos', why: 'Sem contribuicao ao INSS, voce perde acesso a aposentadoria por tempo de contribuicao. O custo minimo e de R$ 1.412/mes.' }
+    ],
+    default: [
+      { action: 'Consulte um advogado trabalhista antes de assinar', why: 'Recontratacao pos-demissao e um dos cenarios com maior risco de reconhecimento de vinculo.', urgent: true },
+      { action: 'Verifique o prazo de 6 meses entre o desligamento e a nova contratacao', why: 'Intervalo menor que 6 meses fragiliza a posicao juridica de ambas as partes.' },
+      { action: 'Documente a independencia do PJ no contrato', why: 'Escopo definido, ausencia de exclusividade e possibilidade de recusa de servicos sao os pontos que mais protegem juridicamente.' }
+    ]
+  },
+  existente: {
+    contratante: [
+      { action: 'Nao converta o CLT para PJ sem auditoria previa', why: 'Se as condicoes de trabalho nao mudarem, o fisco pode desconsiderar o contrato PJ e exigir todos os encargos retroativos com multa.', urgent: true },
+      { action: 'Mude ao menos dois dos quatro criterios de vinculo', why: 'Remova exclusividade, permita flexibilidade de horario ou permita que o servico seja terceirizado pelo PJ para reduzir o risco.' },
+      { action: 'Formalize o CNPJ do profissional antes da assinatura do contrato', why: 'CNPJ ativo com emissao regular de NF e um dos indicadores mais relevantes para a Receita Federal ao avaliar a relacao.' }
+    ],
+    profissional: [
+      { action: 'Calcule o impacto real da perda dos beneficios CLT antes de aceitar', why: 'FGTS, 13o, ferias, seguro-desemprego e plano de saude precisam ser compensados pelo honorario PJ para a migracao valer a pena.' },
+      { action: 'Negocie um honorario 40% acima do salario bruto como piso', why: 'Abaixo disso, o PJ normalmente nao compensa quando contabilizados todos os custos de estrutura, INSS e provisao de periodos sem renda.' },
+      { action: 'Abra o CNPJ antes de sair da CLT para nao perder continuidade de receita', why: 'Constituir o CNPJ leva ate 5 dias uteis. Ter o CNPJ ativo antes do desligamento evita gap de faturamento.' }
+    ],
+    default: [
+      { action: 'Audite os 4 criterios de vinculo na relacao atual', why: 'Habitualidade, subordinacao, onerosidade e pessoalidade precisam ser eliminados para a migracao ser segura.', urgent: true },
+      { action: 'Negocie o honorario considerando todos os encargos perdidos', why: 'O profissional perde FGTS, 13o, ferias e seguro-desemprego. O honorario precisa cobrir esses custos para ser equivalente.' },
+      { action: 'Documente a transicao com contrato de prestacao de servicos', why: 'Um contrato bem redigido com escopo e prazo e a principal defesa juridica em caso de contestacao futura.' }
+    ]
+  },
+  nova: {
+    contratante: [
+      { action: 'Mapeie os 4 criterios de vinculo antes de definir o formato', why: 'Se a funcao exige horario fixo, subordinacao e exclusividade, o CLT e mais seguro juridicamente do que tentar mascarar como PJ.' },
+      { action: 'Compare o custo total — nao so o salario bruto vs honorario', why: 'A calculadora mostra que o custo real CLT inclui encargos que somam entre 60% e 80% do salario. Esse e o numero certo para comparar.' },
+      { action: 'Prepare o contrato PJ com escopo, prazo e clausula de multiplos clientes', why: 'Esses tres elementos reduzem o risco juridico e sao exigidos por auditorias trabalhistas.' }
+    ],
+    profissional: [
+      { action: 'Some todos os custos do CNPJ antes de aceitar o honorario', why: 'Contador (~R$ 300/mes), INSS autonomo (~R$ 1.412/mes) e reserva para periodos sem contrato costumam representar 20%-30% do honorario bruto.' },
+      { action: 'Exija que o contrato permita atender outros clientes simultaneamente', why: 'A exclusividade e um dos principais indicadores de vinculo empregaticio e tambem limita sua capacidade de aumentar renda.' },
+      { action: 'Calcule sua reserva de emergencia antes de sair do CLT', why: 'Como PJ, nao ha seguro-desemprego. A recomendacao e ter pelo menos 4 meses de despesas guardadas antes de sair.' }
+    ],
+    comparar: [
+      { action: 'Identifique qual e o real diferencial financeiro liquido para o profissional', why: 'O numero que importa e o liquido no bolso, nao o honorario bruto. A secao de donuts acima mostra essa comparacao.' },
+      { action: 'Verifique se a funcao analisada tem subordinacao e exclusividade', why: 'Se sim, o PJ tem risco juridico que pode anular toda a economia em uma eventual acao trabalhista.' },
+      { action: 'Use o resultado como base de negociacao, nao como decisao final', why: 'A calculadora mostra o custo equivalente. A decisao ideal considera perfil de risco, beneficios e objetivos de longo prazo.' }
+    ],
+    default: [
+      { action: 'Compare o custo total CLT com o honorario PJ equivalente', why: 'O honorario PJ precisa ser ao menos 40% acima do salario bruto para compensar a perda de encargos e beneficios.' },
+      { action: 'Verifique a presenca dos 4 criterios de vinculo', why: 'Habitualidade, subordinacao, exclusividade e pessoalidade definem se o PJ e valido juridicamente.' },
+      { action: 'Consulte um contador para escolher o melhor regime tributario para o CNPJ', why: 'A aliquota efetiva varia de 4% (comercio, Simples) a mais de 15% (consultoria, Anexo V). A diferenca impacta diretamente o liquido.' }
+    ]
+  },
+  comparar: {
+    default: [
+      { action: 'Identifique o liquido real de cada cenario, nao o bruto', why: 'O INSS e o IR reduzem o salario CLT. Os impostos do CNPJ reduzem o honorario PJ. Compare sempre pelo liquido.' },
+      { action: 'Liste os beneficios CLT que deixariam de existir como PJ', why: 'FGTS, 13o, ferias remuneradas, seguro-desemprego e plano de saude custeado pela empresa nao aparecem no honorario PJ mas tem valor real.' },
+      { action: 'Consulte um contador antes de tomar a decisao final', why: 'O regime tributario do CNPJ, o perfil da funcao e o historico da relacao influenciam o resultado de formas que a calculadora nao captura.' }
+    ]
+  }
+};
+
+function renderNextSteps(d) {
+  const mot   = d.motivacao || 'comparar';
+  const cargo = d.cargo     || 'comparar';
+
+  const pool  = NEXT_STEPS_MAP[mot] || NEXT_STEPS_MAP.comparar;
+  const steps = pool[cargo] || pool.default || NEXT_STEPS_MAP.comparar.default;
+
+  const list = document.getElementById('nextStepsList');
+  list.innerHTML = '';
+  steps.forEach((s, i) => {
+    const li = document.createElement('li');
+    li.className = 'next-step-item' + (s.urgent ? ' is-urgent' : '');
+    li.innerHTML =
+      '<div class="next-step-num">' + (i + 1) + '</div>' +
+      '<div class="next-step-body">' +
+        '<div class="next-step-action">' + s.action + '</div>' +
+        '<div class="next-step-why">' + s.why + '</div>' +
+      '</div>';
+    list.appendChild(li);
+  });
+
+  // WhatsApp CTA personalizado
+  const waDesc = {
+    demissao:  'Situacao de alto risco — Amanda analisa se a recontratacao e segura.',
+    existente: 'Migracao com risco juridico — Amanda estrutura a transicao com seguranca.',
+    nova:      'Amanda valida se o contrato PJ esta juridicamente seguro antes de assinar.',
+    comparar:  'Ela analisa seu cenario especifico e responde em ate 24h.'
+  };
+  const desc = document.getElementById('nextStepsWADesc');
+  if (desc) desc.textContent = waDesc[mot] || waDesc.comparar;
+
+  // Pre-preenche o link do WhatsApp com contexto
+  const motLabel   = { demissao: 'recontratacao pos-demissao', existente: 'migracao CLT para PJ', nova: 'nova contratacao', comparar: 'comparacao financeira' };
+  const cargoLabel = { contratante: 'empresa', profissional: 'profissional autonomo', comparar: 'analise' };
+  const msg = 'Ola Amanda! Usei a calculadora CLT vs PJ. Sou ' + (cargoLabel[cargo] || 'usuario') + ', cenario de ' + (motLabel[mot] || 'comparacao') + '. Gostaria de uma analise do meu caso.';
+  const waLink = document.getElementById('nextStepsWA');
+  if (waLink) waLink.href = 'https://wa.me/5537999967558?text=' + encodeURIComponent(msg);
 }
 
 /* ============================
