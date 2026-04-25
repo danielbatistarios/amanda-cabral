@@ -228,11 +228,11 @@ section {
 }
 
     .breadcrumb { padding: 0 0 24px; background: transparent; }
-    .breadcrumb-inner { max-width: var(--max-w); margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
-    .breadcrumb-inner a { color: rgba(255,255,255,.3); text-decoration: none; transition: var(--t); }
+    .breadcrumb-inner { max-width: var(--max-w); margin: 0 auto; display: flex; align-items: center; justify-content: center; flex-wrap: nowrap; gap: 6px; font-size: 11px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; }
+    .breadcrumb-inner a { color: rgba(255,255,255,.3); text-decoration: none; transition: var(--t); white-space: nowrap; }
     .breadcrumb-inner a:hover { color: var(--gold); }
-    .breadcrumb-inner .bc-sep { color: rgba(255,255,255,.15); }
-    .breadcrumb-inner span:last-child { color: rgba(201,168,76,.7); }
+    .breadcrumb-inner .bc-sep { color: rgba(255,255,255,.15); flex-shrink: 0; }
+    .breadcrumb-inner span:last-child { color: rgba(201,168,76,.7); white-space: nowrap; }
 
 .breadcrumb span {
   margin: 0 8px;
