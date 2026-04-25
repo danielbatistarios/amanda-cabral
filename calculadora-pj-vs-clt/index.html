@@ -2611,6 +2611,58 @@ const PROV_FERIAS   = (1 + 1/3) / 12; // 11.11%
 
 const brl = v => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(v);
 
+// INSS empregado 2025 — tabela progressiva
+function calcINSSEmpregado(salario) {
+  const faixas = [
+    { ate: 1518.00,  aliq: 0.075 },
+    { ate: 2793.88,  aliq: 0.09  },
+    { ate: 4190.83,  aliq: 0.12  },
+    { ate: 8157.41,  aliq: 0.14  },
+  ];
+  let desconto = 0;
+  let base = salario;
+  let anterior = 0;
+  for (const f of faixas) {
+    if (base <= 0) break;
+    const faixaVal = Math.min(salario, f.ate) - anterior;
+    if (faixaVal <= 0) break;
+    desconto += faixaVal * f.aliq;
+    anterior = f.ate;
+    if (salario <= f.ate) break;
+  }
+  // Teto: salario acima de R$8.157,41 — aliquota 14% sobre o teto
+  if (salario > 8157.41) {
+    desconto = 0;
+    const faixasCompletas = [
+      { de: 0,       ate: 1518.00,  aliq: 0.075 },
+      { de: 1518.00, ate: 2793.88,  aliq: 0.09  },
+      { de: 2793.88, ate: 4190.83,  aliq: 0.12  },
+      { de: 4190.83, ate: 8157.41,  aliq: 0.14  },
+    ];
+    for (const f of faixasCompletas) {
+      desconto += (f.ate - f.de) * f.aliq;
+    }
+  }
+  return Math.round(desconto * 100) / 100;
+}
+
+// IRRF 2025 — tabela mensal (base = salario - INSS empregado)
+function calcIRRF(baseCalculo) {
+  const faixas = [
+    { ate: 2259.20,  aliq: 0,      deducao: 0       },
+    { ate: 2826.65,  aliq: 0.075,  deducao: 169.44  },
+    { ate: 3751.05,  aliq: 0.15,   deducao: 381.44  },
+    { ate: 4664.68,  aliq: 0.225,  deducao: 662.77  },
+    { ate: Infinity, aliq: 0.275,  deducao: 896.00  },
+  ];
+  for (const f of faixas) {
+    if (baseCalculo <= f.ate) {
+      return Math.max(0, Math.round((baseCalculo * f.aliq - f.deducao) * 100) / 100);
+    }
+  }
+  return 0;
+}
+
 function calcCustoTotalCLT(salario, vr, vt, saude, incluirProvisoes, sistemaSRate, isSimples, ratRate, desoneracao, faturamento, aliqCPRB) {
   let inssPat;
   if (desoneracao && faturamento > 0) {
@@ -2725,9 +2777,14 @@ function calcAndRender() {
   // Calculo demissao
   const demissao = calcCustoDemissao(salario, tempo);
 
+  // Liquido real do empregado: salario - INSS empregado - IRRF
+  const inssEmp = calcINSSEmpregado(salario);
+  const irrf = calcIRRF(salario - inssEmp);
+  const liquidoEmpregado = salario - inssEmp - irrf;
+
   // --- Resultado inline: cards CLT x PJ ---
   document.getElementById('resCltTotal').textContent = brl(clt.custoTotal);
-  document.getElementById('resCltSub').textContent = 'Liquido empregado: ' + brl(clt.custoTotal - clt.encargos - clt.beneficios);
+  document.getElementById('resCltSub').textContent = 'Liquido empregado: ' + brl(liquidoEmpregado) + ' (INSS ' + brl(inssEmp) + ' + IR ' + brl(irrf) + ')';
   document.getElementById('resPjTotal').textContent = brl(pjCusto);
 
   // Sub do PJ: liquido apos impostos do CNPJ
