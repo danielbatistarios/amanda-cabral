@@ -992,12 +992,14 @@
     background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
     border-radius: 12px; padding: 16px;
   }
-  .result-inline-card.clt { border-color: rgba(148,163,184,.2); }
-  .result-inline-card.pj { border-color: rgba(201,168,76,.25); background: rgba(201,168,76,.05); }
+  .result-inline-card.clt { border-color: rgba(74,144,217,.3); border-top: 3px solid #4A90D9; }
+  .result-inline-card.pj { border-color: rgba(201,168,76,.3); background: rgba(201,168,76,.05); border-top: 3px solid var(--gold); }
   .result-inline-label { font-size: .7rem; text-transform: uppercase; letter-spacing: .06em; color: var(--silver); margin-bottom: 6px; }
-  .result-inline-value { font-family: var(--font-display); font-size: 1.4rem; color: var(--white); }
+  .result-inline-value { font-family: var(--font-display); font-size: 1.8rem; color: var(--white); }
   .result-inline-value.gold { color: var(--gold); }
-  .result-inline-sub { font-size: .75rem; color: var(--silver); margin-top: 4px; }
+  .result-inline-sub { font-size: .75rem; margin-top: 4px; }
+  .result-inline-card.clt .result-inline-sub { color: #4A90D9; }
+  .result-inline-card.pj .result-inline-sub { color: var(--gold); }
   .result-delta-badge {
     display: inline-block; padding: 3px 8px; border-radius: 20px;
     font-size: .7rem; font-weight: 700; letter-spacing: .04em; margin-bottom: 6px;
@@ -1307,25 +1309,51 @@
 
   /* ===== DELTA HIGHLIGHT ===== */
   .result-delta-container {
-    background: linear-gradient(135deg, rgba(15,33,55,.9) 0%, rgba(201,168,76,.08) 100%);
+    background: linear-gradient(135deg, rgba(15,33,55,.9) 0%, rgba(201,168,76,.12) 100%);
     border-left: 4px solid var(--gold);
     border-radius: 12px;
     padding: 28px 24px;
     margin: 20px 0;
     box-shadow: 0 16px 48px rgba(201,168,76,.08), inset 0 1px 0 rgba(201,168,76,.2);
-    animation: deltaFadeIn .6s var(--ease-spring);
+    animation: deltaFadeIn .8s var(--ease-spring);
     display: none;
+    transition: background .4s ease, border-color .4s ease;
   }
   .result-delta-container.is-visible { display: block; }
+  .result-delta-container.is-pj-expensive {
+    background: linear-gradient(135deg, rgba(15,33,55,.9) 0%, rgba(231,76,60,.08) 100%);
+    border-left-color: #e74c3c;
+    box-shadow: 0 16px 48px rgba(231,76,60,.08), inset 0 1px 0 rgba(231,76,60,.15);
+  }
   @keyframes deltaFadeIn {
-    from { opacity: 0; transform: translateY(16px); }
+    from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
   }
   .delta-label { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--silver); margin-bottom: 8px; }
   .delta-amount { font-size: 2.6rem; color: var(--white); font-weight: 700; font-family: var(--font-display); line-height: 1.1; }
   .delta-amount .delta-dir { font-size: 1rem; font-weight: 500; color: var(--silver); margin-left: 4px; }
   .delta-percent { font-size: 1.2rem; color: var(--gold); font-weight: 600; margin-top: 4px; }
+  .result-delta-container.is-pj-expensive .delta-percent { color: #ff6b6b; }
   .delta-sub { font-size: .85rem; color: var(--silver); margin-top: 10px; }
+
+  /* ===== TOGGLE ANALISE DETALHADA ===== */
+  .toggle-deep-dive {
+    display: flex; align-items: center; gap: 8px; width: 100%;
+    padding: 14px 18px; margin: 8px 0 0;
+    border: 1px solid rgba(201,168,76,.3);
+    background: rgba(201,168,76,.05);
+    border-radius: 10px;
+    color: var(--gold); font-size: .88rem; font-weight: 600;
+    cursor: none; transition: background .2s, border-color .2s;
+  }
+  .toggle-deep-dive:hover { background: rgba(201,168,76,.1); border-color: rgba(201,168,76,.5); }
+  .toggle-deep-icon { margin-left: auto; transition: transform .3s; }
+  .toggle-deep-dive[aria-expanded="true"] .toggle-deep-icon { transform: rotate(180deg); }
+  .deep-dive-section {
+    background: rgba(255,255,255,.01); border: 1px solid rgba(255,255,255,.07);
+    border-radius: 14px; padding: 20px; margin-top: 8px;
+  }
+  .deep-dive-section[hidden] { display: none; }
 
   /* ===== LEAD CAPTURE MODAL ===== */
   .lead-capture-modal {
@@ -2122,45 +2150,53 @@
           </div>
         </div>
 
-        <!-- Resultado detalhado -->
-        <div class="calc-col-simple" id="colDetalhes" style="display:none;">
-          <div class="calc-col-header">
-            <div class="calc-col-icon" style="background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.2);">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--gold)"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
-            </div>
-            <div>
-              <div class="calc-col-title">Detalhes CLT</div>
-              <div class="calc-col-sub">Composicao dos encargos</div>
-            </div>
-          </div>
-          <!-- Narrativa personalizada -->
-          <div class="narrative-inline" id="narrativeInline" style="display:none;">
-            <span class="narrative-inline-icon" id="narrativeInlineIcon">💡</span>
-            <div>
-              <div class="narrative-inline-title" id="narrativeInlineTitle"></div>
-              <div class="narrative-inline-text" id="narrativeInlineText"></div>
-            </div>
-          </div>
-          <!-- Encargos -->
-          <div id="detalhesEncargos">
-            <div class="detalhe-row"><span>INSS Patronal (20%)</span><strong id="detInss">-</strong></div>
-            <div class="detalhe-row"><span>FGTS (8%)</span><strong id="detFgts">-</strong></div>
-            <div class="detalhe-row"><span>Sistema S (~5,8%)</span><strong id="detSistemaS">-</strong></div>
-            <div class="detalhe-row"><span>Provisao 13o (8,33%)</span><strong id="detDecimo">-</strong></div>
-            <div class="detalhe-row"><span>Provisao Ferias + 1/3 (11,11%)</span><strong id="detFerias">-</strong></div>
-            <div class="detalhe-row detalhe-total"><span>Total encargos</span><strong id="detTotal">-</strong></div>
-          </div>
-          <!-- Demissao accordion -->
-          <div class="detalhe-accordion" id="demissaoAccordion" style="margin-top:20px;display:none;">
-            <button class="detalhe-accordion-btn" id="demissaoToggle" type="button">
-              Simulacao de demissao <span id="demissaoToggleArrow">▼</span>
-            </button>
-            <div class="detalhe-accordion-body" id="demissaoBody" style="display:none;">
-              <div class="detalhe-row"><span>Aviso previo</span><strong id="detAvisoPrevio">-</strong></div>
-              <div class="detalhe-row"><span>Multa FGTS (50%)</span><strong id="detMultaFgts">-</strong></div>
-              <div class="detalhe-row"><span>Ferias proporcionais + 1/3</span><strong id="detFeriasProp">-</strong></div>
-              <div class="detalhe-row"><span>13o proporcional</span><strong id="detDecimoProp">-</strong></div>
-              <div class="detalhe-row detalhe-total"><span>Total de demissao</span><strong id="detDemissaoTotal">-</strong></div>
+        <!-- Toggle analise detalhada -->
+        <div id="deepDiveWrapper" style="display:none;">
+          <button class="toggle-deep-dive" id="toggleDeepDive" aria-expanded="false" type="button">
+            Ver detalhamento dos encargos
+            <span class="toggle-deep-icon">▼</span>
+          </button>
+          <div class="deep-dive-section" id="deepDiveSection" hidden>
+            <div class="calc-col-simple" id="colDetalhes">
+              <div class="calc-col-header">
+                <div class="calc-col-icon" style="background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.2);">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--gold)"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+                </div>
+                <div>
+                  <div class="calc-col-title">Detalhes CLT</div>
+                  <div class="calc-col-sub">Composicao dos encargos</div>
+                </div>
+              </div>
+              <!-- Narrativa personalizada -->
+              <div class="narrative-inline" id="narrativeInline" style="display:none;">
+                <span class="narrative-inline-icon" id="narrativeInlineIcon">💡</span>
+                <div>
+                  <div class="narrative-inline-title" id="narrativeInlineTitle"></div>
+                  <div class="narrative-inline-text" id="narrativeInlineText"></div>
+                </div>
+              </div>
+              <!-- Encargos -->
+              <div id="detalhesEncargos">
+                <div class="detalhe-row"><span>INSS Patronal (20%)</span><strong id="detInss">-</strong></div>
+                <div class="detalhe-row"><span>FGTS (8%)</span><strong id="detFgts">-</strong></div>
+                <div class="detalhe-row"><span>Sistema S (~5,8%)</span><strong id="detSistemaS">-</strong></div>
+                <div class="detalhe-row"><span>Provisao 13o (8,33%)</span><strong id="detDecimo">-</strong></div>
+                <div class="detalhe-row"><span>Provisao Ferias + 1/3 (11,11%)</span><strong id="detFerias">-</strong></div>
+                <div class="detalhe-row detalhe-total"><span>Total encargos</span><strong id="detTotal">-</strong></div>
+              </div>
+              <!-- Demissao accordion -->
+              <div class="detalhe-accordion" id="demissaoAccordion" style="margin-top:20px;display:none;">
+                <button class="detalhe-accordion-btn" id="demissaoToggle" type="button">
+                  Simulacao de demissao <span id="demissaoToggleArrow">▼</span>
+                </button>
+                <div class="detalhe-accordion-body" id="demissaoBody" style="display:none;">
+                  <div class="detalhe-row"><span>Aviso previo</span><strong id="detAvisoPrevio">-</strong></div>
+                  <div class="detalhe-row"><span>Multa FGTS (50%)</span><strong id="detMultaFgts">-</strong></div>
+                  <div class="detalhe-row"><span>Ferias proporcionais + 1/3</span><strong id="detFeriasProp">-</strong></div>
+                  <div class="detalhe-row"><span>13o proporcional</span><strong id="detDecimoProp">-</strong></div>
+                  <div class="detalhe-row detalhe-total"><span>Total de demissao</span><strong id="detDemissaoTotal">-</strong></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -3095,13 +3131,19 @@ function resetCalc() {
   const firstRegime = document.querySelector('input[name="wizardRegime"]');
   if (firstRegime) firstRegime.checked = true;
   document.getElementById('resultInline').style.display = 'none';
-  document.getElementById('colDetalhes').style.display = 'none';
+  const ddWrap = document.getElementById('deepDiveWrapper');
+  if (ddWrap) ddWrap.style.display = 'none';
+  const ddSec = document.getElementById('deepDiveSection');
+  if (ddSec) ddSec.hidden = true;
+  const ddBtn = document.getElementById('toggleDeepDive');
+  if (ddBtn) ddBtn.setAttribute('aria-expanded', 'false');
   document.getElementById('calcCtaBar').style.display = 'none';
   document.getElementById('narrativeInline').style.display = 'none';
   document.getElementById('demissaoAccordion').style.display = 'none';
   document.getElementById('demissaoBody').style.display = 'none';
   document.getElementById('overviewSection').style.display = 'none';
-  document.getElementById('deltaBigContainer').classList.remove('is-visible');
+  const dc = document.getElementById('deltaBigContainer');
+  dc.classList.remove('is-visible','is-pj-expensive');
 }
 
 document.getElementById('btnReset').addEventListener('click', resetCalc);
@@ -3388,6 +3430,12 @@ function calcAndRender() {
     document.getElementById('deltaBigPercent').textContent = 'PJ ' + pctDiff + '% mais caro para a empresa';
     document.getElementById('deltaBigSub').textContent = 'O honorario PJ supera o custo total CLT em ' + brl(absDiff) + '/mes (' + brl(Math.abs(difAnual)) + '/ano).';
   }
+  // Estado ganho/perda no delta
+  if (diff < 0) {
+    deltaContainer.classList.add('is-pj-expensive');
+  } else {
+    deltaContainer.classList.remove('is-pj-expensive');
+  }
   deltaContainer.classList.add('is-visible');
 
   // --- Detalhes: encargos ---
@@ -3405,7 +3453,9 @@ function calcAndRender() {
   document.getElementById('detDecimoProp').textContent = brl(demissao.dec13Prop);
   document.getElementById('detDemissaoTotal').textContent = brl(demissao.total);
 
-  document.getElementById('colDetalhes').style.display = 'block';
+  // Mostrar deep dive wrapper (toggle oculto por default)
+  const ddWrap = document.getElementById('deepDiveWrapper');
+  if (ddWrap) ddWrap.style.display = 'block';
   document.getElementById('demissaoAccordion').style.display = 'block';
 
   // --- Narrativa contextual ---
@@ -3536,6 +3586,15 @@ document.getElementById('demissaoToggle').addEventListener('click', function() {
   const open = body.style.display === 'none' || body.style.display === '';
   body.style.display = open ? 'block' : 'none';
   document.getElementById('demissaoToggleArrow').textContent = open ? '▲' : '▼';
+});
+
+// Toggle analise detalhada
+document.getElementById('toggleDeepDive').addEventListener('click', function() {
+  const sec = document.getElementById('deepDiveSection');
+  const expanded = this.getAttribute('aria-expanded') === 'true';
+  this.setAttribute('aria-expanded', !expanded);
+  sec.hidden = expanded;
+  this.querySelector('.toggle-deep-icon').style.transform = expanded ? '' : 'rotate(180deg)';
 });
 
 /* ============================
