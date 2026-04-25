@@ -841,7 +841,7 @@
     .wizard-option:has(input:checked) { border-color: var(--gold); background: rgba(201,168,76,.07); }
     .wizard-option:hover { border-color: rgba(201,168,76,.4); }
     .wizard-inputs { display: flex; flex-direction: column; gap: 20px; max-width: 480px; }
-    .wizard-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(6,14,26,.96); backdrop-filter: blur(8px); border-top: 1px solid rgba(255,255,255,.06); display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; z-index: 100; }
+    .wizard-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(6,14,26,.96); backdrop-filter: blur(8px); border-top: 1px solid rgba(255,255,255,.06); display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; z-index: 700; }
     .btn-wizard-prev { background: transparent; color: var(--silver); border: 1px solid rgba(255,255,255,.12); padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: .9rem; }
     .btn-wizard-prev:hover { color: var(--white); }
     .btn-wizard-next { padding: 14px 32px; }
@@ -2737,8 +2737,11 @@ function computeAndShowDashboard() {
     body.style.display = body.style.display === 'none' ? 'block' : 'none';
   });
 
-  // Mostrar dashboard, esconder wizard
+  // Mostrar dashboard, esconder wizard e nav do wizard
   document.getElementById('wizard').style.display = 'none';
+  document.getElementById('wizardNavBar').style.display = 'none';
+  const bb = document.getElementById('bottomBar');
+  if (bb) bb.classList.add('visible');
   document.getElementById('dashboard').style.display = 'block';
   document.getElementById('dashboard').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
