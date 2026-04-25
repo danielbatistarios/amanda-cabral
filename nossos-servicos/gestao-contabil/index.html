@@ -261,10 +261,10 @@
 
     /* CRED STRIP MARQUEE */
     .cred-strip { background: var(--blue-800); border-top: 1px solid rgba(201,168,76,.15); border-bottom: 1px solid rgba(201,168,76,.15); padding: 18px 0; overflow: hidden; }
-    .cred-track { display: flex; gap: 28px; width: max-content; animation: marquee 22s linear infinite; white-space: nowrap; }
-    .cred-item { display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 500; color: var(--text); }
-    .cred-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
-    .cred-item strong { color: var(--white); }
+    .cred-track { display: flex; gap: 48px; width: max-content; animation: marquee 30s linear infinite; white-space: nowrap; }
+    .cred-item { display: flex; align-items: center; gap: 12px; font-size: 0.78rem; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; color: rgba(255,255,255,0.85); white-space: nowrap; }
+    .cred-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--gold); opacity: 0.6; flex-shrink: 0; }
+    .cred-item strong { color: var(--gold); }
 
     /* BREADCRUMB */
     .breadcrumb { padding: 0 0 24px; background: transparent; }
@@ -408,10 +408,13 @@
     .case-card p { font-size: 14px; color: var(--text); line-height: 1.6; }
 
     /* SETORES MARQUEE */
-    .setores { background: var(--blue-900); padding: 40px 0; overflow: hidden; border-top: 1px solid rgba(255,255,255,.06); border-bottom: 1px solid rgba(255,255,255,.06); }
-    .marquee-track { display: flex; gap: 28px; width: max-content; animation: marquee 28s linear infinite; white-space: nowrap; }
-    .marquee-item { display: flex; align-items: center; gap: 8px; font-size: 11px; font-weight: 500; color: var(--text-muted); }
-    .marquee-item::before { content: '◆'; color: var(--gold); font-size: 8px; }
+    .setores { background: var(--blue-800); padding: 18px 0; overflow: hidden; position: relative; border-top: 1px solid rgba(255,255,255,.03); border-bottom: 1px solid rgba(255,255,255,.03); }
+    .setores::before, .setores::after { content: ""; position: absolute; top: 0; bottom: 0; width: 120px; z-index: 2; pointer-events: none; }
+    .setores::before { left: 0; background: linear-gradient(90deg, var(--blue-800), transparent); }
+    .setores::after { right: 0; background: linear-gradient(-90deg, var(--blue-800), transparent); }
+    .marquee-track { display: flex; gap: 48px; width: max-content; animation: marquee 30s linear infinite; white-space: nowrap; }
+    .marquee-item { display: flex; align-items: center; gap: 12px; font-size: 0.78rem; font-weight: 600; letter-spacing: 1px; text-transform: uppercase; color: rgba(255,255,255,0.85); white-space: nowrap; }
+    .marquee-item .sep { display: inline-block; width: 4px; height: 4px; background: var(--gold); border-radius: 50%; opacity: 0.6; flex-shrink: 0; }
     @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
     /* DEPOIMENTOS */
@@ -971,34 +974,34 @@
   <!-- SETORES MARQUEE -->
   <div class="setores">
     <div class="marquee-track">
-      <div class="marquee-item">Indústria Metalúrgica</div>
-      <div class="marquee-item">Comércio Varejista</div>
-      <div class="marquee-item">Prestação de Serviços</div>
-      <div class="marquee-item">Distribuição</div>
-      <div class="marquee-item">Agronegócio</div>
-      <div class="marquee-item">Construção Civil</div>
-      <div class="marquee-item">Tecnologia</div>
-      <div class="marquee-item">Logística</div>
-      <div class="marquee-item">Alimentício</div>
-      <div class="marquee-item">Saúde e Clínicas</div>
-      <div class="marquee-item">Educação</div>
-      <div class="marquee-item">Autopeças</div>
-      <div class="marquee-item">Farmacêutico</div>
-      <div class="marquee-item">Vestuário</div>
-      <div class="marquee-item">Indústria Metalúrgica</div>
-      <div class="marquee-item">Comércio Varejista</div>
-      <div class="marquee-item">Prestação de Serviços</div>
-      <div class="marquee-item">Distribuição</div>
-      <div class="marquee-item">Agronegócio</div>
-      <div class="marquee-item">Construção Civil</div>
-      <div class="marquee-item">Tecnologia</div>
-      <div class="marquee-item">Logística</div>
-      <div class="marquee-item">Alimentício</div>
-      <div class="marquee-item">Saúde e Clínicas</div>
-      <div class="marquee-item">Educação</div>
-      <div class="marquee-item">Autopeças</div>
-      <div class="marquee-item">Farmacêutico</div>
-      <div class="marquee-item">Vestuário</div>
+      <div class="marquee-item">Indústria Metalúrgica<span class="sep"></span></div>
+      <div class="marquee-item">Comércio Varejista<span class="sep"></span></div>
+      <div class="marquee-item">Prestação de Serviços<span class="sep"></span></div>
+      <div class="marquee-item">Distribuição<span class="sep"></span></div>
+      <div class="marquee-item">Agronegócio<span class="sep"></span></div>
+      <div class="marquee-item">Construção Civil<span class="sep"></span></div>
+      <div class="marquee-item">Tecnologia<span class="sep"></span></div>
+      <div class="marquee-item">Logística<span class="sep"></span></div>
+      <div class="marquee-item">Alimentício<span class="sep"></span></div>
+      <div class="marquee-item">Saúde e Clínicas<span class="sep"></span></div>
+      <div class="marquee-item">Educação<span class="sep"></span></div>
+      <div class="marquee-item">Autopeças<span class="sep"></span></div>
+      <div class="marquee-item">Farmacêutico<span class="sep"></span></div>
+      <div class="marquee-item">Vestuário<span class="sep"></span></div>
+      <div class="marquee-item">Indústria Metalúrgica<span class="sep"></span></div>
+      <div class="marquee-item">Comércio Varejista<span class="sep"></span></div>
+      <div class="marquee-item">Prestação de Serviços<span class="sep"></span></div>
+      <div class="marquee-item">Distribuição<span class="sep"></span></div>
+      <div class="marquee-item">Agronegócio<span class="sep"></span></div>
+      <div class="marquee-item">Construção Civil<span class="sep"></span></div>
+      <div class="marquee-item">Tecnologia<span class="sep"></span></div>
+      <div class="marquee-item">Logística<span class="sep"></span></div>
+      <div class="marquee-item">Alimentício<span class="sep"></span></div>
+      <div class="marquee-item">Saúde e Clínicas<span class="sep"></span></div>
+      <div class="marquee-item">Educação<span class="sep"></span></div>
+      <div class="marquee-item">Autopeças<span class="sep"></span></div>
+      <div class="marquee-item">Farmacêutico<span class="sep"></span></div>
+      <div class="marquee-item">Vestuário<span class="sep"></span></div>
     </div>
   </div>
 
