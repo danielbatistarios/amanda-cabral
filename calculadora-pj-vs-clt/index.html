@@ -1040,6 +1040,17 @@
   .btn-reset { background: transparent; color: var(--silver); border: 1px solid rgba(255,255,255,.12); padding: 8px 20px; border-radius: 8px; font-size: .82rem; cursor: pointer; transition: color .2s; }
   .btn-reset:hover { color: var(--white); }
 
+  /* ===== REGIME CARDS ===== */
+  .regime-cards { display: flex; flex-direction: column; gap: 8px; margin-top: 4px; }
+  .regime-card { display: flex; align-items: flex-start; gap: 12px; padding: 14px 16px; border-radius: 10px; border: 1px solid rgba(255,255,255,.08); background: rgba(255,255,255,.02); cursor: pointer; transition: border-color .2s, background .2s; }
+  .regime-card input[type="radio"] { width: 16px; height: 16px; accent-color: var(--gold); flex-shrink: 0; margin-top: 3px; }
+  .regime-card-inner { flex: 1; }
+  .regime-card-nome { font-size: .88rem; font-weight: 700; color: var(--white); }
+  .regime-card-aliq { display: inline-block; font-size: .72rem; font-weight: 700; color: var(--gold); background: rgba(201,168,76,.1); border: 1px solid rgba(201,168,76,.25); border-radius: 20px; padding: 2px 8px; margin: 3px 0 4px; }
+  .regime-card-desc { font-size: .75rem; color: var(--silver); line-height: 1.4; }
+  .regime-card:has(input:checked) { border-color: var(--gold); background: rgba(201,168,76,.07); }
+  .regime-card:hover { border-color: rgba(201,168,76,.35); }
+
   /* ===== RESPONSIVO ===== */
   @media (max-width: 900px) {
     .calc-grid-simple { grid-template-columns: 1fr 1fr; }
@@ -1656,11 +1667,33 @@
             </div>
           </div>
           <div class="calc-input-group">
-            <label>Regime da empresa PJ</label>
-            <select id="wizardRegime">
-              <option value="outros">Lucro Presumido / Lucro Real</option>
-              <option value="simples">Simples Nacional</option>
-            </select>
+            <label>Regime tributario da empresa PJ</label>
+            <div class="regime-cards" id="regimeCards">
+              <label class="regime-card">
+                <input type="radio" name="wizardRegime" value="simples" checked>
+                <div class="regime-card-inner">
+                  <div class="regime-card-nome">Simples Nacional</div>
+                  <div class="regime-card-aliq">~6–14% s/ NF</div>
+                  <div class="regime-card-desc">Faturamento ate R$4,8M/ano. Aliquota depende do anexo e receita acumulada.</div>
+                </div>
+              </label>
+              <label class="regime-card">
+                <input type="radio" name="wizardRegime" value="presumido">
+                <div class="regime-card-inner">
+                  <div class="regime-card-nome">Lucro Presumido</div>
+                  <div class="regime-card-aliq">~13–16% s/ NF</div>
+                  <div class="regime-card-desc">Faturamento ate R$78M/ano. Servicos: IRPJ + CSLL + PIS + COFINS + ISS.</div>
+                </div>
+              </label>
+              <label class="regime-card">
+                <input type="radio" name="wizardRegime" value="real">
+                <div class="regime-card-inner">
+                  <div class="regime-card-nome">Lucro Real</div>
+                  <div class="regime-card-aliq">~15–25% s/ NF</div>
+                  <div class="regime-card-desc">Sem limite de faturamento. Tributacao sobre lucro efetivo. Mais complexo.</div>
+                </div>
+              </label>
+            </div>
           </div>
 
           <!-- Resultado inline -->
@@ -1673,8 +1706,9 @@
               </div>
               <div class="result-inline-card pj">
                 <div class="result-delta-badge" id="resDelta"></div>
-                <div class="result-inline-label">Custo PJ/mes</div>
+                <div class="result-inline-label">Honorario PJ/mes (NF)</div>
                 <div class="result-inline-value gold" id="resPjTotal">-</div>
+                <div class="result-inline-sub" id="resPjSub"></div>
               </div>
             </div>
             <div class="result-inline-anual" id="resAnual"></div>
@@ -2537,8 +2571,11 @@ document.querySelectorAll('input[name="motivacao"]').forEach(r => r.addEventList
   calcAndRender();
 }));
 
+// Listener de regime (radio cards)
+document.querySelectorAll('input[name="wizardRegime"]').forEach(r => r.addEventListener('change', calcAndRender));
+
 // Listeners de inputs numericos: recalcula em tempo real
-['wizardSalario','wizardHonorario','wizardVr','wizardVt','wizardSaude','wizardTempo','wizardRegime'].forEach(id => {
+['wizardSalario','wizardHonorario','wizardVr','wizardVt','wizardSaude','wizardTempo'].forEach(id => {
   const el = document.getElementById(id);
   if (el) el.addEventListener('input', calcAndRender);
 });
@@ -2549,7 +2586,9 @@ function resetCalc() {
   document.querySelectorAll('#wizard input[type="radio"]').forEach(r => r.checked = false);
   document.querySelectorAll('#wizard input[type="text"]').forEach(i => i.value = '');
   document.getElementById('wizardTempo').value = '24';
-  document.getElementById('wizardRegime').value = 'outros';
+  // Reset regime para Simples Nacional (primeiro radio)
+  const firstRegime = document.querySelector('input[name="wizardRegime"]');
+  if (firstRegime) firstRegime.checked = true;
   document.getElementById('resultInline').style.display = 'none';
   document.getElementById('colDetalhes').style.display = 'none';
   document.getElementById('calcCtaBar').style.display = 'none';
@@ -2650,13 +2689,26 @@ const NARRATIVAS = {
   }
 };
 
+// Aliquota efetiva estimada de impostos PJ por regime (servicos)
+const REGIME_ALIQ = {
+  simples:   0.10,  // media Anexo III/V para honorarios entre R$5-15k
+  presumido: 0.145, // IRPJ 4,8% + CSLL 2,88% + PIS 0,65% + COFINS 3% + ISS 3% = ~14,5%
+  real:      0.19   // estimativa conservadora sobre lucro efetivo + folha pro-labore
+};
+
+function getRegime() {
+  const sel = document.querySelector('input[name="wizardRegime"]:checked');
+  return sel ? sel.value : 'simples';
+}
+
 function calcAndRender() {
   const salario = parseFormattedNumber(document.getElementById('wizardSalario').value);
   if (salario <= 0) return;
 
   const honorario = parseFormattedNumber(document.getElementById('wizardHonorario').value);
-  const regime = document.getElementById('wizardRegime').value || 'outros';
+  const regime = getRegime();
   const isSimples = regime === 'simples';
+  const aliqPJ = REGIME_ALIQ[regime] || REGIME_ALIQ.simples;
   const vr = parseFormattedNumber(document.getElementById('wizardVr').value);
   const vt = parseFormattedNumber(document.getElementById('wizardVt').value);
   const saude = parseFormattedNumber(document.getElementById('wizardSaude').value);
@@ -2665,34 +2717,43 @@ function calcAndRender() {
   // Calculo CLT
   const clt = calcCustoTotalCLT(salario, vr, vt, saude, true, SISTEMA_S, isSimples, 0.02, false, 0, 0.02);
 
-  // Custo PJ: honorario definido ou +10% sobre salario como estimativa minima
+  // Custo PJ para a empresa contratante: o honorario bruto da NF
   const pjCusto = honorario > 0 ? honorario : Math.round(salario * 1.10);
+  // Liquido que o prestador recebe apos impostos do CNPJ
+  const pjLiquido = Math.round(pjCusto * (1 - aliqPJ));
 
   // Calculo demissao
   const demissao = calcCustoDemissao(salario, tempo);
 
   // --- Resultado inline: cards CLT x PJ ---
   document.getElementById('resCltTotal').textContent = brl(clt.custoTotal);
-  document.getElementById('resCltSub').textContent = 'Encargos: ' + brl(clt.encargos);
+  document.getElementById('resCltSub').textContent = 'Liquido empregado: ' + brl(clt.custoTotal - clt.encargos - clt.beneficios);
   document.getElementById('resPjTotal').textContent = brl(pjCusto);
 
+  // Sub do PJ: liquido apos impostos do CNPJ
+  const pjSubEl = document.getElementById('resPjSub');
+  if (pjSubEl) pjSubEl.textContent = 'Liquido estimado (' + Math.round(aliqPJ * 100) + '% impostos): ' + brl(pjLiquido);
+
+  // Delta: comparacao de custo para a empresa
   const diff = clt.custoTotal - pjCusto;
   const deltaEl = document.getElementById('resDelta');
   if (Math.abs(diff) < 50) {
-    deltaEl.textContent = 'Equivalente';
+    deltaEl.textContent = 'Custo equivalente';
     deltaEl.className = 'result-delta-badge neutral';
   } else if (diff > 0) {
     const pct = ((diff / pjCusto) * 100).toFixed(0);
-    deltaEl.textContent = 'PJ ' + pct + '% mais barato';
+    deltaEl.textContent = 'PJ ' + pct + '% mais barato p/ empresa';
     deltaEl.className = 'result-delta-badge cheaper';
   } else {
     const pct = ((-diff / clt.custoTotal) * 100).toFixed(0);
-    deltaEl.textContent = 'PJ ' + pct + '% mais caro';
+    deltaEl.textContent = 'PJ ' + pct + '% mais caro p/ empresa';
     deltaEl.className = 'result-delta-badge expensive';
   }
 
   const difAnual = diff * 12;
-  const quemCustaMais = diff > 0 ? 'CLT custa ' + brl(Math.abs(difAnual)) + '/ano a mais que PJ' : 'PJ custa ' + brl(Math.abs(difAnual)) + '/ano a mais que CLT';
+  const quemCustaMais = diff > 0
+    ? 'CLT custa ' + brl(Math.abs(difAnual)) + '/ano a mais para a empresa'
+    : 'PJ custa ' + brl(Math.abs(difAnual)) + '/ano a mais para a empresa';
   document.getElementById('resAnual').textContent = quemCustaMais;
 
   document.getElementById('resultInline').style.display = 'block';
