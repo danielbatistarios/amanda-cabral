@@ -609,16 +609,22 @@ address { font-style: normal; }
 .local-presence-sec { padding: var(--sec-pad) 0; background: var(--z1); }
 .local-presence-sec .sec-label { color: var(--dourado); }
 .local-presence-sec .sec-h { color: var(--paper); }
-.local-prose { max-width: 780px; margin: 0 auto 64px; }
-.local-prose p { font-size: 17px; line-height: 1.85; color: rgba(255,255,255,.65); margin-bottom: 20px; }
-.local-prose p:last-child { margin-bottom: 0; }
-.local-prose strong { color: var(--paper); font-weight: 700; }
-.coverage-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
+.coverage-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-bottom: 48px; }
 .coverage-col { background: rgba(255,255,255,.025); border: 1px solid rgba(255,255,255,.06); border-radius: 16px; padding: 32px 28px; }
 .coverage-col h3 { font-size: 11px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--dourado); margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,.08); }
 .coverage-col ul { list-style: none; display: flex; flex-direction: column; gap: 10px; }
 .coverage-col li { font-size: 14px; color: rgba(255,255,255,.65); display: flex; align-items: center; gap: 10px; }
 .coverage-col li::before { content: ''; display: inline-block; width: 6px; height: 6px; background: var(--dourado); border-radius: 50%; flex-shrink: 0; opacity: .7; }
+.local-prose-wrap { max-width: 780px; margin: 0 auto; }
+.local-prose { overflow: hidden; max-height: 0; transition: max-height .5s ease; }
+.local-prose.is-open { max-height: 600px; }
+.local-prose p { font-size: 17px; line-height: 1.85; color: rgba(255,255,255,.65); margin-bottom: 20px; padding-top: 4px; }
+.local-prose p:last-child { margin-bottom: 0; }
+.local-prose strong { color: var(--paper); font-weight: 700; }
+.local-prose-toggle { display: flex; align-items: center; gap: 8px; background: none; border: 1px solid rgba(255,255,255,.12); border-radius: 8px; color: rgba(255,255,255,.6); font-size: 13px; font-weight: 600; letter-spacing: .04em; padding: 12px 20px; cursor: pointer; transition: color .2s, border-color .2s; margin-top: 24px; }
+.local-prose-toggle:hover { color: var(--dourado); border-color: var(--dourado); }
+.local-prose-toggle svg { transition: transform .3s; }
+.local-prose-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
 
 /* === AMANDA CTA STRIP (light) === */
 .amanda-cta-strip { background: var(--lt-bg); padding: var(--sec-pad) 0; overflow: hidden; }
@@ -1268,57 +1274,7 @@ a.footer-nap-row:hover svg { color: var(--dourado); }
   </div>
 </section>
 
-<!-- 7. PRESENÇA LOCAL EM PARÁ DE MINAS -->
-<section class="local-presence-sec">
-  <div class="container">
-    <div class="sec-label reveal">Onde Atuamos em Pará de Minas</div>
-    <h2 class="sec-h reveal">Contabilidade especializada para cada polo e bairro da cidade</h2>
-
-    <div class="local-prose reveal">
-      <p>
-        A economia de Pará de Minas é <strong>industrial e diversa</strong>. O Distrito Industrial Antônio Júlio de Faria concentra cerca de 45 empresas nos setores têxtil, fundição, cerâmica e mineração de agalmatolito. O Distrito Industrial 2, às margens da BR-262, abriga operações de maior porte, incluindo o complexo da <strong>Itambé Laticínios</strong>. No eixo comercial, o movimento se concentra na Avenida Benedito Valadares, na Avenida Getúlio Vargas e na Rua Direita, no Centro.
-      </p>
-      <p>
-        Cada polo tem uma estrutura tributária própria: indústrias com ICMS-ST e IPI, comércio varejista no Simples Nacional, profissionais liberais com ISSQN e holdings familiares para proteção patrimonial. <strong>Atendemos empresas em todos esses polos</strong>: indústrias do Jardim Industrial e do Parque Industrial, comércios do Centro, Santos Dumont, Padre Libério e Eldorado, clínicas e escritórios no Dom Bosco e no Belvedere.
-      </p>
-    </div>
-
-    <div class="coverage-grid reveal">
-      <div class="coverage-col">
-        <h3>Zona Industrial</h3>
-        <ul>
-          <li>Distrito Industrial Antônio Júlio de Faria</li>
-          <li>Distrito Industrial 2 (BR-262)</li>
-          <li>Jardim Industrial</li>
-          <li>Parque Industrial</li>
-          <li>Polo Têxtil e Metalúrgico</li>
-        </ul>
-      </div>
-      <div class="coverage-col">
-        <h3>Eixo Comercial</h3>
-        <ul>
-          <li>Centro (Av. Benedito Valadares)</li>
-          <li>Av. Getúlio Vargas</li>
-          <li>Rua Direita</li>
-          <li>Santos Dumont</li>
-          <li>Eldorado</li>
-        </ul>
-      </div>
-      <div class="coverage-col">
-        <h3>Bairros Residenciais</h3>
-        <ul>
-          <li>Padre Libério</li>
-          <li>Dom Bosco</li>
-          <li>Belvedere</li>
-          <li>São João</li>
-          <li>Todo o município</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 8. AMANDA CTA STRIP -->
+<!-- 7. AMANDA CTA STRIP -->
 <section class="amanda-cta-strip">
   <div class="container">
     <div class="amanda-cta-inner">
@@ -1346,7 +1302,7 @@ a.footer-nap-row:hover svg { color: var(--dourado); }
   </div>
 </section>
 
-<!-- 9. SETORES MARQUEE -->
+<!-- 8. SETORES MARQUEE -->
 <div class="setores-marquee">
   <h2 class="visually-hidden">Setores atendidos pelo escrit&#243;rio de contabilidade em Par&#225; de Minas</h2>
   <div class="setores-track" id="setoresTrack">
@@ -1372,7 +1328,7 @@ a.footer-nap-row:hover svg { color: var(--dourado); }
   </div>
 </div>
 
-<!-- 10. CASES -->
+<!-- 9. CASES -->
 <section class="cases-sec dot-grid">
   <div class="container">
     <div class="sec-label lt reveal" style="text-align:center;">Resultados Reais</div>
@@ -1403,7 +1359,7 @@ a.footer-nap-row:hover svg { color: var(--dourado); }
   </div>
 </section>
 
-<!-- 11. DEPOIMENTOS -->
+<!-- 10. DEPOIMENTOS -->
 <section class="depoimentos-sec">
   <div class="container">
     <div class="sec-label on-lt reveal" style="text-align:center;">Depoimentos</div>
@@ -1434,7 +1390,7 @@ a.footer-nap-row:hover svg { color: var(--dourado); }
   </div>
 </section>
 
-<!-- 12. FAQ -->
+<!-- 11. FAQ -->
 <section class="faq-sec">
   <div class="container">
     <div class="sec-label lt reveal" style="text-align:center;">D&#250;vidas</div>
@@ -1482,6 +1438,65 @@ a.footer-nap-row:hover svg { color: var(--dourado); }
         </h3>
         <div class="faq-a"><p>Sim. A troca de contador &#233; um processo simples e n&#227;o interrompe a opera&#231;&#227;o da empresa. Assumimos a transfer&#234;ncia de todos os documentos e dados do contador anterior. Em geral, o processo leva entre 15 e 30 dias e &#233; completamente transparente para o cliente.</p></div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- 12. PRESENÇA LOCAL EM PARÁ DE MINAS -->
+<section class="local-presence-sec">
+  <div class="container">
+    <div class="sec-label reveal">Onde Atuamos em Pará de Minas</div>
+    <h2 class="sec-h reveal">Contabilidade especializada para cada polo e bairro da cidade</h2>
+
+    <div class="coverage-grid reveal">
+      <div class="coverage-col">
+        <h3>Zona Industrial</h3>
+        <ul>
+          <li>Distrito Industrial Antônio Júlio de Faria</li>
+          <li>Distrito Industrial 2 (BR-262)</li>
+          <li>Jardim Industrial</li>
+          <li>Parque Industrial</li>
+          <li>Polo Têxtil e Metalúrgico</li>
+        </ul>
+      </div>
+      <div class="coverage-col">
+        <h3>Eixo Comercial</h3>
+        <ul>
+          <li>Centro (Av. Benedito Valadares)</li>
+          <li>Av. Getúlio Vargas</li>
+          <li>Rua Direita</li>
+          <li>Santos Dumont</li>
+          <li>Eldorado</li>
+        </ul>
+      </div>
+      <div class="coverage-col">
+        <h3>Bairros Residenciais</h3>
+        <ul>
+          <li>Padre Libério</li>
+          <li>Dom Bosco</li>
+          <li>Belvedere</li>
+          <li>São João</li>
+          <li>Todo o município</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="local-prose-wrap reveal" id="localProseWrap">
+      <div class="local-prose" id="localProse">
+        <p>
+          A economia de Pará de Minas é <strong>industrial e diversa</strong>. O Distrito Industrial Antônio Júlio de Faria concentra cerca de 45 empresas nos setores têxtil, fundição, cerâmica e mineração de agalmatolito. O Distrito Industrial 2, às margens da BR-262, abriga operações de maior porte, incluindo o complexo da <strong>Itambé Laticínios</strong>. No eixo comercial, o movimento se concentra na Avenida Benedito Valadares, na Avenida Getúlio Vargas e na Rua Direita, no Centro.
+        </p>
+        <p>
+          Cada polo tem uma estrutura tributária própria: indústrias com ICMS-ST e IPI, comércio varejista no Simples Nacional, profissionais liberais com ISSQN e holdings familiares para proteção patrimonial. <strong>Atendemos empresas em todos esses polos</strong>: indústrias do Jardim Industrial e do Parque Industrial, comércios do Centro, Santos Dumont, Padre Libério e Eldorado, clínicas e escritórios no Dom Bosco e no Belvedere.
+        </p>
+        <p>
+          Para o comércio varejista do Centro e dos bairros, o foco está na escolha correta entre Simples Nacional, Lucro Presumido e Lucro Real, que pode representar uma diferença de até 8 pontos percentuais na carga tributária. Para clínicas e consultórios no Dom Bosco e no Belvedere, trabalhamos com planejamento de ISSQN e constituição de sociedades médicas. Para holdings patrimoniais, a localização do imóvel em Pará de Minas define alíquotas de ITCD e critérios de valorização.
+        </p>
+      </div>
+      <button class="local-prose-toggle" id="localProseToggle" aria-expanded="false">
+        Ver mais sobre a economia de Pará de Minas
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M6 9l6 6 6-6"/></svg>
+      </button>
     </div>
   </div>
 </section>
@@ -1794,6 +1809,19 @@ document.querySelectorAll('.faq-q').forEach(function(btn) {
     if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); btn.click(); }
   });
 });
+
+// Local prose toggle
+var localToggle = document.getElementById('localProseToggle');
+var localProse = document.getElementById('localProse');
+if (localToggle && localProse) {
+  localToggle.addEventListener('click', function() {
+    var open = localProse.classList.toggle('is-open');
+    localToggle.setAttribute('aria-expanded', open);
+    localToggle.childNodes[0].textContent = open
+      ? 'Ver menos '
+      : 'Ver mais sobre a economia de Pará de Minas ';
+  });
+}
 </script>
 </body>
 </html>
