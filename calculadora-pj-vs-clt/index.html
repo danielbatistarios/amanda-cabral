@@ -1063,6 +1063,99 @@
     .result-inline-row { grid-template-columns: 1fr; }
   }
 
+  /* ===== CONTEXT STRIP ===== */
+  .context-strip {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 0;
+    background: rgba(255,255,255,.025);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 16px;
+    padding: 24px 28px;
+    margin-bottom: 32px;
+  }
+  .context-group { display: flex; flex-direction: column; gap: 14px; }
+  .context-group-label {
+    display: flex; align-items: center; gap: 10px;
+    font-size: .72rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .1em; color: var(--silver);
+  }
+  .context-group-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 20px; height: 20px; border-radius: 50%;
+    background: rgba(201,168,76,.15); border: 1px solid rgba(201,168,76,.35);
+    color: var(--gold); font-size: .7rem; font-weight: 700; flex-shrink: 0;
+  }
+  .context-options { display: flex; gap: 8px; flex-wrap: wrap; }
+  .ctx-option { cursor: pointer; }
+  .ctx-option input[type="radio"] { display: none; }
+  .ctx-option-inner {
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+    padding: 12px 16px; border-radius: 10px;
+    border: 1px solid rgba(255,255,255,.08);
+    background: rgba(255,255,255,.02);
+    transition: border-color .2s, background .2s;
+    min-width: 90px; text-align: center;
+  }
+  .ctx-option-inner svg { width: 18px; height: 18px; color: var(--silver); flex-shrink: 0; transition: color .2s; }
+  .ctx-option-inner span { font-size: .82rem; font-weight: 600; color: var(--white); }
+  .ctx-option-inner small { font-size: .7rem; color: var(--silver); }
+  .ctx-option:has(input:checked) .ctx-option-inner {
+    border-color: var(--gold);
+    background: rgba(201,168,76,.08);
+  }
+  .ctx-option:has(input:checked) .ctx-option-inner svg { color: var(--gold); }
+  .ctx-option:hover .ctx-option-inner { border-color: rgba(201,168,76,.35); }
+  .context-divider {
+    width: 1px; background: rgba(255,255,255,.06); margin: 0 24px;
+  }
+  @media (max-width: 700px) {
+    .context-strip { grid-template-columns: 1fr; gap: 20px; }
+    .context-divider { width: 100%; height: 1px; margin: 0; }
+  }
+
+  /* ===== OVERVIEW INTELIGENTE ===== */
+  .overview-section {
+    margin: 8px 0 32px;
+    border: 1px solid rgba(201,168,76,.2);
+    border-radius: 16px;
+    overflow: hidden;
+    background: rgba(255,255,255,.015);
+  }
+  .overview-header {
+    display: flex; gap: 16px; align-items: flex-start;
+    padding: 24px 28px; border-bottom: 1px solid rgba(255,255,255,.06);
+    background: rgba(201,168,76,.04);
+  }
+  .overview-header-icon { font-size: 1.6rem; flex-shrink: 0; margin-top: 2px; }
+  .overview-header-tag {
+    font-size: .7rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .1em; color: var(--gold); margin-bottom: 4px;
+  }
+  .overview-header-title {
+    font-family: var(--font-display); font-size: 1.1rem; color: var(--white);
+    font-weight: 600; margin: 0;
+  }
+  .overview-block {
+    display: flex; gap: 16px; align-items: flex-start;
+    padding: 20px 28px; border-bottom: 1px solid rgba(255,255,255,.05);
+    transition: background .2s;
+  }
+  .overview-block:last-child { border-bottom: none; }
+  .overview-block-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 2px; width: 28px; text-align: center; }
+  .overview-block-content { flex: 1; }
+  .overview-block-label {
+    font-size: .7rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .08em; color: var(--silver); margin-bottom: 6px;
+  }
+  .overview-block-text { font-size: .9rem; color: rgba(232,236,244,.85); line-height: 1.6; }
+  .overview-block-text strong { color: var(--white); font-weight: 700; }
+  .overview-block-text .num { color: var(--gold); font-weight: 700; font-variant-numeric: tabular-nums; }
+  .overview-block-alert { background: rgba(239,68,68,.04); border-left: 3px solid rgba(239,68,68,.35); }
+  .overview-block-alert .overview-block-label { color: #F87171; }
+  .overview-block-rec { background: rgba(201,168,76,.04); border-left: 3px solid rgba(201,168,76,.35); }
+  .overview-block-rec .overview-block-label { color: var(--gold); }
+
   /* ===== ARTIGO EDITORIAL ===== */
   .artigo-editorial {
     background: var(--blue-900);
@@ -1558,46 +1651,71 @@
       </div>
 
       <!-- Pergunta 1: Cargo -->
-      <div class="quick-q-block">
-        <div class="quick-q-label">Voce é...</div>
-        <div class="quick-q-options" id="cargoOptions">
-          <label class="quick-option">
-            <input type="radio" name="cargo" value="contratante">
-            <span>Empresa / RH</span>
-            <small>Quero contratar alguem</small>
-          </label>
-          <label class="quick-option">
-            <input type="radio" name="cargo" value="profissional">
-            <span>Profissional</span>
-            <small>Avaliando como me contratar</small>
-          </label>
-          <label class="quick-option">
-            <input type="radio" name="cargo" value="comparar">
-            <span>So comparando</span>
-            <small>Curiosidade ou planejamento</small>
-          </label>
+      <div class="context-strip">
+        <div class="context-group">
+          <div class="context-group-label">
+            <span class="context-group-num">1</span>
+            Voce é...
+          </div>
+          <div class="context-options" id="cargoOptions">
+            <label class="ctx-option">
+              <input type="radio" name="cargo" value="contratante">
+              <div class="ctx-option-inner">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/></svg>
+                <span>Empresa / RH</span>
+                <small>Quero contratar</small>
+              </div>
+            </label>
+            <label class="ctx-option">
+              <input type="radio" name="cargo" value="profissional">
+              <div class="ctx-option-inner">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M6 20c0-1.657 2.686-4 6-4s6 2.343 6 4"/></svg>
+                <span>Profissional</span>
+                <small>Como me contratar</small>
+              </div>
+            </label>
+            <label class="ctx-option">
+              <input type="radio" name="cargo" value="comparar">
+              <div class="ctx-option-inner">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 14v5a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-5"/><polyline points="6 9 12 3 18 9"/></svg>
+                <span>So comparando</span>
+                <small>Curiosidade</small>
+              </div>
+            </label>
+          </div>
         </div>
-      </div>
-
-      <!-- Pergunta 2: Motivacao -->
-      <div class="quick-q-block">
-        <div class="quick-q-label">O cenario é...</div>
-        <div class="quick-q-options" id="motivacaoOptions">
-          <label class="quick-option">
-            <input type="radio" name="motivacao" value="nova">
-            <span>Nova contratacao</span>
-            <small>Ainda nao esta no regime definido</small>
-          </label>
-          <label class="quick-option">
-            <input type="radio" name="motivacao" value="existente">
-            <span>Migracao CLT para PJ</span>
-            <small>Relacao existente mudando de regime</small>
-          </label>
-          <label class="quick-option">
-            <input type="radio" name="motivacao" value="demissao">
-            <span>Pos-demissao</span>
-            <small>Recontratar apos desligamento</small>
-          </label>
+        <div class="context-divider"></div>
+        <div class="context-group">
+          <div class="context-group-label">
+            <span class="context-group-num">2</span>
+            O cenario é...
+          </div>
+          <div class="context-options" id="motivacaoOptions">
+            <label class="ctx-option">
+              <input type="radio" name="motivacao" value="nova">
+              <div class="ctx-option-inner">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                <span>Nova contratacao</span>
+                <small>Ainda nao definido</small>
+              </div>
+            </label>
+            <label class="ctx-option">
+              <input type="radio" name="motivacao" value="existente">
+              <div class="ctx-option-inner">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 10a6 6 0 0 1 12 0"/><path d="M20 10a6 6 0 0 1-12 0"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/></svg>
+                <span>Migracao CLT para PJ</span>
+                <small>Mudando de regime</small>
+              </div>
+            </label>
+            <label class="ctx-option">
+              <input type="radio" name="motivacao" value="demissao">
+              <div class="ctx-option-inner">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                <span>Pos-demissao</span>
+                <small>Recontratar apos desligamento</small>
+              </div>
+            </label>
+          </div>
         </div>
       </div>
 
@@ -1755,6 +1873,53 @@
               <div class="detalhe-row"><span>13o proporcional</span><strong id="detDecimoProp">-</strong></div>
               <div class="detalhe-row detalhe-total"><span>Total de demissao</span><strong id="detDemissaoTotal">-</strong></div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- OVERVIEW INTELIGENTE (aparece apos calculo) -->
+      <div class="overview-section" id="overviewSection" style="display:none;">
+        <div class="overview-header">
+          <div class="overview-header-icon" id="ovHeaderIcon">📊</div>
+          <div>
+            <div class="overview-header-tag" id="ovTag">Analise para Empresa</div>
+            <h3 class="overview-header-title" id="ovTitle">O que esses numeros significam para voce</h3>
+          </div>
+        </div>
+
+        <!-- Bloco 1: Custo comparado (perspectiva da empresa) -->
+        <div class="overview-block" id="ovBloco1">
+          <div class="overview-block-icon">💼</div>
+          <div class="overview-block-content">
+            <div class="overview-block-label">Para a empresa</div>
+            <div class="overview-block-text" id="ovTextoEmpresa"></div>
+          </div>
+        </div>
+
+        <!-- Bloco 2: Para o profissional (liquido real) -->
+        <div class="overview-block" id="ovBloco2">
+          <div class="overview-block-icon">👤</div>
+          <div class="overview-block-content">
+            <div class="overview-block-label">Para o profissional</div>
+            <div class="overview-block-text" id="ovTextoProfissional"></div>
+          </div>
+        </div>
+
+        <!-- Bloco 3: Alerta juridico / de risco -->
+        <div class="overview-block overview-block-alert" id="ovBloco3">
+          <div class="overview-block-icon" id="ovAlertIcon">⚠️</div>
+          <div class="overview-block-content">
+            <div class="overview-block-label">Ponto de atencao juridico</div>
+            <div class="overview-block-text" id="ovTextoJuridico"></div>
+          </div>
+        </div>
+
+        <!-- Bloco 4: Recomendacao do contador -->
+        <div class="overview-block overview-block-rec" id="ovBloco4">
+          <div class="overview-block-icon">🎯</div>
+          <div class="overview-block-content">
+            <div class="overview-block-label">O que um contador diria</div>
+            <div class="overview-block-text" id="ovTextoRec"></div>
           </div>
         </div>
       </div>
@@ -2595,6 +2760,7 @@ function resetCalc() {
   document.getElementById('narrativeInline').style.display = 'none';
   document.getElementById('demissaoAccordion').style.display = 'none';
   document.getElementById('demissaoBody').style.display = 'none';
+  document.getElementById('overviewSection').style.display = 'none';
   document.getElementById('wizard').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
@@ -2858,6 +3024,87 @@ function calcAndRender() {
   if (btnWA) btnWA.href = 'https://wa.me/5537999967558?text=' + encodeURIComponent(msg);
 
   document.getElementById('calcCtaBar').style.display = 'block';
+
+  renderOverview({
+    salario, honorario: pjCusto, pjLiquido, liquidoEmpregado,
+    inssEmp, irrf, clt, demissao, diff, difAnual, aliqPJ, regime, tempo,
+    cargo: CALC_STATE.cargo, motivacao: CALC_STATE.motivacao
+  });
+}
+
+function renderOverview(d) {
+  const cargo = d.cargo || 'comparar';
+  const mot = d.motivacao || 'comparar';
+  const regime = d.regime;
+  const regimeLabel = { simples: 'Simples Nacional', presumido: 'Lucro Presumido', real: 'Lucro Real' }[regime] || 'Simples Nacional';
+
+  // --- Bloco 1: Para a empresa ---
+  let textoEmpresa = '';
+  if (d.diff > 50) {
+    // PJ mais barato para empresa
+    const pct = ((d.diff / d.honorario) * 100).toFixed(0);
+    textoEmpresa = `Contratar como PJ sai <strong class="num">${pct}% mais barato</strong> do que CLT para a empresa. A diferenca de custo mensal e de <span class="num">${brl(Math.abs(d.diff))}</span>, ou <span class="num">${brl(Math.abs(d.difAnual))}</span> por ano. Isso porque no CLT a empresa paga encargos de <span class="num">${brl(d.clt.encargos)}/mes</span> (INSS patronal, FGTS, Sistema S, 13o, ferias) que nao existem no PJ.`;
+  } else if (d.diff < -50) {
+    const pct = ((-d.diff / d.clt.custoTotal) * 100).toFixed(0);
+    textoEmpresa = `Nesse cenario, o PJ sai <strong>${pct}% mais caro</strong> para a empresa — o honorario de <span class="num">${brl(d.honorario)}</span> supera o custo total CLT de <span class="num">${brl(d.clt.custoTotal)}</span>. Pode fazer sentido se o profissional PJ entregar resultado pontual e nao requer gestao continua.`;
+  } else {
+    textoEmpresa = `Os custos CLT e PJ estao praticamente equivalentes nesse cenario. A decisao deve considerar fatores alem do financeiro: continuidade, controle operacional e risco juridico de vinculo.`;
+  }
+
+  // --- Bloco 2: Para o profissional ---
+  const diferencaLiquida = d.pjLiquido - d.liquidoEmpregado;
+  let textoProfissional = '';
+  if (diferencaLiquida > 100) {
+    textoProfissional = `Como CLT, o profissional receberia <span class="num">${brl(d.liquidoEmpregado)}</span> liquido (apos INSS de <span class="num">${brl(d.inssEmp)}</span> e IR de <span class="num">${brl(d.irrf)}</span>). Como PJ com ${regimeLabel}, receberia <span class="num">${brl(d.pjLiquido)}</span> liquido — uma diferenca de <span class="num">+${brl(diferencaLiquida)}/mes</span>. Mas o PJ precisa provisionar contador (~R$ 300/mes), INSS autonomo (~R$ 1.412/mes para manter aposentadoria) e reserva para periodos sem contrato.`;
+  } else if (diferencaLiquida < -100) {
+    textoProfissional = `O profissional ganharia <span class="num">${brl(d.liquidoEmpregado)}</span> liquido como CLT versus <span class="num">${brl(d.pjLiquido)}</span> como PJ — ou seja, o CLT e <span class="num">${brl(Math.abs(diferencaLiquida))}/mes mais vantajoso</span> no bolso. Alem do liquido maior, o CLT inclui FGTS (<span class="num">${brl(d.clt.fgts)}/mes</span>) e cobertura de ferias, 13o e seguro-desemprego.`;
+  } else {
+    textoProfissional = `O liquido do profissional e praticamente igual nas duas modalidades. Como CLT: <span class="num">${brl(d.liquidoEmpregado)}</span>. Como PJ (${regimeLabel}): <span class="num">${brl(d.pjLiquido)}</span>. A diferenca real esta nos beneficios CLT e na seguranca juridica, nao no valor no bolso.`;
+  }
+
+  // --- Bloco 3: Alerta juridico ---
+  let alertIcon = '⚠️';
+  let textoJuridico = '';
+  if (mot === 'demissao') {
+    alertIcon = '🚨';
+    textoJuridico = `<strong>Situacao de risco elevado.</strong> Recontratar um ex-funcionario como PJ imediatamente apos a demissao e interpretado pela Justica do Trabalho como fraude a legislacao trabalhista. A jurisprudencia do TST exige intervalo minimo de 6 meses. Se reconhecido vinculo, a empresa responde por todas as verbas do periodo PJ retroativamente — incluindo FGTS, ferias, 13o e indenizacoes.`;
+  } else if (mot === 'existente') {
+    alertIcon = '⚠️';
+    textoJuridico = `<strong>Atencao na migracao CLT para PJ.</strong> Uma relacao CLT que migra para PJ sem mudanca real de condicoes (mesmo horario, mesmas ordens, exclusividade) e facilmente reconhecida como fraude. Os 4 criterios de vinculo — habitualidade, subordinacao, onerosidade e pessoalidade — continuam presentes. O risco e passivo trabalhista retroativo a todo o periodo.`;
+  } else if (cargo === 'profissional' && d.diff > 0) {
+    alertIcon = '💡';
+    textoJuridico = `Como profissional PJ, voce nao tem cobertura do INSS automatica — precisa contribuir como autonomo (minimo <strong>R$ 1.412/mes</strong> para garantir aposentadoria por tempo de contribuicao). Sem isso, so tem acesso a aposentadoria por idade. Alem disso, nao ha seguro-desemprego nem FGTS em caso de encerramento do contrato.`;
+  } else {
+    textoJuridico = `Para o PJ ser juridicamente seguro, a relacao nao pode ter os 4 elementos de vinculo empregaticio: <strong>habitualidade</strong> (servico continuo e repetido), <strong>subordinacao</strong> (ordens diretas e horario fixo), <strong>onerosidade</strong> (pagamento regular) e <strong>pessoalidade</strong> (apenas esse profissional pode executar). Quanto mais desses criterios existirem, maior o risco de reconhecimento de vinculo.`;
+  }
+
+  // --- Bloco 4: Recomendacao ---
+  let textoRec = '';
+  const custoDemissaoMensal = d.demissao.total / Math.max(d.tempo, 1);
+  if (mot === 'demissao') {
+    textoRec = `Nao feche o contrato PJ antes de consultar um advogado trabalhista. O risco financeiro de uma acao trabalhista (calculo de verbas retroativas + honorarios + custas) pode superar facilmente <span class="num">R$ ${Math.round(d.demissao.total * 3 / 1000)}k</span> — muito mais do que qualquer economia no honorario.`;
+  } else if (d.diff > 0 && mot !== 'demissao') {
+    const pontoEquilEquiv = Math.round(d.clt.custoTotal * 1.15);
+    textoRec = `A diferenca de custo favorece o PJ hoje. Mas considere: o custo de uma eventual demissao CLT seria de <span class="num">${brl(d.demissao.total)}</span> (para <span class="num">${d.tempo} meses</span> de contrato). Amortizado mensalmente, representa <span class="num">${brl(Math.round(custoDemissaoMensal))}/mes</span> adicional. Se o projeto tem prazo definido, o PJ e mais eficiente. Se e relacao continua, o CLT pode ser mais seguro juridicamente.`;
+  } else {
+    textoRec = `Com esses numeros, o custo CLT e competitivo. Para o profissional, o CLT entrega mais seguranca e beneficios. A opcao PJ so faz sentido financeiro se o honorario for ajustado para refletir os encargos que a empresa deixa de pagar — o honorario equivalente seria de <span class="num">${brl(Math.round(d.clt.custoTotal * 0.85))}</span> para igualar o custo empresa.`;
+  }
+
+  // Render
+  document.getElementById('ovTag').textContent =
+    cargo === 'contratante' ? 'Analise para Empresa' :
+    cargo === 'profissional' ? 'Analise para Profissional' : 'Comparativo financeiro';
+  document.getElementById('ovTitle').textContent =
+    'O que esses numeros significam para ' +
+    (cargo === 'contratante' ? 'a sua empresa' :
+     cargo === 'profissional' ? 'voce' : 'esse cenario');
+  document.getElementById('ovAlertIcon').textContent = alertIcon;
+  document.getElementById('ovTextoEmpresa').innerHTML = textoEmpresa;
+  document.getElementById('ovTextoProfissional').innerHTML = textoProfissional;
+  document.getElementById('ovTextoJuridico').innerHTML = textoJuridico;
+  document.getElementById('ovTextoRec').innerHTML = textoRec;
+  document.getElementById('overviewSection').style.display = 'block';
+  document.getElementById('overviewSection').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
 // Demissao accordion toggle
