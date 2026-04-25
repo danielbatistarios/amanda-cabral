@@ -1517,12 +1517,15 @@
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
   }
-  .delta-label { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--silver); margin-bottom: 8px; }
-  .delta-amount { font-size: 2.6rem; color: var(--white); font-weight: 700; font-family: var(--font-display); line-height: 1.1; }
-  .delta-amount .delta-dir { font-size: 1rem; font-weight: 500; color: var(--silver); margin-left: 4px; }
+  .delta-headline { font-family: var(--font-display); font-size: clamp(1.1rem,2.5vw,1.5rem); font-weight: 700; color: var(--gold); margin: 0 0 16px; line-height: 1.3; display: none; }
+  .delta-headline.visible { display: block; }
+  .delta-headline.clt-wins { color: rgba(96,165,250,.9); }
+  .delta-label { font-size: .92rem; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: rgba(201,168,76,.8); margin-bottom: 8px; }
+  .delta-amount { font-size: 3.2rem; color: var(--white); font-weight: 700; font-family: var(--font-display); line-height: 1.1; }
+  .delta-amount .delta-dir { font-size: 1.1rem; font-weight: 500; color: var(--silver); margin-left: 4px; }
   .delta-percent { font-size: 1.2rem; color: var(--gold); font-weight: 600; margin-top: 4px; }
   .result-delta-container.is-pj-expensive .delta-percent { color: #ff6b6b; }
-  .delta-sub { font-size: .85rem; color: var(--silver); margin-top: 10px; }
+  .delta-sub { font-size: .88rem; color: var(--silver); margin-top: 10px; line-height: 1.5; }
 
   /* ===== SECAO DE ANALISE (separada do form) ===== */
   .analise-section {
@@ -1534,7 +1537,7 @@
   .analise-hero {
     background: var(--blue-900);
     border-bottom: 1px solid rgba(255,255,255,.05);
-    padding: 56px 0 48px;
+    padding: 40px 0 32px;
   }
   .analise-hero-inner {
     display: flex;
@@ -1586,7 +1589,10 @@
     background: rgba(255,255,255,.03);
     border: 1px solid rgba(255,255,255,.08);
     border-radius: 16px;
-    padding: 22px 20px;
+    padding: 20px 18px;
+    min-height: 220px;
+    display: flex;
+    flex-direction: column;
   }
   .analise-card-empresa { border-top: 3px solid #4A90D9; }
   .analise-card-profissional { border-top: 3px solid var(--gold); }
@@ -1608,19 +1614,19 @@
   .analise-card-icon-pj  { background: rgba(201,168,76,.12); color: var(--gold); }
   .analise-card-icon-risco { background: rgba(255,255,255,.05); color: var(--silver); }
   .analise-card-eyebrow {
-    font-size: .68rem; text-transform: uppercase; letter-spacing: .07em; color: var(--silver); font-weight: 600;
+    font-size: .8rem; text-transform: uppercase; letter-spacing: .07em; color: var(--silver); font-weight: 600;
   }
   .analise-card-row {
     display: flex; align-items: flex-start; gap: 0;
   }
   .analise-card-col { flex: 1; display: flex; flex-direction: column; gap: 3px; }
   .analise-card-col:last-child { text-align: right; }
-  .analise-card-modlabel { font-size: .65rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 2px; }
+  .analise-card-modlabel { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 4px; }
   .analise-card-value {
-    font-family: var(--font-display); font-size: 1.4rem; color: var(--white); line-height: 1.1;
+    font-family: var(--font-display); font-size: 1.6rem; color: var(--white); line-height: 1.1;
   }
   .analise-card-value.gold { color: var(--gold); }
-  .analise-card-sub { font-size: .7rem; color: rgba(255,255,255,.4); line-height: 1.4; margin-top: 2px; }
+  .analise-card-sub { font-size: .78rem; color: rgba(255,255,255,.5); line-height: 1.5; margin-top: 4px; }
   .analise-card-sub.gold { color: rgba(201,168,76,.6); }
   .analise-card-sep {
     flex-shrink: 0; padding: 0 12px;
@@ -1645,18 +1651,22 @@
 
   /* Conteudo abaixo do hero: padding proprio */
   .analise-section > .container {
-    padding-top: 48px;
-    padding-bottom: 72px;
+    padding-top: 32px;
+    padding-bottom: 56px;
   }
   .analise-section .donuts-wrapper { margin-bottom: 24px; }
   .analise-section .overview-section { margin-bottom: 24px; }
   .analise-section .calc-cta-bar { border-radius: 16px; margin-top: 0; }
 
   @media (max-width: 700px) {
-    .analise-hero { padding: 40px 0 32px; }
-    .analise-hero-inner { flex-direction: column; gap: 24px; }
+    .analise-hero { padding: 24px 0 20px; }
+    .analise-hero-inner { flex-direction: column; gap: 20px; }
     .analise-hero .result-delta-container { min-width: 0; max-width: 100%; width: 100%; }
     .analise-section-sub { max-width: 100%; }
+    .delta-amount { font-size: 2.6rem; }
+    .analise-card { min-height: 160px; padding: 16px 14px; }
+    .analise-card-value { font-size: 1.35rem; }
+    .analise-section > .container { padding-top: 24px; padding-bottom: 40px; }
   }
 
   /* ===== TOGGLE ANALISE DETALHADA ===== */
@@ -2612,6 +2622,7 @@
             <p class="analise-section-sub" id="analiseSectionSub">Com base no seu cenario, preparamos a analise completa abaixo.</p>
           </div>
           <!-- Delta: o numero grande que responde "quanto custa a diferenca?" -->
+          <h2 class="delta-headline" id="deltaHeadline"></h2>
           <div class="result-delta-container" id="deltaBigContainer">
             <div class="delta-label">Diferenca de custo para a empresa</div>
             <div class="delta-amount" id="deltaBigAmount">-<span class="delta-dir"></span></div>
@@ -4003,6 +4014,20 @@ function calcAndRender() {
   const absDiff = Math.abs(diff);
   const pctDiff = diff !== 0 ? ((absDiff / Math.min(clt.custoTotal, pjCusto)) * 100).toFixed(0) : 0;
   document.getElementById('deltaBigAmount').innerHTML = brl(absDiff) + '<span class="delta-dir">' + (Math.abs(diff) < 50 ? '' : '') + '</span>';
+  // Headline narrativo acima do delta
+  const deltaHeadline = document.getElementById('deltaHeadline');
+  if (deltaHeadline) {
+    if (Math.abs(diff) < 50) {
+      deltaHeadline.textContent = 'Custos equivalentes neste cenario';
+      deltaHeadline.className = 'delta-headline visible';
+    } else if (diff > 0) {
+      deltaHeadline.textContent = 'PJ e ' + brl(absDiff) + '/mes mais barato para a empresa neste cenario';
+      deltaHeadline.className = 'delta-headline visible';
+    } else {
+      deltaHeadline.textContent = 'PJ e ' + brl(absDiff) + '/mes mais caro que CLT neste cenario';
+      deltaHeadline.className = 'delta-headline visible clt-wins';
+    }
+  }
   if (Math.abs(diff) < 50) {
     document.getElementById('deltaBigPercent').textContent = 'Custos equivalentes';
     document.getElementById('deltaBigSub').textContent = 'CLT e PJ chegam ao mesmo custo mensal para a empresa nesse cenario.';
