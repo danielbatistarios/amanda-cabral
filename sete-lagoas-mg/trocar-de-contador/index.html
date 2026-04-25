@@ -299,7 +299,7 @@
 
     /* ── BREADCRUMB ── */
     .breadcrumb { padding: 12px 24px; background: var(--blue-800); border-bottom: 1px solid rgba(255,255,255,.06); }
-    .breadcrumb-inner { max-width: var(--max-w); margin: 0 auto; display: flex; align-items: center; gap: 8px; font-size: 13px; color: var(--text-muted); }
+    .breadcrumb-inner { max-width: var(--max-w); margin: 0 auto; display: flex; align-items: center; justify-content: center; gap: 8px; font-size: 13px; color: var(--text-muted); }
     .breadcrumb-inner a { color: var(--text-muted); transition: var(--t); }
     .breadcrumb-inner a:hover { color: var(--gold); }
     .breadcrumb-inner span { color: var(--text); }
@@ -463,6 +463,13 @@
 
     @media (max-width: 1024px) { .footer-grid { grid-template-columns: 1fr 1fr; gap: 40px; } }
     @media (max-width: 600px) { .site-footer { padding: 48px 0 0; } .footer-inner { padding: 0 20px; } .footer-grid { grid-template-columns: 1fr; gap: 32px; } .footer-legal { flex-direction: column; gap: 12px; text-align: center; } .footer-legal-links { flex-wrap: wrap; justify-content: center; } }
+
+    /* ── SETORES MARQUEE ── */
+    .setores { background: var(--blue-900); padding: 40px 0; overflow: hidden; border-top: 1px solid rgba(255,255,255,.06); border-bottom: 1px solid rgba(255,255,255,.06); }
+    .marquee-track { display: flex; gap: 40px; animation: marquee 28s linear infinite; white-space: nowrap; }
+    .marquee-item { display: flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 500; color: var(--text-muted); }
+    .marquee-item::before { content: '◆'; color: var(--gold); font-size: 8px; }
+    @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
     /* ── REVEAL ── */
     .reveal { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
@@ -809,6 +816,32 @@
     </div>
   </section>
 
+  <!-- SETORES MARQUEE — bg: blue-900 -->
+  <div class="setores">
+    <div class="marquee-track">
+      <div class="marquee-item">Comércio Varejista</div>
+      <div class="marquee-item">Prestação de Serviços</div>
+      <div class="marquee-item">Clínicas e Saúde</div>
+      <div class="marquee-item">Academias</div>
+      <div class="marquee-item">Concessionárias</div>
+      <div class="marquee-item">Advocacia</div>
+      <div class="marquee-item">Alimentação</div>
+      <div class="marquee-item">Construção Civil</div>
+      <div class="marquee-item">Distribuidoras</div>
+      <div class="marquee-item">Tecnologia</div>
+      <div class="marquee-item">Comércio Varejista</div>
+      <div class="marquee-item">Prestação de Serviços</div>
+      <div class="marquee-item">Clínicas e Saúde</div>
+      <div class="marquee-item">Academias</div>
+      <div class="marquee-item">Concessionárias</div>
+      <div class="marquee-item">Advocacia</div>
+      <div class="marquee-item">Alimentação</div>
+      <div class="marquee-item">Construção Civil</div>
+      <div class="marquee-item">Distribuidoras</div>
+      <div class="marquee-item">Tecnologia</div>
+    </div>
+  </div>
+
   <!-- AMANDA STRIP -->
   <div class="amanda-strip">
     <img class="amanda-bg" src="/sete-lagoas-mg/sete-lagoas-lagoa-paulino.webp" alt="Amanda Cabral, contadora em Sete Lagoas, apoio completo na troca de contador" loading="lazy" width="1400" height="700">
@@ -820,8 +853,7 @@
         <a href="#form-final" class="btn-primary" style="margin-top:24px;display:inline-flex;">Quero trocar agora →</a>
       </div>
       <div class="amanda-badge">
-        <strong>30 anos</strong>
-        <span>atendendo empresas em MG</span>
+        <img src="/amanda-sobre.webp" alt="Amanda Cabral, contadora responsável pela transição em Sete Lagoas" loading="lazy" width="160" height="200" style="width:160px;height:200px;object-fit:cover;object-position:top center;border-radius:var(--radius);border:2px solid rgba(201,168,76,.3);">
       </div>
     </div>
   </div>
@@ -989,8 +1021,8 @@
     </div>
   </section>
 
-  <!-- CONTENT SEO — bg: blue-800 -->
-  <section class="sec content-seo">
+  <!-- CONTENT SEO — bg: blue-900 -->
+  <section class="sec content-seo" style="background:var(--blue-900)!important;">
     <div class="sec-inner">
       <div class="reveal">
         <p class="sec-label">Perguntas que todo empresário tem</p>
@@ -1017,8 +1049,8 @@
     </div>
   </section>
 
-  <!-- FAQ — bg: blue-900 -->
-  <section class="sec faq">
+  <!-- FAQ — bg: blue-800 -->
+  <section class="sec faq" style="background:var(--blue-800)!important;">
     <div class="sec-inner">
       <div class="reveal" style="text-align:center;">
         <p class="sec-label">Perguntas frequentes</p>
@@ -1074,8 +1106,8 @@
     </div>
   </section>
 
-  <!-- HUB — bg: blue-800 -->
-  <section class="sec hub">
+  <!-- HUB — bg: blue-900 -->
+  <section class="sec hub" style="background:var(--blue-900)!important;">
     <div class="sec-inner">
       <div class="reveal">
         <p class="sec-label">Explore nossos serviços</p>
