@@ -2892,10 +2892,10 @@
 
       <!-- Narrative card -->
       <div class="dash-narrative reveal">
-        <div class="narrative-icon" id="narrativeIcon">🎯</div>
+        <div class="narrative-icon" id="narrativeIcon2">🎯</div>
         <div class="narrative-content">
-          <div class="narrative-title" id="narrativeTitle">Analisando seu perfil...</div>
-          <div class="narrative-text" id="narrativeText">Baseado nas suas respostas, aqui esta o resultado completo com todos os detalhes de encargos, beneficios e custos de demissao.</div>
+          <div class="narrative-title" id="narrativeTitle2">Analisando seu perfil...</div>
+          <div class="narrative-text" id="narrativeText2">Baseado nas suas respostas, aqui esta o resultado completo com todos os detalhes de encargos, beneficios e custos de demissao.</div>
         </div>
       </div>
 
@@ -3036,7 +3036,7 @@
         <h3>Tem duvidas sobre qual regime escolher?</h3>
         <p>Amanda Cabral analisa seu caso especifico: risco de reconhecimento de vinculo, regime ideal e estrategia para reduzir encargos legalmente. Gratuito, sem compromisso.</p>
         <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:20px;">
-          <a id="btnWhatsapp" href="https://wa.me/5537999967558?text=Ola%2C%20usei%20a%20calculadora%20CLT%20vs%20PJ%20e%20gostaria%20de%20conversar" class="btn-whatsapp" target="_blank" rel="noopener">
+          <a id="btnWhatsappDash" href="https://wa.me/5537999967558?text=Ola%2C%20usei%20a%20calculadora%20CLT%20vs%20PJ%20e%20gostaria%20de%20conversar" class="btn-whatsapp" target="_blank" rel="noopener">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
             Enviar via WhatsApp
           </a>
@@ -3048,7 +3048,7 @@
 
       <!-- Reset button -->
       <div style="text-align:center;margin-top:40px;">
-        <button class="btn-reset" id="btnReset" type="button">Fazer nova simulacao</button>
+        <button class="btn-reset" id="btnResetDash" type="button">Fazer nova simulacao</button>
       </div>
     </div>
   </section>
@@ -3709,6 +3709,7 @@ function resetCalc() {
 }
 
 document.getElementById('btnReset').addEventListener('click', resetCalc);
+document.getElementById('btnResetDash').addEventListener('click', resetCalc);
 
 /* ============================
    CALCULADORA — ENCARGOS PATRONAIS 2025
@@ -3720,6 +3721,11 @@ const PROV_13       = 1 / 12;       // 8.33%
 const PROV_FERIAS   = (1 + 1/3) / 12; // 11.11%
 
 const brl = v => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(v);
+
+const AMANDA_WA = '5537999967558';
+const CARGO_LABELS  = { contratante:'empresa', profissional:'profissional autonomo', comparar:'profissional' };
+const MOTIV_LABELS  = { nova:'nova contratacao', existente:'migracao CLT para PJ', demissao:'recontratacao pos-demissao', comparar:'comparacao financeira' };
+const CARGO_TAG_MAP = { contratante:'Analise para Empresa', profissional:'Analise para Profissional', comparar:'Comparativo Financeiro' };
 
 // INSS empregado 2025 — tabela progressiva
 function calcINSSEmpregado(salario) {
@@ -4045,22 +4051,20 @@ function calcAndRender() {
   document.getElementById('narrativeInline').style.display = 'flex';
 
   // --- CTA bar ---
-  document.getElementById('narrativeIcon').textContent = narr.icon;
-  document.getElementById('narrativeTitle').textContent = narr.title;
-  document.getElementById('narrativeText').textContent = narr.text;
+  ['narrativeIcon','narrativeIcon2'].forEach(id => { const el = document.getElementById(id); if (el) el.textContent = narr.icon; });
+  ['narrativeTitle','narrativeTitle2'].forEach(id => { const el = document.getElementById(id); if (el) el.textContent = narr.title; });
+  ['narrativeText','narrativeText2'].forEach(id => { const el = document.getElementById(id); if (el) el.textContent = narr.text; });
 
   // WhatsApp pre-preenchido (com nome se capturado)
-  const cargoLabels = { contratante:'empresa', profissional:'profissional autonomo', comparar:'profissional' };
-  const motivLabels = { nova:'nova contratacao', existente:'migracao CLT para PJ', demissao:'recontratacao pos-demissao', comparar:'comparacao financeira' };
   const leadName = (window.LEAD_NAME || '').trim();
   const leadCompany = (window.LEAD_COMPANY || '').trim();
   const greeting = leadName ? 'Oi Amanda! Sou ' + leadName + (leadCompany ? ' da ' + leadCompany : '') + '. ' : 'Oi Amanda! ';
   const msg = greeting + 'Fiz a simulacao PJ vs CLT. ' +
-    (leadName ? 'Analiso como ' : 'Sou ') + (cargoLabels[CALC_STATE.cargo] || 'profissional') +
-    ' para uma ' + (motivLabels[mot] || 'contratacao') +
+    (leadName ? 'Analiso como ' : 'Sou ') + (CARGO_LABELS[CALC_STATE.cargo] || 'profissional') +
+    ' para uma ' + (MOTIV_LABELS[mot] || 'contratacao') +
     ' com salario de ' + brl(salario) + '. Gostaria de uma analise completa.';
-  const btnWA = document.getElementById('btnWhatsapp');
-  if (btnWA) btnWA.href = 'https://wa.me/5537999967558?text=' + encodeURIComponent(msg);
+  const waMsg = 'https://wa.me/' + AMANDA_WA + '?text=' + encodeURIComponent(msg);
+  ['btnWhatsapp','btnWhatsappDash'].forEach(id => { const el = document.getElementById(id); if (el) el.href = waMsg; });
 
   document.getElementById('calcCtaBar').style.display = 'block';
 
@@ -4071,14 +4075,13 @@ function calcAndRender() {
     analiseSecEl.style.display = 'block';
     const tagEl = document.getElementById('analiseSectionTag');
     const subEl = document.getElementById('analiseSectionSub');
-    const cargoTagMap = { contratante: 'Analise para Empresa', profissional: 'Analise para Profissional', comparar: 'Comparativo Financeiro' };
     const motSubMap = {
       nova: 'Simulando nova contratacao com salario de ' + brl(salario) + '.',
       existente: 'Avaliando migracao CLT para PJ com salario de ' + brl(salario) + '.',
       demissao: 'Analisando recontratacao pos-demissao com salario de ' + brl(salario) + '.',
       comparar: 'Comparativo financeiro com salario de ' + brl(salario) + '.'
     };
-    if (tagEl) tagEl.textContent = cargoTagMap[CALC_STATE.cargo] || 'Analise Personalizada';
+    if (tagEl) tagEl.textContent = CARGO_TAG_MAP[CALC_STATE.cargo] || 'Analise Personalizada';
     if (subEl) subEl.textContent = motSubMap[CALC_STATE.motivacao] || 'Com base no cenario informado, veja a analise completa abaixo.';
     // Scroll apenas na primeira vez que a secao aparece
     if (!jaVisivel) {
@@ -4288,11 +4291,9 @@ function renderNextSteps(d) {
   if (desc) desc.textContent = waDesc[mot] || waDesc.comparar;
 
   // Pre-preenche o link do WhatsApp com contexto
-  const motLabel   = { demissao: 'recontratacao pos-demissao', existente: 'migracao CLT para PJ', nova: 'nova contratacao', comparar: 'comparacao financeira' };
-  const cargoLabel = { contratante: 'empresa', profissional: 'profissional autonomo', comparar: 'analise' };
-  const msg = 'Ola Amanda! Usei a calculadora CLT vs PJ. Sou ' + (cargoLabel[cargo] || 'usuario') + ', cenario de ' + (motLabel[mot] || 'comparacao') + '. Gostaria de uma analise do meu caso.';
+  const overviewMsg = 'Ola Amanda! Usei a calculadora CLT vs PJ. Sou ' + (CARGO_LABELS[cargo] || 'usuario') + ', cenario de ' + (MOTIV_LABELS[mot] || 'comparacao') + '. Gostaria de uma analise do meu caso.';
   const waLink = document.getElementById('nextStepsWA');
-  if (waLink) waLink.href = 'https://wa.me/5537999967558?text=' + encodeURIComponent(msg);
+  if (waLink) waLink.href = 'https://wa.me/' + AMANDA_WA + '?text=' + encodeURIComponent(overviewMsg);
 }
 
 /* ============================
@@ -4622,13 +4623,11 @@ document.getElementById('leadCaptureForm').addEventListener('submit', function(e
   const salario = parseFormattedNumber(document.getElementById('wizardSalario').value);
   if (salario > 0) {
     const mot = CALC_STATE.motivacao || 'comparar';
-    const motivLabels = { nova:'nova contratacao', existente:'migracao CLT para PJ', demissao:'recontratacao pos-demissao', comparar:'comparacao financeira' };
-    const cargoLabels = { contratante:'empresa', profissional:'profissional autonomo', comparar:'profissional' };
     const msg = 'Oi Amanda! Sou ' + name + (company ? ' da ' + company : '') + '. Fiz a simulacao PJ vs CLT como ' +
-      (cargoLabels[CALC_STATE.cargo] || 'profissional') + ' para uma ' + (motivLabels[mot] || 'contratacao') +
+      (CARGO_LABELS[CALC_STATE.cargo] || 'profissional') + ' para uma ' + (MOTIV_LABELS[mot] || 'contratacao') +
       ' com salario de ' + brl(salario) + '. Gostaria de uma analise completa.';
-    const btnWA = document.getElementById('btnWhatsapp');
-    if (btnWA) btnWA.href = 'https://wa.me/5537999967558?text=' + encodeURIComponent(msg);
+    const waMsgModal = 'https://wa.me/' + AMANDA_WA + '?text=' + encodeURIComponent(msg);
+    ['btnWhatsapp','btnWhatsappDash'].forEach(id => { const el = document.getElementById(id); if (el) el.href = waMsgModal; });
   }
 
   // Update overview title with name
