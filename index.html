@@ -1614,38 +1614,16 @@
             padding: 28px 20px;
             background: rgba(255,255,255,0.03);
           }
-          .process-nav {
-            display: flex !important;
-            justify-content: flex-end;
-            gap: 12px;
-            margin-top: 16px;
-            margin-bottom: 0;
-          }
-          .process-nav button {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            border: 1.5px solid rgba(255,255,255,0.25);
-            background: rgba(255,255,255,0.06);
-            color: #ffffff;
-            display: flex !important;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s;
-            opacity: 1 !important;
-          }
-          .process-nav button svg { width: 18px; height: 18px; stroke: #ffffff; }
-          .process-nav button:hover { border-color: var(--gold); background: rgba(201,168,76,0.15); }
-          .process-nav button:active { background: rgba(255,255,255,0.12); }
-          /* Testimonials nav */
+          .process-nav,
           .testimonials-nav {
             display: flex !important;
             justify-content: flex-end;
             gap: 12px;
             margin-top: 16px;
             margin-bottom: 16px;
+            padding: 0 16px;
           }
+          .process-nav button,
           .testimonials-nav button {
             width: 44px;
             height: 44px;
@@ -1660,8 +1638,12 @@
             transition: all 0.3s;
             opacity: 1 !important;
           }
+          .process-nav button svg,
           .testimonials-nav button svg { width: 18px; height: 18px; stroke: #ffffff; }
+          .process-nav button:hover,
           .testimonials-nav button:hover { border-color: var(--gold); background: rgba(201,168,76,0.15); }
+          .process-nav button:active,
+          .testimonials-nav button:active { background: rgba(255,255,255,0.12); }
         }
 
         /* About: foto DENTRO da seção, vertical */
@@ -2830,14 +2812,14 @@
             <div class="process-header reveal">
                 <div class="section-tag" style="color:var(--accent)">Como funciona</div>
                 <h2 class="heading">Como funciona o planejamento tributário <em style="color:var(--gold)">com a Amanda Cabral</em></h2>
-                <div class="process-nav" id="processNav">
+            </div>
+            <div class="process-nav" id="processNav">
                     <button onclick="scrollProcess(-1)" aria-label="Anterior">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
                     </button>
                     <button onclick="scrollProcess(1)" aria-label="Pr&oacute;ximo">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </button>
-                </div>
             </div>
             <div class="process-steps-wrapper">
                 <div class="process-steps stagger" id="processTrack">
@@ -2873,14 +2855,14 @@
             <div class="testimonials-header reveal">
                 <div class="section-tag" style="color:var(--accent)">Depoimentos</div>
                 <h2 class="heading">O que muda na sua empresa com um <em style="color:var(--gold)">planejamento tributário bem feito</em></h2>
-                <div class="testimonials-nav">
+            </div>
+            <div class="testimonials-nav">
                     <button onclick="scrollTestimonials(-1)" aria-label="Anterior">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
                     </button>
                     <button onclick="scrollTestimonials(1)" aria-label="Pr&oacute;ximo">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </button>
-                </div>
             </div>
             <div class="testimonials-grid stagger" id="testimonialsTrack">
                 <div class="test-card">
