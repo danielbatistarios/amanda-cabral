@@ -275,7 +275,7 @@
         #hdr-mob-close span:last-child  { transform: rotate(-45deg); }
 
         /* Lista de itens */
-        .mob-list { list-style: none; padding: 10px 0; flex: 1; }
+        .mob-list { list-style: none; padding: 10px 0; }
         .mob-list li { border-bottom: 1px solid rgba(255,255,255,0.06); }
         .mob-list-link {
             display: block; padding: 16px 22px;
@@ -306,13 +306,14 @@
             padding: 20px 22px 28px;
             border-top: 1px solid rgba(201,168,76,0.12);
             flex-shrink: 0;
+            margin-top: auto;
             display: flex; flex-direction: column; gap: 16px;
         }
         .mob-slogan {
             font-family: var(--font-display); font-style: italic;
             font-size: 0.82rem; color: rgba(255,255,255,0.35);
             line-height: 1.45; margin: 0;
-            padding: 3px 22px 0;
+            padding: 16px 22px 0;
             flex-shrink: 0;
         }
         .mob-contact {
