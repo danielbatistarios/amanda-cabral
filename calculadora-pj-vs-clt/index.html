@@ -841,10 +841,6 @@
     .wizard-option:has(input:checked) { border-color: var(--gold); background: rgba(201,168,76,.07); }
     .wizard-option:hover { border-color: rgba(201,168,76,.4); }
     .wizard-inputs { display: flex; flex-direction: column; gap: 20px; max-width: 480px; }
-    .wizard-nav { position: fixed; bottom: 0; left: 0; width: 100%; background: rgba(6,14,26,.96); backdrop-filter: blur(8px); border-top: 1px solid rgba(255,255,255,.06); display: flex; align-items: center; justify-content: space-between; padding: 16px 24px; z-index: 700; }
-    .btn-wizard-prev { background: transparent; color: var(--silver); border: 1px solid rgba(255,255,255,.12); padding: 10px 20px; border-radius: 8px; cursor: pointer; font-size: .9rem; }
-    .btn-wizard-prev:hover { color: var(--white); }
-    .btn-wizard-next { padding: 14px 32px; }
     .wizard-shake { animation: shake .35s ease; }
     @keyframes shake { 0%,100%{transform:translateX(0)} 20%,60%{transform:translateX(-6px)} 40%,80%{transform:translateX(6px)} }
 
@@ -954,9 +950,107 @@
       .result-cards { grid-template-columns: 1fr; }
       .wizard-options-grid { grid-template-columns: 1fr; }
       .lead-form-row { grid-template-columns: 1fr; }
-      .wizard-nav { padding: 12px 16px; }
       .dash-context-inner { flex-direction: column; }
     }
+
+  /* ===== QUICK QUESTIONS ===== */
+  .quick-q-block { margin-bottom: 28px; }
+  .quick-q-label { font-size: .8rem; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--gold); margin-bottom: 12px; }
+  .quick-q-options { display: flex; flex-wrap: wrap; gap: 10px; }
+  .quick-option {
+    display: flex; align-items: center; gap: 10px;
+    padding: 12px 18px; border-radius: 10px;
+    border: 1px solid rgba(255,255,255,.1);
+    background: rgba(255,255,255,.03);
+    cursor: pointer; transition: border-color .2s, background .2s;
+    flex: 0 0 auto;
+  }
+  .quick-option input[type="radio"] { width: 16px; height: 16px; accent-color: var(--gold); flex-shrink: 0; margin: 0; }
+  .quick-option span { font-size: .9rem; font-weight: 600; color: var(--white); white-space: nowrap; }
+  .quick-option small { font-size: .75rem; color: var(--silver); white-space: nowrap; }
+  .quick-option:has(input:checked) { border-color: var(--gold); background: rgba(201,168,76,.08); }
+  .quick-option:hover { border-color: rgba(201,168,76,.4); }
+
+  /* ===== CALC GRID SIMPLIFICADA ===== */
+  .calc-grid-simple {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 32px;
+  }
+  .calc-col-simple {
+    background: rgba(255,255,255,.03);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 16px;
+    padding: 28px 24px;
+  }
+
+  /* ===== RESULTADO INLINE ===== */
+  .result-inline { margin-top: 20px; border-top: 1px solid rgba(255,255,255,.06); padding-top: 20px; }
+  .result-inline-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 12px; }
+  .result-inline-card {
+    background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08);
+    border-radius: 12px; padding: 16px;
+  }
+  .result-inline-card.clt { border-color: rgba(148,163,184,.2); }
+  .result-inline-card.pj { border-color: rgba(201,168,76,.25); background: rgba(201,168,76,.05); }
+  .result-inline-label { font-size: .7rem; text-transform: uppercase; letter-spacing: .06em; color: var(--silver); margin-bottom: 6px; }
+  .result-inline-value { font-family: var(--font-display); font-size: 1.4rem; color: var(--white); }
+  .result-inline-value.gold { color: var(--gold); }
+  .result-inline-sub { font-size: .75rem; color: var(--silver); margin-top: 4px; }
+  .result-delta-badge {
+    display: inline-block; padding: 3px 8px; border-radius: 20px;
+    font-size: .7rem; font-weight: 700; letter-spacing: .04em; margin-bottom: 6px;
+  }
+  .result-delta-badge.cheaper { background: rgba(16,185,129,.15); color: #10B981; border: 1px solid rgba(16,185,129,.3); }
+  .result-delta-badge.expensive { background: rgba(239,68,68,.12); color: #F87171; border: 1px solid rgba(239,68,68,.25); }
+  .result-delta-badge.neutral { background: rgba(148,163,184,.1); color: var(--silver); border: 1px solid rgba(148,163,184,.2); }
+  .result-inline-anual { font-size: .8rem; color: var(--silver); text-align: center; padding: 8px 12px; background: rgba(255,255,255,.02); border-radius: 8px; }
+
+  /* ===== DETALHES / ENCARGOS ===== */
+  .detalhe-row { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid rgba(255,255,255,.05); font-size: .82rem; }
+  .detalhe-row span { color: var(--silver); }
+  .detalhe-row strong { color: var(--white); font-weight: 600; }
+  .detalhe-row.detalhe-total { border-top: 1px solid rgba(255,255,255,.12); border-bottom: none; margin-top: 4px; padding-top: 12px; font-weight: 700; }
+  .detalhe-row.detalhe-total span { color: var(--white); }
+  .detalhe-row.detalhe-total strong { color: var(--gold); }
+
+  /* ===== NARRATIVA INLINE ===== */
+  .narrative-inline { display: flex; gap: 10px; align-items: flex-start; background: rgba(201,168,76,.05); border: 1px solid rgba(201,168,76,.18); border-radius: 10px; padding: 14px; margin-bottom: 16px; }
+  .narrative-inline-icon { font-size: 1.2rem; flex-shrink: 0; }
+  .narrative-inline-title { font-size: .82rem; font-weight: 700; color: var(--white); margin-bottom: 3px; }
+  .narrative-inline-text { font-size: .78rem; color: var(--silver); line-height: 1.5; }
+
+  /* ===== DEMISSAO ACCORDION ===== */
+  .detalhe-accordion { border-top: 1px solid rgba(255,255,255,.06); padding-top: 12px; }
+  .detalhe-accordion-btn {
+    width: 100%; text-align: left; background: transparent;
+    border: none; color: var(--silver-light); font-size: .82rem; font-weight: 600;
+    padding: 8px 0; cursor: pointer; display: flex; justify-content: space-between; align-items: center;
+    transition: color .2s;
+  }
+  .detalhe-accordion-btn:hover { color: var(--gold); }
+  .detalhe-accordion-body { padding-top: 8px; }
+
+  /* ===== CTA BAR ===== */
+  .calc-cta-bar { background: rgba(255,255,255,.02); border: 1px solid rgba(201,168,76,.15); border-radius: 16px; padding: 32px 28px; margin-top: 8px; }
+  .narrative-content { flex: 1; }
+  .narrative-title { font-size: .95rem; font-weight: 700; color: var(--white); margin-bottom: 4px; }
+  .narrative-text { font-size: .85rem; color: var(--silver); line-height: 1.6; }
+  .btn-reset { background: transparent; color: var(--silver); border: 1px solid rgba(255,255,255,.12); padding: 8px 20px; border-radius: 8px; font-size: .82rem; cursor: pointer; transition: color .2s; }
+  .btn-reset:hover { color: var(--white); }
+
+  /* ===== RESPONSIVO ===== */
+  @media (max-width: 900px) {
+    .calc-grid-simple { grid-template-columns: 1fr 1fr; }
+    #colDetalhes { grid-column: 1 / -1; }
+  }
+  @media (max-width: 600px) {
+    .calc-grid-simple { grid-template-columns: 1fr; }
+    .quick-q-options { flex-direction: column; }
+    .quick-option { flex-direction: column; align-items: flex-start; gap: 4px; }
+    .result-inline-row { grid-template-columns: 1fr; }
+  }
 
   /* ===== ARTIGO EDITORIAL ===== */
   .artigo-editorial {
@@ -1385,12 +1479,6 @@
 <a href="https://wa.me/5537999967558?text=Ola%2C%20usei%20a%20calculadora%20CLT%20vs%20PJ%20e%20gostaria%20de%20conversar%20sobre%20contratacao" class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">
   <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
-
-<!-- WIZARD NAV — filho direto do body para nao ser afetado por overflow-x:hidden no body -->
-<div class="wizard-nav" id="wizardNavBar">
-  <button class="btn-wizard-prev" id="btnWizardPrev" type="button" style="display:none;">Voltar</button>
-  <button class="btn-wizard-next" id="btnWizardNext" type="button">Proxima etapa</button>
-</div>
 
 <!-- BOTTOM BAR -->
 <div class="bottom-bar" id="bottomBar">
@@ -2408,86 +2496,9 @@ document.querySelectorAll('.faq-item').forEach(item => {
 });
 
 /* ============================
-   WIZARD SETUP
+   CALCULADORA SIMPLIFICADA
 ============================ */
-const WIZARD_STATE = {
-  cargo: '',
-  motivacao: '',
-  funcao: '',
-  salarioBruto: 0,
-  honorarioPJ: 0,
-  regime: 'outros',
-  beneficios: { vr: 0, vt: 0, saude: 0 },
-  tempoContrato: 24
-};
-
-function showStep(n) {
-  document.querySelectorAll('.wizard-step').forEach((s, i) => {
-    s.style.display = i + 1 === n ? 'block' : 'none';
-  });
-  document.getElementById('wizardProgressStep').textContent = `Etapa ${n} de 5`;
-  const fill = ((n - 1) / 4) * 100;
-  document.getElementById('wizardProgressFill').style.width = fill + '%';
-  document.getElementById('btnWizardPrev').style.display = n === 1 ? 'none' : 'block';
-  document.getElementById('btnWizardNext').textContent = n === 5 ? 'Ver resultado' : 'Proxima etapa';
-  document.getElementById('wizardNavBar').style.display = 'flex';
-}
-
-function validateStep(n) {
-  if (n === 1) return WIZARD_STATE.cargo !== '';
-  if (n === 2) return WIZARD_STATE.motivacao !== '';
-  if (n === 3) return WIZARD_STATE.funcao !== '';
-  if (n === 4) return parseFormattedNumber(document.getElementById('wizardSalario').value) > 0;
-  if (n === 5) return true;
-  return false;
-}
-
-let currentStep = 1;
-showStep(1);
-
-// Radio listeners for auto-advance
-document.querySelectorAll('input[name="cargo"]').forEach(r => r.addEventListener('change', e => {
-  WIZARD_STATE.cargo = e.target.value;
-  currentStep = 2;
-  showStep(2);
-}));
-
-document.querySelectorAll('input[name="motivacao"]').forEach(r => r.addEventListener('change', e => {
-  WIZARD_STATE.motivacao = e.target.value;
-  currentStep = 3;
-  showStep(3);
-}));
-
-document.querySelectorAll('input[name="funcao"]').forEach(r => r.addEventListener('change', e => {
-  WIZARD_STATE.funcao = e.target.value;
-  currentStep = 4;
-  showStep(4);
-}));
-
-// Next button
-document.getElementById('btnWizardNext').addEventListener('click', () => {
-  if (!validateStep(currentStep)) {
-    document.getElementById('wizardStep' + currentStep).classList.add('shake');
-    setTimeout(() => document.getElementById('wizardStep' + currentStep).classList.remove('shake'), 500);
-    return;
-  }
-  if (currentStep < 5) {
-    currentStep++;
-    showStep(currentStep);
-  } else {
-    readStep4();
-    readStep5();
-    computeAndShowDashboard();
-  }
-});
-
-// Previous button
-document.getElementById('btnWizardPrev').addEventListener('click', () => {
-  if (currentStep > 1) {
-    currentStep--;
-    showStep(currentStep);
-  }
-});
+const CALC_STATE = { cargo: '', motivacao: '' };
 
 // Formata enquanto digita: remove nao-digitos, aplica separador de milhar
 function formatCurrencyInput(input) {
@@ -2516,41 +2527,39 @@ document.querySelectorAll('input[data-currency]').forEach(input => {
   });
 });
 
-function readStep4() {
-  WIZARD_STATE.salarioBruto = parseFormattedNumber(document.getElementById('wizardSalario').value);
-  WIZARD_STATE.honorarioPJ = parseFormattedNumber(document.getElementById('wizardHonorario').value);
-  WIZARD_STATE.regime = document.getElementById('wizardRegime').value || 'outros';
+// Listeners de radio: armazena e recalcula
+document.querySelectorAll('input[name="cargo"]').forEach(r => r.addEventListener('change', e => {
+  CALC_STATE.cargo = e.target.value;
+  calcAndRender();
+}));
+document.querySelectorAll('input[name="motivacao"]').forEach(r => r.addEventListener('change', e => {
+  CALC_STATE.motivacao = e.target.value;
+  calcAndRender();
+}));
+
+// Listeners de inputs numericos: recalcula em tempo real
+['wizardSalario','wizardHonorario','wizardVr','wizardVt','wizardSaude','wizardTempo','wizardRegime'].forEach(id => {
+  const el = document.getElementById(id);
+  if (el) el.addEventListener('input', calcAndRender);
+});
+
+function resetCalc() {
+  CALC_STATE.cargo = '';
+  CALC_STATE.motivacao = '';
+  document.querySelectorAll('#wizard input[type="radio"]').forEach(r => r.checked = false);
+  document.querySelectorAll('#wizard input[type="text"]').forEach(i => i.value = '');
+  document.getElementById('wizardTempo').value = '24';
+  document.getElementById('wizardRegime').value = 'outros';
+  document.getElementById('resultInline').style.display = 'none';
+  document.getElementById('colDetalhes').style.display = 'none';
+  document.getElementById('calcCtaBar').style.display = 'none';
+  document.getElementById('narrativeInline').style.display = 'none';
+  document.getElementById('demissaoAccordion').style.display = 'none';
+  document.getElementById('demissaoBody').style.display = 'none';
+  document.getElementById('wizard').scrollIntoView({ behavior: 'smooth', block: 'start' });
 }
 
-function readStep5() {
-  WIZARD_STATE.beneficios.vr = parseFormattedNumber(document.getElementById('wizardVr').value);
-  WIZARD_STATE.beneficios.vt = parseFormattedNumber(document.getElementById('wizardVt').value);
-  WIZARD_STATE.beneficios.saude = parseFormattedNumber(document.getElementById('wizardSaude').value);
-  WIZARD_STATE.tempoContrato = parseFloat(document.getElementById('wizardTempo').value) || 24;
-  localStorage.setItem('wizardState', JSON.stringify(WIZARD_STATE));
-}
-
-function resetWizard() {
-  WIZARD_STATE.cargo = '';
-  WIZARD_STATE.motivacao = '';
-  WIZARD_STATE.funcao = '';
-  WIZARD_STATE.salarioBruto = 0;
-  WIZARD_STATE.honorarioPJ = 0;
-  WIZARD_STATE.regime = 'outros';
-  WIZARD_STATE.beneficios = { vr: 0, vt: 0, saude: 0 };
-  WIZARD_STATE.tempoContrato = 24;
-  localStorage.removeItem('wizardState');
-  document.getElementById('wizard').style.display = 'block';
-  document.getElementById('dashboard').style.display = 'none';
-  currentStep = 1;
-  showStep(1);
-  document.querySelectorAll('input[type="radio"], input[type="number"], select').forEach(el => {
-    if (el.type === 'radio') el.checked = false;
-    else el.value = el.name === 'wizardTempo' ? '24' : '';
-  });
-}
-
-document.getElementById('btnReset').addEventListener('click', resetWizard);
+document.getElementById('btnReset').addEventListener('click', resetCalc);
 
 /* ============================
    CALCULADORA — ENCARGOS PATRONAIS 2025
@@ -2641,138 +2650,105 @@ const NARRATIVAS = {
   }
 };
 
-function renderDashboardContext() {
-  const mot = WIZARD_STATE.motivacao || 'comparar';
-  const fun = WIZARD_STATE.funcao || 'default';
-  const pool = NARRATIVAS[mot] || NARRATIVAS.comparar;
-  const narr = pool[fun] || pool.default;
+function calcAndRender() {
+  const salario = parseFormattedNumber(document.getElementById('wizardSalario').value);
+  if (salario <= 0) return;
 
+  const honorario = parseFormattedNumber(document.getElementById('wizardHonorario').value);
+  const regime = document.getElementById('wizardRegime').value || 'outros';
+  const isSimples = regime === 'simples';
+  const vr = parseFormattedNumber(document.getElementById('wizardVr').value);
+  const vt = parseFormattedNumber(document.getElementById('wizardVt').value);
+  const saude = parseFormattedNumber(document.getElementById('wizardSaude').value);
+  const tempo = parseFloat(document.getElementById('wizardTempo').value) || 24;
+
+  // Calculo CLT
+  const clt = calcCustoTotalCLT(salario, vr, vt, saude, true, SISTEMA_S, isSimples, 0.02, false, 0, 0.02);
+
+  // Custo PJ: honorario definido ou +10% sobre salario como estimativa minima
+  const pjCusto = honorario > 0 ? honorario : Math.round(salario * 1.10);
+
+  // Calculo demissao
+  const demissao = calcCustoDemissao(salario, tempo);
+
+  // --- Resultado inline: cards CLT x PJ ---
+  document.getElementById('resCltTotal').textContent = brl(clt.custoTotal);
+  document.getElementById('resCltSub').textContent = 'Encargos: ' + brl(clt.encargos);
+  document.getElementById('resPjTotal').textContent = brl(pjCusto);
+
+  const diff = clt.custoTotal - pjCusto;
+  const deltaEl = document.getElementById('resDelta');
+  if (Math.abs(diff) < 50) {
+    deltaEl.textContent = 'Equivalente';
+    deltaEl.className = 'result-delta-badge neutral';
+  } else if (diff > 0) {
+    const pct = ((diff / pjCusto) * 100).toFixed(0);
+    deltaEl.textContent = 'PJ ' + pct + '% mais barato';
+    deltaEl.className = 'result-delta-badge cheaper';
+  } else {
+    const pct = ((-diff / clt.custoTotal) * 100).toFixed(0);
+    deltaEl.textContent = 'PJ ' + pct + '% mais caro';
+    deltaEl.className = 'result-delta-badge expensive';
+  }
+
+  const difAnual = diff * 12;
+  const quemCustaMais = diff > 0 ? 'CLT custa ' + brl(Math.abs(difAnual)) + '/ano a mais que PJ' : 'PJ custa ' + brl(Math.abs(difAnual)) + '/ano a mais que CLT';
+  document.getElementById('resAnual').textContent = quemCustaMais;
+
+  document.getElementById('resultInline').style.display = 'block';
+
+  // --- Detalhes: encargos ---
+  document.getElementById('detInss').textContent = brl(clt.inssPat);
+  document.getElementById('detFgts').textContent = brl(clt.fgts);
+  document.getElementById('detSistemaS').textContent = brl(clt.sistemaS);
+  document.getElementById('detDecimo').textContent = brl(clt.prov13);
+  document.getElementById('detFerias').textContent = brl(clt.provFerias);
+  document.getElementById('detTotal').textContent = brl(clt.encargos);
+
+  // Demissao accordion
+  document.getElementById('detAvisoPrevio').textContent = brl(demissao.avisoPrevio);
+  document.getElementById('detMultaFgts').textContent = brl(demissao.multaFgts);
+  document.getElementById('detFeriasProp').textContent = brl(demissao.feriasProp);
+  document.getElementById('detDecimoProp').textContent = brl(demissao.dec13Prop);
+  document.getElementById('detDemissaoTotal').textContent = brl(demissao.total);
+
+  document.getElementById('colDetalhes').style.display = 'block';
+  document.getElementById('demissaoAccordion').style.display = 'block';
+
+  // --- Narrativa contextual ---
+  const mot = CALC_STATE.motivacao || 'comparar';
+  const pool = NARRATIVAS[mot] || NARRATIVAS.comparar;
+  const narr = pool.default;
+  document.getElementById('narrativeInlineIcon').textContent = narr.icon;
+  document.getElementById('narrativeInlineTitle').textContent = narr.title;
+  document.getElementById('narrativeInlineText').textContent = narr.text;
+  document.getElementById('narrativeInline').style.display = 'flex';
+
+  // --- CTA bar ---
   document.getElementById('narrativeIcon').textContent = narr.icon;
   document.getElementById('narrativeTitle').textContent = narr.title;
   document.getElementById('narrativeText').textContent = narr.text;
 
-  const cargoLabels = { contratante:'Empresa contratante', profissional:'Profissional autonomo', rh:'RH / DP' };
-  const motivLabels = { nova:'Nova contratacao', existente:'Migracao CLT para PJ', demissao:'Pos-demissao', comparar:'Comparacao financeira' };
-  const funcaoLabels = { dev:'Tech / Dev', consultor:'Consultor', designer:'Design / Criativo', engenheiro:'Engenharia', medico:'Saude', gerente:'Gestao / Gerente', admin:'Administrativo', outro:'Outro' };
-
-  const cargoEl = document.getElementById('dashCargoLabel');
-  const motivEl = document.getElementById('dashMotivacaoLabel');
-  const funcaoEl = document.getElementById('dashFuncaoLabel');
-  if (cargoEl) cargoEl.textContent = cargoLabels[WIZARD_STATE.cargo] || 'Profissional';
-  if (motivEl) motivEl.textContent = motivLabels[mot] || '';
-  if (funcaoEl) funcaoEl.textContent = funcaoLabels[fun] || '';
-}
-
-function preencherWhatsapp() {
-  const cargoLabels = { contratante:'empresa', profissional:'profissional autonomo', rh:'area de RH' };
-  const motivLabels = { nova:'nova contratacao', existente:'migracao CLT para PJ', demissao:'recontracao pos-demissao', comparar:'comparacao financeira' };
-  const funcaoLabels = { dev:'Tech/Dev', consultor:'Consultoria', designer:'Design', engenheiro:'Engenharia', medico:'Saude', gerente:'Gestao', admin:'Administrativo', outro:'minha area' };
-  const { cargo, motivacao, funcao, salarioBruto } = WIZARD_STATE;
-  const msg = 'Oi Amanda! Fiz a simulacao PJ vs CLT. Sou ' + (cargoLabels[cargo] || 'profissional') +
-    ' analisando uma ' + (motivLabels[motivacao] || 'contratacao') +
-    ' na area de ' + (funcaoLabels[funcao] || 'trabalho') +
-    ' com salario de ' + brl(salarioBruto) + '. Gostaria de uma analise completa.';
+  // WhatsApp pre-preenchido
+  const cargoLabels = { contratante:'empresa', profissional:'profissional autonomo', comparar:'profissional' };
+  const motivLabels = { nova:'nova contratacao', existente:'migracao CLT para PJ', demissao:'recontratacao pos-demissao', comparar:'comparacao financeira' };
+  const msg = 'Oi Amanda! Fiz a simulacao PJ vs CLT. Sou ' +
+    (cargoLabels[CALC_STATE.cargo] || 'profissional') +
+    ' analisando uma ' + (motivLabels[mot] || 'contratacao') +
+    ' com salario de ' + brl(salario) + '. Gostaria de uma analise completa.';
   const btnWA = document.getElementById('btnWhatsapp');
   if (btnWA) btnWA.href = 'https://wa.me/5537999967558?text=' + encodeURIComponent(msg);
+
+  document.getElementById('calcCtaBar').style.display = 'block';
 }
 
-function computeAndShowDashboard() {
-  const salario = WIZARD_STATE.salarioBruto;
-  const honorario = WIZARD_STATE.honorarioPJ;
-  const regime = WIZARD_STATE.regime;
-  const isSimples = regime === 'simples';
-
-  // Calculo CLT
-  const clt = calcCustoTotalCLT(
-    salario,
-    WIZARD_STATE.beneficios.vr,
-    WIZARD_STATE.beneficios.vt,
-    WIZARD_STATE.beneficios.saude,
-    true,
-    SISTEMA_S,
-    isSimples,
-    0.02,
-    false,
-    0,
-    0.02
-  );
-
-  // Calculo PJ
-  const pjCusto = honorario || (salario * 1.1);
-
-  // Calculo demissao
-  const demissao = calcCustoDemissao(salario, WIZARD_STATE.tempoContrato);
-
-  // Renderizar contexto narrativo e WhatsApp
-  renderDashboardContext();
-  preencherWhatsapp();
-
-  // Cards principais
-  document.getElementById('dashCltCustoTotal').textContent = brl(clt.custoTotal);
-  document.getElementById('dashCltDetail').textContent = 'Encargos: ' + brl(clt.encargos) + ' | Beneficios: ' + brl(clt.beneficios);
-  document.getElementById('dashPjCusto').textContent = brl(pjCusto);
-
-  // Delta badge
-  const deltaEl = document.getElementById('dashDelta');
-  const diff = clt.custoTotal - pjCusto;
-  if (Math.abs(diff) < 50) {
-    deltaEl.textContent = 'Equivalente';
-    deltaEl.className = 'result-delta neutral';
-  } else if (clt.custoTotal > pjCusto) {
-    const pctDiff = ((clt.custoTotal / pjCusto - 1) * 100).toFixed(0);
-    deltaEl.textContent = pctDiff + '% mais barato';
-    deltaEl.className = 'result-delta cheaper';
-  } else {
-    const pctDiff = ((pjCusto / clt.custoTotal - 1) * 100).toFixed(0);
-    deltaEl.textContent = pctDiff + '% mais caro';
-    deltaEl.className = 'result-delta expensive';
-  }
-
-  // Diferenca anual
-  const difAnual = (clt.custoTotal - pjCusto) * 12;
-  document.getElementById('dashDiferencaAnual').textContent = brl(Math.abs(difAnual)) + '/ano';
-  const quem = clt.custoTotal > pjCusto ? 'CLT custa mais' : 'PJ custa mais';
-  document.getElementById('dashDiferencaSub').innerHTML =
-    quem + ': diferenca de <strong>' + brl(Math.abs(diff)) + '/mes</strong> ou <strong>' + brl(Math.abs(difAnual)) + '/ano</strong>. ' +
-    (clt.custoTotal > pjCusto
-      ? 'PJ e a opcao de menor custo direto, desde que sem risco de vinculo empregaticio.'
-      : 'CLT e a opcao de menor custo direto neste cenario.');
-
-  // Encargos detalhados
-  document.getElementById('dashEncargosTotal').textContent = '+' + brl(clt.encargos) + '/mes';
-  document.getElementById('dashInssPat').textContent = '+' + brl(clt.inssPat);
-  document.getElementById('dashFgts').textContent = '+' + brl(clt.fgts);
-  document.getElementById('dashSistemaS').textContent = '+' + brl(clt.sistemaS);
-  document.getElementById('dashDecimoTerceiro').textContent = '+' + brl(clt.prov13);
-  document.getElementById('dashFerias').textContent = '+' + brl(clt.provFerias);
-
-  // Demissao
-  document.getElementById('dashDemissaoTotal').textContent = brl(demissao.total);
-  document.getElementById('dashAvisoPrevio').textContent = brl(demissao.avisoPrevio);
-  document.getElementById('dashMultaFgts').textContent = brl(demissao.multaFgts);
-  document.getElementById('dashFeriasProp').textContent = brl(demissao.feriasProp);
-  document.getElementById('dashDecimoTerceiroProp').textContent = brl(demissao.dec13Prop);
-  document.getElementById('dashDemissaoTotalBody').textContent = brl(demissao.total);
-
-  // Setup accordion toggle
-  document.getElementById('dashBenefitsToggle').addEventListener('click', function() {
-    const body = this.nextElementSibling;
-    body.style.display = body.style.display === 'none' ? 'block' : 'none';
-  });
-
-  document.getElementById('dashDemissaoToggle').addEventListener('click', function() {
-    const body = this.nextElementSibling;
-    body.style.display = body.style.display === 'none' ? 'block' : 'none';
-  });
-
-  // Mostrar dashboard, esconder wizard e nav do wizard
-  document.getElementById('wizard').style.display = 'none';
-  document.getElementById('wizardNavBar').style.display = 'none';
-  const bb = document.getElementById('bottomBar');
-  if (bb) bb.classList.add('visible');
-  document.getElementById('dashboard').style.display = 'block';
-  document.getElementById('dashboard').scrollIntoView({ behavior: 'smooth', block: 'start' });
-}
+// Demissao accordion toggle
+document.getElementById('demissaoToggle').addEventListener('click', function() {
+  const body = document.getElementById('demissaoBody');
+  const open = body.style.display === 'none' || body.style.display === '';
+  body.style.display = open ? 'block' : 'none';
+  document.getElementById('demissaoToggleArrow').textContent = open ? '▲' : '▼';
+});
 </script>
 
 </body>
