@@ -4691,7 +4691,7 @@ function closeLeadModal() {
   sessionStorage.setItem('lead-modal-shown', '1');
 }
 
-const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbyHic1ClYayuxpAgvNXX0GuAtqEnN08mwqut3v9TdhBUiJcZBITBZ9hPdn9qFEXEBYJ7Q/exec';
+const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbxgj0xxCeFNw7AqgpYCQlb2102cRjs_yJP0nMz8tMxms7WiI563uJeOuGzBfDBzzUJnNw/exec';
 
 function sendLead(data) {
   var form = new FormData();
@@ -4748,15 +4748,20 @@ document.getElementById('leadCaptureForm').addEventListener('submit', function(e
   }
 
   // Enviar lead para Google Sheets
-  const salarioAtual = parseFormattedNumber(document.getElementById('wizardSalario').value);
-  const contatoCb = document.getElementById('leadContato');
+  const salarioModal = parseFormattedNumber(document.getElementById('wizardSalario').value);
+  const honorarioElModal = document.getElementById('wizardHonorario');
+  const honorarioModal = honorarioElModal ? parseFormattedNumber(honorarioElModal.value) : 0;
+  const regimeRadio = document.querySelector('input[name="regime"]:checked');
   sendLead({
-    fonte: 'modal-lead',
     nome: name,
-    whatsapp: phone,
-    empresa: company,
-    contador: window.TEM_CONTADOR || '',
-    contato: contatoCb && contatoCb.checked ? 'Sim' : 'Nao'
+    telefone: phone,
+    email: '',
+    cargo: CALC_STATE.cargo || '',
+    motivacao: CALC_STATE.motivacao || '',
+    funcao: CALC_STATE.ramo || '',
+    salarioBruto: salarioModal || '',
+    honorarioPJ: honorarioModal || '',
+    regime: regimeRadio ? regimeRadio.value : (CALC_STATE.ramo === 'presumido' ? 'presumido' : 'simples')
   });
 
   // Show success
