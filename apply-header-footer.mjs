@@ -153,6 +153,7 @@ const filesToUpdate = [
   'recuperacao-creditos-tributarios.html',
   'servicos.html',
   'teste-dourado.html',
+  'calculadora-pj-vs-clt/index.html',
 ];
 
 function replaceHeaderFooter(filePath) {
