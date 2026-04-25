@@ -867,6 +867,7 @@
     }
     .currency-wrap input { padding-left: 36px !important; }
     /* Input e select base */
+    .wizard-input-group input[type="text"],
     .wizard-input-group input[type="number"],
     .wizard-input-group select {
       width: 100%; padding: 13px 14px;
@@ -877,12 +878,15 @@
       min-height: 50px;
       transition: border-color .2s, background .2s, box-shadow .2s;
     }
+    .wizard-input-group input[type="text"]::placeholder,
     .wizard-input-group input[type="number"]::placeholder { color: rgba(232,236,244,.3); font-weight: 400; }
     .wizard-input-group input[type="number"]::-webkit-inner-spin-button,
     .wizard-input-group input[type="number"]::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
     .wizard-input-group input[type="number"] { -moz-appearance: textfield; }
+    .wizard-input-group input[type="text"]:hover,
     .wizard-input-group input[type="number"]:hover,
     .wizard-input-group select:hover { background: rgba(255,255,255,.09); border-color: rgba(255,255,255,.26); }
+    .wizard-input-group input[type="text"]:focus,
     .wizard-input-group input[type="number"]:focus,
     .wizard-input-group select:focus {
       outline: none;
@@ -1566,14 +1570,14 @@
             <label for="wizardSalario">Salario bruto mensal (CLT)</label>
             <div class="currency-wrap">
               <span class="currency-symbol">R$</span>
-              <input type="number" id="wizardSalario" placeholder="5.000" min="1412" step="100" inputmode="numeric">
+              <input type="text" id="wizardSalario" placeholder="5.000" inputmode="numeric" autocomplete="off" data-currency>
             </div>
           </div>
           <div class="wizard-input-group">
             <label for="wizardHonorario">Honorario mensal (PJ)</label>
             <div class="currency-wrap">
               <span class="currency-symbol">R$</span>
-              <input type="number" id="wizardHonorario" placeholder="8.000" min="0" step="100" inputmode="numeric">
+              <input type="text" id="wizardHonorario" placeholder="8.000" inputmode="numeric" autocomplete="off" data-currency>
             </div>
           </div>
           <div class="wizard-input-group">
@@ -1597,21 +1601,21 @@
             <label for="wizardVr">Vale-Refeicao (R$/mes)</label>
             <div class="currency-wrap">
               <span class="currency-symbol">R$</span>
-              <input type="number" id="wizardVr" placeholder="0" min="0" step="10" value="0" inputmode="numeric">
+              <input type="text" id="wizardVr" placeholder="0" inputmode="numeric" autocomplete="off" data-currency>
             </div>
           </div>
           <div class="wizard-input-group">
             <label for="wizardVt">Vale-Transporte (R$/mes)</label>
             <div class="currency-wrap">
               <span class="currency-symbol">R$</span>
-              <input type="number" id="wizardVt" placeholder="0" min="0" step="10" value="0" inputmode="numeric">
+              <input type="text" id="wizardVt" placeholder="0" inputmode="numeric" autocomplete="off" data-currency>
             </div>
           </div>
           <div class="wizard-input-group">
             <label for="wizardSaude">Plano de Saude (R$/mes)</label>
             <div class="currency-wrap">
               <span class="currency-symbol">R$</span>
-              <input type="number" id="wizardSaude" placeholder="0" min="0" step="50" value="0" inputmode="numeric">
+              <input type="text" id="wizardSaude" placeholder="0" inputmode="numeric" autocomplete="off" data-currency>
             </div>
           </div>
           <div class="wizard-input-group">
@@ -1622,7 +1626,7 @@
       </div>
 
       <!-- Navigation buttons -->
-      <div class="wizard-nav">
+      <div class="wizard-nav" id="wizardNavBar" style="display:none;">
         <button class="btn-wizard-prev" id="btnWizardPrev" type="button" style="display:none;">Voltar</button>
         <button class="btn-wizard-next" id="btnWizardNext" type="button">Proxima etapa</button>
       </div>
@@ -2398,13 +2402,15 @@ function showStep(n) {
   document.getElementById('wizardProgressFill').style.width = fill + '%';
   document.getElementById('btnWizardPrev').style.display = n === 1 ? 'none' : 'block';
   document.getElementById('btnWizardNext').textContent = n === 5 ? 'Ver resultado' : 'Proxima etapa';
+  // Esconde barra de nav nos steps de radio (auto-avanco); mostra nos de input
+  document.getElementById('wizardNavBar').style.display = n >= 4 ? 'flex' : 'none';
 }
 
 function validateStep(n) {
   if (n === 1) return WIZARD_STATE.cargo !== '';
   if (n === 2) return WIZARD_STATE.motivacao !== '';
   if (n === 3) return WIZARD_STATE.funcao !== '';
-  if (n === 4) return WIZARD_STATE.salarioBruto > 0;
+  if (n === 4) return parseFormattedNumber(document.getElementById('wizardSalario').value) > 0;
   if (n === 5) return true;
   return false;
 }
@@ -2456,16 +2462,43 @@ document.getElementById('btnWizardPrev').addEventListener('click', () => {
   }
 });
 
+// Formata enquanto digita: remove nao-digitos, aplica separador de milhar
+function formatCurrencyInput(input) {
+  let raw = input.value.replace(/\D/g, '');
+  if (raw === '') { input.value = ''; return; }
+  // Remove zeros a esquerda
+  raw = String(parseInt(raw, 10));
+  // Insere pontos como separador de milhar
+  input.value = raw.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+}
+
+function parseFormattedNumber(val) {
+  if (!val) return 0;
+  return parseFloat(val.replace(/\./g, '').replace(',', '.')) || 0;
+}
+
+// Aplica mascara em todos os inputs com data-currency
+document.querySelectorAll('input[data-currency]').forEach(input => {
+  input.addEventListener('input', () => formatCurrencyInput(input));
+  input.addEventListener('keydown', e => {
+    // Permite: backspace, delete, tab, escape, enter, setas, home, end
+    const allowed = [8,9,13,27,46,37,38,39,40,35,36];
+    if (allowed.includes(e.keyCode)) return;
+    // Bloqueia qualquer coisa que nao seja digito
+    if ((e.key < '0' || e.key > '9') && !e.ctrlKey && !e.metaKey) e.preventDefault();
+  });
+});
+
 function readStep4() {
-  WIZARD_STATE.salarioBruto = parseFloat(document.getElementById('wizardSalario').value) || 0;
-  WIZARD_STATE.honorarioPJ = parseFloat(document.getElementById('wizardHonorario').value) || 0;
+  WIZARD_STATE.salarioBruto = parseFormattedNumber(document.getElementById('wizardSalario').value);
+  WIZARD_STATE.honorarioPJ = parseFormattedNumber(document.getElementById('wizardHonorario').value);
   WIZARD_STATE.regime = document.getElementById('wizardRegime').value || 'outros';
 }
 
 function readStep5() {
-  WIZARD_STATE.beneficios.vr = parseFloat(document.getElementById('wizardVr').value) || 0;
-  WIZARD_STATE.beneficios.vt = parseFloat(document.getElementById('wizardVt').value) || 0;
-  WIZARD_STATE.beneficios.saude = parseFloat(document.getElementById('wizardSaude').value) || 0;
+  WIZARD_STATE.beneficios.vr = parseFormattedNumber(document.getElementById('wizardVr').value);
+  WIZARD_STATE.beneficios.vt = parseFormattedNumber(document.getElementById('wizardVt').value);
+  WIZARD_STATE.beneficios.saude = parseFormattedNumber(document.getElementById('wizardSaude').value);
   WIZARD_STATE.tempoContrato = parseFloat(document.getElementById('wizardTempo').value) || 24;
   localStorage.setItem('wizardState', JSON.stringify(WIZARD_STATE));
 }
