@@ -1059,6 +1059,17 @@
             <input type="number" id="salarioBruto" placeholder="ex: 5000" min="1412" step="100" inputmode="numeric">
           </div>
           <div class="calc-input-group">
+            <label for="segmentoEmpresa">Segmento da Empresa <span>(afeta aliquota Sistema S)</span></label>
+            <select id="segmentoEmpresa" style="width:100%;padding:12px 14px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.12);border-radius:10px;color:var(--white);font-size:.9rem;font-family:var(--font-body);outline:none;cursor:pointer;transition:border-color .2s;appearance:none;-webkit-appearance:none;">
+              <option value="0.058" selected>Industria (SESI + SENAI + SEBRAE) ~5,8%</option>
+              <option value="0.055">Comercio (SESC + SENAC + SEBRAE) ~5,5%</option>
+              <option value="0.046">Servicos / TI (SESC + SENAC + SEBRAE) ~4,6%</option>
+              <option value="0.025">Transporte (SEST + SENAT) ~2,5%</option>
+              <option value="0.025">Construcao Civil (SESI + SENAI) ~2,5%</option>
+              <option value="0.060">Agronegocio (SENAR + outros) ~6,0%</option>
+            </select>
+          </div>
+          <div class="calc-input-group">
             <label for="beneficioVR">Vale-Refeicao / Vale-Alimentacao <span>(mensal)</span></label>
             <input type="number" id="beneficioVR" placeholder="0" min="0" step="10" value="0" inputmode="numeric">
           </div>
@@ -1172,8 +1183,8 @@
             </div>
             <div class="benefit-row">
               <div class="benefit-row-name">
-                Sistema S (aprox. 5,8%)
-                <div class="benefit-row-detail">Inclui SESI/SENAI ou SESC/SENAC, SEBRAE, INCRA e outros. Varia por atividade.</div>
+                Sistema S (<span id="outSistemaSPct">aprox. 5,8%</span>)
+                <div class="benefit-row-detail">Inclui SESI/SENAI ou SESC/SENAC, SEBRAE, INCRA e outros. Varia por segmento/CNAE.</div>
               </div>
               <div>
                 <div class="benefit-row-value" id="outSistemaS">+R$ 0</div>
@@ -1257,11 +1268,11 @@
             <div class="tax-item-value" id="outCltMensal2">R$ 0</div>
           </div>
           <div class="tax-item">
-            <div class="tax-item-label">Custo CLT anual (com demissao)</div>
+            <div class="tax-item-label">Custo CLT anual (12 meses)</div>
             <div class="tax-item-value" id="outCltAnualComDemissao">R$ 0</div>
           </div>
           <div class="tax-item">
-            <div class="tax-item-label">Custo PJ anual</div>
+            <div class="tax-item-label">Custo PJ anual (12 meses)</div>
             <div class="tax-item-value" id="outPjAnual">R$ 0</div>
           </div>
         </div>
@@ -1623,10 +1634,10 @@ const PROV_FERIAS   = (1 + 1/3) / 12; // 11.11%
 
 const brl = v => new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(v);
 
-function calcCustoTotalCLT(salario, vr, vt, saude, incluirProvisoes) {
+function calcCustoTotalCLT(salario, vr, vt, saude, incluirProvisoes, sistemaSRate) {
   const inssPat      = Math.round(salario * INSS_PATRONAL * 100) / 100;
   const fgts         = Math.round(salario * FGTS_RATE * 100) / 100;
-  const sistemaS     = Math.round(salario * SISTEMA_S * 100) / 100;
+  const sistemaS     = Math.round(salario * (sistemaSRate || SISTEMA_S) * 100) / 100;
   const prov13       = incluirProvisoes ? Math.round(salario * PROV_13 * 100) / 100 : 0;
   const provFerias   = incluirProvisoes ? Math.round(salario * PROV_FERIAS * 100) / 100 : 0;
   const encargos     = inssPat + fgts + sistemaS + prov13 + provFerias;
@@ -1652,7 +1663,7 @@ function calcCustoDemissao(salario, meses) {
    RENDER RESULTS
 ============================ */
 function renderResults(data) {
-  const { clt, pjCusto, demissao, salario, meses, incluirProvisoes } = data;
+  const { clt, pjCusto, demissao, salario, meses, incluirProvisoes, sistemaSRate } = data;
 
   // Cards principais
   document.getElementById('outCltCustoTotal').textContent = brl(clt.custoTotal);
@@ -1690,6 +1701,7 @@ function renderResults(data) {
   document.getElementById('outInssPat').textContent = '+' + brl(clt.inssPat);
   document.getElementById('outFgts').textContent = '+' + brl(clt.fgts);
   document.getElementById('outSistemaS').textContent = '+' + brl(clt.sistemaS);
+  document.getElementById('outSistemaSPct').textContent = (data.sistemaSRate * 100).toFixed(1) + '%';
   document.getElementById('rowProvisoes').style.opacity = incluirProvisoes ? '1' : '0.35';
   document.getElementById('rowFerias').style.opacity = incluirProvisoes ? '1' : '0.35';
   document.getElementById('outDecimoTerceiro').textContent = '+' + brl(clt.prov13);
@@ -1703,11 +1715,10 @@ function renderResults(data) {
   document.getElementById('outDecimoTerceiroProp').textContent = brl(demissao.dec13Prop);
   document.getElementById('outDemissaoTotalBody').textContent = brl(demissao.total);
 
-  // Resumo
+  // Resumo — sempre base 12 meses para comparação justa
   document.getElementById('outCltMensal2').textContent = brl(clt.custoTotal);
-  const cltAnualComDem = clt.custoTotal * meses + demissao.total;
-  document.getElementById('outCltAnualComDemissao').textContent = brl(cltAnualComDem);
-  document.getElementById('outPjAnual').textContent = brl(pjCusto * meses);
+  document.getElementById('outCltAnualComDemissao').textContent = brl(clt.custoTotal * 12);
+  document.getElementById('outPjAnual').textContent = brl(pjCusto * 12);
 
   // Mostrar resultado
   const result = document.getElementById('calcResult');
@@ -1731,7 +1742,8 @@ function getInputs() {
   const incluirProvisoes = document.getElementById('incluirProvisoes').checked;
   const honorarioPJ      = parseFloat(document.getElementById('honorarioPJ').value) || 0;
   const tempoContrato    = parseInt(document.getElementById('tempoContrato').value) || 24;
-  return { salario, vr, vt, saude, incluirProvisoes, honorarioPJ, tempoContrato };
+  const sistemaSRate     = parseFloat(document.getElementById('segmentoEmpresa').value) || SISTEMA_S;
+  return { salario, vr, vt, saude, incluirProvisoes, honorarioPJ, tempoContrato, sistemaSRate };
 }
 
 function calcAll() {
@@ -1739,11 +1751,11 @@ function calcAll() {
   if (inp.salario < 1412 && inp.honorarioPJ === 0) return;
 
   const salarioRef = inp.salario || (inp.honorarioPJ * 0.65);
-  const clt        = calcCustoTotalCLT(salarioRef, inp.vr, inp.vt, inp.saude, inp.incluirProvisoes);
+  const clt        = calcCustoTotalCLT(salarioRef, inp.vr, inp.vt, inp.saude, inp.incluirProvisoes, inp.sistemaSRate);
   const pjCusto    = inp.honorarioPJ > 0 ? inp.honorarioPJ : (inp.salario * 1.1);
   const demissao   = calcCustoDemissao(salarioRef, inp.tempoContrato);
 
-  renderResults({ clt, pjCusto, demissao, salario: salarioRef, meses: inp.tempoContrato, incluirProvisoes: inp.incluirProvisoes });
+  renderResults({ clt, pjCusto, demissao, salario: salarioRef, meses: inp.tempoContrato, incluirProvisoes: inp.incluirProvisoes, sistemaSRate: inp.sistemaSRate });
 }
 
 /* Debounce */
@@ -1754,6 +1766,7 @@ document.querySelectorAll('#salarioBruto,#beneficioVR,#beneficioVT,#beneficioSau
   el.addEventListener('input', debouncedCalc);
 });
 document.getElementById('incluirProvisoes').addEventListener('change', debouncedCalc);
+document.getElementById('segmentoEmpresa').addEventListener('change', debouncedCalc);
 document.getElementById('btnCalc').addEventListener('click', () => {
   calcAll();
   const result = document.getElementById('calcResult');
