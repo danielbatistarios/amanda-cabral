@@ -2491,6 +2491,10 @@
                 <label for="idWizEmpresa">Empresa / negocio <span style="color:var(--silver);font-weight:400;text-transform:none;letter-spacing:0">(opcional)</span></label>
                 <input type="text" id="idWizEmpresa" name="empresa" placeholder="Ex: Tech Solutions, MEI...">
               </div>
+              <div class="id-form-group" style="flex-direction:row;align-items:center;gap:10px;margin-top:4px;">
+                <input type="checkbox" id="idWizContato" style="width:18px;height:18px;accent-color:var(--gold);flex-shrink:0;cursor:pointer;">
+                <label for="idWizContato" style="font-size:.85rem;color:var(--silver);cursor:pointer;margin:0;font-weight:400;text-transform:none;letter-spacing:0;">Gostaria de receber contato da Amanda</label>
+              </div>
               <div class="id-form-nav">
                 <button type="button" class="id-form-btn-back" id="idBtnBack">← Voltar</button>
                 <button type="submit" class="id-form-btn-submit">Preencher calculadora ↓</button>
@@ -4616,17 +4620,19 @@ window.TEM_CONTADOR = null;
       return;
     }
     var empresa = document.getElementById('idWizEmpresa').value.trim();
+    var whatsapp = document.getElementById('idWizWhatsapp').value.trim();
+    var contatoCb = document.getElementById('idWizContato');
     window.LEAD_NAME = nome;
     window.LEAD_COMPANY = empresa;
     collapseWizard(nome, empresa, wizData.contador);
     // Enviar lead para Google Sheets no momento do clique em "Preencher calculadora"
     sendLead({
       nome: nome,
-      whatsapp: '',
+      whatsapp: whatsapp,
       empresa: empresa,
       contador: wizData.contador || '',
       fonte: window.location.href,
-      contato: ''
+      contato: contatoCb && contatoCb.checked ? 'Sim' : 'Nao'
     });
     // Scroll suave para a calculadora
     setTimeout(function() {
