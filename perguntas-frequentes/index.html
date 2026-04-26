@@ -2971,15 +2971,6 @@ document.addEventListener('click', function(e) {
 
 /* === MOBILE MENU === */
 var hdrHamburger = document.getElementById('hdr-hamburger');
-var hdrMob = document.getElementById('hdr-mob');
-var hdrMobClose = document.getElementById('hdr-mob-close');
-if (hdrHamburger && hdrMob && hdrMobClose) {
-  hdrHamburger.addEventListener('click', function() { hdrMob.classList.toggle('open'); });
-  hdrMobClose.addEventListener('click', function() { hdrMob.classList.remove('open'); });
-  hdrMob.querySelectorAll('a').forEach(function(a) {
-    a.addEventListener('click', function() { hdrMob.classList.remove('open'); });
-  });
-}
 
 /* === REVEAL ON SCROLL === */
 document.querySelectorAll('.reveal').forEach(function(el) {

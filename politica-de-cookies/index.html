@@ -1825,13 +1825,6 @@
       });
     });
 
-    const hdrMob = document.getElementById('hdr-mob');
-    const hdrMobClose = document.getElementById('hdr-mob-close');
-    if (hdrHamburger && hdrMob && hdrMobClose) {
-        hdrHamburger.addEventListener('click', () => hdrMob.classList.toggle('open'));
-        hdrMobClose.addEventListener('click', () => hdrMob.classList.remove('open'));
-        hdrMob.querySelectorAll('a').forEach(a => a.addEventListener('click', () => hdrMob.classList.remove('open')));
-    }
     </script>
 </body>
 </html>
