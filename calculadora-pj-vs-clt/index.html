@@ -4578,9 +4578,7 @@ window.TEM_CONTADOR = null;
       if (field === 'contador') window.TEM_CONTADOR = val;
       if (field === 'ramo') CALC_STATE.ramo = val;
       var thisStep = parseInt(btn.closest('.id-form-step').getAttribute('data-step'));
-      if (field !== 'contato') {
-        setTimeout(function() { goToIdStep(thisStep + 1); }, 260);
-      }
+      setTimeout(function() { goToIdStep(thisStep + 1); }, 260);
     });
   });
 
