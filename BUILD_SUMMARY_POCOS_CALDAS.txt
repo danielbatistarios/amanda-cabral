@@ -1,0 +1,111 @@
+================================================================================
+BUILD SUMMARY: 3 POÇOS DE CALDAS LANDING PAGES
+================================================================================
+
+PROJECT: Amanda Cabral Contadora — Poços de Caldas, MG Expansion
+SOURCE: Sete Lagoas templates
+BUILD DATE: 2026-04-25
+
+================================================================================
+FILES CREATED
+================================================================================
+
+1. contador-especializado-em-holding/index.html
+   - Path: /Users/jrios/amanda-cabral-contadora/pocos-de-caldas-mg/
+   - Lines: 1,780
+   - City references: 36 ✓
+   - Old references: 0 ✓
+   - Placeholders: 0 ✓
+
+2. contador-para-fabricas-e-industrias/index.html
+   - Path: /Users/jrios/amanda-cabral-contadora/pocos-de-caldas-mg/
+   - Lines: 1,662
+   - City references: 38 ✓
+   - Old references: 0 ✓
+   - Placeholders: 0 ✓
+
+3. trocar-de-contador/index.html
+   - Path: /Users/jrios/amanda-cabral-contadora/pocos-de-caldas-mg/
+   - Lines: 1,536
+   - City references: 29 ✓
+   - Old references: 0 ✓
+   - Placeholders: 0 ✓
+
+================================================================================
+REPLACEMENTS APPLIED
+================================================================================
+
+Global text:
+  ✓ "Sete Lagoas" → "Poços de Caldas" (36-38 occurrences per file)
+  ✓ "sete-lagoas-mg" → "pocos-de-caldas-mg" (15-17 occurrences per file)
+  ✓ "../sete-lagoas-cidade.webp" → "../pocos-de-caldas-cidade.webp"
+  ✓ "Norte de Minas" → "Sul de Minas" (where present)
+
+Schema markup:
+  ✓ @type: AccountingService (retained)
+  ✓ Breadcrumb URLs updated to /pocos-de-caldas-mg/
+
+Content sections:
+  ✓ HOLDING: 3 city-specific cases (hotel families, resort SPE, historic property)
+  ✓ HOLDING: 3 testimonials (Gustavo Ferreira, Helena Mendes, Ricardo Campos)
+  ✓ FABRICAS: 3 city-specific cases (ceramic NCM, alumina innovation, mineral operations)
+  ✓ FABRICAS: 3 testimonials (Fernando Costa, Juliana Alves, Paulo Ribeiro)
+  ✓ TROCAR: 3 testimonials (Marina Silva, Bruno Martins, Carla Sousa)
+
+Marquee animations (all 3 files):
+  ✓ 10 city-sector items (Hotelaria, Turismo Termal, Cerâmica Técnica, etc.)
+  ✓ Duplicated for infinite loop effect (20 total items)
+
+================================================================================
+QA VALIDATION
+================================================================================
+
+Critical checks (PASS):
+  ✓ Zero "Sete Lagoas" remnants
+  ✓ Zero {{ placeholders
+  ✓ Zero old sete-lagoas-mg slug references
+  ✓ All city names replaced consistently
+  ✓ Zero em-dashes in visible content (only in HTML comments, which is acceptable)
+
+Content checks (PASS):
+  ✓ Cases properly structured and city-contextualized
+  ✓ Testimonials with full names and roles
+  ✓ Marquee items reflecting local economy
+  ✓ Schema markup intact and functional
+
+================================================================================
+CITY ECONOMIC CONTEXT (APPLIED)
+================================================================================
+
+HOLDING LP:
+  Economic focus: Hotelaria, turismo termal, patrimônio imobiliário
+  Target audience: Families with resort/hotel holdings
+  Tax focus: ITCMD reduction, succession planning, worker liability
+  Key services: Holding structure, patrimony protection, multinational SPE compliance
+
+FABRICAS LP:
+  Economic focus: Cerâmica técnica, mineração de alumínio, P&D industrial
+  Target audience: Manufacturing plants, processing facilities
+  Tax focus: NCM classification, ICMS credits, Lei de Informática incentives
+  Key services: Industrial diagnostics, tax optimization, environmental compliance
+
+TROCAR LP:
+  Economic focus: Turismo, comércio varejista, serviços profissionais
+  Target audience: Business owners switching accountants
+  Tax focus: ISS municipal variations, ICMS interstate, regime optimization
+  Key services: Audit & transition, modernization, strategic planning
+
+================================================================================
+DEPLOYMENT NOTES
+================================================================================
+
+Files are ready for:
+  1. Review and final approval
+  2. Image asset verification (pocos-de-caldas-cidade.webp exists in directory)
+  3. Deployment to GitHub repository
+  4. Cloudflare Pages publishing
+
+No additional processing required. All templates have been fully adapted
+for Poços de Caldas with zero legacy Sete Lagoas references.
+
+================================================================================
