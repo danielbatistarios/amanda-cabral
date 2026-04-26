@@ -552,7 +552,10 @@ img { display: block; max-width: 100%; }
         .mob-cta:hover { opacity: 0.88; }
 
         @media (max-width: 900px) {
-    #hdr-nav, .hdr-cta { display: none; }
+    #hdr-nav { display: none !important; visibility: hidden !important; pointer-events: none !important; }
+    .hdr-cta { display: none !important; visibility: hidden !important; pointer-events: none !important; }
+    .hdr-mega { display: none !important; visibility: hidden !important; pointer-events: none !important; }
+    .hdr-mega.open { display: none !important; visibility: hidden !important; }
     #hdr-hamburger { display: flex; }
 }
 @media (max-width: 600px) {
@@ -2969,8 +2972,6 @@ document.addEventListener('click', function(e) {
   if (!e.target.closest('.hdr-item') && !e.target.closest('.hdr-mega')) closeAll();
 });
 
-/* === MOBILE MENU === */
-var hdrHamburger = document.getElementById('hdr-hamburger');
 
 /* === REVEAL ON SCROLL === */
 document.querySelectorAll('.reveal').forEach(function(el) {
