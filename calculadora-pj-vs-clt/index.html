@@ -2369,6 +2369,7 @@
             <div class="id-form-dot" data-step="3"></div>
             <div class="id-form-dot" data-step="4"></div>
             <div class="id-form-dot" data-step="5"></div>
+            <div class="id-form-dot" data-step="6"></div>
           </div>
 
           <form id="idWizForm" novalidate>
@@ -2476,8 +2477,21 @@
               </div>
             </div>
 
-            <!-- Step 5: Dados de contato -->
+            <!-- Step 5: Gostaria de receber contato? -->
             <div class="id-form-step" data-step="5">
+              <div class="id-form-step-title">Gostaria de receber contato da Amanda?</div>
+              <div class="id-cta-opts">
+                <button type="button" class="id-cta-opt" data-field="contato" data-value="sim">
+                  <span class="id-cta-opt-icon">✅</span> Sim, gostaria de receber contato
+                </button>
+                <button type="button" class="id-cta-opt" data-field="contato" data-value="nao">
+                  <span class="id-cta-opt-icon">❌</span> Nao, obrigado
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 6: Dados de contato -->
+            <div class="id-form-step" data-step="6">
               <div class="id-form-step-title">Ultimo passo</div>
               <div class="id-form-group">
                 <label for="idWizNome">Seu nome <span style="color:rgba(239,68,68,.7)">*</span></label>
@@ -2490,10 +2504,6 @@
               <div class="id-form-group">
                 <label for="idWizEmpresa">Empresa / negocio <span style="color:var(--silver);font-weight:400;text-transform:none;letter-spacing:0">(opcional)</span></label>
                 <input type="text" id="idWizEmpresa" name="empresa" placeholder="Ex: Tech Solutions, MEI...">
-              </div>
-              <div class="id-form-group" style="flex-direction:row;align-items:center;gap:10px;margin-top:4px;">
-                <input type="checkbox" id="idWizContato" style="width:18px;height:18px;accent-color:var(--gold);flex-shrink:0;cursor:pointer;">
-                <label for="idWizContato" style="font-size:.85rem;color:var(--silver);cursor:pointer;margin:0;font-weight:400;text-transform:none;letter-spacing:0;">Gostaria de receber contato da Amanda</label>
               </div>
               <div class="id-form-nav">
                 <button type="button" class="id-form-btn-back" id="idBtnBack">← Voltar</button>
@@ -4535,7 +4545,7 @@ window.LEAD_COMPANY = '';
 window.TEM_CONTADOR = null;
 
 (function() {
-  var wizData = { cargo: null, motivacao: null, contador: null };
+  var wizData = { cargo: null, motivacao: null, contador: null, contato: null };
   var currentIdStep = 1;
 
   function goToIdStep(step) {
@@ -4568,11 +4578,13 @@ window.TEM_CONTADOR = null;
       if (field === 'contador') window.TEM_CONTADOR = val;
       if (field === 'ramo') CALC_STATE.ramo = val;
       var thisStep = parseInt(btn.closest('.id-form-step').getAttribute('data-step'));
-      setTimeout(function() { goToIdStep(thisStep + 1); }, 260);
+      if (field !== 'contato') {
+        setTimeout(function() { goToIdStep(thisStep + 1); }, 260);
+      }
     });
   });
 
-  // Back button (steps 2-5 → passo anterior)
+  // Back button (steps 2-6 → passo anterior)
   document.getElementById('idBtnBack').addEventListener('click', function() {
     goToIdStep(currentIdStep - 1);
   });
@@ -4608,7 +4620,7 @@ window.TEM_CONTADOR = null;
     unlockCalc();
   }
 
-  // Form submit (step 5)
+  // Form submit (step 6)
   document.getElementById('idWizForm').addEventListener('submit', function(e) {
     e.preventDefault();
     var nome = document.getElementById('idWizNome').value.trim();
@@ -4621,7 +4633,6 @@ window.TEM_CONTADOR = null;
     }
     var empresa = document.getElementById('idWizEmpresa').value.trim();
     var whatsapp = document.getElementById('idWizWhatsapp').value.trim();
-    var contatoCb = document.getElementById('idWizContato');
     window.LEAD_NAME = nome;
     window.LEAD_COMPANY = empresa;
     collapseWizard(nome, empresa, wizData.contador);
@@ -4632,7 +4643,7 @@ window.TEM_CONTADOR = null;
       empresa: empresa,
       contador: wizData.contador || '',
       fonte: window.location.href,
-      contato: contatoCb && contatoCb.checked ? 'Sim' : 'Nao'
+      contato: wizData.contato === 'sim' ? 'Sim' : 'Nao'
     });
     // Scroll suave para a calculadora
     setTimeout(function() {
@@ -4657,7 +4668,7 @@ window.TEM_CONTADOR = null;
 
   // Reset (after filled)
   document.getElementById('idWizardReset').addEventListener('click', function() {
-    wizData = { cargo: null, motivacao: null, ramo: null, contador: null };
+    wizData = { cargo: null, motivacao: null, ramo: null, contador: null, contato: null };
     window.LEAD_NAME = '';
     window.LEAD_COMPANY = '';
     window.TEM_CONTADOR = null;
